@@ -1,11 +1,7 @@
 {
-  "name": "strategy-toolkit",
-  "version": "0.1.0",
-  "private": true,
+  "name": "strategy-toolkit-vercel",
+  "version": "1.0.0",
   "scripts": {
-    "build": "node embed-content.js"
-  },
-  "devDependencies": {
-    "cheerio": "latest"
+    "build": "echo 'Static build — no build step needed.'"
   }
 }
