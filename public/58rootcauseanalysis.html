@@ -1,0 +1,1432 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="ri-arrow-left-line"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      
+            <!-- Root-Cause Analysis Topic -->
+            <section id="topic-root-cause" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-search-eye-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Root-Cause Analysis</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Structured Problem Solving</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand root cause analysis frameworks and methodologies</li>
+                            <li>Master techniques for identifying true root causes vs. symptoms</li>
+                            <li>Learn to apply the 5 Whys, Fishbone, and Pareto analysis to business problems</li>
+                            <li>Develop skills for facilitating cross-functional root cause workshops</li>
+                            <li>Apply root cause analysis to real Dell business scenarios</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Foundations of Root-Cause Analysis</h4>
+                    <p>Root-cause analysis (RCA) is a structured methodology for identifying the fundamental, underlying causes of business problems rather than simply treating symptoms. In consulting, RCA provides the analytical backbone for developing sustainable solutions that prevent issues from recurring. By systematically uncovering the true drivers of problems, consultants can help organizations address issues at their source rather than implementing superficial fixes.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Root-Cause Analysis Is Critical in Strategic Consulting</h5>
+                        <p class="mb-3">Root-cause analysis delivers several key benefits that make it essential for effective consulting engagements:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Strategic Value</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Prevents recurring problems</li>
+                                    <li>Shifts focus from symptoms to causes</li>
+                                    <li>Creates sustainable solutions</li>
+                                    <li>Addresses systemic issues</li>
+                                    <li>Improves ROI on improvement initiatives</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Analytical Rigor</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Provides structured investigation methods</li>
+                                    <li>Separates facts from assumptions</li>
+                                    <li>Enables evidence-based decision making</li>
+                                    <li>Uncovers hidden connections</li>
+                                    <li>Creates testable hypotheses</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Organizational Benefits</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Facilitates cross-functional collaboration</li>
+                                    <li>Builds shared understanding</li>
+                                    <li>Improves problem-solving capabilities</li>
+                                    <li>Reduces blame and increases focus on systems</li>
+                                    <li>Creates organizational learning</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Root Causes vs. Symptoms</h6>
+                            <div class="bg-white dark:bg-gray-900 p-4 rounded-lg">
+                                <p class="text-sm mb-3">A key challenge in root cause analysis is distinguishing between symptoms (the visible effects of problems) and actual root causes (the fundamental issues creating those symptoms). Consultants must learn to dig beneath the surface.</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h6 class="text-sm font-medium mb-2 text-primary">Characteristics of Symptoms</h6>
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <ul class="pl-5 text-sm mb-0">
+                                                <li class="mb-2"><strong>Easily observable:</strong> Surface-level issues that are readily apparent</li>
+                                                <li class="mb-2"><strong>Immediate effects:</strong> The direct manifestations of problems</li>
+                                                <li class="mb-2"><strong>Multiple origins:</strong> Can be caused by different underlying issues</li>
+                                                <li class="mb-2"><strong>Recur if only addressed:</strong> Will return if fundamental causes remain</li>
+                                                <li><strong>Example:</strong> High customer support call volume for a specific product issue</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-sm font-medium mb-2 text-primary">Characteristics of Root Causes</h6>
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <ul class="pl-5 text-sm mb-0">
+                                                <li class="mb-2"><strong>Fundamental issue:</strong> The underlying source that creates symptoms</li>
+                                                <li class="mb-2"><strong>Systemic in nature:</strong> Often embedded in processes, policies, or structures</li>
+                                                <li class="mb-2"><strong>Multiple effects:</strong> Often creates various symptoms across operations</li>
+                                                <li class="mb-2"><strong>Prevents recurrence if addressed:</strong> Solves problem sustainably</li>
+                                                <li><strong>Example:</strong> Insufficient product testing in specific use environments</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <h6 class="text-sm font-medium mb-2">The Symptom-Cause Chain</h6>
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg flex justify-center">
+                                        <div class="relative">
+                                            <svg width="700" height="120" viewBox="0 0 700 120">
+                                                <!-- Symptom Box -->
+                                                <rect x="10" y="40" width="120" height="40" rx="5" fill="#FEF3C7" class="dark:fill-amber-900/30" stroke="#F59E0B" stroke-width="1"></rect>
+                                                <text x="70" y="62" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Symptom</text>
+                                                <text x="70" y="80" font-size="12" text-anchor="middle" fill="currentColor" font-weight="normal">What we observe</text>
+                                                
+                                                <!-- Arrow 1 -->
+                                                <line x1="130" y1="60" x2="160" y2="60" stroke="#94A3B8" stroke-width="2"></line>
+                                                <polygon points="160,55 170,60 160,65" fill="#94A3B8"></polygon>
+                                                
+                                                <!-- Intermediate Cause Box 1 -->
+                                                <rect x="170" y="40" width="120" height="40" rx="5" fill="#E0F2FE" class="dark:fill-blue-900/30" stroke="#3B82F6" stroke-width="1"></rect>
+                                                <text x="230" y="62" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Proximate Cause</text>
+                                                <text x="230" y="80" font-size="12" text-anchor="middle" fill="currentColor" font-weight="normal">First level why</text>
+                                                
+                                                <!-- Arrow 2 -->
+                                                <line x1="290" y1="60" x2="320" y2="60" stroke="#94A3B8" stroke-width="2"></line>
+                                                <polygon points="320,55 330,60 320,65" fill="#94A3B8"></polygon>
+                                                
+                                                <!-- Intermediate Cause Box 2 -->
+                                                <rect x="330" y="40" width="120" height="40" rx="5" fill="#E0F2FE" class="dark:fill-blue-900/30" stroke="#3B82F6" stroke-width="1"></rect>
+                                                <text x="390" y="62" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Contributing Cause</text>
+                                                <text x="390" y="80" font-size="12" text-anchor="middle" fill="currentColor" font-weight="normal">Deeper investigation</text>
+                                                
+                                                <!-- Arrow 3 -->
+                                                <line x1="450" y1="60" x2="480" y2="60" stroke="#94A3B8" stroke-width="2"></line>
+                                                <polygon points="480,55 490,60 480,65" fill="#94A3B8"></polygon>
+                                                
+                                                <!-- Root Cause Box -->
+                                                <rect x="490" y="40" width="120" height="40" rx="5" fill="#DCFCE7" class="dark:fill-green-900/30" stroke="#22C55E" stroke-width="1"></rect>
+                                                <text x="550" y="62" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Root Cause</text>
+                                                <text x="550" y="80" font-size="12" text-anchor="middle" fill="currentColor" font-weight="normal">Fundamental issue</text>
+                                                
+                                                <!-- Lower Text Labels -->
+                                                <text x="70" y="110" font-size="11" text-anchor="middle" fill="currentColor" font-weight="normal">Increasing product</text>
+                                                <text x="70" y="125" font-size="11" text-anchor="middle" fill="currentColor" font-weight="normal">returns</text>
+                                                
+                                                <text x="230" y="110" font-size="11" text-anchor="middle" fill="currentColor" font-weight="normal">Product failing in</text>
+                                                <text x="230" y="125" font-size="11" text-anchor="middle" fill="currentColor" font-weight="normal">certain conditions</text>
+                                                
+                                                <text x="390" y="110" font-size="11" text-anchor="middle" fill="currentColor" font-weight="normal">Inadequate</text>
+                                                <text x="390" y="125" font-size="11" text-anchor="middle" fill="currentColor" font-weight="normal">testing procedures</text>
+                                                
+                                                <text x="550" y="110" font-size="11" text-anchor="middle" fill="currentColor" font-weight="normal">Test environment</text>
+                                                <text x="550" y="125" font-size="11" text-anchor="middle" fill="currentColor" font-weight="normal">design process gap</text>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-center mt-2 text-gray-500 dark:text-gray-400">Root cause analysis involves tracing the causal chain from visible symptoms to the fundamental issues that must be resolved to prevent recurrence.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Core Root-Cause Analysis Methodologies</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-3">Key RCA Frameworks for Consultants</h5>
+                        <p class="text-sm mb-4">Several proven methodologies are essential for consultants conducting root cause analysis. Each has specific strengths and applications in different business contexts.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">The 5 Whys Technique</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Methodology Overview</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                                <p class="text-xs mb-2">The 5 Whys is an iterative interrogative technique used to explore the cause-and-effect relationships underlying a particular problem by repeatedly asking "why" (typically five times) to drill down to the root cause.</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li class="mb-1"><strong>Process:</strong> Start with the problem statement and ask "why" it occurs, then continue asking "why" for each answer</li>
+                                                    <li class="mb-1"><strong>Strengths:</strong> Simple, intuitive, requires no special tools</li>
+                                                    <li class="mb-1"><strong>Limitations:</strong> May oversimplify complex problems, potential for investigator bias</li>
+                                                    <li class="mb-1"><strong>Best for:</strong> Well-defined, linear problems with clear causal chains</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="md:col-span-2">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Dell Application Example: Order Fulfillment Delays</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                                <div class="overflow-x-auto">
+                                                    <div class="min-w-[500px]">
+                                                        <div class="bg-white dark:bg-gray-900 p-2 rounded-lg mb-2">
+                                                            <p class="text-xs font-medium">Problem Statement: Enterprise customers are experiencing delays in receiving their server orders.</p>
+                                                        </div>
+                                                        
+                                                        <div class="flex items-start mb-2">
+                                                            <div class="mr-2 p-1 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs w-5 h-5 flex-shrink-0 mt-0.5">1</div>
+                                                            <div class="flex-1">
+                                                                <p class="text-xs font-medium">Why are enterprise customers experiencing delays?</p>
+                                                                <p class="text-xs bg-gray-50 dark:bg-gray-800 p-1.5 rounded">Because specific server configurations are taking longer than expected to fulfill and ship.</p>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="flex items-start mb-2 ml-6">
+                                                            <div class="mr-2 p-1 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs w-5 h-5 flex-shrink-0 mt-0.5">2</div>
+                                                            <div class="flex-1">
+                                                                <p class="text-xs font-medium">Why are these configurations taking longer?</p>
+                                                                <p class="text-xs bg-gray-50 dark:bg-gray-800 p-1.5 rounded">Because certain high-performance solid-state drives (SSDs) have extended lead times in the assembly process.</p>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="flex items-start mb-2 ml-12">
+                                                            <div class="mr-2 p-1 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs w-5 h-5 flex-shrink-0 mt-0.5">3</div>
+                                                            <div class="flex-1">
+                                                                <p class="text-xs font-medium">Why do these SSDs have extended lead times?</p>
+                                                                <p class="text-xs bg-gray-50 dark:bg-gray-800 p-1.5 rounded">Because inventory levels for these components are consistently below target levels.</p>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="flex items-start mb-2 ml-18">
+                                                            <div class="mr-2 p-1 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs w-5 h-5 flex-shrink-0 mt-0.5">4</div>
+                                                            <div class="flex-1">
+                                                                <p class="text-xs font-medium">Why are inventory levels below target?</p>
+                                                                <p class="text-xs bg-gray-50 dark:bg-gray-800 p-1.5 rounded">Because the forecasting model for these components doesn't account for recent demand pattern changes in enterprise orders.</p>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="flex items-start ml-24">
+                                                            <div class="mr-2 p-1 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs w-5 h-5 flex-shrink-0 mt-0.5">5</div>
+                                                            <div class="flex-1">
+                                                                <p class="text-xs font-medium">Why doesn't the forecasting model account for these changes?</p>
+                                                                <p class="text-xs bg-gray-50 dark:bg-gray-800 p-1.5 rounded">Because the quarterly forecasting process doesn't incorporate sales pipeline data from the CRM system to anticipate emerging configuration trends.</p>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="mt-3 bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                            <p class="text-xs font-medium text-green-700 dark:text-green-400">Root Cause: The forecasting process lacks integration with sales pipeline data to anticipate changing customer configuration preferences.</p>
+                                                            <p class="text-xs">Solution would focus on modifying the forecasting process rather than just expediting current orders or increasing overall inventory.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Fishbone (Ishikawa) Diagram</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Methodology Overview</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                                <p class="text-xs mb-2">The Fishbone diagram visually organizes potential causes of a problem into major categories, helping teams identify multiple factors that might contribute to an issue across different business dimensions.</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li class="mb-1"><strong>Process:</strong> Define problem, identify major categories, brainstorm causes within each category</li>
+                                                    <li class="mb-1"><strong>Common Categories:</strong> People, Process, Technology, Environment, Materials, Measurement</li>
+                                                    <li class="mb-1"><strong>Strengths:</strong> Comprehensive, visual, handles complex multifaceted problems</li>
+                                                    <li class="mb-1"><strong>Best for:</strong> Problems with potential causes across multiple domains</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="md:col-span-2">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Dell Application Example: Customer Escalation Increase</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg overflow-x-auto">
+                                                <div class="min-w-[650px]">
+                                                    <svg width="650" height="380" viewBox="0 0 650 380">
+                                                        <!-- Main Problem Arrow -->
+                                                        <line x1="50" y1="190" x2="630" y2="190" stroke="#475569" stroke-width="2"></line>
+                                                        <polygon points="630,185 640,190 630,195" fill="#475569"></polygon>
+                                                        
+                                                        <!-- Problem Box -->
+                                                        <rect x="500" y="160" width="140" height="60" rx="5" fill="#FEE2E2" class="dark:fill-red-900/30" stroke="#DC2626" stroke-width="1"></rect>
+                                                        <text x="570" y="185" font-size="12" text-anchor="middle" fill="currentColor" font-weight="500">35% increase in</text>
+                                                        <text x="570" y="200" font-size="12" text-anchor="middle" fill="currentColor" font-weight="500">customer escalations</text>
+                                                        
+                                                        <!-- People Category -->
+                                                        <line x1="150" y1="70" x2="440" y2="190" stroke="#475569" stroke-width="1.5"></line>
+                                                        <text x="170" y="60" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">People</text>
+                                                        
+                                                        <!-- Process Category -->
+                                                        <line x1="150" y1="310" x2="440" y2="190" stroke="#475569" stroke-width="1.5"></line>
+                                                        <text x="170" y="330" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Process</text>
+                                                        
+                                                        <!-- Technology Category -->
+                                                        <line x1="290" y1="30" x2="440" y2="190" stroke="#475569" stroke-width="1.5"></line>
+                                                        <text x="310" y="20" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Technology</text>
+                                                        
+                                                        <!-- Measurement Category -->
+                                                        <line x1="290" y1="350" x2="440" y2="190" stroke="#475569" stroke-width="1.5"></line>
+                                                        <text x="310" y="365" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Measurement</text>
+                                                        
+                                                        <!-- Communication Category -->
+                                                        <line x1="400" y1="30" x2="440" y2="190" stroke="#475569" stroke-width="1.5"></line>
+                                                        <text x="420" y="20" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Communication</text>
+                                                        
+                                                        <!-- Environment Category -->
+                                                        <line x1="400" y1="350" x2="440" y2="190" stroke="#475569" stroke-width="1.5"></line>
+                                                        <text x="420" y="365" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Environment</text>
+                                                        
+                                                        <!-- People Causes -->
+                                                        <line x1="180" y1="80" x2="190" y2="90" stroke="#475569" stroke-width="1"></line>
+                                                        <rect x="70" y="70" width="110" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                                        <text x="125" y="90" font-size="10" text-anchor="middle" fill="currentColor">High support staff turnover</text>
+                                                        
+                                                        <line x1="200" y1="110" x2="210" y2="120" stroke="#475569" stroke-width="1"></line>
+                                                        <rect x="90" y="100" width="110" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                                        <text x="145" y="120" font-size="10" text-anchor="middle" fill="currentColor">Inadequate staff training</text>
+                                                        
+                                                        <!-- Process Causes -->
+                                                        <line x1="180" y1="290" x2="190" y2="280" stroke="#475569" stroke-width="1"></line>
+                                                        <rect x="70" y="280" width="110" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                                        <text x="125" y="300" font-size="10" text-anchor="middle" fill="currentColor">Complex escalation path</text>
+                                                        
+                                                        <line x1="230" y1="270" x2="240" y2="260" stroke="#475569" stroke-width="1"></line>
+                                                        <rect x="120" y="240" width="110" height="30" rx="3" fill="#F0FDF4" class="dark:fill-green-900/20" stroke="#16A34A" stroke-width="1.5"></rect>
+                                                        <text x="175" y="260" font-size="10" text-anchor="middle" fill="currentColor" font-weight="500">No SLA for case handoffs</text>
+                                                        
+                                                        <!-- Technology Causes -->
+                                                        <line x1="320" y1="50" x2="330" y2="60" stroke="#475569" stroke-width="1"></line>
+                                                        <rect x="220" y="40" width="100" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                                        <text x="270" y="60" font-size="10" text-anchor="middle" fill="currentColor">CRM system limitations</text>
+                                                        
+                                                        <line x1="350" y1="70" x2="360" y2="80" stroke="#475569" stroke-width="1"></line>
+                                                        <rect x="250" y="70" width="100" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                                        <text x="300" y="90" font-size="10" text-anchor="middle" fill="currentColor">Case routing errors</text>
+                                                        
+                                                        <!-- Measurement Causes -->
+                                                        <line x1="320" y1="330" x2="330" y2="320" stroke="#475569" stroke-width="1"></line>
+                                                        <rect x="220" y="310" width="100" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                                        <text x="270" y="330" font-size="10" text-anchor="middle" fill="currentColor">Wrong KPI incentives</text>
+                                                        
+                                                        <line x1="350" y1="310" x2="360" y2="300" stroke="#475569" stroke-width="1"></line>
+                                                        <rect x="250" y="280" width="100" height="30" rx="3" fill="#F0FDF4" class="dark:fill-green-900/20" stroke="#16A34A" stroke-width="1.5"></rect>
+                                                        <text x="300" y="300" font-size="10" text-anchor="middle" fill="currentColor" font-weight="500">No ownership metrics</text>
+                                                        
+                                                        <!-- Communication Causes -->
+                                                        <line x1="430" y1="50" x2="435" y2="60" stroke="#475569" stroke-width="1"></line>
+                                                        <rect x="330" y="40" width="100" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                                        <text x="380" y="60" font-size="10" text-anchor="middle" fill="currentColor">Status not communicated</text>
+                                                        
+                                                        <line x1="450" y1="80" x2="445" y2="90" stroke="#475569" stroke-width="1"></line>
+                                                        <rect x="350" y="80" width="100" height="30" rx="3" fill="#F0FDF4" class="dark:fill-green-900/20" stroke="#16A34A" stroke-width="1.5"></rect>
+                                                        <text x="400" y="100" font-size="10" text-anchor="middle" fill="currentColor" font-weight="500">Siloed support teams</text>
+                                                        
+                                                        <!-- Environment Causes -->
+                                                        <line x1="420" y1="330" x2="430" y2="320" stroke="#475569" stroke-width="1"></line>
+                                                        <rect x="330" y="310" width="100" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                                        <text x="380" y="330" font-size="10" text-anchor="middle" fill="currentColor">High case volumes</text>
+                                                        
+                                                        <line x1="450" y1="300" x2="445" y2="290" stroke="#475569" stroke-width="1"></line>
+                                                        <rect x="350" y="270" width="100" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                                        <text x="400" y="290" font-size="10" text-anchor="middle" fill="currentColor">Product complexity</text>
+                                                    </svg>
+                                                    
+                                                    <div class="mt-2 bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                        <p class="text-xs font-medium text-green-700 dark:text-green-400">Root Causes Identified:</p>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>No defined SLAs for case handoffs between support teams</li>
+                                                            <li>Siloed support teams with limited cross-functional collaboration</li>
+                                                            <li>Lack of accountability metrics for case resolution ownership</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Pareto Analysis (80/20 Rule)</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Methodology Overview</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                                <p class="text-xs mb-2">Pareto Analysis is based on the principle that approximately 80% of effects come from 20% of causes. This technique helps prioritize focus areas by identifying the vital few causes that create the majority of issues.</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li class="mb-1"><strong>Process:</strong> Collect and categorize data, calculate frequency, rank in descending order, calculate cumulative percentages</li>
+                                                    <li class="mb-1"><strong>Visualization:</strong> Typically presented as a combination bar and line chart</li>
+                                                    <li class="mb-1"><strong>Strengths:</strong> Data-driven prioritization, focuses efforts on high-impact areas</li>
+                                                    <li class="mb-1"><strong>Best for:</strong> Problems with multiple potential causes and limited resources</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="md:col-span-2">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Dell Application Example: Laptop Quality Issues</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg overflow-x-auto">
+                                                <div class="min-w-[500px]">
+                                                    <p class="text-xs mb-2">Analysis of customer returns data for Dell Latitude 7420 laptops by defect category:</p>
+                                                    
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg mb-3">
+                                                        <div class="h-[220px] relative">
+                                                            <!-- Y-axis labels -->
+                                                            <div class="absolute top-0 left-0 h-full flex flex-col justify-between text-xs px-1">
+                                                                <span>500</span>
+                                                                <span>400</span>
+                                                                <span>300</span>
+                                                                <span>200</span>
+                                                                <span>100</span>
+                                                                <span>0</span>
+                                                            </div>
+                                                            
+                                                            <!-- Right Y-axis labels (percentages) -->
+                                                            <div class="absolute top-0 right-0 h-full flex flex-col justify-between text-xs px-1 text-blue-600 dark:text-blue-400">
+                                                                <span>100%</span>
+                                                                <span>80%</span>
+                                                                <span>60%</span>
+                                                                <span>40%</span>
+                                                                <span>20%</span>
+                                                                <span>0%</span>
+                                                            </div>
+                                                            
+                                                            <div class="absolute left-8 right-8 bottom-0 h-[180px]">
+                                                                <!-- Bars -->
+                                                                <div class="absolute bottom-0 left-[5%] w-[10%] h-[80%] bg-indigo-500 dark:bg-indigo-600 opacity-80"></div>
+                                                                <div class="absolute bottom-0 left-[20%] w-[10%] h-[55%] bg-indigo-500 dark:bg-indigo-600 opacity-80"></div>
+                                                                <div class="absolute bottom-0 left-[35%] w-[10%] h-[30%] bg-indigo-500 dark:bg-indigo-600 opacity-80"></div>
+                                                                <div class="absolute bottom-0 left-[50%] w-[10%] h-[18%] bg-indigo-500 dark:bg-indigo-600 opacity-80"></div>
+                                                                <div class="absolute bottom-0 left-[65%] w-[10%] h-[10%] bg-indigo-500 dark:bg-indigo-600 opacity-80"></div>
+                                                                <div class="absolute bottom-0 left-[80%] w-[10%] h-[7%] bg-indigo-500 dark:bg-indigo-600 opacity-80"></div>
+                                                                
+                                                                <!-- Cumulative Line -->
+                                                                <svg viewBox="0 0 100 100" class="absolute inset-0 h-full w-full">
+                                                                    <polyline points="10,20 25,45 40,70 55,82 70,90 85,93" fill="none" stroke="#3B82F6" stroke-width="2" class="dark:stroke-blue-400"></polyline>
+                                                                    <circle cx="10" cy="20" r="2" fill="#3B82F6" class="dark:fill-blue-400"></circle>
+                                                                    <circle cx="25" cy="45" r="2" fill="#3B82F6" class="dark:fill-blue-400"></circle>
+                                                                    <circle cx="40" cy="70" r="2" fill="#3B82F6" class="dark:fill-blue-400"></circle>
+                                                                    <circle cx="55" cy="82" r="2" fill="#3B82F6" class="dark:fill-blue-400"></circle>
+                                                                    <circle cx="70" cy="90" r="2" fill="#3B82F6" class="dark:fill-blue-400"></circle>
+                                                                    <circle cx="85" cy="93" r="2" fill="#3B82F6" class="dark:fill-blue-400"></circle>
+                                                                </svg>
+                                                                
+                                                                <!-- 80% Line -->
+                                                                <div class="absolute top-[20%] left-0 right-0 border-t border-dashed border-red-400 dark:border-red-600"></div>
+                                                            </div>
+                                                            
+                                                            <!-- X-axis labels -->
+                                                            <div class="absolute bottom-[-25px] left-8 right-8 flex justify-between text-xs" style="transform: translateX(5%);">
+                                                                <div class="w-[10%] text-center" style="transform: translateX(-50%);">Battery<br>Issues</div>
+                                                                <div class="w-[10%] text-center" style="transform: translateX(-50%);">Display<br>Failures</div>
+                                                                <div class="w-[10%] text-center" style="transform: translateX(-50%);">Keyboard<br>Problems</div>
+                                                                <div class="w-[10%] text-center" style="transform: translateX(-50%);">Thermal<br>Issues</div>
+                                                                <div class="w-[10%] text-center" style="transform: translateX(-50%);">Connection<br>Problems</div>
+                                                                <div class="w-[10%] text-center" style="transform: translateX(-50%);">Other<br>Defects</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="mt-3 bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                        <p class="text-xs font-medium text-green-700 dark:text-green-400">Root Cause Focus Areas:</p>
+                                                        <p class="text-xs">Analysis shows that battery issues and display failures account for 75% of all customer returns. Investigation should focus primarily on:</p>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Battery supplier quality control processes</li>
+                                                            <li>Display assembly manufacturing procedures</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Advanced Root-Cause Analysis Approaches</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-3">Advanced Techniques for Complex Problems</h5>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Fault Tree Analysis</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">A deductive, top-down method used to analyze how failures propagate through complex systems:</p>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Methodology</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Structure:</strong> Hierarchical tree with failure event at top, connected to contributory events through logical gates</li>
+                                            <li class="mb-1"><strong>Logic Gates:</strong> AND gates (all inputs required), OR gates (any input sufficient)</li>
+                                            <li class="mb-1"><strong>Quantitative Analysis:</strong> Can incorporate probability calculations for risk assessment</li>
+                                            <li class="mb-1"><strong>Best For:</strong> Safety-critical systems, complex technical failures, interdependent processes</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dell Application</h6>
+                                        <p class="text-xs mb-1">Particularly valuable for analyzing:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Manufacturing quality escapes in precision components</li>
+                                            <li>Data center infrastructure failures</li>
+                                            <li>Supply chain interruption scenarios</li>
+                                            <li>IT system outages and service disruptions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Current Reality Tree</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">A systems thinking tool that maps causal relationships between undesirable effects to identify core problems:</p>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Methodology</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Structure:</strong> Bottom-up flow from visible problems (UDEs) to root causes</li>
+                                            <li class="mb-1"><strong>Entities:</strong> Undesirable effects, intermediate causes, and core problems</li>
+                                            <li class="mb-1"><strong>Logic Verification:</strong> Uses "If...Then" sufficiency testing for causal connections</li>
+                                            <li class="mb-1"><strong>Best For:</strong> Complex organizational problems with multiple effects</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dell Application</h6>
+                                        <p class="text-xs mb-1">Particularly valuable for analyzing:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Cross-functional business process inefficiencies</li>
+                                            <li>Organizational performance issues</li>
+                                            <li>Project delivery challenges and delays</li>
+                                            <li>Strategic initiative implementation problems</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Change Analysis</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">A structured approach that examines what has changed compared to previous successful performance:</p>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Methodology</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Process:</strong> Define the problem, identify prior stable state, catalog all changes since then</li>
+                                            <li class="mb-1"><strong>Investigation:</strong> Systematically evaluate each change's potential impact</li>
+                                            <li class="mb-1"><strong>Tools:</strong> Change analysis matrix comparing before/after states</li>
+                                            <li class="mb-1"><strong>Best For:</strong> Problems that emerged after process/system changes</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dell Application</h6>
+                                        <p class="text-xs mb-1">Particularly valuable for analyzing:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Post-implementation performance degradation</li>
+                                            <li>Quality issues following manufacturing process updates</li>
+                                            <li>Customer experience changes after system migrations</li>
+                                            <li>Productivity impacts from organization restructuring</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Barrier Analysis</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Examines the controls and safeguards that should have prevented the problem and why they failed:</p>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Methodology</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Process:</strong> Identify target, hazard, and barriers that failed or were missing</li>
+                                            <li class="mb-1"><strong>Categories:</strong> Physical barriers, procedural controls, administrative safeguards</li>
+                                            <li class="mb-1"><strong>Evaluation:</strong> Assess effectiveness, reliability, and failure modes of controls</li>
+                                            <li class="mb-1"><strong>Best For:</strong> Quality escapes, compliance issues, security incidents</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dell Application</h6>
+                                        <p class="text-xs mb-1">Particularly valuable for analyzing:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Quality control failures in manufacturing</li>
+                                            <li>Data security incidents and breaches</li>
+                                            <li>Compliance violations and regulatory issues</li>
+                                            <li>Process control breakdowns in operations</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Facilitation Techniques for Root-Cause Analysis</h4>
+                    
+                    <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-emerald-700 dark:text-emerald-400 font-medium mb-3">Leading Effective RCA Sessions</h5>
+                        <p class="text-sm mb-3">Consultants often need to facilitate cross-functional RCA sessions to leverage diverse insights and build consensus on causes and solutions.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Pre-Session Planning</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Participant Selection</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Process owners:</strong> Those directly responsible for the affected area</li>
+                                            <li class="mb-1"><strong>Subject matter experts:</strong> Specialists with technical knowledge</li>
+                                            <li class="mb-1"><strong>Frontline representatives:</strong> Those who experience the issue directly</li>
+                                            <li class="mb-1"><strong>Cross-functional stakeholders:</strong> Representatives from adjacent processes</li>
+                                            <li class="mb-1"><strong>Decision authority:</strong> Someone who can approve action items</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Data Preparation</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Problem definition:</strong> Clear, quantified statement of the issue</li>
+                                            <li class="mb-1"><strong>Impact assessment:</strong> Measurable consequences of the problem</li>
+                                            <li class="mb-1"><strong>Relevant metrics:</strong> Performance data showing issue occurrence</li>
+                                            <li class="mb-1"><strong>Timeline:</strong> Chronology of relevant events and changes</li>
+                                            <li class="mb-1"><strong>Pre-analysis:</strong> Initial hypotheses based on available data</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Facilitation Techniques</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Effective Session Management</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Establish psychological safety:</strong> Create environment where people can speak candidly</li>
+                                            <li class="mb-1"><strong>Focus on systems, not blame:</strong> Emphasize process issues over individual errors</li>
+                                            <li class="mb-1"><strong>Manage confirmation bias:</strong> Challenge assumptions and groupthink</li>
+                                            <li class="mb-1"><strong>Structure participation:</strong> Ensure all voices are heard, not just the loudest</li>
+                                            <li class="mb-1"><strong>Visual documentation:</strong> Capture insights in real-time on shared displays</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Questioning Techniques</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Probe for evidence:</strong> "What data supports that conclusion?"</li>
+                                            <li class="mb-1"><strong>Challenge assumptions:</strong> "How do we know that's true?"</li>
+                                            <li class="mb-1"><strong>Explore alternatives:</strong> "What other factors might contribute?"</li>
+                                            <li class="mb-1"><strong>Test solutions:</strong> "Has this approach been tried before?"</li>
+                                            <li class="mb-1"><strong>Verify understanding:</strong> "Can someone summarize what we've concluded?"</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Post-Session Action Planning</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Solution Development</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1"><strong>Match solutions to root causes:</strong> Ensure each identified cause has corresponding solution</li>
+                                        <li class="mb-1"><strong>Assess effectiveness:</strong> Evaluate potential impact of proposed solutions</li>
+                                        <li class="mb-1"><strong>Consider feasibility:</strong> Analyze implementation requirements and constraints</li>
+                                        <li class="mb-1"><strong>Evaluate unintended consequences:</strong> Anticipate potential side effects</li>
+                                        <li class="mb-1"><strong>Prioritize actions:</strong> Focus on highest impact, most feasible solutions first</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Implementation Planning</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1"><strong>Assign clear ownership:</strong> Specific individuals responsible for each action</li>
+                                        <li class="mb-1"><strong>Define success metrics:</strong> How to measure effectiveness of solutions</li>
+                                        <li class="mb-1"><strong>Establish timeline:</strong> Concrete deadlines for implementation steps</li>
+                                        <li class="mb-1"><strong>Resource allocation:</strong> Ensure necessary resources are available</li>
+                                        <li class="mb-1"><strong>Define follow-up cadence:</strong> Schedule periodic reviews of progress</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Documentation &amp; Communication</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1"><strong>Session summary:</strong> Detailed record of findings and decisions</li>
+                                        <li class="mb-1"><strong>Executive brief:</strong> Concise summary for leadership</li>
+                                        <li class="mb-1"><strong>Knowledge sharing:</strong> Distribute lessons learned to relevant teams</li>
+                                        <li class="mb-1"><strong>Process updates:</strong> Document procedural changes resulting from RCA</li>
+                                        <li class="mb-1"><strong>Success stories:</strong> Track and share improvements achieved</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Dell Case Study: Manufacturing Quality Improvement</h4>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">End-to-End Root Cause Analysis Application</h5>
+                        <p class="text-sm mb-3">This case study demonstrates a comprehensive RCA approach applied to a critical manufacturing quality issue at Dell's production facility.</p>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="text-sm font-medium text-primary mb-2">The Business Challenge</h6>
+                            <p class="text-xs mb-2">Dell's Austin manufacturing facility experienced a significant increase in motherboard failures for Precision workstations during final quality testing. The defect rate had risen from a historical average of 0.8% to 3.2% over a three-month period, resulting in production delays, increased costs, and concerns about potential field failures.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Business Impact</h6>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1">$1.2M in additional testing and rework costs</li>
+                                            <li class="mb-1">15% reduction in production capacity</li>
+                                            <li class="mb-1">2-week shipping delays for high-margin workstations</li>
+                                            <li class="mb-1">Potential field reliability concerns</li>
+                                            <li class="mb-1">Increased component inventory holding costs</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Initial Hypotheses</h6>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1">Component quality issues from suppliers</li>
+                                            <li class="mb-1">Assembly process problems</li>
+                                            <li class="mb-1">Test equipment calibration issues</li>
+                                            <li class="mb-1">Environmental factors in production area</li>
+                                            <li class="mb-1">Recent manufacturing process changes</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="text-sm font-medium text-primary mb-2">Root Cause Analysis Process</h6>
+                            
+                            <div class="mb-4">
+                                <h6 class="text-xs font-medium mb-2">Phase 1: Data Collection &amp; Pattern Analysis</h6>
+                                <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Data Gathering Approach</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li class="mb-1">Collected 90 days of production and test data</li>
+                                                <li class="mb-1">Analyzed failure logs from automated test systems</li>
+                                                <li class="mb-1">Reviewed component receiving inspection records</li>
+                                                <li class="mb-1">Examined process change history documentation</li>
+                                                <li class="mb-1">Conducted interviews with production technicians</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Key Patterns Identified</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li class="mb-1">Failures concentrated in high-performance configurations</li>
+                                                <li class="mb-1">Correlation with specific test station but not specific operators</li>
+                                                <li class="mb-1">Failures more prevalent during afternoon production shifts</li>
+                                                <li class="mb-1">Specific failure signature: memory addressing errors</li>
+                                                <li class="mb-1">Increased failure rate coincided with facility HVAC maintenance</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6 class="text-xs font-medium mb-2">Phase 2: Fishbone Analysis Workshop</h6>
+                                <div class="bg-white dark:bg-gray-800 p-2 rounded-lg overflow-x-auto">
+                                    <div class="min-w-[650px]">
+                                        <p class="text-xs mb-2">A cross-functional team conducted a fishbone analysis workshop to identify potential causes:</p>
+                                        
+                                        <svg width="650" height="320" viewBox="0 0 650 320">
+                                            <!-- Main Problem Arrow -->
+                                            <line x1="50" y1="160" x2="630" y2="160" stroke="#475569" stroke-width="2"></line>
+                                            <polygon points="630,155 640,160 630,165" fill="#475569"></polygon>
+                                            
+                                            <!-- Problem Box -->
+                                            <rect x="500" y="130" width="140" height="60" rx="5" fill="#FEE2E2" class="dark:fill-red-900/30" stroke="#DC2626" stroke-width="1"></rect>
+                                            <text x="570" y="155" font-size="12" text-anchor="middle" fill="currentColor" font-weight="500">Increased motherboard</text>
+                                            <text x="570" y="170" font-size="12" text-anchor="middle" fill="currentColor" font-weight="500">failures during testing</text>
+                                            
+                                            <!-- Categories -->
+                                            <line x1="150" y1="40" x2="440" y2="160" stroke="#475569" stroke-width="1.5"></line>
+                                            <text x="170" y="30" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">People</text>
+                                            
+                                            <line x1="150" y1="280" x2="440" y2="160" stroke="#475569" stroke-width="1.5"></line>
+                                            <text x="170" y="295" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Process</text>
+                                            
+                                            <line x1="290" y1="20" x2="440" y2="160" stroke="#475569" stroke-width="1.5"></line>
+                                            <text x="310" y="15" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Equipment</text>
+                                            
+                                            <line x1="290" y1="300" x2="440" y2="160" stroke="#475569" stroke-width="1.5"></line>
+                                            <text x="310" y="315" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Materials</text>
+                                            
+                                            <line x1="400" y1="20" x2="440" y2="160" stroke="#475569" stroke-width="1.5"></line>
+                                            <text x="420" y="15" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Environment</text>
+                                            
+                                            <line x1="400" y1="300" x2="440" y2="160" stroke="#475569" stroke-width="1.5"></line>
+                                            <text x="420" y="315" font-size="14" text-anchor="middle" fill="currentColor" font-weight="500">Measurement</text>
+                                            
+                                            <!-- Causes - People -->
+                                            <line x1="180" y1="60" x2="190" y2="70" stroke="#475569" stroke-width="1"></line>
+                                            <rect x="70" y="50" width="110" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                            <text x="125" y="70" font-size="10" text-anchor="middle" fill="currentColor">New assembly operators</text>
+                                            
+                                            <line x1="200" y1="90" x2="210" y2="100" stroke="#475569" stroke-width="1"></line>
+                                            <rect x="90" y="80" width="110" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                            <text x="145" y="100" font-size="10" text-anchor="middle" fill="currentColor">Training gaps</text>
+                                            
+                                            <!-- Causes - Process -->
+                                            <line x1="180" y1="250" x2="190" y2="240" stroke="#475569" stroke-width="1"></line>
+                                            <rect x="70" y="230" width="110" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                            <text x="125" y="250" font-size="10" text-anchor="middle" fill="currentColor">Updated test procedure</text>
+                                            
+                                            <line x1="230" y1="230" x2="240" y2="220" stroke="#475569" stroke-width="1"></line>
+                                            <rect x="120" y="200" width="110" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                            <text x="175" y="220" font-size="10" text-anchor="middle" fill="currentColor">Work instruction changes</text>
+                                            
+                                            <!-- Causes - Equipment -->
+                                            <line x1="320" y1="50" x2="330" y2="60" stroke="#475569" stroke-width="1"></line>
+                                            <rect x="220" y="40" width="100" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                            <text x="270" y="60" font-size="10" text-anchor="middle" fill="currentColor">Test system calibration</text>
+                                            
+                                            <line x1="350" y1="70" x2="360" y2="80" stroke="#475569" stroke-width="1"></line>
+                                            <rect x="250" y="70" width="100" height="30" rx="3" fill="#F0FDF4" class="dark:fill-green-900/20" stroke="#16A34A" stroke-width="1.5"></rect>
+                                            <text x="300" y="90" font-size="10" text-anchor="middle" fill="currentColor" font-weight="500">ESD control equipment</text>
+                                            
+                                            <!-- Causes - Materials -->
+                                            <line x1="320" y1="270" x2="330" y2="260" stroke="#475569" stroke-width="1"></line>
+                                            <rect x="220" y="250" width="100" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                            <text x="270" y="270" font-size="10" text-anchor="middle" fill="currentColor">New memory supplier</text>
+                                            
+                                            <line x1="350" y1="250" x2="360" y2="240" stroke="#475569" stroke-width="1"></line>
+                                            <rect x="250" y="220" width="100" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                            <text x="300" y="240" font-size="10" text-anchor="middle" fill="currentColor">Component specification</text>
+                                            
+                                            <!-- Causes - Environment -->
+                                            <line x1="430" y1="50" x2="435" y2="60" stroke="#475569" stroke-width="1"></line>
+                                            <rect x="330" y="40" width="100" height="30" rx="3" fill="#F0FDF4" class="dark:fill-green-900/20" stroke="#16A34A" stroke-width="1.5"></rect>
+                                            <text x="380" y="60" font-size="10" text-anchor="middle" fill="currentColor" font-weight="500">Humidity control</text>
+                                            
+                                            <line x1="450" y1="80" x2="445" y2="90" stroke="#475569" stroke-width="1"></line>
+                                            <rect x="350" y="80" width="100" height="30" rx="3" fill="#F0FDF4" class="dark:fill-green-900/20" stroke="#16A34A" stroke-width="1.5"></rect>
+                                            <text x="400" y="100" font-size="10" text-anchor="middle" fill="currentColor" font-weight="500">Temperature variation</text>
+                                            
+                                            <!-- Causes - Measurement -->
+                                            <line x1="420" y1="270" x2="430" y2="260" stroke="#475569" stroke-width="1"></line>
+                                            <rect x="330" y="250" width="100" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                            <text x="380" y="270" font-size="10" text-anchor="middle" fill="currentColor">Test data accuracy</text>
+                                            
+                                            <line x1="450" y1="240" x2="445" y2="230" stroke="#475569" stroke-width="1"></line>
+                                            <rect x="350" y="210" width="100" height="30" rx="3" fill="#F9FAFB" class="dark:fill-gray-800" stroke="#CBD5E1" stroke-width="1"></rect>
+                                            <text x="400" y="230" font-size="10" text-anchor="middle" fill="currentColor">Failure categorization</text>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6 class="text-xs font-medium mb-2">Phase 3: Focused Investigation &amp; Testing</h6>
+                                <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                    <p class="text-xs mb-2">Based on the fishbone analysis, the team focused investigations on three potential root causes:</p>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Environmental Control Analysis</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li class="mb-1">Reviewed HVAC maintenance records</li>
+                                                <li class="mb-1">Installed humidity/temperature loggers</li>
+                                                <li class="mb-1">Correlated failures with environmental data</li>
+                                                <li class="mb-1">Found significant humidity drops during afternoon shifts</li>
+                                                <li class="mb-1">Discovered maintenance had recalibrated humidity setpoints</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">ESD Control Evaluation</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li class="mb-1">Inspected ESD control equipment</li>
+                                                <li class="mb-1">Measured dissipation performance</li>
+                                                <li class="mb-1">Conducted wrist strap continuity tests</li>
+                                                <li class="mb-1">Observed technician compliance with procedures</li>
+                                                <li class="mb-1">Found deteriorated ESD table mats with reduced performance</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Component Analysis</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li class="mb-1">Conducted detailed component testing</li>
+                                                <li class="mb-1">Analyzed failed vs. functional boards</li>
+                                                <li class="mb-1">Reviewed supplier quality records</li>
+                                                <li class="mb-1">Performed advanced component-level diagnostics</li>
+                                                <li class="mb-1">Found no statistically significant issues with components</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3 bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                        <p class="text-xs font-medium text-amber-700 dark:text-amber-400">Controlled Testing Results:</p>
+                                        <p class="text-xs mb-0">The team conducted controlled tests with varying humidity levels and ESD protection measures. Failure rates increased dramatically (from 0.9% to 4.2%) when relative humidity dropped below 30% combined with compromised ESD protection - precisely the conditions that occurred during afternoon shifts after HVAC maintenance.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-xs font-medium mb-2">Phase 4: 5 Whys Analysis to Reach Root Cause</h6>
+                                <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                    <div class="overflow-x-auto">
+                                        <div class="min-w-[500px]">
+                                            <div class="flex items-start mb-2">
+                                                <div class="mr-2 p-1 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs w-5 h-5 flex-shrink-0 mt-0.5">1</div>
+                                                <div class="flex-1">
+                                                    <p class="text-xs font-medium">Why are we seeing increased motherboard failures?</p>
+                                                    <p class="text-xs bg-gray-50 dark:bg-gray-800 p-1.5 rounded">Because motherboards are being damaged by electrostatic discharge during assembly and testing.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="flex items-start mb-2 ml-6">
+                                                <div class="mr-2 p-1 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs w-5 h-5 flex-shrink-0 mt-0.5">2</div>
+                                                <div class="flex-1">
+                                                    <p class="text-xs font-medium">Why is ESD damaging the motherboards despite ESD controls?</p>
+                                                    <p class="text-xs bg-gray-50 dark:bg-gray-800 p-1.5 rounded">Because the ESD protection measures are failing due to deteriorated table mats and low humidity conditions.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="flex items-start mb-2 ml-12">
+                                                <div class="mr-2 p-1 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs w-5 h-5 flex-shrink-0 mt-0.5">3</div>
+                                                <div class="flex-1">
+                                                    <p class="text-xs font-medium">Why do we have low humidity conditions?</p>
+                                                    <p class="text-xs bg-gray-50 dark:bg-gray-800 p-1.5 rounded">Because HVAC maintenance recalibrated the humidity setpoints to lower levels without understanding the ESD implications.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="flex items-start mb-2 ml-18">
+                                                <div class="mr-2 p-1 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs w-5 h-5 flex-shrink-0 mt-0.5">4</div>
+                                                <div class="flex-1">
+                                                    <p class="text-xs font-medium">Why were humidity setpoints changed without understanding ESD implications?</p>
+                                                    <p class="text-xs bg-gray-50 dark:bg-gray-800 p-1.5 rounded">Because facility maintenance and manufacturing engineering processes are not integrated, and environmental specifications for ESD-sensitive production are not documented in the HVAC maintenance procedures.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="flex items-start ml-24">
+                                                <div class="mr-2 p-1 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs w-5 h-5 flex-shrink-0 mt-0.5">5</div>
+                                                <div class="flex-1">
+                                                    <p class="text-xs font-medium">Why aren't environmental requirements integrated into maintenance procedures?</p>
+                                                    <p class="text-xs bg-gray-50 dark:bg-gray-800 p-1.5 rounded">Because there is no cross-functional change management process that evaluates the impact of facility changes on manufacturing quality requirements.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mt-3 bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <p class="text-xs font-medium text-green-700 dark:text-green-400">Identified Root Causes:</p>
+                                                <ol class="pl-4 text-xs mb-0">
+                                                    <li class="mb-1"><strong>Primary:</strong> Lack of integrated change management between facilities and manufacturing engineering</li>
+                                                    <li class="mb-1"><strong>Secondary:</strong> Deteriorated ESD protection equipment that wasn't identified in routine inspections</li>
+                                                    <li><strong>Contributing:</strong> Ineffective ESD control verification procedures that didn't detect the increased risk</li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-sm font-medium text-primary mb-2">Solution Implementation &amp; Results</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Immediate Corrective Actions</h6>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1">Restored humidity setpoints to 40-60% range</li>
+                                            <li class="mb-1">Replaced all ESD table mats in production area</li>
+                                            <li class="mb-1">Implemented daily ESD control verification</li>
+                                            <li class="mb-1">Enhanced operator training on ESD awareness</li>
+                                            <li class="mb-1">Added humidity monitoring to production dashboard</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Systemic Process Improvements</h6>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1">Created integrated change management process between facilities and manufacturing</li>
+                                            <li class="mb-1">Developed comprehensive environmental specifications for sensitive manufacturing areas</li>
+                                            <li class="mb-1">Established automated alerting for environmental parameter deviations</li>
+                                            <li class="mb-1">Implemented quarterly ESD control system audits</li>
+                                            <li class="mb-1">Updated preventive maintenance schedules for ESD equipment</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-xs font-medium mb-1">Business Impact</h6>
+                                <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div>
+                                            <div class="h-[160px] relative">
+                                                <!-- Simple bar chart for failure rate -->
+                                                <div class="absolute inset-0 flex items-end justify-around px-8">
+                                                    <div class="w-[20%] bg-red-500 dark:bg-red-700" style="height: 70%"></div>
+                                                    <div class="w-[20%] bg-yellow-500 dark:bg-yellow-700" style="height: 40%"></div>
+                                                    <div class="w-[20%] bg-green-500 dark:bg-green-700" style="height: 18%"></div>
+                                                </div>
+                                                
+                                                <!-- X-axis labels -->
+                                                <div class="absolute bottom-0 left-0 right-0 flex justify-around px-8">
+                                                    <div class="text-xs text-center">Before<br>RCA</div>
+                                                    <div class="text-xs text-center">1 Week<br>After</div>
+                                                    <div class="text-xs text-center">1 Month<br>After</div>
+                                                </div>
+                                                
+                                                <!-- Y-axis labels -->
+                                                <div class="absolute top-0 left-0 h-full flex flex-col justify-between text-xs px-1">
+                                                    <span>4%</span>
+                                                    <span>3%</span>
+                                                    <span>2%</span>
+                                                    <span>1%</span>
+                                                    <span>0%</span>
+                                                </div>
+                                                
+                                                <div class="absolute top-0 left-0 right-0 text-xs font-medium text-center">
+                                                    Failure Rate
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="md:col-span-2">
+                                            <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Key Outcomes</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li class="mb-1">Failure rate reduced from 3.2% to 0.7% within one month (below historical average)</li>
+                                                <li class="mb-1">$950K in annual savings from reduced testing and rework costs</li>
+                                                <li class="mb-1">Production capacity restored to normal levels</li>
+                                                <li class="mb-1">Order backlog cleared within two weeks</li>
+                                                <li class="mb-1">Process improvements extended to other Dell manufacturing facilities globally</li>
+                                                <li class="mb-1">New cross-functional change management process established as best practice</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Practical Application Exercises</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Root-Cause Analysis Practice</h5>
+                        <p class="mb-3">Apply RCA techniques to these Dell-specific business challenges:</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Exercise 1: 5 Whys Analysis</h6>
+                            <p class="text-xs mb-2">Apply the 5 Whys technique to the following Dell customer experience problem:</p>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                <p class="mb-0"><strong>Problem Statement:</strong> Dell's enterprise customer satisfaction scores for the order fulfillment process have declined by 12 points over the past quarter. Customers are reporting that they are receiving incorrect configurations compared to what they ordered, leading to deployment delays and additional support calls. Conduct a 5 Whys analysis to identify the potential root cause(s) of this issue.</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium mb-1">Your 5 Whys Analysis</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="10" placeholder="Develop a 5 Whys analysis, starting with the problem statement above. For each 'why' question, provide a plausible answer based on your understanding of order fulfillment processes. Continue asking 'why' for each answer until you reach a potential root cause. Remember to focus on systems and processes rather than individuals."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Exercise 2: Fishbone Diagram Development</h6>
+                            <p class="text-xs mb-2">Create a fishbone diagram to analyze potential causes for this Dell operational challenge:</p>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                <p class="mb-0"><strong>Problem Statement:</strong> Dell's Technical Support time-to-resolution for ProSupport Plus customers has increased by 35% in the past six months. This has resulted in escalating customer complaints, reduced renewal rates, and higher support costs due to multiple touchpoints. Develop a fishbone diagram identifying potential causes across multiple categories.</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium mb-1">Your Fishbone Diagram Analysis</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="10" placeholder="Describe a comprehensive fishbone diagram for analyzing the ProSupport Plus resolution time problem. Structure your response by listing the major categories (e.g., People, Process, Technology, etc.) and under each category, identify 3-5 specific potential causes that could contribute to the problem. For each potential cause, briefly explain why it might be a factor."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="font-medium mb-2">Exercise 3: Pareto Analysis Approach</h6>
+                                <p class="text-xs mb-2">Outline how you would apply Pareto Analysis to this Dell supply chain challenge:</p>
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                    <p class="mb-0"><strong>Problem Context:</strong> Dell's global logistics team has identified that inbound component shipments are frequently delayed, impacting production schedules and increasing expedited shipping costs. Describe how you would apply Pareto Analysis to identify the critical few causes of these delays that should be addressed first.</p>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="block text-sm font-medium mb-1">Your Pareto Analysis Plan</label>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Describe your approach to conducting a Pareto Analysis for this supply chain issue. Include: 1) What data you would collect, 2) How you would categorize the delay causes, 3) The analysis process you would follow, 4) How you would visualize and interpret the results, and 5) How you would use the findings to prioritize improvement actions."></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="font-medium mb-2">Exercise 4: RCA Session Design</h6>
+                                <p class="text-xs mb-2">Design a root cause analysis workshop for this Dell service quality issue:</p>
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                    <p class="mb-0"><strong>Workshop Context:</strong> Dell's Americas Services division has experienced increasing customer complaints about inconsistent quality in on-site technical support visits. The issue appears to vary by region and service provider type. You've been asked to design a one-day RCA workshop with key stakeholders to identify the root causes and develop improvement plans.</p>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="block text-sm font-medium mb-1">Your Workshop Design</label>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Create a detailed workshop design including: 1) Key participants who should attend, 2) Data that should be prepared beforehand, 3) A step-by-step agenda with timing for the day, 4) RCA techniques you would apply at each stage, 5) How you would facilitate productive discussions, and 6) Expected outputs and next steps following the workshop."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-4 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Exercises</button>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://asq.org/quality-resources/root-cause-analysis" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-file-list-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">ASQ Root Cause Analysis Guide</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">American Society for Quality • Comprehensive methodologies</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mindtools.com/pages/article/newTMC_5W.htm" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-question-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">5 Whys Technique</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">MindTools • Practical implementation guide</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.isixsigma.com/tools-templates/cause-effect/cause-and-effect-aka-fishbone-diagram/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-bubble-chart-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Fishbone Diagram Guide</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">iSixSigma • Cause and effect analysis techniques</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 prev-topic" data-prev="topic-issue-trees">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Issue Trees</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" disabled="">
+                        <span>Next Module</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

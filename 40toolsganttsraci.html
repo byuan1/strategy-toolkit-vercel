@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management Essentials</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Project Management Essentials</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-workplan-development">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Workplan Development</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-stakeholder-engagement">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Stakeholder Engagement & Influence</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-project-tools">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Tools: Gantts, RACI, Agile</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">70%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 70%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>6/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Organizational Behavior</span>
+                                <span>5/5 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Project Management</span>
+                                <span>2/3 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Project Tools Topic -->
+            <section id="topic-project-tools" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-tools-fill text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Tools: Gantts, RACI, Agile</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Project Management Essentials</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the purpose and benefits of using structured project management tools</li>
+                            <li>Master Gantt chart creation and application for schedule visualization and management</li>
+                            <li>Apply the RACI model to clarify project roles and responsibilities</li>
+                            <li>Comprehend Agile methodology fundamentals and associated tools</li>
+                            <li>Learn to select and integrate appropriate tools based on project needs at Dell</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Project Management Tools</h4>
+                    <p>Project management tools provide structure, visibility, and control throughout the project lifecycle. They help project managers and teams organize work, track progress, clarify responsibilities, and adapt to changing circumstances. The right tools make complex projects manageable by breaking them down into understandable components, facilitating communication, and providing frameworks for decision-making.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Project Management Tools Matter</h5>
+                        <p class="mb-3">Effective project management tools provide numerous benefits that contribute to project success:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Planning & Organization</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Structured framework:</strong> Organizes complex activities into logical components</li>
+                                    <li><strong>Visualization:</strong> Represents abstract concepts in tangible formats</li>
+                                    <li><strong>Standardization:</strong> Creates common understanding and language</li>
+                                    <li><strong>Comprehensive planning:</strong> Helps identify all necessary elements</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Execution & Control</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Progress tracking:</strong> Monitors actual vs. planned performance</li>
+                                    <li><strong>Transparency:</strong> Provides visibility to all stakeholders</li>
+                                    <li><strong>Accountability:</strong> Clarifies who is responsible for what</li>
+                                    <li><strong>Constraint management:</strong> Helps balance time, resources, and scope</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Adaptability & Communication</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Change management:</strong> Provides frameworks for handling adjustments</li>
+                                    <li><strong>Collaboration:</strong> Facilitates team coordination and alignment</li>
+                                    <li><strong>Decision support:</strong> Offers data for informed choices</li>
+                                    <li><strong>Knowledge transfer:</strong> Captures insights for future projects</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Tool Integration at Dell</h6>
+                            <p class="mb-2">At Dell Technologies, project management tools are carefully selected and integrated to support different project types and methodologies:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Traditional/Waterfall Projects</p>
+                                    <p class="text-sm mb-0">For hardware development, supply chain transformations, and facility projects, Dell relies heavily on Gantt charts for schedule management and RACI matrices for role clarity, providing the structure needed for sequential, milestone-driven work.</p>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-green-700 dark:text-green-400 mb-1">Agile Projects</p>
+                                    <p class="text-sm mb-0">Software development, digital transformation, and customer experience initiatives at Dell leverage Agile tools like product backlogs, sprint planning boards, and burndown charts to enable iterative delivery and adaptation to changing requirements.</p>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-purple-700 dark:text-purple-400 mb-1">Hybrid Approaches</p>
+                                    <p class="text-sm mb-0">Many Dell product launches and solution deployments combine tools, using Gantt charts for high-level planning and milestone tracking while employing Agile tools for development cycles, with RACI matrices ensuring clear accountability throughout.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Project Management Tool Comparison</h5>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-800">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Tool</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Primary Function</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Best For</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Limitations</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm">
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Gantt Charts</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Schedule visualization and management</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Projects with defined timelines, dependencies, and sequential activities</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Can become cumbersome for highly complex projects; requires regular updates</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">RACI Matrix</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Role and responsibility clarification</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Cross-functional projects with multiple stakeholders and clear deliverables</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Static view that requires revision as roles change; doesn't show timeline</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Product Backlog</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Prioritized feature/requirement list</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Agile projects with evolving requirements and iterative delivery</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Requires active management; can lose cohesion without clear vision</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Kanban Board</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Visual workflow management</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Continuous flow projects and operational work with varying priorities</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Less suited for strict deadline-driven work; limited timeline visualization</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Scrum Board</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Sprint planning and tracking</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Time-boxed iterative development with dedicated teams</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Requires team commitment to Scrum practices; focuses on short-term view</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Burndown Chart</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Progress visualization toward goal</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Sprint and release tracking in Agile projects</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Assumes consistent estimation accuracy; requires regular updates</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Risk Register</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Risk identification and management</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">All project types, especially those with significant uncertainties</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Can become a checkbox exercise without active management and ownership</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Gantt Charts</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Visualizing and Managing Project Schedules</h5>
+                        <p class="text-sm mb-3">A Gantt chart is a horizontal bar chart that visually represents a project schedule, showing the start and finish dates of different elements such as tasks, activities, and milestones. Named after Henry Gantt, who popularized this type of chart in the early 1900s, Gantt charts have become one of the most widely used project management tools.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Gantt Chart Components</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-4">
+                                        <div class="overflow-x-auto">
+                                            <div class="min-w-[700px]">
+                                                <div class="relative h-[220px]">
+                                                    <!-- Sample Gantt Chart -->
+                                                    <div class="w-full h-full flex">
+                                                        <!-- Task list column -->
+                                                        <div class="w-[200px] border-r border-gray-300 dark:border-gray-700">
+                                                            <div class="h-[40px] flex items-center px-2 font-medium border-b border-gray-300 dark:border-gray-700">
+                                                                Task Name
+                                                            </div>
+                                                            <div class="h-[30px] flex items-center px-2 border-b border-gray-300 dark:border-gray-700">
+                                                                Project Initiation
+                                                            </div>
+                                                            <div class="h-[30px] flex items-center px-2 border-b border-gray-300 dark:border-gray-700 pl-6 text-xs">
+                                                                Define Project Scope
+                                                            </div>
+                                                            <div class="h-[30px] flex items-center px-2 border-b border-gray-300 dark:border-gray-700 pl-6 text-xs">
+                                                                Kickoff Meeting
+                                                            </div>
+                                                            <div class="h-[30px] flex items-center px-2 border-b border-gray-300 dark:border-gray-700">
+                                                                Requirements Analysis
+                                                            </div>
+                                                            <div class="h-[30px] flex items-center px-2 border-b border-gray-300 dark:border-gray-700 pl-6 text-xs">
+                                                                Gather Requirements
+                                                            </div>
+                                                            <div class="h-[30px] flex items-center px-2 border-b border-gray-300 dark:border-gray-700 pl-6 text-xs">
+                                                                Document Requirements
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <!-- Timeline section -->
+                                                        <div class="flex-1 relative">
+                                                            <!-- Month headers -->
+                                                            <div class="h-[20px] flex border-b border-gray-300 dark:border-gray-700 text-xs">
+                                                                <div class="w-[120px] text-center">January</div>
+                                                                <div class="w-[120px] text-center">February</div>
+                                                                <div class="w-[120px] text-center">March</div>
+                                                                <div class="w-[120px] text-center">April</div>
+                                                            </div>
+                                                            
+                                                            <!-- Week headers -->
+                                                            <div class="h-[20px] flex border-b border-gray-300 dark:border-gray-700 text-xs">
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W1</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W2</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W3</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W4</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W1</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W2</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W3</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W4</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W1</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W2</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W3</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W4</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W1</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W2</div>
+                                                                <div class="w-[30px] text-center border-r border-gray-300 dark:border-gray-700">W3</div>
+                                                                <div class="w-[30px] text-center">W4</div>
+                                                            </div>
+                                                            
+                                                            <!-- Task rows -->
+                                                            <div class="h-[30px] relative border-b border-gray-300 dark:border-gray-700">
+                                                                <!-- Summary task bar -->
+                                                                <div class="absolute h-[16px] top-[7px] left-[15px] w-[120px] bg-blue-500 dark:bg-blue-600 rounded-sm"></div>
+                                                            </div>
+                                                            <div class="h-[30px] relative border-b border-gray-300 dark:border-gray-700">
+                                                                <!-- Task bar with progress -->
+                                                                <div class="absolute h-[16px] top-[7px] left-[15px] w-[60px] bg-gray-200 dark:bg-gray-700 rounded-sm">
+                                                                    <div class="h-full w-[45px] bg-green-500 dark:bg-green-600 rounded-sm"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="h-[30px] relative border-b border-gray-300 dark:border-gray-700">
+                                                                <!-- Milestone -->
+                                                                <div class="absolute h-[16px] w-[16px] top-[7px] left-[104px] bg-red-500 dark:bg-red-600 transform rotate-45"></div>
+                                                            </div>
+                                                            <div class="h-[30px] relative border-b border-gray-300 dark:border-gray-700">
+                                                                <!-- Summary task bar -->
+                                                                <div class="absolute h-[16px] top-[7px] left-[90px] w-[150px] bg-purple-500 dark:bg-purple-600 rounded-sm"></div>
+                                                            </div>
+                                                            <div class="h-[30px] relative border-b border-gray-300 dark:border-gray-700">
+                                                                <!-- Task bar with progress -->
+                                                                <div class="absolute h-[16px] top-[7px] left-[90px] w-[90px] bg-gray-200 dark:bg-gray-700 rounded-sm">
+                                                                    <div class="h-full w-[30px] bg-green-500 dark:bg-green-600 rounded-sm"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="h-[30px] relative border-b border-gray-300 dark:border-gray-700">
+                                                                <!-- Task bar -->
+                                                                <div class="absolute h-[16px] top-[7px] left-[150px] w-[90px] bg-blue-500 dark:bg-blue-600 rounded-sm"></div>
+                                                                <!-- Dependency arrow -->
+                                                                <div class="absolute top-[15px] left-[145px] w-[5px] h-[1px] bg-gray-400 dark:bg-gray-600"></div>
+                                                                <div class="absolute top-[11px] left-[145px] w-[1px] h-[4px] bg-gray-400 dark:bg-gray-600"></div>
+                                                                <div class="absolute top-[15px] left-[150px] w-0 h-0 border-t-[3px] border-t-transparent border-b-[3px] border-b-transparent border-l-[5px] border-l-gray-400 dark:border-l-gray-600"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Key Gantt Chart Elements</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Tasks:</strong> Individual activities required to complete the project</li>
+                                                <li><strong>Durations:</strong> Time required to complete each task (bar length)</li>
+                                                <li><strong>Start and end dates:</strong> When tasks begin and conclude</li>
+                                                <li><strong>Dependencies:</strong> Relationships between tasks (what must happen before what)</li>
+                                                <li><strong>Milestones:</strong> Significant events or decision points</li>
+                                                <li><strong>Progress:</strong> Visual indication of task completion status</li>
+                                                <li><strong>Resources:</strong> People or materials assigned to tasks</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Types of Dependencies</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Finish-to-Start (FS):</strong> Task B cannot start until Task A finishes (most common)</li>
+                                                <li><strong>Start-to-Start (SS):</strong> Task B cannot start until Task A starts</li>
+                                                <li><strong>Finish-to-Finish (FF):</strong> Task B cannot finish until Task A finishes</li>
+                                                <li><strong>Start-to-Finish (SF):</strong> Task B cannot finish until Task A starts (rarely used)</li>
+                                                <li><strong>Lag:</strong> Delay between dependent tasks (e.g., waiting time)</li>
+                                                <li><strong>Lead:</strong> Overlap between dependent tasks (e.g., fast-tracking)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Creating Effective Gantt Charts</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">1. Define Project Structure</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Break the project into phases or major components</li>
+                                        <li>Identify all tasks required to complete each phase</li>
+                                        <li>Organize tasks in a hierarchical structure</li>
+                                        <li>Include summary tasks to group related activities</li>
+                                        <li>Add significant milestones to mark key achievements</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">2. Establish Timeline</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Estimate realistic durations for each task</li>
+                                        <li>Set appropriate timeline scale (days, weeks, months)</li>
+                                        <li>Identify project start date and constraints</li>
+                                        <li>Consider resource availability when scheduling</li>
+                                        <li>Account for non-working time (holidays, weekends)</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">3. Define Relationships</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Identify dependencies between tasks</li>
+                                        <li>Set appropriate dependency types</li>
+                                        <li>Add lead or lag time when necessary</li>
+                                        <li>Watch for circular dependencies</li>
+                                        <li>Minimize unnecessary dependencies</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">4. Assign Resources</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Assign responsible resources to each task</li>
+                                        <li>Consider resource capacity and availability</li>
+                                        <li>Level resources to avoid overallocation</li>
+                                        <li>Include both human and material resources</li>
+                                        <li>Ensure skills match task requirements</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">5. Analyze Critical Path</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Identify the critical path of tasks</li>
+                                        <li>Calculate float/slack for non-critical tasks</li>
+                                        <li>Highlight critical path activities visually</li>
+                                        <li>Prioritize resources for critical path tasks</li>
+                                        <li>Monitor critical path closely during execution</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">6. Maintain and Update</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Track actual progress against plan</li>
+                                        <li>Update task completion percentages regularly</li>
+                                        <li>Adjust future tasks based on current status</li>
+                                        <li>Capture changes through formal change control</li>
+                                        <li>Re-baseline when necessary with appropriate approval</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Dell's Gantt Chart Implementation</h6>
+                                <p class="text-xs mb-2">At Dell, Gantt charts are implemented with these best practices:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Tools and Integration</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Microsoft Project for complex projects with resource management needs</li>
+                                            <li>Smartsheet for collaborative, cloud-based schedule management</li>
+                                            <li>Project Server/PPM integration for enterprise portfolio visibility</li>
+                                            <li>PowerBI dashboards connected to schedule data</li>
+                                            <li>Custom templates for different project types (product, IT, manufacturing)</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Process and Governance</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Standardized WBS structure for consistency across projects</li>
+                                            <li>Weekly schedule updates with variance explanations</li>
+                                            <li>Monthly schedule baseline reviews with stakeholders</li>
+                                            <li>Clear change control process for schedule modifications</li>
+                                            <li>Integration with milestone tracking and stage-gate reviews</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>RACI Model</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Clarifying Roles and Responsibilities</h5>
+                        <p class="text-sm mb-3">The RACI model is a responsibility assignment matrix used to clarify roles and responsibilities in projects and processes. RACI is an acronym that stands for the four key responsibility types: Responsible, Accountable, Consulted, and Informed. This framework helps eliminate confusion, prevents tasks from falling through the cracks, and improves team efficiency by clearly defining who does what.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">RACI Fundamentals</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">The Four RACI Roles</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Responsible (R):</strong> The person(s) who actually perform the work to complete the task or deliverable. There is typically at least one Responsible person for each task.</li>
+                                            <li><strong>Accountable (A):</strong> The person who is ultimately answerable for the completion and quality of the deliverable or task. They approve the work that the Responsible person provides. There must be exactly one Accountable person for each task or deliverable.</li>
+                                            <li><strong>Consulted (C):</strong> People whose opinions are sought, typically subject matter experts. Two-way communication occurs with these individuals.</li>
+                                            <li><strong>Informed (I):</strong> People who are kept up-to-date on progress, often only upon completion of the task or deliverable. One-way communication to these individuals.</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Key Principles</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Every task needs an R and an A:</strong> Someone must do the work, and someone must be accountable for its completion.</li>
+                                            <li><strong>Only one A per task:</strong> Accountability cannot be shared without creating confusion.</li>
+                                            <li><strong>R and A can be the same person:</strong> Especially in smaller projects or for simpler tasks.</li>
+                                            <li><strong>Balance Cs carefully:</strong> Too many consulted stakeholders can slow decision-making.</li>
+                                            <li><strong>Is should be truly informational:</strong> These people don't need to provide input, just receive updates.</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Benefits of RACI</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Eliminates confusion about who does what</li>
+                                            <li>Prevents duplication of effort or gaps in responsibility</li>
+                                            <li>Reduces unnecessary involvement in decisions</li>
+                                            <li>Improves communication efficiency</li>
+                                            <li>Creates clarity during organizational changes</li>
+                                            <li>Provides a clear escalation path for issues</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">RACI Matrix Structure</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Sample RACI Matrix</h6>
+                                            <div class="overflow-x-auto">
+                                                <table class="w-full text-xs border-collapse">
+                                                    <thead>
+                                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Tasks / Deliverables</th>
+                                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Project Manager</th>
+                                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Technical Lead</th>
+                                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Developer</th>
+                                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Business Analyst</th>
+                                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Stakeholder</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Project Charter</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-bold text-green-600 dark:text-green-400">R</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-purple-600 dark:text-purple-400">C</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-purple-600 dark:text-purple-400">C</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-bold text-blue-600 dark:text-blue-400">A</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Requirements Document</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-bold text-blue-600 dark:text-blue-400">A</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-purple-600 dark:text-purple-400">C</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-bold text-green-600 dark:text-green-400">R</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-purple-600 dark:text-purple-400">C</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2">System Design</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-gray-600 dark:text-gray-400">I</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-bold text-blue-600 dark:text-blue-400">A</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-bold text-green-600 dark:text-green-400">R</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-purple-600 dark:text-purple-400">C</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-gray-600 dark:text-gray-400">I</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Development</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-gray-600 dark:text-gray-400">I</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-bold text-blue-600 dark:text-blue-400">A</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-bold text-green-600 dark:text-green-400">R</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-purple-600 dark:text-purple-400">C</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Testing</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-gray-600 dark:text-gray-400">I</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-purple-600 dark:text-purple-400">C</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-bold text-green-600 dark:text-green-400">R</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-bold text-blue-600 dark:text-blue-400">A</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-purple-600 dark:text-purple-400">C</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Deployment</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-bold text-blue-600 dark:text-blue-400">A</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-bold text-green-600 dark:text-green-400">R</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-bold text-green-600 dark:text-green-400">R</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-gray-600 dark:text-gray-400">I</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center text-gray-600 dark:text-gray-400">I</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Matrix Structure</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Left column:</strong> List of tasks, deliverables, or decisions</li>
+                                                <li><strong>Top row:</strong> Roles or individuals involved in the project</li>
+                                                <li><strong>Cells:</strong> Assignment of RACI designations</li>
+                                                <li><strong>Reading horizontally:</strong> Shows all roles involved in a specific task</li>
+                                                <li><strong>Reading vertically:</strong> Shows all tasks that a specific role is involved in</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Common RACI Variations</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>RASCI:</strong> Adds "Support (S)" for people who provide resources or play a supporting role</li>
+                                                <li><strong>CAIRO:</strong> Rearranges to Consulted, Accountable, Informed, Responsible, Omitted</li>
+                                                <li><strong>DACI:</strong> Driver, Approver, Contributor, Informed (more decision-focused)</li>
+                                                <li><strong>RAPID:</strong> Recommend, Agree, Perform, Input, Decide (used at Bain & Company)</li>
+                                                <li><strong>RACIQ:</strong> Adds "Quality Reviewer (Q)" for quality assurance role</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Creating and Using RACI Matrices</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Creating a RACI Matrix</h6>
+                                    <ol class="pl-4 text-xs mb-0 list-decimal">
+                                        <li>Identify all tasks, deliverables, or decisions (rows)</li>
+                                        <li>Identify all roles or individuals involved (columns)</li>
+                                        <li>For each task, assign RACI designations to appropriate roles</li>
+                                        <li>Review horizontally to ensure each task has appropriate coverage</li>
+                                        <li>Review vertically to check for overloaded or underutilized roles</li>
+                                        <li>Review with stakeholders to validate and refine</li>
+                                        <li>Finalize and distribute the matrix</li>
+                                    </ol>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Common RACI Problems</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Empty rows:</strong> Tasks with no clear ownership</li>
+                                        <li><strong>Too many Rs:</strong> Diffused responsibility leading to confusion</li>
+                                        <li><strong>No As or multiple As:</strong> Unclear accountability for decisions</li>
+                                        <li><strong>Too many Cs:</strong> Potential for analysis paralysis and delays</li>
+                                        <li><strong>Overloaded roles:</strong> Individuals with too many responsibilities</li>
+                                        <li><strong>Underutilized roles:</strong> People who should be involved but aren't</li>
+                                        <li><strong>Authority-responsibility mismatch:</strong> Rs without proper authority</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Using RACI Effectively</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Review and update the RACI as the project evolves</li>
+                                        <li>Use it to onboard new team members quickly</li>
+                                        <li>Reference during meetings to clarify decision rights</li>
+                                        <li>Incorporate into project documentation</li>
+                                        <li>Use to identify communication needs</li>
+                                        <li>Leverage as a tool for resolving conflicts</li>
+                                        <li>Apply when defining governance structures</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Dell's RACI Implementation</h6>
+                                <p class="text-xs mb-2">Dell Technologies implements RACI matrices with these distinctive practices:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">RACI Development Process</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Project-level RACI created during project initiation phase</li>
+                                            <li>Collaborative workshops for initial RACI development</li>
+                                            <li>Sub-RACIs for complex workstreams when needed</li>
+                                            <li>Formal stakeholder review and sign-off process</li>
+                                            <li>Integration with project plan and governance documentation</li>
+                                            <li>Quarterly review and update of RACI during project execution</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">RACI Applications at Dell</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Product Development:</strong> Cross-functional alignment across engineering, manufacturing, marketing, and sales</li>
+                                            <li><strong>Enterprise Solutions:</strong> Clarity between Dell teams and customer responsibilities</li>
+                                            <li><strong>Organizational Change:</strong> Defining roles during transitions and transformations</li>
+                                            <li><strong>M&A Integration:</strong> Clarifying responsibilities during post-merger activities</li>
+                                            <li><strong>Operational Processes:</strong> Defining ongoing process responsibilities</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="text-xs italic mb-0">Dell Insight: "RACI matrices are living documents that should evolve as projects progress. We find the most successful projects review and update their RACI at key milestones and when significant organizational changes occur, ensuring alignment is maintained throughout the project lifecycle."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Agile Methodologies and Tools</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Iterative and Adaptive Project Management</h5>
+                        <p class="text-sm mb-3">Agile methodologies represent a fundamentally different approach to project management compared to traditional waterfall methods. Agile emphasizes iterative development, continuous feedback, team collaboration, and adaptability to change. These approaches have revolutionized project management, particularly in software development, and are increasingly being applied to other domains.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Agile Fundamentals</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Agile Values (from the Agile Manifesto)</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Individuals and interactions</strong> over processes and tools</li>
+                                            <li><strong>Working software</strong> over comprehensive documentation</li>
+                                            <li><strong>Customer collaboration</strong> over contract negotiation</li>
+                                            <li><strong>Responding to change</strong> over following a plan</li>
+                                        </ul>
+                                        <p class="text-xs italic mt-1 mb-0">While the items on the right have value, the items on the left are valued more.</p>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Key Agile Principles</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Satisfy customers through early and continuous delivery</li>
+                                            <li>Welcome changing requirements, even late in development</li>
+                                            <li>Deliver working software frequently</li>
+                                            <li>Business people and developers must work together daily</li>
+                                            <li>Build projects around motivated individuals with support and trust</li>
+                                            <li>Face-to-face conversation is the most efficient communication</li>
+                                            <li>Working software is the primary measure of progress</li>
+                                            <li>Maintain a sustainable pace indefinitely</li>
+                                            <li>Continuous attention to technical excellence</li>
+                                            <li>Simplicity – maximizing the amount of work not done</li>
+                                            <li>Self-organizing teams generate the best architectures and designs</li>
+                                            <li>Regular reflection on how to become more effective</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Agile vs. Traditional Project Management</h6>
+                                        <div class="overflow-x-auto">
+                                            <table class="w-full text-xs border-collapse">
+                                                <thead>
+                                                    <tr class="bg-gray-50 dark:bg-gray-900">
+                                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Aspect</th>
+                                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Traditional/Waterfall</th>
+                                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Agile</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Approach</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Linear, sequential phases</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Iterative, incremental cycles</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Requirements</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Defined upfront, change is controlled</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Progressive elaboration, embraces change</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Planning</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Comprehensive upfront planning</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Just-in-time planning for near-term work</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Team Structure</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Specialized roles, hierarchical</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Cross-functional, self-organizing</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Customer Involvement</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Primary at beginning and end</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Continuous throughout project</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Risk Management</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Upfront risk analysis</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Continuous risk management</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Measurement of Success</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Conformance to plan</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Working product and customer satisfaction</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Common Agile Frameworks</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Scrum</h6>
+                                            <p class="text-xs mb-1">A lightweight framework focused on delivering value through small, self-organizing teams working in short iterations called sprints.</p>
+                                            <h6 class="text-xs font-medium mt-2 mb-1">Key Elements:</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Roles:</strong> Product Owner, Scrum Master, Development Team</li>
+                                                <li><strong>Artifacts:</strong> Product Backlog, Sprint Backlog, Increment</li>
+                                                <li><strong>Events:</strong> Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective</li>
+                                                <li><strong>Time-boxes:</strong> Fixed sprint durations (typically 2-4 weeks)</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Kanban</h6>
+                                            <p class="text-xs mb-1">A method for visualizing work, limiting work in progress, and maximizing flow. Focuses on continuous delivery without fixed iterations.</p>
+                                            <h6 class="text-xs font-medium mt-2 mb-1">Key Elements:</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Visualize workflow:</strong> Using cards on a board with columns</li>
+                                                <li><strong>Limit WIP:</strong> Restricting items in progress to improve flow</li>
+                                                <li><strong>Manage flow:</strong> Monitoring and optimizing smooth delivery</li>
+                                                <li><strong>Explicit policies:</strong> Clear rules for how work moves</li>
+                                                <li><strong>Feedback loops:</strong> Regular cadence of reviews and adjustments</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Lean Software Development</h6>
+                                            <p class="text-xs mb-1">Adaptation of lean manufacturing principles to software development, focused on eliminating waste and optimizing the whole.</p>
+                                            <h6 class="text-xs font-medium mt-2 mb-1">Key Principles:</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Eliminate waste:</strong> Remove everything that doesn't add value</li>
+                                                <li><strong>Amplify learning:</strong> Short feedback cycles, knowledge sharing</li>
+                                                <li><strong>Decide as late as possible:</strong> Keep options open</li>
+                                                <li><strong>Deliver as fast as possible:</strong> Quick time to market</li>
+                                                <li><strong>Empower the team:</strong> Self-organization and decision-making</li>
+                                                <li><strong>Build integrity in:</strong> Quality from the start, not inspection</li>
+                                                <li><strong>See the whole:</strong> System thinking vs. component optimization</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Other Frameworks and Approaches</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Extreme Programming (XP):</strong> Technical practices like pair programming, TDD, continuous integration</li>
+                                                <li><strong>SAFe (Scaled Agile Framework):</strong> Enterprise-scale application of Agile principles</li>
+                                                <li><strong>LeSS (Large-Scale Scrum):</strong> Framework for scaling Scrum to multiple teams</li>
+                                                <li><strong>Disciplined Agile (DA):</strong> Hybrid approach that provides context-specific choices</li>
+                                                <li><strong>Crystal:</strong> Family of methodologies that focus on people and communication</li>
+                                                <li><strong>Scrumban:</strong> Hybrid of Scrum and Kanban methodologies</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Essential Agile Tools</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Product Backlog</h6>
+                                    <p class="text-xs mb-1">Prioritized list of all desired features, enhancements, and fixes for the product.</p>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Key Characteristics:</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Dynamic, constantly evolving</li>
+                                        <li>Prioritized by business value</li>
+                                        <li>More detailed for near-term items</li>
+                                        <li>Owned by Product Owner</li>
+                                        <li>Visible to all stakeholders</li>
+                                    </ul>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Implementation:</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Digital tools (JIRA, Azure DevOps)</li>
+                                        <li>Physical boards with sticky notes</li>
+                                        <li>Spreadsheets for smaller projects</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Scrum/Kanban Board</h6>
+                                    <p class="text-xs mb-1">Visual workflow tool showing the status of work items as they progress.</p>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Key Components:</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Status columns (To Do, In Progress, Done, etc.)</li>
+                                        <li>Work item cards (user stories, tasks)</li>
+                                        <li>WIP limits (Kanban specific)</li>
+                                        <li>Swimlanes for categorizing work</li>
+                                        <li>Policy definitions</li>
+                                    </ul>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Implementation:</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Physical whiteboards with cards</li>
+                                        <li>Digital tools (Trello, JIRA, Asana)</li>
+                                        <li>Online collaborative workspaces</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">User Stories</h6>
+                                    <p class="text-xs mb-1">Simple, natural language descriptions of features from the end user's perspective.</p>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Standard Format:</h6>
+                                    <p class="text-xs italic mb-1">As a [type of user], I want [goal] so that [benefit].</p>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Key Components:</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Narrative (the story itself)</li>
+                                        <li>Acceptance criteria (how to verify completion)</li>
+                                        <li>Estimation (relative size/complexity)</li>
+                                        <li>Priority (business value)</li>
+                                        <li>Dependencies (relationships to other stories)</li>
+                                    </ul>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">INVEST Criteria:</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Independent, Negotiable, Valuable</li>
+                                        <li>Estimable, Small, Testable</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Burndown/Burnup Charts</h6>
+                                    <p class="text-xs mb-1">Visual representations of work completed vs. remaining over time.</p>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Types:</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Sprint Burndown:</strong> Work remaining in current sprint</li>
+                                        <li><strong>Release Burndown:</strong> Progress toward release</li>
+                                        <li><strong>Burnup Chart:</strong> Shows scope changes alongside progress</li>
+                                    </ul>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Benefits:</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Visual progress tracking</li>
+                                        <li>Early warning of schedule risks</li>
+                                        <li>Transparency for stakeholders</li>
+                                        <li>Trend analysis</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Velocity Charts</h6>
+                                    <p class="text-xs mb-1">Measures of team productivity showing how much work is completed per iteration.</p>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Key Features:</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Historical team performance data</li>
+                                        <li>Trend visualization over multiple sprints</li>
+                                        <li>Capacity planning tool</li>
+                                        <li>Basis for release forecasting</li>
+                                    </ul>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Best Practices:</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Use consistent estimation methods</li>
+                                        <li>Track over multiple iterations</li>
+                                        <li>Focus on team (not individual) velocity</li>
+                                        <li>Consider context when comparing</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Definition of Done (DoD)</h6>
+                                    <p class="text-xs mb-1">Shared understanding of what "complete" means for work items.</p>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Typical Criteria:</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Code written and peer reviewed</li>
+                                        <li>Tests written and passing</li>
+                                        <li>Documentation updated</li>
+                                        <li>Product Owner acceptance</li>
+                                        <li>Deployed to staging environment</li>
+                                    </ul>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Benefits:</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Ensures quality standards</li>
+                                        <li>Creates shared expectations</li>
+                                        <li>Reduces rework and technical debt</li>
+                                        <li>Promotes consistency</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dell's Agile Implementation</h6>
+                                <p class="text-xs mb-2">Dell Technologies has adopted a pragmatic approach to Agile implementation:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Agile Adoption Strategy</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Pragmatic Implementation:</strong> Tailored Agile approach based on context</li>
+                                            <li><strong>Framework Flexibility:</strong> Team-level selection of Scrum, Kanban, or hybrid approaches</li>
+                                            <li><strong>Scaled Framework:</strong> Customized SAFe implementation for enterprise initiatives</li>
+                                            <li><strong>Hybrid Model:</strong> Integration with traditional methods for hardware components</li>
+                                            <li><strong>Center of Excellence:</strong> Agile coaches and training resources</li>
+                                            <li><strong>Tool Standardization:</strong> Enterprise platforms with consistent processes</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Key Agile Tools at Dell</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>JIRA:</strong> Primary tool for backlog management and Agile boards</li>
+                                            <li><strong>Confluence:</strong> Knowledge sharing and documentation platform</li>
+                                            <li><strong>Microsoft Teams:</strong> Collaboration for distributed Agile teams</li>
+                                            <li><strong>Azure DevOps:</strong> Used by some teams for integrated CI/CD</li>
+                                            <li><strong>Digital Whiteboards:</strong> Miro and Mural for remote ceremonies</li>
+                                            <li><strong>Custom Dashboards:</strong> PowerBI reporting for metrics and KPIs</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="text-xs italic mb-0">Dell Insight: "Agile is not a one-size-fits-all approach. We've found success by focusing on the principles behind Agile rather than rigid adherence to a specific framework. This allows teams to adapt practices to their unique context while maintaining alignment with enterprise goals and timelines."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Integrating Project Management Tools</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Choosing the Right Tools for Your Project</h5>
+                        <p class="text-sm mb-3">The most effective project management approach often involves integrating multiple tools to address different aspects of project planning, execution, and monitoring. Understanding how to select and combine tools based on project needs is a key skill for project managers.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Tool Selection Considerations</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <h6 class="text-xs font-medium mb-1">Project Factors Influencing Tool Selection</h6>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li><strong>Project type:</strong> Software development, hardware, business transformation, etc.</li>
+                                        <li><strong>Project complexity:</strong> Size, number of stakeholders, dependencies</li>
+                                        <li><strong>Team distribution:</strong> Co-located vs. remote teams</li>
+                                        <li><strong>Organizational culture:</strong> Formal vs. informal, hierarchical vs. flat</li>
+                                        <li><strong>Stakeholder preferences:</strong> Visual vs. detailed reporting needs</li>
+                                        <li><strong>Change frequency:</strong> Stable vs. dynamic requirements</li>
+                                        <li><strong>Risk profile:</strong> High-risk projects need more formal tracking</li>
+                                        <li><strong>Compliance requirements:</strong> Regulated industries need audit trails</li>
+                                    </ul>
+                                    
+                                    <h6 class="text-xs font-medium mb-1">Tool Integration Requirements</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Data consistency:</strong> Maintain single source of truth</li>
+                                        <li><strong>Workflow continuity:</strong> Seamless transitions between processes</li>
+                                        <li><strong>Reduced duplication:</strong> Avoid manual re-entry of information</li>
+                                        <li><strong>Visibility:</strong> End-to-end view of project status</li>
+                                        <li><strong>Traceability:</strong> Connect requirements to deliverables</li>
+                                        <li><strong>Reporting:</strong> Consolidated views for decision-making</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Integration Approaches</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <h6 class="text-xs font-medium mb-1">Methods for Tool Integration</h6>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li><strong>Unified platform:</strong> Single system with multiple modules (e.g., enterprise PPM tools)</li>
+                                        <li><strong>API integration:</strong> Connect separate tools through application interfaces</li>
+                                        <li><strong>Manual integration:</strong> Human-mediated transfer of information</li>
+                                        <li><strong>Middleware:</strong> Integration layer connecting disparate systems</li>
+                                        <li><strong>Data warehouse:</strong> Centralized repository for reporting and analysis</li>
+                                    </ul>
+                                    
+                                    <h6 class="text-xs font-medium mb-1">Common Integration Patterns</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Gantt + RACI:</strong> Schedule with responsibility matrix</li>
+                                        <li><strong>Product Backlog + Gantt:</strong> Agile planning with milestone tracking</li>
+                                        <li><strong>Kanban + RACI:</strong> Visual workflow with clear responsibilities</li>
+                                        <li><strong>Agile tools + Traditional reporting:</strong> Iterative delivery with executive dashboards</li>
+                                        <li><strong>WBS + Agile planning:</strong> Scope breakdown feeding into sprint planning</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Integrated Tool Approaches for Different Project Types</h6>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Project Type</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Primary Tools</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Supporting Tools</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Integration Approach</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Dell Example</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Software Development</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Agile tools (Product backlog, Kanban/Scrum board, Burndown charts)
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                RACI matrix, High-level Gantt for milestones, Risk register
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                JIRA for Agile artifacts with integrated RACI, milestone-level Gantt in Project Online
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Dell Digital's customer portal development, using JIRA for team management and Project Online for executive reporting
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Hardware Product Development</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Gantt chart, WBS, Stage-gate tracking
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                RACI matrix, Requirements traceability, Risk register
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                MS Project for detailed Gantt, PLM system for requirements and design tracking
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Dell XPS laptop development with MS Project for schedule management integrated with product lifecycle management system
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Hybrid Product (HW/SW)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Program-level Gantt, Team-level Agile boards
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                RACI matrix, Integrated release planning, Risk register
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                SAFe implementation with program and team-level tools, API integrations
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Dell PowerEdge server development with hardware on traditional schedule and firmware on Agile cycles
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Business Transformation</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Program roadmap, Workstream Gantts, Change management tracking
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                RACI matrix, Stakeholder analysis, Communication plan
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Program management tool with workstream-level planning and integrated change tracking
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Dell-EMC merger integration using Program charter, workstream Gantts, and detailed RACI matrices
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Customer Implementation</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Implementation plan, Milestone tracker, Issue log
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                RACI matrix, Customer preparation checklist, Status dashboard
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Customer-facing implementation tool with clear responsibility assignments
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Dell enterprise solution deployment using Smartsheet for collaborative planning with embedded RACI
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Dell's Tool Integration Strategy</h6>
+                                <p class="text-xs mb-2">Dell Technologies employs a strategic approach to tool integration:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Enterprise Architecture</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Core systems:</strong> Project Online/Server for portfolio management</li>
+                                            <li><strong>Agile tools:</strong> JIRA and Azure DevOps for team execution</li>
+                                            <li><strong>Collaboration:</strong> Teams/SharePoint for documentation and communication</li>
+                                            <li><strong>Integration layer:</strong> Custom middleware connecting systems</li>
+                                            <li><strong>Reporting:</strong> PowerBI for cross-tool dashboards and metrics</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Tool Selection Guidelines</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Right-sizing:</strong> Tool complexity matched to project complexity</li>
+                                            <li><strong>Standardization with flexibility:</strong> Core tools with team-level adaptation</li>
+                                            <li><strong>Focus on outcomes:</strong> Tools serve the project, not vice versa</li>
+                                            <li><strong>Data integration:</strong> Emphasis on consistent metrics across tools</li>
+                                            <li><strong>Usability:</strong> Preference for intuitive tools with minimal training needs</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Dell Case Study: Cloud Services Transformation</h5>
+                        <p class="text-sm mb-3">This case study examines how Dell Technologies integrated multiple project management tools to successfully execute a complex business transformation initiative—transitioning from traditional hardware sales to an as-a-service cloud model.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Project Context</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">The Dell APEX initiative represented a fundamental business model transformation with these characteristics:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li>Multi-year program spanning dozens of workstreams</li>
+                                        <li>Mix of hardware, software, and business process changes</li>
+                                        <li>Globally distributed teams across multiple functions</li>
+                                        <li>Combination of traditional and Agile delivery approaches</li>
+                                        <li>Significant dependencies between components</li>
+                                        <li>High visibility with executive leadership and customers</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Project Challenges:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Coordinating teams using different methodologies</li>
+                                        <li>Providing consistent executive reporting</li>
+                                        <li>Managing cross-functional dependencies</li>
+                                        <li>Ensuring clear accountability across complex governance</li>
+                                        <li>Supporting both long-term planning and iterative execution</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Integrated Tool Approach</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Tool Integration Strategy</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Multi-level planning:</strong> Program, workstream, and team-level tools</li>
+                                            <li><strong>Methodology flexibility:</strong> Support for both traditional and Agile approaches</li>
+                                            <li><strong>Central information hub:</strong> Shared program repository for documentation</li>
+                                            <li><strong>Integrated reporting:</strong> Unified dashboards pulling from multiple sources</li>
+                                            <li><strong>Balanced formality:</strong> Appropriate control without excessive overhead</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Selected Tools and Integration</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Program roadmap:</strong> Program-level Gantt in Project Online</li>
+                                            <li><strong>Workstream plans:</strong> Detailed Gantt charts in Project or Smartsheet</li>
+                                            <li><strong>Team execution:</strong> JIRA boards for Agile teams, Project for traditional teams</li>
+                                            <li><strong>Responsibility clarification:</strong> Program RACI matrix with workstream details</li>
+                                            <li><strong>Documentation:</strong> SharePoint for program artifacts and deliverables</li>
+                                            <li><strong>Communication:</strong> Teams channels for workstream and cross-functional collaboration</li>
+                                            <li><strong>Reporting:</strong> PowerBI dashboards integrating data from all sources</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Tool Implementation Details</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Program Gantt Implementation</h6>
+                                    <p class="text-xs mb-2">The program-level Gantt chart provided a high-level view of the entire initiative:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Structured by major workstreams (product, platform, go-to-market, operations)</li>
+                                        <li>Focused on key milestones and deliverables</li>
+                                        <li>Highlighted critical dependencies between workstreams</li>
+                                        <li>Included resource forecasts at workstream level</li>
+                                        <li>Supported executive-level status reporting</li>
+                                        <li>Updated weekly with workstream status</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">RACI Implementation</h6>
+                                    <p class="text-xs mb-2">A comprehensive RACI structure was developed to clarify roles:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Program-level RACI defining workstream ownership</li>
+                                        <li>Workstream-level RACIs for specific deliverables</li>
+                                        <li>Team-level RACIs for execution activities</li>
+                                        <li>Decision authority matrix for key program decisions</li>
+                                        <li>Escalation paths clearly defined for issues</li>
+                                        <li>RACI reviews conducted at program governance meetings</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Agile Implementation</h6>
+                                    <p class="text-xs mb-2">Agile practices were implemented for software development teams:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>JIRA product backlogs aligned to program roadmap</li>
+                                        <li>Two-week sprint cadence with synchronized planning</li>
+                                        <li>Team-level Kanban and Scrum boards</li>
+                                        <li>Epic and feature mapping to program milestones</li>
+                                        <li>Standardized story templates with acceptance criteria</li>
+                                        <li>Burndown charts integrated into program reporting</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Integration and Reporting</h6>
+                            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <p class="text-xs mb-2">The program implemented a comprehensive reporting approach that integrated data from multiple tools:</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Data Integration Approach</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>API connections:</strong> Automated data exchange between systems</li>
+                                            <li><strong>Common data model:</strong> Standardized status and metric definitions</li>
+                                            <li><strong>Weekly synchronization:</strong> Formal process to ensure consistency</li>
+                                            <li><strong>Single source of truth:</strong> Designated system for each data element</li>
+                                            <li><strong>Data validation:</strong> Quality checks to ensure accuracy</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Reporting Framework</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Executive dashboard:</strong> Program-level KPIs and milestone status</li>
+                                            <li><strong>Workstream reports:</strong> Detailed progress, risks, and issues</li>
+                                            <li><strong>Team boards:</strong> Sprint and kanban visualizations</li>
+                                            <li><strong>Dependency tracking:</strong> Cross-workstream dependency status</li>
+                                            <li><strong>Resource utilization:</strong> Allocation and capacity reports</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Implementation Challenges</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Tool proliferation:</strong> Initial tendency for teams to use preferred tools causing fragmentation</li>
+                                    <li class="mb-1"><strong>Data consistency:</strong> Early challenges with status reporting discrepancies</li>
+                                    <li class="mb-1"><strong>Methodology conflicts:</strong> Traditional vs. Agile expectations and reporting</li>
+                                    <li class="mb-1"><strong>Governance overhead:</strong> Initial process heavy approach requiring streamlining</li>
+                                    <li class="mb-0"><strong>Training needs:</strong> Different tool competencies across teams</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Solutions Implemented</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Tool rationalization:</strong> Reduced to core set of integrated platforms</li>
+                                    <li class="mb-1"><strong>Integration layer:</strong> Developed middleware to connect key systems</li>
+                                    <li class="mb-1"><strong>Hybrid methodology:</strong> Created translation between Agile and traditional approaches</li>
+                                    <li class="mb-1"><strong>Tiered governance:</strong> Right-sized controls based on risk and complexity</li>
+                                    <li class="mb-0"><strong>Tool champions:</strong> Designated experts to support teams</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Results & Outcomes</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Clear visibility:</strong> End-to-end view of program status and health</li>
+                                    <li class="mb-1"><strong>Dependency management:</strong> Early identification and resolution of conflicts</li>
+                                    <li class="mb-1"><strong>Resource optimization:</strong> Better allocation across workstreams</li>
+                                    <li class="mb-1"><strong>Consistent reporting:</strong> Reliable data for decision-making</li>
+                                    <li class="mb-0"><strong>Successful delivery:</strong> Major milestones achieved on schedule</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Key Lessons and Best Practices</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Integration Lessons</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Start with clarity on information needs</strong> before selecting tools</li>
+                                        <li><strong>Establish clear tool boundaries</strong> to avoid duplication and conflicts</li>
+                                        <li><strong>Define minimal viable integration</strong> rather than attempting perfect connectedness</li>
+                                        <li><strong>Plan for tool governance</strong> alongside project governance</li>
+                                        <li><strong>Build in flexibility</strong> for evolution as program needs change</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Tool Selection Insights</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Balance standardization with fitness for purpose</strong> when selecting tools</li>
+                                        <li><strong>Consider team familiarity</strong> to reduce learning curves</li>
+                                        <li><strong>Prioritize integration capabilities</strong> over feature completeness</li>
+                                        <li><strong>Establish clear primary systems</strong> for key data elements</li>
+                                        <li><strong>Design for scalability</strong> as program grows and evolves</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Best Practices for Tool Selection and Implementation</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Maximizing the Value of Project Management Tools</h5>
+                        <p class="text-sm mb-3">Based on Dell's experience across thousands of projects, these best practices can help you select and implement project management tools effectively, regardless of project type or complexity.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-focus-2-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Right-Size Your Approach</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Match tool complexity to project complexity</li>
+                                    <li>Start simple and add sophistication as needed</li>
+                                    <li>Consider team capabilities and learning curve</li>
+                                    <li>Evaluate maintenance overhead for each tool</li>
+                                    <li>Select only tools that deliver clear value</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-links-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Prioritize Integration</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Select tools that work well together</li>
+                                    <li>Define primary systems for each data element</li>
+                                    <li>Establish clear integration points and flows</li>
+                                    <li>Minimize manual data transfer between tools</li>
+                                    <li>Create consistent naming conventions across tools</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-user-heart-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Focus on User Experience</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Prioritize tools with intuitive interfaces</li>
+                                    <li>Consider stakeholder technical comfort levels</li>
+                                    <li>Minimize clicks and complexity for frequent tasks</li>
+                                    <li>Test tools with actual users before full adoption</li>
+                                    <li>Provide adequate training and support resources</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-arrow-left-right-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Balance Standardization with Flexibility</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Establish core tools for enterprise consistency</li>
+                                    <li>Allow flexibility for team-specific needs</li>
+                                    <li>Define minimum documentation standards</li>
+                                    <li>Create templates to speed up tool adoption</li>
+                                    <li>Provide options for different project types</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-dashboard-3-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Drive Data-Based Decisions</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Define key metrics before implementing tools</li>
+                                    <li>Create dashboards focused on actionable insights</li>
+                                    <li>Establish regular reporting cadence</li>
+                                    <li>Include trend data, not just current status</li>
+                                    <li>Validate data quality regularly</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-refresh-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Evolve Your Approach</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Plan for tool evolution as projects progress</li>
+                                    <li>Conduct regular tool effectiveness reviews</li>
+                                    <li>Gather user feedback on tool experience</li>
+                                    <li>Be willing to replace tools that aren't adding value</li>
+                                    <li>Document and share tool implementation lessons</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-white dark:bg-gray-800 p-3 rounded-lg">
+                            <h6 class="text-sm font-medium mb-2">Tool Selection Decision Matrix</h6>
+                            <p class="text-xs mb-2">Dell project managers use this decision framework when selecting appropriate tools:</p>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Project Characteristics</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Gantt Chart</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">RACI Matrix</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Agile Tools</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Recommended Integration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <strong>Small project</strong><br>Single team, short duration, minimal complexity
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Simple milestone timeline (Smartsheet or Excel)
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Basic RACI for key deliverables only
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Simple Kanban board if iterative
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Minimal integration needed; single tool approach preferred
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <strong>Medium project</strong><br>Multiple teams, 3-12 month duration, moderate complexity
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Detailed Gantt with dependencies and resources
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Comprehensive RACI for all key activities
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Team-level Agile boards with backlog management
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Milestone synchronization between tools; integrated reporting
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <strong>Large project</strong><br>Many teams, 1+ year duration, high complexity
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Multi-level Gantt hierarchy with program-level view
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Program and workstream level RACIs with decision frameworks
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Scaled Agile framework with multi-team coordination
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Full API integration between systems; centralized reporting hub
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <strong>Software development</strong><br>Iterative delivery, changing requirements
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                High-level milestone Gantt only
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                RACI for cross-team dependencies and decisions
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Full Agile implementation with sprints and backlogs
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Agile tools primary with milestone synchronization to Gantt
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <strong>Hardware development</strong><br>Sequential phases, fixed requirements
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Detailed Gantt with critical path analysis
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Comprehensive RACI with approval workflows
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Limited use for specific sub-teams only
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Gantt as primary tool with supporting tools for specific needs
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.pmi.org/learning/library/gantt-chart-tool-planning-projects-1659" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-bar-chart-horizontal-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Gantt Charts: Planning and Scheduling Team Projects</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">PMI • Best Practices in Schedule Management</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.racichart.org/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-table-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">RACI Chart Templates and Tools</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">RACI Chart • Free Resources for Responsibility Assignment</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.scrum.org/resources" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-loop-left-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Scrum.org Resources</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Scrum.org • Agile and Scrum Learning Resources</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Project Tool Selection Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll practice selecting and integrating appropriate project management tools for different scenarios. This will help you apply the concepts learned in this module to realistic project situations.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Scenario 1: Software Integration Project</h6>
+                            <p class="text-xs mb-2">Dell is implementing a new customer relationship management (CRM) system that needs to be integrated with existing enterprise systems. The project involves software development, data migration, and business process changes.</p>
+                            
+                            <p class="text-xs font-medium mb-1">Project characteristics:</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>6-month timeline with phased implementation</li>
+                                <li>Cross-functional team with IT, business users, and external vendor</li>
+                                <li>Mixture of waterfall (infrastructure) and agile (software development) components</li>
+                                <li>Multiple stakeholders with different information needs</li>
+                                <li>Critical integration dependencies with existing systems</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Tool Selection and Justification</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="For Scenario 1, identify which tools (Gantt, RACI, Agile tools) you would use, explaining why each is appropriate for this project and how you would integrate them."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Scenario 2: New Product Launch</h6>
+                            <p class="text-xs mb-2">Dell is planning to launch a new line of sustainable laptops made with recycled materials. The project involves hardware design, manufacturing process development, marketing campaign creation, and sales channel preparation.</p>
+                            
+                            <p class="text-xs font-medium mb-1">Project characteristics:</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>12-month development timeline with fixed launch date</li>
+                                <li>Multiple workstreams across engineering, manufacturing, marketing, and sales</li>
+                                <li>Global teams across multiple time zones</li>
+                                <li>Complex dependencies between hardware, software, and go-to-market activities</li>
+                                <li>High visibility with executive leadership team</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Tool Selection and Justification</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="For Scenario 2, identify which tools (Gantt, RACI, Agile tools) you would use, explaining why each is appropriate for this project and how you would integrate them."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-stakeholder-engagement">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Stakeholder Engagement & Influence</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" disabled>
+                        <span>Next</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-project-tools');
+        });
+    </script>
+</body>
+</html>

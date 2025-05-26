@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Financial Acumen</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-statements">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Financial Statements</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-common-size">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Common-Size Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-modeling">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Financial Modeling</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-dell-financials">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Dell's Financial Reports</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-ratios">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Key Financial Ratios</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-cost-benefit">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Cost-Benefit Analysis</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">23%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 23%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Problem Solving</span>
+                                <span>2/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>1/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>1/6 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Key Financial Ratios Topic -->
+            <section id="topic-financial-ratios" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-bar-chart-grouped-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Key Financial Ratios</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Financial Acumen</span>
+                                <span>•</span>
+                                <span>55 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">Not Started</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the key financial ratios used to evaluate business performance</li>
+                            <li>Learn to calculate and interpret ratios in the context of Dell's business</li>
+                            <li>Compare ratio values against industry benchmarks</li>
+                            <li>Apply ratio analysis to identify business strengths, weaknesses, and opportunities</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Financial Ratios</h4>
+                    <p>Financial ratios are mathematical relationships between financial statement items that provide insights into a company's performance, efficiency, and financial health. They allow for standardized comparison across time periods, companies, and industries.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Financial Ratios Matter</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Comparability:</strong> Enable comparison across companies of different sizes</li>
+                            <li><strong>Trend Analysis:</strong> Identify performance patterns over time</li>
+                            <li><strong>Benchmarking:</strong> Measure performance against industry standards</li>
+                            <li><strong>Decision Support:</strong> Provide quantitative basis for business decisions</li>
+                            <li><strong>Early Warning:</strong> Signal potential problems before they become severe</li>
+                        </ul>
+                    </div>
+                    
+                    <p>Financial ratios are typically organized into five main categories, each providing different insights into a company's performance and financial health:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Category</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">What It Measures</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Key Ratios</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Liquidity Ratios</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">Ability to meet short-term obligations</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">Current Ratio, Quick Ratio, Cash Ratio</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Profitability Ratios</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">Ability to generate profits relative to revenue, assets, or equity</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">Gross Margin, Operating Margin, Net Margin, ROA, ROE</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Efficiency Ratios</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">Effectiveness in using assets and managing liabilities</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">Asset Turnover, Inventory Turnover, Receivables Turnover</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Solvency Ratios</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">Long-term debt obligations and capital structure</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">Debt-to-Equity, Interest Coverage, Debt-to-EBITDA</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Valuation Ratios</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">Market value relative to financial metrics</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">P/E Ratio, P/S Ratio, EV/EBITDA, Dividend Yield</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Liquidity Ratios</h4>
+                    <p>Liquidity ratios measure a company's ability to meet its short-term obligations and convert assets to cash quickly. These ratios are particularly important for assessing near-term financial stability.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Current Ratio</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Current Assets ÷ Current Liabilities</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures ability to pay short-term obligations with current assets.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Target Range:</strong> 1.5 - 2.0</p>
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~1.0</p>
+                                <p class="mb-0"><strong>Tech Industry Avg:</strong> ~1.5</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Quick Ratio (Acid Test)</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">(Current Assets - Inventory) ÷ Current Liabilities</p>
+                            </div>
+                            <p class="text-sm mb-2">More stringent liquidity measure that excludes inventory.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Target Range:</strong> > 1.0</p>
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~0.8</p>
+                                <p class="mb-0"><strong>Tech Industry Avg:</strong> ~1.2</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Cash Ratio</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Cash & Equivalents ÷ Current Liabilities</p>
+                            </div>
+                            <p class="text-sm mb-2">Most conservative liquidity measure, using only cash and equivalents.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Target Range:</strong> > 0.5</p>
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~0.3</p>
+                                <p class="mb-0"><strong>Tech Industry Avg:</strong> ~0.7</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell Liquidity Analysis</h5>
+                        <p class="text-sm mb-2">Dell's liquidity ratios are generally lower than industry averages, which reflects the company's efficient working capital management and lean operations. The company has historically maintained lower liquidity ratios than peers for several reasons:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Efficient inventory management:</strong> Dell's build-to-order model and just-in-time inventory reduces the need for higher current assets</li>
+                            <li><strong>Strong supply chain:</strong> Vendor relationships and favorable payment terms help manage working capital</li>
+                            <li><strong>Access to capital markets:</strong> Dell's size and credit profile provide confidence in ability to access funding if needed</li>
+                            <li><strong>Focus on cash flow:</strong> Dell emphasizes operational cash flow generation over balance sheet liquidity</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Profitability Ratios</h4>
+                    <p>Profitability ratios measure a company's ability to generate earnings relative to its revenue, operating costs, assets, and equity. These ratios are critical for evaluating management effectiveness and business model viability.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Gross Margin</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Gross Profit ÷ Revenue</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures profitability after accounting for cost of goods sold.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell CSG Segment:</strong> ~20-22%</p>
+                                <p class="mb-0"><strong>Dell ISG Segment:</strong> ~40-45%</p>
+                                <p class="mb-0"><strong>Dell Overall:</strong> ~25-30%</p>
+                                <p class="mb-0"><strong>PC Industry Avg:</strong> ~20%</p>
+                                <p class="mb-0"><strong>Enterprise IT Avg:</strong> ~45%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Operating Margin</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Operating Income ÷ Revenue</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures profitability from core business operations.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell CSG Segment:</strong> ~6-8%</p>
+                                <p class="mb-0"><strong>Dell ISG Segment:</strong> ~10-12%</p>
+                                <p class="mb-0"><strong>Dell Overall:</strong> ~8-10%</p>
+                                <p class="mb-0"><strong>PC Industry Avg:</strong> ~5-7%</p>
+                                <p class="mb-0"><strong>Enterprise IT Avg:</strong> ~15-20%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Net Profit Margin</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Net Income ÷ Revenue</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures overall profitability after all expenses and taxes.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~4-6%</p>
+                                <p class="mb-0"><strong>Tech Hardware Avg:</strong> ~8%</p>
+                                <p class="mb-0"><strong>Software Companies:</strong> ~20-25%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Return on Assets (ROA)</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Net Income ÷ Average Total Assets</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures how efficiently a company uses its assets to generate profits.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~3-4%</p>
+                                <p class="mb-0"><strong>Tech Hardware Avg:</strong> ~5-7%</p>
+                                <p class="mb-0"><strong>Software Companies:</strong> ~8-10%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Return on Equity (ROE)</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Net Income ÷ Average Shareholders' Equity</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures how efficiently a company uses its equity to generate profits.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~25-30%</p>
+                                <p class="mb-0"><strong>Tech Industry Avg:</strong> ~15-20%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">EBITDA Margin</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">EBITDA ÷ Revenue</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures operational profitability before non-cash expenses and financing costs.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~12-14%</p>
+                                <p class="mb-0"><strong>Tech Hardware Avg:</strong> ~15%</p>
+                                <p class="mb-0"><strong>Software Companies:</strong> ~25-30%</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell Profitability Analysis</h5>
+                        <p class="text-sm mb-2">Dell's profitability metrics reveal several important insights about its business model and competitive position:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Segment Variation:</strong> ISG (Infrastructure Solutions Group) has significantly higher margins than CSG (Client Solutions Group), reflecting the different economics of enterprise vs. consumer hardware</li>
+                            <li><strong>ROE Strength:</strong> Dell's strong Return on Equity demonstrates efficient capital utilization, partly driven by financial leverage</li>
+                            <li><strong>Margin Pressure:</strong> Dell's overall margins are lower than software-focused competitors, which is typical for hardware-centric businesses</li>
+                            <li><strong>Strategic Shift Impact:</strong> Dell's increasing focus on higher-margin businesses (enterprise solutions, services) is gradually improving overall profitability metrics</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Efficiency/Activity Ratios</h4>
+                    <p>Efficiency ratios measure how effectively a company uses its assets and manages its liabilities. They provide insights into operational effectiveness and working capital management.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Inventory Turnover</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Cost of Goods Sold ÷ Average Inventory</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures how many times inventory is sold and replaced during a period.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~15-20 times/year</p>
+                                <p class="mb-0"><strong>Tech Hardware Avg:</strong> ~8-10 times/year</p>
+                                <p class="mb-0"><strong>Days Inventory:</strong> ~20 days (Dell)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Receivables Turnover</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Revenue ÷ Average Accounts Receivable</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures how efficiently a company collects revenue from customers.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~7-8 times/year</p>
+                                <p class="mb-0"><strong>Tech Industry Avg:</strong> ~6 times/year</p>
+                                <p class="mb-0"><strong>Days Sales Outstanding:</strong> ~45-50 days (Dell)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Payables Turnover</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Cost of Goods Sold ÷ Average Accounts Payable</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures how quickly a company pays its suppliers.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~4-5 times/year</p>
+                                <p class="mb-0"><strong>Tech Industry Avg:</strong> ~5-6 times/year</p>
+                                <p class="mb-0"><strong>Days Payable Outstanding:</strong> ~80-90 days (Dell)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Cash Conversion Cycle</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Days Inventory + Days Receivable - Days Payable</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures time taken to convert resource inputs into cash flows.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~-20 to -30 days (negative)</p>
+                                <p class="mb-0"><strong>Tech Hardware Avg:</strong> ~30-40 days</p>
+                                <p class="mb-0"><strong>Software Companies:</strong> ~60-80 days</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Asset Turnover</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Revenue ÷ Average Total Assets</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures how efficiently assets are used to generate revenue.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~0.8-1.0</p>
+                                <p class="mb-0"><strong>Tech Hardware Avg:</strong> ~0.7-0.9</p>
+                                <p class="mb-0"><strong>Software Companies:</strong> ~0.3-0.5</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Fixed Asset Turnover</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Revenue ÷ Net Fixed Assets</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures how efficiently fixed assets are used to generate revenue.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~15-20</p>
+                                <p class="mb-0"><strong>Tech Hardware Avg:</strong> ~10-15</p>
+                                <p class="mb-0"><strong>Manufacturing Companies:</strong> ~3-5</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell Efficiency Analysis</h5>
+                        <p class="text-sm mb-2">Dell has historically been known for its efficient operations, which is reflected in its activity ratios:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Negative Cash Conversion Cycle:</strong> Dell's business model allows it to receive payment from customers before paying suppliers, creating a significant working capital advantage</li>
+                            <li><strong>High Inventory Turnover:</strong> Dell's build-to-order model and just-in-time inventory management results in minimal inventory holdings and frequent turns</li>
+                            <li><strong>Strong Fixed Asset Efficiency:</strong> Dell's asset-light manufacturing model and outsourcing strategy leads to very high fixed asset turnover relative to traditional manufacturers</li>
+                            <li><strong>Extended Payables:</strong> Dell leverages its scale and supplier relationships to negotiate favorable payment terms, extending days payable outstanding</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Solvency/Leverage Ratios</h4>
+                    <p>Solvency ratios measure a company's long-term financial stability and capital structure. They assess a company's ability to meet long-term obligations and the relationship between debt and equity financing.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Debt-to-Equity Ratio</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Total Debt ÷ Total Equity</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures the proportion of debt vs. equity used to finance assets.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~4-5x</p>
+                                <p class="mb-0"><strong>Tech Industry Avg:</strong> ~0.5-1.5x</p>
+                                <p class="mb-0"><strong>Target Range:</strong> Varies by industry</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Debt-to-EBITDA Ratio</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Total Debt ÷ EBITDA</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures ability to pay off debt using operating income.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~3-4x</p>
+                                <p class="mb-0"><strong>Tech Industry Avg:</strong> ~1-2x</p>
+                                <p class="mb-0"><strong>Target Range:</strong> < 3-4x</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Interest Coverage Ratio</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">EBIT ÷ Interest Expense</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures ability to pay interest expenses with operating income.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~3-4x</p>
+                                <p class="mb-0"><strong>Tech Industry Avg:</strong> ~10-15x</p>
+                                <p class="mb-0"><strong>Target Range:</strong> > 3x</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell Solvency Analysis</h5>
+                        <p class="text-sm mb-2">Dell's capital structure reflects its history and strategic decisions:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Higher Leverage:</strong> Dell's debt ratios are higher than many tech peers, largely due to the 2016 EMC acquisition which was partially financed with debt</li>
+                            <li><strong>Deleveraging Focus:</strong> Dell has prioritized debt reduction in recent years, using free cash flow to pay down acquisition-related debt</li>
+                            <li><strong>Adequate Coverage:</strong> Despite higher debt levels, Dell maintains reasonable interest coverage ratios due to strong EBIT generation</li>
+                            <li><strong>Strategic Flexibility:</strong> Dell's leverage has historically been managed to balance financial risk with strategic investment capabilities</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Valuation Ratios</h4>
+                    <p>Valuation ratios assess a company's market value relative to its financial metrics. They help investors evaluate whether a stock is potentially undervalued, overvalued, or fairly valued.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Price-to-Earnings (P/E) Ratio</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Share Price ÷ Earnings Per Share</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures price relative to earnings per share.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~10-12x</p>
+                                <p class="mb-0"><strong>PC Hardware Avg:</strong> ~12-15x</p>
+                                <p class="mb-0"><strong>Software Companies:</strong> ~25-30x</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Enterprise Value-to-EBITDA</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Enterprise Value ÷ EBITDA</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures total company value relative to operating earnings.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~6-8x</p>
+                                <p class="mb-0"><strong>PC Hardware Avg:</strong> ~8-10x</p>
+                                <p class="mb-0"><strong>Enterprise IT Avg:</strong> ~12-15x</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Price-to-Sales (P/S) Ratio</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Market Capitalization ÷ Total Revenue</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures price relative to sales revenue.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~0.5-0.7x</p>
+                                <p class="mb-0"><strong>PC Hardware Avg:</strong> ~0.5-1.0x</p>
+                                <p class="mb-0"><strong>Software Companies:</strong> ~8-12x</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell Valuation Analysis</h5>
+                        <p class="text-sm mb-2">Dell's valuation metrics reflect market perceptions of its business model and growth prospects:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Hardware vs. Software Valuation Gap:</strong> Dell trades at significantly lower multiples than software-centric tech companies, reflecting the different margin profiles and growth expectations for hardware businesses</li>
+                            <li><strong>Mixed Business Impact:</strong> Dell's valuation reflects its mix of lower-multiple PC business with higher-multiple infrastructure and services businesses</li>
+                            <li><strong>Historical Discount:</strong> Dell has historically traded at a discount to peers, partially due to its higher debt levels and lower gross margins</li>
+                            <li><strong>Strategic Transformation:</strong> Dell's valuation multiples are influenced by market perceptions of its transition toward higher-margin businesses and recurring revenue models</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Industry-Specific Ratios for Technology Companies</h4>
+                    <p>In addition to traditional financial ratios, technology companies like Dell are often evaluated using industry-specific metrics that reflect their business models and growth dynamics.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Revenue Per Employee</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Total Revenue ÷ Total Employees</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures productivity and efficiency of workforce.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~$600-700K</p>
+                                <p class="mb-0"><strong>Hardware Companies:</strong> ~$500-600K</p>
+                                <p class="mb-0"><strong>Software Companies:</strong> ~$400-500K</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">R&D as % of Revenue</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">R&D Expense ÷ Total Revenue</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures investment in innovation relative to revenue.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~2-3%</p>
+                                <p class="mb-0"><strong>Hardware Companies:</strong> ~3-5%</p>
+                                <p class="mb-0"><strong>Software Companies:</strong> ~15-20%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Recurring Revenue %</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Recurring Revenue ÷ Total Revenue</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures stability and predictability of revenue streams.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Recent:</strong> ~30-35%</p>
+                                <p class="mb-0"><strong>Hardware Companies:</strong> ~20-30%</p>
+                                <p class="mb-0"><strong>SaaS Companies:</strong> ~90-95%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Services Attach Rate</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Service Contracts ÷ Product Units Sold</p>
+                            </div>
+                            <p class="text-sm mb-2">Measures success in attaching high-margin services to hardware sales.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Dell Enterprise:</strong> ~60-70%</p>
+                                <p class="mb-0"><strong>Dell Commercial:</strong> ~30-40%</p>
+                                <p class="mb-0"><strong>Dell Consumer:</strong> ~10-15%</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Using Ratio Analysis in Business Decision-Making</h4>
+                    <p>Financial ratios provide valuable insights for various business decisions. Here's how ratio analysis can be applied in different contexts:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Business Decision</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Relevant Ratios</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Application Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Product Portfolio Management</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Gross Margin</li>
+                                            <li>Inventory Turnover</li>
+                                            <li>Product Contribution Margin</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Comparing margin and turnover across product lines to identify which products to emphasize or phase out
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Market Expansion</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Return on Investment</li>
+                                            <li>Payback Period</li>
+                                            <li>Customer Acquisition Cost Ratio</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Evaluating the projected returns and payback periods for entering new geographic markets or segments
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Capital Allocation</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Return on Capital Employed</li>
+                                            <li>Debt-to-EBITDA</li>
+                                            <li>Free Cash Flow Yield</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Deciding between debt reduction, share repurchases, dividends, or strategic investments based on returns and constraints
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Operating Model Changes</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Operating Margin</li>
+                                            <li>Fixed Asset Turnover</li>
+                                            <li>Revenue Per Employee</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Evaluating changes to manufacturing footprint, outsourcing, or organizational structure based on efficiency metrics
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Pricing Strategy</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Gross Margin</li>
+                                            <li>Price Elasticity Ratio</li>
+                                            <li>Contribution Margin Ratio</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Determining optimal price points based on margin requirements and competitive positioning
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Best Practices for Financial Ratio Analysis</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <ol class="pl-5 mb-0">
+                            <li class="mb-2"><strong>Consider industry context:</strong> Compare ratios to industry benchmarks and similar companies, recognizing that "good" values vary by sector</li>
+                            <li class="mb-2"><strong>Analyze trends over time:</strong> Look at how ratios have changed over multiple periods to identify improving or deteriorating conditions</li>
+                            <li class="mb-2"><strong>Use multiple ratios:</strong> Don't rely on single metrics; examine a suite of complementary ratios to get a comprehensive view</li>
+                            <li class="mb-2"><strong>Understand interrelationships:</strong> Recognize how ratios connect and influence each other (e.g., impact of leverage on ROE)</li>
+                            <li class="mb-2"><strong>Be aware of accounting differences:</strong> Consider how accounting methods, non-recurring items, or business model differences may affect ratio comparability</li>
+                            <li class="mb-0"><strong>Consider business strategy:</strong> Interpret ratios in the context of a company's stage of development and strategic priorities</li>
+                        </ol>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.youtube.com/watch?v=9EpYjbl-tx8" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-video-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Financial Ratio Analysis Explained</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">YouTube • 24:38</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://corporatefinanceinstitute.com/resources/accounting/financial-ratios/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Financial Ratios Guide & Cheat Sheet</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">CFI • 15 min read</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.wallstreetprep.com/knowledge/financial-ratios/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-file-list-3-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Financial Ratios: The Complete List for Analysis</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Wall Street Prep • 20 min read</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell and Competitor Analysis</h5>
+                        <p class="mb-3">Using the simplified financial data below, calculate key financial ratios for Dell and a competitor, then interpret the results to draw conclusions about their relative financial strength and business models.</p>
+                        
+                        <div class="overflow-x-auto mb-4">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-700">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Financial Metric ($B)</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Dell</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Competitor X</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Revenue</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">100.0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">80.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Gross Profit</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">25.0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">28.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Operating Income</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">8.0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">10.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Net Income</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">5.5</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">7.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Total Assets</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">110.0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">95.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Current Assets</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">45.0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">40.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Current Liabilities</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">42.0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">30.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Total Debt</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">40.0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">25.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Shareholders' Equity</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">20.0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">40.0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <p class="mb-2 text-sm">For each company, calculate and compare:</p>
+                        <ol class="pl-5 mb-4 text-sm">
+                            <li>Gross Margin, Operating Margin, and Net Margin</li>
+                            <li>Current Ratio</li>
+                            <li>Debt-to-Equity Ratio</li>
+                            <li>Return on Assets (ROA) and Return on Equity (ROE)</li>
+                            <li>Asset Turnover Ratio</li>
+                        </ol>
+                        
+                        <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="10" placeholder="Enter your calculations and comparative analysis here..."></textarea>
+                        <button class="mt-3 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-dell-financials">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Dell's Financial Reports</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-cost-benefit">
+                        <span>Next: Cost-Benefit Analysis</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    window.location.href = '#' + nextTopicId;
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    window.location.href = '#' + prevTopicId;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

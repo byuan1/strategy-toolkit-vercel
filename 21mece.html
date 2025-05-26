@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Structured Problem Solving</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-hypothesis">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Hypothesis-Driven Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-storylining">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Story-lining</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-mece">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>MECE Framework</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-issue-trees">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Issue Trees</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-decision-trees">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Decision Trees</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-root-cause">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Root Cause Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-scenario-analysis">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Scenario Analysis</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">35%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 35%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>7/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Problem Solving</span>
+                                <span>2/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>0/6 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- MECE Framework Topic -->
+            <section id="topic-mece" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-grid-fill text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">MECE Framework</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Structured Problem Solving</span>
+                                <span>•</span>
+                                <span>40 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the MECE principle and why it's essential for structured problem solving</li>
+                            <li>Learn to develop MECE frameworks for organizing information and analysis</li>
+                            <li>Identify common MECE structures and when to apply each</li>
+                            <li>Apply MECE thinking to Dell business challenges</li>
+                            <li>Avoid common pitfalls in creating MECE frameworks</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to the MECE Framework</h4>
+                    <p>The MECE (Mutually Exclusive, Collectively Exhaustive) framework is a fundamental principle for structured thinking and problem solving. Developed and popularized by management consulting firms like McKinsey & Company, MECE provides a logical approach to breaking down complex problems into clearly defined, non-overlapping components that together cover all possibilities. This powerful organizing principle helps ensure your analysis is comprehensive while avoiding confusion caused by double-counting or gaps.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why MECE Matters</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Clarity:</strong> Creates distinct categories that prevent confusion and overlap</li>
+                            <li><strong>Completeness:</strong> Ensures no important elements are missed in your analysis</li>
+                            <li><strong>Efficiency:</strong> Prevents wasted effort from analyzing the same issue multiple times</li>
+                            <li><strong>Communication:</strong> Provides clear structure that aids understanding and alignment</li>
+                            <li><strong>Decision Quality:</strong> Improves analysis by ensuring all factors are considered exactly once</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-2xl bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-3 rounded-lg">
+                                    <h5 class="font-medium text-blue-700 dark:text-blue-400 text-center mb-2">Mutually Exclusive</h5>
+                                    <p class="text-sm mb-3 text-center">"No overlaps"</p>
+                                    <div class="flex justify-center mb-2">
+                                        <svg width="140" height="70" viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="40" cy="35" r="30" fill="#BBDEFB" class="dark:fill-blue-900/30" stroke="#2196F3" class="dark:stroke-blue-700" stroke-width="2" />
+                                            <circle cx="100" cy="35" r="30" fill="#BBDEFB" class="dark:fill-blue-900/30" stroke="#2196F3" class="dark:stroke-blue-700" stroke-width="2" />
+                                            <text x="40" y="40" text-anchor="middle" font-size="12" fill="#1565C0" class="dark:fill-blue-300">A</text>
+                                            <text x="100" y="40" text-anchor="middle" font-size="12" fill="#1565C0" class="dark:fill-blue-300">B</text>
+                                        </svg>
+                                    </div>
+                                    <p class="text-xs mb-0 text-center">Each element belongs to exactly one category</p>
+                                </div>
+                                <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 p-3 rounded-lg">
+                                    <h5 class="font-medium text-green-700 dark:text-green-400 text-center mb-2">Collectively Exhaustive</h5>
+                                    <p class="text-sm mb-3 text-center">"No gaps"</p>
+                                    <div class="flex justify-center mb-2">
+                                        <svg width="140" height="70" viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="10" y="10" width="120" height="50" fill="#C8E6C9" class="dark:fill-green-900/30" stroke="#4CAF50" class="dark:stroke-green-700" stroke-width="2" rx="5" />
+                                            <rect x="15" y="15" width="50" height="40" fill="#81C784" class="dark:fill-green-800/40" stroke="#4CAF50" class="dark:stroke-green-700" stroke-width="1" rx="3" />
+                                            <rect x="75" y="15" width="50" height="40" fill="#81C784" class="dark:fill-green-800/40" stroke="#4CAF50" class="dark:stroke-green-700" stroke-width="1" rx="3" />
+                                            <text x="40" y="40" text-anchor="middle" font-size="12" fill="#2E7D32" class="dark:fill-green-300">A</text>
+                                            <text x="100" y="40" text-anchor="middle" font-size="12" fill="#2E7D32" class="dark:fill-green-300">B</text>
+                                        </svg>
+                                    </div>
+                                    <p class="text-xs mb-0 text-center">All categories together cover all possibilities</p>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-3 rounded-lg">
+                                    <h5 class="font-medium text-red-700 dark:text-red-400 text-center mb-2">Not Mutually Exclusive</h5>
+                                    <div class="flex justify-center mb-2">
+                                        <svg width="140" height="70" viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="40" cy="35" r="30" fill="#FFCDD2" class="dark:fill-red-900/30" stroke="#F44336" class="dark:stroke-red-700" stroke-width="2" />
+                                            <circle cx="100" cy="35" r="30" fill="#FFCDD2" class="dark:fill-red-900/30" stroke="#F44336" class="dark:stroke-red-700" stroke-width="2" />
+                                            <text x="40" y="40" text-anchor="middle" font-size="12" fill="#B71C1C" class="dark:fill-red-300">A</text>
+                                            <text x="100" y="40" text-anchor="middle" font-size="12" fill="#B71C1C" class="dark:fill-red-300">B</text>
+                                            <path d="M 40 35 L 100 35" stroke="#B71C1C" class="dark:stroke-red-500" stroke-width="30" stroke-opacity="0.3" />
+                                            <text x="70" y="40" text-anchor="middle" font-size="12" fill="#B71C1C" class="dark:fill-red-300">A&B</text>
+                                        </svg>
+                                    </div>
+                                    <p class="text-xs text-center text-red-600 dark:text-red-400">Problem: Elements can belong to multiple categories, causing double-counting and confusion</p>
+                                </div>
+                                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-3 rounded-lg">
+                                    <h5 class="font-medium text-red-700 dark:text-red-400 text-center mb-2">Not Collectively Exhaustive</h5>
+                                    <div class="flex justify-center mb-2">
+                                        <svg width="140" height="70" viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="10" y="10" width="120" height="50" fill="#FFCDD2" class="dark:fill-red-900/30" stroke="#F44336" class="dark:stroke-red-700" stroke-width="2" rx="5" />
+                                            <rect x="15" y="15" width="40" height="40" fill="#EF9A9A" class="dark:fill-red-800/40" stroke="#F44336" class="dark:stroke-red-700" stroke-width="1" rx="3" />
+                                            <rect x="85" y="15" width="40" height="40" fill="#EF9A9A" class="dark:fill-red-800/40" stroke="#F44336" class="dark:stroke-red-700" stroke-width="1" rx="3" />
+                                            <text x="35" y="40" text-anchor="middle" font-size="12" fill="#B71C1C" class="dark:fill-red-300">A</text>
+                                            <text x="105" y="40" text-anchor="middle" font-size="12" fill="#B71C1C" class="dark:fill-red-300">B</text>
+                                            <text x="70" y="40" text-anchor="middle" font-size="12" fill="#B71C1C" class="dark:fill-red-300">?</text>
+                                        </svg>
+                                    </div>
+                                    <p class="text-xs text-center text-red-600 dark:text-red-400">Problem: Categories don't cover all possibilities, creating gaps in analysis and missed opportunities</p>
+                                </div>
+                            </div>
+                            <p class="text-xs text-center mt-3 text-gray-500 dark:text-gray-400">MECE creates clear, complete frameworks with no overlaps and no gaps</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Core MECE Structures</h4>
+                    <p>Several common MECE structures can be applied to different types of problems. Understanding these patterns helps you quickly develop effective frameworks for various business challenges:</p>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Process Steps</h5>
+                        <p class="text-sm mb-3">Organizing by sequential steps in a process or value chain is a natural way to create MECE categories. Each step represents a distinct phase that together cover the entire process.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Characteristics</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Sequential steps with clear boundaries</li>
+                                    <li>Each step is a distinct phase with specific activities</li>
+                                    <li>Together covers end-to-end process</li>
+                                    <li>Steps have dependencies with outputs becoming inputs</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">When to Use</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Analyzing operational workflows</li>
+                                    <li>Identifying bottlenecks in a process</li>
+                                    <li>Mapping customer journeys</li>
+                                    <li>Supply chain or manufacturing analysis</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: Dell's Manufacturing Process</h6>
+                            <div class="flex flex-nowrap overflow-x-auto py-2 mb-2">
+                                <div class="flex-shrink-0 w-40 bg-blue-100 dark:bg-blue-900/30 p-2 rounded-l-md">
+                                    <h6 class="text-xs font-medium text-center mb-1">1. Order Processing</h6>
+                                    <p class="text-xs text-center mb-0">Order validation, payment, customization</p>
+                                </div>
+                                <div class="flex-shrink-0 w-40 bg-blue-100 dark:bg-blue-900/30 p-2 border-x border-white dark:border-gray-800">
+                                    <h6 class="text-xs font-medium text-center mb-1">2. Component Sourcing</h6>
+                                    <p class="text-xs text-center mb-0">Inventory allocation, parts pulling</p>
+                                </div>
+                                <div class="flex-shrink-0 w-40 bg-blue-100 dark:bg-blue-900/30 p-2 border-x border-white dark:border-gray-800">
+                                    <h6 class="text-xs font-medium text-center mb-1">3. Assembly</h6>
+                                    <p class="text-xs text-center mb-0">Hardware build, software load</p>
+                                </div>
+                                <div class="flex-shrink-0 w-40 bg-blue-100 dark:bg-blue-900/30 p-2 border-x border-white dark:border-gray-800">
+                                    <h6 class="text-xs font-medium text-center mb-1">4. Quality Testing</h6>
+                                    <p class="text-xs text-center mb-0">Diagnostics, inspection, validation</p>
+                                </div>
+                                <div class="flex-shrink-0 w-40 bg-blue-100 dark:bg-blue-900/30 p-2 rounded-r-md">
+                                    <h6 class="text-xs font-medium text-center mb-1">5. Packaging & Shipping</h6>
+                                    <p class="text-xs text-center mb-0">Packaging, logistics, delivery</p>
+                                </div>
+                            </div>
+                            <p class="text-xs mb-0 text-gray-600 dark:text-gray-400">This process breakdown provides a MECE structure to analyze Dell's manufacturing efficiency. Each step is distinct with clear handoffs, and together they cover the entire process from order to delivery.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Segmentation</h5>
+                        <p class="text-sm mb-3">Segmentation divides a population into distinct, non-overlapping groups based on specific characteristics. These segments together represent the entire population.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Characteristics</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Based on clear differentiating criteria</li>
+                                    <li>Each segment has distinct attributes</li>
+                                    <li>Together includes entire population</li>
+                                    <li>No individual belongs to multiple segments</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">When to Use</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Customer or market analysis</li>
+                                    <li>Product portfolio strategy</li>
+                                    <li>Channel strategy development</li>
+                                    <li>Resource allocation decisions</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: Dell's Customer Segmentation</h6>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm border-collapse">
+                                    <thead>
+                                        <tr class="bg-indigo-50 dark:bg-indigo-900/30">
+                                            <th class="border border-gray-200 dark:border-gray-600 px-2 py-1 text-left">Segment</th>
+                                            <th class="border border-gray-200 dark:border-gray-600 px-2 py-1 text-left">Definition</th>
+                                            <th class="border border-gray-200 dark:border-gray-600 px-2 py-1 text-left">Key Characteristics</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1 font-medium">Consumer</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1">Individual end users purchasing for personal use</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1">
+                                                <ul class="pl-3 mb-0 text-xs">
+                                                    <li>Price sensitivity</li>
+                                                    <li>Retail/e-commerce channels</li>
+                                                    <li>Personal tech preferences</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1 font-medium">Small Business</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1">Organizations with 1-99 employees</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1">
+                                                <ul class="pl-3 mb-0 text-xs">
+                                                    <li>Budget constraints</li>
+                                                    <li>Limited IT resources</li>
+                                                    <li>Value bundled solutions</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1 font-medium">Medium Business</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1">Organizations with 100-999 employees</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1">
+                                                <ul class="pl-3 mb-0 text-xs">
+                                                    <li>Growing IT needs</li>
+                                                    <li>Balance cost & performance</li>
+                                                    <li>Some specialized requirements</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1 font-medium">Large Enterprise</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1">Organizations with 1,000+ employees</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1">
+                                                <ul class="pl-3 mb-0 text-xs">
+                                                    <li>Complex IT infrastructure</li>
+                                                    <li>Strategic procurement</li>
+                                                    <li>Custom requirements</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1 font-medium">Public Sector</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1">Government, education, and healthcare organizations</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-2 py-1">
+                                                <ul class="pl-3 mb-0 text-xs">
+                                                    <li>Regulated purchasing</li>
+                                                    <li>Compliance requirements</li>
+                                                    <li>Budget cycles</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="text-xs mt-2 mb-0 text-gray-600 dark:text-gray-400">This segmentation provides a MECE structure for Dell's go-to-market strategy. Each customer fits into exactly one segment based on clear criteria, and together these segments cover Dell's entire customer base.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Buckets and Drivers</h5>
+                        <p class="text-sm mb-3">This approach organizes elements into distinct categories based on their characteristics or functions. It's especially useful for financial analyses, cost breakdowns, or identifying factors affecting a business outcome.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Characteristics</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Clear category definitions with no overlap</li>
+                                    <li>Each bucket groups similar items</li>
+                                    <li>All items are assigned to exactly one bucket</li>
+                                    <li>Together include all relevant elements</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">When to Use</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Cost and revenue analyses</li>
+                                    <li>Performance driver identification</li>
+                                    <li>Risk categorization</li>
+                                    <li>Resource classification</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: Dell's Server Revenue Drivers</h6>
+                            <div class="flex flex-wrap gap-2 mb-2">
+                                <div class="flex-1 min-w-[160px] bg-green-100 dark:bg-green-900/30 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Volume Drivers</h6>
+                                    <ul class="pl-3 text-xs mb-0">
+                                        <li>Market size growth</li>
+                                        <li>Market share changes</li>
+                                        <li>New customer acquisition</li>
+                                        <li>Customer retention rates</li>
+                                    </ul>
+                                </div>
+                                <div class="flex-1 min-w-[160px] bg-green-100 dark:bg-green-900/30 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Price Drivers</h6>
+                                    <ul class="pl-3 text-xs mb-0">
+                                        <li>Product mix shifts</li>
+                                        <li>Competitive pricing pressure</li>
+                                        <li>Discount management</li>
+                                        <li>Value-added feature pricing</li>
+                                    </ul>
+                                </div>
+                                <div class="flex-1 min-w-[160px] bg-green-100 dark:bg-green-900/30 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Channel Drivers</h6>
+                                    <ul class="pl-3 text-xs mb-0">
+                                        <li>Direct vs. partner mix</li>
+                                        <li>Channel incentive effectiveness</li>
+                                        <li>Geographic market performance</li>
+                                        <li>Online vs. field sales effectiveness</li>
+                                    </ul>
+                                </div>
+                                <div class="flex-1 min-w-[160px] bg-green-100 dark:bg-green-900/30 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Attached Revenue Drivers</h6>
+                                    <ul class="pl-3 text-xs mb-0">
+                                        <li>Services attachment rates</li>
+                                        <li>Software solution cross-selling</li>
+                                        <li>Financing penetration</li>
+                                        <li>Warranty and support upgrades</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="text-xs mb-0 text-gray-600 dark:text-gray-400">This framework provides a MECE breakdown of all factors that could influence Dell's server revenue. Each driver belongs to exactly one category, and together they comprehensively cover all potential revenue influences.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">2x2 Matrices</h5>
+                        <p class="text-sm mb-3">Using two dimensions to create a 2x2 matrix is a powerful way to create MECE categories. This approach divides items along two critical variables, creating four distinct quadrants.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Characteristics</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Based on two independent dimensions</li>
+                                    <li>Creates four distinct quadrants</li>
+                                    <li>Each item falls into exactly one quadrant</li>
+                                    <li>Enables comparison and prioritization</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">When to Use</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Prioritization decisions</li>
+                                    <li>Portfolio analysis</li>
+                                    <li>Comparing strategic options</li>
+                                    <li>Segmenting opportunities or risks</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: Dell's Product Development Prioritization Matrix</h6>
+                            <div class="relative flex justify-center mb-2">
+                                <div class="w-full max-w-md aspect-square grid grid-cols-2 grid-rows-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+                                    <div class="bg-green-100 dark:bg-green-900/30 p-3 border-r border-b border-gray-300 dark:border-gray-600 relative">
+                                        <h6 class="text-xs font-medium text-green-700 dark:text-green-400">Invest & Accelerate</h6>
+                                        <p class="text-xs mb-0">High market growth, strong Dell position</p>
+                                        <ul class="pl-4 text-xs mt-2 mb-0">
+                                            <li>AI-optimized servers</li>
+                                            <li>APEX as-a-service offerings</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-amber-100 dark:bg-amber-900/30 p-3 border-l border-b border-gray-300 dark:border-gray-600 relative">
+                                        <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400">Selectively Invest</h6>
+                                        <p class="text-xs mb-0">High market growth, weaker Dell position</p>
+                                        <ul class="pl-4 text-xs mt-2 mb-0">
+                                            <li>Edge computing solutions</li>
+                                            <li>Cybersecurity offerings</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-blue-100 dark:bg-blue-900/30 p-3 border-r border-t border-gray-300 dark:border-gray-600 relative">
+                                        <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400">Maintain & Optimize</h6>
+                                        <p class="text-xs mb-0">Lower market growth, strong Dell position</p>
+                                        <ul class="pl-4 text-xs mt-2 mb-0">
+                                            <li>Traditional servers</li>
+                                            <li>Commercial PCs and workstations</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-red-100 dark:bg-red-900/30 p-3 border-l border-t border-gray-300 dark:border-gray-600 relative">
+                                        <h6 class="text-xs font-medium text-red-700 dark:text-red-400">Harvest or Exit</h6>
+                                        <p class="text-xs mb-0">Lower market growth, weaker Dell position</p>
+                                        <ul class="pl-4 text-xs mt-2 mb-0">
+                                            <li>Legacy storage arrays</li>
+                                            <li>Basic peripherals</li>
+                                        </ul>
+                                    </div>
+                                    <!-- Axes labels -->
+                                    <div class="absolute w-full text-center -bottom-6">
+                                        <span class="text-xs font-medium">Market Growth Rate</span>
+                                    </div>
+                                    <div class="absolute h-full -left-6 flex items-center">
+                                        <span class="text-xs font-medium transform -rotate-90">Dell's Competitive Position</span>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 w-8 h-8">
+                                        <span class="absolute bottom-1 left-1 text-xs">Low</span>
+                                    </div>
+                                    <div class="absolute bottom-0 right-0 w-8 h-8">
+                                        <span class="absolute bottom-1 right-1 text-xs">High</span>
+                                    </div>
+                                    <div class="absolute top-0 left-0 w-8 h-8">
+                                        <span class="absolute top-1 left-1 text-xs">Low</span>
+                                    </div>
+                                    <div class="absolute top-0 right-0 w-8 h-8">
+                                        <span class="absolute top-1 right-1 text-xs">High</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs mb-0 text-gray-600 dark:text-gray-400">This 2x2 matrix creates a MECE framework for Dell's product development prioritization. Each product category falls into exactly one quadrant based on market growth and Dell's competitive position, enabling clear strategic decisions about where to invest resources.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Mathematical Logic</h5>
+                        <p class="text-sm mb-3">Mathematical logic uses binary opposites (A vs. not A) or exhaustive lists to create naturally MECE categories. This approach is particularly useful when dealing with clear yes/no situations or when creating comprehensive checklists.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Characteristics</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Often uses binary opposites (A or not A)</li>
+                                    <li>Creates naturally mutually exclusive categories</li>
+                                    <li>Ensures collective exhaustiveness by definition</li>
+                                    <li>Can be nested for more granularity</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">When to Use</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Decision tree development</li>
+                                    <li>Root cause analysis</li>
+                                    <li>Creating comprehensive checklists</li>
+                                    <li>Customer or market bifurcation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: Dell's Server Performance Issue Analysis</h6>
+                            <div class="w-full max-w-3xl mx-auto">
+                                <div class="flex justify-center mb-3">
+                                    <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-md">
+                                        <p class="text-sm font-medium mb-0 text-center">Server Performance Issues</p>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center mb-2">
+                                    <div class="w-px h-8 bg-gray-400 dark:bg-gray-600"></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4 mb-2">
+                                    <div>
+                                        <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-md mb-2">
+                                            <p class="text-sm font-medium mb-0 text-center">Hardware-Related</p>
+                                        </div>
+                                        <div class="pl-4 relative">
+                                            <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                            <div class="border-t border-l border-gray-400 dark:border-gray-600 absolute top-1/2 left-0 w-3 h-4"></div>
+                                            <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-md mb-2">
+                                                <p class="text-xs font-medium mb-0">Component Failures</p>
+                                                <ul class="pl-3 text-xs mb-0">
+                                                    <li>CPU issues</li>
+                                                    <li>Memory failures</li>
+                                                    <li>Storage device errors</li>
+                                                </ul>
+                                            </div>
+                                            <div class="border-b border-l border-gray-400 dark:border-gray-600 absolute top-1/2 left-0 w-3 h-4"></div>
+                                            <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-md">
+                                                <p class="text-xs font-medium mb-0">Configuration Problems</p>
+                                                <ul class="pl-3 text-xs mb-0">
+                                                    <li>BIOS settings</li>
+                                                    <li>Component compatibility</li>
+                                                    <li>Cooling issues</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-md mb-2">
+                                            <p class="text-sm font-medium mb-0 text-center">Software-Related</p>
+                                        </div>
+                                        <div class="pl-4 relative">
+                                            <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                            <div class="border-t border-l border-gray-400 dark:border-gray-600 absolute top-1/2 left-0 w-3 h-4"></div>
+                                            <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-md mb-2">
+                                                <p class="text-xs font-medium mb-0">Operating System Issues</p>
+                                                <ul class="pl-3 text-xs mb-0">
+                                                    <li>Driver problems</li>
+                                                    <li>OS configuration</li>
+                                                    <li>Patch management</li>
+                                                </ul>
+                                            </div>
+                                            <div class="border-b border-l border-gray-400 dark:border-gray-600 absolute top-1/2 left-0 w-3 h-4"></div>
+                                            <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-md">
+                                                <p class="text-xs font-medium mb-0">Application Problems</p>
+                                                <ul class="pl-3 text-xs mb-0">
+                                                    <li>Resource utilization</li>
+                                                    <li>Compatibility issues</li>
+                                                    <li>Configuration errors</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-2 mb-0 text-gray-600 dark:text-gray-400">This framework provides a MECE breakdown of potential server performance issues using mathematical logic. The first level divides all issues into hardware-related or software-related (A or not A), ensuring every issue falls into exactly one category. Each branch is then further subdivided into MECE subcategories.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Creating MECE Frameworks</h4>
+                    <p>Developing effective MECE frameworks requires a structured approach and careful attention to category definitions:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h5 class="font-medium mb-2">Step-by-Step Approach</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <ol class="pl-5 text-sm mb-0">
+                                    <li class="mb-2">
+                                        <strong>Define the problem scope</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Clarify what elements need to be included in your framework and what can be excluded.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Identify potential organizing principles</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Consider different ways to group elements (by process, function, stakeholder, etc.).</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Test for mutual exclusivity</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Verify that each element belongs to exactly one category with no overlaps.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Test for collective exhaustiveness</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Confirm that all categories together cover the entire problem space with no gaps.</p>
+                                    </li>
+                                    <li>
+                                        <strong>Refine category definitions</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Clarify boundaries between categories to eliminate ambiguity.</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h5 class="font-medium mb-2">Best Practices</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2">
+                                        <strong>Use single dimension for first-level categories</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Avoid mixing different organizing principles at the same level (e.g., don't mix "internal vs. external" with "technical vs. non-technical").</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Create clear category definitions</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Establish precise criteria for what belongs in each category.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Test with examples</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Verify your framework by classifying specific examples, especially edge cases.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Balance breadth and depth</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Aim for 3-7 categories at each level – too few may not be sufficiently granular, too many becomes unwieldy.</p>
+                                    </li>
+                                    <li>
+                                        <strong>Consider the purpose</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Choose a structure that best supports your analysis goals and communication needs.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-yellow-700 dark:text-yellow-400 font-medium mb-2">Common MECE Pitfalls and How to Avoid Them</h5>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2"><strong>Overlapping categories:</strong> Creating categories with fuzzy boundaries<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Define clear criteria for each category and test for ambiguous cases</span></li>
+                                    <li class="mb-2"><strong>Incomplete coverage:</strong> Missing important elements in your framework<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Add an "Other" category, but then analyze what it contains to create proper categories</span></li>
+                                    <li class="mb-0"><strong>Mixing dimensions:</strong> Using different organizing principles at the same level<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Stick to one dimension per level (e.g., all categories based on function or all based on time frame, not mixed)</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2"><strong>Over-complexity:</strong> Creating too many subdivisions<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Focus on the most important dimensions for your specific analysis needs</span></li>
+                                    <li class="mb-2"><strong>Forced categorization:</strong> Trying to fit elements where they don't belong<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Be willing to revise your framework if elements don't fit cleanly</span></li>
+                                    <li class="mb-0"><strong>Unhelpful organizing principle:</strong> Using a dimension that doesn't provide useful insights<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Choose organizing principles that highlight meaningful differences relevant to your analysis</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>MECE in Dell Business Context</h4>
+                    <p>The MECE framework can be applied to various Dell business challenges for more structured analysis and clearer decision-making:</p>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell Business Applications</h5>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Business Challenge</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">MECE Structure</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Benefits</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            Revenue Growth Strategy
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <p class="mb-1"><strong>Buckets & Drivers:</strong></p>
+                                            <ol class="pl-5 text-sm mb-0">
+                                                <li>Customer expansion (new customers)</li>
+                                                <li>Customer retention (existing customers)</li>
+                                                <li>Product expansion (new offerings)</li>
+                                                <li>Product penetration (existing offerings)</li>
+                                            </ol>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Ensures all revenue growth opportunities are considered</li>
+                                                <li>Prevents overlap in growth initiatives</li>
+                                                <li>Enables clear responsibility assignment</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            Product Portfolio Management
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <p class="mb-1"><strong>2x2 Matrix:</strong></p>
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li><strong>Dimension 1:</strong> Market growth (high/low)</li>
+                                                <li><strong>Dimension 2:</strong> Dell's competitive position (strong/weak)</li>
+                                                <li>Creates 4 quadrants with distinct strategies</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Provides clear investment prioritization</li>
+                                                <li>Ensures each product has a defined strategy</li>
+                                                <li>Balances growth and profitability considerations</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            Supply Chain Optimization
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <p class="mb-1"><strong>Process Steps:</strong></p>
+                                            <ol class="pl-5 text-sm mb-0">
+                                                <li>Sourcing & procurement</li>
+                                                <li>Manufacturing & assembly</li>
+                                                <li>Inventory management</li>
+                                                <li>Distribution & logistics</li>
+                                                <li>Returns & reverse logistics</li>
+                                            </ol>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Identifies bottlenecks at specific process stages</li>
+                                                <li>Enables targeted improvement initiatives</li>
+                                                <li>Clarifies handoffs between process steps</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            Customer Experience Enhancement
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <p class="mb-1"><strong>Customer Journey Stages:</strong></p>
+                                            <ol class="pl-5 text-sm mb-0">
+                                                <li>Awareness & discovery</li>
+                                                <li>Evaluation & purchase</li>
+                                                <li>Implementation & onboarding</li>
+                                                <li>Usage & support</li>
+                                                <li>Renewal & expansion</li>
+                                            </ol>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Ensures comprehensive experience assessment</li>
+                                                <li>Identifies specific touchpoints for improvement</li>
+                                                <li>Enables journey mapping across departments</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <h4>Integrating MECE with Other Problem-Solving Tools</h4>
+                    <p>The MECE framework complements other problem-solving approaches and can be integrated with them for more effective analysis:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Framework</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Integration with MECE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Hypothesis-Driven Problem Solving</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Use MECE to develop a comprehensive set of hypotheses</li>
+                                            <li>Ensure hypothesis testing covers all possible explanations</li>
+                                            <li>Organize data collection along MECE categories</li>
+                                            <li>Structure findings in MECE format for clear communication</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Story-lining</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Apply MECE to structure supporting arguments in your pyramid</li>
+                                            <li>Use MECE categories as main sections in presentations and reports</li>
+                                            <li>Ensure narrative covers all MECE elements of your framework</li>
+                                            <li>Test story structure for gaps and overlaps using MECE principles</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Issue Trees</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>MECE is fundamental to creating effective issue trees</li>
+                                            <li>Each branch of the issue tree should follow MECE principles</li>
+                                            <li>Use MECE to verify issue tree completeness</li>
+                                            <li>Apply different MECE structures at different tree levels</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Root Cause Analysis</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Use MECE to categorize potential causes</li>
+                                            <li>Ensure root cause investigation covers all possibilities</li>
+                                            <li>Apply MECE to organize contributing factors</li>
+                                            <li>Structure solution development along MECE categories</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.mckinsey.com/alumni/news-and-insights/global-news/alumni-news/barbara-minto-alumni-profile" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Origins of MECE</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • Barbara Minto Profile</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.strategyand.pwc.com/gx/en/insights/mutually-exclusive-collectively-exhaustive.html" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">MECE Problem Solving</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Strategy& • Comprehensive Guide</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://hbr.org/2017/05/a-refresher-on-organizing-your-business-case" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Organizing Business Cases</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • MECE Applications</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell's Cloud Strategy MECE Framework</h5>
+                        <p class="mb-3">Dell is developing a comprehensive cloud strategy to address evolving customer needs. Create a MECE framework to analyze the opportunities and challenges Dell faces in the cloud market.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Context Information:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Dell competes in multiple cloud-related areas: infrastructure, services, and software</li>
+                                    <li>Customers have varying cloud adoption models: private, public, hybrid, and multi-cloud</li>
+                                    <li>Dell's current offerings include APEX (as-a-service), cloud-enabled infrastructure, and cloud management software</li>
+                                    <li>Competition comes from traditional hardware vendors, public cloud providers, and specialized cloud software companies</li>
+                                    <li>Customer segments have different requirements (enterprises, mid-market, small business)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Your Task:</p>
+                                <ol class="pl-4 text-sm mb-0">
+                                    <li>Develop a MECE framework to analyze Dell's cloud strategy opportunities</li>
+                                    <li>Choose an appropriate MECE structure (e.g., segments, process, buckets, matrix)</li>
+                                    <li>Verify your framework for mutual exclusivity and collective exhaustiveness</li>
+                                    <li>Explain why your chosen structure is effective for this analysis</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">MECE Structure Selection</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="2" placeholder="What MECE structure would you use and why?"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Framework Development</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="5" placeholder="Outline your MECE framework, including main categories and subcategories if applicable..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">MECE Verification</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Explain how you've ensured your framework is mutually exclusive and collectively exhaustive..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Application to Dell's Strategy</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="How would this framework help Dell develop its cloud strategy?"></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Framework</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-storylining">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Story-lining</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-issue-trees">
+                        <span>Next: Issue Trees</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Issue Trees Topic -->
+            <section id="topic-issue-trees" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-git-branch-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Issue Trees</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Structured Problem Solving</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the purpose and structure of issue trees in problem decomposition</li>
+                            <li>Learn to build logical issue trees using MECE principles</li>
+                            <li>Develop skills to apply different types of issue trees to business problems</li>
+                            <li>Apply issue tree methodology to Dell business challenges</li>
+                            <li>Create issue trees that drive effective analysis and decision-making</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Issue Trees</h4>
+                    <p>Issue trees (also called logic trees) are powerful visual structures that help break down complex problems into manageable components. By systematically decomposing a problem into its constituent parts, issue trees create a clear roadmap for analysis and problem-solving. Developed and refined by management consulting firms, issue trees have become an essential tool for structured thinking in business contexts.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Issue Trees Matter</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Structured decomposition:</strong> Breaks complex problems into manageable components</li>
+                            <li><strong>Analytical clarity:</strong> Creates a clear roadmap for problem-solving</li>
+                            <li><strong>Comprehensive coverage:</strong> Ensures no important aspects are overlooked</li>
+                            <li><strong>Priority setting:</strong> Helps identify the most critical areas for investigation</li>
+                            <li><strong>Communication:</strong> Provides a visual framework for sharing analysis plans</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <div class="flex justify-center mb-3">
+                                    <div class="bg-primary/10 dark:bg-primary/20 p-3 rounded-lg">
+                                        <p class="text-sm font-medium mb-0 text-center">How can Dell increase its commercial PC market share?</p>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center mb-2">
+                                    <div class="w-px h-8 bg-gray-400 dark:bg-gray-600"></div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-3">
+                                    <div>
+                                        <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg mb-2">
+                                            <p class="text-sm font-medium mb-0 text-center">Improve product offering</p>
+                                        </div>
+                                        <div class="pl-4 relative">
+                                            <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                            <div class="border-t border-l border-gray-400 dark:border-gray-600 absolute top-3 left-0 w-3 h-3"></div>
+                                            <div class="bg-blue-50/50 dark:bg-blue-900/10 p-2 rounded-lg mb-2">
+                                                <p class="text-xs mb-0">Enhance hardware performance</p>
+                                            </div>
+                                            <div class="border-t border-l border-gray-400 dark:border-gray-600 absolute top-[4.5rem] left-0 w-3 h-3"></div>
+                                            <div class="bg-blue-50/50 dark:bg-blue-900/10 p-2 rounded-lg mb-2">
+                                                <p class="text-xs mb-0">Improve software experiences</p>
+                                            </div>
+                                            <div class="border-t border-l border-gray-400 dark:border-gray-600 absolute top-[8rem] left-0 w-3 h-3"></div>
+                                            <div class="bg-blue-50/50 dark:bg-blue-900/10 p-2 rounded-lg">
+                                                <p class="text-xs mb-0">Expand service offerings</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg mb-2">
+                                            <p class="text-sm font-medium mb-0 text-center">Enhance go-to-market</p>
+                                        </div>
+                                        <div class="pl-4 relative">
+                                            <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                            <div class="border-t border-l border-gray-400 dark:border-gray-600 absolute top-3 left-0 w-3 h-3"></div>
+                                            <div class="bg-green-50/50 dark:bg-green-900/10 p-2 rounded-lg mb-2">
+                                                <p class="text-xs mb-0">Optimize pricing strategy</p>
+                                            </div>
+                                            <div class="border-t border-l border-gray-400 dark:border-gray-600 absolute top-[4.5rem] left-0 w-3 h-3"></div>
+                                            <div class="bg-green-50/50 dark:bg-green-900/10 p-2 rounded-lg mb-2">
+                                                <p class="text-xs mb-0">Strengthen channel partnerships</p>
+                                            </div>
+                                            <div class="border-t border-l border-gray-400 dark:border-gray-600 absolute top-[8rem] left-0 w-3 h-3"></div>
+                                            <div class="bg-green-50/50 dark:bg-green-900/10 p-2 rounded-lg">
+                                                <p class="text-xs mb-0">Improve marketing effectiveness</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg mb-2">
+                                            <p class="text-sm font-medium mb-0 text-center">Target untapped segments</p>
+                                        </div>
+                                        <div class="pl-4 relative">
+                                            <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                            <div class="border-t border-l border-gray-400 dark:border-gray-600 absolute top-3 left-0 w-3 h-3"></div>
+                                            <div class="bg-purple-50/50 dark:bg-purple-900/10 p-2 rounded-lg mb-2">
+                                                <p class="text-xs mb-0">Expand in vertical industries</p>
+                                            </div>
+                                            <div class="border-t border-l border-gray-400 dark:border-gray-600 absolute top-[4.5rem] left-0 w-3 h-3"></div>
+                                            <div class="bg-purple-50/50 dark:bg-purple-900/10 p-2 rounded-lg mb-2">
+                                                <p class="text-xs mb-0">Develop mid-market strategies</p>
+                                            </div>
+                                            <div class="border-t border-l border-gray-400 dark:border-gray-600 absolute top-[8rem] left-0 w-3 h-3"></div>
+                                            <div class="bg-purple-50/50 dark:bg-purple-900/10 p-2 rounded-lg">
+                                                <p class="text-xs mb-0">Pursue geographic expansion</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-center mt-2 text-gray-500 dark:text-gray-400">Basic issue tree structure showing problem decomposition across multiple levels</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Issue Tree Fundamentals</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Issue Tree Structure</h5>
+                        <p class="text-sm mb-3">The basic structure of an issue tree includes a hierarchy of branches that progressively break down the problem into more specific components:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Components</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li><strong>Root node:</strong> Main problem or question</li>
+                                    <li><strong>Branches:</strong> Major components or categories</li>
+                                    <li><strong>Sub-branches:</strong> Further breakdown of components</li>
+                                    <li><strong>Leaf nodes:</strong> Specific, actionable questions or hypotheses</li>
+                                    <li><strong>Connections:</strong> Logical relationships between levels</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Structural Rules</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li><strong>MECE principle:</strong> Each level must be mutually exclusive and collectively exhaustive</li>
+                                    <li><strong>Logical flow:</strong> Child branches must directly address parent issues</li>
+                                    <li><strong>Consistent level:</strong> Nodes at the same level should have similar specificity</li>
+                                    <li><strong>Actionable detail:</strong> Lowest level should guide specific analyses</li>
+                                    <li><strong>Manageable scope:</strong> Typically 3-5 branches at each node</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: Dell Server Performance Issue Tree</h6>
+                            <div class="overflow-auto" style="max-height: 400px;">
+                                <div class="min-w-[800px]">
+                                    <div class="flex justify-center mb-3">
+                                        <div class="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg">
+                                            <p class="text-sm font-medium mb-0">Why are our PowerEdge servers experiencing performance issues?</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-center mb-2">
+                                        <div class="w-px h-8 bg-gray-400 dark:bg-gray-600"></div>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-6">
+                                        <!-- Hardware Branch -->
+                                        <div>
+                                            <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg mb-2 text-center">
+                                                <p class="text-sm font-medium mb-0">Hardware issues?</p>
+                                            </div>
+                                            <div class="pl-5 relative">
+                                                <div class="absolute top-0 left-2 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                <!-- CPU sub-branch -->
+                                                <div class="mb-3">
+                                                    <div class="absolute top-3 left-2 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-gray-50 dark:bg-gray-800 p-2 rounded-lg mb-1">
+                                                        <p class="text-xs font-medium mb-0">CPU problems?</p>
+                                                    </div>
+                                                    <div class="pl-4 relative">
+                                                        <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="mb-1">
+                                                            <div class="absolute top-3 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                            <div class="bg-gray-50/50 dark:bg-gray-800/50 p-1 rounded-lg">
+                                                                <p class="text-xs mb-0">Overheating?</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-1">
+                                                            <div class="absolute top-9 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                            <div class="bg-gray-50/50 dark:bg-gray-800/50 p-1 rounded-lg">
+                                                                <p class="text-xs mb-0">Clock speed issues?</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Memory sub-branch -->
+                                                <div class="mb-3">
+                                                    <div class="absolute top-[5.5rem] left-2 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-gray-50 dark:bg-gray-800 p-2 rounded-lg mb-1">
+                                                        <p class="text-xs font-medium mb-0">Memory problems?</p>
+                                                    </div>
+                                                    <div class="pl-4 relative">
+                                                        <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="mb-1">
+                                                            <div class="absolute top-3 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                            <div class="bg-gray-50/50 dark:bg-gray-800/50 p-1 rounded-lg">
+                                                                <p class="text-xs mb-0">DIMM failures?</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-1">
+                                                            <div class="absolute top-9 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                            <div class="bg-gray-50/50 dark:bg-gray-800/50 p-1 rounded-lg">
+                                                                <p class="text-xs mb-0">Memory bandwidth?</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Software Branch -->
+                                        <div>
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg mb-2 text-center">
+                                                <p class="text-sm font-medium mb-0">Software issues?</p>
+                                            </div>
+                                            <div class="pl-5 relative">
+                                                <div class="absolute top-0 left-2 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                <!-- OS sub-branch -->
+                                                <div class="mb-3">
+                                                    <div class="absolute top-3 left-2 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-gray-50 dark:bg-gray-800 p-2 rounded-lg mb-1">
+                                                        <p class="text-xs font-medium mb-0">OS problems?</p>
+                                                    </div>
+                                                    <div class="pl-4 relative">
+                                                        <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="mb-1">
+                                                            <div class="absolute top-3 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                            <div class="bg-gray-50/50 dark:bg-gray-800/50 p-1 rounded-lg">
+                                                                <p class="text-xs mb-0">Driver issues?</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-1">
+                                                            <div class="absolute top-9 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                            <div class="bg-gray-50/50 dark:bg-gray-800/50 p-1 rounded-lg">
+                                                                <p class="text-xs mb-0">Missing patches?</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Applications sub-branch -->
+                                                <div class="mb-3">
+                                                    <div class="absolute top-[5.5rem] left-2 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-gray-50 dark:bg-gray-800 p-2 rounded-lg mb-1">
+                                                        <p class="text-xs font-medium mb-0">Application problems?</p>
+                                                    </div>
+                                                    <div class="pl-4 relative">
+                                                        <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="mb-1">
+                                                            <div class="absolute top-3 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                            <div class="bg-gray-50/50 dark:bg-gray-800/50 p-1 rounded-lg">
+                                                                <p class="text-xs mb-0">Resource conflicts?</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-1">
+                                                            <div class="absolute top-9 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                            <div class="bg-gray-50/50 dark:bg-gray-800/50 p-1 rounded-lg">
+                                                                <p class="text-xs mb-0">Memory leaks?</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Configuration Branch -->
+                                        <div>
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg mb-2 text-center">
+                                                <p class="text-sm font-medium mb-0">Configuration issues?</p>
+                                            </div>
+                                            <div class="pl-5 relative">
+                                                <div class="absolute top-0 left-2 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                <!-- BIOS sub-branch -->
+                                                <div class="mb-3">
+                                                    <div class="absolute top-3 left-2 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-gray-50 dark:bg-gray-800 p-2 rounded-lg mb-1">
+                                                        <p class="text-xs font-medium mb-0">BIOS/firmware problems?</p>
+                                                    </div>
+                                                    <div class="pl-4 relative">
+                                                        <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="mb-1">
+                                                            <div class="absolute top-3 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                            <div class="bg-gray-50/50 dark:bg-gray-800/50 p-1 rounded-lg">
+                                                                <p class="text-xs mb-0">Outdated firmware?</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-1">
+                                                            <div class="absolute top-9 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                            <div class="bg-gray-50/50 dark:bg-gray-800/50 p-1 rounded-lg">
+                                                                <p class="text-xs mb-0">Suboptimal settings?</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Network sub-branch -->
+                                                <div class="mb-3">
+                                                    <div class="absolute top-[5.5rem] left-2 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-gray-50 dark:bg-gray-800 p-2 rounded-lg mb-1">
+                                                        <p class="text-xs font-medium mb-0">Network configuration?</p>
+                                                    </div>
+                                                    <div class="pl-4 relative">
+                                                        <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="mb-1">
+                                                            <div class="absolute top-3 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                            <div class="bg-gray-50/50 dark:bg-gray-800/50 p-1 rounded-lg">
+                                                                <p class="text-xs mb-0">Bandwidth limitations?</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-1">
+                                                            <div class="absolute top-9 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                            <div class="bg-gray-50/50 dark:bg-gray-800/50 p-1 rounded-lg">
+                                                                <p class="text-xs mb-0">Interface settings?</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs mb-0 text-gray-600 dark:text-gray-400 mt-2">This issue tree breaks down the server performance problem into three main branches (hardware, software, configuration) with logical sub-branches to guide investigation. Each branch is MECE and the level of detail increases as you move down the tree.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">MECE in Issue Trees</h5>
+                        <p class="text-sm mb-3">The MECE principle (Mutually Exclusive, Collectively Exhaustive) is the foundation of effective issue trees. Each level of the tree must follow MECE principles to ensure a comprehensive and clear analysis.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Mutually Exclusive Branches</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>No overlap between branches at the same level</li>
+                                    <li>Each element belongs to exactly one branch</li>
+                                    <li>Clear distinctions between branches</li>
+                                    <li>Prevents double-counting in analysis</li>
+                                    <li>Enables clear responsibility assignment</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Collectively Exhaustive Branches</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>All relevant possibilities are covered</li>
+                                    <li>No gaps in the analysis framework</li>
+                                    <li>Comprehensive consideration of factors</li>
+                                    <li>Prevents overlooking important elements</li>
+                                    <li>Creates confidence in analytical completeness</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: MECE vs. Non-MECE Branches</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">MECE Branches: Revenue Growth Strategy</h6>
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg mb-2">
+                                        <p class="text-sm mb-0 text-center font-medium">How to grow revenue?</p>
+                                    </div>
+                                    <ul class="pl-5 text-xs mb-0">
+                                        <li class="mb-2"><strong>Acquire new customers</strong> (customers we don't have yet)</li>
+                                        <li class="mb-2"><strong>Increase revenue from existing customers</strong> (customers we already have)</li>
+                                    </ul>
+                                    <p class="text-xs text-green-600 dark:text-green-400 mt-2 mb-0">This breakdown is MECE: Every potential customer is either new or existing, with no overlap or gaps.</p>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium text-red-700 dark:text-red-400 mb-2">Non-MECE Branches: Revenue Growth Strategy</h6>
+                                    <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg mb-2">
+                                        <p class="text-sm mb-0 text-center font-medium">How to grow revenue?</p>
+                                    </div>
+                                    <ul class="pl-5 text-xs mb-0">
+                                        <li class="mb-2"><strong>Improve sales effectiveness</strong> (overlaps with other categories)</li>
+                                        <li class="mb-2"><strong>Expand into enterprise segment</strong> (only one segment)</li>
+                                        <li class="mb-2"><strong>Increase marketing activities</strong> (overlaps with sales)</li>
+                                    </ul>
+                                    <p class="text-xs text-red-600 dark:text-red-400 mt-2 mb-0">This breakdown has overlaps (sales and marketing both affect the same customers) and gaps (ignores pricing, product improvements, etc.).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Issue Tree Formats: Diagnostic vs. Solution Trees</h5>
+                        <p class="text-sm mb-3">Issue trees can be developed in different formats depending on whether you're diagnosing a problem or developing solutions:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Diagnostic Trees (Why Trees)</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li><strong>Purpose:</strong> Identify causes of a problem</li>
+                                    <li><strong>Root question:</strong> "Why is this happening?"</li>
+                                    <li><strong>Branch structure:</strong> Potential causes and sub-causes</li>
+                                    <li><strong>Analysis focus:</strong> Testing hypotheses about causes</li>
+                                    <li><strong>Typical use:</strong> Troubleshooting, performance issues, root cause analysis</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Solution Trees (How Trees)</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li><strong>Purpose:</strong> Develop potential solutions</li>
+                                    <li><strong>Root question:</strong> "How can we solve this?"</li>
+                                    <li><strong>Branch structure:</strong> Strategic options and tactical approaches</li>
+                                    <li><strong>Analysis focus:</strong> Evaluating solution effectiveness</li>
+                                    <li><strong>Typical use:</strong> Strategy development, improvement initiatives, innovation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: Diagnostic vs. Solution Tree for Dell's Online Sales</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-2">Diagnostic Tree: Why are online conversion rates declining?</h6>
+                                    <div class="overflow-x-auto">
+                                        <ul class="pl-0 mb-0">
+                                            <li class="mb-2"><strong>Traffic quality issues?</strong>
+                                                <ul class="pl-4">
+                                                    <li>Wrong audience targeting?</li>
+                                                    <li>Poor SEO performance?</li>
+                                                    <li>Ineffective campaigns?</li>
+                                                </ul>
+                                            </li>
+                                            <li class="mb-2"><strong>Website performance issues?</strong>
+                                                <ul class="pl-4">
+                                                    <li>Slow loading times?</li>
+                                                    <li>Mobile compatibility problems?</li>
+                                                    <li>Technical errors?</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>User experience problems?</strong>
+                                                <ul class="pl-4">
+                                                    <li>Confusing navigation?</li>
+                                                    <li>Checkout friction?</li>
+                                                    <li>Inadequate product information?</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Solution Tree: How can we improve online conversion rates?</h6>
+                                    <div class="overflow-x-auto">
+                                        <ul class="pl-0 mb-0">
+                                            <li class="mb-2"><strong>Enhance traffic quality</strong>
+                                                <ul class="pl-4">
+                                                    <li>Refine audience targeting</li>
+                                                    <li>Improve SEO strategy</li>
+                                                    <li>Optimize campaign performance</li>
+                                                </ul>
+                                            </li>
+                                            <li class="mb-2"><strong>Improve website performance</strong>
+                                                <ul class="pl-4">
+                                                    <li>Optimize page loading speed</li>
+                                                    <li>Enhance mobile experience</li>
+                                                    <li>Fix technical issues</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Enhance user experience</strong>
+                                                <ul class="pl-4">
+                                                    <li>Simplify navigation</li>
+                                                    <li>Streamline checkout process</li>
+                                                    <li>Improve product information</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-2 mb-0 text-gray-600 dark:text-gray-400">Note how the diagnostic tree focuses on identifying causes through questions, while the solution tree proposes actions to address the problem. The structure is similar, but the orientation differs.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Building Effective Issue Trees</h4>
+                    <p>Developing a high-quality issue tree involves several key steps and considerations:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h5 class="font-medium mb-2">Creating Issue Trees: Step-by-Step</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <ol class="pl-5 text-sm mb-0">
+                                    <li class="mb-2">
+                                        <strong>Define the core problem or question</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Clearly articulate the issue you're addressing as a single, specific question.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Identify the organizing principle for the first level</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Determine the most logical way to break down the problem (by functions, causes, stakeholders, etc.).</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Create MECE branches</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Develop first-level branches that are mutually exclusive and collectively exhaustive.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Break down each branch systematically</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Continue the decomposition for each branch, maintaining MECE principles at each level.</p>
+                                    </li>
+                                    <li>
+                                        <strong>Continue to actionable detail</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Develop the tree until you reach a level of specificity that enables concrete analysis or action.</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h5 class="font-medium mb-2">Common MECE Structures for First-Level Branches</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2">
+                                        <strong>Internal vs. External Factors</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Factors within the company's control vs. those in the external environment.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Process Steps</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Sequential stages in a workflow or value chain (e.g., design, manufacturing, distribution).</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Functional Areas</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Organizational functions (e.g., sales, marketing, operations, finance).</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Stakeholder Groups</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Different constituencies (e.g., customers, employees, shareholders, partners).</p>
+                                    </li>
+                                    <li>
+                                        <strong>Mathematical Logic</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Binary splits (e.g., A vs. not A) or comprehensive lists that cover all possibilities.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Advanced Issue Tree Development</h5>
+                        <p class="text-sm mb-3">Beyond the basics, there are several advanced approaches to make your issue trees more effective:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Hypothesis-Driven Issue Trees</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Start with preliminary hypotheses about the answer</li>
+                                    <li>Structure tree branches to test these hypotheses</li>
+                                    <li>Prioritize branches based on hypothesis importance</li>
+                                    <li>Enables more efficient analysis by focusing on most likely causes or solutions</li>
+                                    <li>Requires openness to revising tree structure based on findings</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Weighted Issue Trees</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Assign importance weights to different branches</li>
+                                    <li>Helps prioritize which areas to analyze first</li>
+                                    <li>Can be based on impact potential, ease of implementation, or probability of being the cause</li>
+                                    <li>Creates focus for resource-constrained analysis</li>
+                                    <li>Enables more strategic allocation of analysis effort</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: Dell's APEX Service Adoption Issue Tree with Weighted Branches</h6>
+                            <div class="overflow-x-auto">
+                                <div class="min-w-[800px]">
+                                    <div class="flex justify-center mb-3">
+                                        <div class="bg-purple-100 dark:bg-purple-900/30 p-2 rounded-lg">
+                                            <p class="text-sm font-medium mb-0">Why is APEX as-a-service adoption below target?</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-center mb-2">
+                                        <div class="w-px h-8 bg-gray-400 dark:bg-gray-600"></div>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-4 mb-4">
+                                        <div>
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg flex justify-between items-center mb-2">
+                                                <p class="text-sm font-medium mb-0">Product offering issues?</p>
+                                                <span class="bg-purple-200 dark:bg-purple-800 text-purple-800 dark:text-purple-200 px-2 py-0.5 rounded text-xs font-medium">40%</span>
+                                            </div>
+                                            <div class="pl-4 relative">
+                                                <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                <div class="mb-2">
+                                                    <div class="absolute top-3 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-purple-50/50 dark:bg-purple-900/10 p-1 rounded-lg flex justify-between items-center">
+                                                        <p class="text-xs mb-0">Limited service portfolio?</p>
+                                                        <span class="bg-purple-100 dark:bg-purple-800/80 text-purple-800 dark:text-purple-200 px-1.5 py-0.5 rounded text-xs">15%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <div class="absolute top-[2.8rem] left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-purple-50/50 dark:bg-purple-900/10 p-1 rounded-lg flex justify-between items-center">
+                                                        <p class="text-xs mb-0">Pricing model concerns?</p>
+                                                        <span class="bg-purple-100 dark:bg-purple-800/80 text-purple-800 dark:text-purple-200 px-1.5 py-0.5 rounded text-xs">20%</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="absolute top-[5.2rem] left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-purple-50/50 dark:bg-purple-900/10 p-1 rounded-lg flex justify-between items-center">
+                                                        <p class="text-xs mb-0">Feature gaps vs. competitors?</p>
+                                                        <span class="bg-purple-100 dark:bg-purple-800/80 text-purple-800 dark:text-purple-200 px-1.5 py-0.5 rounded text-xs">5%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg flex justify-between items-center mb-2">
+                                                <p class="text-sm font-medium mb-0">Go-to-market issues?</p>
+                                                <span class="bg-purple-200 dark:bg-purple-800 text-purple-800 dark:text-purple-200 px-2 py-0.5 rounded text-xs font-medium">35%</span>
+                                            </div>
+                                            <div class="pl-4 relative">
+                                                <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                <div class="mb-2">
+                                                    <div class="absolute top-3 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-purple-50/50 dark:bg-purple-900/10 p-1 rounded-lg flex justify-between items-center">
+                                                        <p class="text-xs mb-0">Sales team enablement?</p>
+                                                        <span class="bg-purple-100 dark:bg-purple-800/80 text-purple-800 dark:text-purple-200 px-1.5 py-0.5 rounded text-xs">15%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <div class="absolute top-[2.8rem] left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-purple-50/50 dark:bg-purple-900/10 p-1 rounded-lg flex justify-between items-center">
+                                                        <p class="text-xs mb-0">Marketing effectiveness?</p>
+                                                        <span class="bg-purple-100 dark:bg-purple-800/80 text-purple-800 dark:text-purple-200 px-1.5 py-0.5 rounded text-xs">10%</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="absolute top-[5.2rem] left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-purple-50/50 dark:bg-purple-900/10 p-1 rounded-lg flex justify-between items-center">
+                                                        <p class="text-xs mb-0">Channel partner incentives?</p>
+                                                        <span class="bg-purple-100 dark:bg-purple-800/80 text-purple-800 dark:text-purple-200 px-1.5 py-0.5 rounded text-xs">10%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg flex justify-between items-center mb-2">
+                                                <p class="text-sm font-medium mb-0">Customer readiness issues?</p>
+                                                <span class="bg-purple-200 dark:bg-purple-800 text-purple-800 dark:text-purple-200 px-2 py-0.5 rounded text-xs font-medium">25%</span>
+                                            </div>
+                                            <div class="pl-4 relative">
+                                                <div class="absolute top-0 left-0 h-full w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                <div class="mb-2">
+                                                    <div class="absolute top-3 left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-purple-50/50 dark:bg-purple-900/10 p-1 rounded-lg flex justify-between items-center">
+                                                        <p class="text-xs mb-0">Budget model transition?</p>
+                                                        <span class="bg-purple-100 dark:bg-purple-800/80 text-purple-800 dark:text-purple-200 px-1.5 py-0.5 rounded text-xs">10%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <div class="absolute top-[2.8rem] left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-purple-50/50 dark:bg-purple-900/10 p-1 rounded-lg flex justify-between items-center">
+                                                        <p class="text-xs mb-0">IT governance concerns?</p>
+                                                        <span class="bg-purple-100 dark:bg-purple-800/80 text-purple-800 dark:text-purple-200 px-1.5 py-0.5 rounded text-xs">10%</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="absolute top-[5.2rem] left-0 w-3 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="bg-purple-50/50 dark:bg-purple-900/10 p-1 rounded-lg flex justify-between items-center">
+                                                        <p class="text-xs mb-0">Legacy infrastructure integration?</p>
+                                                        <span class="bg-purple-100 dark:bg-purple-800/80 text-purple-800 dark:text-purple-200 px-1.5 py-0.5 rounded text-xs">5%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs mb-0 text-gray-600 dark:text-gray-400 mt-2">This weighted issue tree helps prioritize the investigation of APEX adoption challenges. The weights reflect the team's initial hypothesis about the relative importance of each factor, with pricing model concerns and sales team enablement given the highest individual weights. Analyzing these areas first would be the most efficient approach.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-yellow-700 dark:text-yellow-400 font-medium mb-2">Common Issue Tree Pitfalls and How to Avoid Them</h5>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2"><strong>Non-MECE branches:</strong> Creating overlapping categories or leaving gaps<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Test each level with specific examples to ensure every item fits in exactly one category</span></li>
+                                    <li class="mb-2"><strong>Inconsistent level of detail:</strong> Mixing high-level and detailed branches at the same level<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Ensure nodes at the same level have similar specificity and scope</span></li>
+                                    <li class="mb-0"><strong>Addressing the wrong problem:</strong> Building a detailed tree for an incorrectly defined issue<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Invest time upfront to properly define the core problem before developing the tree</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2"><strong>Excessive complexity:</strong> Creating too many levels or branches<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Limit each node to 3-7 branches and focus on the most important factors</span></li>
+                                    <li class="mb-2"><strong>Illogical organization:</strong> Using arbitrary or confusing organizing principles<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Select clear, intuitive organizing principles that align with how stakeholders think about the problem</span></li>
+                                    <li class="mb-0"><strong>Insufficient actionability:</strong> Ending with branches that are still too general to guide specific analyses<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Continue decomposition until you reach questions that can be directly answered through specific analyses</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Issue Trees in Dell Business Context</h4>
+                    <p>Issue trees can be applied to various Dell business challenges to drive more structured analysis and decision-making:</p>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell Business Applications</h5>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Business Challenge</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Issue Tree Approach</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">First-Level Branches</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Benefits</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            How to improve Dell's supply chain resilience?
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Solution Tree (How)
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ol class="pl-5 text-sm mb-0">
+                                                <li>Diversify supplier base</li>
+                                                <li>Enhance inventory management</li>
+                                                <li>Improve risk monitoring</li>
+                                                <li>Develop alternative logistics</li>
+                                            </ol>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Comprehensive approach to risk mitigation</li>
+                                                <li>Balances short and long-term measures</li>
+                                                <li>Creates clear ownership for initiatives</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            Why is Dell losing market share in education?
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Diagnostic Tree (Why)
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ol class="pl-5 text-sm mb-0">
+                                                <li>Product offering issues?</li>
+                                                <li>Competitive dynamics?</li>
+                                                <li>Go-to-market approach?</li>
+                                                <li>Education sector trends?</li>
+                                            </ol>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Systematic investigation of root causes</li>
+                                                <li>Considers both internal and external factors</li>
+                                                <li>Enables targeted research and analysis</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            How should Dell prioritize its AI infrastructure investments?
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Decision Tree (How)
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ol class="pl-5 text-sm mb-0">
+                                                <li>Targeted customer segments</li>
+                                                <li>Technology capability areas</li>
+                                                <li>Partnership opportunities</li>
+                                                <li>Go-to-market approaches</li>
+                                            </ol>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Creates structured investment framework</li>
+                                                <li>Ensures comprehensive consideration of options</li>
+                                                <li>Facilitates executive alignment on priorities</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            What security capabilities should Dell integrate into its products?
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Solution Tree with Prioritization
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ol class="pl-5 text-sm mb-0">
+                                                <li>Hardware-level security features</li>
+                                                <li>Firmware and BIOS protection</li>
+                                                <li>Operating system security integration</li>
+                                                <li>Cloud and identity security features</li>
+                                            </ol>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Organizes security capabilities logically</li>
+                                                <li>Enables assessment of customer needs vs. cost</li>
+                                                <li>Creates roadmap for staged implementation</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <h4>Integrating Issue Trees with Other Problem-Solving Tools</h4>
+                    <p>Issue trees can be effectively combined with other methodologies to enhance your problem-solving approach:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Framework</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Integration with Issue Trees</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Hypothesis-Driven Problem Solving</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Use issue trees to organize and visualize your hypotheses</li>
+                                            <li>Structure branches to test different aspects of your key hypotheses</li>
+                                            <li>Reprioritize branches based on early hypothesis testing results</li>
+                                            <li>Create sub-trees for the most promising hypothesis areas</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">MECE Framework</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>MECE is the foundational principle for creating effective issue trees</li>
+                                            <li>Apply MECE thinking at each level of the issue tree</li>
+                                            <li>Use common MECE structures to organize first-level branches</li>
+                                            <li>Test issue tree nodes for mutual exclusivity and collective exhaustiveness</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Root Cause Analysis</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Diagnostic issue trees are essentially structured root cause analyses</li>
+                                            <li>Apply 5-Why technique within each branch to reach deeper causes</li>
+                                            <li>Use fishbone diagram thinking to ensure comprehensive coverage of cause categories</li>
+                                            <li>Convert cause-effect relationships into tree branches</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Story-lining</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Use issue tree structure to organize your communication storyline</li>
+                                            <li>Convert first-level branches into main sections of your presentation</li>
+                                            <li>Map analysis findings to specific issue tree nodes for clear presentation</li>
+                                            <li>Base executive summary on the highest-priority branches of your issue tree</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-seven-decisions-that-matter-in-a-digital-transformation" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Issue Trees for Problem Solving</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • Problem-Solving Resources</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://hbr.org/2019/11/the-fundamental-attribution-error-in-performance-management" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Structured Problem Solving</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Issue Tree Applications</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.strategyand.pwc.com/gx/en/insights/structured-problem-solving.html" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-book-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Issue Trees and Logic Trees</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Strategy& • Comprehensive Guide</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell's Sustainability Strategy Issue Tree</h5>
+                        <p class="mb-3">Dell has set ambitious sustainability goals as part of its 2030 Social Impact Plan but needs to prioritize initiatives to achieve maximum impact. Create an issue tree to address the question: "How can Dell most effectively reduce its environmental footprint across the business?"</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Context Information:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Dell's sustainability efforts span product design, manufacturing, packaging, shipping, and end-of-life management</li>
+                                    <li>Key focus areas include reducing carbon emissions, eliminating waste, and using sustainable materials</li>
+                                    <li>Dell's operations include owned facilities, contract manufacturing, and a global supply chain</li>
+                                    <li>Customers increasingly value sustainability in purchasing decisions</li>
+                                    <li>Industry regulations around environmental impact are becoming stricter</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Your Task:</p>
+                                <ol class="pl-4 text-sm mb-0">
+                                    <li>Create a solution-oriented issue tree with at least two levels of breakdown</li>
+                                    <li>Ensure your first-level branches follow MECE principles</li>
+                                    <li>Consider at least one more level of decomposition for each branch</li>
+                                    <li>Explain your choice of organizing principle for the first-level branches</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">First-Level Branch Structure</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="2" placeholder="What organizing principle would you use for the first-level branches and why?"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">First-Level Branches</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="List your 3-5 first-level branches that follow MECE principles..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Second-Level Breakdown</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="6" placeholder="For each first-level branch, provide at least 2-3 second-level branches..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">MECE Verification</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="2" placeholder="Explain how you've ensured your branches are mutually exclusive and collectively exhaustive..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Issue Tree</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-mece">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: MECE Framework</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-decision-trees">
+                        <span>Next: Decision Trees</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Back to modules button
+            document.getElementById('back-to-modules')?.addEventListener('click', function() {
+                // This would typically navigate to a modules dashboard page
+                // For this implementation, we'll just show the first topic as a placeholder
+                showTopic('topic-mece');
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-mece');
+        });
+    </script>
+</body>
+</html>

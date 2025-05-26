@@ -1,0 +1,2089 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+      <div class="mb-6">
+        <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <i class="ri-arrow-left-line"></i>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    
+            <!-- PESTEL Analysis Topic -->
+            <section id="topic-pestel" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-global-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">PESTEL Analysis</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Strategic Frameworks</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the PESTEL framework and its components for macro-environmental analysis</li>
+                            <li>Learn to identify and analyze key external factors affecting Dell and the technology industry</li>
+                            <li>Develop skills to transform PESTEL insights into strategic recommendations</li>
+                            <li>Apply the PESTEL framework to support Dell's strategic decision-making</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to PESTEL Analysis</h4>
+                    <p>PESTEL analysis is a framework used to analyze the key external factors (Political, Economic, Social, Technological, Environmental, Legal) that might impact an organization's performance and activities. This macro-environmental analysis helps companies understand the broader context in which they operate and how external forces might create opportunities or threats.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why PESTEL Analysis Matters</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>External focus:</strong> Complements internal analyses (like SWOT) with external perspective</li>
+                            <li><strong>Holistic view:</strong> Provides a comprehensive framework for scanning the external environment</li>
+                            <li><strong>Risk identification:</strong> Helps anticipate potential challenges and disruptions</li>
+                            <li><strong>Opportunity recognition:</strong> Highlights emerging trends that could create strategic advantages</li>
+                            <li><strong>Strategic alignment:</strong> Ensures strategies are responsive to the external context</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg">
+                            <div class="grid grid-cols-3 md:grid-cols-6 gap-px bg-gray-200 dark:bg-gray-700">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-4 flex flex-col items-center text-center">
+                                    <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-800/30 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-2">
+                                        <i class="ri-government-line text-lg"></i>
+                                    </div>
+                                    <h6 class="font-medium text-purple-700 dark:text-purple-400 mb-1">Political</h6>
+                                    <p class="text-xs mb-0">Government policies, stability, regulations</p>
+                                </div>
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 flex flex-col items-center text-center">
+                                    <div class="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-800/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-2">
+                                        <i class="ri-money-dollar-circle-line text-lg"></i>
+                                    </div>
+                                    <h6 class="font-medium text-indigo-700 dark:text-indigo-400 mb-1">Economic</h6>
+                                    <p class="text-xs mb-0">Growth rates, inflation, currency, employment</p>
+                                </div>
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-4 flex flex-col items-center text-center">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-800/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-2">
+                                        <i class="ri-group-line text-lg"></i>
+                                    </div>
+                                    <h6 class="font-medium text-blue-700 dark:text-blue-400 mb-1">Social</h6>
+                                    <p class="text-xs mb-0">Demographics, lifestyles, cultural trends</p>
+                                </div>
+                                <div class="bg-cyan-50 dark:bg-cyan-900/20 p-4 flex flex-col items-center text-center">
+                                    <div class="w-10 h-10 rounded-full bg-cyan-100 dark:bg-cyan-800/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-2">
+                                        <i class="ri-cpu-line text-lg"></i>
+                                    </div>
+                                    <h6 class="font-medium text-cyan-700 dark:text-cyan-400 mb-1">Technological</h6>
+                                    <p class="text-xs mb-0">Innovations, R&amp;D, automation, tech change</p>
+                                </div>
+                                <div class="bg-green-50 dark:bg-green-900/20 p-4 flex flex-col items-center text-center">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-800/30 flex items-center justify-center text-green-600 dark:text-green-400 mb-2">
+                                        <i class="ri-plant-line text-lg"></i>
+                                    </div>
+                                    <h6 class="font-medium text-green-700 dark:text-green-400 mb-1">Environmental</h6>
+                                    <p class="text-xs mb-0">Climate, sustainability, resources</p>
+                                </div>
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-4 flex flex-col items-center text-center">
+                                    <div class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-800/30 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-2">
+                                        <i class="ri-scales-3-line text-lg"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400 mb-1">Legal</h6>
+                                    <p class="text-xs mb-0">Laws, compliance, intellectual property</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>The PESTEL Framework: Component Analysis</h4>
+                    <p>Let's examine each component of the PESTEL framework in detail:</p>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Political Factors</h5>
+                        <p class="text-sm mb-3">Political factors relate to how government policies, stability, and decisions can influence the business environment. These factors can create both opportunities and threats for organizations.</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-purple-200 dark:border-purple-900 px-3 py-2 text-left">Key Areas</th>
+                                        <th class="border border-purple-200 dark:border-purple-900 px-3 py-2 text-left">Examples</th>
+                                        <th class="border border-purple-200 dark:border-purple-900 px-3 py-2 text-left">Technology Industry Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-purple-200 dark:border-purple-900 px-3 py-2 font-medium">Government Stability</td>
+                                        <td class="border border-purple-200 dark:border-purple-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Political regime changes</li>
+                                                <li>Election outcomes</li>
+                                                <li>Civil unrest or conflict</li>
+                                                <li>Geopolitical tensions</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-purple-200 dark:border-purple-900 px-3 py-2 text-sm">
+                                            Impacts investment decisions, market access, supply chain planning, and growth strategies in different regions
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-purple-200 dark:border-purple-900 px-3 py-2 font-medium">Trade Policies</td>
+                                        <td class="border border-purple-200 dark:border-purple-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Tariffs and trade barriers</li>
+                                                <li>Free trade agreements</li>
+                                                <li>Import/export restrictions</li>
+                                                <li>Economic sanctions</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-purple-200 dark:border-purple-900 px-3 py-2 text-sm">
+                                            Affects global supply chains, component sourcing, manufacturing location decisions, and pricing strategies
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-purple-200 dark:border-purple-900 px-3 py-2 font-medium">Industry Regulations</td>
+                                        <td class="border border-purple-200 dark:border-purple-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Technology sector policies</li>
+                                                <li>Industry-specific incentives</li>
+                                                <li>Public procurement rules</li>
+                                                <li>Local content requirements</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-purple-200 dark:border-purple-900 px-3 py-2 text-sm">
+                                            Shapes product development, market entry strategies, competitive landscape, and compliance requirements
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-purple-200 dark:border-purple-900 px-3 py-2 font-medium">Government Initiatives</td>
+                                        <td class="border border-purple-200 dark:border-purple-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Digital transformation programs</li>
+                                                <li>Infrastructure investments</li>
+                                                <li>R&amp;D funding and grants</li>
+                                                <li>Technology adoption incentives</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-purple-200 dark:border-purple-900 px-3 py-2 text-sm">
+                                            Creates market opportunities, innovation funding sources, and strategic partnership possibilities
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <h6 class="text-purple-700 dark:text-purple-400 text-sm font-medium mb-1">Dell-Specific Political Factors</h6>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li><strong>US-China trade tensions:</strong> Impact on supply chain, component sourcing, and manufacturing strategies</li>
+                                <li><strong>Government IT modernization initiatives:</strong> Opportunities in public sector digital transformation</li>
+                                <li><strong>Data sovereignty regulations:</strong> Affecting cloud and data center infrastructure requirements</li>
+                                <li><strong>Technology export controls:</strong> Limitations on certain advanced technologies in specific markets</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Economic Factors</h5>
+                        <p class="text-sm mb-3">Economic factors include macroeconomic and microeconomic elements that influence purchasing power, business operations, and strategic decisions.</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-indigo-200 dark:border-indigo-900 px-3 py-2 text-left">Key Areas</th>
+                                        <th class="border border-indigo-200 dark:border-indigo-900 px-3 py-2 text-left">Examples</th>
+                                        <th class="border border-indigo-200 dark:border-indigo-900 px-3 py-2 text-left">Technology Industry Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-indigo-200 dark:border-indigo-900 px-3 py-2 font-medium">Economic Growth</td>
+                                        <td class="border border-indigo-200 dark:border-indigo-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>GDP growth rates</li>
+                                                <li>Business cycle position</li>
+                                                <li>Regional economic development</li>
+                                                <li>Industry growth forecasts</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-indigo-200 dark:border-indigo-900 px-3 py-2 text-sm">
+                                            Influences IT spending, capital investment decisions, business expansion, and consumer purchasing power
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-indigo-200 dark:border-indigo-900 px-3 py-2 font-medium">Financial Indicators</td>
+                                        <td class="border border-indigo-200 dark:border-indigo-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Interest rates</li>
+                                                <li>Inflation rates</li>
+                                                <li>Currency exchange rates</li>
+                                                <li>Capital market conditions</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-indigo-200 dark:border-indigo-900 px-3 py-2 text-sm">
+                                            Affects financing costs, international pricing, revenue repatriation, and global profitability
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-indigo-200 dark:border-indigo-900 px-3 py-2 font-medium">Labor Market</td>
+                                        <td class="border border-indigo-200 dark:border-indigo-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Employment rates</li>
+                                                <li>Wage levels and trends</li>
+                                                <li>Labor skill availability</li>
+                                                <li>Talent migration patterns</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-indigo-200 dark:border-indigo-900 px-3 py-2 text-sm">
+                                            Impacts talent acquisition, R&amp;D capabilities, operating costs, and location decisions
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-indigo-200 dark:border-indigo-900 px-3 py-2 font-medium">Business Investment</td>
+                                        <td class="border border-indigo-200 dark:border-indigo-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Corporate capital expenditure trends</li>
+                                                <li>IT budget cycles</li>
+                                                <li>Digital transformation investments</li>
+                                                <li>Corporate tax environments</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-indigo-200 dark:border-indigo-900 px-3 py-2 text-sm">
+                                            Drives demand for technology products and services, especially in B2B sectors
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <h6 class="text-indigo-700 dark:text-indigo-400 text-sm font-medium mb-1">Dell-Specific Economic Factors</h6>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li><strong>IT spending cycles:</strong> Correlations between economic indicators and enterprise technology purchasing patterns</li>
+                                <li><strong>Component cost fluctuations:</strong> Impact of semiconductor market dynamics on product margins</li>
+                                <li><strong>Shift to as-a-service models:</strong> Economic drivers changing customer purchasing from capex to opex</li>
+                                <li><strong>Regional growth variations:</strong> Differential economic outlook across major markets affecting prioritization</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Social Factors</h5>
+                        <p class="text-sm mb-3">Social factors examine how societal trends, demographic changes, and cultural shifts affect consumer behavior, workforce expectations, and business practices.</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-left">Key Areas</th>
+                                        <th class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-left">Examples</th>
+                                        <th class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-left">Technology Industry Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 font-medium">Demographic Shifts</td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Age distribution changes</li>
+                                                <li>Urbanization trends</li>
+                                                <li>Population growth patterns</li>
+                                                <li>Educational attainment levels</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-sm">
+                                            Shapes consumer segments, product design requirements, user interface preferences, and market potential
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 font-medium">Lifestyle Changes</td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Work patterns (remote/hybrid)</li>
+                                                <li>Digital adoption behaviors</li>
+                                                <li>Mobile connectivity expectations</li>
+                                                <li>Health and wellness priorities</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-sm">
+                                            Influences product development priorities, feature requirements, and use case evolution
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 font-medium">Cultural Attitudes</td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Technology acceptance</li>
+                                                <li>Privacy expectations</li>
+                                                <li>Brand relationships</li>
+                                                <li>Consumer ethics</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-sm">
+                                            Affects go-to-market strategies, branding approaches, and product adoption rates
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 font-medium">Workforce Dynamics</td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Generational expectations</li>
+                                                <li>Work-life balance priorities</li>
+                                                <li>Diversity and inclusion focus</li>
+                                                <li>Skills evolution</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-sm">
+                                            Shapes talent attraction/retention strategies, organizational culture, and innovation capabilities
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <h6 class="text-blue-700 dark:text-blue-400 text-sm font-medium mb-1">Dell-Specific Social Factors</h6>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li><strong>Remote/hybrid work trends:</strong> Shifting demand for notebooks, collaboration tools, and distributed IT infrastructure</li>
+                                <li><strong>Digital skills evolution:</strong> Changing customer support needs and services opportunities</li>
+                                <li><strong>Technology accessibility concerns:</strong> Growing focus on inclusive design and digital divide solutions</li>
+                                <li><strong>Changing workplace technology expectations:</strong> Employee experience as a driver of commercial PC features</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-cyan-50 dark:bg-cyan-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-cyan-700 dark:text-cyan-400 font-medium mb-2">Technological Factors</h5>
+                        <p class="text-sm mb-3">Technological factors focus on innovations, R&amp;D activity, automation, and technological changes that could affect the industry landscape and competitive dynamics.</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-cyan-200 dark:border-cyan-900 px-3 py-2 text-left">Key Areas</th>
+                                        <th class="border border-cyan-200 dark:border-cyan-900 px-3 py-2 text-left">Examples</th>
+                                        <th class="border border-cyan-200 dark:border-cyan-900 px-3 py-2 text-left">Technology Industry Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-cyan-200 dark:border-cyan-900 px-3 py-2 font-medium">Emerging Technologies</td>
+                                        <td class="border border-cyan-200 dark:border-cyan-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Artificial intelligence</li>
+                                                <li>Edge computing</li>
+                                                <li>Quantum computing</li>
+                                                <li>Extended reality (AR/VR)</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-cyan-200 dark:border-cyan-900 px-3 py-2 text-sm">
+                                            Creates new market opportunities, obsolescence risks, and R&amp;D investment priorities
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-cyan-200 dark:border-cyan-900 px-3 py-2 font-medium">Infrastructure Evolution</td>
+                                        <td class="border border-cyan-200 dark:border-cyan-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>5G/6G networks</li>
+                                                <li>Cloud computing</li>
+                                                <li>Internet of Things (IoT)</li>
+                                                <li>Semiconductor advances</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-cyan-200 dark:border-cyan-900 px-3 py-2 text-sm">
+                                            Changes infrastructure requirements, enables new product capabilities, and reshapes technology architectures
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-cyan-200 dark:border-cyan-900 px-3 py-2 font-medium">Automation &amp; Efficiency</td>
+                                        <td class="border border-cyan-200 dark:border-cyan-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Robotic process automation</li>
+                                                <li>Manufacturing technologies</li>
+                                                <li>Supply chain digitization</li>
+                                                <li>Smart factory implementations</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-cyan-200 dark:border-cyan-900 px-3 py-2 text-sm">
+                                            Transforms operational models, cost structures, and competitive advantages in manufacturing and services
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-cyan-200 dark:border-cyan-900 px-3 py-2 font-medium">Software &amp; Platforms</td>
+                                        <td class="border border-cyan-200 dark:border-cyan-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Operating system evolution</li>
+                                                <li>API ecosystems</li>
+                                                <li>Development methodologies</li>
+                                                <li>As-a-service models</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-cyan-200 dark:border-cyan-900 px-3 py-2 text-sm">
+                                            Shifts value from hardware to software/services, changes business models, and impacts integrations
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <h6 class="text-cyan-700 dark:text-cyan-400 text-sm font-medium mb-1">Dell-Specific Technological Factors</h6>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li><strong>AI acceleration hardware:</strong> Growing demand for specialized computing platforms for AI workloads</li>
+                                <li><strong>Edge-to-cloud architecture:</strong> Distributed computing models driving new infrastructure requirements</li>
+                                <li><strong>As-a-service consumption models:</strong> Technology shifting from product purchases to subscription offers</li>
+                                <li><strong>Software-defined infrastructure:</strong> Increasing programmability and flexibility of hardware systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Environmental Factors</h5>
+                        <p class="text-sm mb-3">Environmental factors consider ecological and sustainability aspects that affect business operations, stakeholder expectations, and regulatory compliance.</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-green-200 dark:border-green-900 px-3 py-2 text-left">Key Areas</th>
+                                        <th class="border border-green-200 dark:border-green-900 px-3 py-2 text-left">Examples</th>
+                                        <th class="border border-green-200 dark:border-green-900 px-3 py-2 text-left">Technology Industry Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 font-medium">Climate Change</td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Carbon reduction targets</li>
+                                                <li>Energy transition policies</li>
+                                                <li>Extreme weather events</li>
+                                                <li>Climate risk disclosures</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 text-sm">
+                                            Drives focus on energy-efficient products, renewable energy sourcing, and carbon footprint reductions
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 font-medium">Resource Scarcity</td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Raw material availability</li>
+                                                <li>Water stress concerns</li>
+                                                <li>Rare earth elements</li>
+                                                <li>Supply chain vulnerabilities</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 text-sm">
+                                            Affects component availability, manufacturing processes, and material selection strategies
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 font-medium">Circular Economy</td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Product lifecycle extension</li>
+                                                <li>Recycling and refurbishment</li>
+                                                <li>E-waste management</li>
+                                                <li>Design for disassembly</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 text-sm">
+                                            Influences product design, materials selection, packaging, and end-of-life management processes
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 font-medium">Stakeholder Expectations</td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Investor ESG requirements</li>
+                                                <li>Customer sustainability demands</li>
+                                                <li>Employee environmental values</li>
+                                                <li>NGO and advocacy pressures</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 text-sm">
+                                            Shapes sustainability reporting, marketing approaches, and strategic priorities
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <h6 class="text-green-700 dark:text-green-400 text-sm font-medium mb-1">Dell-Specific Environmental Factors</h6>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li><strong>Circular design initiatives:</strong> Focus on recyclable materials, modular products, and repairability</li>
+                                <li><strong>Data center energy efficiency:</strong> Growing customer demand for reduced energy consumption and carbon footprint</li>
+                                <li><strong>Supply chain sustainability:</strong> Increased transparency and accountability for environmental impacts</li>
+                                <li><strong>Corporate climate commitments:</strong> Net zero pledges driving operational and product strategies</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Legal Factors</h5>
+                        <p class="text-sm mb-3">Legal factors encompass laws, regulations, and compliance requirements that influence how companies operate, the standards they must meet, and potential legal risks.</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-amber-200 dark:border-amber-900 px-3 py-2 text-left">Key Areas</th>
+                                        <th class="border border-amber-200 dark:border-amber-900 px-3 py-2 text-left">Examples</th>
+                                        <th class="border border-amber-200 dark:border-amber-900 px-3 py-2 text-left">Technology Industry Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-amber-200 dark:border-amber-900 px-3 py-2 font-medium">Data Protection</td>
+                                        <td class="border border-amber-200 dark:border-amber-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Privacy regulations (GDPR, CCPA)</li>
+                                                <li>Data residency requirements</li>
+                                                <li>Cross-border data transfer rules</li>
+                                                <li>Consumer data rights</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-amber-200 dark:border-amber-900 px-3 py-2 text-sm">
+                                            Affects product design, data handling practices, and infrastructure deployment models
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-amber-200 dark:border-amber-900 px-3 py-2 font-medium">Intellectual Property</td>
+                                        <td class="border border-amber-200 dark:border-amber-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Patent enforcement landscape</li>
+                                                <li>Copyright protections</li>
+                                                <li>Trade secret safeguards</li>
+                                                <li>Licensing frameworks</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-amber-200 dark:border-amber-900 px-3 py-2 text-sm">
+                                            Influences R&amp;D strategies, technology partnerships, and competitive protection approaches
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-amber-200 dark:border-amber-900 px-3 py-2 font-medium">Product Regulations</td>
+                                        <td class="border border-amber-200 dark:border-amber-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Product safety standards</li>
+                                                <li>Electromagnetic compatibility</li>
+                                                <li>Accessibility requirements</li>
+                                                <li>Hazardous substance restrictions</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-amber-200 dark:border-amber-900 px-3 py-2 text-sm">
+                                            Shapes product design specifications, testing requirements, and certification processes
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-amber-200 dark:border-amber-900 px-3 py-2 font-medium">Competition Law</td>
+                                        <td class="border border-amber-200 dark:border-amber-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Antitrust enforcement</li>
+                                                <li>Merger control regulations</li>
+                                                <li>Fair competition practices</li>
+                                                <li>Market dominance limitations</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-amber-200 dark:border-amber-900 px-3 py-2 text-sm">
+                                            Impacts M&amp;A strategies, partnership models, and market position management
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <h6 class="text-amber-700 dark:text-amber-400 text-sm font-medium mb-1">Dell-Specific Legal Factors</h6>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li><strong>Right to repair legislation:</strong> Emerging laws affecting product design, documentation, and parts availability</li>
+                                <li><strong>Data privacy regulations:</strong> Varying global requirements affecting product security features and data handling</li>
+                                <li><strong>Environmental compliance:</strong> Extended producer responsibility and e-waste regulations</li>
+                                <li><strong>Government procurement rules:</strong> Security certifications and compliance requirements for public sector sales</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Conducting a PESTEL Analysis</h4>
+                    <p>Follow these steps to conduct a comprehensive PESTEL analysis that delivers actionable insights:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">1. Define Scope and Purpose</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Clarify analysis boundaries (global, regional, market-specific)</li>
+                                <li>Determine time horizon (short, medium, long-term)</li>
+                                <li>Identify key decisions the analysis will support</li>
+                                <li>Define level of detail required for each factor</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">2. Gather Information and Data</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Review industry reports and market research</li>
+                                <li>Monitor news and regulatory developments</li>
+                                <li>Consult expert opinions and forecasts</li>
+                                <li>Analyze competitor and customer insights</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">3. Identify Relevant Factors</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Brainstorm factors for each PESTEL dimension</li>
+                                <li>Focus on most impactful elements for your industry</li>
+                                <li>Consider both current and emerging factors</li>
+                                <li>Be specific about how factors affect your business</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">4. Analyze Implications</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Assess each factor's impact (positive, negative, neutral)</li>
+                                <li>Evaluate probability and timeframe of impacts</li>
+                                <li>Consider interdependencies between factors</li>
+                                <li>Identify direct business implications</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">5. Prioritize Key Factors</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Rank factors by importance and relevance</li>
+                                <li>Focus on items with highest business impact</li>
+                                <li>Consider timing for decision-making needs</li>
+                                <li>Document rationale for prioritization</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">6. Develop Strategic Responses</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Create action plans for high-priority factors</li>
+                                <li>Identify opportunities to leverage positive factors</li>
+                                <li>Develop mitigation strategies for negative factors</li>
+                                <li>Assign ownership for implementation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">7. Establish Monitoring System</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Set up tracking for key indicators</li>
+                                <li>Determine review frequency and process</li>
+                                <li>Identify trigger points for strategic adjustments</li>
+                                <li>Assign responsibility for ongoing monitoring</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">8. Integrate with Planning</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Connect findings to strategic and operational plans</li>
+                                <li>Incorporate insights into risk management</li>
+                                <li>Use analysis to inform scenario planning</li>
+                                <li>Communicate key findings to stakeholders</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell's AI Server Business: PESTEL Analysis Example</h5>
+                        <p class="text-sm mb-3">Below is a simplified PESTEL analysis for Dell's AI server and infrastructure business:</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse mb-3">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">PESTEL Factor</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Key Insights</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Strategic Implications</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400">Political</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Government AI investments and national strategies accelerating</li>
+                                                <li>AI sovereignty concerns driving regional infrastructure investments</li>
+                                                <li>Export controls on advanced AI chips increasing</li>
+                                                <li>US-China technology competition intensifying</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Develop regionalized AI solutions to address sovereignty requirements</li>
+                                                <li>Engage with government AI programs and initiatives</li>
+                                                <li>Monitor export controls for supply chain implications</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400">Economic</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>AI infrastructure spending growing despite broader IT budget constraints</li>
+                                                <li>GPU and accelerator shortages affecting pricing and availability</li>
+                                                <li>Inflation impacting component costs and pricing strategies</li>
+                                                <li>As-a-service consumption models gaining popularity</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Develop flexible financing options for AI infrastructure</li>
+                                                <li>Secure priority component supply through strategic partnerships</li>
+                                                <li>Expand AI-as-a-service offerings to address OpEx preferences</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">Social</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Growing concerns about AI ethics and responsible use</li>
+                                                <li>Talent shortages for AI implementation and management</li>
+                                                <li>Digital transformation acceleration across industries</li>
+                                                <li>Organizational resistance to AI adoption in some sectors</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Develop responsible AI frameworks and guidelines for customers</li>
+                                                <li>Create AI expertise services and implementation support</li>
+                                                <li>Design solutions that address skills gaps and usability issues</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-cyan-50 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-400">Technological</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Rapid evolution of AI accelerator hardware architectures</li>
+                                                <li>Growing need for AI-optimized cooling and power solutions</li>
+                                                <li>Shift toward distributed AI across edge, core, and cloud</li>
+                                                <li>Increasing software-hardware integration requirements</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Design modular infrastructure supporting multiple accelerator types</li>
+                                                <li>Develop edge-to-cloud AI reference architectures</li>
+                                                <li>Create deeper integrations with AI software ecosystem partners</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400">Environmental</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>AI infrastructure energy consumption concerns growing</li>
+                                                <li>Data center carbon footprint under increasing scrutiny</li>
+                                                <li>Climate commitments requiring supplier participation</li>
+                                                <li>Water usage for cooling becoming sustainability focus</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Develop energy-efficient AI infrastructure solutions</li>
+                                                <li>Implement innovative cooling technologies with lower impact</li>
+                                                <li>Create carbon footprint tracking tools for AI workloads</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">Legal</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>AI regulations emerging in EU, US, and other regions</li>
+                                                <li>Data residency requirements affecting AI infrastructure deployment</li>
+                                                <li>AI intellectual property landscape rapidly evolving</li>
+                                                <li>Security and privacy regulations impacting AI implementations</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Design infrastructure enabling regulatory compliance</li>
+                                                <li>Provide implementation guidance for different regulatory regimes</li>
+                                                <li>Develop security-by-design approaches for AI infrastructure</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <p class="text-xs mb-0">Based on this analysis, Dell could prioritize developing energy-efficient, modular AI infrastructure with strong security, regional deployment options, and flexible consumption models to address the most significant external factors affecting this market.</p>
+                    </div>
+                    
+                    <h4>PESTEL Analysis Best Practices</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h5 class="font-medium mb-2">Do's</h5>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li class="mb-2"><strong>Focus on relevance:</strong> Prioritize factors with direct business impact rather than creating exhaustive lists</li>
+                                    <li class="mb-2"><strong>Differentiate time horizons:</strong> Distinguish between immediate, medium-term, and long-term factors</li>
+                                    <li class="mb-2"><strong>Look for interconnections:</strong> Identify how factors across different categories influence each other</li>
+                                    <li class="mb-2"><strong>Quantify where possible:</strong> Use data and metrics to substantiate findings rather than relying solely on qualitative assessment</li>
+                                    <li class="mb-0"><strong>Move beyond description:</strong> Develop clear strategic implications and action plans based on insights</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-medium mb-2">Don'ts</h5>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li class="mb-2"><strong>Avoid generalization:</strong> Don't include vague factors without specific business relevance</li>
+                                    <li class="mb-2"><strong>Prevent confirmation bias:</strong> Don't focus only on factors that support existing strategies or views</li>
+                                    <li class="mb-2"><strong>Don't mix internal and external:</strong> Keep PESTEL focused on external factors (use SWOT for internal analysis)</li>
+                                    <li class="mb-2"><strong>Avoid static analysis:</strong> Don't treat PESTEL as a one-time exercise; establish monitoring processes</li>
+                                    <li class="mb-0"><strong>Don't ignore regional differences:</strong> Consider how factors vary across different geographic markets</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Integrating PESTEL with Other Frameworks</h4>
+                    <p>PESTEL analysis is most powerful when integrated with other strategic frameworks. Here's how it complements common strategy tools:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Framework</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Integration Approach</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Benefits</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">SWOT Analysis</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>PESTEL factors feed directly into Opportunities and Threats in SWOT</li>
+                                            <li>SWOT's internal analysis (S,W) complements PESTEL's external focus</li>
+                                            <li>Use TOWS matrix to develop strategies from combined insights</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Creates comprehensive view of both internal capabilities and external environment for strategic alignment
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Porter's Five Forces</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>PESTEL identifies macro factors influencing industry dynamics</li>
+                                            <li>Five Forces examines how macro factors affect competitive forces</li>
+                                            <li>Combined analysis links external trends to competitive positioning</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Connects macro-environment to industry-specific competition, bridging broad trends with competitive strategy
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Scenario Planning</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>PESTEL identifies key uncertainties and driving forces</li>
+                                            <li>Scenario matrix builds alternative futures based on PESTEL variables</li>
+                                            <li>Strategies developed for different macro-environment scenarios</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Enhances strategic flexibility by preparing for multiple possible external environments
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Business Model Canvas</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>PESTEL factors inform external constraints and opportunities</li>
+                                            <li>Canvas elements adjusted based on macro-environment insights</li>
+                                            <li>Key resources and partnerships aligned with external factors</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Ensures business model is responsive to external conditions and designed for environmental fit
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Risk Management</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>PESTEL identifies external risk sources and categories</li>
+                                            <li>Risk assessment evaluates likelihood and impact of PESTEL factors</li>
+                                            <li>Mitigation plans developed for highest priority external risks</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Strengthens risk identification and preparation for external changes and disruptions
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.youtube.com/watch?v=bYn4CyL3r5w" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-video-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">PESTLE Analysis Explained</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">YouTube • 8:43</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mindtools.com/amz5mha/pestle-analysis" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">PESTLE Analysis: Identifying External Factors</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">MindTools • Interactive Guide</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.strategicmanagementinsight.com/tools/pest-pestel-analysis.html" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">PESTEL Analysis: Complete Guide with Examples</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Strategic Management Insight • 12 min read</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell's As-a-Service Strategy PESTEL Analysis</h5>
+                        <p class="mb-3">Dell is transitioning toward an everything-as-a-service (APEX) business model, shifting from traditional product sales to subscription and consumption-based offerings. Conduct a focused PESTEL analysis examining the external factors affecting this strategic shift.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Context Information:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Traditional hardware business model is under pressure</li>
+                                    <li>Cloud providers gaining market share with consumption models</li>
+                                    <li>Enterprise customers shifting from CapEx to OpEx spending</li>
+                                    <li>Recurring revenue models valued more highly by investors</li>
+                                    <li>Technology refresh cycles becoming more variable</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Your Task:</p>
+                                <ol class="pl-4 text-sm mb-0">
+                                    <li>Identify at least three factors for each PESTEL dimension</li>
+                                    <li>Evaluate whether each factor presents a positive or negative influence</li>
+                                    <li>Prioritize the most significant factors across all dimensions</li>
+                                    <li>Suggest strategic responses to the highest priority factors</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="12" placeholder="Enter your PESTEL analysis for Dell's as-a-service strategy here..."></textarea>
+                        <button class="mt-3 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-porters-five">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Porter's Five Forces</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-bcg-matrix">
+                        <span>Next: BCG Matrix</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- BCG Matrix Topic -->
+            <section id="topic-bcg-matrix" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-bubble-chart-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">BCG Matrix</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Strategic Frameworks</span>
+                                <span>•</span>
+                                <span>40 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">Not Started</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the BCG Matrix framework and its role in portfolio management</li>
+                            <li>Learn to classify products and business units using market growth and relative market share</li>
+                            <li>Develop strategies for Stars, Cash Cows, Question Marks, and Dogs</li>
+                            <li>Apply the BCG Matrix to Dell's product and business portfolio</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to the BCG Matrix</h4>
+                    <p>The BCG (Boston Consulting Group) Matrix is a framework that helps organizations analyze their business units or product lines based on market growth and relative market share. Developed in 1970 by Bruce Henderson of the Boston Consulting Group, it provides a visual representation to support strategic decision-making and resource allocation across a company's portfolio.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why the BCG Matrix Matters</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Portfolio optimization:</strong> Helps balance investment across growth opportunities and cash generation</li>
+                            <li><strong>Resource allocation:</strong> Provides a framework for distributing limited resources effectively</li>
+                            <li><strong>Strategic prioritization:</strong> Identifies which products or business units deserve different strategic approaches</li>
+                            <li><strong>Life cycle management:</strong> Recognizes different stages of product/business development</li>
+                            <li><strong>Balanced growth:</strong> Ensures a mix of current performers and future opportunities</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-md p-4 bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg">
+                            <div class="grid grid-cols-2 gap-1">
+                                <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 flex flex-col items-center text-center border-r border-b border-gray-200 dark:border-gray-700">
+                                    <div class="w-16 h-16 rounded-full bg-yellow-100 dark:bg-yellow-800/30 flex items-center justify-center text-yellow-600 dark:text-yellow-400 mb-2">
+                                        <i class="ri-star-line text-xl"></i>
+                                    </div>
+                                    <h5 class="font-medium text-yellow-700 dark:text-yellow-400 mb-1">Stars</h5>
+                                    <p class="text-sm mb-0">High growth, high share</p>
+                                    <p class="text-xs mb-0 text-gray-500 dark:text-gray-400">Invest heavily</p>
+                                </div>
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-4 flex flex-col items-center text-center border-l border-b border-gray-200 dark:border-gray-700">
+                                    <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-800/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-2">
+                                        <i class="ri-question-line text-xl"></i>
+                                    </div>
+                                    <h5 class="font-medium text-blue-700 dark:text-blue-400 mb-1">Question Marks</h5>
+                                    <p class="text-sm mb-0">High growth, low share</p>
+                                    <p class="text-xs mb-0 text-gray-500 dark:text-gray-400">Invest selectively</p>
+                                </div>
+                                <div class="bg-green-50 dark:bg-green-900/20 p-4 flex flex-col items-center text-center border-r border-t border-gray-200 dark:border-gray-700">
+                                    <div class="w-16 h-16 rounded-full bg-green-100 dark:bg-green-800/30 flex items-center justify-center text-green-600 dark:text-green-400 mb-2">
+                                        <i class="ri-funds-box-line text-xl"></i>
+                                    </div>
+                                    <h5 class="font-medium text-green-700 dark:text-green-400 mb-1">Cash Cows</h5>
+                                    <p class="text-sm mb-0">Low growth, high share</p>
+                                    <p class="text-xs mb-0 text-gray-500 dark:text-gray-400">Harvest for cash</p>
+                                </div>
+                                <div class="bg-red-50 dark:bg-red-900/20 p-4 flex flex-col items-center text-center border-l border-t border-gray-200 dark:border-gray-700">
+                                    <div class="w-16 h-16 rounded-full bg-red-100 dark:bg-red-800/30 flex items-center justify-center text-red-600 dark:text-red-400 mb-2">
+                                        <i class="ri-footprint-line text-xl"></i>
+                                    </div>
+                                    <h5 class="font-medium text-red-700 dark:text-red-400 mb-1">Dogs</h5>
+                                    <p class="text-sm mb-0">Low growth, low share</p>
+                                    <p class="text-xs mb-0 text-gray-500 dark:text-gray-400">Divest or transform</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 mt-2">
+                                <div class="flex justify-center">
+                                    <p class="text-xs font-medium mb-0">High</p>
+                                    <i class="ri-arrow-left-line mx-2"></i>
+                                    <p class="text-xs mb-0">Relative Market Share</p>
+                                    <i class="ri-arrow-right-line mx-2"></i>
+                                    <p class="text-xs font-medium mb-0">Low</p>
+                                </div>
+                                <div></div>
+                            </div>
+                            <div class="flex mt-1">
+                                <div class="flex flex-col items-center mr-3">
+                                    <p class="text-xs font-medium mb-1">High</p>
+                                    <i class="ri-arrow-up-line"></i>
+                                    <p class="text-xs mb-1">Market Growth</p>
+                                    <i class="ri-arrow-down-line"></i>
+                                    <p class="text-xs font-medium mb-0">Low</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>The Four Quadrants of the BCG Matrix</h4>
+                    <p>Let's explore each quadrant of the BCG Matrix in detail:</p>
+                    
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-yellow-700 dark:text-yellow-400 font-medium mb-2">Stars</h5>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Characteristics</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>High market growth rate</li>
+                                    <li>High relative market share</li>
+                                    <li>Strong competitive position</li>
+                                    <li>Future cash flow generators</li>
+                                    <li>May require significant investment</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Strategic Approaches</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Invest to maintain market leadership</li>
+                                    <li>Defend against competitive threats</li>
+                                    <li>Build capacity to meet growing demand</li>
+                                    <li>Focus on maintaining competitive advantages</li>
+                                    <li>Accept lower short-term profits for growth</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: AI-Optimized Servers</h6>
+                            <p class="text-sm mb-0">Dell's AI-optimized server portfolio exemplifies a "Star" in the company's business. With explosive market growth driven by AI adoption and Dell's strong competitive position, this business requires substantial investment in R&amp;D, manufacturing capacity, and sales capabilities to maintain leadership as the market matures.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Cash Cows</h5>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Characteristics</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Low market growth rate</li>
+                                    <li>High relative market share</li>
+                                    <li>Established products in mature markets</li>
+                                    <li>Strong cash flow generation</li>
+                                    <li>Lower investment requirements</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Strategic Approaches</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Maximize profitability and cash flow</li>
+                                    <li>Maintain market share efficiently</li>
+                                    <li>Minimize new investment</li>
+                                    <li>Use generated cash to fund Stars and select Question Marks</li>
+                                    <li>Consider moderate innovation to extend lifecycle</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Commercial Desktop PCs</h6>
+                            <p class="text-sm mb-0">Dell's commercial desktop PC business represents a "Cash Cow" with its strong market position in a relatively mature market segment. While not experiencing rapid growth, Dell's operational efficiency and established customer relationships allow this business to generate substantial cash flow that can be redeployed to faster-growing segments.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Question Marks (Problem Children)</h5>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Characteristics</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>High market growth rate</li>
+                                    <li>Low relative market share</li>
+                                    <li>Uncertain competitive position</li>
+                                    <li>Cash-intensive investments required</li>
+                                    <li>Potential for becoming Stars or Dogs</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Strategic Approaches</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Analyze potential to increase market share</li>
+                                    <li>Invest selectively in those with greatest potential</li>
+                                    <li>Consider niche positioning strategies</li>
+                                    <li>Divest those unlikely to gain share</li>
+                                    <li>Closely monitor performance milestones</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Edge Computing Solutions</h6>
+                            <p class="text-sm mb-0">Dell's edge computing portfolio can be considered a "Question Mark." While the edge computing market is experiencing rapid growth, Dell faces competition from both traditional IT vendors and specialized edge providers. Strategic investments and focused market segmentation will determine whether this business becomes a Star or falls into the Dog category.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-red-700 dark:text-red-400 font-medium mb-2">Dogs</h5>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Characteristics</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Low market growth rate</li>
+                                    <li>Low relative market share</li>
+                                    <li>Weak competitive position</li>
+                                    <li>Limited potential for growth or profit</li>
+                                    <li>May consume disproportionate resources</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Strategic Approaches</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Consider divestiture or exit</li>
+                                    <li>Harvest remaining value if possible</li>
+                                    <li>Minimize investment</li>
+                                    <li>Evaluate potential for repositioning</li>
+                                    <li>Maintain only if strategic synergies exist</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Certain Consumer PC Segments</h6>
+                            <p class="text-sm mb-0">Some of Dell's consumer PC segments, particularly low-end offerings, could be considered "Dogs" in the portfolio. With slim margins, limited growth, and intense competition from vendors with greater scale or lower cost structures, these products may justify minimal investment or potential repositioning toward more profitable segments.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Applying the BCG Matrix: Step-by-Step Process</h4>
+                    <p>Follow these steps to apply the BCG Matrix effectively to your business or product portfolio:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">1. Define Strategic Business Units (SBUs)</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Identify distinct businesses or product lines</li>
+                                <li>Ensure units have separate markets/competitors</li>
+                                <li>Select appropriate level of granularity</li>
+                                <li>Document strategic importance of each unit</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">2. Assess Market Growth Rate</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Gather market size/growth data for each unit</li>
+                                <li>Calculate year-over-year percentage growth</li>
+                                <li>Compare to overall industry growth rate</li>
+                                <li>Determine threshold for "high" vs. "low" growth</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">3. Calculate Relative Market Share</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Identify market share for each business unit</li>
+                                <li>Determine leading competitor's market share</li>
+                                <li>Calculate relative share (your share ÷ competitor's share)</li>
+                                <li>Set threshold for "high" vs. "low" relative share</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">4. Plot on the BCG Matrix</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Create matrix with growth rate and market share axes</li>
+                                <li>Position each business unit in appropriate quadrant</li>
+                                <li>Size circles proportional to revenue or profit</li>
+                                <li>Create visual representation of portfolio balance</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">5. Analyze Portfolio Balance</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Evaluate distribution across quadrants</li>
+                                <li>Assess cash flow generation vs. requirements</li>
+                                <li>Identify imbalances or vulnerabilities</li>
+                                <li>Consider future quadrant transitions</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">6. Develop Strategic Recommendations</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Create quadrant-specific strategies</li>
+                                <li>Allocate resources based on priority</li>
+                                <li>Plan for future portfolio evolution</li>
+                                <li>Set performance metrics and milestones</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell's Portfolio Analysis: BCG Matrix Example</h5>
+                        <p class="text-sm mb-3">Below is a simplified BCG Matrix analysis for selected Dell business units:</p>
+                        
+                        <div class="overflow-x-auto mb-3">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Business Unit</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Market Growth Rate</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Relative Market Share</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">BCG Quadrant</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Strategic Approach</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">Commercial Notebooks</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Medium (5-7%)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">High (1.2x)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400">Cash Cow</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            Optimize operations, maintain share efficiently, focus on profitability
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">AI-Optimized Servers</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">High (20%+)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">High (1.1x)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400">Star</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            Invest aggressively, build capacity, defend market position, innovate
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">Storage Solutions</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Low (3-4%)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Medium (0.8x)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400">Dog</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            Reposition toward higher-growth storage segments, find differentiation
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">Edge Computing Solutions</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">High (15-18%)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Low (0.6x)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400">Question Mark</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            Invest selectively, focus on specific verticals, build differentiation
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">Premium Consumer PCs</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Medium (6-8%)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Low (0.5x)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400">Question Mark</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            Enhance differentiation, focus on profitability over share, target niches
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">Infrastructure Management Software</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">High (12-14%)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Medium (0.9x)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400">Star</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            Invest to gain share, integrate with hardware offerings, expand capabilities
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="flex justify-center mb-3">
+                            <div class="w-full max-w-md p-4 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 relative" style="height: 400px;">
+                                <!-- Y-axis label -->
+                                <div class="absolute -left-10 top-1/2 -translate-y-1/2 -rotate-90 text-xs font-medium">
+                                    Market Growth Rate
+                                </div>
+                                
+                                <!-- X-axis label -->
+                                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-xs font-medium">
+                                    Relative Market Share
+                                </div>
+                                
+                                <!-- Quadrant lines -->
+                                <div class="absolute top-0 left-1/2 w-px h-full bg-gray-300 dark:bg-gray-600"></div>
+                                <div class="absolute top-1/2 left-0 w-full h-px bg-gray-300 dark:bg-gray-600"></div>
+                                
+                                <!-- Quadrant labels -->
+                                <div class="absolute top-2 left-2 text-xs text-yellow-700 dark:text-yellow-400 font-medium">STARS</div>
+                                <div class="absolute top-2 right-2 text-xs text-blue-700 dark:text-blue-400 font-medium">QUESTION MARKS</div>
+                                <div class="absolute bottom-8 left-2 text-xs text-green-700 dark:text-green-400 font-medium">CASH COWS</div>
+                                <div class="absolute bottom-8 right-2 text-xs text-red-700 dark:text-red-400 font-medium">DOGS</div>
+                                
+                                <!-- Data points -->
+                                <!-- AI-Optimized Servers (Star) -->
+                                <div class="absolute top-[20%] left-[30%] w-16 h-16 rounded-full bg-yellow-100 dark:bg-yellow-800/30 border-2 border-yellow-500 dark:border-yellow-600 flex items-center justify-center text-xs text-center p-1">
+                                    AI Servers
+                                </div>
+                                
+                                <!-- Infrastructure Management Software (Star) -->
+                                <div class="absolute top-[30%] left-[45%] w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-800/30 border-2 border-yellow-500 dark:border-yellow-600 flex items-center justify-center text-xs text-center p-1">
+                                    Infra. Software
+                                </div>
+                                
+                                <!-- Commercial Notebooks (Cash Cow) -->
+                                <div class="absolute top-[60%] left-[25%] w-20 h-20 rounded-full bg-green-100 dark:bg-green-800/30 border-2 border-green-500 dark:border-green-600 flex items-center justify-center text-xs text-center p-1">
+                                    Commercial Notebooks
+                                </div>
+                                
+                                <!-- Storage Solutions (Dog) -->
+                                <div class="absolute top-[70%] left-[60%] w-14 h-14 rounded-full bg-red-100 dark:bg-red-800/30 border-2 border-red-500 dark:border-red-600 flex items-center justify-center text-xs text-center p-1">
+                                    Storage
+                                </div>
+                                
+                                <!-- Edge Computing (Question Mark) -->
+                                <div class="absolute top-[25%] left-[70%] w-14 h-14 rounded-full bg-blue-100 dark:bg-blue-800/30 border-2 border-blue-500 dark:border-blue-600 flex items-center justify-center text-xs text-center p-1">
+                                    Edge Computing
+                                </div>
+                                
+                                <!-- Premium Consumer PCs (Question Mark) -->
+                                <div class="absolute top-[40%] left-[75%] w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-800/30 border-2 border-blue-500 dark:border-blue-600 flex items-center justify-center text-xs text-center p-1">
+                                    Premium Consumer
+                                </div>
+                                
+                                <!-- Axes arrows -->
+                                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                    <i class="ri-arrow-up-s-line text-gray-400"></i>
+                                </div>
+                                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+                                    <i class="ri-arrow-down-s-line text-gray-400"></i>
+                                </div>
+                                <div class="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2">
+                                    <i class="ri-arrow-left-s-line text-gray-400"></i>
+                                </div>
+                                <div class="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2">
+                                    <i class="ri-arrow-right-s-line text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-xs mb-0">Based on this analysis, Dell should prioritize investment in its AI server and infrastructure software businesses (Stars), utilize cash from commercial notebooks (Cash Cow), selectively invest in edge computing while considering repositioning its storage business.</p>
+                    </div>
+                    
+                    <h4>Portfolio Strategies Based on BCG Matrix</h4>
+                    <p>Different portfolio positions suggest different strategic approaches:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Portfolio Strategy</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Description</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">When to Apply</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Build</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Increase market share</li>
+                                            <li>Invest aggressively</li>
+                                            <li>Accept short-term profit sacrifice</li>
+                                            <li>Focus on competitive advantages</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Stars: to maintain leadership</li>
+                                            <li>Select Question Marks: to convert to Stars</li>
+                                            <li>When long-term market potential is strong</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Hold</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Maintain market share</li>
+                                            <li>Invest at industry average levels</li>
+                                            <li>Focus on stable performance</li>
+                                            <li>Optimize operations</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Strong Cash Cows: to protect cash generation</li>
+                                            <li>Stars: if resources are constrained</li>
+                                            <li>When market position is advantageous</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Harvest</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Maximize short-term cash flow</li>
+                                            <li>Reduce investment to minimum</li>
+                                            <li>Accept declining market share</li>
+                                            <li>Focus on high-margin segments</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Weak Cash Cows: in declining markets</li>
+                                            <li>Question Marks: with limited potential</li>
+                                            <li>When reinvestment returns are insufficient</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Divest</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Sell or liquidate business unit</li>
+                                            <li>Eliminate further investment</li>
+                                            <li>Redeploy resources elsewhere</li>
+                                            <li>Consider timing for maximum value</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Dogs: with minimal strategic value</li>
+                                            <li>Question Marks: after failed investment</li>
+                                            <li>When resources are needed elsewhere</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Reposition</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Change market definition</li>
+                                            <li>Focus on specific segments</li>
+                                            <li>Develop differentiation strategy</li>
+                                            <li>Transform business model</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Dogs: with potential in narrower markets</li>
+                                            <li>Question Marks: needing focus</li>
+                                            <li>When industry structure is changing</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Limitations and Considerations</h4>
+                    <p>While the BCG Matrix is a valuable strategic tool, it has several limitations to be aware of:</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h5 class="font-medium mb-2">Limitations</h5>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li class="mb-2"><strong>Simplistic dimensions:</strong> Relies on just two variables when business reality is more complex</li>
+                                    <li class="mb-2"><strong>Market definition challenges:</strong> Results highly dependent on how markets are defined</li>
+                                    <li class="mb-2"><strong>Static analysis:</strong> Provides a snapshot without inherent dynamics</li>
+                                    <li class="mb-2"><strong>Focus on growth:</strong> May undervalue stable, profitable businesses in low-growth markets</li>
+                                    <li class="mb-0"><strong>Ignores synergies:</strong> Doesn't account for interdependencies between business units</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-medium mb-2">Considerations for Effective Use</h5>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li class="mb-2"><strong>Supplement with other analyses:</strong> Use alongside SWOT, Porter's Five Forces, and financial analysis</li>
+                                    <li class="mb-2"><strong>Consider strategic fit:</strong> Evaluate how units contribute to overall corporate strategy</li>
+                                    <li class="mb-2"><strong>Update regularly:</strong> Revisit analysis periodically as market conditions change</li>
+                                    <li class="mb-2"><strong>Use appropriate granularity:</strong> Avoid overly broad or narrow business definitions</li>
+                                    <li class="mb-0"><strong>Involve diverse perspectives:</strong> Include input from various functions and business levels</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell's Portfolio Evolution: Historical Perspective</h5>
+                        <p class="text-sm mb-3">Dell's business portfolio has evolved significantly over time, with business units moving between BCG quadrants:</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse mb-3">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Business Unit</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Early 2000s</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">2010s</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Current Position</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Portfolio Journey</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">Desktop PCs</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400">Star</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400">Cash Cow</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400">Dog</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            Classic lifecycle progression from growth market leader to mature market to declining segment
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">Servers</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400">Question Mark</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400">Cash Cow</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400">Cash Cow</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            Successful transformation from challenger to established player in enterprise infrastructure
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">Notebooks</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400">Question Mark</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400">Star</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400">Cash Cow</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            Successful market share growth followed by maturation of laptop market as mobility became standard
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">Storage</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400">Dog</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400">Question Mark</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400">Cash Cow</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            Transformed through EMC acquisition from weak position to leadership in mature enterprise storage
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">Services</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400">Question Mark</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400">Question Mark</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400">Star</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            Long-term investment in services capabilities finally gaining traction with as-a-service transition
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <p class="text-xs mb-0">This historical analysis shows Dell's portfolio evolution from a primarily PC-focused company to a diversified technology provider with multiple Cash Cows and Stars across hardware, software, and services.</p>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.youtube.com/watch?v=N9ACcFIV9yE" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-video-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">BCG Matrix Explained</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">YouTube • 9:17</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.bcg.com/publications/1970/strategy-the-product-portfolio" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Product Portfolio</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">BCG • Original Framework Paper</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://hbr.org/1982/01/the-growth-share-matrix-of-the-product-portfolio" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Growth Share Matrix of the Product Portfolio</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Classic Article</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell's Future Portfolio Analysis</h5>
+                        <p class="mb-3">Dell is evaluating its portfolio strategy for the next five years, with several emerging business areas under consideration. Using the BCG Matrix framework, analyze the following business opportunities and develop strategic recommendations.</p>
+                        
+                        <div class="overflow-x-auto mb-4">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-700">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Business Opportunity</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Market Growth</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Dell's Position</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Key Considerations</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Multi-Cloud Management</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">25% annually</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Emerging player, 0.6x market leader</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Synergies with existing Dell customers</li>
+                                                <li>Strong cloud-native competitors</li>
+                                                <li>Growing enterprise priority</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">PC-as-a-Service</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">18% annually</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Early leader, 1.2x nearest competitor</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Leverages existing PC leadership</li>
+                                                <li>Requires new operational capabilities</li>
+                                                <li>Shifts revenue recognition model</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Quantum Computing Solutions</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">40% annually (from small base)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Very early entrant, 0.3x leaders</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Highly speculative market</li>
+                                                <li>Potential long-term disruption</li>
+                                                <li>Requires significant R&amp;D investment</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Extended Reality Devices</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">15% annually</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">No current offering</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Consumer and enterprise applications</li>
+                                                <li>Well-established competitors</li>
+                                                <li>Potential PC/device convergence</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Your Task:</p>
+                                <ol class="pl-4 text-sm mb-0">
+                                    <li>Place each opportunity in the appropriate BCG quadrant</li>
+                                    <li>Identify which opportunities should receive investment priority</li>
+                                    <li>Create a strategic recommendation for each opportunity</li>
+                                    <li>Consider how these opportunities balance the overall portfolio</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="10" placeholder="Enter your BCG Matrix analysis and recommendations here..."></textarea>
+                        <button class="mt-3 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-pestel">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: PESTEL Analysis</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-business-model-canvas">
+                        <span>Next: Business Model Canvas</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

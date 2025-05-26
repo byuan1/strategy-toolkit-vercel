@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 text-primary">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management Essentials</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Structured Problem Solving</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-storylining">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Story-lining</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-issue-trees">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Issue Trees</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-root-cause">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Root-Cause Analysis</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">10%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 10%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Structured Problem Solving</span>
+                                <span>0/3 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Product & Ops Foundations</span>
+                                <span>9/9 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>0/3 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Story-lining Topic -->
+            <section id="topic-storylining" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-file-list-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Story-lining</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Structured Problem Solving</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the principles and importance of effective story-lining in business communications</li>
+                            <li>Master the Minto Pyramid Principle for structuring logical arguments</li>
+                            <li>Learn frameworks for organizing complex information into persuasive narratives</li>
+                            <li>Develop skills to create clear, executive-ready communications</li>
+                            <li>Practice applying story-lining techniques to business scenarios</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Foundations of Story-lining</h4>
+                    <p>Story-lining is a structured approach to organizing and communicating complex information in a logical, persuasive manner. In business settings, effective story-lining is crucial for delivering clear recommendations, sharing analysis results, and influencing decision-makers. Unlike chronological storytelling, business story-lining focuses on creating a logical argument structure that leads audiences efficiently to conclusions through a carefully crafted narrative path.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Story-lining Matters</h5>
+                        <p class="mb-3">Effective story-lining delivers significant value across multiple dimensions of business communication:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Clarity of Thinking</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Forces logical organization of ideas</li>
+                                    <li>Reveals gaps in reasoning</li>
+                                    <li>Strengthens analytical framework</li>
+                                    <li>Reduces cognitive load</li>
+                                    <li>Distinguishes key points from details</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Audience Engagement</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Creates intuitive information flow</li>
+                                    <li>Respects audience time constraints</li>
+                                    <li>Builds trust through structured logic</li>
+                                    <li>Facilitates understanding of complex topics</li>
+                                    <li>Maintains audience attention</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Business Impact</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Speeds decision-making processes</li>
+                                    <li>Increases persuasive influence</li>
+                                    <li>Reduces misinterpretation risks</li>
+                                    <li>Improves implementation alignment</li>
+                                    <li>Creates memorable takeaways</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Common Story-lining Challenges</h6>
+                            <p class="mb-2">Understanding typical barriers to effective story-lining helps avoid common pitfalls:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">The Curse of Knowledge</p>
+                                    <p class="text-sm mb-0">The tendency for experts to forget what it's like not to know something. When communicators are deeply familiar with their subject matter, they often inadvertently omit critical context, skip important explanatory steps, or use insider terminology. This creates significant comprehension barriers for audiences less versed in the topic. Effective story-lining mitigates this by forcing communicators to explicitly map the logical journey from known information to new insights, ensuring audiences aren't left behind.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Chronological Thinking</p>
+                                    <p class="text-sm mb-0">The natural tendency to organize information in the sequence it was discovered or analyzed. While chronological organization might reflect the communicator's journey through the analysis process, it rarely represents the most efficient path for audience comprehension. Business audiences need direct routes to key insights rather than retracing the analyst's full journey. Story-lining approaches prioritize conclusion-first structures and logical groupings over chronological sequences, ensuring more efficient information transmission.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Information Overload</p>
+                                    <p class="text-sm mb-0">The impulse to include all available information rather than what's necessary for decision-making. The anxiety of potentially omitting something important often leads to excessive detail, obscuring key messages amid less relevant information. Rigorous story-lining processes require communicators to organize information hierarchically, deliberately selecting what to emphasize, what to include as supporting detail, and what to exclude entirely based on audience needs and communication objectives.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>The Minto Pyramid Principle</h4>
+                    
+                    <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4 mb-6">
+                        <h5 class="font-medium mb-4 text-center">The Minto Pyramid Principle Framework</h5>
+                        
+                        <div class="flex justify-center mb-4">
+                            <div class="w-full max-w-3xl">
+                                <div class="relative">
+                                    <svg class="w-full h-[300px]">
+                                        <!-- Pyramid Structure -->
+                                        <polygon points="250,20 50,280 450,280" fill="none" stroke="#6B7280" stroke-width="2" />
+                                        
+                                        <!-- Top section -->
+                                        <rect x="200" y="30" width="100" height="50" rx="4" fill="#EDF2F7" stroke="#6B7280" stroke-width="1.5" class="dark:fill-gray-800" />
+                                        <text x="250" y="55" font-size="14" text-anchor="middle" fill="currentColor" font-weight="bold">Key Message</text>
+                                        <text x="250" y="75" font-size="10" text-anchor="middle" fill="currentColor">(Answer First)</text>
+                                        
+                                        <!-- Middle section -->
+                                        <rect x="120" y="110" width="80" height="50" rx="4" fill="#EDF2F7" stroke="#6B7280" stroke-width="1.5" class="dark:fill-gray-800" />
+                                        <text x="160" y="135" font-size="12" text-anchor="middle" fill="currentColor" font-weight="bold">Key Point 1</text>
+                                        <text x="160" y="150" font-size="10" text-anchor="middle" fill="currentColor">(Supporting)</text>
+                                        
+                                        <rect x="210" y="110" width="80" height="50" rx="4" fill="#EDF2F7" stroke="#6B7280" stroke-width="1.5" class="dark:fill-gray-800" />
+                                        <text x="250" y="135" font-size="12" text-anchor="middle" fill="currentColor" font-weight="bold">Key Point 2</text>
+                                        <text x="250" y="150" font-size="10" text-anchor="middle" fill="currentColor">(Supporting)</text>
+                                        
+                                        <rect x="300" y="110" width="80" height="50" rx="4" fill="#EDF2F7" stroke="#6B7280" stroke-width="1.5" class="dark:fill-gray-800" />
+                                        <text x="340" y="135" font-size="12" text-anchor="middle" fill="currentColor" font-weight="bold">Key Point 3</text>
+                                        <text x="340" y="150" font-size="10" text-anchor="middle" fill="currentColor">(Supporting)</text>
+                                        
+                                        <!-- Bottom section -->
+                                        <rect x="90" y="190" width="60" height="40" rx="4" fill="#EDF2F7" stroke="#6B7280" stroke-width="1.5" class="dark:fill-gray-800" />
+                                        <text x="120" y="213" font-size="10" text-anchor="middle" fill="currentColor">Evidence 1.1</text>
+                                        
+                                        <rect x="160" y="190" width="60" height="40" rx="4" fill="#EDF2F7" stroke="#6B7280" stroke-width="1.5" class="dark:fill-gray-800" />
+                                        <text x="190" y="213" font-size="10" text-anchor="middle" fill="currentColor">Evidence 1.2</text>
+                                        
+                                        <rect x="230" y="190" width="60" height="40" rx="4" fill="#EDF2F7" stroke="#6B7280" stroke-width="1.5" class="dark:fill-gray-800" />
+                                        <text x="260" y="213" font-size="10" text-anchor="middle" fill="currentColor">Evidence 2.1</text>
+                                        
+                                        <rect x="300" y="190" width="60" height="40" rx="4" fill="#EDF2F7" stroke="#6B7280" stroke-width="1.5" class="dark:fill-gray-800" />
+                                        <text x="330" y="213" font-size="10" text-anchor="middle" fill="currentColor">Evidence 3.1</text>
+                                        
+                                        <rect x="370" y="190" width="60" height="40" rx="4" fill="#EDF2F7" stroke="#6B7280" stroke-width="1.5" class="dark:fill-gray-800" />
+                                        <text x="400" y="213" font-size="10" text-anchor="middle" fill="currentColor">Evidence 3.2</text>
+                                        
+                                        <!-- Connecting lines -->
+                                        <line x1="250" y1="80" x2="160" y2="110" stroke="#6B7280" stroke-width="1.5" />
+                                        <line x1="250" y1="80" x2="250" y2="110" stroke="#6B7280" stroke-width="1.5" />
+                                        <line x1="250" y1="80" x2="340" y2="110" stroke="#6B7280" stroke-width="1.5" />
+                                        
+                                        <line x1="160" y1="160" x2="120" y2="190" stroke="#6B7280" stroke-width="1.5" />
+                                        <line x1="160" y1="160" x2="190" y2="190" stroke="#6B7280" stroke-width="1.5" />
+                                        
+                                        <line x1="250" y1="160" x2="260" y2="190" stroke="#6B7280" stroke-width="1.5" />
+                                        
+                                        <line x1="340" y1="160" x2="330" y2="190" stroke="#6B7280" stroke-width="1.5" />
+                                        <line x1="340" y1="160" x2="400" y2="190" stroke="#6B7280" stroke-width="1.5" />
+                                    </svg>
+                                </div>
+                                
+                                <p class="text-xs text-center mt-2 text-gray-500 dark:text-gray-400">The Minto Pyramid Principle structures information hierarchically, starting with a key message at the top, supported by key points that form a complete argument, each backed by relevant evidence. This structure ensures a "top-down" communication approach that prioritizes conclusions and creates a logical, easy-to-follow narrative.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h6 class="font-medium mb-2">Core Elements of the Pyramid Principle</h6>
+                            <p class="text-sm mb-4">Developed by Barbara Minto at McKinsey & Company, the Pyramid Principle provides a framework for organizing business communications that prioritizes clarity and persuasion through hierarchical structuring of information.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <h6 class="text-sm font-medium mb-2 text-primary">Pyramid Structure</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-3 rounded-lg">
+                                        <ul class="pl-5 text-sm mb-3">
+                                            <li class="mb-2"><strong>Start with the answer first:</strong> Begin with your key message, recommendation, or conclusion rather than building up to it</li>
+                                            <li class="mb-2"><strong>Group and summarize:</strong> Organize supporting information into logical groups, each with a summary point</li>
+                                            <li class="mb-2"><strong>Logical hierarchy:</strong> Structure information from highest level (most important) to lowest level (specific details)</li>
+                                            <li><strong>MECE principle:</strong> Ensure categories are Mutually Exclusive (no overlap) and Collectively Exhaustive (nothing missing)</li>
+                                        </ul>
+                                        
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <h6 class="text-xs font-medium mb-1">Applying the Hierarchy</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Top Level:</strong> Key message or recommendation</li>
+                                                <li><strong>Second Level:</strong> Main supporting arguments (typically 3-5)</li>
+                                                <li><strong>Third Level:</strong> Evidence, data, examples for each supporting argument</li>
+                                                <li><strong>Fourth Level (if needed):</strong> Additional details, methodology, or analysis</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-sm font-medium mb-2 text-primary">Logical Flow</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-3 rounded-lg">
+                                        <ul class="pl-5 text-sm mb-3">
+                                            <li class="mb-2"><strong>Vertical relationships:</strong> Each level supports the level above through inductive or deductive reasoning</li>
+                                            <li class="mb-2"><strong>Horizontal relationships:</strong> Items at the same level have logical relationships to each other</li>
+                                            <li class="mb-2"><strong>Causal flow:</strong> Information builds on previous information in a logical sequence</li>
+                                            <li><strong>Complete thinking:</strong> Arguments are presented completely without logical gaps</li>
+                                        </ul>
+                                        
+                                        <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                            <h6 class="text-xs font-medium mb-1">Common Logical Structures</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Time sequence:</strong> Organizing by chronology when temporal order matters</li>
+                                                <li><strong>Structural breakdown:</strong> Dividing a whole into its component parts</li>
+                                                <li><strong>Degree/ranking:</strong> Arranging by importance or magnitude</li>
+                                                <li><strong>Problem/solution:</strong> Presenting issues followed by recommendations</li>
+                                                <li><strong>Question/answer:</strong> Raising key questions then providing responses</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Key Story-lining Frameworks</h5>
+                        <p class="text-sm mb-3">Several frameworks complement the Pyramid Principle to create effective business narratives. These approaches provide structured templates for organizing complex information into clear, persuasive communications.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">SCQA Framework</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-sm mb-3">The Situation-Complication-Question-Answer framework provides a narrative structure that establishes context before presenting solutions:</p>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">S</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Situation</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Establishes the context and background that everyone can agree on.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Characteristics</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Neutral, factual statements</li>
+                                                    <li>Information the audience already knows or easily accepts</li>
+                                                    <li>Relevant context that frames the discussion</li>
+                                                    <li>Brief and focused on essential background</li>
+                                                </ul>
+                                            </div>
+                                            <div class="mt-2 bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Example</h6>
+                                                <p class="text-xs mb-0"><em>"Our company currently holds 15% market share in the enterprise storage market, with a product lineup that has remained largely unchanged for three years."</em></p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">C</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Complication</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Introduces the change, challenge, or opportunity that disrupts the situation.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Characteristics</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Identifies what has changed or what problem has emerged</li>
+                                                    <li>Creates tension that requires resolution</li>
+                                                    <li>Establishes why action is needed now</li>
+                                                    <li>Transitions from known information to new challenge</li>
+                                                </ul>
+                                            </div>
+                                            <div class="mt-2 bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Example</h6>
+                                                <p class="text-xs mb-0"><em>"New competitors have entered the market with cloud-native solutions that are gaining traction, and our Q2 results show our market share has declined to 12% while customer acquisition costs have increased by 40%."</em></p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">Q</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Question</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Frames the key question that must be answered to address the complication.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Characteristics</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Creates a focal point for the communication</li>
+                                                    <li>Narrows the discussion to a specific decision or issue</li>
+                                                    <li>Often implicit rather than explicitly stated</li>
+                                                    <li>Transitions naturally to your answer or recommendation</li>
+                                                </ul>
+                                            </div>
+                                            <div class="mt-2 bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Example</h6>
+                                                <p class="text-xs mb-0"><em>"How should we evolve our product strategy to regain market momentum and respond to changing customer preferences for cloud-based solutions?"</em></p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">A</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Answer</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Provides your response, recommendation, or solution to the question raised.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Characteristics</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Direct response to the question posed</li>
+                                                    <li>Clear, actionable recommendation</li>
+                                                    <li>Presented upfront before supporting details</li>
+                                                    <li>Often becomes the top of your pyramid structure</li>
+                                                </ul>
+                                            </div>
+                                            <div class="mt-2 bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Example</h6>
+                                                <p class="text-xs mb-0"><em>"We should launch a hybrid cloud platform within six months while simultaneously developing a cloud-native solution for market release in Q1 next year. This two-pronged approach will address immediate customer needs while positioning us for future growth."</em></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">The 5-Paragraph Format</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">A structured approach for executive communications that ensures comprehensive coverage while maintaining clarity:</p>
+                                    
+                                    <div class="grid grid-cols-1 gap-3">
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Structure Overview</h6>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Paragraph 1: Main message and key points</strong> - Present your conclusion and preview supporting arguments</li>
+                                                        <li><strong>Paragraph 2: First key point</strong> - Develop your first supporting argument with evidence</li>
+                                                        <li><strong>Paragraph 3: Second key point</strong> - Develop your second supporting argument with evidence</li>
+                                                        <li><strong>Paragraph 4: Third key point</strong> - Develop your third supporting argument with evidence</li>
+                                                        <li><strong>Paragraph 5: Implications and next steps</strong> - Discuss consequences and required actions</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Application Best Practices</h6>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Keep each paragraph focused on a single idea</strong> - Maintain tight scope for each section</li>
+                                                        <li><strong>Use topic sentences</strong> - Begin each paragraph with its main point</li>
+                                                        <li><strong>Balance paragraph length</strong> - Aim for roughly equal development of key points</li>
+                                                        <li><strong>Create clear transitions</strong> - Connect paragraphs with logical flow markers</li>
+                                                        <li><strong>Adjust for complexity</strong> - For simpler topics, you may combine or eliminate paragraphs</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">The So What? Test</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">A critical review technique to ensure every element of your communication delivers meaningful value to the audience:</p>
+                                    
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Concept & Application</h6>
+                                        <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                            <p class="text-xs mb-2">The "So What?" test involves critically examining each element of your communication by asking "So what does this mean for the audience?" If you cannot articulate a clear, meaningful implication, the information may be unnecessary or require reframing.</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Apply to facts and data</strong> - Don't just present information; explain its significance</li>
+                                                <li><strong>Apply to analysis</strong> - Connect analytical insights to business implications</li>
+                                                <li><strong>Apply to recommendations</strong> - Ensure proposed actions have clear value and feasibility</li>
+                                                <li><strong>Apply throughout review</strong> - Use as a final check on all communication elements</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Example Application</h6>
+                                        <div class="overflow-x-auto">
+                                            <table class="w-full text-xs">
+                                                <thead>
+                                                    <tr class="bg-white dark:bg-gray-900">
+                                                        <th class="p-1 text-left">Statement</th>
+                                                        <th class="p-1 text-left">"So What?" Question</th>
+                                                        <th class="p-1 text-left">Improved Version</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="p-1 align-top">
+                                                            "Our customer satisfaction score is 76."
+                                                        </td>
+                                                        <td class="p-1 align-top">
+                                                            So what? Is that good or bad? Compared to what? What does it mean for our business?
+                                                        </td>
+                                                        <td class="p-1 align-top">
+                                                            "Our customer satisfaction score of 76 represents a 5-point decline from last quarter and falls 8 points below industry average, putting us at risk of increased churn in Q3."
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 align-top">
+                                                            "We should implement a new CRM system."
+                                                        </td>
+                                                        <td class="p-1 align-top">
+                                                            So what? Why does this matter? What problem does it solve? What's the benefit?
+                                                        </td>
+                                                        <td class="p-1 align-top">
+                                                            "Implementing a new CRM system will reduce sales cycle time by 30% and increase conversion rates by addressing the current data fragmentation that prevents sales teams from accessing complete customer information."
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 align-top">
+                                                            "Market growth is slowing to 3% annually."
+                                                        </td>
+                                                        <td class="p-1 align-top">
+                                                            So what? How does this affect our strategy? What should we do differently?
+                                                        </td>
+                                                        <td class="p-1 align-top">
+                                                            "Market growth deceleration to 3% means we can no longer rely on category expansion for our targeted 10% growth; we must instead focus on taking share from competitors and expanding into adjacent markets."
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Story-lining Implementation Process</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Step 1: Audience Analysis</h6>
+                                    <p class="text-xs mb-2">Begin by understanding who will receive your communication:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Decision authority:</strong> Who makes final decisions?</li>
+                                            <li><strong>Knowledge level:</strong> What do they already know?</li>
+                                            <li><strong>Information needs:</strong> What do they need to learn?</li>
+                                            <li><strong>Priorities/concerns:</strong> What matters most to them?</li>
+                                            <li><strong>Time constraints:</strong> How much time will they dedicate?</li>
+                                            <li><strong>Preferred format:</strong> How do they like to receive information?</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Step 2: Message Formulation</h6>
+                                    <p class="text-xs mb-2">Develop your key message and supporting structure:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Define key question:</strong> What question are you answering?</li>
+                                            <li><strong>Craft answer/recommendation:</strong> What is your main message?</li>
+                                            <li><strong>Identify key points:</strong> What 3-5 arguments support your message?</li>
+                                            <li><strong>Test logical flow:</strong> Do points create a complete argument?</li>
+                                            <li><strong>Check MECE structure:</strong> Are categories comprehensive without overlap?</li>
+                                            <li><strong>Apply "So What?" test:</strong> Is everything significant to audience?</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Step 3: Storyline Construction</h6>
+                                    <p class="text-xs mb-2">Organize your complete narrative structure:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Create story spine:</strong> Develop high-level flow</li>
+                                            <li><strong>Build hierarchy:</strong> Organize info in pyramid structure</li>
+                                            <li><strong>Develop intro:</strong> Set context with SCQA approach</li>
+                                            <li><strong>Add evidence:</strong> Connect data/examples to key points</li>
+                                            <li><strong>Create transitions:</strong> Ensure smooth flow between sections</li>
+                                            <li><strong>Design conclusion:</strong> Recap key message and next steps</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Step 4: Execution & Refinement</h6>
+                                    <p class="text-xs mb-2">Implement and improve your storyline:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Create medium-specific structure:</strong> Adapt for presentation, memo, email, etc.</li>
+                                            <li><strong>Develop supporting visuals:</strong> Create charts/diagrams that reinforce key points</li>
+                                            <li><strong>Review for clarity:</strong> Ensure message is immediately clear</li>
+                                            <li><strong>Test with others:</strong> Get feedback on comprehension</li>
+                                            <li><strong>Refine for brevity:</strong> Eliminate unnecessary information</li>
+                                            <li><strong>Practice delivery:</strong> Rehearse for presentations</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Advanced Story-lining Techniques</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Executive Communication Strategies</h5>
+                        <p class="text-sm mb-3">Advanced techniques for crafting communications that resonate with senior executives, focusing on their unique needs and preferences.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Executive Summary Design</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Creating Impactful One-Pagers</h6>
+                                        <p class="text-xs mb-2">A carefully structured one-page summary that conveys essential information efficiently:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Core Components</h6>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Clear headline:</strong> Specific title that communicates the key message</li>
+                                                            <li><strong>Situation context:</strong> Brief background in 1-2 sentences</li>
+                                                            <li><strong>Key recommendation:</strong> Explicit statement of what should be done</li>
+                                                            <li><strong>Supporting rationale:</strong> 3-4 bullet points with key supporting points</li>
+                                                            <li><strong>Financial implications:</strong> Critical numbers that justify the recommendation</li>
+                                                            <li><strong>Next steps:</strong> Clear statement of requested actions or decisions</li>
+                                                            <li><strong>Visual support:</strong> One clarifying chart or diagram if necessary</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Design Principles</h6>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Ruthless prioritization:</strong> Include only what's essential for decision-making</li>
+                                                            <li><strong>Visually scannable:</strong> Use headers, bullets, and white space effectively</li>
+                                                            <li><strong>Balanced structure:</strong> Organize content in clear visual hierarchy</li>
+                                                            <li><strong>Self-contained:</strong> Ensure it can stand alone without verbal explanation</li>
+                                                            <li><strong>Business focus:</strong> Emphasize business impact over operational details</li>
+                                                            <li><strong>Action-oriented:</strong> Clear about what decisions/actions are needed</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Narrative Techniques</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Improving Engagement and Retention</h6>
+                                        <p class="text-xs mb-2">Strategic narrative approaches that enhance impact while maintaining logical structure:</p>
+                                        
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg mb-3">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Building Tension and Resolution</h6>
+                                            <div class="overflow-x-auto">
+                                                <table class="w-full text-xs">
+                                                    <thead>
+                                                        <tr class="bg-white dark:bg-gray-900">
+                                                            <th class="p-1 text-left">Technique</th>
+                                                            <th class="p-1 text-left">Application</th>
+                                                            <th class="p-1 text-left">Example</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="p-1">
+                                                                <strong>Contrast</strong>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                Highlight differences between current and desired states to create motivation for change
+                                                            </td>
+                                                            <td class="p-1">
+                                                                "Today, our sales process takes 45 days and involves 7 handoffs. Our proposed redesign reduces this to 14 days with only 2 customer touchpoints."
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1">
+                                                                <strong>Surprising insights</strong>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                Present unexpected findings that challenge assumptions to drive attention
+                                                            </td>
+                                                            <td class="p-1">
+                                                                "Contrary to our belief that price drives purchasing decisions in this segment, our analysis shows that delivery speed is 3x more influential for retention."
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1">
+                                                                <strong>Stakes/Consequences</strong>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                Clearly articulate what's at risk to create urgency
+                                                            </td>
+                                                            <td class="p-1">
+                                                                "If we maintain current approach, we project losing 15% market share within 18 months, representing $47M in annual revenue."
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Memorable Message Techniques</h6>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Rule of three:</strong> Organize key points in threes for better retention (e.g., "This approach will reduce costs, accelerate time-to-market, and improve quality")</li>
+                                                        <li><strong>Concrete language:</strong> Use specific, tangible terms rather than abstractions (e.g., "Increase conversion by 8%" vs. "Improve performance")</li>
+                                                        <li><strong>Vivid analogies:</strong> Create clear comparisons to familiar concepts (e.g., "Our current approval process is like driving across town but stopping at every traffic light")</li>
+                                                        <li><strong>Crisp frameworks:</strong> Create simple mental models with memorable names (e.g., "Our 3D Strategy: Digitize, Decentralize, Differentiate")</li>
+                                                        <li><strong>Bookending:</strong> Begin and end with the same key message for reinforcement</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Data Storytelling</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Data Integration Principles</h6>
+                                    <p class="text-xs mb-2">Effectively incorporating data into your storyline:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Choose data strategically:</strong> Select metrics that directly support key points</li>
+                                            <li><strong>Provide context:</strong> Include benchmarks or comparisons for perspective</li>
+                                            <li><strong>Highlight significance:</strong> Explain why patterns or numbers matter</li>
+                                            <li><strong>Simplify complexity:</strong> Break down complex data into digestible insights</li>
+                                            <li><strong>Connect to business outcomes:</strong> Tie metrics to financial or strategic impact</li>
+                                            <li><strong>Balance precision and clarity:</strong> Simplify numbers without sacrificing accuracy</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Data Visualization Techniques</h6>
+                                    <p class="text-xs mb-2">Creating visual elements that enhance your narrative:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Choose appropriate chart types:</strong> Match visualization to data relationship</li>
+                                            <li><strong>Apply visual hierarchy:</strong> Direct attention to most important elements</li>
+                                            <li><strong>Remove chart clutter:</strong> Eliminate non-essential visual elements</li>
+                                            <li><strong>Integrate annotations:</strong> Add callouts that explain significance</li>
+                                            <li><strong>Use consistent formatting:</strong> Maintain visual cohesion across elements</li>
+                                            <li><strong>Incorporate progressive disclosure:</strong> Reveal data in logical sequence</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Common Data Story Patterns</h6>
+                                    <p class="text-xs mb-2">Narrative structures specifically designed for data-driven insights:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Change over time:</strong> Show evolution, trends, or progress narratives</li>
+                                            <li><strong>Comparison:</strong> Highlight differences between options, segments, or periods</li>
+                                            <li><strong>Correlation:</strong> Demonstrate relationships between variables</li>
+                                            <li><strong>Outlier:</strong> Focus on exceptions that reveal important insights</li>
+                                            <li><strong>Drill-down:</strong> Move from high-level patterns to specific details</li>
+                                            <li><strong>What-if scenarios:</strong> Present data-driven projections of alternative futures</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Story-lining for Different Communication Formats</h6>
+                                <p class="text-xs mb-2">Adapting story-lining principles to various business communication contexts:</p>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs border-collapse">
+                                        <thead>
+                                            <tr class="bg-white dark:bg-gray-900">
+                                                <th class="p-2 text-left border border-green-100 dark:border-green-900">Format</th>
+                                                <th class="p-2 text-left border border-green-100 dark:border-green-900">Key Adaptations</th>
+                                                <th class="p-2 text-left border border-green-100 dark:border-green-900">Best Practices</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="p-2 font-medium border border-green-100 dark:border-green-900">Presentations</td>
+                                                <td class="p-2 border border-green-100 dark:border-green-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Break pyramid into slide-sized chunks</li>
+                                                        <li>Create visual representations of key points</li>
+                                                        <li>Develop clear slide titles that tell the story</li>
+                                                        <li>Design for both standalone and presented use</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-green-100 dark:border-green-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>One main point per slide</li>
+                                                        <li>Use agenda slides to show structure</li>
+                                                        <li>Create executive summary at start</li>
+                                                        <li>Include presenter notes for details</li>
+                                                        <li>Add signpost slides for transitions</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 font-medium border border-green-100 dark:border-green-900">Memos & Reports</td>
+                                                <td class="p-2 border border-green-100 dark:border-green-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Develop clear document structure with headings</li>
+                                                        <li>Create informative executive summary</li>
+                                                        <li>Use topic sentences to begin paragraphs</li>
+                                                        <li>Include navigation elements like TOC</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-green-100 dark:border-green-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Headline document with key message</li>
+                                                        <li>Use bullets for key points</li>
+                                                        <li>Create scannable sections</li>
+                                                        <li>Place details in appendices</li>
+                                                        <li>Include purpose statement at start</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 font-medium border border-green-100 dark:border-green-900">Emails</td>
+                                                <td class="p-2 border border-green-100 dark:border-green-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Focus on brevity and clarity</li>
+                                                        <li>Create informative subject lines</li>
+                                                        <li>Structure for mobile device reading</li>
+                                                        <li>Highlight action items clearly</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-green-100 dark:border-green-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>State purpose in first sentence</li>
+                                                        <li>Use bolding for key points</li>
+                                                        <li>Incorporate white space</li>
+                                                        <li>Number action items</li>
+                                                        <li>Include time expectations</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 font-medium border border-green-100 dark:border-green-900">Verbal Updates</td>
+                                                <td class="p-2 border border-green-100 dark:border-green-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Simplify for verbal delivery</li>
+                                                        <li>Create memorable phrases</li>
+                                                        <li>Prepare for interruptions</li>
+                                                        <li>Design clear opening and closing</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-green-100 dark:border-green-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Start with "headline" statement</li>
+                                                        <li>Rehearse transition phrases</li>
+                                                        <li>Prepare concise responses to likely questions</li>
+                                                        <li>Create backup slides for details</li>
+                                                        <li>Use specific examples and analogies</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Story-lining Case Study: Dell Storage Portfolio Strategy</h5>
+                        <p class="text-sm mb-3">Examining how story-lining techniques transform a disorganized strategic analysis into a powerful consulting recommendation.</p>
+                        
+                        <div class="grid grid-cols-1 gap-4 mb-4">
+                            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="text-sm font-medium text-primary mb-2">The Original Analysis: Unfocused Deck Structure</h6>
+                                <p class="text-xs mb-2">A consulting team created this initial slide structure for a Dell ISG leadership presentation on storage portfolio strategy:</p>
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded border border-gray-200 dark:border-gray-700">
+                                    <p class="text-xs mb-2"><strong>Initial Deck Organization (16 slides)</strong></p>
+                                    <ol class="pl-5 text-xs mb-0">
+                                        <li>Title slide: Dell Storage Portfolio Assessment</li>
+                                        <li>Team introduction and engagement overview</li>
+                                        <li>Research methodology and data sources</li>
+                                        <li>Current Dell storage portfolio overview (PowerStore, PowerMax, PowerScale, PowerFlex)</li>
+                                        <li>Storage market trends and growth forecasts</li>
+                                        <li>Competitive landscape analysis</li>
+                                        <li>Voice of customer feedback summary</li>
+                                        <li>Dell storage market share by segment (2019-2022)</li>
+                                        <li>Product positioning assessment</li>
+                                        <li>SWOT analysis of current portfolio</li>
+                                        <li>Potential areas for investment consideration</li>
+                                        <li>Financial analysis of PowerStore vs. other portfolio products</li>
+                                        <li>High-level timeline considerations for portfolio evolution</li>
+                                        <li>Three potential strategic options for consideration</li>
+                                        <li>Implementation considerations</li>
+                                        <li>Next steps and discussion</li>
+                                    </ol>
+                                </div>
+                                <p class="text-xs mt-2 text-gray-500 dark:text-gray-400">Issues with this presentation structure: key recommendation buried at the end, no clear storyline guiding the audience, information presented in "report-out" style rather than building a case, analysis not clearly connected to recommendations, unclear what action is being requested.</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="text-sm font-medium text-primary mb-2">The Story-lined Version: Strategic Recommendation Deck</h6>
+                                <p class="text-xs mb-2">The same content, restructured using the Pyramid Principle to create a clear, action-oriented recommendation:</p>
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded border border-gray-200 dark:border-gray-700">
+                                    <p class="text-xs mb-2"><strong>Restructured Deck Organization (12 slides)</strong></p>
+                                    
+                                    <div class="mb-3">
+                                        <p class="text-xs font-medium text-primary">Section 1: Key Recommendation (2 slides)</p>
+                                        <ol class="pl-5 text-xs mb-0">
+                                            <li><strong>Executive Summary: </strong>Dell should consolidate its mid-range storage portfolio around PowerStore as its flagship platform, while accelerating cloud data services integration to address the rapidly growing hybrid cloud storage market.</li>
+                                            <li><strong>Decision Required: </strong>Approve three-year portfolio consolidation roadmap with $45M investment in PowerStore R&D and $25M for cloud integration, with expected 22% storage revenue growth and 3.5% market share gain by FY25.</li>
+                                        </ol>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <p class="text-xs font-medium text-primary">Section 2: Why Change is Necessary (3 slides)</p>
+                                        <ol class="pl-5 text-xs mb-0 list-[lower-alpha]">
+                                            <li><strong>Market Shift: </strong>Enterprise storage market is rapidly transitioning to hybrid cloud architectures (63% of enterprises by 2024) while Dell's current portfolio remains primarily focused on traditional on-premises deployments.</li>
+                                            <li><strong>Competitive Pressure: </strong>Dell has lost 2.8% mid-range market share since 2020 as competitors introduce simplified portfolios with native cloud integration, threatening Dell's storage leadership position.</li>
+                                            <li><strong>Internal Complexity: </strong>Current overlapping portfolio (5 mid-range platforms) creates customer confusion, dilutes R&D resources, and increases go-to-market costs by 23% compared to key competitors.</li>
+                                        </ol>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <p class="text-xs font-medium text-primary">Section 3: Recommended Strategic Approach (4 slides)</p>
+                                        <ol class="pl-5 text-xs mb-0">
+                                            <li><strong>Portfolio Rationalization: </strong>Consolidate mid-range offerings by accelerating PowerStore development while creating clear migration paths from legacy platforms (Unity, SC Series) and ensuring exceptional transition experiences for existing customers.</li>
+                                            <li><strong>Cloud-Native Services Expansion: </strong>Develop comprehensive multi-cloud data services layer that extends PowerStore's capabilities across public clouds (AWS, Azure, Google Cloud) through both native integration and containerized deployment models.</li>
+                                            <li><strong>Go-to-Market Simplification: </strong>Streamline sales approach with simplified product positioning, unified quoting tools, and harmonized channel incentives across the portfolio to improve sales velocity by 35%.</li>
+                                            <li><strong>Enhanced Customer Success Program: </strong>Implement comprehensive adoption services that ensure >90% customer satisfaction during transitions while driving increased adoption of new cloud-enabled features.</li>
+                                        </ol>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <p class="text-xs font-medium text-primary">Section 4: Implementation Plan (3 slides)</p>
+                                        <ol class="pl-5 text-xs mb-0">
+                                            <li><strong>Financial Model: </strong>Investment requirements, expected ROI, and projected market share gains with clear quarterly milestones.</li>
+                                            <li><strong>Critical Path Timeline: </strong>Key product, go-to-market, and organizational milestones over 36 months with clear dependencies and decision points.</li>
+                                            <li><strong>Immediate Next Steps: </strong>Specific actions required in next 90 days with owners and deliverables to maintain momentum.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <p class="text-xs mt-2 text-gray-500 dark:text-gray-400">Improvements: Clear recommendation upfront, logical structure building a compelling case, information organized to support key decision, explicit financial implications, specific requested actions with clear ownership and timeline.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Story-line Transformation: Consulting Deck Best Practices</h6>
+                            <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                <p class="text-xs mb-2">Key improvements in the storytelling approach for strategic recommendations:</p>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs">
+                                        <thead>
+                                            <tr class="bg-white dark:bg-gray-800">
+                                                <th class="p-2 text-left border border-gray-200 dark:border-gray-700">Strategic Deck Element</th>
+                                                <th class="p-2 text-left border border-gray-200 dark:border-gray-700">Transformation Applied</th>
+                                                <th class="p-2 text-left border border-gray-200 dark:border-gray-700">Consulting Value Added</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700"><strong>Headline Recommendation</strong></td>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Moved recommendation from slide 14 to slide 1</li>
+                                                        <li>Crafted specific, action-oriented recommendation</li>
+                                                        <li>Added quantifiable outcomes and investment needs</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Creates immediate clarity on proposed direction</li>
+                                                        <li>Positions consulting team as confident, decisive advisors</li>
+                                                        <li>Allows executives to focus on evaluating a specific proposal</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700"><strong>Problem Framing</strong></td>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Created a dedicated "Why Change is Necessary" section</li>
+                                                        <li>Synthesized market, competitive, and internal factors</li>
+                                                        <li>Positioned issues as strategic rather than tactical</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Builds compelling case for action before solutions</li>
+                                                        <li>Creates shared understanding of strategic context</li>
+                                                        <li>Demonstrates deep market and competitive insights</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700"><strong>Solution Architecture</strong></td>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Organized recommendation into logical workstreams</li>
+                                                        <li>Created MECE structure for solution components</li>
+                                                        <li>Connected each element to specific business outcomes</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Demonstrates implementation thinking beyond strategy</li>
+                                                        <li>Creates clear structure for organization to follow</li>
+                                                        <li>Enables focused discussion on specific solution elements</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700"><strong>Implementation Focus</strong></td>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Repositioned implementation from "considerations" to concrete plan</li>
+                                                        <li>Added specific financial metrics and timelines</li>
+                                                        <li>Created clear accountability structure</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Demonstrates practical execution expertise</li>
+                                                        <li>Provides executives with clear decision framework</li>
+                                                        <li>Creates foundation for implementation support role</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700"><strong>Structural Efficiency</strong></td>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Reduced presentation from 16 to 12 slides</li>
+                                                        <li>Eliminated methodology slides upfront</li>
+                                                        <li>Moved detailed analyses to appendix</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Respects executive time constraints</li>
+                                                        <li>Focuses meeting on decisions rather than process</li>
+                                                        <li>Positions team as strategic advisors, not just analysts</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Practical Application Exercises</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Strategic Consulting Story-lining Practice</h5>
+                        <p class="mb-3">Apply story-lining techniques to the following Dell strategic consulting scenarios:</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Exercise 1: Executive Strategy Recommendation</h6>
+                            <p class="text-xs mb-2">Create a story-lined executive summary (maximum 250 words) for the following Dell Technical Support transformation scenario:</p>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                <p class="mb-0">Your team has completed an analysis of Dell's ProSupport operations and found that: (1) Average response time is 32 hours vs. industry benchmark of 8 hours; (2) Customer satisfaction scores for technical support are 65% vs. overall product satisfaction of 85%; (3) Support team attrition is 35% annually vs. company average of 12%; (4) Support costs have increased 27% year-over-year while ticket volume increased only 14%; (5) 40% of tickets are for issues that could be resolved through self-service options that don't currently exist in TechDirect; (6) Implementing Dell's new AI-assisted support platform with automated routing and knowledge base would cost $450K upfront and $120K annually; (7) Industry data suggests such implementations reduce ticket volume by 25-30% and improve response times by 50+%; (8) Current support platform contract expires in 4 months, coinciding with the launch of new Latitude and Precision models.</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium mb-1">Your Executive Summary</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Create a concise executive summary for Dell leadership that presents a clear ProSupport recommendation, supported by the most compelling data points, and outlines specific next steps. Use pyramid structure and logical flow."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="font-medium mb-2">Exercise 2: Strategy Presentation Story Spine</h6>
+                                <p class="text-xs mb-2">Create a story spine for a presentation on the topic below. Map out the key message, main supporting points, and evidence structure using the pyramid principle.</p>
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                    <p class="mb-0"><strong>Topic:</strong> Proposing a new hybrid work policy for Dell Technologies that balances employee flexibility with collaboration needs across global R&D centers in Austin, Singapore, and Bangalore.</p>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="block text-sm font-medium mb-1">Your Story Spine</label>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Outline your story spine following the pyramid principle for a Dell hybrid work proposal. Start with the key message at the top, followed by 3-5 supporting arguments, and the evidence that would support each argument."></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="font-medium mb-2">Exercise 3: Strategic Decision Framework</h6>
+                                <p class="text-xs mb-2">Apply the SCQA framework to organize a communication on the following strategic decision scenario:</p>
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                    <p class="mb-0"><strong>Scenario:</strong> Dell's marketing automation platform subscription is coming up for renewal in 60 days. The current platform has limitations in analytics capabilities and integration with Dell's Salesforce CRM implementation. Two alternative platforms have been evaluated, each with different strengths for supporting Dell's complex multi-product marketing needs, implementation timelines that could affect holiday campaign readiness, and varying costs that impact the marketing technology budget. You need to recommend whether to renew the current platform or switch to one of the alternatives.</p>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="block text-sm font-medium mb-1">Your SCQA Framework</label>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Outline the Situation, Complication, Question, and Answer for this strategic technology decision. Be specific about what information would go in each section of your communication to Dell executive leadership."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mt-4">
+                            <h6 class="font-medium mb-2">Exercise 4: Consulting Deck Transformation</h6>
+                            <p class="text-xs mb-2">Create a revised structure for a consulting presentation on Dell's CSG APAC Expansion strategy:</p>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                <p class="mb-2"><strong>Original Slide Structure (15 slides):</strong></p>
+                                <ol class="pl-5 text-xs mb-3">
+                                    <li>Title slide: Dell CSG APAC Expansion Assessment</li>
+                                    <li>Project overview and methodology</li>
+                                    <li>Market research approach and data sources</li>
+                                    <li>APAC commercial PC market growth trends</li>
+                                    <li>Regional competitive landscape analysis</li>
+                                    <li>Dell CSG current market share by country</li>
+                                    <li>Key market entry barriers by country</li>
+                                    <li>Regulatory requirements summary</li>
+                                    <li>Potential go-to-market models</li>
+                                    <li>Implementation timeline considerations</li>
+                                    <li>Organizational structure requirements</li>
+                                    <li>Financial analysis of expansion costs</li>
+                                    <li>Potential market share gains</li>
+                                    <li>Expansion recommendations</li>
+                                    <li>Next steps and discussion</li>
+                                </ol>
+                                <p class="mb-0">Your task is to transform this data-dump structure into a compelling, decision-oriented consulting presentation that uses the Pyramid Principle to drive a clear recommendation backed by strategic reasoning.</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium mb-1">Your Transformed Deck Structure</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="12" placeholder="Create a revised slide structure (8-10 slides) that follows best practices for consulting presentations. Include slide titles that tell a compelling story and organize information to drive a clear decision. Explain the logic behind your structure choices."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-4 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Exercises</button>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.amazon.com/Pyramid-Principle-Logic-Writing-Thinking/dp/0273710516" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-book-2-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Pyramid Principle</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Barbara Minto • Definitive guide to structured communication</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://hbr.org/2018/07/the-art-of-persuasion-hasnt-changed-in-2000-years" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Art of Persuasion</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Timeless principles of persuasive communication</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-five-attributes-of-enduring-family-businesses" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-slideshow-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Storytelling with Data</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Cole Nussbaumer Knaflic • Guide to creating visual stories with data</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" disabled>
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous Module</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-issue-trees">
+                        <span>Next: Issue Trees</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-storylining');
+        });
+    </script>
+</body>
+</html>

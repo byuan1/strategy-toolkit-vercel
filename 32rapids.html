@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Organizational Behavior</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-raci">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>RACI Framework</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-rapids">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>RAPIDs Framework</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-process-maps">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Process Maps</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-process-reengineering">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Process Reengineering</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-change-management">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Kotter's Change Management</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">61%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 61%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>6/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>1/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Organizational Behavior</span>
+                                <span>1/5 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- RAPIDs Framework Topic -->
+            <section id="topic-rapids" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-flow-chart text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">RAPIDs Framework</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Organizational Behavior</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the RAPIDs framework and its components: Recommend, Agree, Perform, Input, Decide</li>
+                            <li>Differentiate between RAPIDs and other decision rights frameworks like RACI</li>
+                            <li>Learn how to apply RAPIDs to improve decision-making quality and velocity</li>
+                            <li>Develop skills for implementing RAPIDs in cross-functional and matrix organizations</li>
+                            <li>Apply RAPIDs to real-world Dell scenarios to enhance organizational effectiveness</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to the RAPIDs Framework</h4>
+                    <p>The RAPIDs framework was developed by Bain & Company as a powerful tool for clarifying decision-making roles in organizations. RAPID stands for Recommend, Agree, Perform, Input, and Decide—the five key roles in effective decision processes. By explicitly defining these roles, RAPIDs creates clarity around who should be involved at each stage of decision-making, reducing confusion, accelerating decision velocity, and improving outcomes.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">The Decision-Making Challenge</h5>
+                        <p class="mb-3">Organizations frequently struggle with decision-making effectiveness, leading to several common challenges:</p>
+                        <ul class="pl-5 mb-3">
+                            <li><strong>Decision paralysis:</strong> Unclear accountability leading to delayed or deferred decisions</li>
+                            <li><strong>Decision by committee:</strong> Too many stakeholders with apparent veto power</li>
+                            <li><strong>Rubber stamps:</strong> Formal approvers without real authority or sufficient information</li>
+                            <li><strong>Unclear implementation ownership:</strong> Decisions made without clear execution responsibility</li>
+                            <li><strong>Stakeholder exclusion:</strong> Key perspectives missing from the decision process</li>
+                        </ul>
+                        <p class="mb-0">The RAPIDs framework addresses these challenges by creating a structured approach to decision rights. Unlike task-oriented frameworks like RACI, RAPIDs is specifically designed for decision processes, making it particularly valuable for strategic, cross-functional, and high-impact decisions that involve multiple stakeholders but require clear accountability.</p>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">The RAPIDs Framework Overview</h5>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 md:col-span-2">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mr-2">
+                                                <span class="font-bold">R</span>
+                                            </div>
+                                            <h6 class="font-medium text-blue-700 dark:text-blue-300">Recommend</h6>
+                                        </div>
+                                        <p class="text-xs mb-2">The person or group responsible for making a proposal, gathering input, analyzing data, and providing the rationale for a decision.</p>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Initiates the decision process</li>
+                                            <li>Creates the detailed proposal or recommendation</li>
+                                            <li>Gathers relevant data and input</li>
+                                            <li>Considers alternatives and performs analysis</li>
+                                            <li>Presents recommendation to the decision-maker</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 mr-2">
+                                                <span class="font-bold">D</span>
+                                            </div>
+                                            <h6 class="font-medium text-green-700 dark:text-green-300">Decide</h6>
+                                        </div>
+                                        <p class="text-xs mb-2">The single person who makes the final decision and is ultimately accountable for its outcome.</p>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Has ultimate decision-making authority</li>
+                                            <li>Commits resources and approves actions</li>
+                                            <li>Resolves conflicts or disagreements</li>
+                                            <li>Ensures decision aligns with strategy</li>
+                                            <li>Takes responsibility for outcomes</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-600 dark:text-purple-400 mr-2">
+                                                <span class="font-bold">A</span>
+                                            </div>
+                                            <h6 class="font-medium text-purple-700 dark:text-purple-300">Agree</h6>
+                                        </div>
+                                        <p class="text-xs mb-2">Stakeholders who must formally approve the recommendation before final decision.</p>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Has veto power or sign-off rights</li>
+                                            <li>Typically represents critical functions</li>
+                                            <li>Often legal, finance, or compliance roles</li>
+                                            <li>Can block recommendations if needed</li>
+                                            <li>Must be used sparingly to be effective</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400 mr-2">
+                                                <span class="font-bold">I</span>
+                                            </div>
+                                            <h6 class="font-medium text-amber-700 dark:text-amber-300">Input</h6>
+                                        </div>
+                                        <p class="text-xs mb-2">People consulted for their views and expertise before a recommendation is developed.</p>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Provides subject-matter expertise</li>
+                                            <li>Offers relevant perspectives</li>
+                                            <li>Consulted before recommendation is finalized</li>
+                                            <li>No veto power over recommendation</li>
+                                            <li>Views should be given serious consideration</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-red-50 dark:bg-red-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center text-red-600 dark:text-red-400 mr-2">
+                                                <span class="font-bold">P</span>
+                                            </div>
+                                            <h6 class="font-medium text-red-700 dark:text-red-300">Perform</h6>
+                                        </div>
+                                        <p class="text-xs mb-2">Individuals or groups responsible for implementing the decision once it's made.</p>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Executes the decision</li>
+                                            <li>Translates decision into action</li>
+                                            <li>May not be involved in making the decision</li>
+                                            <li>Should understand rationale behind decision</li>
+                                            <li>Provides feedback on implementation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-center mt-3 text-gray-500 dark:text-gray-400">The five RAPID components create a comprehensive framework for effective decision-making</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Key RAPIDs Principles</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Core Principles for Effective RAPIDs Implementation</h5>
+                        <p class="text-sm mb-3">The RAPIDs framework is guided by several fundamental principles that ensure clear decision rights and effective decision processes in organizations.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Decision Clarity Principles</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Single Decision-Maker</p>
+                                            <p class="mb-0">Every decision must have exactly one D role—the ultimate decision-maker who has final authority and accountability. This eliminates confusion and ensures clear ownership of the decision outcome.</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Recommended Before Decided</p>
+                                            <p class="mb-0">The R role should always complete their analysis and present a formal recommendation before the D makes the final decision. This ensures decisions are based on thorough analysis and options.</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Limited Agree Roles</p>
+                                            <p class="mb-0">The A role should be used sparingly and only for stakeholders with legitimate rights to veto or formal sign-off requirements. Too many A roles creates gridlock and delays decisions.</p>
+                                        </li>
+                                        <li>
+                                            <p class="font-medium mb-0.5">Separation of Roles</p>
+                                            <p class="mb-0">While one person may play multiple roles in different decisions, within a single decision, roles should be clearly separated to ensure proper checks and balances in the decision process.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Process Effectiveness Principles</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Input Before Recommendation</p>
+                                            <p class="mb-0">Those with the I role should be consulted before the recommendation is finalized. This ensures diverse perspectives are considered and prevents last-minute objections that delay decisions.</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Appropriate Input Scale</p>
+                                            <p class="mb-0">The number of Input roles should be balanced—enough to gather necessary perspectives without creating excessive coordination complexity or delaying the recommendation.</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Performers' Involvement</p>
+                                            <p class="mb-0">Where possible, those with the P role should have some involvement earlier in the process—either as I or in developing parts of the R. This ensures better implementation of decisions once made.</p>
+                                        </li>
+                                        <li>
+                                            <p class="font-medium mb-0.5">Decision Scope Definition</p>
+                                            <p class="mb-0">The specific decision being addressed must be clearly defined, including its scope, impact, and boundaries. Vague decision definitions lead to confusion in role assignments and process.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">RAPIDs Implementation Principles</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Decision-Making Authority</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Match decision rights to formal authority</li>
+                                        <li>Align D roles with accountability level</li>
+                                        <li>Ensure decision-makers have needed resources</li>
+                                        <li>Connect authority to organizational strategy</li>
+                                        <li>Address gaps between formal and informal authority</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Decision Process Design</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Define clear decision process timelines</li>
+                                        <li>Document how input will be gathered</li>
+                                        <li>Create templates for recommendation format</li>
+                                        <li>Establish handoff protocols between roles</li>
+                                        <li>Define escalation paths for disagreements</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Organizational Integration</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Align with governance structures</li>
+                                        <li>Integrate with existing decision forums</li>
+                                        <li>Connect to meeting cadences and formats</li>
+                                        <li>Ensure consistency with org design</li>
+                                        <li>Enable cross-functional collaboration</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Applying RAPIDs to Decision Types</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Tailoring RAPIDs to Different Decision Categories</h5>
+                        <p class="text-sm mb-3">Not all decisions require the same level of rigor in applying the RAPIDs framework. By categorizing decisions based on their characteristics, you can apply the appropriate level of process formality and stakeholder involvement.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Decision Categorization Framework</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Strategic Decisions</h6>
+                                        <p class="text-xs mb-0">Major decisions with long-term impact that shape organizational direction:</p>
+                                        <ul class="pl-4 text-xs mt-1 mb-0">
+                                            <li>Strategic investments and resource allocation</li>
+                                            <li>New market entry or exit decisions</li>
+                                            <li>Major organizational changes</li>
+                                            <li>Significant partnership or acquisition decisions</li>
+                                            <li>Long-term product roadmap decisions</li>
+                                        </ul>
+                                        <div class="mt-1 p-1 bg-green-50 dark:bg-green-900/20 rounded">
+                                            <p class="text-xs mb-0"><strong>RAPIDs Application:</strong> Full formal implementation with documented roles, structured process, multiple input sources, and senior executive involvement.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Cross-Functional Decisions</h6>
+                                        <p class="text-xs mb-0">Decisions requiring coordination across multiple departments or functions:</p>
+                                        <ul class="pl-4 text-xs mt-1 mb-0">
+                                            <li>Product launch decisions</li>
+                                            <li>Process changes affecting multiple departments</li>
+                                            <li>Resource allocation between departments</li>
+                                            <li>Customer experience initiatives</li>
+                                            <li>Technology platform decisions</li>
+                                        </ul>
+                                        <div class="mt-1 p-1 bg-green-50 dark:bg-green-900/20 rounded">
+                                            <p class="text-xs mb-0"><strong>RAPIDs Application:</strong> Structured framework with clear documentation of roles, formalized input process, and special attention to the "Agree" roles to manage cross-functional complexity.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Operational Decisions</h6>
+                                        <p class="text-xs mb-0">Routine decisions focused on executing established strategies and processes:</p>
+                                        <ul class="pl-4 text-xs mt-1 mb-0">
+                                            <li>Standard project approvals</li>
+                                            <li>Regular budget adjustments</li>
+                                            <li>Routine procurement decisions</li>
+                                            <li>Standard hiring decisions</li>
+                                            <li>Regular operational changes</li>
+                                        </ul>
+                                        <div class="mt-1 p-1 bg-green-50 dark:bg-green-900/20 rounded">
+                                            <p class="text-xs mb-0"><strong>RAPIDs Application:</strong> Simplified framework focusing primarily on clear R and D roles with streamlined input process and minimal formal documentation.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Decision Process Patterns</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[365px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Centralized Decision Pattern</h6>
+                                            <div class="flex items-start gap-2 mb-1">
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded">
+                                                    <strong>R:</strong> Subject experts
+                                                </div>
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-400 rounded">
+                                                    <strong>A:</strong> Limited/None
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-2 mb-1">
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400 rounded">
+                                                    <strong>I:</strong> Key stakeholders
+                                                </div>
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 rounded">
+                                                    <strong>D:</strong> Senior leader
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-2 mb-2">
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400 rounded">
+                                                    <strong>P:</strong> Implementation team
+                                                </div>
+                                            </div>
+                                            <p class="text-xs mb-0"><strong>Best for:</strong> Major strategic decisions, significant resource allocation, crisis management, and decisions requiring strong alignment with corporate direction.</p>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Consultative Decision Pattern</h6>
+                                            <div class="flex items-start gap-2 mb-1">
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded">
+                                                    <strong>R:</strong> Project team
+                                                </div>
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-400 rounded">
+                                                    <strong>A:</strong> Key functions
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-2 mb-1">
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400 rounded">
+                                                    <strong>I:</strong> Broad input
+                                                </div>
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 rounded">
+                                                    <strong>D:</strong> Department head
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-2 mb-2">
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400 rounded">
+                                                    <strong>P:</strong> Cross-functional team
+                                                </div>
+                                            </div>
+                                            <p class="text-xs mb-0"><strong>Best for:</strong> Cross-functional initiatives, organizational change decisions, policy changes, and decisions with broad stakeholder impact requiring buy-in.</p>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Delegated Decision Pattern</h6>
+                                            <div class="flex items-start gap-2 mb-1">
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded">
+                                                    <strong>R:</strong> Team member
+                                                </div>
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-400 rounded">
+                                                    <strong>A:</strong> None
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-2 mb-1">
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400 rounded">
+                                                    <strong>I:</strong> Limited
+                                                </div>
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 rounded">
+                                                    <strong>D:</strong> Team leader
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-2 mb-2">
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400 rounded">
+                                                    <strong>P:</strong> Same team
+                                                </div>
+                                            </div>
+                                            <p class="text-xs mb-0"><strong>Best for:</strong> Routine operational decisions, tactical implementation choices, and decisions where speed and agility are more important than broad consensus.</p>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Collaborative Decision Pattern</h6>
+                                            <div class="flex items-start gap-2 mb-1">
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded">
+                                                    <strong>R:</strong> Core team
+                                                </div>
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-400 rounded">
+                                                    <strong>A:</strong> Partners
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-2 mb-1">
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400 rounded">
+                                                    <strong>I:</strong> Diverse perspectives
+                                                </div>
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 rounded">
+                                                    <strong>D:</strong> Shared leadership
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-2 mb-2">
+                                                <div class="flex-shrink-0 w-24 text-xs text-center py-1 px-2 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400 rounded">
+                                                    <strong>P:</strong> Extended team
+                                                </div>
+                                            </div>
+                                            <p class="text-xs mb-0"><strong>Best for:</strong> Complex innovation decisions, product design choices, partnership arrangements, and decisions requiring creative problem-solving and diverse perspectives.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">RAPIDs Decision Process Flow</h6>
+                            
+                            <div class="overflow-x-auto">
+                                <div class="min-w-[700px]">
+                                    <div class="relative h-[180px]">
+                                        <!-- Process Flow Chart -->
+                                        <svg class="absolute inset-0 h-full w-full" viewBox="0 0 700 180">
+                                            <!-- Process Steps -->
+                                            <rect x="20" y="60" width="100" height="60" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+                                            <text x="70" y="85" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="bold">1. Input</text>
+                                            <text x="70" y="105" text-anchor="middle" font-size="10" fill="#1e40af">Gather perspectives and data</text>
+                                            
+                                            <rect x="170" y="60" width="100" height="60" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                                            <text x="220" y="85" text-anchor="middle" font-size="12" fill="#3730a3" font-weight="bold">2. Recommend</text>
+                                            <text x="220" y="105" text-anchor="middle" font-size="10" fill="#3730a3">Develop proposal</text>
+                                            
+                                            <rect x="320" y="60" width="100" height="60" rx="5" fill="#f3e8ff" stroke="#a855f7" stroke-width="2"/>
+                                            <text x="370" y="85" text-anchor="middle" font-size="12" fill="#6b21a8" font-weight="bold">3. Agree</text>
+                                            <text x="370" y="105" text-anchor="middle" font-size="10" fill="#6b21a8">Obtain required approvals</text>
+                                            
+                                            <rect x="470" y="60" width="100" height="60" rx="5" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+                                            <text x="520" y="85" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold">4. Decide</text>
+                                            <text x="520" y="105" text-anchor="middle" font-size="10" fill="#166534">Make final decision</text>
+                                            
+                                            <rect x="620" y="60" width="60" height="60" rx="5" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+                                            <text x="650" y="85" text-anchor="middle" font-size="12" fill="#991b1b" font-weight="bold">5. Perform</text>
+                                            <text x="650" y="105" text-anchor="middle" font-size="10" fill="#991b1b">Implement</text>
+                                            
+                                            <!-- Process Arrows -->
+                                            <line x1="120" y1="90" x2="165" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                            <line x1="270" y1="90" x2="315" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                            <line x1="420" y1="90" x2="465" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                            <line x1="570" y1="90" x2="615" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                            
+                                            <!-- Feedback loop -->
+                                            <path d="M 440 130 C 440 150 100 150 100 130" fill="none" stroke="#6b7280" stroke-width="2" stroke-dasharray="4" marker-end="url(#arrowhead)"/>
+                                            <text x="270" y="165" text-anchor="middle" font-size="10" fill="#6b7280">Feedback & Refinement Loop</text>
+                                            
+                                            <!-- Arrowhead marker -->
+                                            <defs>
+                                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+                                                </marker>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <p class="text-xs mb-0"><strong>Process Note:</strong> While the above diagram shows a linear flow, the actual RAPIDs process often involves iterative cycles between Input and Recommend steps to refine proposals. The Agree step may also identify issues requiring revisiting the Recommend step. However, once a decision is made by the D, the implementation moves forward through the Perform step with clear accountability.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>RAPIDs vs. RACI: Key Differences</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Understanding Framework Differences and When to Use Each</h5>
+                        <p class="text-sm mb-3">While both RAPIDs and RACI are responsibility assignment frameworks, they serve different purposes and are optimized for different organizational needs. Understanding these differences helps in selecting the most appropriate framework for specific situations.</p>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3 mb-4">
+                            <h6 class="text-sm font-medium mb-2">Comparative Framework Analysis</h6>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Characteristic</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">RACI Framework</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">RAPIDs Framework</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Primary Focus</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Task and activity ownership across deliverables and processes
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Decision rights and decision-making processes
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Chronological Aspect</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Generally static assignment of responsibilities without defined sequence
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Incorporates process flow with roles appearing in a typical sequence (Input → Recommend → Agree → Decide → Perform)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Accountability Structure</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                One Accountable person per task who may delegate to Responsible parties
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                One Decision-maker with separate roles for Recommenders and formal Approvers
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Execution Focus</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Strong focus on those Responsible for doing the work (R role)
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Greater emphasis on who Recommends (R role) and Decides (D role), with implementation as a distinct later step (P role)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Stakeholder Distinctions</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Single Consulted role for all input providers
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Distinguishes between stakeholders providing Input (I) and those with formal Approval rights (A)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Implementation Scope</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Often applied broadly across many tasks and operational processes
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Typically applied to specific important decisions or decision categories
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Visualization Format</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Usually presented as a matrix mapping roles to activities
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Often depicted as a process flow with decision rights at each stage
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Intended Use Cases</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Project management</li>
+                                                    <li>Process definition</li>
+                                                    <li>Cross-functional collaboration</li>
+                                                    <li>Role clarity in operational activities</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Strategic decision-making</li>
+                                                    <li>Governance structures</li>
+                                                    <li>Decision bottleneck resolution</li>
+                                                    <li>Clarifying executive decision rights</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <h6 class="text-sm font-medium mb-2">When to Use RACI</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1">
+                                        <p class="font-medium mb-0">Project Management</p>
+                                        <p class="mb-0">When managing complex projects with many tasks and deliverables that need clear ownership assignment.</p>
+                                    </li>
+                                    <li class="mb-1">
+                                        <p class="font-medium mb-0">Process Documentation</p>
+                                        <p class="mb-0">When defining standard operating procedures and recurring processes that will be executed repeatedly.</p>
+                                    </li>
+                                    <li class="mb-1">
+                                        <p class="font-medium mb-0">Task-Oriented Work</p>
+                                        <p class="mb-0">When the focus is on execution of specific activities rather than decision-making.</p>
+                                    </li>
+                                    <li class="mb-1">
+                                        <p class="font-medium mb-0">Role Clarification</p>
+                                        <p class="mb-0">When onboarding new team members or establishing clarity in matrix organizations about who does what.</p>
+                                    </li>
+                                    <li>
+                                        <p class="font-medium mb-0">Comprehensive Coverage</p>
+                                        <p class="mb-0">When you need to map responsibilities across a wide range of activities in a department or function.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <h6 class="text-sm font-medium mb-2">When to Use RAPIDs</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1">
+                                        <p class="font-medium mb-0">Decision Process Improvement</p>
+                                        <p class="mb-0">When organizations suffer from slow, unclear, or ineffective decision-making processes.</p>
+                                    </li>
+                                    <li class="mb-1">
+                                        <p class="font-medium mb-0">Governance Design</p>
+                                        <p class="mb-0">When establishing or refining organizational governance structures and decision rights.</p>
+                                    </li>
+                                    <li class="mb-1">
+                                        <p class="font-medium mb-0">Strategic Decisions</p>
+                                        <p class="mb-0">For high-impact decisions that require structured input, clear recommendations, and transparent approval processes.</p>
+                                    </li>
+                                    <li class="mb-1">
+                                        <p class="font-medium mb-0">Cross-Functional Collaboration</p>
+                                        <p class="mb-0">When decisions require input and buy-in from multiple stakeholders across organizational boundaries.</p>
+                                    </li>
+                                    <li>
+                                        <p class="font-medium mb-0">Organizational Transformation</p>
+                                        <p class="mb-0">During major change initiatives when decision processes need to be redesigned for greater effectiveness.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Practical Integration of RACI and RAPIDs</h6>
+                            
+                            <p class="text-xs mb-2">In many organizations, both frameworks can be used in complementary ways to address different aspects of organizational effectiveness:</p>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Organizational Level</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">RACI Application</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">RAPIDs Application</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Integration Approach</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Executive/Strategic</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Used for major strategic initiatives to define high-level responsibilities
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Applied to critical strategic and investment decisions with governance structures
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                RAPIDs for decision governance framework with RACI for initiative execution
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Business Unit/Department</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Used for process ownership and cross-functional role clarity
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Applied to key business decisions and resource allocation choices
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Departmental decision rights (RAPIDs) with process responsibilities (RACI)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Project Level</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Comprehensive task and deliverable responsibility matrix
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Framework for critical project decision points and stage gates
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Project governance model with RAPIDs for key decisions and RACI for workstreams
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Operational/Process</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Detailed process steps and activity ownership
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Used only for critical operational decisions with significant impact
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                RACI for standard operations with RAPIDs for exception handling and escalations
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <p class="text-xs mb-0"><strong>Key Integration Principle:</strong> Rather than viewing RACI and RAPIDs as competing frameworks, organizations achieve the best results by using them for their respective strengths. RAPIDs provides structure for how decisions are made, while RACI clarifies who is responsible for executing the work once decisions are made. Together, they create a comprehensive approach to organizational clarity.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Dell Case Study: RAPIDs for Strategic Platform Decisions</h5>
+                        <p class="text-sm mb-3">This example illustrates how Dell Technologies implemented the RAPIDs framework to improve decision-making for strategic technology platform investments across its global organization.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Challenge Context</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Dell faced several decision-making challenges in its technology platform investments:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li>Slow decision cycles for strategic technology investments (6+ months)</li>
+                                        <li>Inconsistent stakeholder involvement across business units</li>
+                                        <li>Unclear accountability for final decisions amid matrix organization complexity</li>
+                                        <li>Significant resources spent on proposals that were ultimately rejected</li>
+                                        <li>Implementation delays due to late involvement of key stakeholders</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Business Impact:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Missed market windows for competitive technology offerings</li>
+                                        <li>Inefficient use of engineering and product management resources</li>
+                                        <li>Inconsistent technology decisions across business units</li>
+                                        <li>Duplicate investments in similar capabilities</li>
+                                        <li>Difficulty tracking accountability for investment outcomes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">RAPIDs Implementation Approach</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Diagnostic Phase</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Mapped current decision processes for technology investments</li>
+                                            <li>Identified key decision types and categorized by impact and frequency</li>
+                                            <li>Conducted stakeholder interviews to understand pain points</li>
+                                            <li>Analyzed historical decisions for patterns and bottlenecks</li>
+                                            <li>Benchmarked against industry best practices</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Design Phase</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Created decision rights framework using RAPIDs principles</li>
+                                            <li>Developed standardized templates for investment proposals</li>
+                                            <li>Established clear criteria for different investment tiers</li>
+                                            <li>Defined escalation paths for contentious decisions</li>
+                                            <li>Created governance structures aligned with decision rights</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Implementation Phase</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Conducted leadership training on RAPIDs principles</li>
+                                            <li>Piloted framework with several key technology decisions</li>
+                                            <li>Refined approach based on initial feedback</li>
+                                            <li>Created playbooks and reference materials</li>
+                                            <li>Established metrics to track decision effectiveness</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Dell's RAPIDs Framework for Technology Platform Decisions</h6>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Role</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Assigned To</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Responsibilities</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Timing in Process</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium bg-blue-50 dark:bg-blue-900/20">Recommend (R)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Technology Strategy Team (lead)</li>
+                                                    <li>Business Unit Technology Leads</li>
+                                                    <li>Platform Architecture Group</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Develop investment business case and proposal</li>
+                                                    <li>Conduct technical feasibility assessment</li>
+                                                    <li>Gather and synthesize stakeholder input</li>
+                                                    <li>Present options and final recommendation</li>
+                                                    <li>Provide supporting data and analysis</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Initial proposal development: Weeks 1-4</li>
+                                                    <li>Stakeholder consultation: Weeks 2-5</li>
+                                                    <li>Final recommendation preparation: Weeks 5-6</li>
+                                                    <li>Formal recommendation delivery: Week 7</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium bg-amber-50 dark:bg-amber-900/20">Input (I)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Engineering Teams</li>
+                                                    <li>Product Management</li>
+                                                    <li>Customer Experience Team</li>
+                                                    <li>Sales Leadership</li>
+                                                    <li>Services Organization</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Provide domain expertise input</li>
+                                                    <li>Share market and customer insights</li>
+                                                    <li>Highlight implementation considerations</li>
+                                                    <li>Assess impact on existing systems</li>
+                                                    <li>Flag potential issues or concerns</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Initial consultation: Weeks 2-3</li>
+                                                    <li>Structured input sessions: Weeks 3-4</li>
+                                                    <li>Feedback on draft proposal: Week 5</li>
+                                                    <li>Must provide input before Week 5 to be considered</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium bg-purple-50 dark:bg-purple-900/20">Agree (A)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Finance Leadership</li>
+                                                    <li>Security & Compliance Team</li>
+                                                    <li>Legal Department</li>
+                                                    <li>Impacted Business Unit Heads</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Formally approve recommendation proceeding to decision</li>
+                                                    <li>Validate financial models and assumptions</li>
+                                                    <li>Ensure compliance with policies and regulations</li>
+                                                    <li>Verify business impact assessments</li>
+                                                    <li>Can veto with documented rationale</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Review of final recommendation: Week 7</li>
+                                                    <li>Formal sign-off: Week 8</li>
+                                                    <li>Required to respond within 5 business days</li>
+                                                    <li>Veto must include specific issues to address</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium bg-green-50 dark:bg-green-900/20">Decide (D)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>CTO (for enterprise-wide platforms)</li>
+                                                    <li>BU CTO (for business unit platforms)</li>
+                                                    <li>Technology Investment Committee (for largest investments)</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Make final decision on investment</li>
+                                                    <li>Allocate approved funding and resources</li>
+                                                    <li>Set conditions or constraints on approval</li>
+                                                    <li>Communicate decision rationale</li>
+                                                    <li>Take accountability for outcomes</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Review period: Week 9</li>
+                                                    <li>Decision rendered: Week 10</li>
+                                                    <li>Must decide within 10 business days of receiving approved recommendation</li>
+                                                    <li>Decision communicated within 2 days</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium bg-red-50 dark:bg-red-900/20">Perform (P)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Platform Engineering Team</li>
+                                                    <li>Implementation Project Managers</li>
+                                                    <li>DevOps Teams</li>
+                                                    <li>Cross-functional implementation team</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Execute approved investment decision</li>
+                                                    <li>Develop detailed implementation plan</li>
+                                                    <li>Track and report on progress</li>
+                                                    <li>Manage integration with existing systems</li>
+                                                    <li>Deliver on expected outcomes</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Implementation planning: Weeks 10-12</li>
+                                                    <li>Execution kickoff: Week 13</li>
+                                                    <li>Regular progress reviews with D and R</li>
+                                                    <li>90-day post-implementation review</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Implementation Challenges</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Cultural resistance:</strong> Senior leaders initially hesitant to relinquish perceived decision rights in their domains</li>
+                                    <li class="mb-1"><strong>Process adherence:</strong> Tendency to revert to previous informal decision-making during time pressure</li>
+                                    <li class="mb-1"><strong>Role confusion:</strong> Difficulty distinguishing between Input and Agree roles in practice</li>
+                                    <li class="mb-1"><strong>Timeliness concerns:</strong> Perception that formalized process would slow decisions further</li>
+                                    <li class="mb-0"><strong>Global coordination:</strong> Challenges implementing consistent process across regional teams</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Success Factors</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Executive sponsorship:</strong> CTO's active championship and personal modeling of the framework</li>
+                                    <li class="mb-1"><strong>Clear benefits case:</strong> Compelling data on cost of delayed decisions and rework</li>
+                                    <li class="mb-1"><strong>Practical tools:</strong> Simple templates, clear process guides, and decision tracking system</li>
+                                    <li class="mb-1"><strong>Flexibility:</strong> Tiered approach with lightweight process for smaller decisions</li>
+                                    <li class="mb-0"><strong>Celebration of success:</strong> Highlighting early wins and improved decision outcomes</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Measurable Outcomes</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Decision cycle time:</strong> Reduced from 6+ months to 10 weeks for major platform decisions</li>
+                                    <li class="mb-1"><strong>Implementation success:</strong> 35% improvement in on-time, on-budget delivery of approved investments</li>
+                                    <li class="mb-1"><strong>Resource efficiency:</strong> 28% reduction in engineering hours spent on proposals that weren't approved</li>
+                                    <li class="mb-1"><strong>Decision quality:</strong> 22% increase in technology investments meeting or exceeding ROI targets</li>
+                                    <li class="mb-0"><strong>Stakeholder satisfaction:</strong> 40-point improvement in internal survey scores on decision transparency</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Key Learnings & Best Practices</h6>
+                            <ul class="pl-4 text-xs mb-2">
+                                <li class="mb-1"><strong>Right-size the framework:</strong> Create tiered approach with appropriate rigor based on decision impact and investment size</li>
+                                <li class="mb-1"><strong>Invest in education:</strong> Ensure all participants understand the purpose of each role and overall process flow</li>
+                                <li class="mb-1"><strong>Start with pain points:</strong> Initially apply RAPIDs to decisions that have historically been most problematic</li>
+                                <li class="mb-1"><strong>Focus on timelines:</strong> Set clear expectations for how long each stage should take to prevent delays</li>
+                                <li class="mb-0"><strong>Measure effectiveness:</strong> Track decision velocity, quality, and adherence to process to demonstrate value</li>
+                            </ul>
+                            <p class="text-xs mb-0"><strong>Sustainability Strategy:</strong> Dell incorporated RAPIDs into its standard technology governance framework and leadership development programs. The framework was expanded to other decision domains after demonstrating success in technology platforms. Regular reviews of decision effectiveness were established, and the process was refined based on ongoing feedback and changing business needs.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Implementing RAPIDs in Organizations</h4>
+                    
+                    <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-red-700 dark:text-red-400 font-medium mb-2">Implementation Strategies and Best Practices</h5>
+                        <p class="text-sm mb-3">Successfully implementing RAPIDs requires more than just defining roles and creating documentation. Organizations must address cultural factors, provide adequate support, and establish ongoing governance to ensure the framework delivers sustainable improvements in decision-making.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Implementation Phases</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">1. Assessment & Diagnosis</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Identify current decision-making pain points</li>
+                                            <li>Map existing informal and formal decision processes</li>
+                                            <li>Catalog critical decisions that would benefit from clarity</li>
+                                            <li>Assess organizational readiness for change</li>
+                                            <li>Establish baseline metrics on decision effectiveness</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">2. Design & Development</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Categorize decisions and develop appropriate RAPIDs models</li>
+                                            <li>Define clear roles for each decision category</li>
+                                            <li>Create supporting templates and documentation</li>
+                                            <li>Develop training and communication materials</li>
+                                            <li>Establish governance structure and measurement approach</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">3. Pilot Implementation</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Select high-impact decisions for initial implementation</li>
+                                            <li>Train participants in pilot areas on framework</li>
+                                            <li>Provide coaching support during initial decision cycles</li>
+                                            <li>Gather feedback on process effectiveness</li>
+                                            <li>Refine approach based on pilot learnings</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">4. Scaling & Sustainability</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Roll out framework to broader organization</li>
+                                            <li>Integrate with existing management systems</li>
+                                            <li>Create communities of practice for sharing best practices</li>
+                                            <li>Establish regular review cycles to refresh decision rights</li>
+                                            <li>Track and communicate impact and success stories</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Critical Success Factors</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Executive Sponsorship & Modeling</h6>
+                                            <p class="text-xs mb-0">Leadership support and demonstration is essential:</p>
+                                            <ul class="pl-4 text-xs mt-1 mb-0">
+                                                <li>Obtain visible endorsement from senior leadership</li>
+                                                <li>Ensure executives model framework in their own decisions</li>
+                                                <li>Address resistance at leadership level first</li>
+                                                <li>Connect framework to strategic priorities and values</li>
+                                                <li>Establish executive accountability for implementation</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Change Management Approach</h6>
+                                            <p class="text-xs mb-0">Thoughtful change management increases adoption:</p>
+                                            <ul class="pl-4 text-xs mt-1 mb-0">
+                                                <li>Communicate compelling "why" for implementation</li>
+                                                <li>Address fear of loss of control or authority</li>
+                                                <li>Provide adequate training and support resources</li>
+                                                <li>Recognize and celebrate early adopters</li>
+                                                <li>Establish feedback mechanisms for continuous improvement</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Practical Tools & Resources</h6>
+                                            <p class="text-xs mb-0">Supporting materials enable consistent application:</p>
+                                            <ul class="pl-4 text-xs mt-1 mb-0">
+                                                <li>Create clear templates for each RAPIDs role</li>
+                                                <li>Develop decision process playbooks and guides</li>
+                                                <li>Establish repositories for documentation</li>
+                                                <li>Provide facilitation resources for complex decisions</li>
+                                                <li>Leverage technology for tracking and transparency</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Integration with Organizational Systems</h6>
+                                            <p class="text-xs mb-0">Embedding RAPIDs into existing processes ensures sustainability:</p>
+                                            <ul class="pl-4 text-xs mt-1 mb-0">
+                                                <li>Align with governance structures and meeting cadences</li>
+                                                <li>Incorporate into project management methodologies</li>
+                                                <li>Link to performance management and rewards</li>
+                                                <li>Include in onboarding for new leaders</li>
+                                                <li>Reference in strategic planning processes</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Common Implementation Challenges</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-red-700 dark:text-red-400 mb-1">Cultural Resistance</h6>
+                                    <p class="text-xs mb-1">Overcoming organizational inertia and existing power structures:</p>
+                                    <div class="mb-2">
+                                        <p class="text-xs font-medium mb-0.5">Challenge</p>
+                                        <ul class="pl-4 text-xs mb-1">
+                                            <li>Resistance to perceived loss of decision authority</li>
+                                            <li>Preference for informal influence networks</li>
+                                            <li>Skepticism about "another framework"</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-medium mb-0.5">Mitigation Strategy</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Focus on decision quality and speed benefits</li>
+                                            <li>Start with "coalition of the willing"</li>
+                                            <li>Showcase early successes and improvements</li>
+                                            <li>Address concerns through open dialogue</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-red-700 dark:text-red-400 mb-1">Complexity Management</h6>
+                                    <p class="text-xs mb-1">Balancing comprehensiveness with usability:</p>
+                                    <div class="mb-2">
+                                        <p class="text-xs font-medium mb-0.5">Challenge</p>
+                                        <ul class="pl-4 text-xs mb-1">
+                                            <li>Over-engineering the framework</li>
+                                            <li>Creating excessive documentation</li>
+                                            <li>Applying heavy process to all decisions</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-medium mb-0.5">Mitigation Strategy</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Create tiered approach based on decision impact</li>
+                                            <li>Focus on high-value decisions initially</li>
+                                            <li>Develop simplified versions for routine decisions</li>
+                                            <li>Regularly refine to eliminate unnecessary steps</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-red-700 dark:text-red-400 mb-1">Accountability Enforcement</h6>
+                                    <p class="text-xs mb-1">Ensuring adherence to defined roles:</p>
+                                    <div class="mb-2">
+                                        <p class="text-xs font-medium mb-0.5">Challenge</p>
+                                        <ul class="pl-4 text-xs mb-1">
+                                            <li>Reversion to old decision habits</li>
+                                            <li>Role confusion during implementation</li>
+                                            <li>Lack of consequences for non-adherence</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-medium mb-0.5">Mitigation Strategy</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Establish clear governance and oversight</li>
+                                            <li>Create transparency in decision process</li>
+                                            <li>Incorporate into leadership evaluations</li>
+                                            <li>Provide coaching during transition period</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2006/01/who-has-the-d-how-clear-decision-roles-enhance-organizational-performance" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Who Has the D? How Clear Decision Roles Enhance Organizational Performance</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Bain & Company's Original RAPIDs Article</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-five-trademarks-of-agile-organizations" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-presentation-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Five Trademarks of Agile Organizations</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • Clear Decision Rights in Agile Contexts</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.delltechnologies.com/en-us/blog/accelerating-decision-making-for-better-business-outcomes/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-book-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Accelerating Decision-Making for Better Business Outcomes</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Dell Technologies • Decision Effectiveness in Digital Transformation</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell Product Portfolio RAPIDs Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll apply the RAPIDs framework to improve decision-making for Dell's product portfolio management process. This scenario will help you develop practical skills for implementing decision rights frameworks in complex organizational contexts.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Scenario Context:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Dell is revamping its quarterly product portfolio review process for the Consumer Solutions Group</li>
+                                    <li>Current process involves numerous stakeholders but lacks clear decision rights</li>
+                                    <li>Key decisions include product roadmap prioritization, resource allocation, and end-of-life decisions</li>
+                                    <li>Process currently takes 6-8 weeks and often results in delayed decisions or revisiting previous choices</li>
+                                    <li>Multiple functions involved: Product Management, Engineering, Marketing, Sales, Finance, Operations, and Executive Leadership</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Key Stakeholders:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Consumer Business Unit President</li>
+                                    <li>VP of Product Management</li>
+                                    <li>Engineering Leadership Team</li>
+                                    <li>Consumer Marketing Director</li>
+                                    <li>Global Supply Chain Lead</li>
+                                    <li>Category Product Managers</li>
+                                    <li>Finance Business Partners</li>
+                                    <li>Global Sales Teams</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Critical Decision Identification</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Identify 3-5 key decisions that should be made in the product portfolio review process. Be specific about each decision's scope and impact."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">RAPIDs Role Assignment</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="5" placeholder="For each decision you identified, assign the RAPIDs roles (Recommend, Agree, Perform, Input, Decide) to the appropriate stakeholders. Explain your rationale for these assignments."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Process Design & Implementation</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Outline a process flow with timeline for implementing the RAPIDs framework in the portfolio review. Identify potential implementation challenges and strategies to address them."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-raci">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: RACI Framework</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-process-maps">
+                        <span>Next: Process Maps</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-rapids');
+        });
+    </script>
+</body>
+</html>

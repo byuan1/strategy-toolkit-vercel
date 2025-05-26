@@ -1,0 +1,1165 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="ri-arrow-left-line"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      
+            <!-- Issue Trees Topic -->
+            <section id="topic-issue-trees" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-git-branch-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Issue Trees</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Structured Problem Solving</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand how issue trees decompose complex problems into analyzable components</li>
+                            <li>Master the structure and development of comprehensive issue trees</li>
+                            <li>Apply MECE (Mutually Exclusive, Collectively Exhaustive) principles to issue trees</li>
+                            <li>Learn to create diagnostic, solution-focused, and hybrid issue trees</li>
+                            <li>Apply issue trees to real-world Dell strategic challenges</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Foundations of Issue Trees</h4>
+                    <p>Issue trees are hierarchical diagrams that break down a complex problem into its component parts in a systematic way. They serve as both an analytical tool and a project management framework, enabling teams to structure and prioritize their work on complex challenges. Issue trees are especially valuable in strategic consulting because they ensure comprehensive coverage of all potential hypotheses and create clear roadmaps for analysis.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Issue Trees Matter in Strategic Consulting</h5>
+                        <p class="mb-3">Issue trees provide several critical benefits in strategic problem-solving contexts:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Structured Hypothesis Development</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Creates logical frameworks for thinking</li>
+                                    <li>Ensures comprehensive problem coverage</li>
+                                    <li>Prevents overlooking critical factors</li>
+                                    <li>Reveals unstated assumptions</li>
+                                    <li>Provides scaffolding for complex analysis</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Analysis &amp; Work Planning</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Maps required analyses clearly</li>
+                                    <li>Creates natural workstreams</li>
+                                    <li>Facilitates resource allocation</li>
+                                    <li>Identifies data requirements upfront</li>
+                                    <li>Enables parallel work processes</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Communication &amp; Alignment</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Visualizes problem structure</li>
+                                    <li>Creates shared mental models</li>
+                                    <li>Aligns teams on analytical approach</li>
+                                    <li>Clarifies scope boundaries</li>
+                                    <li>Provides progress tracking framework</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Core Elements of an Issue Tree</h6>
+                            <div class="bg-white dark:bg-gray-900 p-4 rounded-lg">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h6 class="text-sm font-medium mb-2 text-primary">Structure &amp; Organization</h6>
+                                        <ul class="pl-5 text-sm mb-0">
+                                            <li class="mb-2"><strong>Key Question:</strong> The central problem or hypothesis that the tree addresses</li>
+                                            <li class="mb-2"><strong>Branches:</strong> Major categories or drivers that could answer the key question</li>
+                                            <li class="mb-2"><strong>Sub-branches:</strong> Component factors that contribute to each branch</li>
+                                            <li class="mb-2"><strong>Leaf Nodes:</strong> Specific analyses or data points needed to resolve questions</li>
+                                            <li><strong>Logical Relationships:</strong> How components connect and interact with each other</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-sm font-medium mb-2 text-primary">MECE Principle Application</h6>
+                                        <p class="text-sm mb-2"><strong>Mutually Exclusive, Collectively Exhaustive</strong> - A principle that ensures your issue tree branches don't overlap and together cover all possibilities:</p>
+                                        <ul class="pl-5 text-sm mb-0">
+                                            <li class="mb-2"><strong>Mutually Exclusive:</strong> Each branch represents a distinct factor with no overlap</li>
+                                            <li class="mb-2"><strong>Collectively Exhaustive:</strong> All branches together cover the entire problem space</li>
+                                            <li class="mb-2"><strong>Why It Matters:</strong> Prevents double-counting or missing critical factors</li>
+                                            <li><strong>Common MECE Structures:</strong> Process steps, stakeholder groups, market segments, financial levers</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Types of Issue Trees in Strategic Consulting</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-3">Key Issue Tree Frameworks</h5>
+                        <p class="text-sm mb-4">Different strategic challenges require different types of issue trees. Here are the main frameworks used in strategic consulting:</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Diagnostic Issue Trees</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Purpose &amp; Structure</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li class="mb-2"><strong>Primary Goal:</strong> Identify root causes of a problem or performance issue</li>
+                                                    <li class="mb-2"><strong>Starting Question:</strong> "Why is this happening?"</li>
+                                                    <li class="mb-2"><strong>Typical Structure:</strong> Branches represent potential cause categories</li>
+                                                    <li class="mb-2"><strong>Analysis Focus:</strong> Testing hypotheses about what's causing the issue</li>
+                                                    <li><strong>Common Application:</strong> Market share decline, margin erosion, customer churn</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">MECE Breakdown Approaches</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li class="mb-2"><strong>Mathematical:</strong> Revenue = Price × Volume (P×V breakdown)</li>
+                                                    <li class="mb-2"><strong>Process-based:</strong> Acquisition → Conversion → Retention</li>
+                                                    <li class="mb-2"><strong>Categorical:</strong> Internal vs. External factors</li>
+                                                    <li class="mb-2"><strong>Functional:</strong> Marketing, Sales, Operations, Finance</li>
+                                                    <li><strong>Structural:</strong> Geographic regions, Product lines, Customer segments</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Example: Dell PC Market Share Decline</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                                <p class="text-xs mb-2"><strong>Key Question:</strong> Why has Dell's commercial PC market share declined by 3% in the past year?</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li class="mb-1"><strong>Branch 1:</strong> Customer acquisition issues</li>
+                                                    <li class="mb-1"><strong>Branch 2:</strong> Customer retention problems</li>
+                                                    <li class="mb-1"><strong>Branch 3:</strong> Competitive positioning weaknesses</li>
+                                                    <li class="mb-1"><strong>Branch 4:</strong> Product portfolio gaps</li>
+                                                    <li class="mb-1"><strong>Branch 5:</strong> Go-to-market execution challenges</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Solution Issue Trees</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Purpose &amp; Structure</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li class="mb-2"><strong>Primary Goal:</strong> Identify and evaluate potential solutions to a problem</li>
+                                                    <li class="mb-2"><strong>Starting Question:</strong> "How can we solve this?"</li>
+                                                    <li class="mb-2"><strong>Typical Structure:</strong> Branches represent solution approaches</li>
+                                                    <li class="mb-2"><strong>Analysis Focus:</strong> Evaluating feasibility, impact, and cost of options</li>
+                                                    <li><strong>Common Application:</strong> Strategy development, transformation planning</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">MECE Breakdown Approaches</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li class="mb-2"><strong>Timeframe:</strong> Short-term vs. Medium-term vs. Long-term</li>
+                                                    <li class="mb-2"><strong>Investment Level:</strong> Low, Medium, High resource requirements</li>
+                                                    <li class="mb-2"><strong>Strategic Pillars:</strong> Core solutions categorized by strategic objectives</li>
+                                                    <li class="mb-2"><strong>Value Levers:</strong> Revenue growth, Cost reduction, Capital efficiency</li>
+                                                    <li><strong>Capability Building:</strong> People, Process, Technology, Data</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Example: Dell Services Growth Strategy</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                                <p class="text-xs mb-2"><strong>Key Question:</strong> How can Dell increase its services revenue by 15% in the next fiscal year?</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li class="mb-1"><strong>Branch 1:</strong> Expand existing service offerings</li>
+                                                    <li class="mb-1"><strong>Branch 2:</strong> Develop new service categories</li>
+                                                    <li class="mb-1"><strong>Branch 3:</strong> Improve service attach rates</li>
+                                                    <li class="mb-1"><strong>Branch 4:</strong> Optimize pricing and packaging</li>
+                                                    <li class="mb-1"><strong>Branch 5:</strong> Target new customer segments</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Decision Issue Trees</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Purpose &amp; Structure</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li class="mb-2"><strong>Primary Goal:</strong> Evaluate alternatives against decision criteria</li>
+                                                    <li class="mb-2"><strong>Starting Question:</strong> "Which option should we choose?"</li>
+                                                    <li class="mb-2"><strong>Typical Structure:</strong> Branches represent evaluation criteria</li>
+                                                    <li class="mb-2"><strong>Analysis Focus:</strong> Comparing options based on specific criteria</li>
+                                                    <li><strong>Common Application:</strong> Vendor selection, investment prioritization</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">MECE Breakdown Approaches</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li class="mb-2"><strong>Decision Matrix:</strong> Options × Criteria framework</li>
+                                                    <li class="mb-2"><strong>Stakeholder Objectives:</strong> Criteria based on stakeholder needs</li>
+                                                    <li class="mb-2"><strong>Strategic Fit:</strong> Alignment with different strategic goals</li>
+                                                    <li class="mb-2"><strong>Risk Categories:</strong> Operational, Financial, Strategic, Compliance</li>
+                                                    <li><strong>Impact Timeline:</strong> Immediate, Near-term, Long-term benefits</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Example: Dell Manufacturing Location Decision</h6>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                                <p class="text-xs mb-2"><strong>Key Question:</strong> Which of three potential locations should Dell select for its new manufacturing facility?</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li class="mb-1"><strong>Branch 1:</strong> Cost considerations (labor, land, taxes, incentives)</li>
+                                                    <li class="mb-1"><strong>Branch 2:</strong> Logistics &amp; supply chain impact</li>
+                                                    <li class="mb-1"><strong>Branch 3:</strong> Labor market quality and availability</li>
+                                                    <li class="mb-1"><strong>Branch 4:</strong> Operational risk factors</li>
+                                                    <li class="mb-1"><strong>Branch 5:</strong> Strategic value and future flexibility</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Creating Effective Issue Trees: A Step-by-Step Approach</h4>
+                    
+                    <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-emerald-700 dark:text-emerald-400 font-medium mb-3">Issue Tree Development Process</h5>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 font-medium">1</div>
+                                    <h6 class="text-emerald-700 dark:text-emerald-400 font-medium">Define the Key Question</h6>
+                                </div>
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1">Clearly articulate the problem statement or decision needed</li>
+                                        <li class="mb-1">Make it specific and actionable</li>
+                                        <li class="mb-1">Align with client's core business objectives</li>
+                                        <li class="mb-1">Consider both explicit and implicit goals</li>
+                                        <li class="mb-1">Test with key stakeholders for alignment</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 font-medium">2</div>
+                                    <h6 class="text-emerald-700 dark:text-emerald-400 font-medium">Determine Structure</h6>
+                                </div>
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1">Choose appropriate tree type (diagnostic, solution, decision)</li>
+                                        <li class="mb-1">Select MECE breakdown approach for first level</li>
+                                        <li class="mb-1">Consider industry-specific frameworks</li>
+                                        <li class="mb-1">Use standardized structures when applicable</li>
+                                        <li class="mb-1">Balance breadth vs. depth based on project scope</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 font-medium">3</div>
+                                    <h6 class="text-emerald-700 dark:text-emerald-400 font-medium">Create First Level</h6>
+                                </div>
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1">Identify 3-7 main branches</li>
+                                        <li class="mb-1">Ensure branches are MECE</li>
+                                        <li class="mb-1">Use meaningful, specific labels</li>
+                                        <li class="mb-1">Frame as hypotheses or questions</li>
+                                        <li class="mb-1">Test logic with team members</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 font-medium">4</div>
+                                    <h6 class="text-emerald-700 dark:text-emerald-400 font-medium">Develop Sub-branches</h6>
+                                </div>
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1">Break down each branch into components</li>
+                                        <li class="mb-1">Maintain consistent logic within branches</li>
+                                        <li class="mb-1">Ensure sub-branches are also MECE</li>
+                                        <li class="mb-1">Aim for 3-5 sub-branches per branch</li>
+                                        <li class="mb-1">Balance depth across branches</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 font-medium">5</div>
+                                    <h6 class="text-emerald-700 dark:text-emerald-400 font-medium">Create Analysis Plan</h6>
+                                </div>
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1">Identify required data for each leaf node</li>
+                                        <li class="mb-1">Determine analytical methods needed</li>
+                                        <li class="mb-1">Map data sources and availability</li>
+                                        <li class="mb-1">Estimate analysis complexity</li>
+                                        <li class="mb-1">Assign ownership for each analysis</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 font-medium">6</div>
+                                    <h6 class="text-emerald-700 dark:text-emerald-400 font-medium">Prioritize Branches</h6>
+                                </div>
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1">Assess potential impact of each branch</li>
+                                        <li class="mb-1">Evaluate analysis effort required</li>
+                                        <li class="mb-1">Consider data accessibility</li>
+                                        <li class="mb-1">Factor in client hypotheses and priorities</li>
+                                        <li class="mb-1">Create sequenced investigation plan</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 font-medium">7</div>
+                                    <h6 class="text-emerald-700 dark:text-emerald-400 font-medium">Test &amp; Refine</h6>
+                                </div>
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1">Review with project team and stakeholders</li>
+                                        <li class="mb-1">Check for logical gaps or redundancies</li>
+                                        <li class="mb-1">Verify MECE principle application</li>
+                                        <li class="mb-1">Test with initial data where available</li>
+                                        <li class="mb-1">Refine structure based on feedback</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 font-medium">8</div>
+                                    <h6 class="text-emerald-700 dark:text-emerald-400 font-medium">Document &amp; Communicate</h6>
+                                </div>
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1">Create clean visual representation</li>
+                                        <li class="mb-1">Develop supporting documentation</li>
+                                        <li class="mb-1">Link to project workplan</li>
+                                        <li class="mb-1">Share with team and stakeholders</li>
+                                        <li class="mb-1">Use as alignment and tracking tool</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Advanced Issue Tree Techniques</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-3">Expert Issue Tree Application</h5>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Hypothesis-Driven Issue Trees</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Structuring issue trees to efficiently test specific hypotheses about the problem or solution:</p>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Key Principles</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Start with hypotheses:</strong> Begin with preliminary hypotheses based on experience and initial data</li>
+                                            <li class="mb-1"><strong>Targeted branches:</strong> Structure tree to efficiently validate or invalidate each hypothesis</li>
+                                            <li class="mb-1"><strong>Progressive refinement:</strong> Adjust hypotheses as early analyses provide insights</li>
+                                            <li class="mb-1"><strong>Critical path focus:</strong> Prioritize branches that test most critical assumptions first</li>
+                                            <li class="mb-1"><strong>Falsification emphasis:</strong> Actively seek evidence that might disprove hypotheses</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Application Example: Dell Channel Performance</h6>
+                                        <p class="text-xs mb-2"><strong>Initial Hypothesis:</strong> "Dell's declining channel partner performance is primarily driven by competitive compensation changes rather than product portfolio issues."</p>
+                                        <p class="text-xs">A hypothesis-driven tree would focus first on analyzing compensation model comparisons, partner profitability trends, and competitive compensation benchmarks before exploring product-related factors.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Multi-Level MECE Applications</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Ensuring MECE principles are maintained consistently across multiple levels of the issue tree:</p>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Common Challenges</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Logic inconsistency:</strong> Different logical structures across branches</li>
+                                            <li class="mb-1"><strong>Category overlap:</strong> Sub-branches that span multiple branches</li>
+                                            <li class="mb-1"><strong>Coverage gaps:</strong> Missing important factors at deeper levels</li>
+                                            <li class="mb-1"><strong>Uneven development:</strong> Some branches developed in more detail than others</li>
+                                            <li class="mb-1"><strong>Mixing frameworks:</strong> Inconsistent breakdown approaches across the tree</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Best Practices</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Level-specific structures:</strong> Choose appropriate MECE frameworks for each level</li>
+                                            <li class="mb-1"><strong>Consistent within-branch logic:</strong> Maintain consistent decomposition approach within each branch</li>
+                                            <li class="mb-1"><strong>Cross-branch verification:</strong> Check for factor overlap across different branches</li>
+                                            <li class="mb-1"><strong>Peer review:</strong> Have teammates verify MECE structure at each level</li>
+                                            <li class="mb-1"><strong>Visual mapping:</strong> Use color coding or notation to identify breakdown structures</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Integrated Workplanning</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Using issue trees as the foundation for project management and work allocation:</p>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Implementation Approach</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Workstream mapping:</strong> Convert major branches into project workstreams</li>
+                                            <li class="mb-1"><strong>Analysis inventory:</strong> Create detailed list of required analyses from leaf nodes</li>
+                                            <li class="mb-1"><strong>Resource allocation:</strong> Assign team members to specific branches</li>
+                                            <li class="mb-1"><strong>Timeline development:</strong> Create sequenced plan based on branch dependencies</li>
+                                            <li class="mb-1"><strong>Progress tracking:</strong> Use issue tree as visual management tool for project status</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Benefits in Consulting Projects</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Structural alignment:</strong> Ensures work directly addresses key questions</li>
+                                            <li class="mb-1"><strong>Efficient resource use:</strong> Prevents duplicate analyses or missed areas</li>
+                                            <li class="mb-1"><strong>Stakeholder clarity:</strong> Provides transparent view of project approach</li>
+                                            <li class="mb-1"><strong>Adaptive management:</strong> Facilitates course correction as findings emerge</li>
+                                            <li class="mb-1"><strong>Knowledge management:</strong> Creates clear organization for project insights</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Issue Tree Software Tools</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Leveraging digital tools to create, share, and manage complex issue trees:</p>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Popular Tools for Consultants</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Microsoft PowerPoint:</strong> Basic visualization with standard shapes and connectors</li>
+                                            <li class="mb-1"><strong>Lucidchart:</strong> Collaborative diagramming with advanced tree structures</li>
+                                            <li class="mb-1"><strong>Miro:</strong> Visual collaboration platform with flexible tree capabilities</li>
+                                            <li class="mb-1"><strong>Microsoft Visio:</strong> Professional diagramming with specialized templates</li>
+                                            <li class="mb-1"><strong>MURAL:</strong> Digital workspace for visual collaboration and planning</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Advanced Tool Features</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Real-time collaboration:</strong> Multiple team members work simultaneously</li>
+                                            <li class="mb-1"><strong>Dynamic expansion:</strong> Collapsible branches for managing complexity</li>
+                                            <li class="mb-1"><strong>Data linking:</strong> Connect tree elements to underlying analyses</li>
+                                            <li class="mb-1"><strong>Status tracking:</strong> Visual indicators for branch completion status</li>
+                                            <li class="mb-1"><strong>Export options:</strong> Convert to various formats for presentations</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Issue Tree Case Study: Dell Client Solutions Group Strategy</h4>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Strategic Issue Tree Application in Dell's PC Business</h5>
+                        <p class="text-sm mb-3">This case study demonstrates how a consulting team applied issue tree methodology to address a strategic challenge for Dell's Client Solutions Group.</p>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="text-sm font-medium text-primary mb-2">The Strategic Challenge</h6>
+                            <p class="text-xs mb-2">Dell's Client Solutions Group (CSG) leadership needed to develop a three-year strategy to maintain PC market share and improve profitability despite increasing competition and market commoditization. The consulting team structured the engagement around a comprehensive issue tree to ensure all potential strategic options were evaluated.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Context &amp; Constraints</h6>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1">Market share pressure from premium competitors (Apple) and value players (Lenovo)</li>
+                                            <li class="mb-1">Margin erosion in traditional PC segments</li>
+                                            <li class="mb-1">Shift toward cloud computing and mobile devices</li>
+                                            <li class="mb-1">Need for strategic differentiation beyond price</li>
+                                            <li class="mb-1">Growing demand for as-a-service business models</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Key Question Formulation</h6>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                        <p class="text-xs mb-1"><strong>Initial Question:</strong> "How should Dell's CSG respond to market changes?"</p>
+                                        <p class="text-xs mb-1"><strong>Refined Question:</strong> "What portfolio, positioning, and business model changes should Dell CSG implement over the next three years to maintain market leadership and achieve 15% EBITDA margins?"</p>
+                                        <p class="text-xs"><strong>Why This Matters:</strong> The refined question included specific metrics (15% EBITDA margins), timeframe (three years), and the key dimensions to explore (portfolio, positioning, business model).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="text-sm font-medium text-primary mb-2">The Structured Issue Tree</h6>
+                            <p class="text-xs mb-2">The team developed a solution-focused issue tree with three primary branches representing the main strategic dimensions:</p>
+                            
+                            <div class="overflow-x-auto">
+                                <div class="min-w-[800px]">
+                                    <!-- First Level Branches -->
+                                    <div class="flex flex-col items-center mb-4">
+                                        <div class="bg-blue-100 dark:bg-blue-900/30 p-2 w-[300px] rounded text-center text-xs font-medium mb-2">
+                                            What portfolio, positioning, and business model changes should Dell CSG implement over the next three years to maintain market leadership and achieve 15% EBITDA margins?
+                                        </div>
+                                        <div class="w-[2px] h-4 bg-gray-400"></div>
+                                        <div class="flex space-x-10">
+                                            <div class="flex flex-col items-center">
+                                                <div class="w-[2px] h-4 bg-gray-400"></div>
+                                                <div class="bg-green-100 dark:bg-green-900/30 p-2 w-[220px] rounded text-center text-xs font-medium">
+                                                    1. How should Dell optimize its product portfolio for growth and margin?
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col items-center">
+                                                <div class="w-[2px] h-4 bg-gray-400"></div>
+                                                <div class="bg-purple-100 dark:bg-purple-900/30 p-2 w-[220px] rounded text-center text-xs font-medium">
+                                                    2. How should Dell reposition its brand and go-to-market approach?
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col items-center">
+                                                <div class="w-[2px] h-4 bg-gray-400"></div>
+                                                <div class="bg-orange-100 dark:bg-orange-900/30 p-2 w-[220px] rounded text-center text-xs font-medium">
+                                                    3. What business model innovations should Dell implement?
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Second Level Branches - Portfolio -->
+                                    <div class="flex ml-[70px] mb-4">
+                                        <div class="flex flex-col items-center">
+                                            <div class="w-[2px] h-4 bg-gray-400"></div>
+                                            <div class="flex space-x-6">
+                                                <div class="flex flex-col items-center">
+                                                    <div class="w-[2px] h-4 bg-gray-400"></div>
+                                                    <div class="bg-green-50 dark:bg-green-900/20 p-2 w-[180px] rounded text-center text-xs">
+                                                        1.1 Product category mix optimization
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col items-center">
+                                                    <div class="w-[2px] h-4 bg-gray-400"></div>
+                                                    <div class="bg-green-50 dark:bg-green-900/20 p-2 w-[180px] rounded text-center text-xs">
+                                                        1.2 Feature &amp; innovation prioritization
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col items-center">
+                                                    <div class="w-[2px] h-4 bg-gray-400"></div>
+                                                    <div class="bg-green-50 dark:bg-green-900/20 p-2 w-[180px] rounded text-center text-xs">
+                                                        1.3 Price-tier strategy by segment
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Second Level Branches - Positioning -->
+                                    <div class="flex ml-[350px] mb-4">
+                                        <div class="flex flex-col items-center">
+                                            <div class="w-[2px] h-4 bg-gray-400"></div>
+                                            <div class="flex space-x-6">
+                                                <div class="flex flex-col items-center">
+                                                    <div class="w-[2px] h-4 bg-gray-400"></div>
+                                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 w-[180px] rounded text-center text-xs">
+                                                        2.1 Brand positioning refinement
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col items-center">
+                                                    <div class="w-[2px] h-4 bg-gray-400"></div>
+                                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 w-[180px] rounded text-center text-xs">
+                                                        2.2 Channel strategy optimization
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col items-center">
+                                                    <div class="w-[2px] h-4 bg-gray-400"></div>
+                                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 w-[180px] rounded text-center text-xs">
+                                                        2.3 Customer segment targeting
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Second Level Branches - Business Model -->
+                                    <div class="flex ml-[630px]">
+                                        <div class="flex flex-col items-center">
+                                            <div class="w-[2px] h-4 bg-gray-400"></div>
+                                            <div class="flex space-x-6">
+                                                <div class="flex flex-col items-center">
+                                                    <div class="w-[2px] h-4 bg-gray-400"></div>
+                                                    <div class="bg-orange-50 dark:bg-orange-900/20 p-2 w-[180px] rounded text-center text-xs">
+                                                        3.1 As-a-service offering development
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col items-center">
+                                                    <div class="w-[2px] h-4 bg-gray-400"></div>
+                                                    <div class="bg-orange-50 dark:bg-orange-900/20 p-2 w-[180px] rounded text-center text-xs">
+                                                        3.2 Software &amp; services integration
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col items-center">
+                                                    <div class="w-[2px] h-4 bg-gray-400"></div>
+                                                    <div class="bg-orange-50 dark:bg-orange-900/20 p-2 w-[180px] rounded text-center text-xs">
+                                                        3.3 Ecosystem partnership strategy
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="text-xs mt-4">The full issue tree expanded to 4 levels with 72 leaf nodes, each representing a specific analysis that needed to be conducted. The team then prioritized branches based on potential impact and Dell leadership hypotheses.</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="text-sm font-medium text-primary mb-2">Key Analyses &amp; Work Planning</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Portfolio Optimization Analyses</h6>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1">Profitability analysis by product category and feature set</li>
+                                            <li class="mb-1">Competitive feature benchmarking across segments</li>
+                                            <li class="mb-1">Price elasticity modeling by customer segment</li>
+                                            <li class="mb-1">Customer preferences &amp; willingness-to-pay research</li>
+                                            <li class="mb-1">Product lifecycle analysis and development roadmap</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Positioning &amp; GTM Analyses</h6>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1">Brand perception research across segments</li>
+                                            <li class="mb-1">Channel performance &amp; cost-to-serve analysis</li>
+                                            <li class="mb-1">Market sizing and growth by segment</li>
+                                            <li class="mb-1">Competitive positioning mapping</li>
+                                            <li class="mb-1">Marketing ROI and media mix optimization</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Business Model Analyses</h6>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1">DaaS financial modeling and TCO analysis</li>
+                                            <li class="mb-1">Software services market opportunity assessment</li>
+                                            <li class="mb-1">Potential partnership candidate evaluation</li>
+                                            <li class="mb-1">Subscription model benchmarking and adoption forecasts</li>
+                                            <li class="mb-1">Technology stack requirements and development planning</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h6 class="text-xs font-medium mb-1">Workplan Structure</h6>
+                                <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                    <p class="text-xs mb-2">The issue tree directly informed the project workplan, with each main branch becoming a workstream with dedicated team members and stakeholders:</p>
+                                    <ul class="pl-4 text-xs mb-2">
+                                        <li class="mb-1"><strong>Workstream 1:</strong> Portfolio Strategy (Product Management, R&amp;D, Pricing leads)</li>
+                                        <li class="mb-1"><strong>Workstream 2:</strong> Market Positioning (Marketing, Sales, Customer Experience leads)</li>
+                                        <li class="mb-1"><strong>Workstream 3:</strong> Business Model Innovation (Finance, IT, Digital leads)</li>
+                                    </ul>
+                                    <p class="text-xs">Each workstream followed a four-week analysis cycle, with weekly integration sessions where cross-branch implications were assessed and the overall issue tree was refined based on emerging insights.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-sm font-medium text-primary mb-2">Outcomes &amp; Strategic Impact</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Key Findings &amp; Recommendations</h6>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                        <p class="text-xs mb-2">The comprehensive issue tree approach led to several strategic insights:</p>
+                                        <ol class="pl-4 text-xs">
+                                            <li class="mb-1">Identified three high-margin product categories where Dell had sustainable differentiation potential</li>
+                                            <li class="mb-1">Revealed significant price optimization opportunities across commercial segments</li>
+                                            <li class="mb-1">Uncovered channel conflict issues impacting enterprise sales effectiveness</li>
+                                            <li class="mb-1">Quantified the revenue potential of device-as-a-service offerings for enterprise clients</li>
+                                            <li class="mb-1">Developed security and sustainability positioning strategy to combat commoditization</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Issue Tree Value in the Process</h6>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                        <p class="text-xs mb-2">Using a comprehensive issue tree approach delivered specific benefits:</p>
+                                        <ul class="pl-4 text-xs">
+                                            <li class="mb-1">Ensured systematic evaluation of all strategic options rather than just obvious candidates</li>
+                                            <li class="mb-1">Identified unexpected connections between portfolio decisions and business model innovations</li>
+                                            <li class="mb-1">Built stakeholder alignment through transparent analytical structure</li>
+                                            <li class="mb-1">Created clear documentation of decision logic for implementation teams</li>
+                                            <li class="mb-1">Established measurement framework for tracking strategy effectiveness</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h6 class="text-xs font-medium mb-1">Implementation Roadmap Development</h6>
+                                <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                    <p class="text-xs mb-2">The issue tree framework was extended into the implementation planning phase:</p>
+                                    <ul class="pl-4 text-xs">
+                                        <li class="mb-1">Each accepted recommendation was linked back to its position in the issue tree</li>
+                                        <li class="mb-1">Implementation workstreams were organized to mirror the issue tree structure</li>
+                                        <li class="mb-1">Success metrics were established for each branch of the issue tree</li>
+                                        <li class="mb-1">Risk management planning used the issue tree to identify interdependencies</li>
+                                        <li class="mb-1">The roadmap prioritized initiatives using impact assessments from the issue tree analysis</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Practical Application Exercises</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Strategic Issue Tree Practice</h5>
+                        <p class="mb-3">Apply issue tree principles to these Dell-specific strategic challenges:</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Exercise 1: Diagnostic Issue Tree Development</h6>
+                            <p class="text-xs mb-2">Create a two-level diagnostic issue tree to investigate the following business problem:</p>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                <p class="mb-0"><strong>Challenge:</strong> Dell's enterprise server business has experienced a 12% decline in net new customer acquisitions over the past 18 months, despite strong performance in the existing customer base and overall market growth. Your task is to create a structured diagnostic issue tree to investigate potential causes of this decline.</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium mb-1">Your Diagnostic Issue Tree</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="10" placeholder="Create a two-level issue tree with a clear guiding question and MECE branches. For the first level, identify 5-7 potential drivers of the customer acquisition decline. For each first-level branch, develop 3-4 second-level factors that could be investigated. Ensure your structure follows logical MECE principles."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Exercise 2: Solution Issue Tree Application</h6>
+                            <p class="text-xs mb-2">Develop a solution-focused issue tree for the following strategic opportunity:</p>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                <p class="mb-0"><strong>Opportunity:</strong> Dell Technologies is developing a strategy to double its services revenue over the next three years. The services expansion needs to complement Dell's hardware business while improving overall profit margins. Create a solution-focused issue tree to explore how Dell could achieve this services growth objective.</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium mb-1">Your Solution Issue Tree</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="10" placeholder="Create a solution issue tree with at least two levels. Start with a clear guiding question about how Dell can achieve its services growth. Create 4-6 first-level solution areas that together would address this challenge. For each first-level branch, develop 3-4 specific actions or approaches that would contribute to that solution area. Ensure your structure is logical and follows MECE principles."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="font-medium mb-2">Exercise 3: Decision Tree Analysis</h6>
+                                <p class="text-xs mb-2">Create a decision-focused issue tree for evaluating options:</p>
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                    <p class="mb-0"><strong>Decision Context:</strong> Dell is evaluating whether to expand its manufacturing capacity through: 1) Building a new facility, 2) Expanding an existing facility, or 3) Contracting with a manufacturing partner. Create a decision tree that identifies the key criteria for evaluating these options and the specific analyses needed to make this decision.</p>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="block text-sm font-medium mb-1">Your Decision Issue Tree</label>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Create a decision issue tree that identifies 4-5 key evaluation criteria for the manufacturing capacity decision. For each criterion, specify 2-3 specific analyses or data points that would be needed to evaluate the options against this criterion."></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="font-medium mb-2">Exercise 4: Issue Tree Prioritization</h6>
+                                <p class="text-xs mb-2">Practice branch prioritization for an existing issue tree:</p>
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                    <p class="mb-2"><strong>Context:</strong> Your team has created an issue tree to analyze opportunities for improving Dell's supply chain resilience. The first-level branches are:</p>
+                                    <ol class="pl-5 text-xs mb-0">
+                                        <li>Supplier diversification opportunities</li>
+                                        <li>Component inventory optimization</li>
+                                        <li>Manufacturing flexibility enhancement</li>
+                                        <li>Logistics network redundancy</li>
+                                        <li>Demand forecasting improvement</li>
+                                    </ol>
+                                    <p class="mt-2 mb-0">Given limited time and resources, prioritize these branches for investigation and explain your rationale for the prioritization.</p>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="block text-sm font-medium mb-1">Your Prioritization Analysis</label>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Rank the five issue tree branches in priority order for investigation. For each branch, provide a brief rationale for its position in the priority list, considering factors like potential impact, analysis complexity, data availability, time constraints, and stakeholder priorities."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-4 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Exercises</button>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2017/05/a-refresher-on-discovery-driven-planning" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Discovery-Driven Planning</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Hypothesis-based planning approach</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-seven-decisions-that-matter-in-a-digital-transformation" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-file-list-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Digital Transformation Decisions</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey &amp; Company • Structured approach to transformation</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.amazon.com/Case-Interview-Secrets-McKinsey-Interviewing/dp/0984183523" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-book-2-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Case Interview Secrets</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Victor Cheng • Comprehensive guide on issue trees and case frameworks</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 prev-topic" data-prev="topic-storylining">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Story-lining</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-root-cause">
+                        <span>Next: Root-Cause Analysis</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

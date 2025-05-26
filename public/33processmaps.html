@@ -1,0 +1,2045 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="ri-arrow-left-line"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      
+            <!-- Process Maps Topic -->
+            <section id="topic-process-maps" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-flow-chart text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Process Maps</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Organizational Behavior</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the purpose and benefits of process mapping for organizational effectiveness</li>
+                            <li>Identify different types of process maps and when to use each in business contexts</li>
+                            <li>Learn how to create clear and effective process maps using standard symbols and conventions</li>
+                            <li>Apply process mapping techniques to analyze, improve, and streamline business processes</li>
+                            <li>Develop skills to facilitate process mapping sessions and engage stakeholders</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Process Mapping</h4>
+                    <p>Process mapping is a powerful technique for visualizing, analyzing, and improving business processes. A process map provides a visual representation of the sequence of activities, decisions, and handoffs that transform inputs into outputs. By making processes visible and tangible, process maps help organizations identify inefficiencies, reduce variation, streamline operations, and improve customer experiences.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">The Strategic Value of Process Mapping</h5>
+                        <p class="mb-3">Process maps serve as powerful tools for multiple organizational objectives:</p>
+                        <ul class="pl-5 mb-3">
+                            <li><strong>Process understanding:</strong> Creating a shared understanding of how work actually flows through the organization</li>
+                            <li><strong>Process improvement:</strong> Identifying bottlenecks, redundancies, and opportunities for optimization</li>
+                            <li><strong>Knowledge management:</strong> Capturing institutional knowledge about processes to support training and consistency</li>
+                            <li><strong>Compliance and standardization:</strong> Documenting official procedures to ensure regulatory compliance</li>
+                            <li><strong>Digital transformation:</strong> Preparing processes for automation or technology implementation</li>
+                        </ul>
+                        <p class="mb-0">At Dell Technologies, process mapping is an integral part of operational excellence initiatives, helping the company maintain efficiency at scale, reduce costs, and deliver consistent customer experiences across global operations. Process maps also play a key role in digital transformation efforts by documenting current states before implementing new technologies.</p>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Process Mapping Benefits Across the Organization</h5>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mr-2">
+                                                <i class="ri-user-line text-sm"></i>
+                                            </div>
+                                            <h6 class="font-medium text-blue-700 dark:text-blue-300">For Leadership</h6>
+                                        </div>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Strategic alignment of processes</li>
+                                            <li>Resource optimization opportunities</li>
+                                            <li>Governance and accountability clarity</li>
+                                            <li>Visibility into operational realities</li>
+                                            <li>Data-based decision making</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 mr-2">
+                                                <i class="ri-group-line text-sm"></i>
+                                            </div>
+                                            <h6 class="font-medium text-green-700 dark:text-green-300">For Teams</h6>
+                                        </div>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Role clarity and responsibility</li>
+                                            <li>Improved cross-functional collaboration</li>
+                                            <li>Consistent work practices</li>
+                                            <li>Easier onboarding of new members</li>
+                                            <li>Reduced errors and rework</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400 mr-2">
+                                                <i class="ri-customer-service-line text-sm"></i>
+                                            </div>
+                                            <h6 class="font-medium text-amber-700 dark:text-amber-300">For Customers</h6>
+                                        </div>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>More consistent experiences</li>
+                                            <li>Faster service delivery</li>
+                                            <li>Higher quality outcomes</li>
+                                            <li>Better communication and transparency</li>
+                                            <li>Lower costs from improved efficiency</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-2 text-center">Process Lifecycle and Mapping Applications</h6>
+                                    <div class="flex flex-wrap justify-center gap-2">
+                                        <div class="px-3 py-1.5 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                            <p class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-0.5">Process Design</p>
+                                            <p class="text-xs m-0">Map ideal workflows for new initiatives</p>
+                                        </div>
+                                        <div class="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                                            <p class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-0.5">Process Documentation</p>
+                                            <p class="text-xs m-0">Record current state operations</p>
+                                        </div>
+                                        <div class="px-3 py-1.5 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                            <p class="text-xs font-medium text-green-700 dark:text-green-400 mb-0.5">Process Analysis</p>
+                                            <p class="text-xs m-0">Identify improvement opportunities</p>
+                                        </div>
+                                        <div class="px-3 py-1.5 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                                            <p class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-0.5">Process Improvement</p>
+                                            <p class="text-xs m-0">Design and implement optimizations</p>
+                                        </div>
+                                        <div class="px-3 py-1.5 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                                            <p class="text-xs font-medium text-red-700 dark:text-red-400 mb-0.5">Process Control</p>
+                                            <p class="text-xs m-0">Monitor and maintain performance</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Types of Process Maps</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Common Process Mapping Approaches</h5>
+                        <p class="text-sm mb-3">Different types of process maps serve various purposes and provide different perspectives on business processes. Understanding the strengths and applications of each type helps in selecting the most appropriate mapping approach for your specific needs.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Basic Flowcharts</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-2">
+                                        <div class="flex justify-center mb-3">
+                                            <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                                                <svg width="280" height="200" xmlns="http://www.w3.org/2000/svg">
+                                                    <!-- Start symbol -->
+                                                    <ellipse cx="140" cy="30" rx="70" ry="20" stroke="#3b82f6" stroke-width="2" fill="#dbeafe"></ellipse>
+                                                    <text x="140" y="35" text-anchor="middle" font-size="12" fill="#1e40af">Start Process</text>
+                                                    
+                                                    <!-- Arrow down -->
+                                                    <line x1="140" y1="50" x2="140" y2="70" stroke="#6b7280" stroke-width="2"></line>
+                                                    <polygon points="140,70 135,60 145,60" fill="#6b7280"></polygon>
+                                                    
+                                                    <!-- Process box 1 -->
+                                                    <rect x="90" y="70" width="100" height="40" rx="5" stroke="#3b82f6" stroke-width="2" fill="#dbeafe"></rect>
+                                                    <text x="140" y="95" text-anchor="middle" font-size="12" fill="#1e40af">Activity 1</text>
+                                                    
+                                                    <!-- Arrow down -->
+                                                    <line x1="140" y1="110" x2="140" y2="130" stroke="#6b7280" stroke-width="2"></line>
+                                                    <polygon points="140,130 135,120 145,120" fill="#6b7280"></polygon>
+                                                    
+                                                    <!-- Decision diamond -->
+                                                    <polygon points="140,130 190,160 140,190 90,160" stroke="#a855f7" stroke-width="2" fill="#f3e8ff"></polygon>
+                                                    <text x="140" y="165" text-anchor="middle" font-size="12" fill="#6b21a8">Decision?</text>
+                                                    
+                                                    <!-- Yes path -->
+                                                    <line x1="190" y1="160" x2="230" y2="160" stroke="#6b7280" stroke-width="2"></line>
+                                                    <polygon points="230,160 220,155 220,165" fill="#6b7280"></polygon>
+                                                    <text x="210" y="150" text-anchor="middle" font-size="10" fill="#6b7280">Yes</text>
+                                                    
+                                                    <!-- No path -->
+                                                    <line x1="90" y1="160" x2="50" y2="160" stroke="#6b7280" stroke-width="2"></line>
+                                                    <polygon points="50,160 60,155 60,165" fill="#6b7280"></polygon>
+                                                    <text x="70" y="150" text-anchor="middle" font-size="10" fill="#6b7280">No</text>
+                                                    
+                                                    <!-- Process box after Yes -->
+                                                    <rect x="230" y="140" width="80" height="40" rx="5" stroke="#3b82f6" stroke-width="2" fill="#dbeafe"></rect>
+                                                    <text x="270" y="165" text-anchor="middle" font-size="12" fill="#1e40af">Activity 2A</text>
+                                                    
+                                                    <!-- Process box after No -->
+                                                    <rect x="-30" y="140" width="80" height="40" rx="5" stroke="#3b82f6" stroke-width="2" fill="#dbeafe"></rect>
+                                                    <text x="10" y="165" text-anchor="middle" font-size="12" fill="#1e40af">Activity 2B</text>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        
+                                        <p class="text-xs">Basic flowcharts use standard symbols to represent process steps, decisions, and flow direction. They provide a simple, intuitive visualization of process sequence and logic.</p>
+                                        
+                                        <div class="mt-2">
+                                            <h6 class="text-xs font-medium mb-1">Key Features</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Simple, widely understood notation</li>
+                                                <li>Shows sequential flow of activities</li>
+                                                <li>Captures decision points and branches</li>
+                                                <li>Can represent any process at high level</li>
+                                                <li>Easy to create and update</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <h6 class="text-xs font-medium mb-1">Best Used For</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Initial process documentation</li>
+                                            <li>Simple, linear processes</li>
+                                            <li>High-level process overviews</li>
+                                            <li>Communication with non-technical audiences</li>
+                                            <li>Training and onboarding materials</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Swimlane Diagrams</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-2">
+                                        <div class="flex justify-center mb-3">
+                                            <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                                                <svg width="280" height="200" xmlns="http://www.w3.org/2000/svg">
+                                                    <!-- Lane headers -->
+                                                    <rect x="0" y="0" width="80" height="30" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="40" y="20" text-anchor="middle" font-size="10" fill="#374151" font-weight="bold">Customer</text>
+                                                    
+                                                    <rect x="0" y="30" width="80" height="30" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="40" y="50" text-anchor="middle" font-size="10" fill="#374151" font-weight="bold">Sales</text>
+                                                    
+                                                    <rect x="0" y="60" width="80" height="30" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="40" y="80" text-anchor="middle" font-size="10" fill="#374151" font-weight="bold">Engineering</text>
+                                                    
+                                                    <rect x="0" y="90" width="80" height="30" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="40" y="110" text-anchor="middle" font-size="10" fill="#374151" font-weight="bold">Operations</text>
+                                                    
+                                                    <!-- Lane dividers -->
+                                                    <line x1="80" y1="0" x2="280" y2="0" stroke="#6b7280" stroke-width="1"></line>
+                                                    <line x1="80" y1="30" x2="280" y2="30" stroke="#6b7280" stroke-width="1"></line>
+                                                    <line x1="80" y1="60" x2="280" y2="60" stroke="#6b7280" stroke-width="1"></line>
+                                                    <line x1="80" y1="90" x2="280" y2="90" stroke="#6b7280" stroke-width="1"></line>
+                                                    <line x1="80" y1="120" x2="280" y2="120" stroke="#6b7280" stroke-width="1"></line>
+                                                    
+                                                    <!-- Customer row -->
+                                                    <ellipse cx="110" cy="15" rx="20" ry="10" stroke="#3b82f6" stroke-width="1.5" fill="#dbeafe"></ellipse>
+                                                    <text x="110" y="18" text-anchor="middle" font-size="8" fill="#1e40af">Request</text>
+                                                    
+                                                    <!-- Sales row -->
+                                                    <rect x="100" y="35" width="50" height="20" rx="3" stroke="#3b82f6" stroke-width="1.5" fill="#dbeafe"></rect>
+                                                    <text x="125" y="48" text-anchor="middle" font-size="8" fill="#1e40af">Qualify</text>
+                                                    
+                                                    <rect x="190" y="35" width="50" height="20" rx="3" stroke="#3b82f6" stroke-width="1.5" fill="#dbeafe"></rect>
+                                                    <text x="215" y="48" text-anchor="middle" font-size="8" fill="#1e40af">Quote</text>
+                                                    
+                                                    <!-- Engineering row -->
+                                                    <rect x="145" y="65" width="50" height="20" rx="3" stroke="#3b82f6" stroke-width="1.5" fill="#dbeafe"></rect>
+                                                    <text x="170" y="78" text-anchor="middle" font-size="8" fill="#1e40af">Assess</text>
+                                                    
+                                                    <!-- Operations row -->
+                                                    <rect x="230" y="95" width="40" height="20" rx="3" stroke="#3b82f6" stroke-width="1.5" fill="#dbeafe"></rect>
+                                                    <text x="250" y="108" text-anchor="middle" font-size="8" fill="#1e40af">Fulfill</text>
+                                                    
+                                                    <!-- Flow arrows -->
+                                                    <line x1="130" y1="15" x2="100" y2="35" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                                    <line x1="150" y1="45" x2="170" y2="65" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                                    <line x1="170" y1="85" x2="190" y2="45" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                                    <line x1="240" y1="55" x2="250" y2="95" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                                    
+                                                    <!-- Arrowhead marker -->
+                                                    <defs>
+                                                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                            <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"></polygon>
+                                                        </marker>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        
+                                        <p class="text-xs">Swimlane diagrams organize process steps by functional roles or departments, showing who is responsible for each activity and how work flows across organizational boundaries.</p>
+                                        
+                                        <div class="mt-2">
+                                            <h6 class="text-xs font-medium mb-1">Key Features</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Horizontal or vertical "lanes" for roles/departments</li>
+                                                <li>Clear ownership of process steps</li>
+                                                <li>Visibility of handoffs between functions</li>
+                                                <li>Process flow across organizational boundaries</li>
+                                                <li>Integration of roles with process steps</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <h6 class="text-xs font-medium mb-1">Best Used For</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Cross-functional processes</li>
+                                            <li>Clarifying role responsibilities</li>
+                                            <li>Identifying handoff issues</li>
+                                            <li>Process improvement initiatives</li>
+                                            <li>Organizational design projects</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Value Stream Maps</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-2">
+                                        <div class="flex justify-center mb-3">
+                                            <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                                                <svg width="280" height="200" xmlns="http://www.w3.org/2000/svg">
+                                                    <!-- Supplier and Customer -->
+                                                    <polygon points="10,30 40,30 30,60 0,60" stroke="#6b7280" stroke-width="1.5" fill="#f3f4f6"></polygon>
+                                                    <text x="20" y="50" text-anchor="middle" font-size="8" fill="#374151">Supplier</text>
+                                                    
+                                                    <polygon points="250,30 280,30 270,60 240,60" stroke="#6b7280" stroke-width="1.5" fill="#f3f4f6"></polygon>
+                                                    <text x="260" y="50" text-anchor="middle" font-size="8" fill="#374151">Customer</text>
+                                                    
+                                                    <!-- Process boxes -->
+                                                    <rect x="60" y="40" width="40" height="30" stroke="#3b82f6" stroke-width="1.5" fill="#dbeafe"></rect>
+                                                    <text x="80" y="60" text-anchor="middle" font-size="8" fill="#1e40af">Process 1</text>
+                                                    
+                                                    <rect x="120" y="40" width="40" height="30" stroke="#3b82f6" stroke-width="1.5" fill="#dbeafe"></rect>
+                                                    <text x="140" y="60" text-anchor="middle" font-size="8" fill="#1e40af">Process 2</text>
+                                                    
+                                                    <rect x="180" y="40" width="40" height="30" stroke="#3b82f6" stroke-width="1.5" fill="#dbeafe"></rect>
+                                                    <text x="200" y="60" text-anchor="middle" font-size="8" fill="#1e40af">Process 3</text>
+                                                    
+                                                    <!-- Data boxes -->
+                                                    <rect x="60" y="75" width="40" height="25" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="80" y="85" text-anchor="middle" font-size="6" fill="#374151">C/T: 10 min</text>
+                                                    <text x="80" y="95" text-anchor="middle" font-size="6" fill="#374151">C/O: 5 min</text>
+                                                    
+                                                    <rect x="120" y="75" width="40" height="25" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="140" y="85" text-anchor="middle" font-size="6" fill="#374151">C/T: 15 min</text>
+                                                    <text x="140" y="95" text-anchor="middle" font-size="6" fill="#374151">C/O: 20 min</text>
+                                                    
+                                                    <rect x="180" y="75" width="40" height="25" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="200" y="85" text-anchor="middle" font-size="6" fill="#374151">C/T: 5 min</text>
+                                                    <text x="200" y="95" text-anchor="middle" font-size="6" fill="#374151">C/O: 0 min</text>
+                                                    
+                                                    <!-- Inventory triangles -->
+                                                    <polygon points="50,55 55,45 60,55" stroke="#ef4444" stroke-width="1" fill="#fee2e2"></polygon>
+                                                    <text x="55" y="65" text-anchor="middle" font-size="6" fill="#991b1b">5 pcs</text>
+                                                    
+                                                    <polygon points="110,55 115,45 120,55" stroke="#ef4444" stroke-width="1" fill="#fee2e2"></polygon>
+                                                    <text x="115" y="65" text-anchor="middle" font-size="6" fill="#991b1b">12 pcs</text>
+                                                    
+                                                    <polygon points="170,55 175,45 180,55" stroke="#ef4444" stroke-width="1" fill="#fee2e2"></polygon>
+                                                    <text x="175" y="65" text-anchor="middle" font-size="6" fill="#991b1b">8 pcs</text>
+                                                    
+                                                    <!-- Flow arrows -->
+                                                    <line x1="40" y1="45" x2="50" y2="45" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead2)"></line>
+                                                    <line x1="60" y1="100" x2="60" y2="110" stroke="#6b7280" stroke-width="1"></line>
+                                                    <line x1="100" y1="55" x2="110" y2="55" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead2)"></line>
+                                                    <line x1="120" y1="100" x2="120" y2="110" stroke="#6b7280" stroke-width="1"></line>
+                                                    <line x1="160" y1="55" x2="170" y2="55" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead2)"></line>
+                                                    <line x1="180" y1="100" x2="180" y2="110" stroke="#6b7280" stroke-width="1"></line>
+                                                    <line x1="220" y1="55" x2="240" y2="55" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead2)"></line>
+                                                    
+                                                    <!-- Timeline -->
+                                                    <line x1="0" y1="110" x2="280" y2="110" stroke="#6b7280" stroke-width="1"></line>
+                                                    
+                                                    <line x1="60" y1="105" x2="60" y2="115" stroke="#6b7280" stroke-width="1"></line>
+                                                    <text x="60" y="125" text-anchor="middle" font-size="6" fill="#374151">2 days</text>
+                                                    
+                                                    <line x1="120" y1="105" x2="120" y2="115" stroke="#6b7280" stroke-width="1"></line>
+                                                    <text x="120" y="125" text-anchor="middle" font-size="6" fill="#374151">3 days</text>
+                                                    
+                                                    <line x1="180" y1="105" x2="180" y2="115" stroke="#6b7280" stroke-width="1"></line>
+                                                    <text x="180" y="125" text-anchor="middle" font-size="6" fill="#374151">1 day</text>
+                                                    
+                                                    <line x1="240" y1="105" x2="240" y2="115" stroke="#6b7280" stroke-width="1"></line>
+                                                    
+                                                    <!-- Summary metrics -->
+                                                    <text x="140" y="145" text-anchor="middle" font-size="7" font-weight="bold" fill="#374151">Lead Time: 6 days</text>
+                                                    <text x="140" y="155" text-anchor="middle" font-size="7" font-weight="bold" fill="#374151">Processing Time: 30 min</text>
+                                                    <text x="140" y="165" text-anchor="middle" font-size="7" font-weight="bold" fill="#374151">Value-Added %: 0.3%</text>
+                                                    
+                                                    <!-- Arrowhead marker -->
+                                                    <defs>
+                                                        <marker id="arrowhead2" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                            <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"></polygon>
+                                                        </marker>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        
+                                        <p class="text-xs">Value stream maps focus on the flow of materials and information through a process, with special emphasis on quantifying time, inventory, and value-added vs. non-value-added activities.</p>
+                                        
+                                        <div class="mt-2">
+                                            <h6 class="text-xs font-medium mb-1">Key Features</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Quantifies process timing and delays</li>
+                                                <li>Highlights inventory accumulation points</li>
+                                                <li>Distinguishes value-added from wasteful activities</li>
+                                                <li>Shows information flow alongside material flow</li>
+                                                <li>Includes process performance metrics</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <h6 class="text-xs font-medium mb-1">Best Used For</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Lean improvement initiatives</li>
+                                            <li>Manufacturing and supply chain processes</li>
+                                            <li>Identifying and eliminating waste</li>
+                                            <li>Quantifying process efficiency</li>
+                                            <li>Creating future state improvement visions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">SIPOC Diagrams</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-2">
+                                        <div class="flex justify-center mb-3">
+                                            <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                                                <svg width="280" height="200" xmlns="http://www.w3.org/2000/svg">
+                                                    <!-- SIPOC Headers -->
+                                                    <rect x="0" y="10" width="56" height="25" stroke="#6b7280" stroke-width="1.5" fill="#dbeafe"></rect>
+                                                    <text x="28" y="26" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e40af">Suppliers</text>
+                                                    
+                                                    <rect x="56" y="10" width="56" height="25" stroke="#6b7280" stroke-width="1.5" fill="#e0e7ff"></rect>
+                                                    <text x="84" y="26" text-anchor="middle" font-size="10" font-weight="bold" fill="#3730a3">Inputs</text>
+                                                    
+                                                    <rect x="112" y="10" width="56" height="25" stroke="#6b7280" stroke-width="1.5" fill="#f3e8ff"></rect>
+                                                    <text x="140" y="26" text-anchor="middle" font-size="10" font-weight="bold" fill="#6b21a8">Process</text>
+                                                    
+                                                    <rect x="168" y="10" width="56" height="25" stroke="#6b7280" stroke-width="1.5" fill="#dcfce7"></rect>
+                                                    <text x="196" y="26" text-anchor="middle" font-size="10" font-weight="bold" fill="#166534">Outputs</text>
+                                                    
+                                                    <rect x="224" y="10" width="56" height="25" stroke="#6b7280" stroke-width="1.5" fill="#fee2e2"></rect>
+                                                    <text x="252" y="26" text-anchor="middle" font-size="10" font-weight="bold" fill="#991b1b">Customers</text>
+                                                    
+                                                    <!-- Suppliers column -->
+                                                    <rect x="0" y="35" width="56" height="20" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="28" y="49" text-anchor="middle" font-size="8" fill="#374151">Vendor A</text>
+                                                    
+                                                    <rect x="0" y="55" width="56" height="20" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="28" y="69" text-anchor="middle" font-size="8" fill="#374151">Engineering</text>
+                                                    
+                                                    <rect x="0" y="75" width="56" height="20" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="28" y="89" text-anchor="middle" font-size="8" fill="#374151">Marketing</text>
+                                                    
+                                                    <!-- Inputs column -->
+                                                    <rect x="56" y="35" width="56" height="20" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="84" y="49" text-anchor="middle" font-size="8" fill="#374151">Components</text>
+                                                    
+                                                    <rect x="56" y="55" width="56" height="20" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="84" y="69" text-anchor="middle" font-size="8" fill="#374151">Specifications</text>
+                                                    
+                                                    <rect x="56" y="75" width="56" height="20" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="84" y="89" text-anchor="middle" font-size="8" fill="#374151">Requirements</text>
+                                                    
+                                                    <!-- Process column (high level steps) -->
+                                                    <rect x="112" y="35" width="56" height="15" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="140" y="46" text-anchor="middle" font-size="8" fill="#374151">1. Plan</text>
+                                                    
+                                                    <rect x="112" y="50" width="56" height="15" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="140" y="61" text-anchor="middle" font-size="8" fill="#374151">2. Design</text>
+                                                    
+                                                    <rect x="112" y="65" width="56" height="15" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="140" y="76" text-anchor="middle" font-size="8" fill="#374151">3. Build</text>
+                                                    
+                                                    <rect x="112" y="80" width="56" height="15" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="140" y="91" text-anchor="middle" font-size="8" fill="#374151">4. Test</text>
+                                                    
+                                                    <!-- Outputs column -->
+                                                    <rect x="168" y="35" width="56" height="20" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="196" y="49" text-anchor="middle" font-size="8" fill="#374151">Product</text>
+                                                    
+                                                    <rect x="168" y="55" width="56" height="20" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="196" y="69" text-anchor="middle" font-size="8" fill="#374151">Documentation</text>
+                                                    
+                                                    <rect x="168" y="75" width="56" height="20" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="196" y="89" text-anchor="middle" font-size="8" fill="#374151">Quality Report</text>
+                                                    
+                                                    <!-- Customers column -->
+                                                    <rect x="224" y="35" width="56" height="20" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="252" y="49" text-anchor="middle" font-size="8" fill="#374151">End Users</text>
+                                                    
+                                                    <rect x="224" y="55" width="56" height="20" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="252" y="69" text-anchor="middle" font-size="8" fill="#374151">Support Team</text>
+                                                    
+                                                    <rect x="224" y="75" width="56" height="20" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="252" y="89" text-anchor="middle" font-size="8" fill="#374151">Compliance</text>
+                                                    
+                                                    <!-- Process description -->
+                                                    <rect x="0" y="105" width="280" height="15" rx="3" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="140" y="116" text-anchor="middle" font-size="8" fill="#374151">Process Name: New Product Development</text>
+                                                    
+                                                    <rect x="0" y="120" width="280" height="15" rx="3" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="140" y="131" text-anchor="middle" font-size="8" fill="#374151">Process Owner: Product Manager</text>
+                                                    
+                                                    <rect x="0" y="135" width="280" height="15" rx="3" stroke="#6b7280" stroke-width="1" fill="#f3f4f6"></rect>
+                                                    <text x="140" y="146" text-anchor="middle" font-size="8" fill="#374151">Process Goal: Deliver product to market in 90 days</text>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        
+                                        <p class="text-xs">SIPOC (Suppliers, Inputs, Process, Outputs, Customers) diagrams provide a high-level overview of a process and its key components, focusing on the ecosystem around the process rather than detailed steps.</p>
+                                        
+                                        <div class="mt-2">
+                                            <h6 class="text-xs font-medium mb-1">Key Features</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Identifies all stakeholders and resources</li>
+                                                <li>Clarifies process boundaries and scope</li>
+                                                <li>Maps inputs and outputs with their sources and destinations</li>
+                                                <li>Process shown at high level only</li>
+                                                <li>Establishes process context and purpose</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <h6 class="text-xs font-medium mb-1">Best Used For</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Process scoping and definition</li>
+                                            <li>Initial phase of improvement projects</li>
+                                            <li>Identifying key stakeholders</li>
+                                            <li>Establishing process boundaries</li>
+                                            <li>Executive-level process communication</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Other Process Mapping Techniques</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Cross-Functional Process Maps</h6>
+                                    <p class="text-xs mb-1">Advanced swimlane diagrams that show process flows across multiple departments and stakeholders:</p>
+                                    <ul class="pl-4 text-xs mb-1">
+                                        <li>Integration of multiple organizations</li>
+                                        <li>Complex handoff visualization</li>
+                                        <li>End-to-end process clarity</li>
+                                    </ul>
+                                    <p class="text-xs italic mb-0">Best for: Complex enterprise processes spanning many functions and departments</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Deployment Flowcharts</h6>
+                                    <p class="text-xs mb-1">Maps process activities to responsible parties while showing sequence:</p>
+                                    <ul class="pl-4 text-xs mb-1">
+                                        <li>Who performs each step</li>
+                                        <li>Sequential flow of activities</li>
+                                        <li>Decision and approval points</li>
+                                    </ul>
+                                    <p class="text-xs italic mb-0">Best for: Clarifying roles within complex decision processes or procedures</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Process Behavior Charts</h6>
+                                    <p class="text-xs mb-1">Combines process flow with time and state analysis:</p>
+                                    <ul class="pl-4 text-xs mb-1">
+                                        <li>Time spent in each state</li>
+                                        <li>State transitions and triggers</li>
+                                        <li>Process stability assessment</li>
+                                    </ul>
+                                    <p class="text-xs italic mb-0">Best for: Analyzing processes with significant time or state dependencies</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Process Mapping Methodology</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Creating Effective Process Maps: Step-by-Step Approach</h5>
+                        <p class="text-sm mb-3">A structured methodology ensures that process mapping efforts capture accurate information and produce valuable insights for the organization. The following approach outlines key steps for successful process mapping.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Preparation Phase</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">1. Define Purpose and Scope</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Clarify the specific objectives for mapping the process</li>
+                                            <li>Define the process boundaries (start and end points)</li>
+                                            <li>Determine the appropriate level of detail needed</li>
+                                            <li>Identify the intended audience for the process map</li>
+                                            <li>Select the most appropriate mapping technique</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">2. Assemble the Right Team</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Include process owners and subject matter experts</li>
+                                            <li>Involve representatives from all functional areas</li>
+                                            <li>Consider including customers or end-users when appropriate</li>
+                                            <li>Assign roles: facilitator, note-taker, process SMEs</li>
+                                            <li>Secure necessary leadership support and participation</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">3. Gather Preliminary Information</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Review existing documentation and procedures</li>
+                                            <li>Collect available metrics and performance data</li>
+                                            <li>Identify known pain points or improvement opportunities</li>
+                                            <li>Interview key stakeholders for their perspectives</li>
+                                            <li>Prepare a mapping session agenda and materials</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Mapping Execution</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[300px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">4. Document the Current State</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Start with a high-level view of major process steps</li>
+                                                <li>Identify the actual process, not the theoretical one</li>
+                                                <li>Use consistent symbols and notation</li>
+                                                <li>Capture both the normal flow and exceptions</li>
+                                                <li>Document handoffs between roles or departments</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">5. Add Process Details</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Include timing information where relevant</li>
+                                                <li>Identify decision points and criteria</li>
+                                                <li>Document inputs and outputs for each step</li>
+                                                <li>Note systems or tools used in each activity</li>
+                                                <li>Highlight control points and approvals</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">6. Validate the Process Map</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Review with process participants for accuracy</li>
+                                                <li>Walk through the process physically when possible</li>
+                                                <li>Test the map against real examples or cases</li>
+                                                <li>Get feedback from those not involved in the mapping</li>
+                                                <li>Make necessary revisions based on validation</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">7. Analyze for Improvement</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Identify non-value-added steps and waste</li>
+                                                <li>Look for bottlenecks and constraints</li>
+                                                <li>Note redundancies and duplicate efforts</li>
+                                                <li>Highlight quality or risk issues</li>
+                                                <li>Consider opportunities for standardization</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Standard Process Map Symbols</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="flex items-center gap-2">
+                                            <svg width="30" height="20" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="0" y="0" width="30" height="20" rx="0" stroke="#6b7280" stroke-width="1.5" fill="#f3f4f6"></rect>
+                                            </svg>
+                                            <span class="text-xs">Process/Activity</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <svg width="30" height="20" xmlns="http://www.w3.org/2000/svg">
+                                                <polygon points="15,0 30,10 15,20 0,10" stroke="#6b7280" stroke-width="1.5" fill="#f3f4f6"></polygon>
+                                            </svg>
+                                            <span class="text-xs">Decision</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <svg width="30" height="20" xmlns="http://www.w3.org/2000/svg">
+                                                <ellipse cx="15" cy="10" rx="15" ry="10" stroke="#6b7280" stroke-width="1.5" fill="#f3f4f6"></ellipse>
+                                            </svg>
+                                            <span class="text-xs">Start/End</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <svg width="30" height="20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M 0,0 L 20,0 L 30,10 L 20,20 L 0,20 Z" stroke="#6b7280" stroke-width="1.5" fill="#f3f4f6"></path>
+                                            </svg>
+                                            <span class="text-xs">Document</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <svg width="30" height="20" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="0" y="0" width="30" height="20" rx="0" stroke="#6b7280" stroke-width="1.5" fill="#f3f4f6" stroke-dasharray="3,2"></rect>
+                                            </svg>
+                                            <span class="text-xs">Sub-process</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <svg width="30" height="20" xmlns="http://www.w3.org/2000/svg">
+                                                <line x1="0" y1="10" x2="30" y2="10" stroke="#6b7280" stroke-width="1.5"></line>
+                                                <polygon points="30,10 22,5 22,15" fill="#6b7280"></polygon>
+                                            </svg>
+                                            <span class="text-xs">Flow Direction</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <svg width="30" height="20" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="0" y="0" width="20" height="20" rx="0" stroke="#6b7280" stroke-width="1.5" fill="#f3f4f6"></rect>
+                                                <rect x="5" y="5" width="20" height="10" rx="0" stroke="#6b7280" stroke-width="1.5" fill="#f3f4f6"></rect>
+                                            </svg>
+                                            <span class="text-xs">Data/Database</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <svg width="30" height="20" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="5" y="0" width="20" height="20" rx="3" stroke="#6b7280" stroke-width="1.5" fill="#f3f4f6"></rect>
+                                                <circle cx="8" cy="10" r="8" stroke="#6b7280" stroke-width="1.5" fill="#f3f4f6"></circle>
+                                            </svg>
+                                            <span class="text-xs">Interface/System</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Facilitation Best Practices</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Tips for Effective Mapping Sessions</h6>
+                                        <ul class="pl-4 text-xs mb-3">
+                                            <li>Use large visual workspace (whiteboard, wall, digital canvas)</li>
+                                            <li>Start with sticky notes for flexibility in arrangement</li>
+                                            <li>Photograph work-in-progress at milestones</li>
+                                            <li>Focus on what actually happens, not what should happen</li>
+                                            <li>Listen for disagreements as signals of process variability</li>
+                                            <li>Use a "parking lot" for issues outside immediate scope</li>
+                                            <li>Employ the "5 Whys" to explore root causes of issues</li>
+                                            <li>Document assumptions and questions throughout</li>
+                                            <li>Include metrics where available (time, cost, quality)</li>
+                                            <li>Close with clear next steps and assignments</li>
+                                        </ul>
+                                        
+                                        <h6 class="text-xs font-medium mb-1">Common Challenges to Address</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Process disagreements among participants</li>
+                                            <li>Tendency to map the ideal rather than actual process</li>
+                                            <li>Getting stuck in too much or too little detail</li>
+                                            <li>Defensive reactions when inefficiencies are exposed</li>
+                                            <li>Keeping focus on process rather than individuals</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Process Map Finalization and Documentation</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Map Documentation</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Digitize using appropriate software</li>
+                                        <li>Create clear process title and description</li>
+                                        <li>Include version number and date</li>
+                                        <li>Document process boundaries (start/end)</li>
+                                        <li>Note process owner and key stakeholders</li>
+                                        <li>Add legend for symbols and notations</li>
+                                        <li>Include key metrics and performance data</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Supporting Information</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Process narrative/description</li>
+                                        <li>Key inputs and outputs definitions</li>
+                                        <li>Process metrics and KPIs</li>
+                                        <li>Systems and tools used</li>
+                                        <li>Roles and responsibilities</li>
+                                        <li>Related procedures and work instructions</li>
+                                        <li>Known issues and improvement opportunities</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Communication &amp; Utilization</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Share with all process stakeholders</li>
+                                        <li>Include in training and onboarding materials</li>
+                                        <li>Incorporate in operational procedures</li>
+                                        <li>Use in continuous improvement efforts</li>
+                                        <li>Link to related process maps</li>
+                                        <li>Establish review and update cadence</li>
+                                        <li>Make accessible in knowledge management system</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Process Analysis Using Maps</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Extracting Insights and Driving Improvements</h5>
+                        <p class="text-sm mb-3">Process maps are not just documentation tools but powerful analytical instruments that can help identify issues, inefficiencies, and opportunities for improvement. The following approaches can help extract maximum value from your process mapping efforts.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Core Analysis Techniques</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Value Analysis</h6>
+                                        <p class="text-xs mb-0">Categorizing each process step by value contribution:</p>
+                                        <ul class="pl-4 text-xs mt-1 mb-0">
+                                            <li><strong>Value-adding (VA):</strong> Activities customers would pay for that transform the product/service</li>
+                                            <li><strong>Business value-adding (BVA):</strong> Required activities that don't directly add customer value (regulatory compliance, business reporting)</li>
+                                            <li><strong>Non-value-adding (NVA):</strong> Activities that consume resources without adding value (waiting, rework, excessive approvals)</li>
+                                        </ul>
+                                        <div class="mt-2 p-1 bg-purple-50 dark:bg-purple-900/20 rounded">
+                                            <p class="text-xs mb-0"><strong>Analysis goal:</strong> Identify opportunities to eliminate NVA activities, minimize BVA activities, and optimize VA activities.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Time Analysis</h6>
+                                        <p class="text-xs mb-0">Examining time components in the process:</p>
+                                        <ul class="pl-4 text-xs mt-1 mb-0">
+                                            <li><strong>Process time:</strong> Time actually working on an item</li>
+                                            <li><strong>Wait time:</strong> Time spent waiting between activities</li>
+                                            <li><strong>Queue time:</strong> Time spent in backlog before processing</li>
+                                            <li><strong>Transport time:</strong> Time moving between locations or handoffs</li>
+                                            <li><strong>Total cycle time:</strong> End-to-end time from start to completion</li>
+                                        </ul>
+                                        <div class="mt-2 p-1 bg-purple-50 dark:bg-purple-900/20 rounded">
+                                            <p class="text-xs mb-0"><strong>Analysis goal:</strong> Identify where time is actually spent and focus on reducing non-productive time components.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Waste Analysis (8 Wastes)</h6>
+                                        <p class="text-xs mb-0">Identifying specific types of waste in the process:</p>
+                                        <div class="grid grid-cols-2 gap-x-2 gap-y-1 mt-1">
+                                            <div>
+                                                <span class="text-xs font-medium">1. Transportation</span>
+                                                <p class="text-xs">Unnecessary movement of materials</p>
+                                            </div>
+                                            <div>
+                                                <span class="text-xs font-medium">2. Inventory</span>
+                                                <p class="text-xs">Excess materials or work-in-progress</p>
+                                            </div>
+                                            <div>
+                                                <span class="text-xs font-medium">3. Motion</span>
+                                                <p class="text-xs">Unnecessary movement of people</p>
+                                            </div>
+                                            <div>
+                                                <span class="text-xs font-medium">4. Waiting</span>
+                                                <p class="text-xs">Idle time waiting for next steps</p>
+                                            </div>
+                                            <div>
+                                                <span class="text-xs font-medium">5. Overproduction</span>
+                                                <p class="text-xs">Producing more than needed</p>
+                                            </div>
+                                            <div>
+                                                <span class="text-xs font-medium">6. Overprocessing</span>
+                                                <p class="text-xs">Unnecessary process steps</p>
+                                            </div>
+                                            <div>
+                                                <span class="text-xs font-medium">7. Defects</span>
+                                                <p class="text-xs">Errors requiring rework</p>
+                                            </div>
+                                            <div>
+                                                <span class="text-xs font-medium">8. Skills</span>
+                                                <p class="text-xs">Underutilized human talents</p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2 p-1 bg-purple-50 dark:bg-purple-900/20 rounded">
+                                            <p class="text-xs mb-0"><strong>Analysis goal:</strong> Systematically identify and eliminate all forms of waste to improve efficiency and effectiveness.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Advanced Analysis Approaches</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Process Variation Analysis</h6>
+                                            <p class="text-xs mb-0">Examining differences in how processes are performed:</p>
+                                            <ul class="pl-4 text-xs mt-1 mb-0">
+                                                <li><strong>Intended variation:</strong> Deliberate differences based on product type, customer segments, etc.</li>
+                                                <li><strong>Unintended variation:</strong> Inconsistencies due to lack of standardization, training gaps, or system issues</li>
+                                                <li><strong>Regional/departmental variation:</strong> Different approaches in different locations or teams</li>
+                                                <li><strong>Temporal variation:</strong> Changes in process execution based on time (shifts, seasons, workload)</li>
+                                            </ul>
+                                            <div class="mt-2 p-1 bg-purple-50 dark:bg-purple-900/20 rounded">
+                                                <p class="text-xs mb-0"><strong>Analysis techniques:</strong> Compare multiple process instances, interview different stakeholders, map variations side-by-side, analyze performance data across variations.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Critical Path Analysis</h6>
+                                            <p class="text-xs mb-0">Identifying the sequence of activities that determine the overall process duration:</p>
+                                            <ul class="pl-4 text-xs mt-1 mb-0">
+                                                <li>Map all activity durations and dependencies</li>
+                                                <li>Identify the longest path through the process</li>
+                                                <li>Calculate earliest/latest start times for each activity</li>
+                                                <li>Determine which activities have float/slack time</li>
+                                                <li>Focus improvement efforts on critical path activities</li>
+                                            </ul>
+                                            <div class="mt-2 p-1 bg-purple-50 dark:bg-purple-900/20 rounded">
+                                                <p class="text-xs mb-0"><strong>Analysis benefit:</strong> Prioritizes improvement efforts on activities that directly impact overall process duration.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Bottleneck Identification</h6>
+                                            <p class="text-xs mb-0">Locating constraints that limit overall process throughput:</p>
+                                            <ul class="pl-4 text-xs mt-1 mb-0">
+                                                <li>Identify steps with the lowest capacity or throughput</li>
+                                                <li>Look for activities with consistent backlogs or queues</li>
+                                                <li>Analyze resource utilization across process steps</li>
+                                                <li>Measure work-in-progress inventory accumulation points</li>
+                                                <li>Consider both physical and information flow constraints</li>
+                                            </ul>
+                                            <div class="mt-2 p-1 bg-purple-50 dark:bg-purple-900/20 rounded">
+                                                <p class="text-xs mb-0"><strong>Analysis insight:</strong> System throughput can only be improved by addressing the current bottleneck; improving other areas won't increase overall throughput.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Error/Defect Analysis</h6>
+                                            <p class="text-xs mb-0">Examining where and why quality issues occur:</p>
+                                            <ul class="pl-4 text-xs mt-1 mb-0">
+                                                <li>Identify process steps where errors commonly occur</li>
+                                                <li>Map rework loops and exception handling paths</li>
+                                                <li>Analyze root causes of common defects</li>
+                                                <li>Evaluate control points and verification activities</li>
+                                                <li>Assess impact of errors on downstream activities</li>
+                                            </ul>
+                                            <div class="mt-2 p-1 bg-purple-50 dark:bg-purple-900/20 rounded">
+                                                <p class="text-xs mb-0"><strong>Analysis focus:</strong> Prevention of errors at source rather than detection and correction later in the process.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Improvement Identification and Implementation</h6>
+                            
+                            <div class="mb-3">
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-900">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Improvement Strategy</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Description</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Implementation Approaches</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Common Benefits</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Eliminate</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Completely remove unnecessary steps, approvals, or activities that don't add value
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Challenge "we've always done it this way" assumptions</li>
+                                                        <li>Quantify value vs. cost of each step</li>
+                                                        <li>Test removal in controlled environment</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Reduced cycle time</li>
+                                                        <li>Lower processing costs</li>
+                                                        <li>Simplified training and execution</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Combine</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Merge related activities or handoffs to reduce transitions and waiting time
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Co-locate related activities</li>
+                                                        <li>Cross-train staff for multiple steps</li>
+                                                        <li>Create integrated workstations</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Reduced handoffs</li>
+                                                        <li>Decreased transportation/motion</li>
+                                                        <li>Improved process flow</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Simplify</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Reduce complexity in process steps, forms, or decisions to make execution easier
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Standardize inputs and formats</li>
+                                                        <li>Create templates and checklists</li>
+                                                        <li>Reduce decision variations</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Fewer errors</li>
+                                                        <li>Easier training</li>
+                                                        <li>More consistent execution</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Resequence</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Change the order of activities to improve flow or enable parallel processing
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Identify independent activities for parallel processing</li>
+                                                        <li>Move verification steps earlier</li>
+                                                        <li>Optimize sequence for resource availability</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Shorter lead times</li>
+                                                        <li>Earlier error detection</li>
+                                                        <li>Better resource utilization</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Automate</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Apply technology to reduce manual effort and increase consistency
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Focus on stable, standardized processes first</li>
+                                                        <li>Start with routine, repetitive tasks</li>
+                                                        <li>Build in monitoring and exception handling</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Higher throughput capacity</li>
+                                                        <li>Reduced variation</li>
+                                                        <li>Data collection for analysis</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Prioritizing Improvements</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Focus on critical path activities first</li>
+                                        <li>Evaluate impact vs. implementation effort</li>
+                                        <li>Consider upstream/downstream effects</li>
+                                        <li>Look for quick wins to build momentum</li>
+                                        <li>Target bottlenecks that constrain throughput</li>
+                                        <li>Address high-impact customer touchpoints</li>
+                                        <li>Consider organization's change capacity</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Building Future State Maps</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Create clear vision of improved process</li>
+                                        <li>Apply analysis insights systematically</li>
+                                        <li>Design for flexibility and adaptability</li>
+                                        <li>Include performance targets and metrics</li>
+                                        <li>Validate with stakeholders and experts</li>
+                                        <li>Consider phased implementation approach</li>
+                                        <li>Document key differences from current state</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Implementation Planning</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Develop detailed transition plan</li>
+                                        <li>Identify resource requirements</li>
+                                        <li>Create training and communication plan</li>
+                                        <li>Consider pilot implementation first</li>
+                                        <li>Establish performance measurements</li>
+                                        <li>Plan for ongoing process management</li>
+                                        <li>Set up feedback mechanisms</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Dell Case Study: Order Fulfillment Process Mapping</h5>
+                        <p class="text-sm mb-3">This example demonstrates how Dell Technologies applied process mapping to analyze and improve its order fulfillment process, resulting in significant efficiency gains and customer experience improvements.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Challenge Context</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Dell's Consumer Business Group identified several challenges in their order fulfillment process:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li>Increasing order-to-delivery time despite investments in technology</li>
+                                        <li>Higher than expected order exception rates requiring manual intervention</li>
+                                        <li>Inconsistent processes across different product lines and regions</li>
+                                        <li>Fragmented visibility of order status across systems</li>
+                                        <li>Redundant verification steps added over time</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Business Impact:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Longer lead times affecting customer satisfaction</li>
+                                        <li>Increased operational costs due to exceptions and rework</li>
+                                        <li>Higher support call volume for order status inquiries</li>
+                                        <li>Excess inventory in certain stages of the process</li>
+                                        <li>Difficulty scaling during peak demand periods</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Process Mapping Approach</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Mapping Methodology</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Created cross-functional team with representatives from Sales, Order Management, Manufacturing, Logistics, and Customer Support</li>
+                                            <li>Used SIPOC to establish process boundaries and key stakeholders</li>
+                                            <li>Developed detailed swimlane diagrams showing order flow across functions</li>
+                                            <li>Created value stream maps to capture timing and inventory data</li>
+                                            <li>Mapped both standard flow and exception handling processes</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Data Collection</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Analyzed 6 months of order transaction data across regions</li>
+                                            <li>Observed order processing in action at multiple facilities</li>
+                                            <li>Measured actual processing times for key activities</li>
+                                            <li>Interviewed staff handling exceptions and support calls</li>
+                                            <li>Reviewed customer feedback related to order fulfillment</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Key Process Map Insights</h6>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Process Area</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Current State Findings</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Improvement Opportunities</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Order Entry</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Three separate validation steps performed by different teams</li>
+                                                    <li>18% of orders required manual review due to incomplete information</li>
+                                                    <li>Sales configurations not always compatible with manufacturing capabilities</li>
+                                                    <li>Credit check process added 4-8 hours to order processing</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Consolidate validation steps into single verification process</li>
+                                                    <li>Implement real-time validation in order entry system</li>
+                                                    <li>Update sales configuration tool with manufacturing constraints</li>
+                                                    <li>Integrate credit check into order entry workflow</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Production Planning</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Batch processing of orders created artificial delays</li>
+                                                    <li>Component availability check performed after order acceptance</li>
+                                                    <li>Manual workload balancing across production lines</li>
+                                                    <li>Limited visibility into capacity constraints</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Implement continuous flow order processing</li>
+                                                    <li>Move component availability check to order entry phase</li>
+                                                    <li>Develop automated production scheduling system</li>
+                                                    <li>Create real-time capacity dashboard</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Manufacturing</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Significant work-in-progress between stations</li>
+                                                    <li>Multiple quality check points with redundancies</li>
+                                                    <li>Information systems not integrated across all stages</li>
+                                                    <li>Production problems discovered late in process</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Implement pull system to reduce WIP inventories</li>
+                                                    <li>Consolidate quality checks and move upstream</li>
+                                                    <li>Integrate systems for seamless information flow</li>
+                                                    <li>Deploy early error detection mechanisms</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Shipping &amp; Logistics</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Completed orders waiting for batch shipment processing</li>
+                                                    <li>Manual carrier selection and shipment creation</li>
+                                                    <li>Limited integration between manufacturing and shipping systems</li>
+                                                    <li>Inconsistent tracking information provided to customers</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Implement continuous shipping processing</li>
+                                                    <li>Automate carrier selection based on rules engine</li>
+                                                    <li>Integrate manufacturing completion with shipping triggers</li>
+                                                    <li>Create standardized customer tracking communications</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Customer Communications</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Multiple systems providing customer status updates</li>
+                                                    <li>Inconsistent terminology across customer touchpoints</li>
+                                                    <li>Limited self-service options for order changes</li>
+                                                    <li>Support team lacked full visibility into order status</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Create single source of truth for order status</li>
+                                                    <li>Standardize communication terms and touchpoints</li>
+                                                    <li>Develop self-service portal for order management</li>
+                                                    <li>Provide comprehensive dashboard for support team</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Key Process Metrics</h6>
+                                <div class="space-y-2">
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-xs">Total Lead Time</span>
+                                            <span class="text-xs font-medium">8.2 days</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+                                            <div class="bg-blue-500 h-full rounded-full" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-xs">Value-Added Time</span>
+                                            <span class="text-xs font-medium">6.4 hours (3.2%)</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+                                            <div class="bg-blue-500 h-full rounded-full" style="width: 3.2%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-xs">Process Steps</span>
+                                            <span class="text-xs font-medium">42 steps</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+                                            <div class="bg-blue-500 h-full rounded-full" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-xs">Handoffs</span>
+                                            <span class="text-xs font-medium">13 handoffs</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+                                            <div class="bg-blue-500 h-full rounded-full" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-xs">Exception Rate</span>
+                                            <span class="text-xs font-medium">18.5%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+                                            <div class="bg-blue-500 h-full rounded-full" style="width: 18.5%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Implemented Solutions</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Process redesign:</strong> Streamlined order flow with 30% fewer steps and 50% fewer handoffs</li>
+                                    <li class="mb-1"><strong>System integration:</strong> Connected sales, manufacturing, and shipping systems for seamless information flow</li>
+                                    <li class="mb-1"><strong>Validation automation:</strong> Implemented real-time validation during order entry, reducing exceptions by 70%</li>
+                                    <li class="mb-1"><strong>Pull system:</strong> Replaced batch processing with continuous flow triggered by downstream demand</li>
+                                    <li class="mb-1"><strong>Visual management:</strong> Deployed dashboards providing real-time visibility across the entire process</li>
+                                    <li class="mb-0"><strong>Customer portal:</strong> Created unified self-service system for order tracking and management</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Results &amp; Business Impact</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Lead time reduction:</strong> Order-to-delivery time reduced from 8.2 days to 4.3 days (48% improvement)</li>
+                                    <li class="mb-1"><strong>Quality improvement:</strong> Order accuracy increased from 81.5% to 96.7% first-time-right</li>
+                                    <li class="mb-1"><strong>Cost savings:</strong> $4.2M annual savings from reduced labor, inventory, and expediting costs</li>
+                                    <li class="mb-1"><strong>Customer satisfaction:</strong> 18-point increase in NPS related to order fulfillment experience</li>
+                                    <li class="mb-1"><strong>Support call reduction:</strong> 62% decrease in order status and tracking inquiry calls</li>
+                                    <li class="mb-0"><strong>Capacity increase:</strong> 30% increase in peak period throughput with same resources</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Key Learnings &amp; Best Practices</h6>
+                            <ul class="pl-4 text-xs mb-2">
+                                <li class="mb-1"><strong>Cross-functional team:</strong> Include representatives from all process areas to ensure comprehensive understanding and buy-in</li>
+                                <li class="mb-1"><strong>End-to-end perspective:</strong> Map the entire process from customer order to delivery to identify systemic issues</li>
+                                <li class="mb-1"><strong>Data-driven approach:</strong> Supplement process mapping with quantitative analysis to prioritize improvements</li>
+                                <li class="mb-1"><strong>Customer focus:</strong> View the process from customer perspective and prioritize value-added activities</li>
+                                <li class="mb-0"><strong>Continuous improvement:</strong> Establish ongoing process monitoring and regular mapping updates</li>
+                            </ul>
+                            <p class="text-xs mb-0"><strong>Sustainability Strategy:</strong> Dell integrated the process maps into their operational excellence program, with dedicated process owners responsible for maintaining and continuously improving the order fulfillment process. They established a quarterly review cadence to evaluate process performance and implement further improvements. The redesigned process became a model for other Dell business units and regions, extending the impact beyond the initial scope.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Process Mapping Tools and Technologies</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Software and Resources for Process Mapping</h5>
+                        <p class="text-sm mb-3">While process mapping can be done with simple tools like sticky notes and whiteboards, specialized software can enhance productivity, collaboration, and the professional presentation of process maps. Here's an overview of available tools and how to choose the right one for your needs.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Common Process Mapping Software</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Microsoft Visio</h6>
+                                        <p class="text-xs mb-1">Desktop diagramming software with extensive process mapping capabilities:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Strengths:</strong> Robust functionality, integration with Office suite, extensive templates, widely used in enterprises</li>
+                                            <li><strong>Limitations:</strong> Cost, limited collaboration features, learning curve for new users</li>
+                                            <li><strong>Best for:</strong> Complex process documentation in Microsoft-centric organizations</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Lucidchart</h6>
+                                        <p class="text-xs mb-1">Cloud-based diagramming platform with real-time collaboration:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Strengths:</strong> Intuitive interface, seamless collaboration, extensive integrations, web-based access</li>
+                                            <li><strong>Limitations:</strong> Subscription cost, fewer advanced features than desktop applications</li>
+                                            <li><strong>Best for:</strong> Team-based process mapping with remote or distributed participants</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Draw.io (diagrams.net)</h6>
+                                        <p class="text-xs mb-1">Free, open-source diagramming tool with desktop and web versions:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Strengths:</strong> No cost, integration with cloud storage, offline capability, simple interface</li>
+                                            <li><strong>Limitations:</strong> Fewer enterprise features, limited support options</li>
+                                            <li><strong>Best for:</strong> Basic process mapping needs with budget constraints</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Specialized Process Tools</h6>
+                                        <p class="text-xs mb-1">Purpose-built applications for process management:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Bizagi Modeler:</strong> Free BPMN-focused process modeling tool</li>
+                                            <li><strong>ProcessMaker:</strong> BPM suite with modeling capabilities</li>
+                                            <li><strong>Signavio:</strong> Business process intelligence platform</li>
+                                            <li><strong>Best for:</strong> Organizations focused on business process management initiatives</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Tool Selection Considerations</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Purpose and Complexity</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>One-time documentation:</strong> Simpler tools may suffice</li>
+                                                <li><strong>Ongoing process management:</strong> More robust, dedicated tools</li>
+                                                <li><strong>Complex processes:</strong> Tools with hierarchical mapping and drill-down</li>
+                                                <li><strong>Process simulation:</strong> Specialized tools with analytical capabilities</li>
+                                                <li><strong>Process automation:</strong> BPM suites that can execute processes</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Organizational Context</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Enterprise standards:</strong> Align with existing tool ecosystem</li>
+                                                <li><strong>User technical proficiency:</strong> Consider ease of use and learning curve</li>
+                                                <li><strong>Collaboration needs:</strong> Multi-user editing and commenting capabilities</li>
+                                                <li><strong>Security requirements:</strong> Data protection and access controls</li>
+                                                <li><strong>Budget constraints:</strong> Open-source vs. commercial options</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Key Features to Consider</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Process notations:</strong> Support for BPMN, flowcharts, swimlanes, etc.</li>
+                                                <li><strong>Templates:</strong> Pre-built maps and industry-specific examples</li>
+                                                <li><strong>Integration:</strong> Connection with other business systems</li>
+                                                <li><strong>Versioning:</strong> Tracking changes and revision history</li>
+                                                <li><strong>Export options:</strong> PDF, images, sharing capabilities</li>
+                                                <li><strong>Mobile access:</strong> Viewing/editing on different devices</li>
+                                                <li><strong>Analytics:</strong> Process simulation and performance analysis</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Dell's Process Mapping Environment</h6>
+                                            <p class="text-xs mb-1">At Dell Technologies, process mapping tools are selected based on use case:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Microsoft Visio:</strong> Standard for detailed technical process documentation</li>
+                                                <li><strong>Lucidchart:</strong> Widely used for collaborative process improvement projects</li>
+                                                <li><strong>ServiceNow:</strong> Process modeling integrated with IT service management</li>
+                                                <li><strong>Specialized BPM tools:</strong> Used for process automation initiatives</li>
+                                                <li><strong>Knowledge management integration:</strong> Process maps stored in central repository with appropriate tagging and governance</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Non-Software Mapping Approaches</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Paper and Whiteboard Mapping</h6>
+                                    <p class="text-xs mb-1">Low-tech approach using physical materials:</p>
+                                    <ul class="pl-4 text-xs mb-1">
+                                        <li>Large whiteboards or flip charts</li>
+                                        <li>Sticky notes in different colors</li>
+                                        <li>Markers and drawing templates</li>
+                                        <li>Allows for highly interactive sessions</li>
+                                        <li>Results can be photographed and digitized later</li>
+                                    </ul>
+                                    <p class="text-xs italic mb-0">Best for: Initial collaborative mapping sessions where engagement is more important than precision</p>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Brown Paper Mapping</h6>
+                                    <p class="text-xs mb-1">Large-scale physical mapping technique:</p>
+                                    <ul class="pl-4 text-xs mb-1">
+                                        <li>Using large rolls of brown paper on walls</li>
+                                        <li>Teams add sticky notes for process steps</li>
+                                        <li>String or yarn shows connections</li>
+                                        <li>Data added with colored dots/stickers</li>
+                                        <li>Creates physical process visualization</li>
+                                    </ul>
+                                    <p class="text-xs italic mb-0">Best for: Complex processes where seeing the full end-to-end flow at once is valuable</p>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Digital Whiteboard Platforms</h6>
+                                    <p class="text-xs mb-1">Collaborative online canvases:</p>
+                                    <ul class="pl-4 text-xs mb-1">
+                                        <li>Tools like Miro, Mural, and Microsoft Whiteboard</li>
+                                        <li>Combines flexibility of physical sessions with digital advantages</li>
+                                        <li>Supports remote participation</li>
+                                        <li>Easy to rearrange and iterate</li>
+                                        <li>Can be exported to more formal tools</li>
+                                    </ul>
+                                    <p class="text-xs italic mb-0">Best for: Hybrid teams combining the engagement of whiteboards with digital permanence</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Integrating Process Maps with Other Tools</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Creating Synergy with Complementary Frameworks</h5>
+                        <p class="text-sm mb-3">Process maps deliver maximum value when integrated with other business analysis and improvement tools. This integration creates a more comprehensive approach to process understanding and optimization.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mr-2">
+                                        <i class="ri-user-settings-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-blue-700 dark:text-blue-300">Process Maps + RACI</h6>
+                                </div>
+                                <p class="text-xs mb-2">Combining process flows with responsibility assignments:</p>
+                                <ul class="pl-4 text-xs mb-2">
+                                    <li>Annotate process steps with RACI roles</li>
+                                    <li>Create integrated swimlane-RACI diagrams</li>
+                                    <li>Link process activities to role descriptions</li>
+                                    <li>Identify accountability gaps in processes</li>
+                                    <li>Align process design with organizational structure</li>
+                                </ul>
+                                <p class="text-xs mb-0"><strong>Value:</strong> Ensures clear ownership and accountability throughout process execution while visualizing how work flows across roles.</p>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mr-2">
+                                        <i class="ri-flow-chart text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-blue-700 dark:text-blue-300">Process Maps + RAPIDs</h6>
+                                </div>
+                                <p class="text-xs mb-2">Integrating decision rights with process flows:</p>
+                                <ul class="pl-4 text-xs mb-2">
+                                    <li>Highlight key decision points in processes</li>
+                                    <li>Define decision rights at each decision node</li>
+                                    <li>Connect process steps to decision-making frameworks</li>
+                                    <li>Ensure proper inputs flow to decision makers</li>
+                                    <li>Clarify implementation paths after decisions</li>
+                                </ul>
+                                <p class="text-xs mb-0"><strong>Value:</strong> Creates clear governance around critical process decisions while maintaining efficient flow of activities before and after decision points.</p>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mr-2">
+                                        <i class="ri-bar-chart-box-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-blue-700 dark:text-blue-300">Process Maps + Metrics</h6>
+                                </div>
+                                <p class="text-xs mb-2">Connecting measurement to process activities:</p>
+                                <ul class="pl-4 text-xs mb-2">
+                                    <li>Define KPIs for critical process steps</li>
+                                    <li>Add measurement points to process maps</li>
+                                    <li>Create process performance dashboards</li>
+                                    <li>Establish process control limits</li>
+                                    <li>Link metrics to strategic objectives</li>
+                                </ul>
+                                <p class="text-xs mb-0"><strong>Value:</strong> Enables data-driven process management by establishing clear performance measures at key points in the process flow.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 mr-2">
+                                        <i class="ri-error-warning-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-green-700 dark:text-green-300">Process Maps + Risk Analysis</h6>
+                                </div>
+                                <p class="text-xs mb-2">Identifying and managing process-related risks:</p>
+                                <ul class="pl-4 text-xs mb-2">
+                                    <li>Identify failure points and vulnerabilities in processes</li>
+                                    <li>Map risk severity and likelihood to process steps</li>
+                                    <li>Document control points and mitigation measures</li>
+                                    <li>Create integrated risk registers linked to processes</li>
+                                    <li>Design processes with appropriate controls</li>
+                                </ul>
+                                <p class="text-xs mb-0"><strong>Implementation:</strong> Add risk indicators to process maps, color-code steps by risk level, and document controls at critical points. Link to formal risk management systems where applicable.</p>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 mr-2">
+                                        <i class="ri-customer-service-2-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-green-700 dark:text-green-300">Process Maps + Customer Journey</h6>
+                                </div>
+                                <p class="text-xs mb-2">Connecting internal processes to customer experiences:</p>
+                                <ul class="pl-4 text-xs mb-2">
+                                    <li>Map touchpoints between processes and customers</li>
+                                    <li>Identify moments of truth in customer interactions</li>
+                                    <li>Link customer emotions to process steps</li>
+                                    <li>Align process metrics with customer experience metrics</li>
+                                    <li>Visualize gaps between external experience and internal operations</li>
+                                </ul>
+                                <p class="text-xs mb-0"><strong>Implementation:</strong> Create parallel maps showing internal process and external customer journey, connect corresponding points, and highlight experience impacts of process decisions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Process Architecture Integration</h6>
+                            
+                            <p class="text-xs mb-2">Individual process maps deliver most value when connected to a broader process architecture that shows relationships between processes and provides organizational context:</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Process Hierarchy</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Level 1: Enterprise value chains</li>
+                                        <li>Level 2: End-to-end processes</li>
+                                        <li>Level 3: Process groups</li>
+                                        <li>Level 4: Detailed processes</li>
+                                        <li>Level 5: Activities and tasks</li>
+                                        <li>Allows for appropriate detail at each level</li>
+                                        <li>Enables drill-down from high-level to details</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Process Repositories</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Centralized storage of all process assets</li>
+                                        <li>Consistent taxonomy and naming conventions</li>
+                                        <li>Cross-referencing between related processes</li>
+                                        <li>Version control and change management</li>
+                                        <li>Role-based access controls</li>
+                                        <li>Search and discovery capabilities</li>
+                                        <li>Integration with knowledge management systems</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Process Governance</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Clear process ownership definition</li>
+                                        <li>Standard mapping methodologies</li>
+                                        <li>Review and approval workflows</li>
+                                        <li>Update schedules and triggers</li>
+                                        <li>Process performance management</li>
+                                        <li>Continuous improvement mechanisms</li>
+                                        <li>Integration with quality management systems</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2018/02/why-process-is-u-s-health-cares-biggest-problem" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Why Process Is U.S. Health Care's Biggest Problem</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Process Mapping for Complex Systems</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.processexcellencenetwork.com/business-process-management-bpm/articles/process-mapping-a-guide-to-getting-started" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-presentation-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Process Mapping: A Guide to Getting Started</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Process Excellence Network • Practical Implementation Guide</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.delltechnologies.com/en-us/blog/taking-the-mystery-out-of-business-process-modeling/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-book-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Taking the Mystery Out of Business Process Modeling</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Dell Technologies • Digital Transformation Perspective</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell Customer Support Process Mapping Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll apply process mapping techniques to analyze and improve Dell's customer support process for premium business customers. This scenario will help you develop practical skills in creating, analyzing, and optimizing business processes.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Scenario Context:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Dell's ProSupport team handles technical support for business customers</li>
+                                    <li>The process begins when a customer submits a support ticket and ends when the issue is resolved</li>
+                                    <li>Multiple departments are involved: Customer Support, Technical Support, Field Services, and Parts Management</li>
+                                    <li>Customer satisfaction metrics show opportunities for improvement in resolution time and first-contact resolution</li>
+                                    <li>Your task is to map the current process and identify improvement opportunities</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Key Process Information:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Customers can submit tickets via phone, chat, email, or web portal</li>
+                                    <li>Initial triage classifies issues as software, hardware, or network-related</li>
+                                    <li>Level 1 agents attempt resolution, escalating to Level 2 specialists if needed</li>
+                                    <li>Hardware issues may require parts shipment or technician dispatch</li>
+                                    <li>Process includes multiple approval points and status update communications</li>
+                                    <li>Average resolution time is currently 3.2 days with 65% first-contact resolution</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Current State Process Map</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Describe the current state process map you would create for this scenario. What type of process map would you use? What key elements would you include? How would you organize the information?"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Process Analysis</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Based on the scenario information, what potential process issues might you identify? What analysis techniques would you apply to find improvement opportunities? What metrics would you capture on your process map?"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Future State Recommendations</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="What process improvements would you recommend? How would these change your process map? Which process mapping techniques would be most valuable for communicating your recommendations?"></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-rapids">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: RAPIDs Framework</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-process-reengineering">
+                        <span>Next: Process Reengineering</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

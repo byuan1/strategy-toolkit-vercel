@@ -1,0 +1,1586 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="ri-arrow-left-line"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      
+            <!-- Feedback & Managing Up Topic -->
+            <section id="topic-feedback-managing-up" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-feedback-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Delivering Feedback &amp; Managing Up</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Effective Communication</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Master frameworks for delivering effective feedback in professional contexts</li>
+                            <li>Develop techniques for managing up and influencing leaders effectively</li>
+                            <li>Learn strategies for navigating difficult conversations with confidence</li>
+                            <li>Build skills for establishing productive relationships with managers and executives</li>
+                            <li>Apply Dell's feedback culture principles to enhance professional relationships</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>The Power of Effective Feedback</h4>
+                    <p>Feedback is one of the most valuable yet challenging forms of communication in professional settings. When delivered effectively, feedback accelerates learning, improves performance, strengthens relationships, and drives organizational growth. However, many professionals struggle with both giving and receiving feedback due to concerns about how it will be perceived or uncertainty about the right approach. Mastering feedback skills is a critical competency for career advancement and team effectiveness.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">The Business Impact of Feedback</h5>
+                        <p class="mb-3">Research consistently shows that organizations with strong feedback cultures outperform their peers across key metrics:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Performance Outcomes</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>28% higher productivity</strong> in teams with regular feedback exchanges</li>
+                                    <li><strong>14.9% lower turnover rates</strong> in companies with strong feedback cultures</li>
+                                    <li><strong>3x higher engagement levels</strong> among employees who receive regular feedback</li>
+                                    <li><strong>39% higher quality outcomes</strong> when feedback loops are embedded in processes</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Learning &amp; Development</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Accelerated skill acquisition</strong> with proper feedback integration</li>
+                                    <li><strong>65% higher knowledge retention</strong> when learning includes feedback</li>
+                                    <li><strong>More diverse capability development</strong> through multi-source feedback</li>
+                                    <li><strong>Increased innovation</strong> in environments with constructive feedback</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Relationship Benefits</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Higher psychological safety</strong> in teams with bidirectional feedback</li>
+                                    <li><strong>Improved conflict resolution</strong> through feedback skill development</li>
+                                    <li><strong>Stronger trust between managers and reports</strong> with regular feedback</li>
+                                    <li><strong>More effective collaboration</strong> across organizational boundaries</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Feedback at Dell Technologies</h6>
+                            <p class="mb-2">At Dell, feedback is considered a cornerstone of the Culture Code, embedded in how team members work together to drive innovation and results:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Tell Dell Survey Process</p>
+                                    <p class="text-sm mb-0">Dell's comprehensive employee feedback program goes beyond annual surveys to create continuous listening channels. The program features quarterly pulse surveys, focus groups, and open feedback forums that enable real-time insights. This multi-channel approach has driven measurable improvements in engagement scores and helped identify and address emerging issues before they impact performance.</p>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-green-700 dark:text-green-400 mb-1">Performance Acceleration</p>
+                                    <p class="text-sm mb-0">Dell's approach to performance management emphasizes ongoing feedback conversations rather than annual reviews alone. Managers and team members are trained in feedback techniques that focus on development and future performance. This continuous feedback model has contributed to a 24% improvement in employee-reported clarity about performance expectations and development paths.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">The Feedback Spectrum</h5>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-800">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Feedback Type</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Purpose</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">When to Use</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Delivery Approach</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm">
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Appreciation</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Recognize effort, contributions, and value; build motivation</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Following meaningful achievements; when effort deserves recognition; to reinforce desired behaviors</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Be specific about what was appreciated and why it matters; personalize to recipient's preferences; deliver authentically</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Coaching</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Help someone improve skills, knowledge, capability; enhance performance</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">During ongoing work processes; when someone has growth potential; after identifying developmental opportunities</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Focus on future possibilities; use questioning approach; provide guidance and resources; check understanding</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Evaluation</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Assess performance against expectations; provide rating or ranking; inform decisions</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">During formal review processes; when determining compensation/promotion; following project completion</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Use clear standards and criteria; provide evidence and examples; balance positives and negatives; focus on performance not personality</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Corrective</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Address behavior or performance gaps; redirect efforts; clarify expectations</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">When behavior negatively impacts work; following specific incidents; when patterns need addressing</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Be timely and private; focus on specific behaviors and impacts; offer path forward; maintain dignity</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Developmental</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Build long-term capabilities; expand potential; prepare for future roles</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">During career planning discussions; for high-potential employees; when building succession plans</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Focus on strengths and growth areas; connect to career aspirations; provide resources and support; create accountability</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Reciprocal</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Exchange perspectives; create mutual learning; strengthen relationship</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">In collaborative partnerships; during team retrospectives; for peer relationships</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Create safe environment; use "I" statements; balance giving and receiving; focus on shared goals</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Frameworks for Effective Feedback</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Structured Approaches to Feedback Delivery</h5>
+                        <p class="text-sm mb-3">Effective feedback follows consistent patterns and principles. These frameworks provide reliable structures for delivering feedback that is clear, actionable, and well-received.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">The SBI Feedback Model</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3 flex items-center justify-center">
+                                        <div class="flex flex-col md:flex-row items-center gap-3 my-3">
+                                            <div class="w-28 h-28 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-bold text-2xl">S</div>
+                                            <div class="flex items-center">
+                                                <i class="ri-arrow-right-line text-gray-400 text-xl mx-2 hidden md:block"></i>
+                                                <i class="ri-arrow-down-line text-gray-400 text-xl my-2 md:hidden"></i>
+                                            </div>
+                                            <div class="w-28 h-28 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-bold text-2xl">B</div>
+                                            <div class="flex items-center">
+                                                <i class="ri-arrow-right-line text-gray-400 text-xl mx-2 hidden md:block"></i>
+                                                <i class="ri-arrow-down-line text-gray-400 text-xl my-2 md:hidden"></i>
+                                            </div>
+                                            <div class="w-28 h-28 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-bold text-2xl">I</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <h6 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Situation</h6>
+                                            <p class="text-xs mb-2">Describe the specific situation where the behavior occurred. Provide context that helps the person understand when and where this happened.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg mb-2">
+                                                <h6 class="text-xs font-medium mb-1">Best Practices:</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Be specific about time and place</li>
+                                                    <li>Focus on a single event</li>
+                                                    <li>Avoid generalizations ("always" or "never")</li>
+                                                    <li>Establish shared understanding of context</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium mb-1">Example:</h6>
+                                                <p class="text-xs italic mb-0 text-gray-600 dark:text-gray-400">"During yesterday's client presentation, when the customer asked about implementation timelines..."</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <h6 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Behavior</h6>
+                                            <p class="text-xs mb-2">Describe the specific, observable behavior without making assumptions or interpretations about motives or intentions.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg mb-2">
+                                                <h6 class="text-xs font-medium mb-1">Best Practices:</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Focus on actions, not personality</li>
+                                                    <li>Be descriptive, not evaluative</li>
+                                                    <li>Use specific details</li>
+                                                    <li>Stick to what you observed directly</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium mb-1">Example:</h6>
+                                                <p class="text-xs italic mb-0 text-gray-600 dark:text-gray-400">"...you provided a detailed explanation of our typical implementation process and included the success factors that can affect timelines."</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <h6 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Impact</h6>
+                                            <p class="text-xs mb-2">Explain the effect the behavior had on you, the team, the customer, or the business outcome. This helps the person understand why the behavior matters.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg mb-2">
+                                                <h6 class="text-xs font-medium mb-1">Best Practices:</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Link behavior to outcomes</li>
+                                                    <li>Use "I" statements for personal impacts</li>
+                                                    <li>Be honest about consequences</li>
+                                                    <li>Include positive and negative impacts</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium mb-1">Example:</h6>
+                                                <p class="text-xs italic mb-0 text-gray-600 dark:text-gray-400">"This gave the client confidence in our approach and helped them understand their role in ensuring a successful implementation. They specifically mentioned your thoroughness as a key factor in their decision to move forward."</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4 bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-2">Optional Extensions to SBI</h6>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">SBI+R (Request)</h6>
+                                                <p class="text-xs mb-2">Add a specific request for future behavior:</p>
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                                    <h6 class="text-xs font-medium mb-1">Example:</h6>
+                                                    <p class="text-xs italic mb-0 text-gray-600 dark:text-gray-400">"For our upcoming presentations, I'd like you to continue providing that level of detail while also preparing a one-page summary the clients can reference later. This would further enhance their experience and give them a takeaway."</p>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">SBI+Q (Question)</h6>
+                                                <p class="text-xs mb-2">Add a question to invite reflection and dialogue:</p>
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                                    <h6 class="text-xs font-medium mb-1">Example:</h6>
+                                                    <p class="text-xs italic mb-0 text-gray-600 dark:text-gray-400">"How do you feel the client responded to that level of detail? What might we do in future presentations to build on this positive impression?"</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Additional Feedback Frameworks</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">The COIN Feedback Model</h6>
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                        <div class="flex flex-col gap-2">
+                                            <div class="flex items-start gap-2">
+                                                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-200 dark:bg-indigo-800 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs">C</div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0">Context</h6>
+                                                    <p class="text-xs mb-0">Describe the specific situation or circumstance where the behavior occurred</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-2">
+                                                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-200 dark:bg-indigo-800 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs">O</div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0">Observation</h6>
+                                                    <p class="text-xs mb-0">Describe the specific behaviors you observed, without judgment</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-2">
+                                                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-200 dark:bg-indigo-800 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs">I</div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0">Impact</h6>
+                                                    <p class="text-xs mb-0">Explain the effect or consequence of the behavior</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-2">
+                                                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-200 dark:bg-indigo-800 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs">N</div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0">Next Steps</h6>
+                                                    <p class="text-xs mb-0">Discuss what should happen going forward</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-2">
+                                        <h6 class="text-xs font-medium mb-1">When to Use COIN:</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>For performance improvement discussions</li>
+                                            <li>When clear next steps are needed</li>
+                                            <li>In development planning conversations</li>
+                                            <li>For complex feedback situations</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">The ASK Feedback Model</h6>
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                        <div class="flex flex-col gap-2">
+                                            <div class="flex items-start gap-2">
+                                                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-200 dark:bg-indigo-800 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs">A</div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0">Actionable</h6>
+                                                    <p class="text-xs mb-0">Focus on specific behaviors that can be changed</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-2">
+                                                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-200 dark:bg-indigo-800 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs">S</div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0">Specific</h6>
+                                                    <p class="text-xs mb-0">Provide clear examples with details</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-2">
+                                                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-200 dark:bg-indigo-800 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-xs">K</div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0">Kind</h6>
+                                                    <p class="text-xs mb-0">Deliver with respect and genuine desire to help</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-2">
+                                        <h6 class="text-xs font-medium mb-1">When to Use ASK:</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>For peer-to-peer feedback</li>
+                                            <li>When relationship preservation is critical</li>
+                                            <li>In mentoring relationships</li>
+                                            <li>For quick, informal feedback situations</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Dell's Feedback Best Practices</h6>
+                                <p class="text-xs mb-2">Dell Technologies emphasizes these principles in feedback delivery:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">For Constructive Feedback</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Timing matters:</strong> Deliver feedback promptly, but not when emotions are high</li>
+                                            <li><strong>Privacy first:</strong> Give constructive feedback in private, never in group settings</li>
+                                            <li><strong>Balance the message:</strong> Include strengths alongside areas for improvement</li>
+                                            <li><strong>Check understanding:</strong> Ensure the recipient comprehends the feedback</li>
+                                            <li><strong>Co-create solutions:</strong> Invite the recipient to help develop improvement plans</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">For Positive Feedback</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Be specific:</strong> Avoid generic praise; detail exactly what was effective</li>
+                                            <li><strong>Connect to impact:</strong> Explain why the behavior matters to the team/organization</li>
+                                            <li><strong>Consider preferences:</strong> Deliver praise publicly or privately based on individual preference</li>
+                                            <li><strong>Be timely:</strong> Give positive feedback as close to the event as possible</li>
+                                            <li><strong>Avoid sandwiching:</strong> Don't dilute positive feedback by pairing with criticism</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Managing Up Effectively</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Building Productive Relationships with Leadership</h5>
+                        <p class="text-sm mb-3">"Managing up" refers to the process of consciously working with your manager or leaders to obtain the best possible results for you, your manager, and your organization. It involves understanding their priorities, work style, and preferences, then adapting your approach to create a productive working relationship. Effective managing up is not about manipulation but about creating mutual benefit through better communication and alignment.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Understanding Your Manager</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Leadership Style Assessment</h6>
+                                        <p class="text-xs mb-2">The first step in effective managing up is to understand your manager's style and preferences. Consider these key dimensions:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Communication Preferences</h6>
+                                                <div class="flex items-center gap-1 mb-1">
+                                                    <span class="text-xs">Detail-oriented</span>
+                                                    <div class="flex-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mx-1">
+                                                        <div class="w-2.5 h-2.5 rounded-full bg-green-500 dark:bg-green-600 -mt-0.5"></div>
+                                                    </div>
+                                                    <span class="text-xs">Big picture</span>
+                                                </div>
+                                                <div class="flex items-center gap-1 mb-1">
+                                                    <span class="text-xs">Face-to-face</span>
+                                                    <div class="flex-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mx-1">
+                                                        <div class="w-2.5 h-2.5 rounded-full bg-green-500 dark:bg-green-600 -mt-0.5"></div>
+                                                    </div>
+                                                    <span class="text-xs">Written</span>
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs">Frequent updates</span>
+                                                    <div class="flex-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mx-1">
+                                                        <div class="w-2.5 h-2.5 rounded-full bg-green-500 dark:bg-green-600 -mt-0.5"></div>
+                                                    </div>
+                                                    <span class="text-xs">Milestone only</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Decision-Making Approach</h6>
+                                                <div class="flex items-center gap-1 mb-1">
+                                                    <span class="text-xs">Analytical</span>
+                                                    <div class="flex-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mx-1">
+                                                        <div class="w-2.5 h-2.5 rounded-full bg-green-500 dark:bg-green-600 -mt-0.5"></div>
+                                                    </div>
+                                                    <span class="text-xs">Intuitive</span>
+                                                </div>
+                                                <div class="flex items-center gap-1 mb-1">
+                                                    <span class="text-xs">Risk-averse</span>
+                                                    <div class="flex-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mx-1">
+                                                        <div class="w-2.5 h-2.5 rounded-full bg-green-500 dark:bg-green-600 -mt-0.5"></div>
+                                                    </div>
+                                                    <span class="text-xs">Risk-tolerant</span>
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs">Collaborative</span>
+                                                    <div class="flex-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mx-1">
+                                                        <div class="w-2.5 h-2.5 rounded-full bg-green-500 dark:bg-green-600 -mt-0.5"></div>
+                                                    </div>
+                                                    <span class="text-xs">Independent</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Work Priorities</h6>
+                                                <div class="flex items-center gap-1 mb-1">
+                                                    <span class="text-xs">Process-focused</span>
+                                                    <div class="flex-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mx-1">
+                                                        <div class="w-2.5 h-2.5 rounded-full bg-green-500 dark:bg-green-600 -mt-0.5"></div>
+                                                    </div>
+                                                    <span class="text-xs">Results-focused</span>
+                                                </div>
+                                                <div class="flex items-center gap-1 mb-1">
+                                                    <span class="text-xs">Relationship-oriented</span>
+                                                    <div class="flex-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mx-1">
+                                                        <div class="w-2.5 h-2.5 rounded-full bg-green-500 dark:bg-green-600 -mt-0.5"></div>
+                                                    </div>
+                                                    <span class="text-xs">Task-oriented</span>
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs">Long-term vision</span>
+                                                    <div class="flex-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full mx-1">
+                                                        <div class="w-2.5 h-2.5 rounded-full bg-green-500 dark:bg-green-600 -mt-0.5"></div>
+                                                    </div>
+                                                    <span class="text-xs">Immediate needs</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Assessment Methods</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Observe patterns:</strong> Notice how they communicate, make decisions, and set priorities</li>
+                                            <li><strong>Ask directly:</strong> Have an explicit conversation about work preferences</li>
+                                            <li><strong>Seek advice from peers:</strong> Learn from others who work effectively with the same manager</li>
+                                            <li><strong>Notice what gets rewarded:</strong> Pay attention to what behaviors receive positive feedback</li>
+                                            <li><strong>Consider their pressures:</strong> Understand what demands they face from their own management</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Strategic Communication Techniques</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Aligning Your Communication Approach</h6>
+                                        <p class="text-xs mb-2">Adapt your communication style to match your manager's preferences while ensuring critical information is conveyed effectively:</p>
+                                        
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg mb-3">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">The 5Ws Communication Framework</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>When:</strong> Determine the optimal timing and frequency for communication</li>
+                                                <li><strong>What:</strong> Prioritize information based on their interests and needs</li>
+                                                <li><strong>Where:</strong> Use their preferred communication channels</li>
+                                                <li><strong>Why:</strong> Connect information to their goals and priorities</li>
+                                                <li><strong>Who:</strong> Identify when to include others in communications</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">The Level-Up Information Approach</h6>
+                                            <div class="flex items-center mb-1">
+                                                <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-800 flex items-center justify-center text-green-500 dark:text-green-400 font-medium text-xs mr-2">1</div>
+                                                <span class="text-xs"><strong>Headline:</strong> Start with the key point or request</span>
+                                            </div>
+                                            <div class="flex items-center mb-1">
+                                                <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-800 flex items-center justify-center text-green-500 dark:text-green-400 font-medium text-xs mr-2">2</div>
+                                                <span class="text-xs"><strong>Context:</strong> Provide just enough background</span>
+                                            </div>
+                                            <div class="flex items-center mb-1">
+                                                <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-800 flex items-center justify-center text-green-500 dark:text-green-400 font-medium text-xs mr-2">3</div>
+                                                <span class="text-xs"><strong>Options/Recommendation:</strong> Present alternatives with a clear recommendation</span>
+                                            </div>
+                                            <div class="flex items-center mb-1">
+                                                <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-800 flex items-center justify-center text-green-500 dark:text-green-400 font-medium text-xs mr-2">4</div>
+                                                <span class="text-xs"><strong>Rationale:</strong> Explain your reasoning briefly</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-800 flex items-center justify-center text-green-500 dark:text-green-400 font-medium text-xs mr-2">5</div>
+                                                <span class="text-xs"><strong>Timing/Next steps:</strong> Be clear about deadlines or actions needed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Developing Influence</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Build credibility:</strong> Demonstrate reliability and competence in your core responsibilities</li>
+                                            <li><strong>Show insight:</strong> Understand their goals and pressures, connecting your work to their priorities</li>
+                                            <li><strong>Anticipate needs:</strong> Provide information or solutions before they're requested</li>
+                                            <li><strong>Present options:</strong> Offer well-considered alternatives rather than just problems</li>
+                                            <li><strong>Create mutual wins:</strong> Focus on outcomes that benefit both your goals and theirs</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Managing Up in Specific Situations</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Delivering Difficult News</h6>
+                                    <ol class="pl-4 text-xs mb-2">
+                                        <li><strong>Prepare thoroughly:</strong> Gather facts and potential solutions</li>
+                                        <li><strong>Choose appropriate timing:</strong> Find a moment when they can focus</li>
+                                        <li><strong>Be direct but respectful:</strong> Don't sugarcoat but maintain professionalism</li>
+                                        <li><strong>Take ownership:</strong> Avoid blame and focus on resolution</li>
+                                        <li><strong>Present a path forward:</strong> Come with options, not just problems</li>
+                                    </ol>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">Example Approach:</h6>
+                                        <p class="text-xs italic text-gray-600 dark:text-gray-400 mb-0">"I need to update you on the client implementation project. We've discovered a technical issue that will delay the launch by approximately two weeks. I've already identified three potential solutions and would like to discuss which you think is best."</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Requesting Resources</h6>
+                                    <ol class="pl-4 text-xs mb-2">
+                                        <li><strong>Connect to business outcomes:</strong> Link request to strategic goals</li>
+                                        <li><strong>Quantify the impact:</strong> Use data to support your case</li>
+                                        <li><strong>Demonstrate diligence:</strong> Show you've maximized existing resources</li>
+                                        <li><strong>Present options:</strong> Offer different levels of investment</li>
+                                        <li><strong>Address constraints:</strong> Acknowledge budget or resource limitations</li>
+                                    </ol>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">Example Approach:</h6>
+                                        <p class="text-xs italic text-gray-600 dark:text-gray-400 mb-0">"To meet the Q2 revenue target, our team needs to increase capacity. I've analyzed three options: adding two team members ($X), implementing automation tools ($Y), or redistributing existing workload with overtime ($Z). The automation option offers the best ROI and supports our long-term efficiency goals."</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Getting Decision Approval</h6>
+                                    <ol class="pl-4 text-xs mb-2">
+                                        <li><strong>Do your homework:</strong> Thoroughly research options</li>
+                                        <li><strong>Anticipate questions:</strong> Prepare answers for likely concerns</li>
+                                        <li><strong>Use their decision-making style:</strong> Adapt to their preference for data vs. intuition</li>
+                                        <li><strong>Highlight implications:</strong> Be clear about risks and benefits</li>
+                                        <li><strong>Define timeline:</strong> Clarify when a decision is needed</li>
+                                    </ol>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">Example Approach:</h6>
+                                        <p class="text-xs italic text-gray-600 dark:text-gray-400 mb-0">"I've evaluated our pricing options for the new service offering and recommend Option B. It balances market competitiveness with our margin requirements and aligns with our premium positioning. We need to finalize this by Friday to include in the marketing materials."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Dell's Managing Up Philosophy</h6>
+                                <p class="text-xs mb-2">Dell Technologies promotes these principles for effective managing up:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">For Individual Contributors</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Prioritize transparency:</strong> Be open about challenges and needs</li>
+                                            <li><strong>Take ownership:</strong> Manage your commitments and provide regular updates</li>
+                                            <li><strong>Build trust:</strong> Deliver consistently and communicate proactively</li>
+                                            <li><strong>Seek understanding:</strong> Learn your manager's objectives and constraints</li>
+                                            <li><strong>Be solution-oriented:</strong> Present options along with challenges</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">For Managers</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Create psychological safety:</strong> Make it safe to bring concerns forward</li>
+                                            <li><strong>Clarify expectations:</strong> Be explicit about priorities and preferences</li>
+                                            <li><strong>Provide context:</strong> Share the bigger picture to enable better decisions</li>
+                                            <li><strong>Be accessible:</strong> Establish clear channels for escalation</li>
+                                            <li><strong>Value honesty:</strong> Reward transparency over false positives</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Navigating Difficult Conversations</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Addressing Challenging Feedback Situations</h5>
+                        <p class="text-sm mb-3">Some feedback scenarios require special care and preparation. These difficult conversations involve addressing sensitive issues, managing emotional reactions, or navigating complex interpersonal dynamics. With the right approach, these challenging discussions can strengthen relationships and drive positive change.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Preparing for Difficult Conversations</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">The Three-Part Preparation Framework</h6>
+                                        <p class="text-xs mb-2">Thorough preparation is essential for navigating difficult feedback conversations:</p>
+                                        
+                                        <div class="flex flex-col gap-3">
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">1. Self-Assessment</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Clarify your intention:</strong> What positive outcome are you seeking?</li>
+                                                    <li><strong>Check your assumptions:</strong> What facts do you have vs. interpretations?</li>
+                                                    <li><strong>Examine your contribution:</strong> How might you have contributed to the situation?</li>
+                                                    <li><strong>Manage your emotions:</strong> How are your feelings affecting your perspective?</li>
+                                                    <li><strong>Consider timing:</strong> Is this the right moment for this conversation?</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">2. Content Planning</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Organize key points:</strong> What specific behaviors or issues need addressing?</li>
+                                                    <li><strong>Select examples:</strong> What concrete situations illustrate the issue?</li>
+                                                    <li><strong>Clarify impact:</strong> How has this affected you, the team, or the work?</li>
+                                                    <li><strong>Develop questions:</strong> What would help you understand their perspective?</li>
+                                                    <li><strong>Prepare for reactions:</strong> How might they respond? How will you handle it?</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">3. Logistics Planning</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Choose the right setting:</strong> Private, neutral space without interruptions</li>
+                                                    <li><strong>Allow adequate time:</strong> Don't rush difficult conversations</li>
+                                                    <li><strong>Consider timing:</strong> Avoid high-stress periods if possible</li>
+                                                    <li><strong>Minimize distractions:</strong> Turn off notifications, clear your calendar</li>
+                                                    <li><strong>Plan for follow-up:</strong> Schedule check-in to maintain momentum</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Conversation Framework</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">The STATE Conversation Method</h6>
+                                        <p class="text-xs mb-2">This framework, adapted from Crucial Conversations, provides a structure for navigating difficult feedback discussions:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-200 dark:bg-purple-800 flex items-center justify-center text-purple-700 dark:text-purple-400 font-medium text-xs">S</div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Share the facts</h6>
+                                                        <p class="text-xs mb-0">Begin with objective, observable data. Stick to what you've seen or heard directly.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-200 dark:bg-purple-800 flex items-center justify-center text-purple-700 dark:text-purple-400 font-medium text-xs">T</div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Tell your story</h6>
+                                                        <p class="text-xs mb-0">Explain your interpretation of these facts and how they're affecting you or the situation.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-200 dark:bg-purple-800 flex items-center justify-center text-purple-700 dark:text-purple-400 font-medium text-xs">A</div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Ask for their perspective</h6>
+                                                        <p class="text-xs mb-0">Sincerely invite their view of the situation and listen to understand.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-200 dark:bg-purple-800 flex items-center justify-center text-purple-700 dark:text-purple-400 font-medium text-xs">T</div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Talk tentatively</h6>
+                                                        <p class="text-xs mb-0">Present your views as possibilities rather than absolutes. Use tentative language.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-200 dark:bg-purple-800 flex items-center justify-center text-purple-700 dark:text-purple-400 font-medium text-xs">E</div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Encourage testing</h6>
+                                                        <p class="text-xs mb-0">Actively look for different interpretations and perspectives to reach shared understanding.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Application Example</h6>
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium mb-1">Scenario: Team Member Missing Deadlines</h6>
+                                            <div class="mb-2">
+                                                <span class="inline-block text-xs font-medium text-purple-700 dark:text-purple-400 w-16">Share:</span>
+                                                <span class="text-xs">"I've noticed that the last three deliverables were submitted after the agreed deadlines – the client report was two days late, the proposal draft was submitted the morning of our review rather than the day before, and the analytics summary came in after our team meeting."</span>
+                                            </div>
+                                            <div class="mb-2">
+                                                <span class="inline-block text-xs font-medium text-purple-700 dark:text-purple-400 w-16">Tell:</span>
+                                                <span class="text-xs">"I'm concerned because this impacts our team's ability to provide thorough feedback and affects our credibility with clients. I'm worried there might be obstacles I'm not aware of that are making it difficult to meet these timelines."</span>
+                                            </div>
+                                            <div class="mb-2">
+                                                <span class="inline-block text-xs font-medium text-purple-700 dark:text-purple-400 w-16">Ask:</span>
+                                                <span class="text-xs">"I'd like to understand your perspective on what's happening with these deadlines. What challenges are you facing that I should know about?"</span>
+                                            </div>
+                                            <div class="mb-2">
+                                                <span class="inline-block text-xs font-medium text-purple-700 dark:text-purple-400 w-16">Talk:</span>
+                                                <span class="text-xs">"From my view, it seems like there might be competing priorities or perhaps the timelines aren't realistic given your workload. I might not have the full picture here."</span>
+                                            </div>
+                                            <div>
+                                                <span class="inline-block text-xs font-medium text-purple-700 dark:text-purple-400 w-16">Encourage:</span>
+                                                <span class="text-xs">"I want to find a solution that works for everyone. What do you think would help make these deadlines more manageable? Are there ways we could adjust our process?"</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Managing Challenging Feedback Scenarios</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">When Emotions Run High</h6>
+                                    <ul class="pl-4 text-xs mb-2">
+                                        <li><strong>Acknowledge emotions:</strong> Name feelings without judgment</li>
+                                        <li><strong>Maintain composure:</strong> Stay calm and centered</li>
+                                        <li><strong>Create space:</strong> Allow processing time if needed</li>
+                                        <li><strong>Reset if necessary:</strong> Suggest a break if productive discussion isn't possible</li>
+                                        <li><strong>Focus on shared goals:</strong> Return to common ground</li>
+                                    </ul>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">Key Phrases:</h6>
+                                        <p class="text-xs italic text-gray-600 dark:text-gray-400 mb-0">"I can see this is important to you." / "Let's take a moment to regroup." / "We both want to find a solution that works."</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">When Facing Defensiveness</h6>
+                                    <ul class="pl-4 text-xs mb-2">
+                                        <li><strong>Show curiosity:</strong> Ask questions to understand their perspective</li>
+                                        <li><strong>Demonstrate empathy:</strong> Acknowledge their position</li>
+                                        <li><strong>Share ownership:</strong> Acknowledge your role in the situation</li>
+                                        <li><strong>Reframe as shared problem:</strong> Position issue as "us vs. problem"</li>
+                                        <li><strong>Focus on future:</strong> Emphasize improvement, not blame</li>
+                                    </ul>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">Key Phrases:</h6>
+                                        <p class="text-xs italic text-gray-600 dark:text-gray-400 mb-0">"Help me understand your view." / "I might have contributed to this by..." / "How can we address this together going forward?"</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">When Addressing Performance Issues</h6>
+                                    <ul class="pl-4 text-xs mb-2">
+                                        <li><strong>Be specific:</strong> Focus on concrete behaviors and outcomes</li>
+                                        <li><strong>Use examples:</strong> Provide clear instances of the issue</li>
+                                        <li><strong>Clarify expectations:</strong> Ensure standards are understood</li>
+                                        <li><strong>Identify obstacles:</strong> Explore barriers to success</li>
+                                        <li><strong>Create action plan:</strong> Establish clear next steps</li>
+                                    </ul>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">Key Phrases:</h6>
+                                        <p class="text-xs italic text-gray-600 dark:text-gray-400 mb-0">"Let's focus on what success looks like." / "What resources would help you meet these expectations?" / "Let's agree on specific milestones to track progress."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dell's Approach to Difficult Conversations</h6>
+                                <p class="text-xs mb-2">Dell Technologies emphasizes these principles for navigating challenging feedback situations:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">The CARE Framework</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Context:</strong> Frame conversations within business needs and shared goals</li>
+                                            <li><strong>Alignment:</strong> Focus on mutual purpose and respect throughout discussion</li>
+                                            <li><strong>Resolution:</strong> Maintain focus on actionable solutions, not just problems</li>
+                                            <li><strong>Empathy:</strong> Demonstrate genuine understanding of others' perspectives</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Conversation Support Resources</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Manager guidance:</strong> Templates and conversation guides for common situations</li>
+                                            <li><strong>Pre-meeting coaching:</strong> Optional prep sessions with HR partners</li>
+                                            <li><strong>Development resources:</strong> Tools for creating personalized improvement plans</li>
+                                            <li><strong>Follow-up frameworks:</strong> Structured approaches for ongoing progress tracking</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Dell Case Study: Feedback Culture Transformation</h5>
+                        <p class="text-sm mb-3">This case study examines how Dell Technologies transformed its approach to feedback and managing up during a period of significant organizational change, creating a more transparent and collaborative culture.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Challenge</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Following the Dell-EMC merger, the organization faced several challenges related to feedback and communication:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li>Different feedback cultures and expectations between the merging organizations</li>
+                                        <li>Hierarchical communication patterns limiting upward feedback</li>
+                                        <li>Inconsistent feedback practices across teams and regions</li>
+                                        <li>Difficulty addressing cross-functional issues that spanned organizational boundaries</li>
+                                        <li>Employee hesitancy to provide candid feedback during period of change</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Impact on Business:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Delayed identification and resolution of integration issues</li>
+                                        <li>Inconsistent employee experience across the organization</li>
+                                        <li>Knowledge silos limiting collaboration and innovation</li>
+                                        <li>Reduced employee engagement during critical transformation period</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Solution</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Feedback Culture Initiative</h6>
+                                        <p class="text-xs mb-0">Dell launched a comprehensive program to transform the organizational approach to feedback:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Leadership commitment:</strong> Executive modeling of feedback behaviors</li>
+                                            <li><strong>Skill development:</strong> Organization-wide training on feedback techniques</li>
+                                            <li><strong>Process integration:</strong> Embedding feedback opportunities in work processes</li>
+                                            <li><strong>Technology enablement:</strong> Digital platforms for continuous feedback</li>
+                                            <li><strong>Cultural reinforcement:</strong> Recognition of effective feedback behaviors</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Implementation Approach</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Phased rollout:</strong> Starting with leadership teams, then cascading</li>
+                                            <li><strong>Cross-functional teams:</strong> Representatives from both legacy organizations</li>
+                                            <li><strong>Local adaptations:</strong> Flexible implementation for regional contexts</li>
+                                            <li><strong>Measurement framework:</strong> Clear metrics to track adoption and impact</li>
+                                            <li><strong>Integration with other initiatives:</strong> Alignment with broader culture efforts</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Key Initiative Components</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Feedback Skills Development</h6>
+                                    <p class="text-xs mb-2">Comprehensive training program with multiple components:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Role-specific learning:</strong> Tailored content for different levels</li>
+                                        <li><strong>Experiential workshops:</strong> Practice-based skill development</li>
+                                        <li><strong>Digital microlearning:</strong> On-demand resources and refreshers</li>
+                                        <li><strong>Peer coaching:</strong> Structured practice with colleagues</li>
+                                        <li><strong>Leadership modeling:</strong> Senior leaders demonstrating skills</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Managing Up Enablement</h6>
+                                    <p class="text-xs mb-2">Tools and processes to facilitate upward communication:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Skip-level meetings:</strong> Structured conversations across hierarchy</li>
+                                        <li><strong>Expectation setting:</strong> Clear guidelines for upward communication</li>
+                                        <li><strong>Psychological safety initiatives:</strong> Creating environment for candor</li>
+                                        <li><strong>Leadership accessibility:</strong> Open forums with senior leaders</li>
+                                        <li><strong>Recognition program:</strong> Celebrating constructive challenging of ideas</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Process Integration</h6>
+                                    <p class="text-xs mb-2">Embedding feedback into standard work processes:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Project retrospectives:</strong> Structured team feedback sessions</li>
+                                        <li><strong>Decision reviews:</strong> Feedback on critical decision processes</li>
+                                        <li><strong>Customer delivery loops:</strong> Feedback integration in customer work</li>
+                                        <li><strong>Team meeting redesign:</strong> Dedicated time for feedback exchange</li>
+                                        <li><strong>Cross-functional forums:</strong> Feedback channels across boundaries</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Implementation Challenges</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Cultural resistance:</strong> Discomfort with direct feedback in some groups</li>
+                                    <li class="mb-1"><strong>Time constraints:</strong> Competing priorities during integration</li>
+                                    <li class="mb-1"><strong>Skill gaps:</strong> Varying baseline capabilities across organization</li>
+                                    <li class="mb-1"><strong>Measurement difficulties:</strong> Tracking behavioral and cultural changes</li>
+                                    <li class="mb-0"><strong>Consistent application:</strong> Ensuring uniform adoption across regions</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Solutions Implemented</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Cultural adaptation:</strong> Regional variations in implementation approach</li>
+                                    <li class="mb-1"><strong>Integration with existing processes:</strong> Embedding rather than adding</li>
+                                    <li class="mb-1"><strong>Tiered skill development:</strong> Prioritized based on role impact</li>
+                                    <li class="mb-1"><strong>Multi-modal measurement:</strong> Combined metrics and qualitative assessment</li>
+                                    <li class="mb-0"><strong>Feedback champions:</strong> Local advocates driving adoption</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Results &amp; Outcomes</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>34% increase</strong> in employees reporting receiving regular feedback</li>
+                                    <li class="mb-1"><strong>28% improvement</strong> in organizational health metrics related to communication</li>
+                                    <li class="mb-1"><strong>Faster issue resolution:</strong> 41% reduction in time to address cross-functional challenges</li>
+                                    <li class="mb-1"><strong>Improved innovation:</strong> 23% increase in employee suggestions implemented</li>
+                                    <li class="mb-0"><strong>Leadership effectiveness:</strong> 36% improvement in upward feedback metrics</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Key Lessons and Best Practices</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Feedback Culture Development</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Leadership commitment is non-negotiable</strong> for feedback culture change</li>
+                                        <li><strong>Context-specific implementation</strong> works better than one-size-fits-all</li>
+                                        <li><strong>Feedback skills require deliberate practice</strong> over time, not just training</li>
+                                        <li><strong>Process integration</strong> is critical for sustainability beyond initial push</li>
+                                        <li><strong>Recognition systems must reinforce</strong> desired feedback behaviors</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Managing Up Enhancement</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Psychological safety must be established</strong> before upward feedback will flow</li>
+                                        <li><strong>Multi-channel approaches</strong> accommodate different communication preferences</li>
+                                        <li><strong>Explicit expectation setting</strong> helps normalize upward communication</li>
+                                        <li><strong>Visible action on feedback</strong> builds credibility of the process</li>
+                                        <li><strong>Mutual understanding of work styles</strong> bridges hierarchical gaps</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="text-xs italic mt-3 mb-0">This case study demonstrates how a systematic approach to developing feedback skills and managing up capabilities can transform organizational communication and drive business results, even during periods of significant change.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Best Practices for Feedback and Managing Up</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Keys to Success</h5>
+                        <p class="text-sm mb-3">Based on Dell's experience and research in organizational behavior, these best practices will help you master feedback delivery and managing up in any professional context.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-timer-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Establish Feedback Routines</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Create regular opportunities for feedback exchange</li>
+                                    <li>Integrate feedback into existing work processes</li>
+                                    <li>Balance formal and informal feedback channels</li>
+                                    <li>Normalize feedback as part of everyday work</li>
+                                    <li>Follow up consistently on action items</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-customer-service-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Balance Candor with Care</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Be direct and specific about important issues</li>
+                                    <li>Deliver messages with genuine respect</li>
+                                    <li>Focus on behaviors, not personality or intentions</li>
+                                    <li>Consider impact on the recipient</li>
+                                    <li>Emphasize shared goals and mutual benefit</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-user-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Adapt to Individual Differences</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Understand personal preferences for feedback</li>
+                                    <li>Consider cultural and generational factors</li>
+                                    <li>Adjust approach based on relationship history</li>
+                                    <li>Recognize different learning and processing styles</li>
+                                    <li>Tailor messages to maximize receptivity</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-map-pin-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Focus on the Future</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Orient feedback toward improvement and growth</li>
+                                    <li>Discuss specific next steps and actions</li>
+                                    <li>Provide resources and support for development</li>
+                                    <li>Create accountability for follow-through</li>
+                                    <li>Recognize progress and improvement</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-record-circle-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Build Two-Way Dialogue</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Invite and genuinely consider other perspectives</li>
+                                    <li>Ask quality questions that deepen understanding</li>
+                                    <li>Listen actively without interrupting</li>
+                                    <li>Acknowledge and validate concerns</li>
+                                    <li>Co-create solutions rather than dictating</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-mental-health-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Develop Personal Awareness</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Understand your own feedback preferences</li>
+                                    <li>Recognize your emotional triggers</li>
+                                    <li>Monitor your non-verbal communication</li>
+                                    <li>Solicit feedback on your feedback style</li>
+                                    <li>Reflect on interactions to continuously improve</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-white dark:bg-gray-800 p-3 rounded-lg">
+                            <h6 class="text-sm font-medium mb-2">Feedback and Managing Up Self-Assessment</h6>
+                            <p class="text-xs mb-2">Use this assessment to identify your strengths and development areas:</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-2">Feedback Effectiveness</h6>
+                                    <div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-xs">I deliver feedback in a timely manner</span>
+                                            <div class="flex gap-1">
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">1</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">2</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">3</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">4</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">5</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-xs">I use specific examples in my feedback</span>
+                                            <div class="flex gap-1">
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">1</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">2</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">3</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">4</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">5</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-xs">I adapt my approach to the individual</span>
+                                            <div class="flex gap-1">
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">1</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">2</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">3</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">4</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">5</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-xs">I balance positive and constructive feedback</span>
+                                            <div class="flex gap-1">
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">1</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">2</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">3</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">4</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">5</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-xs">I follow up to ensure understanding and progress</span>
+                                            <div class="flex gap-1">
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">1</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">2</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">3</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">4</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">5</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-2">Managing Up Capabilities</h6>
+                                    <div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-xs">I understand my manager's priorities and pressures</span>
+                                            <div class="flex gap-1">
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">1</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">2</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">3</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">4</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">5</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-xs">I adapt my communication to my manager's style</span>
+                                            <div class="flex gap-1">
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">1</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">2</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">3</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">4</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">5</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-xs">I provide solutions along with problems</span>
+                                            <div class="flex gap-1">
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">1</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">2</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">3</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">4</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">5</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-xs">I proactively keep my manager informed</span>
+                                            <div class="flex gap-1">
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">1</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">2</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">3</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">4</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">5</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-xs">I provide constructive feedback to leadership</span>
+                                            <div class="flex gap-1">
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">1</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">2</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">3</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">4</div>
+                                                <div class="w-5 h-5 rounded-sm border border-gray-300 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800">5</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="text-xs mt-3 mb-0 text-gray-500 dark:text-gray-400">Score interpretation: 1=Rarely, 2=Sometimes, 3=Often, 4=Usually, 5=Consistently</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.amazon.com/Difficult-Conversations-Discuss-What-Matters/dp/0143118447" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-discuss-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Difficult Conversations: How to Discuss What Matters Most</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Douglas Stone, Bruce Patton, Sheila Heen • Framework for navigating challenging discussions</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.amazon.com/Thanks-Feedback-Science-Receiving-Well/dp/0670014664" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-feedback-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Thanks for the Feedback</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Douglas Stone &amp; Sheila Heen • The Science and Art of Receiving Feedback Well</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://hbr.org/2005/01/managing-up-forge-a-good-relationship-with-your-boss" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-user-star-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">HBR Guide to Managing Up</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Strategies for building effective relationships with supervisors</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Feedback and Managing Up Practice Scenarios</h5>
+                        <p class="mb-3">In this exercise, you'll practice applying feedback frameworks and managing up techniques to realistic workplace scenarios. Select one scenario from each category and develop your approach.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Feedback Scenarios (choose one)</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-800">
+                                    <h6 class="text-xs font-medium mb-1">Scenario 1: Presentation Skills Feedback</h6>
+                                    <p class="text-xs mb-0">A team member gave a presentation to clients that contained excellent content but was delivered in a disorganized way with too much technical detail. The clients seemed confused during parts of the presentation, though they did appreciate the depth of expertise shown. You need to provide feedback to help improve future client presentations.</p>
+                                </div>
+                                <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-800">
+                                    <h6 class="text-xs font-medium mb-1">Scenario 2: Collaboration Feedback</h6>
+                                    <p class="text-xs mb-0">You're leading a cross-functional project where one team member consistently completes their assigned tasks on time and with high quality, but rarely contributes during team discussions, doesn't offer to help others who are struggling, and sometimes works on solutions in isolation that require input from others. You want to acknowledge their strong individual work while encouraging more collaborative behavior.</p>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <label class="block text-sm font-medium mb-1">Your Feedback Approach</label>
+                                <p class="text-xs mb-1">Using the SBI or COIN framework, draft your feedback for the selected scenario:</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline your feedback conversation including specific elements of the framework you're using and exact language you would use."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-3">
+                            <h6 class="font-medium mb-2">Managing Up Scenarios (choose one)</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-800">
+                                    <h6 class="text-xs font-medium mb-1">Scenario 1: Resource Request</h6>
+                                    <p class="text-xs mb-0">Your team is struggling to meet project deadlines due to lack of resources. You need to approach your manager to request either additional team members or a timeline extension. Your manager is typically focused on results and meeting commitments, and the project has high visibility with senior leadership. You know the budget is tight, but you're concerned about quality and team burnout.</p>
+                                </div>
+                                <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-800">
+                                    <h6 class="text-xs font-medium mb-1">Scenario 2: Strategic Disagreement</h6>
+                                    <p class="text-xs mb-0">Your manager has proposed an approach to a customer solution that you believe overlooks some important technical considerations. Based on your experience with similar implementations, you see potential issues that could create problems down the line. You need to express your concerns and suggest an alternative approach without undermining your manager's authority, particularly since parts of this plan have already been discussed with the customer.</p>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <label class="block text-sm font-medium mb-1">Your Managing Up Approach</label>
+                                <p class="text-xs mb-1">Using the techniques discussed in the module, outline how you would approach this conversation:</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Describe your preparation, communication approach, and specific language you would use in this situation."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Responses</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-business-storytelling">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Storytelling in Business</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" disabled="">
+                        <span>Next</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

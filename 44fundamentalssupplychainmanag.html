@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management Essentials</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Product & Ops Foundations</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-supply-chain">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Supply Chain Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-forecasting">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Forecasting & Planning</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-lifecycle">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Lifecycle Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-transitions">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Transitions</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-marketing">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Marketing</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-pricing">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Pricing</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-inventory">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Inventory Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-demand-shaping">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Demand Shaping</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-ethics">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Ethics</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">21%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 21%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Effective Communication</span>
+                                <span>3/3 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Product & Ops Foundations</span>
+                                <span>0/9 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>0/6 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Supply Chain Management Topic -->
+            <section id="topic-supply-chain" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-truck-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Fundamentals of Supply Chain Management</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Product & Ops Foundations</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the key components and functions of supply chain management</li>
+                            <li>Learn how different supply chain models support various business strategies</li>
+                            <li>Analyze supply chain performance using key metrics and frameworks</li>
+                            <li>Recognize the strategic importance of supply chain in Dell's business model</li>
+                            <li>Apply supply chain concepts to optimize operations and enhance customer value</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Supply Chain Management</h4>
+                    <p>Supply chain management (SCM) encompasses the end-to-end coordination of all activities involved in sourcing, procurement, conversion, and logistics to deliver products and services to customers. It represents a strategic approach to managing the flow of goods, services, and information from raw materials to end customers, creating value through operational efficiency, responsiveness, and collaboration across multiple stakeholders.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">The Evolution of Supply Chain Management</h5>
+                        <p class="mb-3">Supply chain management has evolved dramatically over the decades, from a focus on logistics efficiency to a strategic discipline that drives competitive advantage.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">1960s-1970s: Logistics Era</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Focus on transportation efficiency</li>
+                                    <li>Physical distribution management</li>
+                                    <li>Siloed operations</li>
+                                    <li>Cost-center mentality</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">1980s-1990s: Integration Era</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Total cost of ownership approach</li>
+                                    <li>ERP system implementation</li>
+                                    <li>Process integration</li>
+                                    <li>Just-in-Time (JIT) manufacturing</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">2000s-2010s: Collaboration Era</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Extended enterprise thinking</li>
+                                    <li>Supplier relationship management</li>
+                                    <li>Global supply networks</li>
+                                    <li>E-commerce and omnichannel</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">2020s: Digital & Resilient Era</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>AI and analytics-driven operations</li>
+                                    <li>Supply chain resilience</li>
+                                    <li>ESG and circular models</li>
+                                    <li>Real-time visibility and control</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Dell's Supply Chain Evolution</h6>
+                            <p class="mb-2">Dell's supply chain has been a cornerstone of the company's success, pioneering approaches that have transformed the industry:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Direct Model Innovation</p>
+                                    <p class="text-sm mb-0">Dell revolutionized the PC industry with its direct-to-customer model, eliminating distributors and retailers. This approach allowed Dell to maintain minimal inventory, customize products to order, and establish a cash-conversion cycle that generated cash before paying suppliers. The model created a competitive advantage through operational efficiency and customer responsiveness that competitors struggled to match for years.</p>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-green-700 dark:text-green-400 mb-1">Modern Transformation</p>
+                                    <p class="text-sm mb-0">In recent years, Dell's supply chain has evolved to accommodate changing market dynamics, including retail partnerships, component standardization, and omnichannel capabilities. Today, Dell operates a hybrid model that maintains the efficiency of build-to-order while incorporating strategic inventory positions and platform-based design to enable both customization and rapid fulfillment. This evolution demonstrates Dell's adaptability in supply chain strategy.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Key Supply Chain Management Processes</h5>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-800">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Process</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Description</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Strategic Importance</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Dell Application</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm">
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Planning</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Forecasting demand, capacity planning, establishing performance targets and metrics</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Balances customer requirements with resource constraints; sets foundation for operational excellence</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Dynamic forecast adjustments based on real-time customer order data; component-level planning</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Sourcing</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Supplier selection, qualification, contract management, procurement, and supplier relationship management</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Secures input quality, cost advantage, innovation access, and supplier resilience</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Strategic partnerships with key component suppliers; vendor-managed inventory approaches</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Manufacturing</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Production scheduling, quality management, manufacturing execution, and facility operations</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Creates value through conversion efficiency, quality, and manufacturing flexibility</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Build-to-order assembly with late-stage customization; cell-based manufacturing</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Logistics</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Order management, warehousing, transportation, distribution network design, and last-mile delivery</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Delivers customer experience, manages cost trade-offs, and ensures availability</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Direct shipping to customers; merge-in-transit for enterprise solutions; regional fulfillment centers</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Returns</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Return authorization, product recovery, repair, recycling, and disposition</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Supports customer satisfaction, regulatory compliance, and value recovery</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Asset recovery services; closed-loop recycling programs; refurbishment operations</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Enabling</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Performance management, technology enablement, risk management, and compliance</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Creates operational visibility, integration capabilities, and resilience</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Real-time analytics platforms; digital twin capabilities; integrated partner systems</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Supply Chain Operating Models</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Strategic Supply Chain Archetypes</h5>
+                        <p class="text-sm mb-3">Supply chain operating models must align with business strategy and market requirements. Different supply chain architectures create distinct competitive advantages through their operational capabilities.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Primary Supply Chain Operating Models</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">1</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Efficient Supply Chain</h6>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Primary goal:</strong> Cost efficiency and predictable performance</li>
+                                                <li><strong>Best for:</strong> Stable demand, commodity or mature products, price-sensitive markets</li>
+                                                <li><strong>Key capabilities:</strong> Process standardization, asset utilization, economies of scale</li>
+                                                <li><strong>Performance focus:</strong> Unit cost, productivity, asset utilization</li>
+                                            </ul>
+                                            <div class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
+                                                <p class="text-xs italic mb-0">Example: Fast-moving consumer goods (FMCG) companies with predictable demand patterns and high-volume production.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">2</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Responsive Supply Chain</h6>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Primary goal:</strong> Speed and flexibility to meet changing market needs</li>
+                                                <li><strong>Best for:</strong> Variable demand, differentiated products, service-sensitive segments</li>
+                                                <li><strong>Key capabilities:</strong> Quick changeovers, postponement, modular design</li>
+                                                <li><strong>Performance focus:</strong> Lead time, on-time delivery, customer satisfaction</li>
+                                            </ul>
+                                            <div class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
+                                                <p class="text-xs italic mb-0">Example: Fashion retailers with seasonal products and fast-changing consumer preferences requiring quick market response.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">3</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Innovative Supply Chain</h6>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Primary goal:</strong> Time-to-market for new products/services</li>
+                                                <li><strong>Best for:</strong> Short lifecycle products, high-innovation markets</li>
+                                                <li><strong>Key capabilities:</strong> Rapid prototyping, collaborative design, platform strategies</li>
+                                                <li><strong>Performance focus:</strong> Time-to-market, development cost, innovation rate</li>
+                                            </ul>
+                                            <div class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
+                                                <p class="text-xs italic mb-0">Example: Consumer electronics companies that must continually launch new products ahead of competition to capture market share.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">4</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Risk-Hedging Supply Chain</h6>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Primary goal:</strong> Reliability and continuity of supply despite disruptions</li>
+                                                <li><strong>Best for:</strong> Critical components, regulated industries, volatile supply markets</li>
+                                                <li><strong>Key capabilities:</strong> Supplier diversification, buffer inventory, alternative sourcing</li>
+                                                <li><strong>Performance focus:</strong> Supply assurance, risk mitigation, continuity</li>
+                                            </ul>
+                                            <div class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
+                                                <p class="text-xs italic mb-0">Example: Pharmaceutical companies that must ensure medication availability despite potential supply disruptions or quality issues.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">5</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Agile Supply Chain</h6>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Primary goal:</strong> Adaptability to changing requirements and market conditions</li>
+                                                <li><strong>Best for:</strong> Unpredictable markets, configured products, diverse customer needs</li>
+                                                <li><strong>Key capabilities:</strong> Postponement, dynamic rerouting, modular design</li>
+                                                <li><strong>Performance focus:</strong> Responsiveness, configurability, customization</li>
+                                            </ul>
+                                            <div class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
+                                                <p class="text-xs italic mb-0">Example: Automotive manufacturers offering extensive customization options while maintaining production efficiency with platform-based designs.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell's Hybrid Supply Chain Model</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">The Dell Supply Chain Advantage</h6>
+                                    <p class="text-xs mb-2">Dell's supply chain represents a hybrid model that combines elements of multiple archetypes, creating a distinctive competitive advantage:</p>
+                                    
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg mb-3">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Efficient + Responsive:</strong> Build-to-order model eliminates finished goods inventory while enabling customization</li>
+                                            <li class="mb-1"><strong>Innovative + Agile:</strong> Platform design approach with late-stage differentiation allowing both standardization and customization</li>
+                                            <li class="mb-1"><strong>Risk-Hedging:</strong> Strategic supplier relationships and component standardization to ensure supply continuity</li>
+                                            <li class="mb-0"><strong>Segmented Approach:</strong> Different supply chain designs for consumer vs. enterprise products based on distinct requirements</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Key Differentiators</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Information-centric coordination:</strong> Real-time data sharing with suppliers and customers</li>
+                                            <li class="mb-1"><strong>Cash-to-cash cycle optimization:</strong> Collecting payment before paying suppliers</li>
+                                            <li class="mb-1"><strong>Component commonality:</strong> Standardization across product lines to leverage scale</li>
+                                            <li class="mb-0"><strong>Merge-in-transit:</strong> Coordinating multiple shipments to arrive simultaneously at customer location</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Evolution Case Study: Dell's Model Adaptation</h6>
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">Challenge (2006-2008)</h6>
+                                        <p class="text-xs mb-2">Dell's pure direct model faced challenges as market conditions changed:</p>
+                                        <ul class="pl-4 text-xs mb-2">
+                                            <li>Growing consumer preference for immediate product availability</li>
+                                            <li>Competitor improvements narrowing Dell's operational advantage</li>
+                                            <li>Rising importance of retail channels for consumer segments</li>
+                                            <li>Enterprise customers requiring more complex integration services</li>
+                                        </ul>
+                                        
+                                        <h6 class="text-xs font-medium mb-1">Strategic Response</h6>
+                                        <p class="text-xs mb-2">Dell evolved its supply chain model while preserving core strengths:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Segmentation:</strong> Created separate supply chains for transactional vs. complex/relationship business</li>
+                                            <li><strong>Channel expansion:</strong> Added retail capability while maintaining efficient distribution</li>
+                                            <li><strong>Inventory strategy:</strong> Implemented strategic inventory positions for high-velocity products</li>
+                                            <li><strong>Manufacturing network:</strong> Regionalized production to reduce transit times and risks</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <h6 class="text-xs font-medium mb-1">Results & Lessons</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>No one-size-fits-all:</strong> Different products and customer segments require tailored supply chain designs</li>
+                                            <li><strong>Agility matters:</strong> The ability to adapt supply chain strategies provides lasting advantage</li>
+                                            <li><strong>Preserve core strengths:</strong> Even when evolving, maintain distinctive capabilities</li>
+                                            <li><strong>Balance efficiency and responsiveness:</strong> Trade-offs must be made explicitly and strategically</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Aligning Supply Chain Design with Business Strategy</h6>
+                                <p class="text-xs mb-2">For effective supply chain design, organizations must consider these critical alignment factors:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Product Characteristics</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Lifecycle length:</strong> Mature vs. emerging products</li>
+                                            <li><strong>Customization level:</strong> Standard vs. configured</li>
+                                            <li><strong>Margin profile:</strong> High vs. low-margin offerings</li>
+                                            <li><strong>Complexity:</strong> Simple components vs. integrated systems</li>
+                                            <li><strong>Demand volatility:</strong> Stable vs. variable demand patterns</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Customer Requirements</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Delivery speed:</strong> Immediate vs. scheduled delivery</li>
+                                            <li><strong>Service requirements:</strong> Basic vs. white-glove service</li>
+                                            <li><strong>Order frequency:</strong> One-time vs. recurring purchases</li>
+                                            <li><strong>Price sensitivity:</strong> Cost-focused vs. value-focused</li>
+                                            <li><strong>Customization needs:</strong> Standard vs. tailored offerings</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Strategic Priorities</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Competitive positioning:</strong> Cost leader vs. differentiator</li>
+                                            <li><strong>Growth strategy:</strong> Penetration vs. expansion focus</li>
+                                            <li><strong>Innovation approach:</strong> First-to-market vs. fast-follower</li>
+                                            <li><strong>Market focus:</strong> Mass market vs. niche segments</li>
+                                            <li><strong>Capital structure:</strong> Asset-light vs. vertically integrated</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Supply Chain Performance Measurement</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Key Metrics and Measurement Frameworks</h5>
+                        <p class="text-sm mb-3">Effective supply chain management requires robust measurement systems to evaluate performance, identify improvement opportunities, and align operational activities with strategic objectives.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">SCOR Performance Attributes</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">The Supply Chain Operations Reference (SCOR) Model</h6>
+                                        <p class="text-xs mb-2">SCOR is an industry-standard framework for evaluating supply chain performance across five key dimensions:</p>
+                                        
+                                        <div class="flex flex-col gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">1. Reliability</h6>
+                                                <p class="text-xs mb-1">The ability to perform tasks as expected, focusing on the predictability of process outcomes.</p>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-xs font-medium">Key Metrics:</span>
+                                                    <span class="text-xs">Perfect order fulfillment, on-time delivery, order accuracy</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">2. Responsiveness</h6>
+                                                <p class="text-xs mb-1">The speed at which tasks are performed, focusing on the velocity of process execution.</p>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-xs font-medium">Key Metrics:</span>
+                                                    <span class="text-xs">Order fulfillment cycle time, production lead time, plan cycle time</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">3. Agility</h6>
+                                                <p class="text-xs mb-1">The ability to respond to external influences and marketplace changes.</p>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-xs font-medium">Key Metrics:</span>
+                                                    <span class="text-xs">Upside flexibility, downside adaptability, overall value at risk</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">4. Cost</h6>
+                                                <p class="text-xs mb-1">The expenses associated with operating the supply chain processes.</p>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-xs font-medium">Key Metrics:</span>
+                                                    <span class="text-xs">Total supply chain management cost, cost to serve, cost per order</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">5. Asset Management</h6>
+                                                <p class="text-xs mb-1">The ability to efficiently utilize assets, including inventory reduction and insourcing vs. outsourcing.</p>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-xs font-medium">Key Metrics:</span>
+                                                    <span class="text-xs">Cash-to-cash cycle time, inventory days of supply, asset utilization</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Balanced Scorecard for Supply Chain</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Multi-Dimensional Performance Measurement</h6>
+                                        <p class="text-xs mb-2">The balanced scorecard approach ensures supply chain measurement encompasses all aspects of performance:</p>
+                                        
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Financial Perspective</h6>
+                                                <p class="text-xs mb-1">Measures the financial impact of supply chain activities on overall business performance.</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Total delivered cost</strong> per unit</li>
+                                                    <li><strong>Inventory carrying cost</strong> as % of revenue</li>
+                                                    <li><strong>Cash-to-cash cycle</strong> time</li>
+                                                    <li><strong>Return on supply chain assets</strong></li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Customer Perspective</h6>
+                                                <p class="text-xs mb-1">Assesses how well the supply chain meets customer expectations and creates value.</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>On-time in-full</strong> (OTIF) delivery</li>
+                                                    <li><strong>Order lead time</strong> vs. competitors</li>
+                                                    <li><strong>Perfect order</strong> fulfillment rate</li>
+                                                    <li><strong>Customer satisfaction</strong> with order experience</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Internal Process Perspective</h6>
+                                                <p class="text-xs mb-1">Evaluates the efficiency and effectiveness of core operational processes.</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Forecast accuracy</strong> at product level</li>
+                                                    <li><strong>Manufacturing cycle</strong> time</li>
+                                                    <li><strong>Capacity utilization</strong> percentage</li>
+                                                    <li><strong>Schedule adherence</strong> rate</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Learning & Growth Perspective</h6>
+                                                <p class="text-xs mb-1">Focuses on the capabilities, systems, and culture needed for continuous improvement.</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Supply chain skills</strong> development</li>
+                                                    <li><strong>Process innovation</strong> rate</li>
+                                                    <li><strong>Supplier collaboration</strong> effectiveness</li>
+                                                    <li><strong>Technology adoption</strong> metrics</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Implementation Guidelines</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Balance leading and lagging indicators</strong> to monitor both inputs and outcomes</li>
+                                            <li><strong>Limit metrics</strong> to the vital few that drive decision-making</li>
+                                            <li><strong>Align metrics</strong> vertically from strategic to operational levels</li>
+                                            <li><strong>Establish clear targets</strong> and review cadence for each metric</li>
+                                            <li><strong>Create accountability</strong> by assigning ownership for each measure</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell's Supply Chain Performance Measurement System</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Key Performance Indicators at Dell</h6>
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                        <div class="overflow-x-auto">
+                                            <table class="w-full text-xs border-collapse">
+                                                <thead>
+                                                    <tr class="bg-white dark:bg-gray-800">
+                                                        <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Category</th>
+                                                        <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Key Metrics</th>
+                                                        <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Strategic Importance</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Velocity</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Order-to-delivery time</li>
+                                                                <li>Cash-to-cash cycle time</li>
+                                                                <li>Inventory turns</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Core to Dell's direct model advantage; enables responsive customer service with minimal working capital</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Quality</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>First-pass yield</li>
+                                                                <li>Defects per million</li>
+                                                                <li>Field incident rate</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Ensures customer satisfaction and minimizes costly rework and returns; critical for reputation in premium segments</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Cost</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Total landed cost</li>
+                                                                <li>Logistics cost % of revenue</li>
+                                                                <li>Cost of quality</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Enables competitive pricing while maintaining margins; drives continuous improvement in operational efficiency</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Flexibility</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Component commonality</li>
+                                                                <li>Configure-to-order capabilities</li>
+                                                                <li>Volume scalability</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Balances customization with standardization; enables response to demand fluctuations while maintaining efficiency</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Sustainability</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Carbon footprint</li>
+                                                                <li>Recycled material usage</li>
+                                                                <li>Packaging reduction</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Addresses growing customer and regulatory requirements; supports long-term supply chain resilience and brand reputation</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Performance Measurement Best Practices from Dell</h6>
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">Real-Time Analytics Approach</h6>
+                                        <p class="text-xs mb-2">Dell pioneered several supply chain measurement practices now considered industry standards:</p>
+                                        <ul class="pl-4 text-xs mb-2">
+                                            <li><strong>Daily business metrics review:</strong> Operational metrics monitored and actioned daily rather than monthly</li>
+                                            <li><strong>End-to-end visibility:</strong> Integrated measurement across suppliers, manufacturing, and delivery</li>
+                                            <li><strong>Predictive indicators:</strong> Focus on leading metrics that enable proactive management</li>
+                                            <li><strong>Executive dashboards:</strong> Role-specific metrics visualizations for different decision-makers</li>
+                                            <li><strong>Automated exception alerts:</strong> System-generated notifications when metrics exceed thresholds</li>
+                                        </ul>
+                                        
+                                        <h6 class="text-xs font-medium mb-1">Metric Evolution Case Example</h6>
+                                        <p class="text-xs mb-2">Dell's approach to measuring order cycle time demonstrates the importance of evolving metrics:</p>
+                                        <div class="mb-1">
+                                            <span class="text-xs font-medium">Original Metric (1990s):</span>
+                                            <span class="text-xs">Manufacturing cycle time (build completion to shipping)</span>
+                                        </div>
+                                        <div class="mb-1">
+                                            <span class="text-xs font-medium">Evolved Metric (2000s):</span>
+                                            <span class="text-xs">Order-to-delivery time (order receipt to customer delivery)</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-xs font-medium">Current Metric (2010s onward):</span>
+                                            <span class="text-xs">Total customer experience time (shopping to usage, including configuration, ordering, delivery, and setup)</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <h6 class="text-xs font-medium mb-1">Implementation Lessons</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Metrics drive behavior:</strong> Carefully select measures that encourage desired actions</li>
+                                            <li><strong>Cross-functional alignment:</strong> Ensure metrics don't create conflicting objectives between departments</li>
+                                            <li><strong>Context matters:</strong> Interpret metrics with understanding of business conditions</li>
+                                            <li><strong>Evolution is necessary:</strong> Regularly review and update metrics as strategy evolves</li>
+                                            <li><strong>Actionability is key:</strong> Focus on measures that drive specific interventions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Integrated Performance Measurement Framework</h6>
+                                <p class="text-xs mb-2">A comprehensive supply chain measurement system must address multiple dimensions and timeframes:</p>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs border-collapse">
+                                        <thead>
+                                            <tr class="bg-white dark:bg-gray-800">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-1">Time Horizon</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-1">Operational Focus</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-1">Tactical Focus</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-1">Strategic Focus</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Daily/Weekly</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Production output vs. plan</li>
+                                                        <li>Order backlog</li>
+                                                        <li>On-time shipment percentage</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Component inventory levels</li>
+                                                        <li>Supplier delivery performance</li>
+                                                        <li>Quality incident tracking</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Customer order patterns</li>
+                                                        <li>Supply disruption alerts</li>
+                                                        <li>Competitive pricing actions</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Monthly</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Labor productivity</li>
+                                                        <li>Inventory accuracy</li>
+                                                        <li>Cost per unit trends</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Forecast accuracy</li>
+                                                        <li>New product introduction metrics</li>
+                                                        <li>Transportation cost per order</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Profitability by product</li>
+                                                        <li>Channel performance</li>
+                                                        <li>Supply base risk analysis</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Quarterly/Annual</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Continuous improvement results</li>
+                                                        <li>Quality improvement trends</li>
+                                                        <li>Process capability metrics</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Inventory turns</li>
+                                                        <li>Perfect order fulfillment</li>
+                                                        <li>Cash-to-cash cycle</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Total supply chain cost</li>
+                                                        <li>Return on supply chain assets</li>
+                                                        <li>Sustainability performance</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Supply Chain Integration & Collaboration</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Creating Value Through Partnerships</h5>
+                        <p class="text-sm mb-3">Modern supply chains function as interconnected ecosystems rather than linear chains. Supply chain integration and collaboration enable organizations to create value that extends beyond what any single entity could achieve independently.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Integration Dimensions</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Three Critical Dimensions of Supply Chain Integration</h6>
+                                        <p class="text-xs mb-2">Successful supply chain integration requires alignment across multiple dimensions:</p>
+                                        
+                                        <div class="flex flex-col gap-3">
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">1. Internal Integration</h6>
+                                                <p class="text-xs mb-1">Coordination across functional areas within the organization.</p>
+                                                <div class="text-xs mb-1">
+                                                    <span class="font-medium">Key Elements:</span>
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Cross-functional processes and teams</li>
+                                                        <li>Aligned objectives and incentives</li>
+                                                        <li>Integrated information systems</li>
+                                                        <li>Unified performance metrics</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-xs font-medium">Example:</span>
+                                                    <span class="text-xs">Sales and operations planning (S&OP) process that aligns demand forecasts, production capacity, and inventory targets</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">2. Supplier Integration</h6>
+                                                <p class="text-xs mb-1">Coordination with upstream partners who provide inputs to the organization.</p>
+                                                <div class="text-xs mb-1">
+                                                    <span class="font-medium">Key Elements:</span>
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Strategic supplier partnerships</li>
+                                                        <li>Collaborative planning and forecasting</li>
+                                                        <li>Technology connectivity and data sharing</li>
+                                                        <li>Joint process improvement</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-xs font-medium">Example:</span>
+                                                    <span class="text-xs">Vendor-managed inventory (VMI) arrangements where suppliers monitor and replenish stock based on real-time consumption data</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">3. Customer Integration</h6>
+                                                <p class="text-xs mb-1">Coordination with downstream partners and end users.</p>
+                                                <div class="text-xs mb-1">
+                                                    <span class="font-medium">Key Elements:</span>
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Demand visibility and sharing</li>
+                                                        <li>Collaborative fulfillment processes</li>
+                                                        <li>Customer-specific solutions</li>
+                                                        <li>Joint performance management</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-xs font-medium">Example:</span>
+                                                    <span class="text-xs">Continuous replenishment programs with retailers that automate ordering based on point-of-sale data</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Collaboration Models</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Supply Chain Collaboration Frameworks</h6>
+                                        <p class="text-xs mb-2">Different collaboration approaches create value in distinct ways:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Information Sharing</h6>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <p class="text-xs mb-1">The exchange of data to improve visibility and reduce uncertainty.</p>
+                                                        <div class="text-xs mb-0">
+                                                            <span class="font-medium">Key Examples:</span>
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Forecast sharing</li>
+                                                                <li>Inventory visibility</li>
+                                                                <li>Production schedules</li>
+                                                                <li>Capacity information</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-xs mb-1">Value is created through:</p>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Reduced bullwhip effect</li>
+                                                            <li>Lower safety stock</li>
+                                                            <li>Better resource planning</li>
+                                                            <li>Proactive issue management</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Decision Synchronization</h6>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <p class="text-xs mb-1">Joint planning and problem-solving to align activities across organizations.</p>
+                                                        <div class="text-xs mb-0">
+                                                            <span class="font-medium">Key Examples:</span>
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Collaborative planning</li>
+                                                                <li>Joint category management</li>
+                                                                <li>Coordinated promotions</li>
+                                                                <li>Mutual capacity planning</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-xs mb-1">Value is created through:</p>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Optimized total system costs</li>
+                                                            <li>Better service levels</li>
+                                                            <li>Reduced expediting</li>
+                                                            <li>Improved resource utilization</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Incentive Alignment</h6>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <p class="text-xs mb-1">Sharing of costs, risks, and benefits to ensure all parties are motivated to collaborate.</p>
+                                                        <div class="text-xs mb-0">
+                                                            <span class="font-medium">Key Examples:</span>
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Risk-sharing contracts</li>
+                                                                <li>Gain-sharing agreements</li>
+                                                                <li>Pay-for-performance models</li>
+                                                                <li>Joint investment initiatives</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-xs mb-1">Value is created through:</p>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Equitable value distribution</li>
+                                                            <li>Goal congruence</li>
+                                                            <li>Sustained collaboration</li>
+                                                            <li>Mutual continuous improvement</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Resource Sharing</h6>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <p class="text-xs mb-1">Leveraging capabilities and assets across organizational boundaries.</p>
+                                                        <div class="text-xs mb-0">
+                                                            <span class="font-medium">Key Examples:</span>
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Co-location of personnel</li>
+                                                                <li>Shared distribution centers</li>
+                                                                <li>Joint technology platforms</li>
+                                                                <li>Pooled transportation</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-xs mb-1">Value is created through:</p>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Asset utilization improvement</li>
+                                                            <li>Fixed cost sharing</li>
+                                                            <li>Access to specialized capabilities</li>
+                                                            <li>Accelerated innovation</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell's Collaborative Supply Chain Practices</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Supplier Collaboration: Dell's Revolution</h6>
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">The Dell ValueChain.net Evolution</h6>
+                                        <p class="text-xs mb-2">Dell pioneered an innovative approach to supplier collaboration that transformed the industry:</p>
+                                        <ol class="pl-4 text-xs mb-2">
+                                            <li><strong>Real-time demand visibility:</strong> Providing suppliers with direct access to actual customer orders and forecast data</li>
+                                            <li><strong>Dynamic buffer management:</strong> Collaborative determination of optimal inventory positions based on component characteristics</li>
+                                            <li><strong>Supplier hubs:</strong> Establishing supplier-managed inventory locations near Dell factories to enable just-in-time delivery</li>
+                                            <li><strong>Virtual integration:</strong> Creating seamless information flow while maintaining organizational separation</li>
+                                            <li><strong>Direct fulfillment:</strong> Enabling suppliers to ship directly to customers for certain product categories</li>
+                                        </ol>
+                                        
+                                        <h6 class="text-xs font-medium mb-1">Key Results</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Reduced component inventory from weeks to days</li>
+                                            <li>Streamlined product transitions through coordinated phase-in/phase-out</li>
+                                            <li>Improved component quality through closed-loop feedback processes</li>
+                                            <li>Enhanced supplier forecasting accuracy by over 40%</li>
+                                            <li>Accelerated innovation through collaborative product roadmapping</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Digital Collaboration Tools</h6>
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">Technology Enablers</h6>
+                                        <p class="text-xs mb-2">Dell leverages various technologies to enable seamless collaboration:</p>
+                                        <div class="overflow-x-auto">
+                                            <table class="w-full text-xs border-collapse">
+                                                <thead>
+                                                    <tr class="bg-white dark:bg-gray-800">
+                                                        <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Tool Type</th>
+                                                        <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Functionality</th>
+                                                        <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Collaboration Benefits</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Supply chain visibility platforms</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">End-to-end tracking of materials, components, and products throughout the supply chain</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Proactive issue identification, faster problem resolution, synchronized decision-making</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Collaborative planning tools</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Joint forecasting, inventory planning, and capacity management</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Reduced demand variability, optimized inventory positioning, aligned capacity investments</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Business intelligence dashboards</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Role-specific analytics and KPI visualization</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Common performance understanding, aligned priorities, fact-based decision making</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Digital twins</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Virtual replicas of physical supply chain to enable simulation and optimization</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Scenario planning, risk assessment, joint performance improvement initiatives</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Blockchain solutions</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Secure, transparent record of transactions and product movements</td>
+                                                        <td class="border border-gray-200 dark:border-gray-700 p-1">Enhanced trust, simplified auditing, automated contract execution</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <h6 class="text-xs font-medium mb-1">Implementation Challenges & Solutions</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Data standardization:</strong> Create common definitions and formats to enable seamless information exchange</li>
+                                            <li><strong>Security concerns:</strong> Implement role-based access controls and data governance policies</li>
+                                            <li><strong>Integration complexity:</strong> Utilize API-based architecture and middleware solutions</li>
+                                            <li><strong>Change management:</strong> Focus on training, incentives, and demonstrating mutual benefits</li>
+                                            <li><strong>Value attribution:</strong> Develop fair mechanisms to measure and allocate collaboration benefits</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Building Effective Supply Chain Partnerships</h6>
+                                <p class="text-xs mb-2">Dell's experience offers valuable guidance for developing and sustaining collaborative supply chain relationships:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Foundation Elements</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Mutual value proposition:</strong> Clear benefits for all parties involved</li>
+                                            <li><strong>Strategic alignment:</strong> Complementary goals and business strategies</li>
+                                            <li><strong>Trust and transparency:</strong> Open communication and information sharing</li>
+                                            <li><strong>Executive sponsorship:</strong> Senior leadership commitment from all organizations</li>
+                                            <li><strong>Compatible cultures:</strong> Similar values and operating philosophies</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Operational Framework</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Clear governance:</strong> Decision rights, escalation processes, and forum structures</li>
+                                            <li><strong>Joint metrics:</strong> Shared performance measures and targets</li>
+                                            <li><strong>Process integration:</strong> Aligned workflows and handoff points</li>
+                                            <li><strong>Capability development:</strong> Skills to work effectively across organizational boundaries</li>
+                                            <li><strong>Technology enablement:</strong> Systems and tools for seamless collaboration</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Continuous Improvement</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Regular cadence:</strong> Scheduled reviews of partnership performance</li>
+                                            <li><strong>Innovation focus:</strong> Joint exploration of new opportunities</li>
+                                            <li><strong>Relationship management:</strong> Dedicated resources for partnership development</li>
+                                            <li><strong>Conflict resolution:</strong> Established processes for addressing issues</li>
+                                            <li><strong>Adaptation mechanisms:</strong> Ability to evolve as market conditions change</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Emerging Trends in Supply Chain Management</h5>
+                        <p class="text-sm mb-3">The supply chain discipline continues to evolve rapidly. Understanding emerging trends is critical for developing future-ready capabilities and maintaining competitive advantage.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Digital Transformation</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Advanced technologies are reshaping supply chain operations and capabilities:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li><strong>Artificial Intelligence & Machine Learning:</strong> Enabling predictive analytics, autonomous planning, and intelligent automation</li>
+                                        <li><strong>Internet of Things (IoT):</strong> Creating visibility through connected assets, products, and infrastructure</li>
+                                        <li><strong>Advanced Analytics:</strong> Transforming data into actionable insights for decision optimization</li>
+                                        <li><strong>Robotics & Automation:</strong> Enhancing efficiency and consistency in physical operations</li>
+                                        <li><strong>Blockchain:</strong> Providing transparency, traceability, and security across supply networks</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Dell's Focus Areas:</p>
+                                    <p class="text-xs mb-0">Dell is investing in several digital transformation initiatives, including predictive analytics for component planning, digital twins for scenario modeling, robotics for warehouse operations, and blockchain for secure supply chain transactions. These technologies are enabling more autonomous supply chain operations that can sense and respond to changes with minimal human intervention.</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Sustainability & Circular Economy</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Environmental and social responsibility are becoming core elements of supply chain strategy:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li><strong>Carbon Footprint Reduction:</strong> Measuring and minimizing greenhouse gas emissions across the value chain</li>
+                                        <li><strong>Circular Design:</strong> Creating products for reuse, refurbishment, and recycling</li>
+                                        <li><strong>Sustainable Sourcing:</strong> Ensuring materials and components meet environmental and social standards</li>
+                                        <li><strong>Waste Elimination:</strong> Minimizing packaging and operational waste throughout the supply chain</li>
+                                        <li><strong>Ethical Labor Practices:</strong> Ensuring fair working conditions across the entire supply network</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Dell's Initiatives:</p>
+                                    <p class="text-xs mb-0">Dell has established ambitious goals for sustainability, including using 100% recycled or renewable materials in packaging, recovering used products for refurbishment and recycling, and achieving net-zero greenhouse gas emissions across the entire value chain. The company is integrating sustainability metrics into its supplier scorecards and product design processes to drive continuous improvement.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Supply Chain Resilience</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Risk Management Evolution</h6>
+                                    <p class="text-xs mb-2">Global disruptions are driving a shift from efficiency-focused to resilience-focused supply chains:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Multi-sourcing strategies:</strong> Diversifying suppliers geographically and organizationally</li>
+                                        <li><strong>Network redesign:</strong> Balancing global scale with regional redundancy</li>
+                                        <li><strong>Strategic buffers:</strong> Selective inventory positioning for critical components</li>
+                                        <li><strong>Supply chain visibility:</strong> Real-time monitoring of potential disruptions</li>
+                                        <li><strong>Scenario planning:</strong> Regular testing of response capabilities</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Segmented Supply Chains</h6>
+                                    <p class="text-xs mb-2">One-size-fits-all approaches are giving way to tailored supply chain designs:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Product-based segmentation:</strong> Different models for different product categories</li>
+                                        <li><strong>Customer-based segmentation:</strong> Tailored approaches for different market segments</li>
+                                        <li><strong>Geographic segmentation:</strong> Region-specific supply chain configurations</li>
+                                        <li><strong>Demand pattern segmentation:</strong> Unique approaches for stable vs. volatile products</li>
+                                        <li><strong>Value-based segmentation:</strong> Investment aligned with strategic importance</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Supply Chain Talent</h6>
+                                    <p class="text-xs mb-2">Evolving skill requirements are reshaping supply chain workforce strategies:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Analytical capabilities:</strong> Data science, statistical modeling, decision analysis</li>
+                                        <li><strong>Technology expertise:</strong> Digital tool utilization, automation design, systems thinking</li>
+                                        <li><strong>Cross-functional knowledge:</strong> Understanding of adjacent business functions</li>
+                                        <li><strong>Collaboration skills:</strong> Ability to work across organizational boundaries</li>
+                                        <li><strong>Change management:</strong> Leading transformation and continuous improvement</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Dell's Future Supply Chain Vision</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Strategic Priorities</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Autonomous supply chain operations:</strong> Self-planning, self-executing, and self-learning capabilities</li>
+                                        <li><strong>Hyper-personalization at scale:</strong> Mass customization with efficient operations</li>
+                                        <li><strong>Circular economy leadership:</strong> Closed-loop material flows and product lifecycle management</li>
+                                        <li><strong>Ecosystem orchestration:</strong> Coordinating networks of partners rather than linear chains</li>
+                                        <li><strong>Resilience by design:</strong> Building adaptability into supply chain architecture</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Implementation Roadmap</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Technology foundation:</strong> Building digital capabilities and data infrastructure</li>
+                                        <li><strong>Partner ecosystem:</strong> Developing collaborative capabilities with key suppliers</li>
+                                        <li><strong>Talent acceleration:</strong> Upskilling teams for digital supply chain management</li>
+                                        <li><strong>Process redesign:</strong> Reimagining workflows for autonomous operations</li>
+                                        <li><strong>Performance evolution:</strong> Adapting metrics to measure new forms of value creation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="text-xs italic mt-3 mb-0">Dell's supply chain strategy continues to evolve beyond operational excellence to focus on creating distinctive customer experiences, driving sustainability, and enabling new business models. The company recognizes that supply chain capabilities will remain a critical source of competitive advantage in an increasingly digital and service-oriented business environment.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Practical Application for Dell Leaders</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Applying Supply Chain Concepts in Your Role</h5>
+                        <p class="text-sm mb-3">Even if you don't work directly in supply chain operations, understanding supply chain management principles can help you make better decisions and create value in any role at Dell.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-product-hunt-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">For Product Teams</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Design for supply chain:</strong> Consider component availability, standardization, and manufacturing implications during product development</li>
+                                    <li><strong>Lifecycle planning:</strong> Coordinate product transitions with supply chain capabilities and constraints</li>
+                                    <li><strong>Component strategies:</strong> Evaluate trade-offs between customization and commonality across product lines</li>
+                                    <li><strong>Sustainability integration:</strong> Incorporate circular economy principles into product design</li>
+                                    <li><strong>Supply base innovation:</strong> Leverage supplier capabilities for competitive advantage</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-shopping-cart-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">For Sales & Marketing</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Demand shaping:</strong> Align promotions and campaigns with supply chain capabilities</li>
+                                    <li><strong>Configuration guidance:</strong> Steer customers toward options with optimal supply availability</li>
+                                    <li><strong>Lead time management:</strong> Set accurate customer expectations based on supply realities</li>
+                                    <li><strong>Supply chain value propositions:</strong> Leverage Dell's fulfillment capabilities as competitive differentiators</li>
+                                    <li><strong>Channel strategy alignment:</strong> Design channel approaches that optimize the total fulfillment cost</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-service-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">For Services & Support</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Parts planning:</strong> Optimize service parts inventory for availability and cost</li>
+                                    <li><strong>Defect analysis:</strong> Provide structured feedback to manufacturing and suppliers</li>
+                                    <li><strong>Returns management:</strong> Design efficient processes for product recovery and disposition</li>
+                                    <li><strong>Remote resolution:</strong> Minimize the need for physical parts through remote diagnostics</li>
+                                    <li><strong>Service delivery integration:</strong> Coordinate service operations with product supply chain</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-funds-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">For Finance & Strategy</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Total cost modeling:</strong> Evaluate business decisions considering end-to-end supply chain costs</li>
+                                    <li><strong>Working capital optimization:</strong> Balance inventory investment with service level requirements</li>
+                                    <li><strong>Investment prioritization:</strong> Assess supply chain capabilities as strategic assets</li>
+                                    <li><strong>Risk quantification:</strong> Incorporate supply chain vulnerabilities into financial planning</li>
+                                    <li><strong>Global footprint decisions:</strong> Consider total landed cost and risk factors in location decisions</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-code-box-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">For IT & Digital</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>End-to-end visibility:</strong> Create systems that connect data across supply chain processes</li>
+                                    <li><strong>Analytics enablement:</strong> Develop tools for predictive and prescriptive supply chain analytics</li>
+                                    <li><strong>Integration architecture:</strong> Design interfaces for seamless partner connectivity</li>
+                                    <li><strong>Automation opportunities:</strong> Identify processes for intelligent automation</li>
+                                    <li><strong>Technology roadmapping:</strong> Align digital investments with supply chain strategy</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-user-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">For HR & Culture</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Supply chain talent development:</strong> Build capabilities for digital supply chain management</li>
+                                    <li><strong>Organizational design:</strong> Structure teams for end-to-end process accountability</li>
+                                    <li><strong>Performance metrics:</strong> Align incentives across functions to optimize total supply chain</li>
+                                    <li><strong>Collaboration behaviors:</strong> Foster skills for working across organizational boundaries</li>
+                                    <li><strong>Change enablement:</strong> Support supply chain transformation initiatives</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-white dark:bg-gray-800 p-3 rounded-lg">
+                            <h6 class="text-sm font-medium mb-2">Cross-Functional Supply Chain Decision-Making</h6>
+                            <p class="text-xs mb-2">Many business decisions have supply chain implications. Consider these key questions when evaluating options:</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-2">Evaluating New Initiatives</h6>
+                                    <ol class="pl-4 text-xs mb-0">
+                                        <li><strong>Complexity impact:</strong> How will this change affect supply chain complexity?</li>
+                                        <li><strong>Capability requirements:</strong> What supply chain capabilities are needed to execute successfully?</li>
+                                        <li><strong>Timing considerations:</strong> How does this align with supply chain constraints and cycles?</li>
+                                        <li><strong>Scale implications:</strong> What changes as volumes grow or contract?</li>
+                                        <li><strong>Partner dependencies:</strong> Which external partners are critical to success?</li>
+                                        <li><strong>Risk exposure:</strong> What new supply chain vulnerabilities might be created?</li>
+                                        <li><strong>Sustainability impact:</strong> How does this affect our environmental and social footprint?</li>
+                                    </ol>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-2">Identifying Improvement Opportunities</h6>
+                                    <ol class="pl-4 text-xs mb-0">
+                                        <li><strong>End-to-end thinking:</strong> Look beyond your function to identify systemic improvements</li>
+                                        <li><strong>Customer perspective:</strong> Consider how supply chain capabilities affect customer experience</li>
+                                        <li><strong>Information flow:</strong> Identify opportunities to improve visibility and reduce latency</li>
+                                        <li><strong>Handoff points:</strong> Focus on transitions between functions and organizations</li>
+                                        <li><strong>Standardization opportunities:</strong> Look for areas where complexity can be reduced</li>
+                                        <li><strong>Technology enablement:</strong> Identify manual processes that could be digitized</li>
+                                        <li><strong>Partner collaboration:</strong> Explore joint improvement initiatives with suppliers and customers</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Supply Chain Self-Assessment Questions</h6>
+                                <p class="text-xs mb-2">Use these questions to evaluate your supply chain awareness and integration in your role:</p>
+                                <ol class="pl-4 text-xs mb-0">
+                                    <li>How do my decisions and actions impact upstream and downstream supply chain operations?</li>
+                                    <li>Which supply chain metrics are most relevant to my function's performance?</li>
+                                    <li>Who are the key supply chain stakeholders I should be collaborating with regularly?</li>
+                                    <li>What supply chain information would help me make better decisions in my role?</li>
+                                    <li>How could I leverage Dell's supply chain capabilities to create more value for customers?</li>
+                                    <li>What supply chain constraints should I be aware of when planning initiatives?</li>
+                                    <li>How can I contribute to Dell's supply chain sustainability and resilience goals?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://scm.ncsu.edu/scm-articles" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">NC State SCRC Knowledge Articles</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Supply Chain Resource Cooperative • Research-based articles on supply chain trends and best practices</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/capabilities/operations/our-insights" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-pages-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">McKinsey Operations Insights</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • Strategic perspectives on supply chain and operations management</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.supplychaindive.com/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-newspaper-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Supply Chain Dive</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Industry Analysis • Current news and analysis on supply chain developments</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Supply Chain Strategy Analysis</h5>
+                        <p class="mb-3">In this exercise, you'll apply supply chain concepts to analyze a real-world business scenario involving strategic supply chain decisions.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Scenario: Product Line Expansion Decision</h6>
+                            <p class="text-xs mb-2">You are part of a cross-functional team evaluating a potential expansion of Dell's product portfolio to include a new line of rugged tablets targeted at industrial and field service applications. This product would require:</p>
+                            <ul class="pl-4 text-xs mb-2">
+                                <li>Specialized components with limited supplier options</li>
+                                <li>More extensive testing and certification than standard consumer products</li>
+                                <li>Lower volume production with higher customization requirements</li>
+                                <li>Long lifecycle support (5-7 years vs. 1-3 years for consumer products)</li>
+                                <li>Integration with customer's legacy systems and specialized software</li>
+                            </ul>
+                            
+                            <p class="text-xs font-medium mb-1">Your task:</p>
+                            <p class="text-xs mb-0">Analyze the supply chain implications of this product line expansion and provide recommendations for how Dell should adapt its supply chain strategy to support this new product category successfully.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Supply Chain Model Analysis</label>
+                                <p class="text-xs mb-1">Which supply chain operating model would be most appropriate for this product line? Why?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Consider the characteristics of different supply chain models (efficient, responsive, innovative, risk-hedging, agile) and explain which would best fit this product line."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Key Performance Metrics</label>
+                                <p class="text-xs mb-1">What key metrics would you recommend to measure the performance of this supply chain?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Identify 5-7 critical metrics that would help track the success of this supply chain, explaining why each is important."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Collaboration Strategy</label>
+                                <p class="text-xs mb-1">How should Dell collaborate with suppliers and customers for this product line?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline a collaboration approach, including what information should be shared, how decisions should be synchronized, and what incentives should be aligned."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Implementation Challenges</label>
+                                <p class="text-xs mb-1">What challenges might arise when implementing this specialized supply chain within Dell's existing operations?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Identify potential obstacles and conflicts that could occur when operating this different supply chain model alongside Dell's traditional models."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" disabled>
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-forecasting">
+                        <span>Next: Forecasting & Planning</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-supply-chain');
+        });
+    </script>
+</body>
+</html>

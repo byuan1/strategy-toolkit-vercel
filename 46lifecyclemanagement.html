@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management Essentials</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Product & Ops Foundations</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-supply-chain">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Supply Chain Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-forecasting">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Forecasting & Planning</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-lifecycle">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Lifecycle Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-transitions">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Transitions</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-marketing">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Marketing</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-pricing">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Pricing</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-inventory">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Inventory Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-demand-shaping">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Demand Shaping</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-ethics">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Ethics</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">26%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 26%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Effective Communication</span>
+                                <span>3/3 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Product & Ops Foundations</span>
+                                <span>2/9 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>0/6 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Lifecycle Management Topic -->
+            <section id="topic-lifecycle" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-refresh-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Lifecycle Management</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Product & Ops Foundations</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the fundamentals of product lifecycle management</li>
+                            <li>Learn the key stages of product lifecycles and their strategic implications</li>
+                            <li>Explore frameworks for effective offer lifecycle planning (OLP)</li>
+                            <li>Recognize how to manage transitions between lifecycle stages</li>
+                            <li>Apply lifecycle management concepts to strategic decision-making</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Lifecycle Management</h4>
+                    <p>Product Lifecycle Management (PLM) is a strategic approach to managing the complete journey of a product—from initial concept through design and manufacturing, to service, and ultimately, retirement. Effective lifecycle management is more than a set of processes; it is a business strategy that helps organizations make better product decisions, optimize resource allocation, and maximize value creation throughout a product's life. In today's rapidly evolving markets, mastering lifecycle management is a critical competitive capability that enables organizations to bring the right products to market faster, manage complexity efficiently, and extend value creation across the complete product journey.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">The Strategic Value of Lifecycle Management</h5>
+                        <p class="mb-3">Effective lifecycle management delivers value in multiple dimensions, creating competitive advantages and operational benefits:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Market Responsiveness</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Accelerated time-to-market</li>
+                                    <li>Enhanced market sensing</li>
+                                    <li>Faster innovation cycles</li>
+                                    <li>More agile product evolution</li>
+                                    <li>Better customer responsiveness</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Operational Excellence</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Reduced development costs</li>
+                                    <li>More efficient resource utilization</li>
+                                    <li>Better cross-functional coordination</li>
+                                    <li>Streamlined manufacturing processes</li>
+                                    <li>Improved quality management</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Financial Performance</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Optimized product portfolios</li>
+                                    <li>Extended revenue streams</li>
+                                    <li>More strategic pricing approaches</li>
+                                    <li>Better investment prioritization</li>
+                                    <li>Reduced obsolescence costs</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Evolution of Lifecycle Management</h6>
+                            <p class="mb-2">The practice of lifecycle management has evolved significantly over time:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">1.0: Document-Centric</p>
+                                    <p class="text-sm mb-0">Initial approaches focused on managing engineering documents and design specifications. Organizations implemented document management systems to control versions and maintain product information, but integration was limited. This phase was characterized by siloed information and manual handoffs between departments.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">2.0: Process-Oriented</p>
+                                    <p class="text-sm mb-0">As digital tools evolved, organizations began implementing more structured processes for product development and management. This phase introduced workflow systems, stage-gate processes, and cross-functional reviews. The focus expanded to include more of the product lifecycle, though integration remained challenging.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">3.0: Integrated Systems</p>
+                                    <p class="text-sm mb-0">The emergence of comprehensive PLM systems enabled organizations to create digital threads connecting all product information. This phase saw the integration of engineering, manufacturing, and service data into unified systems. Approaches expanded to encompass the complete product lifecycle with improved collaboration capabilities.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">4.0: Digital Transformation</p>
+                                    <p class="text-sm mb-0">The current evolution leverages IoT, AI, digital twins, and advanced analytics to create highly responsive lifecycle management. This phase enables real-time market sensing, predictive maintenance, and closed-loop product development. Organizations can now optimize product performance continuously throughout the lifecycle.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Product Lifecycle Stages</h5>
+                                
+                                <div class="relative h-[150px] mb-6">
+                                    <svg class="w-full h-full">
+                                        <!-- Axes -->
+                                        <line x1="40" y1="120" x2="40" y2="20" stroke="#6B7280" stroke-width="1.5" />
+                                        <line x1="40" y1="120" x2="560" y2="120" stroke="#6B7280" stroke-width="1.5" />
+                                        
+                                        <!-- Y-axis Label -->
+                                        <text x="20" y="70" font-size="10" fill="currentColor" transform="rotate(-90, 20, 70)">Revenue/Profit</text>
+                                        
+                                        <!-- Lifecycle Curve -->
+                                        <path d="M 40,120 Q 100,110 160,80 T 280,40 T 400,60 T 520,110" fill="none" stroke="#5D5CDE" stroke-width="2.5" />
+                                        
+                                        <!-- Stage Markers -->
+                                        <line x1="100" y1="20" x2="100" y2="120" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,4" />
+                                        <line x1="220" y1="20" x2="220" y2="120" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,4" />
+                                        <line x1="340" y1="20" x2="340" y2="120" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,4" />
+                                        <line x1="460" y1="20" x2="460" y2="120" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,4" />
+                                        
+                                        <!-- Stage Labels -->
+                                        <text x="70" y="135" font-size="10" fill="currentColor" text-anchor="middle">Introduction</text>
+                                        <text x="160" y="135" font-size="10" fill="currentColor" text-anchor="middle">Growth</text>
+                                        <text x="280" y="135" font-size="10" fill="currentColor" text-anchor="middle">Maturity</text>
+                                        <text x="400" y="135" font-size="10" fill="currentColor" text-anchor="middle">Decline</text>
+                                        <text x="500" y="135" font-size="10" fill="currentColor" text-anchor="middle">End-of-Life</text>
+                                    </svg>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-5 gap-2 text-center">
+                                    <div>
+                                        <h6 class="text-xs font-medium">Introduction</h6>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Initial market entry with focus on awareness building and early adoption</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium">Growth</h6>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Market expansion with increasing sales and evolving product features</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium">Maturity</h6>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Stabilized market share with focus on efficiency and differentiation</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium">Decline</h6>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Decreasing demand requiring strategic decisions about the product's future</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium">End-of-Life</h6>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Planned withdrawal with managed transitions to replacement offerings</p>
+                                    </div>
+                                </div>
+                                
+                                <p class="text-xs text-center mt-4 text-gray-500 dark:text-gray-400">The classic product lifecycle represents the evolution of a product from introduction through end-of-life, though actual trajectories may vary based on product type, market conditions, and management decisions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Lifecycle Stage Strategies</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Strategic Approaches Across the Lifecycle</h5>
+                        <p class="text-sm mb-3">Each lifecycle stage presents distinct strategic imperatives, challenges, and opportunities. Effective lifecycle management requires adapting approaches as products evolve through different stages.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Introduction Stage Strategies</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">1</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Market Education</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Establishing awareness and understanding of the new product's value proposition.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Activities</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Targeted marketing to early adopters</li>
+                                                    <li>Educational content development</li>
+                                                    <li>Thought leadership positioning</li>
+                                                    <li>Use case development and sharing</li>
+                                                    <li>Customer testimonial generation</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">2</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Adoption Acceleration</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Strategically driving initial market acceptance and customer acquisition.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Activities</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Strategic pricing to encourage trial</li>
+                                                    <li>Channel enablement and training</li>
+                                                    <li>Early adopter programs and incentives</li>
+                                                    <li>Simplified buying and onboarding processes</li>
+                                                    <li>Targeted demand generation activities</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">3</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Rapid Iteration</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Continuously refining the product based on initial market feedback.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Activities</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Structured customer feedback collection</li>
+                                                    <li>Agile development processes</li>
+                                                    <li>Frequent release cycles</li>
+                                                    <li>Feature prioritization based on market response</li>
+                                                    <li>Early issue identification and resolution</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Strategic Considerations</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Market entry timing:</strong> Balancing first-mover advantages with product readiness</li>
+                                            <li><strong>Initial scope:</strong> Determining minimum viable product vs. comprehensive offering</li>
+                                            <li><strong>Resource allocation:</strong> Investing appropriately while managing financial risk</li>
+                                            <li><strong>Competitive positioning:</strong> Establishing clear differentiation from alternatives</li>
+                                            <li><strong>Early metrics:</strong> Setting appropriate expectations for adoption and financial performance</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Growth Stage Strategies</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">During growth, the focus shifts to scaling operations, expanding market reach, and enhancing the product offering.</p>
+                                    
+                                    <div class="grid grid-cols-1 gap-3">
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Market Expansion</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>New segment targeting:</strong> Expanding beyond early adopters to mainstream markets</li>
+                                                <li><strong>Geographic expansion:</strong> Entering additional regions or countries</li>
+                                                <li><strong>Channel development:</strong> Building out partner ecosystems and distribution networks</li>
+                                                <li><strong>Usage expansion:</strong> Identifying new use cases and applications</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Product Enhancement</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Feature expansion:</strong> Adding capabilities to address broader customer needs</li>
+                                                <li><strong>Performance optimization:</strong> Improving speed, reliability, and efficiency</li>
+                                                <li><strong>Integration capabilities:</strong> Enabling connections with complementary solutions</li>
+                                                <li><strong>Platform development:</strong> Building extensibility for ecosystem growth</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Operational Scaling</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Supply chain optimization:</strong> Ensuring capacity to meet growing demand</li>
+                                                <li><strong>Quality management:</strong> Maintaining standards as volume increases</li>
+                                                <li><strong>Support infrastructure:</strong> Scaling customer service capabilities</li>
+                                                <li><strong>Efficiency improvements:</strong> Optimizing processes for larger volumes</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Key Challenges</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Competitive response:</strong> Addressing new entrants attracted by market success</li>
+                                            <li><strong>Scaling pains:</strong> Managing rapid organizational and operational growth</li>
+                                            <li><strong>Feature prioritization:</strong> Balancing different customer segment needs</li>
+                                            <li><strong>Cash management:</strong> Funding growth while approaching profitability</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Maturity Stage Strategies</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">In maturity, strategies focus on maximizing efficiency, reinforcing differentiation, and extending the product's profitable lifecycle.</p>
+                                    
+                                    <div class="grid grid-cols-1 gap-3">
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Differentiation Reinforcement</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Value proposition refinement:</strong> Adjusting messaging to emphasize unique benefits</li>
+                                                <li><strong>Segmentation strategies:</strong> Targeting specific high-value niches</li>
+                                                <li><strong>Brand strengthening:</strong> Building emotional connections and loyalty</li>
+                                                <li><strong>Experience enhancement:</strong> Focusing on customer journey improvements</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Efficiency Optimization</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Cost structure improvements:</strong> Identifying opportunities for margin enhancement</li>
+                                                <li><strong>Process standardization:</strong> Streamlining operations across functions</li>
+                                                <li><strong>Automation implementation:</strong> Reducing manual interventions where possible</li>
+                                                <li><strong>Inventory optimization:</strong> Fine-tuning supply chain parameters</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Life Extension</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Product line extensions:</strong> Adding variants for specific segments</li>
+                                                <li><strong>New market applications:</strong> Finding adjacent use cases</li>
+                                                <li><strong>Bundling strategies:</strong> Creating solution packages with complementary offerings</li>
+                                                <li><strong>Value-added services:</strong> Expanding the offering beyond the core product</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Key Challenges</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Commoditization pressure:</strong> Maintaining value perception as competition increases</li>
+                                            <li><strong>Innovation balance:</strong> Investing appropriately in mature vs. new products</li>
+                                            <li><strong>Organizational complacency:</strong> Maintaining focus on continuous improvement</li>
+                                            <li><strong>Cannibalization concerns:</strong> Managing impact of new offerings on established products</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Decline Stage Strategies</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">When products enter decline, organizations must make deliberate choices about their future.</p>
+                                    
+                                    <div class="grid grid-cols-1 gap-3">
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Revitalization Approaches</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Major refreshes:</strong> Significant updates to reinvigorate market interest</li>
+                                                <li><strong>Repositioning:</strong> Targeting new market segments or applications</li>
+                                                <li><strong>Business model innovation:</strong> Changing pricing or delivery approaches</li>
+                                                <li><strong>Technological updates:</strong> Incorporating new technologies to add relevance</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Harvesting Strategies</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Cost optimization:</strong> Reducing investments while maintaining value</li>
+                                                <li><strong>Focused targeting:</strong> Concentrating on remaining profitable segments</li>
+                                                <li><strong>Streamlined offerings:</strong> Simplifying product variants and options</li>
+                                                <li><strong>Margin management:</strong> Strategic pricing to maximize remaining value</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Divestment Planning</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Portfolio rationalization:</strong> Evaluating strategic fit within the business</li>
+                                                <li><strong>Business unit sale:</strong> Identifying potential acquirers for product lines</li>
+                                                <li><strong>Licensing opportunities:</strong> Transitioning technology to other organizations</li>
+                                                <li><strong>Resource reallocation:</strong> Shifting capabilities to growth areas</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Decision Factors</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Market potential:</strong> Evaluating remaining addressable market size</li>
+                                            <li><strong>Competitive position:</strong> Assessing sustainable differentiation</li>
+                                            <li><strong>Financial contribution:</strong> Analyzing ongoing profitability and cash flow</li>
+                                            <li><strong>Strategic alignment:</strong> Determining fit with long-term business direction</li>
+                                            <li><strong>Resource requirements:</strong> Evaluating investment needed for different options</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">End-of-Life Management</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Effective end-of-life (EOL) management protects customer relationships, ensures compliance, and maximizes remaining value.</p>
+                                    
+                                    <div class="grid grid-cols-1 gap-3">
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Customer Transition Planning</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Communication strategy:</strong> Providing clear, advance notification of EOL</li>
+                                                <li><strong>Migration pathways:</strong> Creating structured approaches for moving to alternatives</li>
+                                                <li><strong>Incentive programs:</strong> Offering benefits for transitioning to new solutions</li>
+                                                <li><strong>Data migration:</strong> Supporting transfer of information to replacement systems</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Service Continuity</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Extended support options:</strong> Providing pathways for continued assistance</li>
+                                                <li><strong>Spare parts management:</strong> Ensuring availability of critical components</li>
+                                                <li><strong>Documentation preservation:</strong> Maintaining accessible knowledge bases</li>
+                                                <li><strong>Third-party support transitions:</strong> Enabling alternative service providers</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Responsible Retirement</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Environmental compliance:</strong> Ensuring proper disposal and recycling</li>
+                                                <li><strong>Contractual obligations:</strong> Fulfilling remaining commitments</li>
+                                                <li><strong>Intellectual property management:</strong> Protecting proprietary technologies</li>
+                                                <li><strong>Resource reassignment:</strong> Transitioning team members to new roles</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">EOL Timeline Planning</h6>
+                                        <div class="grid grid-cols-5 gap-1 mt-2">
+                                            <div class="text-center">
+                                                <div class="w-full h-1 bg-indigo-200 dark:bg-indigo-800"></div>
+                                                <div class="text-xs font-medium mt-1">Announcement</div>
+                                                <div class="text-xs">Initial EOL notification</div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="w-full h-1 bg-indigo-200 dark:bg-indigo-800"></div>
+                                                <div class="text-xs font-medium mt-1">End of Marketing</div>
+                                                <div class="text-xs">No new sales</div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="w-full h-1 bg-indigo-200 dark:bg-indigo-800"></div>
+                                                <div class="text-xs font-medium mt-1">End of Development</div>
+                                                <div class="text-xs">No new features</div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="w-full h-1 bg-indigo-200 dark:bg-indigo-800"></div>
+                                                <div class="text-xs font-medium mt-1">End of Support</div>
+                                                <div class="text-xs">Standard support ends</div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="w-full h-1 bg-indigo-200 dark:bg-indigo-800"></div>
+                                                <div class="text-xs font-medium mt-1">End of Life</div>
+                                                <div class="text-xs">All support ends</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Lifecycle Strategy Integration</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Portfolio Management Approach</h6>
+                                    <p class="text-xs mb-2">Effective product strategy requires managing a balanced portfolio across lifecycle stages:</p>
+                                    
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Portfolio Balance Considerations</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Revenue distribution:</strong> Managing the mix of growth vs. mature product revenue</li>
+                                            <li><strong>Investment allocation:</strong> Balancing resources across different lifecycle stages</li>
+                                            <li><strong>Risk profile:</strong> Diversifying across established and emerging offerings</li>
+                                            <li><strong>Capability utilization:</strong> Optimizing use of organizational resources</li>
+                                            <li><strong>Strategic alignment:</strong> Ensuring portfolio supports long-term direction</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">Portfolio Management Tools</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>BCG matrix analysis:</strong> Mapping products by market growth and relative share</li>
+                                            <li><strong>GE/McKinsey matrix:</strong> Evaluating business strength and market attractiveness</li>
+                                            <li><strong>Innovation portfolio:</strong> Balancing core, adjacent, and transformational initiatives</li>
+                                            <li><strong>Lifecycle distribution models:</strong> Ensuring appropriate product pipeline</li>
+                                            <li><strong>Financial contribution analysis:</strong> Assessing profitability across lifecycle stages</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Organizational Alignment</h6>
+                                    <p class="text-xs mb-2">Different lifecycle stages require different organizational capabilities and approaches:</p>
+                                    
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-xs border-collapse">
+                                            <thead>
+                                                <tr class="bg-indigo-50 dark:bg-indigo-900/20">
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Function</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Introduction/Growth</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Maturity/Decline</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">R&D</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Feature expansion, rapid iteration, platform building</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Cost reduction, maintenance engineering, targeted enhancements</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Marketing</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Market education, adoption driving, awareness building</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Differentiation, loyalty programs, value reinforcement</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Sales</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Consultative selling, solution design, evangelism</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Volume selling, efficiency, competitive displacement</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Operations</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Scaling capacity, quality establishment, flexibility</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Process optimization, cost reduction, standardization</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Finance</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Investment justification, growth metrics, cash management</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Profitability analysis, cost control, capital efficiency</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Lifecycle Strategy Pitfalls</h6>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Common Mistakes</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>One-size-fits-all approaches:</strong> Using the same strategies across all lifecycle stages</li>
+                                            <li><strong>Premature abandonment:</strong> Exiting markets too early without fully harvesting value</li>
+                                            <li><strong>Overinvestment in decline:</strong> Allocating excessive resources to declining products</li>
+                                            <li><strong>Neglecting transitions:</strong> Failing to plan for smooth handoffs between stages</li>
+                                            <li><strong>Misaligned metrics:</strong> Using inappropriate KPIs for different lifecycle phases</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Warning Signs</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Unexpected sales pattern shifts:</strong> Sudden changes in adoption or retention</li>
+                                            <li><strong>Competitive disruption:</strong> New entrants with different value propositions</li>
+                                            <li><strong>Margin compression:</strong> Decreasing profitability despite stable sales</li>
+                                            <li><strong>Customer satisfaction decline:</strong> Increasing complaints or support requirements</li>
+                                            <li><strong>Channel resistance:</strong> Partners showing decreased engagement with offerings</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Mitigation Approaches</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Regular lifecycle reviews:</strong> Scheduled assessment of product positioning</li>
+                                            <li><strong>Stage-appropriate metrics:</strong> Tailored KPIs for different lifecycle phases</li>
+                                            <li><strong>Cross-functional governance:</strong> Diverse perspectives in decision-making</li>
+                                            <li><strong>Formal transition protocols:</strong> Structured handoffs between phases</li>
+                                            <li><strong>Market sensing mechanisms:</strong> Early identification of inflection points</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Implementing Offer Lifecycle Planning (OLP)</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Structured Approach to Lifecycle Management</h5>
+                        <p class="text-sm mb-3">Offer Lifecycle Planning (OLP) provides a comprehensive framework for managing products from conception through retirement. This structured approach ensures strategic alignment, operational coordination, and effective resource allocation throughout the product journey.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">OLP Fundamentals</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Core OLP Components</h6>
+                                        <p class="text-xs mb-2">A comprehensive OLP framework incorporates these essential elements:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Strategic Intent</h6>
+                                                <p class="text-xs mb-1">Defining the product's purpose and strategic objectives within the portfolio.</p>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Key Elements</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Strategic objectives</li>
+                                                            <li>Target markets</li>
+                                                            <li>Value proposition</li>
+                                                            <li>Competitive positioning</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Documentation</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Product strategy document</li>
+                                                            <li>Market requirements</li>
+                                                            <li>Business case</li>
+                                                            <li>Portfolio alignment map</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Lifecycle Roadmap</h6>
+                                                <p class="text-xs mb-1">Establishing the anticipated evolution of the product across its expected lifecycle.</p>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Key Elements</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Phase transitions</li>
+                                                            <li>Major milestones</li>
+                                                            <li>Feature evolution</li>
+                                                            <li>Expected timing</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Documentation</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Product roadmap</li>
+                                                            <li>Release plan</li>
+                                                            <li>Capability timeline</li>
+                                                            <li>EOL schedule</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Governance Model</h6>
+                                                <p class="text-xs mb-1">Defining the decision-making framework for managing the product throughout its lifecycle.</p>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Key Elements</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Decision rights</li>
+                                                            <li>Review cadence</li>
+                                                            <li>Stage-gate criteria</li>
+                                                            <li>Escalation paths</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Documentation</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>RACI matrix</li>
+                                                            <li>Decision framework</li>
+                                                            <li>Review schedule</li>
+                                                            <li>Approval protocols</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Benefits of Structured OLP</h6>
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0.5">Business Benefits</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Improved time-to-market:</strong> 20-40% reduction in development cycles</li>
+                                                        <li><strong>Higher ROI:</strong> 15-30% increase in lifetime product profitability</li>
+                                                        <li><strong>Resource optimization:</strong> 25-35% more efficient resource utilization</li>
+                                                        <li><strong>Portfolio alignment:</strong> Better strategic fit across product offerings</li>
+                                                    </ul>
+                                                </div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0.5">Operational Benefits</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Cross-functional alignment:</strong> Coordinated activities across teams</li>
+                                                        <li><strong>Process consistency:</strong> Standardized approaches to lifecycle decisions</li>
+                                                        <li><strong>Knowledge management:</strong> Better institutional memory across products</li>
+                                                        <li><strong>Risk mitigation:</strong> Earlier identification of potential issues</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">OLP Implementation</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Cross-Functional Integration</h6>
+                                        <p class="text-xs mb-2">Effective OLP requires coordinated participation from key business functions:</p>
+                                        
+                                        <div class="flex flex-col gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Product Management</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key Responsibilities:</span>
+                                                        <span class="text-xs">Market requirements, feature prioritization, product roadmap, competitive analysis</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">OLP Contributions:</span>
+                                                        <span class="text-xs">Defining value proposition, managing roadmap, driving cross-functional alignment</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Engineering</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key Responsibilities:</span>
+                                                        <span class="text-xs">Technical feasibility, development planning, architectural decisions, quality assurance</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">OLP Contributions:</span>
+                                                        <span class="text-xs">Technical roadmap, resource requirements, platform evolution strategy</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Marketing</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key Responsibilities:</span>
+                                                        <span class="text-xs">Positioning, messaging, launch planning, demand generation, market research</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">OLP Contributions:</span>
+                                                        <span class="text-xs">Market analysis, competitive intelligence, customer insights, go-to-market planning</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Operations/Supply Chain</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key Responsibilities:</span>
+                                                        <span class="text-xs">Sourcing strategy, manufacturing planning, logistics coordination, quality management</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">OLP Contributions:</span>
+                                                        <span class="text-xs">Production forecasts, component lifecycle planning, supplier management strategy</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">OLP Process Framework</h6>
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium mb-1">Key Process Elements</h6>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0.5">Planning Cadence</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Annual strategic planning:</strong> Long-term product direction</li>
+                                                        <li><strong>Quarterly portfolio reviews:</strong> Progress and adjustment assessment</li>
+                                                        <li><strong>Monthly operational reviews:</strong> Execution tracking and coordination</li>
+                                                        <li><strong>Stage-gate milestones:</strong> Key decision points throughout lifecycle</li>
+                                                    </ul>
+                                                </div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0.5">Key OLP Documents</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Product strategy brief:</strong> High-level strategic direction</li>
+                                                        <li><strong>Lifecycle roadmap:</strong> Long-term evolution plan</li>
+                                                        <li><strong>Phase transition plans:</strong> Detailed stage handoff documentation</li>
+                                                        <li><strong>EOL playbooks:</strong> Guidelines for product retirement</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">OLP in Practice: The Stage-Gate Approach</h6>
+                            
+                            <div class="overflow-x-auto mb-4">
+                                <div class="min-w-[720px]">
+                                    <div class="grid grid-cols-5 gap-2">
+                                        <!-- Stage 1 -->
+                                        <div class="p-2 border border-green-200 dark:border-green-800 rounded-lg bg-green-50 dark:bg-green-900/20">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400">Concept Development</h6>
+                                                <div class="w-5 h-5 rounded-full bg-green-200 dark:bg-green-800 flex items-center justify-center text-green-800 dark:text-green-300 text-xs font-medium">1</div>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-2">
+                                                <li>Market opportunity analysis</li>
+                                                <li>Concept definition</li>
+                                                <li>Initial business case</li>
+                                                <li>Competitive assessment</li>
+                                            </ul>
+                                            <div class="bg-white dark:bg-gray-800 p-1 rounded text-xs">
+                                                <span class="font-medium">Gate 1:</span> Concept Approval
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Stage 2 -->
+                                        <div class="p-2 border border-green-200 dark:border-green-800 rounded-lg bg-green-50 dark:bg-green-900/20">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400">Planning & Definition</h6>
+                                                <div class="w-5 h-5 rounded-full bg-green-200 dark:bg-green-800 flex items-center justify-center text-green-800 dark:text-green-300 text-xs font-medium">2</div>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-2">
+                                                <li>Detailed requirements</li>
+                                                <li>Technical feasibility</li>
+                                                <li>Resource planning</li>
+                                                <li>Development roadmap</li>
+                                            </ul>
+                                            <div class="bg-white dark:bg-gray-800 p-1 rounded text-xs">
+                                                <span class="font-medium">Gate 2:</span> Development Approval
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Stage 3 -->
+                                        <div class="p-2 border border-green-200 dark:border-green-800 rounded-lg bg-green-50 dark:bg-green-900/20">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400">Development & Validation</h6>
+                                                <div class="w-5 h-5 rounded-full bg-green-200 dark:bg-green-800 flex items-center justify-center text-green-800 dark:text-green-300 text-xs font-medium">3</div>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-2">
+                                                <li>Product development</li>
+                                                <li>Quality validation</li>
+                                                <li>Launch preparation</li>
+                                                <li>Support readiness</li>
+                                            </ul>
+                                            <div class="bg-white dark:bg-gray-800 p-1 rounded text-xs">
+                                                <span class="font-medium">Gate 3:</span> Launch Approval
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Stage 4 -->
+                                        <div class="p-2 border border-green-200 dark:border-green-800 rounded-lg bg-green-50 dark:bg-green-900/20">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400">Market Introduction</h6>
+                                                <div class="w-5 h-5 rounded-full bg-green-200 dark:bg-green-800 flex items-center justify-center text-green-800 dark:text-green-300 text-xs font-medium">4</div>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-2">
+                                                <li>Go-to-market execution</li>
+                                                <li>Initial sales support</li>
+                                                <li>Early feedback collection</li>
+                                                <li>Manufacturing ramp-up</li>
+                                            </ul>
+                                            <div class="bg-white dark:bg-gray-800 p-1 rounded text-xs">
+                                                <span class="font-medium">Gate 4:</span> Scale Approval
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Stage 5 -->
+                                        <div class="p-2 border border-green-200 dark:border-green-800 rounded-lg bg-green-50 dark:bg-green-900/20">
+                                            <div class="flex items-center justify-between mb-1">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400">Lifecycle Management</h6>
+                                                <div class="w-5 h-5 rounded-full bg-green-200 dark:bg-green-800 flex items-center justify-center text-green-800 dark:text-green-300 text-xs font-medium">5</div>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-2">
+                                                <li>Performance monitoring</li>
+                                                <li>Continuous improvement</li>
+                                                <li>EOL planning</li>
+                                                <li>Transition management</li>
+                                            </ul>
+                                            <div class="bg-white dark:bg-gray-800 p-1 rounded text-xs">
+                                                <span class="font-medium">Gate 5:</span> EOL Approval
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Gate Review Principles</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Evidence-based decisions:</strong> Using data rather than opinions</li>
+                                        <li><strong>Cross-functional input:</strong> Incorporating diverse perspectives</li>
+                                        <li><strong>Objective criteria:</strong> Using predefined standards for assessment</li>
+                                        <li><strong>Go/No-Go clarity:</strong> Making decisive choices with clear direction</li>
+                                        <li><strong>Resource commitment:</strong> Aligning decisions with resource allocation</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Gate Review Participants</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Business sponsor:</strong> Senior leader with ultimate approval authority</li>
+                                        <li><strong>Core team leads:</strong> Representatives from key functional areas</li>
+                                        <li><strong>Subject matter experts:</strong> Specialists providing domain expertise</li>
+                                        <li><strong>Finance representative:</strong> Ensuring business model validation</li>
+                                        <li><strong>Customer advocate:</strong> Ensuring user needs remain central</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Decision Outcomes</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Go:</strong> Project advances to next stage with required resources</li>
+                                        <li><strong>Conditional go:</strong> Proceeds with specific actions required</li>
+                                        <li><strong>Recycle:</strong> Additional work needed before gate can be passed</li>
+                                        <li><strong>Hold:</strong> Project paused due to changing priorities or conditions</li>
+                                        <li><strong>No-go:</strong> Project terminated with controlled shutdown</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Implementation Success Factors</h6>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Organizational Enablers</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Executive sponsorship:</strong> Senior leadership commitment to the OLP process</li>
+                                            <li><strong>Clear accountability:</strong> Well-defined roles and responsibilities</li>
+                                            <li><strong>Aligned incentives:</strong> Performance metrics that support lifecycle management</li>
+                                            <li><strong>Resource commitment:</strong> Dedicated capacity for OLP activities</li>
+                                            <li><strong>Skills development:</strong> Training for team members in lifecycle management</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Process Enablers</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Scalable approach:</strong> Right-sized processes for different product types</li>
+                                            <li><strong>Integration with existing systems:</strong> Connection to other business processes</li>
+                                            <li><strong>Continuous improvement:</strong> Regular assessment and refinement of OLP approach</li>
+                                            <li><strong>Appropriate tools:</strong> Systems that support collaboration and documentation</li>
+                                            <li><strong>Knowledge management:</strong> Capturing and applying lessons learned</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Digital Product Lifecycle Management</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Modern Approaches to Lifecycle Management</h5>
+                        <p class="text-sm mb-3">Digital transformation is fundamentally changing how organizations approach product lifecycle management. New technologies, methodologies, and business models are creating opportunities to increase agility, enhance customer value, and drive innovation throughout the product lifecycle.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Digital PLM Technologies</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Technology Enablers</h6>
+                                        <p class="text-xs mb-2">Advanced technologies are transforming lifecycle management capabilities:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Digital Twins</h6>
+                                                <p class="text-xs mb-1">Virtual representations of products that enable simulation, monitoring, and optimization.</p>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Key Applications</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Performance simulation</li>
+                                                            <li>Predictive maintenance</li>
+                                                            <li>Remote monitoring</li>
+                                                            <li>Design validation</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Lifecycle Impact</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Faster design iteration</li>
+                                                            <li>Enhanced service offerings</li>
+                                                            <li>Extended product lifespans</li>
+                                                            <li>Data-driven evolution</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Internet of Things (IoT)</h6>
+                                                <p class="text-xs mb-1">Connected products that provide real-time data on usage, performance, and status.</p>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Key Applications</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Usage monitoring</li>
+                                                            <li>Remote diagnostics</li>
+                                                            <li>Feature optimization</li>
+                                                            <li>Environmental sensing</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Lifecycle Impact</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Continuous improvement</li>
+                                                            <li>Usage-based business models</li>
+                                                            <li>Proactive maintenance</li>
+                                                            <li>Data-driven feature planning</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Artificial Intelligence & Machine Learning</h6>
+                                                <p class="text-xs mb-1">Advanced analytics that uncover patterns, predict outcomes, and enable autonomous decisions.</p>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Key Applications</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Demand forecasting</li>
+                                                            <li>Anomaly detection</li>
+                                                            <li>Customer segmentation</li>
+                                                            <li>Design optimization</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Lifecycle Impact</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Predictive lifecycle planning</li>
+                                                            <li>Personalized customer experiences</li>
+                                                            <li>Automated decision optimization</li>
+                                                            <li>Early problem identification</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Agile Product Lifecycle Approaches</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Adaptive Lifecycle Management</h6>
+                                        <p class="text-xs mb-2">Modern approaches are blending agile principles with traditional lifecycle management:</p>
+                                        
+                                        <div class="flex flex-col gap-3">
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Continuous Delivery Model</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key Principles:</span>
+                                                        <span class="text-xs">Frequent releases, automated testing, continuous integration, feature toggles</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Lifecycle Impact:</span>
+                                                        <span class="text-xs">Blurs traditional lifecycle stages; enables feature-level rather than product-level management</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Minimum Viable Product (MVP) Approach</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key Principles:</span>
+                                                        <span class="text-xs">Early customer validation, incremental feature delivery, hypothesis-driven development</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Lifecycle Impact:</span>
+                                                        <span class="text-xs">Accelerates introduction stage; enables data-driven evolution based on market feedback</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Platform-Based Development</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key Principles:</span>
+                                                        <span class="text-xs">Modular architecture, reusable components, ecosystem partnerships, API-driven integration</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Lifecycle Impact:</span>
+                                                        <span class="text-xs">Creates parallel lifecycles for platform vs. applications; enables faster derivative products</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Traditional vs. Agile Lifecycle Management</h6>
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                            <div class="overflow-x-auto">
+                                                <table class="w-full text-xs border-collapse">
+                                                    <thead>
+                                                        <tr class="bg-white dark:bg-gray-800">
+                                                            <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Aspect</th>
+                                                            <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Traditional Approach</th>
+                                                            <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Agile Approach</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Planning Horizon</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1">Long-term, comprehensive</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1">Near-term with directional vision</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Requirements</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1">Detailed upfront specification</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1">Progressive elaboration</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Development Approach</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1">Sequential phases</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1">Iterative cycles</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Customer Involvement</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1">Primarily at beginning and end</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1">Continuous throughout lifecycle</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Release Frequency</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1">Major releases with long intervals</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1">Frequent incremental releases</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Stage Transitions</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1">Discrete, formal handoffs</td>
+                                                            <td class="border border-gray-200 dark:border-gray-700 p-1">Blended, continuous evolution</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Evolving Business Models</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Everything-as-a-Service (XaaS)</h6>
+                                    <p class="text-xs mb-2">Moving from product sales to subscription-based access and outcomes.</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Recurring revenue models:</strong> Shifting from one-time to ongoing transactions</li>
+                                        <li><strong>Outcome-based contracts:</strong> Charging for value delivered rather than product features</li>
+                                        <li><strong>Customer success focus:</strong> Emphasizing adoption, usage, and retention</li>
+                                        <li><strong>Continuous relationship:</strong> Maintaining ongoing engagement throughout lifecycle</li>
+                                        <li><strong>Value-based packaging:</strong> Creating tiered offerings for different customer segments</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Digital-Physical Integration</h6>
+                                    <p class="text-xs mb-2">Blending hardware, software, and services into integrated experiences.</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Smart, connected products:</strong> Embedding digital capabilities in physical offerings</li>
+                                        <li><strong>Software-defined functionality:</strong> Enabling feature upgrades without hardware changes</li>
+                                        <li><strong>Ecosystem integration:</strong> Creating value through connections to other products/services</li>
+                                        <li><strong>Enhanced serviceability:</strong> Using remote diagnostics and predictive maintenance</li>
+                                        <li><strong>Data-driven insights:</strong> Generating value from product usage information</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Circular Economy Models</h6>
+                                    <p class="text-xs mb-2">Designing products for reuse, refurbishment, and recycling.</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Design for circularity:</strong> Creating products with end-of-life recovery in mind</li>
+                                        <li><strong>Product-as-a-service:</strong> Retaining ownership to enable material reclamation</li>
+                                        <li><strong>Remanufacturing:</strong> Restoring used products to like-new condition</li>
+                                        <li><strong>Modular design:</strong> Enabling component replacement without full product replacement</li>
+                                        <li><strong>Closed-loop systems:</strong> Recovering materials for use in new product manufacturing</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Lifecycle Strategy Implications</h6>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Organizational Changes</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Cross-functional integration:</strong> Breaking down silos between product, software, and service teams</li>
+                                            <li><strong>New capabilities:</strong> Building data science, user experience, and ecosystem management skills</li>
+                                            <li><strong>Agile mindset:</strong> Embracing experimentation, learning, and adaptation</li>
+                                            <li><strong>Customer centricity:</strong> Reorganizing around customer journeys rather than product lines</li>
+                                            <li><strong>Long-term relationships:</strong> Building continuous engagement throughout the product lifecycle</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Measurement Evolution</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Customer success metrics:</strong> Tracking adoption, usage, and realized value</li>
+                                            <li><strong>Lifetime value focus:</strong> Measuring long-term customer relationship economics</li>
+                                            <li><strong>Product telemetry:</strong> Using real-time performance and usage data</li>
+                                            <li><strong>Sustainability indicators:</strong> Assessing environmental impact throughout lifecycle</li>
+                                            <li><strong>Ecosystem metrics:</strong> Measuring partner engagement and network effects</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Strategic Application: Product Lifecycle Decision-Making</h5>
+                        <p class="text-sm mb-3">For strategists, applying lifecycle management principles to critical business decisions ensures alignment between product strategies and organizational objectives while maximizing value creation throughout the product journey.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Portfolio Strategy Decisions</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Lifecycle considerations inform strategic portfolio management:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li><strong>Lifecycle-based investment allocation:</strong> Balancing resources across products in different lifecycle stages</li>
+                                        <li><strong>Portfolio gap analysis:</strong> Identifying where new products are needed to replace maturing offerings</li>
+                                        <li><strong>Adjacency planning:</strong> Determining logical extensions to current product lines</li>
+                                        <li><strong>Competitive positioning:</strong> Mapping product lifecycles against competitor offerings</li>
+                                        <li><strong>Technology roadmapping:</strong> Aligning technology investments with product evolution needs</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Key Strategic Questions:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>How balanced is our portfolio across different lifecycle stages?</li>
+                                        <li>Where are the gaps in our future product pipeline?</li>
+                                        <li>Which mature products need replacement vs. revitalization?</li>
+                                        <li>How do our product lifecycles align with market and technology trends?</li>
+                                        <li>What is the optimal pace of new product introduction?</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Resource Allocation Decisions</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Lifecycle stage significantly impacts optimal resource investments:</p>
+                                    <div class="overflow-x-auto mb-3">
+                                        <table class="w-full text-xs border-collapse">
+                                            <thead>
+                                                <tr class="bg-white dark:bg-gray-800">
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Resource Type</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Early Lifecycle</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Mid Lifecycle</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Late Lifecycle</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">R&D Investment</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">High - feature development</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Medium - enhancements</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Low - maintenance only</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Marketing</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">High - awareness building</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">High - competitive defense</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Low - targeted retention</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Manufacturing</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Medium - scaling focus</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">High - efficiency focus</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Low - consolidation</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Service & Support</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Medium - capability building</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">Medium - optimization</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">High - extended support</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <p class="text-xs font-medium mb-1">Resource Allocation Principles:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Match investment levels to revenue and growth potential at each stage</li>
+                                        <li>Shift resources from declining to growing products at appropriate pace</li>
+                                        <li>Balance short-term optimization with long-term capability building</li>
+                                        <li>Consider strategic importance beyond immediate financial contribution</li>
+                                        <li>Maintain flexibility to adjust as market conditions change</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Organizational Strategy Applications</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Business Model Evolution</h6>
+                                    <p class="text-xs mb-2">Using lifecycle insights to guide business model innovation:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Pricing model adaptation:</strong> Adjusting approaches as products mature and markets evolve</li>
+                                        <li><strong>Channel strategy shifts:</strong> Evolving go-to-market approaches for different lifecycle stages</li>
+                                        <li><strong>Service integration:</strong> Expanding value propositions beyond core product features</li>
+                                        <li><strong>Ecosystem development:</strong> Building complementary partnerships to extend product value</li>
+                                        <li><strong>Customer engagement models:</strong> Adapting relationship approaches as markets mature</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Capability Planning</h6>
+                                    <p class="text-xs mb-2">Aligning organizational capabilities with lifecycle requirements:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Skills development:</strong> Building expertise needed for different lifecycle stages</li>
+                                        <li><strong>Technology investments:</strong> Acquiring systems to support lifecycle management</li>
+                                        <li><strong>Process maturity:</strong> Evolving operational approaches as products mature</li>
+                                        <li><strong>Organizational structure:</strong> Adapting team configurations for different lifecycle needs</li>
+                                        <li><strong>Cultural attributes:</strong> Fostering mindsets appropriate to product lifecycle phases</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Strategic Timing</h6>
+                                    <p class="text-xs mb-2">Using lifecycle understanding to optimize initiative timing:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Market entry decisions:</strong> Determining optimal timing for new product introduction</li>
+                                        <li><strong>Platform transitions:</strong> Planning generational shifts in underlying technologies</li>
+                                        <li><strong>Geographic expansion:</strong> Sequencing market entry based on product lifecycle stage</li>
+                                        <li><strong>Partnership timing:</strong> Aligning ecosystem relationships with lifecycle needs</li>
+                                        <li><strong>Exit strategies:</strong> Determining when to sunset products or divest businesses</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Lifecycle-Informed Decision Framework</h6>
+                            <p class="text-xs mb-2">A structured approach to incorporating lifecycle considerations into strategic decisions:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Assessment Dimensions</h6>
+                                    <ol class="pl-4 text-xs mb-0">
+                                        <li><strong>Lifecycle positioning:</strong> Determine current and future stages for affected products</li>
+                                        <li><strong>Market dynamics:</strong> Assess how market conditions influence lifecycle progression</li>
+                                        <li><strong>Competitive landscape:</strong> Analyze competitor lifecycle positions and strategies</li>
+                                        <li><strong>Technology evolution:</strong> Evaluate technological trends affecting product lifecycles</li>
+                                        <li><strong>Resource requirements:</strong> Map resource needs across different lifecycle stages</li>
+                                        <li><strong>Risk profile:</strong> Identify risks specific to current and future lifecycle stages</li>
+                                        <li><strong>Financial implications:</strong> Project economics across the remaining lifecycle</li>
+                                    </ol>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Decision Process</h6>
+                                    <ol class="pl-4 text-xs mb-0">
+                                        <li>Conduct lifecycle assessment for relevant products/services</li>
+                                        <li>Develop scenarios for different lifecycle trajectories</li>
+                                        <li>Evaluate strategic options with lifecycle lens</li>
+                                        <li>Assess portfolio implications of decision alternatives</li>
+                                        <li>Model financial outcomes across lifecycle phases</li>
+                                        <li>Identify key assumptions and lifecycle inflection points</li>
+                                        <li>Develop monitoring approach for lifecycle indicators</li>
+                                        <li>Create adaptive implementation plan with stage-appropriate tactics</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <p class="text-xs italic mt-3 mb-0">Applying this structured approach ensures strategic decisions are informed by a lifecycle perspective, avoiding common pitfalls of point-in-time decision-making that fails to consider long-term product evolution.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2004/09/the-quest-for-resilience" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Managing Your Product Lifecycle for Success</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Strategic approaches for product lifecycle management</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/business-functions/operations/our-insights/manufacturing-resilience-through-plm-transformation" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-file-list-3-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Digital PLM Transformation</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • Modern approaches to product lifecycle management</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://sloanreview.mit.edu/article/the-end-of-the-product-line" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-loop-right-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Future of Product Development</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">MIT Sloan • Emerging trends in product lifecycles and management</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Product Lifecycle Strategy Analysis</h5>
+                        <p class="mb-3">In this exercise, you'll apply product lifecycle concepts to analyze a strategic business scenario and develop recommendations for managing product transitions.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Scenario: Technology Product Portfolio Transition</h6>
+                            <p class="text-xs mb-2">You are part of the strategy team for a technology company with the following product portfolio situation:</p>
+                            <ul class="pl-4 text-xs mb-2">
+                                <li>Product A: A mature hardware product line (7 years in market) with stable but gradually declining sales. It maintains good margins and has a loyal customer base. The underlying technology platform is becoming outdated.</li>
+                                <li>Product B: A relatively new software-as-a-service offering (2 years in market) that complements Product A. It's experiencing strong growth but is not yet profitable due to ongoing development and customer acquisition investments.</li>
+                                <li>Product C: A recently conceptualized next-generation platform that would eventually replace Product A while providing enhanced capabilities for Product B. Development would require significant investment over 18-24 months before launch.</li>
+                            </ul>
+                            <p class="text-xs mb-2">Market dynamics include increasing competition, rapid technology evolution, and shifting customer expectations toward integrated solutions with more flexible consumption models.</p>
+                            
+                            <p class="text-xs font-medium mb-1">Your task:</p>
+                            <p class="text-xs mb-0">Develop a recommended lifecycle management strategy for this portfolio, addressing how to manage each product through its appropriate lifecycle stages while maximizing overall business value.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Lifecycle Assessment</label>
+                                <p class="text-xs mb-1">Analyze the current lifecycle stage of each product and identify key strategic considerations.</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Provide a clear assessment of each product's current lifecycle stage, key indicators of that stage, and the primary strategic considerations that result from this positioning."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Portfolio Strategy</label>
+                                <p class="text-xs mb-1">Recommend a holistic approach to managing this product portfolio across different lifecycle stages.</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline your integrated portfolio strategy, including investment priorities, resource allocation, and timeline considerations. Address how you would balance resources across products in different lifecycle stages."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Transition Planning</label>
+                                <p class="text-xs mb-1">Develop specific transition strategies for each product in the portfolio.</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="For each product, outline specific lifecycle management strategies. For Product A, address late-stage optimization and potential EOL planning. For Product B, detail growth stage strategies. For Product C, describe introduction stage approaches and connection to existing products."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Implementation Roadmap</label>
+                                <p class="text-xs mb-1">Create a high-level implementation plan with key milestones and dependencies.</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline a timeline with key activities, decision points, and interdependencies across the product portfolio. Include customer migration considerations, market messaging approach, and organizational alignment needs."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-forecasting">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Forecasting & Planning</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-transitions">
+                        <span>Next: Transitions</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-lifecycle');
+        });
+    </script>
+</body>
+</html>

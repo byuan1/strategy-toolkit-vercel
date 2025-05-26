@@ -1,0 +1,1947 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+      <div class="mb-6">
+        <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <i class="ri-arrow-left-line"></i>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    
+            <!-- Porter's Five Forces Topic -->
+            <section id="topic-porters-five-forces" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-focus-3-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Porter's Five Forces</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Strategic Frameworks</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Master the core components of Porter's Five Forces framework and its strategic applications</li>
+                            <li>Develop skills to systematically analyze competitive intensity within technology markets</li>
+                            <li>Apply the Five Forces framework to Dell's specific business units and market contexts</li>
+                            <li>Generate actionable strategic recommendations based on Five Forces analysis</li>
+                            <li>Understand how to integrate Five Forces analysis with other strategic frameworks</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Porter's Five Forces Framework: Foundation and Purpose</h4>
+                    <p>Developed by Harvard Business School professor Michael Porter in 1979, the Five Forces framework provides a structured approach for analyzing the competitive intensity and attractiveness of an industry. For strategists and consultants, this framework serves as a foundational tool for understanding market dynamics, competitive positioning, and profit potential. By systematically examining the five key forces that shape industry competition, consultants can develop more effective strategic recommendations for navigating complex competitive landscapes.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Core Components of the Five Forces Framework</h5>
+                        <p class="mb-3">Porter's Five Forces framework examines the following key forces that determine competitive intensity and industry attractiveness:</p>
+                        
+                        <div class="relative h-[420px] mb-6">
+                            <!-- Central Industry Competition -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-48 h-48 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center">
+                                    <div class="text-center p-4">
+                                        <div class="font-medium text-primary mb-1">Competitive Rivalry</div>
+                                        <div class="text-xs">Competition among existing firms in the industry</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Threat of New Entrants -->
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2">
+                                <div class="w-40 bg-blue-100 dark:bg-blue-900/30 rounded-lg p-3 text-center">
+                                    <div class="font-medium text-blue-600 dark:text-blue-400 mb-1">Threat of New Entrants</div>
+                                    <div class="text-xs">How easily can new competitors enter the market?</div>
+                                </div>
+                                <div class="h-12 w-1 bg-blue-300 dark:bg-blue-700 mx-auto"></div>
+                            </div>
+                            
+                            <!-- Bargaining Power of Suppliers -->
+                            <div class="absolute left-0 top-1/2 transform -translate-y-1/2">
+                                <div class="w-40 bg-green-100 dark:bg-green-900/30 rounded-lg p-3 text-center">
+                                    <div class="font-medium text-green-600 dark:text-green-400 mb-1">Supplier Power</div>
+                                    <div class="text-xs">How much leverage do suppliers have?</div>
+                                </div>
+                                <div class="h-1 w-12 bg-green-300 dark:bg-green-700 absolute top-1/2 left-full"></div>
+                            </div>
+                            
+                            <!-- Bargaining Power of Buyers -->
+                            <div class="absolute right-0 top-1/2 transform -translate-y-1/2">
+                                <div class="w-40 bg-amber-100 dark:bg-amber-900/30 rounded-lg p-3 text-center">
+                                    <div class="font-medium text-amber-600 dark:text-amber-400 mb-1">Buyer Power</div>
+                                    <div class="text-xs">How much leverage do customers have?</div>
+                                </div>
+                                <div class="h-1 w-12 bg-amber-300 dark:bg-amber-700 absolute top-1/2 right-full"></div>
+                            </div>
+                            
+                            <!-- Threat of Substitutes -->
+                            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+                                <div class="h-12 w-1 bg-purple-300 dark:bg-purple-700 mx-auto"></div>
+                                <div class="w-40 bg-purple-100 dark:bg-purple-900/30 rounded-lg p-3 text-center">
+                                    <div class="font-medium text-purple-600 dark:text-purple-400 mb-1">Threat of Substitutes</div>
+                                    <div class="text-xs">How easily can products or services be replaced?</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm col-span-3 md:col-span-1">
+                                <h6 class="font-medium mb-2 text-primary">1. Competitive Rivalry</h6>
+                                <p class="text-sm mb-2">The intensity of competition among existing firms in the industry.</p>
+                                <div class="text-xs">
+                                    <p class="font-medium mb-1">Key Assessment Factors:</p>
+                                    <ul class="pl-4 mb-0">
+                                        <li>Number and size balance of competitors</li>
+                                        <li>Industry growth rate and market maturity</li>
+                                        <li>Product differentiation and switching costs</li>
+                                        <li>Fixed costs and capacity constraints</li>
+                                        <li>Exit barriers and strategic stakes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm col-span-3 md:col-span-1">
+                                <h6 class="font-medium mb-2 text-blue-600 dark:text-blue-400">2. Threat of New Entrants</h6>
+                                <p class="text-sm mb-2">The ease with which new competitors can enter the market.</p>
+                                <div class="text-xs">
+                                    <p class="font-medium mb-1">Key Assessment Factors:</p>
+                                    <ul class="pl-4 mb-0">
+                                        <li>Economies of scale and capital requirements</li>
+                                        <li>Product differentiation and brand identity</li>
+                                        <li>Access to distribution channels</li>
+                                        <li>Proprietary technology and learning curves</li>
+                                        <li>Government policies and regulatory barriers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm col-span-3 md:col-span-1">
+                                <h6 class="font-medium mb-2 text-green-600 dark:text-green-400">3. Bargaining Power of Suppliers</h6>
+                                <p class="text-sm mb-2">The leverage suppliers have in negotiating terms and conditions.</p>
+                                <div class="text-xs">
+                                    <p class="font-medium mb-1">Key Assessment Factors:</p>
+                                    <ul class="pl-4 mb-0">
+                                        <li>Supplier concentration relative to industry</li>
+                                        <li>Availability of substitute inputs</li>
+                                        <li>Importance of volume to supplier</li>
+                                        <li>Switching costs for firms in the industry</li>
+                                        <li>Threat of forward integration by suppliers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm col-span-3 md:col-span-1">
+                                <h6 class="font-medium mb-2 text-amber-600 dark:text-amber-400">4. Bargaining Power of Buyers</h6>
+                                <p class="text-sm mb-2">The leverage customers have in negotiating terms and driving down prices.</p>
+                                <div class="text-xs">
+                                    <p class="font-medium mb-1">Key Assessment Factors:</p>
+                                    <ul class="pl-4 mb-0">
+                                        <li>Buyer concentration relative to industry</li>
+                                        <li>Purchase volume as proportion of seller's business</li>
+                                        <li>Product standardization and differentiation</li>
+                                        <li>Buyer switching costs</li>
+                                        <li>Buyer's price sensitivity and profitability</li>
+                                        <li>Threat of backward integration by buyers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm col-span-3 md:col-span-1">
+                                <h6 class="font-medium mb-2 text-purple-600 dark:text-purple-400">5. Threat of Substitutes</h6>
+                                <p class="text-sm mb-2">The availability of alternative products or services that can meet similar needs.</p>
+                                <div class="text-xs">
+                                    <p class="font-medium mb-1">Key Assessment Factors:</p>
+                                    <ul class="pl-4 mb-0">
+                                        <li>Price-performance relationship of substitutes</li>
+                                        <li>Buyer's switching costs to substitutes</li>
+                                        <li>Buyer's propensity to substitute</li>
+                                        <li>Perceived level of product differentiation</li>
+                                        <li>Number and availability of substitutes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm col-span-3 md:col-span-1">
+                                <h6 class="font-medium mb-2 text-gray-600 dark:text-gray-400">Strategic Implications</h6>
+                                <p class="text-sm mb-2">How the Five Forces analysis translates to strategic decision-making.</p>
+                                <div class="text-xs">
+                                    <p class="font-medium mb-1">Key Applications:</p>
+                                    <ul class="pl-4 mb-0">
+                                        <li>Market entry and exit decisions</li>
+                                        <li>Competitive positioning strategies</li>
+                                        <li>Investment prioritization</li>
+                                        <li>Identification of structural industry changes</li>
+                                        <li>Anticipation of competitor moves</li>
+                                        <li>Product development and differentiation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Using the Five Forces Framework Effectively</h6>
+                            <div class="bg-white dark:bg-gray-900 p-4 rounded-lg">
+                                <p class="text-sm mb-3">To derive maximum value from the Five Forces framework, consider these key principles and best practices:</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-sm font-medium mb-2 text-primary">Analysis Best Practices</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Define industry boundaries carefully:</strong> Be clear about the specific industry or segment you're analyzing, as the framework's insights depend on proper industry definition</li>
+                                            <li class="mb-1"><strong>Consider both current state and trends:</strong> Analyze not just the present competitive landscape but also how the forces are evolving over time</li>
+                                            <li class="mb-1"><strong>Prioritize the most significant forces:</strong> Identify which of the five forces have the greatest impact on industry profitability and competitive dynamics</li>
+                                            <li class="mb-1"><strong>Use quantitative data:</strong> Support your analysis with market data, competitive metrics, and financial indicators where possible</li>
+                                            <li><strong>Account for industry evolution:</strong> Recognize that industry structures change over time, particularly in technology markets</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-sm font-medium mb-2 text-primary">Common Pitfalls to Avoid</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li class="mb-1"><strong>Overly broad industry definition:</strong> Defining the industry too broadly can lead to superficial and less actionable insights</li>
+                                            <li class="mb-1"><strong>Static analysis:</strong> Failing to consider how industry forces are changing and evolving over time</li>
+                                            <li class="mb-1"><strong>Equal weighting of all forces:</strong> Not recognizing that some forces have more significant impact than others in specific industries</li>
+                                            <li class="mb-1"><strong>Ignoring complementary products:</strong> Overlooking the role of complementors that enhance the value of core products</li>
+                                            <li><strong>Overlooking digital disruption:</strong> Underestimating how digital technologies can rapidly transform traditional industry structures</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <h6 class="text-sm font-medium mb-2">Industry Evolution and the Five Forces</h6>
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                        <p class="text-xs mb-2">The Five Forces framework is particularly valuable for understanding how competitive dynamics shift as industries evolve through their lifecycle:</p>
+                                        
+                                        <div class="grid grid-cols-1 md:grid-cols-4 gap-2 text-xs">
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                                <h6 class="font-medium mb-1">Emerging Industries</h6>
+                                                <ul class="pl-3 mb-0">
+                                                    <li>High barriers to entry due to R&amp;D requirements</li>
+                                                    <li>Low competitive rivalry due to market growth</li>
+                                                    <li>Suppliers may have power due to specialized inputs</li>
+                                                    <li>Weak bargaining power of buyers due to limited alternatives</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                                <h6 class="font-medium mb-1">Growth Industries</h6>
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Declining barriers as processes standardize</li>
+                                                    <li>Increasing competitive rivalry as players enter</li>
+                                                    <li>Gradually shifting power to buyers as options increase</li>
+                                                    <li>Decreasing supplier power as scale increases</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                                <h6 class="font-medium mb-1">Mature Industries</h6>
+                                                <ul class="pl-3 mb-0">
+                                                    <li>High barriers due to economies of scale</li>
+                                                    <li>Intense rivalry with focus on market share</li>
+                                                    <li>Strong buyer power, particularly large customers</li>
+                                                    <li>Commoditization increases threat of substitutes</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg">
+                                                <h6 class="font-medium mb-1">Declining Industries</h6>
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Very high rivalry as market shrinks</li>
+                                                    <li>Exit barriers become critical factor</li>
+                                                    <li>Extreme buyer power due to overcapacity</li>
+                                                    <li>Specialized suppliers may regain some power</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Applying Porter's Five Forces to Technology Markets</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-3">Technology Industry Dynamics and Five Forces Analysis</h5>
+                        <p class="text-sm mb-4">Technology markets present unique characteristics that influence how the Five Forces framework should be applied and interpreted. Understanding these distinctive dynamics is essential for deriving actionable insights from Five Forces analysis in the technology sector.</p>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
+                            <h6 class="text-sm font-medium mb-3">Key Technology Industry Characteristics</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Network Effects</h6>
+                                    <p class="text-xs mb-2">The phenomenon where a product or service becomes more valuable as more people use it.</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Five Forces Impact:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li>Creates high barriers to entry once established</li>
+                                            <li>Reduces competitive rivalry by creating "winner-take-most" markets</li>
+                                            <li>Can strengthen buyer lock-in, reducing buyer power</li>
+                                            <li>Increases switching costs, further reducing buyer power</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Platform Business Models</h6>
+                                    <p class="text-xs mb-2">Models that connect multiple user groups and facilitate interactions between them.</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Five Forces Impact:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li>Creates complex multi-sided market dynamics</li>
+                                            <li>Platform owners often wield significant power over partners</li>
+                                            <li>Complementors (e.g., app developers) become crucial</li>
+                                            <li>Competition shifts from products to ecosystems</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Rapid Innovation Cycles</h6>
+                                    <p class="text-xs mb-2">Accelerated product development and shortened product lifecycles.</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Five Forces Impact:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li>Increases threat of new entrants with disruptive technologies</li>
+                                            <li>Creates continuous threat of technological substitution</li>
+                                            <li>Heightens competitive rivalry through feature competition</li>
+                                            <li>Can reduce buyer switching costs through standards evolution</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Economies of Scale &amp; Scope</h6>
+                                    <p class="text-xs mb-2">Cost advantages from large-scale operations and diverse product portfolios.</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Five Forces Impact:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li>Creates high barriers to entry in hardware manufacturing</li>
+                                            <li>Enables bundling strategies that reduce buyer power</li>
+                                            <li>Allows large players to manage supplier power more effectively</li>
+                                            <li>Creates cost leadership advantages in competitive rivalry</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Industry Convergence</h6>
+                                    <p class="text-xs mb-2">Blurring of traditional industry boundaries and integration of previously separate markets.</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Five Forces Impact:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li>Creates non-traditional competitors from adjacent industries</li>
+                                            <li>Increases threat of substitutes as technologies merge</li>
+                                            <li>Reshapes supplier relationships as value chains evolve</li>
+                                            <li>Complicates industry definition for Five Forces analysis</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Recurring Revenue Models</h6>
+                                    <p class="text-xs mb-2">Shift from one-time product sales to subscription and as-a-service business models.</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Five Forces Impact:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li>Changes competitive dynamics from acquisition to retention</li>
+                                            <li>Increases switching costs, reducing buyer power</li>
+                                            <li>Creates more predictable revenue, potentially reducing rivalry</li>
+                                            <li>Lowers barriers to entry through reduced initial capital requirements</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                            <h6 class="text-sm font-medium mb-3">Five Forces Analysis Across Technology Segments</h6>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full text-xs">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Competitive Force</th>
+                                            <th class="text-center p-2 border border-gray-200 dark:border-gray-700">Hardware Manufacturing</th>
+                                            <th class="text-center p-2 border border-gray-200 dark:border-gray-700">Enterprise Software</th>
+                                            <th class="text-center p-2 border border-gray-200 dark:border-gray-700">Cloud Computing</th>
+                                            <th class="text-center p-2 border border-gray-200 dark:border-gray-700">Digital Services</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Competitive Rivalry</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-red-600 dark:text-red-400">High</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Commoditization, price pressure, limited differentiation</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-amber-600 dark:text-amber-400">Moderate</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Differentiated products, high switching costs</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-amber-600 dark:text-amber-400">Moderate</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Oligopoly with few dominant hyperscalers</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-red-600 dark:text-red-400">High</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Low barriers, intense competition for users</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Threat of New Entrants</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-green-600 dark:text-green-400">Low</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">High capital costs, scale economies, distribution barriers</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-amber-600 dark:text-amber-400">Moderate</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">High switching costs, but lower upfront development costs</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-red-600 dark:text-red-400">High</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Massive capital requirements, economies of scale</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-green-600 dark:text-green-400">Low</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Low development costs, minimal infrastructure needs</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Bargaining Power of Suppliers</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-red-600 dark:text-red-400">High</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Concentrated component suppliers (e.g., Intel, AMD)</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-green-600 dark:text-green-400">Low</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Developer talent the main supplier, diverse pool</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-amber-600 dark:text-amber-400">Moderate</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Hardware and energy suppliers have some leverage</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-amber-600 dark:text-amber-400">Moderate</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Cloud platform and advertising platform dependencies</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Bargaining Power of Buyers</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-red-600 dark:text-red-400">High</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Large enterprise buyers, low switching costs for standard hardware</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-amber-600 dark:text-amber-400">Moderate</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">High initial power, reduced after implementation</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-amber-600 dark:text-amber-400">Moderate</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Initial freedom to choose but increasing lock-in</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-red-600 dark:text-red-400">High</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Low switching costs, price sensitivity (especially for free services)</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Threat of Substitutes</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-red-600 dark:text-red-400">High</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Cloud services replacing on-premises hardware</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-red-600 dark:text-red-400">High</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">SaaS replacing traditional software, open source alternatives</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-green-600 dark:text-green-400">Low</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Few viable alternatives to cloud for modern workloads</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="font-medium text-red-600 dark:text-red-400">High</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Constant innovation and alternative service models</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Overall Industry Attractiveness</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center font-medium">
+                                                <span class="text-amber-600 dark:text-amber-400">Moderate</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Challenging but profitable with scale and differentiation</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center font-medium">
+                                                <span class="text-amber-600 dark:text-amber-400">Moderate-High</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Good margins but transitioning to SaaS models</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center font-medium">
+                                                <span class="text-green-600 dark:text-green-400">High</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Growing market with oligopoly structure</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center font-medium">
+                                                <span class="text-amber-600 dark:text-amber-400">Moderate</span>
+                                                <div class="mt-1">
+                                                    <span class="text-gray-600 dark:text-gray-400">Winner-take-most dynamics with network effects</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-4 bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Strategic Implications for Technology Companies:</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Hardware Manufacturing:</strong> The combination of high supplier power, high buyer power, and high threat of substitutes creates significant pressure on hardware manufacturers to differentiate through innovation, services, and ecosystem integration</li>
+                                    <li class="mb-1"><strong>Enterprise Software:</strong> While facing substitution threats from SaaS, traditional software companies benefit from moderate entry barriers and high switching costs, supporting a transition to recurring revenue models</li>
+                                    <li class="mb-1"><strong>Cloud Computing:</strong> Extremely high barriers to entry and limited substitution threats create favorable conditions for established players, explaining the oligopolistic market structure and strong profitability</li>
+                                    <li class="mb-1"><strong>Digital Services:</strong> The low barriers to entry combined with high buyer power create challenging conditions, driving the importance of network effects and ecosystem strategies for sustainable competitive advantage</li>
+                                    <li><strong>Cross-Segment Strategies:</strong> Companies that operate across multiple segments (like Dell) can leverage positions in more attractive segments to strengthen competitive position in more challenging ones through bundling, ecosystem integration, and cross-selling</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Dell-Specific Five Forces Analysis</h4>
+                    
+                    <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-emerald-700 dark:text-emerald-400 font-medium mb-3">Five Forces Analysis: Dell Client Solutions Group</h5>
+                        <p class="text-sm mb-4">Dell's Client Solutions Group (CSG) encompasses the company's commercial and consumer PC business. A Five Forces analysis provides insights into the competitive dynamics and strategic challenges in this core business segment.</p>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
+                            <h6 class="text-sm font-medium mb-3">Force 1: Competitive Rivalry</h6>
+                            
+                            <div class="flex flex-col md:flex-row gap-4 mb-4">
+                                <div class="flex-1">
+                                    <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Assessment: <span class="text-red-600 dark:text-red-400">HIGH</span></h6>
+                                        <p class="text-xs mb-2">The PC industry features intense competitive rivalry characterized by multiple large players competing for market share in a mature market.</p>
+                                        <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                            <p class="font-medium mb-1">Key Factors:</p>
+                                            <ul class="pl-3 mb-0">
+                                                <li class="mb-1">Multiple large competitors with similar capabilities (HP, Lenovo, Apple)</li>
+                                                <li class="mb-1">Limited product differentiation, especially in mainstream segments</li>
+                                                <li class="mb-1">Relatively slow overall market growth</li>
+                                                <li class="mb-1">Periodic price wars in consumer segments</li>
+                                                <li>High fixed costs driving volume focus</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex-1">
+                                    <div class="bg-white dark:bg-gray-900 p-3 rounded-lg h-full">
+                                        <h6 class="text-xs font-medium mb-2">PC Market Share Analysis (FY2023)</h6>
+                                        <div class="h-[180px] relative">
+                                            <!-- Donut Chart -->
+                                            <svg viewBox="0 0 100 100" class="absolute h-full w-full">
+                                                <!-- Lenovo Slice -->
+                                                <path d="M 50 50 L 50 5 A 45 45 0 0 1 88 27 Z" fill="#3B82F6" class="dark:fill-blue-600"></path>
+                                                
+                                                <!-- HP Slice -->
+                                                <path d="M 50 50 L 88 27 A 45 45 0 0 1 88 73 Z" fill="#10B981" class="dark:fill-green-600"></path>
+                                                
+                                                <!-- Dell Slice -->
+                                                <path d="M 50 50 L 88 73 A 45 45 0 0 1 35 93 Z" fill="#6366F1" class="dark:fill-indigo-500"></path>
+                                                
+                                                <!-- Apple Slice -->
+                                                <path d="M 50 50 L 35 93 A 45 45 0 0 1 5 65 Z" fill="#F59E0B" class="dark:fill-amber-500"></path>
+                                                
+                                                <!-- Others Slice -->
+                                                <path d="M 50 50 L 5 65 A 45 45 0 0 1 50 5 Z" fill="#9CA3AF" class="dark:fill-gray-500"></path>
+                                                
+                                                <!-- Inner circle (hole) -->
+                                                <circle cx="50" cy="50" r="25" fill="white" class="dark:fill-gray-900"></circle>
+                                            </svg>
+                                            
+                                            <!-- Legend -->
+                                            <div class="absolute top-2 right-0 text-xs">
+                                                <div class="flex items-center mb-1">
+                                                    <div class="w-3 h-3 bg-blue-500 dark:bg-blue-600 mr-1 rounded-sm"></div>
+                                                    <span>Lenovo (23.1%)</span>
+                                                </div>
+                                                <div class="flex items-center mb-1">
+                                                    <div class="w-3 h-3 bg-green-500 dark:bg-green-600 mr-1 rounded-sm"></div>
+                                                    <span>HP (19.8%)</span>
+                                                </div>
+                                                <div class="flex items-center mb-1">
+                                                    <div class="w-3 h-3 bg-indigo-500 dark:bg-indigo-500 mr-1 rounded-sm"></div>
+                                                    <span>Dell (17.2%)</span>
+                                                </div>
+                                                <div class="flex items-center mb-1">
+                                                    <div class="w-3 h-3 bg-amber-500 dark:bg-amber-500 mr-1 rounded-sm"></div>
+                                                    <span>Apple (9.7%)</span>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="w-3 h-3 bg-gray-400 dark:bg-gray-500 mr-1 rounded-sm"></div>
+                                                    <span>Others (30.2%)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-xs text-center mt-2">
+                                            <p class="text-gray-600 dark:text-gray-400">Source: IDC Worldwide Quarterly Personal Computing Device Tracker</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Strategic Implications for Dell:</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Commercial Focus:</strong> Dell's strategic emphasis on commercial segments (74.6% of CSG revenue) helps mitigate competitive intensity through stronger relationships and differentiated services</li>
+                                    <li class="mb-1"><strong>Profitability vs. Share:</strong> Dell has prioritized profitability (8.3% operating margin) over market share (17.2%), focusing on higher-value segments rather than competing on price</li>
+                                    <li class="mb-1"><strong>Services Attachment:</strong> The company's focus on increasing services attachment (49.7%) creates differentiation and recurring revenue streams that reduce direct hardware competition</li>
+                                    <li class="mb-1"><strong>Premium Mix Strategy:</strong> Dell's increasing premium mix (from 28.3% to 34.8% over three years) shifts competition from price to features, quality, and services</li>
+                                    <li><strong>Direct Model Advantage:</strong> Dell's direct sales model in commercial segments provides customer relationship advantages and pricing flexibility compared to channel-dependent competitors</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
+                            <h6 class="text-sm font-medium mb-3">Force 2: Threat of New Entrants</h6>
+                            
+                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg mb-4">
+                                <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Assessment: <span class="text-green-600 dark:text-green-400">LOW</span></h6>
+                                <p class="text-xs mb-2">The PC industry has significant barriers to entry that limit the threat of new competitors entering the market.</p>
+                                <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                    <p class="font-medium mb-1">Key Factors:</p>
+                                    <ul class="pl-3 mb-0">
+                                        <li class="mb-1">Economies of scale in manufacturing, procurement, and distribution</li>
+                                        <li class="mb-1">Capital-intensive production requirements</li>
+                                        <li class="mb-1">Established brand recognition and reputation importance</li>
+                                        <li class="mb-1">Complex global supply chain relationships</li>
+                                        <li>Enterprise sales cycles requiring relationships and track record</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-2">Barrier Analysis: PC Industry Entry Requirements</h6>
+                                    <div class="overflow-x-auto">
+                                        <table class="min-w-full text-xs">
+                                            <thead>
+                                                <tr class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                                                    <th class="text-left p-2">Barrier Category</th>
+                                                    <th class="text-center p-2">Barrier Level</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-2">Initial Capital Requirements</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="inline-block w-4 h-4 bg-red-500 dark:bg-red-600 rounded-full"></span>
+                                                        <span class="inline-block w-4 h-4 bg-red-500 dark:bg-red-600 rounded-full"></span>
+                                                        <span class="inline-block w-4 h-4 bg-red-500 dark:bg-red-600 rounded-full"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-2">Economies of Scale</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="inline-block w-4 h-4 bg-red-500 dark:bg-red-600 rounded-full"></span>
+                                                        <span class="inline-block w-4 h-4 bg-red-500 dark:bg-red-600 rounded-full"></span>
+                                                        <span class="inline-block w-4 h-4 bg-red-500 dark:bg-red-600 rounded-full"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-2">Product Differentiation</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="inline-block w-4 h-4 bg-red-500 dark:bg-red-600 rounded-full"></span>
+                                                        <span class="inline-block w-4 h-4 bg-red-500 dark:bg-red-600 rounded-full"></span>
+                                                        <span class="inline-block w-4 h-4 bg-gray-300 dark:bg-gray-600 rounded-full"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-2">Access to Distribution</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="inline-block w-4 h-4 bg-red-500 dark:bg-red-600 rounded-full"></span>
+                                                        <span class="inline-block w-4 h-4 bg-red-500 dark:bg-red-600 rounded-full"></span>
+                                                        <span class="inline-block w-4 h-4 bg-gray-300 dark:bg-gray-600 rounded-full"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-2">Switching Costs</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="inline-block w-4 h-4 bg-red-500 dark:bg-red-600 rounded-full"></span>
+                                                        <span class="inline-block w-4 h-4 bg-gray-300 dark:bg-gray-600 rounded-full"></span>
+                                                        <span class="inline-block w-4 h-4 bg-gray-300 dark:bg-gray-600 rounded-full"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-2">Regulatory Barriers</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="inline-block w-4 h-4 bg-red-500 dark:bg-red-600 rounded-full"></span>
+                                                        <span class="inline-block w-4 h-4 bg-gray-300 dark:bg-gray-600 rounded-full"></span>
+                                                        <span class="inline-block w-4 h-4 bg-gray-300 dark:bg-gray-600 rounded-full"></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-2">Notable Entry Attempts: Past Decade</h6>
+                                    <div class="overflow-x-auto">
+                                        <table class="min-w-full text-xs">
+                                            <thead>
+                                                <tr class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                                                    <th class="text-left p-2">Company</th>
+                                                    <th class="text-left p-2">Entry Strategy</th>
+                                                    <th class="text-left p-2">Outcome</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-2">Microsoft</td>
+                                                    <td class="p-2">Surface premium devices</td>
+                                                    <td class="p-2">Limited success, ~2% market share</td>
+                                                </tr>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-2">Samsung</td>
+                                                    <td class="p-2">Leveraging brand and retail</td>
+                                                    <td class="p-2">Limited traction, scale challenges</td>
+                                                </tr>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-2">Xiaomi</td>
+                                                    <td class="p-2">Value-focused offerings</td>
+                                                    <td class="p-2">Regional success, limited global impact</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-2">Razer</td>
+                                                    <td class="p-2">Gaming-focused premium niche</td>
+                                                    <td class="p-2">Niche player with limited volume</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Strategic Implications for Dell:</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Scale Investment:</strong> Dell should continue to leverage its scale advantages in procurement and manufacturing to maintain cost competitiveness</li>
+                                    <li class="mb-1"><strong>Brand Protection:</strong> Maintaining brand value and reputation is critical as it represents a significant barrier to potential new entrants</li>
+                                    <li class="mb-1"><strong>Potential Disruptors:</strong> While traditional entry is difficult, Dell should monitor non-traditional entrants who might leverage alternative business models or technologies</li>
+                                    <li class="mb-1"><strong>Regional Challenges:</strong> Entry barriers are lower in developing markets, where local manufacturers may have government support and cost advantages</li>
+                                    <li><strong>Channel Relationships:</strong> Continuing to develop channel partnerships provides additional insulation against new entrants seeking distribution</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
+                            <h6 class="text-sm font-medium mb-3">Force 3: Bargaining Power of Suppliers</h6>
+                            
+                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg mb-4">
+                                <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Assessment: <span class="text-red-600 dark:text-red-400">HIGH</span></h6>
+                                <p class="text-xs mb-2">Key component suppliers in the PC industry have significant bargaining power due to concentration and technological leadership.</p>
+                                <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                    <p class="font-medium mb-1">Key Factors:</p>
+                                    <ul class="pl-3 mb-0">
+                                        <li class="mb-1">Processor market dominated by Intel and AMD</li>
+                                        <li class="mb-1">Limited substitutes for key components</li>
+                                        <li class="mb-1">High switching costs for processor architectures</li>
+                                        <li class="mb-1">Component innovation directly impacts product capabilities</li>
+                                        <li>Supply constraints for advanced components</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-x-auto mb-4">
+                                <table class="min-w-full text-xs">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Key Supplier Category</th>
+                                            <th class="text-center p-2 border border-gray-200 dark:border-gray-700">Supplier Concentration</th>
+                                            <th class="text-center p-2 border border-gray-200 dark:border-gray-700">Substitution Potential</th>
+                                            <th class="text-center p-2 border border-gray-200 dark:border-gray-700">Dell's Position</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Mitigation Strategies</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Processors (CPUs)</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-red-600 dark:text-red-400 font-medium">Very High</span>
+                                                <div class="mt-1 text-gray-500">Intel/AMD duopoly</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-amber-600 dark:text-amber-400 font-medium">Low-Moderate</span>
+                                                <div class="mt-1 text-gray-500">ARM emerging as alternative</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-amber-600 dark:text-amber-400 font-medium">Moderate</span>
+                                                <div class="mt-1 text-gray-500">Scale advantages but dependency</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Multi-sourcing strategy (Intel &amp; AMD)</li>
+                                                    <li>Early access partnerships</li>
+                                                    <li>Volume purchase agreements</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Memory (DRAM/SSD)</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-red-600 dark:text-red-400 font-medium">High</span>
+                                                <div class="mt-1 text-gray-500">Samsung, Micron, SK Hynix dominance</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-green-600 dark:text-green-400 font-medium">Moderate</span>
+                                                <div class="mt-1 text-gray-500">Multiple providers, standardized</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-green-600 dark:text-green-400 font-medium">Strong</span>
+                                                <div class="mt-1 text-gray-500">Significant volume leverage</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Long-term supply agreements</li>
+                                                    <li>Multiple sources per component</li>
+                                                    <li>Strategic inventory management</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Display Panels</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-red-600 dark:text-red-400 font-medium">High</span>
+                                                <div class="mt-1 text-gray-500">Limited premium panel producers</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-amber-600 dark:text-amber-400 font-medium">Moderate</span>
+                                                <div class="mt-1 text-gray-500">Different panel types/providers</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-amber-600 dark:text-amber-400 font-medium">Moderate</span>
+                                                <div class="mt-1 text-gray-500">Volume buyer but premium constrained</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Joint development programs</li>
+                                                    <li>Strategic supplier investments</li>
+                                                    <li>Secondary supplier development</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Operating System</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-red-600 dark:text-red-400 font-medium">Very High</span>
+                                                <div class="mt-1 text-gray-500">Microsoft Windows dominance</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-red-600 dark:text-red-400 font-medium">Low</span>
+                                                <div class="mt-1 text-gray-500">Limited commercial viability of alternatives</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-amber-600 dark:text-amber-400 font-medium">Moderate</span>
+                                                <div class="mt-1 text-gray-500">Major Windows OEM but dependent</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Strategic alliance with Microsoft</li>
+                                                    <li>Co-marketing programs</li>
+                                                    <li>Limited alternative OS offerings</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Strategic Implications for Dell:</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Component Diversification:</strong> Dell should continue expanding its multi-sourcing strategy, particularly for processors (Intel, AMD, and potentially ARM) to reduce dependency on single suppliers</li>
+                                    <li class="mb-1"><strong>Supply Chain Integration:</strong> Vertical integration in select components (such as design capabilities) could provide more control and reduce supplier power</li>
+                                    <li class="mb-1"><strong>Early Access Programs:</strong> Strategic partnerships for early access to new technologies can create temporary differentiation in the market</li>
+                                    <li class="mb-1"><strong>Volume Leverage:</strong> Maintaining scale is crucial for negotiating power with suppliers, particularly in standardized components like memory and storage</li>
+                                    <li><strong>Software Strategy:</strong> Developing proprietary software and services reduces dependence on hardware differentiation and mitigates component supplier power</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
+                            <h6 class="text-sm font-medium mb-3">Force 4: Bargaining Power of Buyers</h6>
+                            
+                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg mb-4">
+                                <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Assessment: <span class="text-amber-600 dark:text-amber-400">MODERATE-HIGH</span></h6>
+                                <p class="text-xs mb-2">Buyer power varies significantly across segments, with large enterprise customers wielding substantial leverage while individual consumers have less bargaining power.</p>
+                                <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                    <p class="font-medium mb-1">Key Factors:</p>
+                                    <ul class="pl-3 mb-0">
+                                        <li class="mb-1">Large enterprise customers have significant volume leverage</li>
+                                        <li class="mb-1">Low switching costs between PC manufacturers</li>
+                                        <li class="mb-1">Product standardization increases price sensitivity</li>
+                                        <li class="mb-1">Transparent pricing creates negotiation pressure</li>
+                                        <li>Procurement sophistication among large buyers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-2">Buyer Power by Segment</h6>
+                                    <div class="overflow-x-auto">
+                                        <table class="min-w-full text-xs">
+                                            <thead>
+                                                <tr class="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+                                                    <th class="text-left p-2">Customer Segment</th>
+                                                    <th class="text-center p-2">Buyer Power</th>
+                                                    <th class="text-left p-2">Key Dynamics</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-2">Large Enterprise</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="text-red-600 dark:text-red-400 font-medium">Very High</span>
+                                                    </td>
+                                                    <td class="p-2">
+                                                        <ul class="pl-3 mb-0">
+                                                            <li>Volume purchasing</li>
+                                                            <li>Sophisticated procurement</li>
+                                                            <li>Multi-vendor strategies</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-2">Medium Business</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="text-amber-600 dark:text-amber-400 font-medium">Moderate</span>
+                                                    </td>
+                                                    <td class="p-2">
+                                                        <ul class="pl-3 mb-0">
+                                                            <li>Some volume leverage</li>
+                                                            <li>Value service relationships</li>
+                                                            <li>More brand loyal</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-2">Small Business</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="text-green-600 dark:text-green-400 font-medium">Low</span>
+                                                    </td>
+                                                    <td class="p-2">
+                                                        <ul class="pl-3 mb-0">
+                                                            <li>Limited volume power</li>
+                                                            <li>Higher switching costs</li>
+                                                            <li>Service dependency</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-2">Public Sector</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="text-red-600 dark:text-red-400 font-medium">High</span>
+                                                    </td>
+                                                    <td class="p-2">
+                                                        <ul class="pl-3 mb-0">
+                                                            <li>Formal RFP processes</li>
+                                                            <li>Price-sensitive purchasing</li>
+                                                            <li>Compliance requirements</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-2">Consumer</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="text-amber-600 dark:text-amber-400 font-medium">Moderate</span>
+                                                    </td>
+                                                    <td class="p-2">
+                                                        <ul class="pl-3 mb-0">
+                                                            <li>Individual low power</li>
+                                                            <li>But highly price sensitive</li>
+                                                            <li>Multiple options available</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium mb-2">Dell Revenue Profile by Buyer Type</h6>
+                                    <div class="h-[240px] relative bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+                                        <!-- Stacked Bar Chart -->
+                                        <div class="absolute bottom-8 w-full px-4">
+                                            <div class="flex h-[160px]">
+                                                <!-- Commercial Revenue -->
+                                                <div class="w-3/4 flex flex-col-reverse">
+                                                    <div class="h-[25%] bg-purple-500 dark:bg-purple-600 opacity-80"></div>
+                                                    <div class="h-[15%] bg-green-500 dark:bg-green-600 opacity-80"></div>
+                                                    <div class="h-[35%] bg-blue-500 dark:bg-blue-600 opacity-80"></div>
+                                                </div>
+                                                <!-- Consumer Revenue -->
+                                                <div class="w-1/4 flex flex-col-reverse">
+                                                    <div class="h-full bg-gray-400 dark:bg-gray-500 opacity-80"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- X-axis labels -->
+                                        <div class="absolute bottom-0 left-0 right-0 flex justify-around text-xs">
+                                            <div class="text-center" style="width: 75%">Commercial (74.6%)</div>
+                                            <div class="text-center" style="width: 25%">Consumer (25.4%)</div>
+                                        </div>
+                                        
+                                        <!-- Legend -->
+                                        <div class="absolute top-2 right-2 text-xs">
+                                            <div class="flex items-center mb-1">
+                                                <div class="w-3 h-3 bg-blue-500 dark:bg-blue-600 opacity-80 mr-1"></div>
+                                                <span>Large Enterprise (35%)</span>
+                                            </div>
+                                            <div class="flex items-center mb-1">
+                                                <div class="w-3 h-3 bg-green-500 dark:bg-green-600 opacity-80 mr-1"></div>
+                                                <span>Medium Business (15%)</span>
+                                            </div>
+                                            <div class="flex items-center mb-1">
+                                                <div class="w-3 h-3 bg-purple-500 dark:bg-purple-600 opacity-80 mr-1"></div>
+                                                <span>Public/Small Business (25%)</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <div class="w-3 h-3 bg-gray-400 dark:bg-gray-500 opacity-80 mr-1"></div>
+                                                <span>Consumer (25%)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Strategic Implications for Dell:</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Segment-Specific Strategies:</strong> Dell should maintain differentiated approaches for different buyer segments, recognizing the varying leverage each possesses</li>
+                                    <li class="mb-1"><strong>Value-Added Services:</strong> Expanding service offerings creates differentiation and reduces buyer power by shifting competition beyond hardware specifications and price</li>
+                                    <li class="mb-1"><strong>Strategic Account Management:</strong> For large enterprise accounts with high buyer power, dedicated account teams and customized solutions can create relationship barriers to switching</li>
+                                    <li class="mb-1"><strong>Consumer Premium Focus:</strong> In the consumer segment, emphasis on premium products and brand value helps mitigate price sensitivity and commoditization</li>
+                                    <li><strong>Channel Strategy:</strong> Balancing direct and channel approaches provides flexibility to address different buyer segments with appropriate value propositions</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                            <h6 class="text-sm font-medium mb-3">Force 5: Threat of Substitutes</h6>
+                            
+                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg mb-4">
+                                <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Assessment: <span class="text-amber-600 dark:text-amber-400">MODERATE</span></h6>
+                                <p class="text-xs mb-2">The traditional PC market faces substitution threats from alternative computing devices and form factors, though with varying impact across different use cases and customer segments.</p>
+                                <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                    <p class="font-medium mb-1">Key Factors:</p>
+                                    <ul class="pl-3 mb-0">
+                                        <li class="mb-1">Mobile devices (smartphones, tablets) for consumption-focused use cases</li>
+                                        <li class="mb-1">Virtual desktop infrastructure and cloud computing solutions</li>
+                                        <li class="mb-1">Specialized devices for specific workloads (e.g., gaming consoles, thin clients)</li>
+                                        <li class="mb-1">Switching costs vary by segment and use case</li>
+                                        <li>Performance, functionality, and convenience trade-offs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-x-auto mb-4">
+                                <table class="min-w-full text-xs">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Substitute</th>
+                                            <th class="text-center p-2 border border-gray-200 dark:border-gray-700">Threat Level</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Primary Impact Areas</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Key Benefits vs. PCs</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Key Limitations vs. PCs</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Smartphones &amp; Tablets</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-amber-600 dark:text-amber-400 font-medium">Moderate</span>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Consumer segment</li>
+                                                    <li>Basic productivity</li>
+                                                    <li>Content consumption</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Mobility and convenience</li>
+                                                    <li>Simplified user experience</li>
+                                                    <li>Lower price points</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Limited productivity</li>
+                                                    <li>Screen size constraints</li>
+                                                    <li>Performance limitations</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Cloud Computing &amp; VDI</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-amber-600 dark:text-amber-400 font-medium">Moderate</span>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Enterprise segment</li>
+                                                    <li>Task workers</li>
+                                                    <li>Standardized workloads</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Centralized management</li>
+                                                    <li>Enhanced security</li>
+                                                    <li>Device flexibility</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Connectivity dependency</li>
+                                                    <li>Performance limitations</li>
+                                                    <li>Application compatibility</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Chromebooks &amp; Thin Clients</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-green-600 dark:text-green-400 font-medium">Low-Moderate</span>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Education segment</li>
+                                                    <li>Cost-sensitive markets</li>
+                                                    <li>Web-centric workflows</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Lower price points</li>
+                                                    <li>Simplified management</li>
+                                                    <li>Longer battery life</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Software limitations</li>
+                                                    <li>Performance constraints</li>
+                                                    <li>Offline capability issues</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Augmented &amp; Virtual Reality</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <span class="text-green-600 dark:text-green-400 font-medium">Low</span>
+                                                <div class="mt-1 text-gray-500">(but growing)</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Specialized visualization</li>
+                                                    <li>Design/engineering tasks</li>
+                                                    <li>Immersive content</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Immersive experiences</li>
+                                                    <li>Spatial computing</li>
+                                                    <li>New interaction modalities</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Limited application ecosystem</li>
+                                                    <li>Ergonomic constraints</li>
+                                                    <li>High cost for quality experiences</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Threat by Use Case</h6>
+                                    <div class="overflow-x-auto">
+                                        <table class="min-w-full text-xs">
+                                            <thead>
+                                                <tr class="bg-white dark:bg-gray-900 border-b border-emerald-200 dark:border-emerald-800">
+                                                    <th class="text-left p-2">PC Use Case</th>
+                                                    <th class="text-center p-2">Substitution Threat</th>
+                                                    <th class="text-left p-2">Primary Substitute</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="border-b border-emerald-200 dark:border-emerald-800">
+                                                    <td class="p-2">Content Creation</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="text-green-600 dark:text-green-400 font-medium">Low</span>
+                                                    </td>
+                                                    <td class="p-2">High-end tablets</td>
+                                                </tr>
+                                                <tr class="border-b border-emerald-200 dark:border-emerald-800">
+                                                    <td class="p-2">Enterprise Productivity</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="text-amber-600 dark:text-amber-400 font-medium">Moderate</span>
+                                                    </td>
+                                                    <td class="p-2">VDI/Cloud workspaces</td>
+                                                </tr>
+                                                <tr class="border-b border-emerald-200 dark:border-emerald-800">
+                                                    <td class="p-2">Web Browsing/Email</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="text-red-600 dark:text-red-400 font-medium">High</span>
+                                                    </td>
+                                                    <td class="p-2">Smartphones/tablets</td>
+                                                </tr>
+                                                <tr class="border-b border-emerald-200 dark:border-emerald-800">
+                                                    <td class="p-2">Gaming</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="text-amber-600 dark:text-amber-400 font-medium">Moderate</span>
+                                                    </td>
+                                                    <td class="p-2">Consoles/cloud gaming</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-2">Software Development</td>
+                                                    <td class="p-2 text-center">
+                                                        <span class="text-green-600 dark:text-green-400 font-medium">Low</span>
+                                                    </td>
+                                                    <td class="p-2">Cloud development environments</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Dell's Response to Substitutes</h6>
+                                    <div class="overflow-x-auto">
+                                        <table class="min-w-full text-xs">
+                                            <thead>
+                                                <tr class="bg-white dark:bg-gray-900 border-b border-emerald-200 dark:border-emerald-800">
+                                                    <th class="text-left p-2">Strategy</th>
+                                                    <th class="text-left p-2">Implementation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="border-b border-emerald-200 dark:border-emerald-800">
+                                                    <td class="p-2">Form Factor Innovation</td>
+                                                    <td class="p-2">2-in-1 devices, ultra-portables, all-in-ones</td>
+                                                </tr>
+                                                <tr class="border-b border-emerald-200 dark:border-emerald-800">
+                                                    <td class="p-2">Service Integration</td>
+                                                    <td class="p-2">End-to-end solutions beyond hardware</td>
+                                                </tr>
+                                                <tr class="border-b border-emerald-200 dark:border-emerald-800">
+                                                    <td class="p-2">Embracing Alternatives</td>
+                                                    <td class="p-2">Thin client offerings, VDI solutions</td>
+                                                </tr>
+                                                <tr class="border-b border-emerald-200 dark:border-emerald-800">
+                                                    <td class="p-2">Experience Differentiation</td>
+                                                    <td class="p-2">Advanced displays, improved audio, ergonomics</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-2">Workload Specialization</td>
+                                                    <td class="p-2">Workstations for demanding tasks, AI-optimized PCs</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Strategic Implications for Dell:</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Segment Specialization:</strong> Dell should focus on use cases and market segments where PC substitution threats are lowest, such as content creation, software development, and advanced productivity</li>
+                                    <li class="mb-1"><strong>Portfolio Diversification:</strong> Developing a broader portfolio that includes potential substitutes (such as thin clients and virtual desktop solutions) allows Dell to capture shifting demand</li>
+                                    <li class="mb-1"><strong>Experience Innovation:</strong> Investing in PC features that enhance the user experience beyond what substitutes can provide (display quality, audio, performance for specialized tasks)</li>
+                                    <li class="mb-1"><strong>Solution Integration:</strong> Positioning PCs as part of broader solutions rather than standalone devices reduces substitution vulnerability</li>
+                                    <li><strong>Complementary Strategy:</strong> Developing offerings that make Dell PCs better companions to potential substitutes rather than competing directly (e.g., tablet/phone integration features)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-emerald-700 dark:text-emerald-400 font-medium mb-3">Strategic Recommendations from Five Forces Analysis</h5>
+                        <p class="text-sm mb-4">Based on the comprehensive Five Forces analysis of Dell's Client Solutions Group, the following strategic recommendations emerge to enhance competitive positioning and drive sustainable growth.</p>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                            <h6 class="text-sm font-medium mb-3">Key Strategic Imperatives</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Addressing Competitive Rivalry</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Strategic Recommendations:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-2"><strong>Commercial Segment Focus:</strong> Continue prioritizing commercial segments where Dell has stronger differentiation and higher margins</li>
+                                            <li class="mb-2"><strong>Premium Product Mix:</strong> Accelerate the shift toward premium products with higher margins and greater differentiation potential</li>
+                                            <li class="mb-2"><strong>Services Expansion:</strong> Develop service offerings that create 'stickier' customer relationships and recurring revenue streams</li>
+                                            <li><strong>Brand Investment:</strong> Strengthen brand positioning around reliability, security, and business value to reduce price-based competition</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Mitigating Supplier Power</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Strategic Recommendations:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-2"><strong>Multi-Architecture Strategy:</strong> Balance Intel, AMD, and potentially ARM-based products to reduce dependency on single processor suppliers</li>
+                                            <li class="mb-2"><strong>Component Standardization:</strong> Where feasible, standardize components across product lines to increase volume leverage with suppliers</li>
+                                            <li class="mb-2"><strong>Strategic Partnerships:</strong> Develop deeper co-innovation partnerships with key suppliers to gain preferential access to new technologies</li>
+                                            <li><strong>Vertical Integration:</strong> Selectively increase design capabilities and control of critical components</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Reducing Buyer Power</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Strategic Recommendations:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-2"><strong>Solution Bundling:</strong> Create integrated solutions combining hardware, software, and services that are harder to directly price compare</li>
+                                            <li class="mb-2"><strong>Customer Success Focus:</strong> Shift from transactional to relationship-based customer engagement with emphasis on outcomes</li>
+                                            <li class="mb-2"><strong>Segment Optimization:</strong> Balance portfolio across different buyer segments to reduce dependence on high-power customer groups</li>
+                                            <li><strong>Value Demonstration:</strong> Develop TCO models and ROI tools that shift conversations from purchase price to total value</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Countering Substitution Threats</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Strategic Recommendations:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-2"><strong>Form Factor Innovation:</strong> Continue developing versatile form factors (2-in-1s, detachables) that combine PC capabilities with tablet convenience</li>
+                                            <li class="mb-2"><strong>Integration with Substitutes:</strong> Create better interoperability between Dell PCs and potential substitutes (smartphones, tablets) to make them complementary</li>
+                                            <li class="mb-2"><strong>Workload Specialization:</strong> Develop workload-optimized PCs (creative workstations, developer systems, AI-enhanced PCs) that offer capabilities beyond substitutes</li>
+                                            <li class="mb-2"><strong>Thin Client/VDI Offerings:</strong> Maintain and expand Dell's presence in thin client and VDI solutions to participate in this potential substitute category</li>
+                                            <li><strong>Experience Differentiation:</strong> Focus on experience elements where PCs excel (keyboard, large displays, multi-tasking, performance)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Leveraging Entry Barriers</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Strategic Recommendations:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-2"><strong>Scale Investments:</strong> Continue to leverage Dell's scale advantages in procurement, manufacturing, and distribution</li>
+                                            <li class="mb-2"><strong>Channel Relationships:</strong> Strengthen Dell's channel partner ecosystem to maintain distribution advantages</li>
+                                            <li class="mb-2"><strong>Enterprise Relationships:</strong> Deepen relationships with large enterprise customers through strategic account management</li>
+                                            <li class="mb-2"><strong>Support Infrastructure:</strong> Maintain global support capabilities that smaller competitors cannot match</li>
+                                            <li><strong>Business Model Innovation:</strong> Explore as-a-service models that leverage Dell's scale and financial strength while creating recurring revenue streams</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Implementation Roadmap:</h6>
+                                <div class="overflow-x-auto">
+                                    <table class="min-w-full text-xs">
+                                        <thead>
+                                            <tr class="bg-white dark:bg-gray-900 border-b border-emerald-200 dark:border-emerald-800">
+                                                <th class="text-left p-2">Timeframe</th>
+                                                <th class="text-left p-2">Key Initiatives</th>
+                                                <th class="text-left p-2">Expected Impact</th>
+                                                <th class="text-left p-2">Primary Five Forces Target</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b border-emerald-200 dark:border-emerald-800">
+                                                <td class="p-2 align-top">Near-Term<br>(0-12 months)</td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Expand AI-enabled PC portfolio</li>
+                                                        <li>Launch enhanced services bundle</li>
+                                                        <li>Implement multi-processor strategy</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Increase premium mix by 2-3 points</li>
+                                                        <li>Grow services attach rate to 52%</li>
+                                                        <li>Reduce single-supplier exposure</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Competitive Rivalry</li>
+                                                        <li>Buyer Power</li>
+                                                        <li>Supplier Power</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-emerald-200 dark:border-emerald-800">
+                                                <td class="p-2 align-top">Mid-Term<br>(1-2 years)</td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Roll out PC-as-a-Service model</li>
+                                                        <li>Develop cross-device ecosystem</li>
+                                                        <li>Establish strategic supplier partnerships</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>10% of commercial revenue from recurring sources</li>
+                                                        <li>Enhanced multi-device customer experience</li>
+                                                        <li>Preferred access to component innovation</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Threat of Substitutes</li>
+                                                        <li>Buyer Power</li>
+                                                        <li>Supplier Power</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 align-top">Long-Term<br>(2-3+ years)</td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Vertical integration in key components</li>
+                                                        <li>Expand outcome-based solutions</li>
+                                                        <li>Next-gen form factor innovation</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Reduced component dependency</li>
+                                                        <li>25% of commercial revenue from solutions</li>
+                                                        <li>Leadership in new computing paradigms</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Supplier Power</li>
+                                                        <li>Competitive Rivalry</li>
+                                                        <li>Threat of Substitutes</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Practical Application Exercises</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Porter's Five Forces Analysis Practice</h5>
+                        <p class="mb-3">Apply Porter's Five Forces framework to these Dell-specific business scenarios:</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Exercise 1: Five Forces Analysis for Dell's Infrastructure Solutions Group</h6>
+                            <p class="text-xs mb-2">Conduct a Five Forces analysis for Dell's server and storage business:</p>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                <p class="mb-2"><strong>Dell Infrastructure Solutions Group Context:</strong></p>
+                                <ul class="mb-2">
+                                    <li>The ISG segment contributed $38.2B in revenue (37.3% of Dell's total) with an operating margin of 14.0%</li>
+                                    <li>Major product lines include PowerEdge servers, PowerStore storage, and PowerScale data management solutions</li>
+                                    <li>Primary competitors include HPE, Cisco, IBM, NetApp, Pure Storage, and cloud infrastructure providers</li>
+                                    <li>The market is experiencing growth in hyperconverged infrastructure and AI-optimized systems</li>
+                                    <li>Enterprise customers increasingly considering hybrid cloud solutions as alternatives to on-premises infrastructure</li>
+                                </ul>
+                                <p class="mb-2"><strong>Key Questions to Address:</strong></p>
+                                <ol>
+                                    <li>What is the intensity of competitive rivalry in the enterprise infrastructure market?</li>
+                                    <li>How significant is the threat of new entrants in this space?</li>
+                                    <li>What level of bargaining power do suppliers have in this segment?</li>
+                                    <li>How much leverage do enterprise buyers have when purchasing infrastructure solutions?</li>
+                                    <li>What substitution threats exist for Dell's server and storage offerings?</li>
+                                </ol>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium mb-1">Your Five Forces Analysis</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="10" placeholder="Conduct a comprehensive Five Forces analysis for Dell's Infrastructure Solutions Group. For each of the five forces, provide a clear assessment (high, moderate, or low) with supporting rationale. Identify the most significant forces affecting this business segment and explain why. Based on your analysis, develop 3-5 specific strategic recommendations for how Dell should position its infrastructure business to strengthen its competitive advantage."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Exercise 2: Five Forces Comparison Across Business Segments</h6>
+                            <p class="text-xs mb-2">Compare and contrast the Five Forces analysis across Dell's business units:</p>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                <p class="mb-2"><strong>Dell Business Segments:</strong></p>
+                                <ul class="mb-2">
+                                    <li><strong>Client Solutions Group (CSG):</strong> Commercial and consumer PCs, peripherals, and related services</li>
+                                    <li><strong>Infrastructure Solutions Group (ISG):</strong> Servers, storage, networking, and related infrastructure solutions</li>
+                                    <li><strong>APEX Cloud Services:</strong> Dell's as-a-service offerings, providing flexible consumption models for infrastructure</li>
+                                </ul>
+                                <p class="mb-2"><strong>Task:</strong></p>
+                                <p>Create a comparative Five Forces assessment across these three business segments, highlighting the differences in competitive dynamics and strategic implications for each.</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium mb-1">Your Comparative Analysis</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="10" placeholder="Create a comparative analysis of Porter's Five Forces across Dell's CSG, ISG, and APEX business units. For each business segment, provide a brief assessment of all five forces, highlighting the key differences in competitive dynamics. Identify which segment faces the most favorable and most challenging competitive environment based on your analysis. What strategic implications arise from these different competitive contexts? How should Dell's approach differ across these segments to optimize its market position?"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="font-medium mb-2">Exercise 3: Disruption Analysis</h6>
+                                <p class="text-xs mb-2">Evaluate how industry disruption affects the Five Forces:</p>
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                    <p class="mb-2"><strong>Scenario: AI-Driven Industry Disruption</strong></p>
+                                    <p class="mb-3">The rapid advancement of artificial intelligence is creating significant changes in computing requirements, software capabilities, and infrastructure needs. Consider how this disruption might reshape the Five Forces affecting Dell's core businesses.</p>
+                                    <p class="mb-0"><strong>Key Developments:</strong></p>
+                                    <ul>
+                                        <li>Increasing demand for AI-optimized hardware (GPUs, specialized processors)</li>
+                                        <li>Emergence of new competitors with AI-specific hardware offerings</li>
+                                        <li>Growing importance of AI capabilities in standard computing devices</li>
+                                        <li>Cloud providers expanding AI infrastructure offerings</li>
+                                        <li>Rising importance of data center power efficiency for AI workloads</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="block text-sm font-medium mb-1">Your Disruption Analysis</label>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Analyze how AI-driven industry disruption is changing the Five Forces affecting Dell's business. For each force, explain how AI advancements are strengthening or weakening the competitive dynamics. Which forces are being most significantly reshaped by AI developments? What strategic moves should Dell make to capitalize on favorable changes and mitigate challenges created by this disruption?"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="font-medium mb-2">Exercise 4: Competitive Response Strategy</h6>
+                                <p class="text-xs mb-2">Develop a competitor response strategy based on Five Forces:</p>
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                    <p class="mb-2"><strong>Scenario: HP's Commercial PC Strategy Shift</strong></p>
+                                    <p class="mb-3">HP Inc. has announced a significant shift in its commercial PC strategy, focusing on higher-end devices with advanced security features, expanded services offerings, and aggressive pricing for large enterprise customers. This move directly challenges Dell's strong position in the commercial PC segment.</p>
+                                    <p class="mb-0"><strong>Key Elements of HP's Strategy:</strong></p>
+                                    <ul>
+                                        <li>15% price reduction on premium commercial devices for enterprise customers</li>
+                                        <li>Expanded security services bundle included with premium devices</li>
+                                        <li>New partner program providing increased channel incentives</li>
+                                        <li>Extended warranty offerings at no additional cost</li>
+                                        <li>Simplified procurement process for large customers</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="block text-sm font-medium mb-1">Your Competitive Response Strategy</label>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Using Porter's Five Forces as an analytical framework, develop a strategic response to HP's commercial PC strategy shift. How does HP's move affect the competitive forces in the market? Which specific forces does their strategy target? Develop a comprehensive counterstrategem for Dell that addresses each of the impacted forces. What specific actions should Dell take to maintain its competitive position in commercial PCs?"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-4 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Exercises</button>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2008/01/the-five-competitive-forces-that-shape-strategy" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Five Competitive Forces That Shape Strategy</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Michael E. Porter's definitive article</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.isc.hbs.edu/strategy/business-strategy/Pages/the-five-forces.aspx" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-book-read-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Institute for Strategy &amp; Competitiveness</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business School • Comprehensive guide to Five Forces</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/business-functions/strategy-and-corporate-finance/our-insights/enduring-ideas-the-industry-structure-framework" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-focus-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Industry Structure Framework</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey &amp; Company • Practical application of Five Forces</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" disabled="">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous Module</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-value-chain">
+                        <span>Next: Value-Chain Analysis</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

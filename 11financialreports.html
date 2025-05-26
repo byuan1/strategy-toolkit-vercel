@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Financial Acumen</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-statements">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Financial Statements</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-common-size">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Common-Size Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-modeling">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Financial Modeling</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-dell-financials">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Dell's Financial Reports</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-ratios">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Key Financial Ratios</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-cost-benefit">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Cost-Benefit Analysis</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">23%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 23%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Problem Solving</span>
+                                <span>2/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>1/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>1/6 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Dell's Financial Reports Topic -->
+            <section id="topic-dell-financials" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-file-chart-2-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Dell's Financial Reports</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Financial Acumen</span>
+                                <span>•</span>
+                                <span>50 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">Not Started</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand Dell's corporate structure and reporting segments</li>
+                            <li>Navigate and extract insights from Dell's annual reports and quarterly earnings</li>
+                            <li>Identify key financial metrics specific to Dell's business model</li>
+                            <li>Analyze recent trends in Dell's financial performance</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Dell Technologies' Corporate Structure</h4>
+                    <p>Dell Technologies Inc. is a multinational technology company that designs, develops, and manufactures personal computers, servers, data storage devices, network switches, software, and computer peripherals. Following the EMC acquisition and subsequent changes, understanding Dell's corporate structure is essential for interpreting its financial reports.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell's Current Corporate Structure</h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <tr>
+                                    <td colspan="2" class="border border-gray-300 dark:border-gray-700 px-3 py-2 bg-secondary/10 dark:bg-secondary/20 font-medium text-center">Dell Technologies Inc.</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 w-1/2">
+                                        <p class="font-medium mb-1">Infrastructure Solutions Group (ISG)</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Servers & Networking</li>
+                                            <li>Storage</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 w-1/2">
+                                        <p class="font-medium mb-1">Client Solutions Group (CSG)</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Commercial PCs</li>
+                                            <li>Consumer PCs</li>
+                                            <li>Peripherals & Accessories</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <p class="font-medium mb-1">VMware (Spun off in 2021)</p>
+                                        <p class="text-xs mb-0">Dell completed the spin-off of its ownership interest in VMware in November 2021, which has implications for financial comparisons across periods</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <p class="font-medium mb-1">Other Businesses</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Secureworks</li>
+                                            <li>Dell Financial Services</li>
+                                            <li>Boomi (divested in 2021)</li>
+                                            <li>RSA Security (divested in 2020)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 dark:bg-yellow-900/10 p-4 rounded-lg border-l-4 border-yellow-500 mb-6">
+                        <h5 class="text-yellow-700 dark:text-yellow-400 font-medium mb-2">Key Corporate Events Affecting Financial Reporting</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>2016:</strong> Dell acquired EMC Corporation for approximately $67 billion, the largest technology acquisition in history at that time</li>
+                            <li><strong>2018:</strong> Dell returned to being a publicly traded company through a complex share swap with its VMware tracking stock</li>
+                            <li><strong>2020-2021:</strong> Several divestitures, including RSA Security and Boomi</li>
+                            <li><strong>2021:</strong> VMware spin-off, significantly changing Dell's financial profile</li>
+                            <li><strong>2023:</strong> Increased focus on AI infrastructure and services</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Accessing Dell's Financial Reports</h4>
+                    <p>Dell's financial information is available through several official channels:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Annual Reports (10-K)</h5>
+                            <p class="text-sm mb-3">Comprehensive annual financial statements and business overview filed with the SEC.</p>
+                            <ul class="pl-4 text-xs mb-3">
+                                <li>Available on <a href="https://investors.delltechnologies.com/financial-information/annual-reports" target="_blank" class="text-primary hover:underline">Dell Investor Relations</a></li>
+                                <li>Filed annually, typically in March/April</li>
+                                <li>Includes detailed business segment information</li>
+                            </ul>
+                            <p class="text-xs mb-0 italic">Look for: Management's Discussion & Analysis (MD&A) section for insights on performance drivers</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Quarterly Reports (10-Q)</h5>
+                            <p class="text-sm mb-3">Quarterly financial statements with less detailed information than annual reports.</p>
+                            <ul class="pl-4 text-xs mb-3">
+                                <li>Available on <a href="https://investors.delltechnologies.com/financial-information/quarterly-reports" target="_blank" class="text-primary hover:underline">Dell Investor Relations</a></li>
+                                <li>Filed quarterly, typically within 40 days after quarter end</li>
+                                <li>Provides updates on recent performance</li>
+                            </ul>
+                            <p class="text-xs mb-0 italic">Look for: Quarter-over-quarter and year-over-year comparisons</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Earnings Releases</h5>
+                            <p class="text-sm mb-3">Press releases announcing quarterly financial results before the full 10-Q filing.</p>
+                            <ul class="pl-4 text-xs mb-3">
+                                <li>Available on <a href="https://investors.delltechnologies.com/financial-information/quarterly-results" target="_blank" class="text-primary hover:underline">Dell Investor Relations</a></li>
+                                <li>Released quarterly, typically before the 10-Q</li>
+                                <li>Includes management commentary on results</li>
+                            </ul>
+                            <p class="text-xs mb-0 italic">Look for: Non-GAAP metrics and executive quotes about business trends</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Investor Presentations</h5>
+                            <p class="text-sm mb-3">Slide decks with financial highlights and strategic information for investors.</p>
+                            <ul class="pl-4 text-xs mb-3">
+                                <li>Available on <a href="https://investors.delltechnologies.com/events-and-presentations" target="_blank" class="text-primary hover:underline">Dell Investor Relations</a></li>
+                                <li>Published for quarterly earnings calls and investor events</li>
+                                <li>Contains visualizations of key metrics and trends</li>
+                            </ul>
+                            <p class="text-xs mb-0 italic">Look for: Forward-looking statements and strategy updates</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Dell's Key Reporting Segments</h4>
+                    <p>Dell organizes its business into operating segments that reflect its product and service offerings. Understanding these segments is crucial for analyzing Dell's financial performance.</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Segment</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Description</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Key Metrics</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-right">% of Revenue*</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Client Solutions Group (CSG)</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">Commercial and Consumer PCs, laptops, peripherals, and accessories</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Commercial vs. Consumer split</li>
+                                            <li>Average selling price (ASP)</li>
+                                            <li>Operating margin</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-right">~60%</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Infrastructure Solutions Group (ISG)</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">Servers, storage, and networking products and services</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Servers & Networking revenue</li>
+                                            <li>Storage revenue</li>
+                                            <li>Operating margin</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-right">~35%</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Other Businesses</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">Secureworks, Dell Financial Services, and other offerings</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Financing penetration rate</li>
+                                            <li>Deferred revenue growth</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-right">~5%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs italic mb-6">* Approximate percentages based on recent financial reports, subject to change with business conditions.</p>
+                    
+                    <h4>Key Financial Metrics for Dell</h4>
+                    <p>Dell highlights specific financial metrics in its reports that are particularly important for understanding the company's performance.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">GAAP vs. Non-GAAP Metrics</h5>
+                            <p class="text-sm mb-2">Dell reports both GAAP (Generally Accepted Accounting Principles) and non-GAAP financial measures.</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>GAAP metrics follow standardized accounting rules</li>
+                                <li>Non-GAAP metrics typically exclude certain one-time costs or non-cash expenses</li>
+                                <li>Common adjustments include acquisition-related expenses, stock-based compensation, and restructuring charges</li>
+                                <li>Look for reconciliation tables in earnings releases and presentations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Recurring Revenue Metrics</h5>
+                            <p class="text-sm mb-2">As Dell shifts toward subscription and as-a-service models, recurring revenue metrics gain importance.</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>Deferred revenue: Payment received before services are delivered</li>
+                                <li>Remaining performance obligations (RPO): Future revenue under contract</li>
+                                <li>Annual recurring revenue (ARR): Annualized value of subscription contracts</li>
+                                <li>Dell APEX performance: Dell's as-a-service portfolio growth</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Cash Flow Metrics</h5>
+                            <p class="text-sm mb-2">Dell places significant emphasis on cash flow generation and allocation.</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>Operating cash flow: Cash generated from core operations</li>
+                                <li>Free cash flow: Operating cash flow minus capital expenditures</li>
+                                <li>Cash conversion cycle: Efficiency in managing working capital</li>
+                                <li>Capital allocation priorities: Debt reduction, dividends, share repurchases, M&A</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Industry-Specific Metrics</h5>
+                            <p class="text-sm mb-2">Dell reports several metrics specific to the technology hardware industry.</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>Average selling prices (ASPs): Trends in product pricing</li>
+                                <li>Backlog: Orders received but not yet fulfilled</li>
+                                <li>Supply chain metrics: Component costs, lead times</li>
+                                <li>Channel inventory: Products in distribution channels</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Recent Financial Trends at Dell</h4>
+                    <p>Understanding recent trends in Dell's financial performance provides context for analyzing current and future reports.</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Trend Area</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Key Observations</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Strategic Implications</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">PC Market Dynamics</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Post-pandemic demand normalization</li>
+                                            <li>Commercial PC refresh cycles</li>
+                                            <li>Premium mix shift</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Focus on commercial segment stability</li>
+                                            <li>Emphasis on higher-margin premium products</li>
+                                            <li>Expansion of PC-as-a-Service offerings</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Infrastructure Growth</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>AI-optimized server demand acceleration</li>
+                                            <li>Storage growth in high-end systems</li>
+                                            <li>Increasing attach rates of services</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Investment in AI server capabilities</li>
+                                            <li>Expansion of multi-cloud portfolio</li>
+                                            <li>Growth in recurring infrastructure offers</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">As-a-Service Transition</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Growth in Dell APEX services</li>
+                                            <li>Increasing deferred revenue</li>
+                                            <li>Shift from transactional to subscription models</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Long-term margin expansion potential</li>
+                                            <li>More predictable revenue streams</li>
+                                            <li>Changing cash flow patterns</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Supply Chain & Margins</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Component cost fluctuations</li>
+                                            <li>Improving lead times</li>
+                                            <li>Inventory management focus</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Pricing discipline importance</li>
+                                            <li>Supply chain resilience investments</li>
+                                            <li>Working capital efficiency initiatives</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Sample Segment Performance Analysis</h5>
+                        <p class="text-sm mb-3">Below is a simplified view of Dell's segment performance based on recent financial reports.</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse mb-2">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Segment</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Revenue ($B)</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">YoY Growth</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Operating Income ($B)</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Operating Margin</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Client Solutions Group</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">50.8</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right text-red-500 dark:text-red-400">-12%</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">3.9</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">7.7%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 pl-6 text-sm">Commercial</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">37.4</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right text-red-500 dark:text-red-400">-10%</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 pl-6 text-sm">Consumer</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">13.4</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right text-red-500 dark:text-red-400">-18%</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Infrastructure Solutions Group</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">31.5</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right text-green-500 dark:text-green-400">+4%</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">3.8</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">12.1%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 pl-6 text-sm">Servers & Networking</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">18.2</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right text-green-500 dark:text-green-400">+10%</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 pl-6 text-sm">Storage</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">13.3</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right text-red-500 dark:text-red-400">-3%</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-xs italic mt-2 mb-0">Note: Data shown is illustrative based on fiscal year 2023 results. For the most current figures, consult Dell's latest financial reports.</p>
+                    </div>
+                    
+                    <h4>Reading Dell's Management Commentary</h4>
+                    <p>Management's discussion and analysis provides valuable context for interpreting Dell's financial results. Key sections to focus on include:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Earnings Call Transcripts</h5>
+                            <p class="text-sm mb-2">Dell's quarterly earnings calls feature commentary from key executives that provides insights beyond the raw numbers.</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>CEO comments on market conditions and strategy</li>
+                                <li>CFO explanation of financial results and outlook</li>
+                                <li>Q&A with analysts addressing key concerns</li>
+                                <li>Forward-looking statements about expectations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">MD&A in Annual Reports</h5>
+                            <p class="text-sm mb-2">The Management's Discussion and Analysis section of the annual report provides detailed explanations of performance.</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>Detailed breakdowns of revenue drivers</li>
+                                <li>Explanation of margin changes</li>
+                                <li>Discussion of cash flow and balance sheet items</li>
+                                <li>Commentary on industry trends affecting results</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Risk Factors</h5>
+                            <p class="text-sm mb-2">The Risk Factors section of Dell's annual report highlights potential challenges the company faces.</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>Competitive pressures in key markets</li>
+                                <li>Supply chain and component availability risks</li>
+                                <li>Global economic condition impacts</li>
+                                <li>Cybersecurity and technology disruption risks</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Business Strategy Updates</h5>
+                            <p class="text-sm mb-2">Look for discussions of Dell's strategic priorities and initiatives in various reports.</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>Multi-cloud strategy and portfolio expansion</li>
+                                <li>AI and edge computing investments</li>
+                                <li>As-a-service transformation progress</li>
+                                <li>Innovation priorities and R&D focus areas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://investors.delltechnologies.com/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary flex-shrink-0">
+                                    <i class="ri-file-chart-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Dell Investor Relations Portal</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Official source for all Dell financial reports and presentations</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.sec.gov/edgar/browse/?CIK=1571996" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-government-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Dell SEC Filings</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Complete archive of Dell's regulatory filings</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.youtube.com/playlist?list=PLbssOJyyvHuWiBQAg5REGNQ8Qjs-BHmDQ" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-video-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Dell Financial Analyst Briefings</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Video presentations from Dell's executive team</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell Earnings Analysis</h5>
+                        <p class="mb-3">Visit Dell's Investor Relations website and locate the most recent quarterly earnings report. Review the report and answer the following questions:</p>
+                        
+                        <ol class="pl-5 mb-4 text-sm">
+                            <li>How did Dell's Client Solutions Group (CSG) perform compared to the previous quarter and the same quarter last year?</li>
+                            <li>What trends did management highlight in the Infrastructure Solutions Group (ISG)?</li>
+                            <li>What were the key drivers of Dell's operating margin performance?</li>
+                            <li>What guidance or outlook did management provide for future periods?</li>
+                            <li>What strategic initiatives did Dell emphasize in its commentary?</li>
+                        </ol>
+                        
+                        <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Enter your analysis here..."></textarea>
+                        <button class="mt-3 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-financial-modeling">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Financial Modeling</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-financial-ratios">
+                        <span>Next: Key Financial Ratios</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    window.location.href = '#' + nextTopicId;
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    window.location.href = '#' + prevTopicId;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Organizational Behavior</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-raci">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>RACI Framework</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-rapids">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>RAPIDs Framework</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-process-maps">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Process Maps</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-process-reengineering">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Process Reengineering</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-change-management">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Kotter's Change Management</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">60%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 60%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>6/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>1/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Organizational Behavior</span>
+                                <span>0/5 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- RACI Framework Topic -->
+            <section id="topic-raci" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-user-settings-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">RACI Framework</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Organizational Behavior</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the RACI framework and its components: Responsible, Accountable, Consulted, Informed</li>
+                            <li>Learn how to develop and implement RACI matrices for projects and processes</li>
+                            <li>Identify when and how to apply RACI to resolve role ambiguity and improve accountability</li>
+                            <li>Apply best practices for RACI implementation within Dell's organizational context</li>
+                            <li>Recognize common pitfalls in RACI implementation and strategies to overcome them</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to the RACI Framework</h4>
+                    <p>The RACI framework is a responsibility assignment matrix that clarifies roles and responsibilities in projects, processes, and organizations. RACI stands for Responsible, Accountable, Consulted, and Informed—the four key types of participation in any task or deliverable. By explicitly defining these roles, the RACI framework eliminates confusion, improves efficiency, and ensures clear accountability for decision-making and execution.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why RACI Matters</h5>
+                        <p class="mb-3">Clear role definition is essential for organizational effectiveness. Without a structured approach like RACI, teams often experience:</p>
+                        <ul class="pl-5 mb-3">
+                            <li><strong>Role ambiguity:</strong> Uncertainty about who should perform specific tasks</li>
+                            <li><strong>Accountability gaps:</strong> Lack of clear ownership for decisions and outcomes</li>
+                            <li><strong>Decision bottlenecks:</strong> Delays when unclear who has decision-making authority</li>
+                            <li><strong>Duplicated efforts:</strong> Multiple people performing the same tasks</li>
+                            <li><strong>Communication breakdowns:</strong> Critical stakeholders excluded from information flow</li>
+                        </ul>
+                        <p class="mb-0">RACI provides a systematic framework to address these challenges by establishing clarity about each person's role in every task, decision, or deliverable. This enables more effective collaboration, faster decision-making, and clearer accountability—particularly important in complex, matrix organizations like Dell.</p>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">The RACI Framework Overview</h5>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mr-2">
+                                                <span class="font-bold">R</span>
+                                            </div>
+                                            <h6 class="font-medium text-blue-700 dark:text-blue-300">Responsible</h6>
+                                        </div>
+                                        <p class="text-xs mb-2">Those who do the work to complete the task or deliverable.</p>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Performs the actual work</li>
+                                            <li>May be multiple people</li>
+                                            <li>Hands-on role</li>
+                                            <li>Reports to the Accountable person</li>
+                                            <li>Must have adequate resources and authority</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 mr-2">
+                                                <span class="font-bold">A</span>
+                                            </div>
+                                            <h6 class="font-medium text-green-700 dark:text-green-300">Accountable</h6>
+                                        </div>
+                                        <p class="text-xs mb-2">The ultimate owner who approves and signs off on completed work.</p>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Has final decision-making authority</li>
+                                            <li>Only one person per task/deliverable</li>
+                                            <li>"The buck stops here" role</li>
+                                            <li>Delegates work to Responsible parties</li>
+                                            <li>Answers for the success or failure</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-600 dark:text-purple-400 mr-2">
+                                                <span class="font-bold">C</span>
+                                            </div>
+                                            <h6 class="font-medium text-purple-700 dark:text-purple-300">Consulted</h6>
+                                        </div>
+                                        <p class="text-xs mb-2">Those whose expertise and opinions are sought before work is completed.</p>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Provides input and expertise</li>
+                                            <li>Two-way communication</li>
+                                            <li>No direct authority over the work</li>
+                                            <li>Should be limited to key stakeholders</li>
+                                            <li>Must be responsive when consulted</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400 mr-2">
+                                                <span class="font-bold">I</span>
+                                            </div>
+                                            <h6 class="font-medium text-amber-700 dark:text-amber-300">Informed</h6>
+                                        </div>
+                                        <p class="text-xs mb-2">Those who are kept up-to-date on progress and decisions.</p>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Receives updates on progress</li>
+                                            <li>One-way communication</li>
+                                            <li>No input required</li>
+                                            <li>Affected by the outcome</li>
+                                            <li>Needs information for coordination</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-center mt-3 text-gray-500 dark:text-gray-400">The four RACI components create a comprehensive framework for defining roles in any task or decision</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Key RACI Principles</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Core Principles for Effective RACI Implementation</h5>
+                        <p class="text-sm mb-3">While the RACI framework is straightforward in concept, effective implementation requires adherence to several key principles that ensure the model works as intended and delivers maximum value.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Clarity and Precision</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">One Clear Accountable</p>
+                                            <p class="mb-0">Each task or decision must have exactly one Accountable person. This creates a single point of accountability and prevents confusion about final authority.</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Appropriate Level of Detail</p>
+                                            <p class="mb-0">Break down activities to the right level—not so granular that the matrix becomes unwieldy, but detailed enough to clarify roles for key decisions and deliverables.</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Clear Definitions</p>
+                                            <p class="mb-0">Tasks and deliverables should be clearly described so all participants understand what work is being assigned and what successful completion looks like.</p>
+                                        </li>
+                                        <li>
+                                            <p class="font-medium mb-0.5">Specific Roles Not Individuals</p>
+                                            <p class="mb-0">Wherever possible, assign RACI designations to roles rather than individuals to ensure the framework remains valid despite personnel changes.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Balance and Efficiency</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Right-Sized Responsibility</p>
+                                            <p class="mb-0">Ensure a manageable number of Responsible parties for each task. Too many creates diffusion of responsibility; too few may overburden individuals.</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Consultation Balance</p>
+                                            <p class="mb-0">Limit Consulted stakeholders to those whose input is truly valuable. Over-consultation creates delays and complexity without adding proportionate value.</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Information Efficiency</p>
+                                            <p class="mb-0">Include as Informed only those who genuinely need the information for their work or coordination. Avoid information overload and unnecessary communication.</p>
+                                        </li>
+                                        <li>
+                                            <p class="font-medium mb-0.5">Balanced Workload</p>
+                                            <p class="mb-0">Ensure no individual is assigned too many R or A roles across the full matrix, which could create bottlenecks or overwhelming workloads.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Implementation Principles</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Stakeholder Involvement</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Develop RACI collaboratively with key stakeholders</li>
+                                        <li>Ensure participants understand the framework</li>
+                                        <li>Get explicit agreement on roles from all parties</li>
+                                        <li>Resolve disagreements through facilitated discussion</li>
+                                        <li>Document decisions and rationale</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Authority Alignment</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Ensure those with R roles have adequate authority</li>
+                                        <li>Align A roles with organizational authority</li>
+                                        <li>Confirm decision rights match accountability</li>
+                                        <li>Address authority-responsibility mismatches</li>
+                                        <li>Check for alignment with governance structures</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Evolution & Maintenance</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Review and update RACI as processes change</li>
+                                        <li>Treat as a living document, not a one-time exercise</li>
+                                        <li>Establish a regular review cadence</li>
+                                        <li>Create a change management process for updates</li>
+                                        <li>Document versions and changes over time</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Creating a RACI Matrix</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Developing an Effective RACI Matrix</h5>
+                        <p class="text-sm mb-3">A RACI matrix visualizes the framework by mapping tasks or deliverables against stakeholders or roles. Creating an effective RACI matrix involves a structured process to ensure completeness, accuracy, and buy-in from all participants.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Step-by-Step Process</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">1. Identify Tasks and Deliverables</h6>
+                                        <p class="text-xs mb-0">Begin by listing all significant tasks, decisions, and deliverables that require role clarity:</p>
+                                        <ul class="pl-4 text-xs mt-1 mb-0">
+                                            <li>Break down the project or process into discrete components</li>
+                                            <li>Focus on outcomes and key decisions</li>
+                                            <li>Ensure appropriate level of detail (not too granular)</li>
+                                            <li>Use clear, action-oriented language</li>
+                                            <li>Include both execution and governance activities</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">2. Identify Stakeholders and Roles</h6>
+                                        <p class="text-xs mb-0">List all relevant stakeholders who should have a role in the activities:</p>
+                                        <ul class="pl-4 text-xs mt-1 mb-0">
+                                            <li>Include individual roles or functional areas</li>
+                                            <li>Consider both internal and external stakeholders</li>
+                                            <li>Ensure comprehensive representation</li>
+                                            <li>Focus on roles rather than specific people</li>
+                                            <li>Include leadership and governance roles</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">3. Assign RACI Designations</h6>
+                                        <p class="text-xs mb-0">For each task/deliverable and role intersection, assign the appropriate RACI designation:</p>
+                                        <ul class="pl-4 text-xs mt-1 mb-0">
+                                            <li>Start with identifying the Accountable role (one per task)</li>
+                                            <li>Determine who should be Responsible for execution</li>
+                                            <li>Identify subject matter experts who should be Consulted</li>
+                                            <li>Determine stakeholders who need to be Informed</li>
+                                            <li>Leave cells blank if a role has no involvement</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">4. Review and Validate</h6>
+                                        <p class="text-xs mb-0">Carefully review the completed matrix to identify and resolve issues:</p>
+                                        <ul class="pl-4 text-xs mt-1 mb-0">
+                                            <li>Check for empty rows or columns</li>
+                                            <li>Verify each task has exactly one Accountable</li>
+                                            <li>Look for overloaded individuals</li>
+                                            <li>Validate with key stakeholders</li>
+                                            <li>Test against real scenarios</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">RACI Matrix Example</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-xs border-collapse">
+                                            <thead>
+                                                <tr class="bg-gray-50 dark:bg-gray-900">
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Product Launch Tasks</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Product Manager</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Marketing Director</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Engineering Lead</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Sales Director</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Operations Manager</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Finance Lead</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Legal Counsel</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Define product requirements</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Develop product roadmap</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Create project timeline</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Complete product development</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A/R</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Approve pricing strategy</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Develop marketing plan</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A/R</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Prepare legal documentation</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A/R</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Coordinate product launch event</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Track post-launch metrics</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="mt-3 flex flex-wrap gap-2 justify-center">
+                                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
+                                            R - Responsible
+                                        </span>
+                                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                            A - Accountable
+                                        </span>
+                                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400">
+                                            C - Consulted
+                                        </span>
+                                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+                                            I - Informed
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">RACI Analysis & Validation</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Common RACI Pattern Issues</h6>
+                                    <table class="w-full text-xs">
+                                        <thead>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <th class="p-1.5 text-left">Pattern</th>
+                                                <th class="p-1.5 text-left">Description</th>
+                                                <th class="p-1.5 text-left">Action Required</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1.5 font-medium">Empty row</td>
+                                                <td class="p-1.5">No roles assigned to a task</td>
+                                                <td class="p-1.5">Assign appropriate roles or consider removing task</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1.5 font-medium">Empty column</td>
+                                                <td class="p-1.5">Stakeholder has no assignments</td>
+                                                <td class="p-1.5">Validate need for stakeholder in matrix or assign roles</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1.5 font-medium">No Accountable</td>
+                                                <td class="p-1.5">Missing clear accountability</td>
+                                                <td class="p-1.5">Identify and assign single Accountable role</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1.5 font-medium">Multiple As</td>
+                                                <td class="p-1.5">Shared accountability creates confusion</td>
+                                                <td class="p-1.5">Select single Accountable; change others to R or C</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1.5 font-medium">No Responsible</td>
+                                                <td class="p-1.5">No one executing the work</td>
+                                                <td class="p-1.5">Assign at least one Responsible role</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1.5 font-medium">A without R</td>
+                                                <td class="p-1.5">Accountability without execution</td>
+                                                <td class="p-1.5">Assign Responsible or combine A/R if same person</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-1.5 font-medium">Too many Rs</td>
+                                                <td class="p-1.5">Diffused responsibility</td>
+                                                <td class="p-1.5">Limit Responsible roles or break into subtasks</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Row & Column Analysis</h6>
+                                    <p class="text-xs mb-2">After creating your RACI matrix, analyze it from multiple perspectives:</p>
+                                    <div class="space-y-1 mb-2">
+                                        <h6 class="text-xs font-medium">Horizontal Analysis (Task View)</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Is each task clearly defined with measurable outcomes?</li>
+                                            <li>Does each task have exactly one Accountable role?</li>
+                                            <li>Are there sufficient Responsible roles to complete the work?</li>
+                                            <li>Is the number of Consulted stakeholders reasonable?</li>
+                                            <li>Are all necessary parties informed of outcomes?</li>
+                                        </ul>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <h6 class="text-xs font-medium">Vertical Analysis (Role View)</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Is any role overloaded with R or A assignments?</li>
+                                            <li>Do assignments match role's authority level?</li>
+                                            <li>Are there roles with minimal assignments?</li>
+                                            <li>Do assignments reflect organizational structure?</li>
+                                            <li>Do higher-level roles have proportionally more A assignments?</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Implementing RACI in Organizations</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">RACI Implementation & Adoption Strategies</h5>
+                        <p class="text-sm mb-3">Creating a RACI matrix is just the beginning. Successful implementation requires thoughtful introduction, stakeholder engagement, and ongoing management to ensure the framework becomes an effective organizational tool rather than a one-time exercise.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">When to Use RACI</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">RACI is particularly valuable in specific organizational situations:</p>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Cross-Functional Initiatives</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Projects involving multiple departments</li>
+                                            <li>Initiatives requiring diverse expertise</li>
+                                            <li>When clear handoffs between teams are essential</li>
+                                            <li>For managing complex stakeholder relationships</li>
+                                            <li>When traditional reporting lines are crossed</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Organizational Change</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>During restructuring or reorganizations</li>
+                                            <li>When implementing new processes</li>
+                                            <li>During mergers and acquisitions</li>
+                                            <li>Following leadership changes</li>
+                                            <li>When transitioning between operating models</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Recurring Issues & Conflicts</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>When tasks consistently "fall through the cracks"</li>
+                                            <li>Where accountability is frequently disputed</li>
+                                            <li>When decision rights are unclear</li>
+                                            <li>In areas with frequent redundant efforts</li>
+                                            <li>Where communication breakdowns regularly occur</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Implementation Success Factors</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[300px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Executive Sponsorship</h6>
+                                            <p class="text-xs mb-0">Leadership support is critical for successful RACI implementation:</p>
+                                            <ul class="pl-4 text-xs mt-1 mb-0">
+                                                <li>Secure visible support from leadership</li>
+                                                <li>Ensure executives model RACI principles</li>
+                                                <li>Align RACI with strategic priorities</li>
+                                                <li>Include leadership in RACI development</li>
+                                                <li>Obtain resources for implementation</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Stakeholder Education</h6>
+                                            <p class="text-xs mb-0">Ensure all participants understand the framework:</p>
+                                            <ul class="pl-4 text-xs mt-1 mb-0">
+                                                <li>Provide clear explanations of RACI components</li>
+                                                <li>Address "what's in it for me" for stakeholders</li>
+                                                <li>Use examples relevant to participants</li>
+                                                <li>Provide reference materials and templates</li>
+                                                <li>Create opportunities for questions and clarification</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Collaborative Development</h6>
+                                            <p class="text-xs mb-0">Create ownership through participation:</p>
+                                            <ul class="pl-4 text-xs mt-1 mb-0">
+                                                <li>Involve key stakeholders in matrix creation</li>
+                                                <li>Facilitate open discussion of roles</li>
+                                                <li>Address concerns and resistance constructively</li>
+                                                <li>Document agreements and decisions</li>
+                                                <li>Formalize acceptance of final assignments</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Integration & Sustainability</h6>
+                                            <p class="text-xs mb-0">Embed RACI into ongoing operations:</p>
+                                            <ul class="pl-4 text-xs mt-1 mb-0">
+                                                <li>Link RACI to existing project management approaches</li>
+                                                <li>Incorporate into onboarding and training</li>
+                                                <li>Reference in meeting agendas and minutes</li>
+                                                <li>Establish regular review and update cycles</li>
+                                                <li>Measure and communicate benefits realized</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Overcoming Common Implementation Challenges</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Resistance to Formalization</h6>
+                                    <p class="text-xs mb-1">When stakeholders resist formal role definition:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Emphasize problem-solving not bureaucracy</li>
+                                        <li>Demonstrate benefits from similar initiatives</li>
+                                        <li>Start with areas of clear pain points</li>
+                                        <li>Use lightweight approach for initial implementation</li>
+                                        <li>Involve skeptics in the development process</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Authority-Responsibility Mismatches</h6>
+                                    <p class="text-xs mb-1">When assignments don't align with organizational authority:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Identify and address governance gaps</li>
+                                        <li>Secure leadership support for role assignments</li>
+                                        <li>Document authority delegations formally</li>
+                                        <li>Align with organizational change initiatives</li>
+                                        <li>Create escalation paths for authority issues</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Matrix Maintenance Challenges</h6>
+                                    <p class="text-xs mb-1">When RACI becomes outdated or ignored:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Establish clear ownership for updates</li>
+                                        <li>Schedule regular review cycles</li>
+                                        <li>Create simple update triggers and processes</li>
+                                        <li>Link to performance management systems</li>
+                                        <li>Celebrate and recognize successful usage</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Dell Case Study: RACI for Product Development Governance</h5>
+                        <p class="text-sm mb-3">This example illustrates how Dell applied the RACI framework to clarify roles and responsibilities across its global product development process, addressing challenges in cross-functional collaboration and decision rights.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Situation Context</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Dell's Client Solutions Group faced several challenges in its product development process:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li>Global teams across multiple time zones and locations</li>
+                                        <li>Matrix organization with functional and product team structures</li>
+                                        <li>Multiple handoffs between design, engineering, operations, and go-to-market teams</li>
+                                        <li>Unclear decision rights leading to delays at critical gates</li>
+                                        <li>Inconsistent stakeholder engagement across projects</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Key Objectives:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Accelerate product development cycle time</li>
+                                        <li>Improve cross-functional collaboration</li>
+                                        <li>Clarify decision rights at each development stage</li>
+                                        <li>Ensure consistent quality in stakeholder engagement</li>
+                                        <li>Create scalable governance model for all product types</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Implementation Approach</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Process Analysis & Design</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Mapped end-to-end product development process</li>
+                                            <li>Identified key decision points and deliverables</li>
+                                            <li>Conducted stakeholder interviews to understand pain points</li>
+                                            <li>Analyzed previous projects for collaboration challenges</li>
+                                            <li>Defined target state for governance and collaboration</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">RACI Development</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Created cross-functional working group with representatives from all key functions</li>
+                                            <li>Facilitated collaborative RACI development workshops</li>
+                                            <li>Addressed conflicts and negotiated role assignments</li>
+                                            <li>Secured executive review and approval</li>
+                                            <li>Developed detailed documentation and guidance</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Implementation & Integration</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Integrated RACI into existing stage-gate process</li>
+                                            <li>Embedded role definitions in project management tools</li>
+                                            <li>Conducted training for project managers and key stakeholders</li>
+                                            <li>Established 90-day review cycle for refinement</li>
+                                            <li>Created dashboard to track implementation effectiveness</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Sample RACI Matrix: Product Development Governance</h6>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Development Stage Activity</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Product Manager</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Engineering Lead</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Design Lead</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Operations Lead</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Marketing Lead</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Program Manager</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Finance Lead</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Quality Lead</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="bg-gray-100 dark:bg-gray-800 font-medium">
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2" colspan="9">Concept Phase</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Develop business case</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Create product requirements document</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A/R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Approve concept funding</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                        </tr>
+                                        <tr class="bg-gray-100 dark:bg-gray-800 font-medium">
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2" colspan="9">Design Phase</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Develop technical specifications</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A/R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Create industrial design concepts</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A/R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Validate manufacturability</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A/R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Approve design for development</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                        </tr>
+                                        <tr class="bg-gray-100 dark:bg-gray-800 font-medium">
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2" colspan="9">Development Phase</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Build engineering prototypes</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A/R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Develop supply chain</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A/R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Conduct validation testing</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A/R</td>
+                                        </tr>
+                                        <tr class="bg-gray-100 dark:bg-gray-800 font-medium">
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2" colspan="9">Launch Phase</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Develop go-to-market plan</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A/R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Release to production</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-amber-50 dark:bg-amber-900/20">I</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A/R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-purple-50 dark:bg-purple-900/20">C</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Approve full market release</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-green-50 dark:bg-green-900/20">A</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center"></td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-center font-medium bg-blue-50 dark:bg-blue-900/20">R</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Implementation Challenges</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Regional differences:</strong> Adapting the framework to accommodate regional norms and practices while maintaining consistency</li>
+                                    <li class="mb-1"><strong>Role confusion:</strong> Clarifying distinction between Product Manager and Program Manager roles with overlapping responsibilities</li>
+                                    <li class="mb-1"><strong>Executive delegation:</strong> Ensuring executive stakeholders remained appropriately involved while delegating authority</li>
+                                    <li class="mb-1"><strong>Historical patterns:</strong> Overcoming entrenched behaviors and informal decision processes</li>
+                                    <li class="mb-0"><strong>Framework acceptance:</strong> Building trust in the new approach and demonstrating value over previous practices</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Key Success Factors</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Executive sponsorship:</strong> Active support from Senior VP of Product Development and regional leaders</li>
+                                    <li class="mb-1"><strong>Collaborative approach:</strong> Inclusive development process with multiple stakeholders at the table</li>
+                                    <li class="mb-1"><strong>Practical focus:</strong> Emphasis on solving real pain points rather than theoretical role definition</li>
+                                    <li class="mb-1"><strong>Implementation support:</strong> Dedicated coaches to help teams apply the framework in early phases</li>
+                                    <li class="mb-0"><strong>Continuous improvement:</strong> Regular review cycles and willingness to refine based on feedback</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Measurable Outcomes</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Development cycle time:</strong> 22% reduction in average time from concept to market release</li>
+                                    <li class="mb-1"><strong>Decision velocity:</strong> 35% reduction in time spent in pending decisions at stage gates</li>
+                                    <li class="mb-1"><strong>Meeting efficiency:</strong> 28% reduction in number of escalation meetings required</li>
+                                    <li class="mb-1"><strong>Team satisfaction:</strong> 18-point improvement in internal collaboration survey scores</li>
+                                    <li class="mb-0"><strong>First-time quality:</strong> 15% improvement in first-pass quality metrics at launch</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Key Learnings & Best Practices</h6>
+                            <ul class="pl-4 text-xs mb-2">
+                                <li class="mb-1"><strong>Scope appropriately:</strong> Focus on critical decision points and processes rather than attempting to document every activity</li>
+                                <li class="mb-1"><strong>Connect to business outcomes:</strong> Frame RACI implementation in terms of business impact, not just role clarity</li>
+                                <li class="mb-1"><strong>Anticipate resistance:</strong> Recognize that RACI challenges established power structures and prepare change management accordingly</li>
+                                <li class="mb-1"><strong>Provide implementation support:</strong> Offer facilitation and coaching during early implementation stages</li>
+                                <li class="mb-0"><strong>Measure and communicate:</strong> Track metrics that demonstrate impact and share success stories to build momentum</li>
+                            </ul>
+                            <p class="text-xs mb-0"><strong>Sustainability Strategy:</strong> Dell incorporated the RACI framework into their standard product development methodology documentation, training materials, and onboarding for new team members. They also integrated RACI discussions into regular retrospective meetings and established a "RACI champion" role within the program management office to maintain and evolve the framework.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>RACI Variations & Adaptations</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Beyond Basic RACI: Alternative Models and Extensions</h5>
+                        <p class="text-sm mb-3">While the standard RACI model is widely used, several variations have been developed to address specific organizational needs or to provide additional clarity in role definition. These adaptations extend or modify the basic framework to emphasize different aspects of responsibility and accountability.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">RACI-VS (Verify, Signatory)</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">RACI-VS adds two additional roles to the standard model:</p>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">V - Verifier</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Validates and checks the quality of the deliverable</li>
+                                            <li>May be an independent reviewer or auditor</li>
+                                            <li>Confirms work meets requirements and standards</li>
+                                            <li>Provides formal verification before approval</li>
+                                            <li>Often used in compliance or regulated environments</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">S - Signatory</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Provides final signature or formal approval</li>
+                                            <li>May be different from the Accountable role</li>
+                                            <li>Often relates to legal or regulatory requirements</li>
+                                            <li>Has official sign-off authority</li>
+                                            <li>Creates documented record of approval</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">RASCI (Support)</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">RASCI adds a Support role to standard RACI:</p>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">S - Support</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Provides resources or assistance to the Responsible role</li>
+                                            <li>Helps with task execution but isn't primarily responsible</li>
+                                            <li>Works under direction of Responsible person</li>
+                                            <li>Often has specialized skills or resources</li>
+                                            <li>Creates clearer distinction from Consulted role</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">When to Use RASCI</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>For complex projects with large teams and many support roles</li>
+                                            <li>When distinction between active support and consultation is important</li>
+                                            <li>In matrix organizations with shared resources</li>
+                                            <li>When resource contribution is significant but not primary</li>
+                                            <li>To acknowledge contributions without diffusing responsibility</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Other RACI Variations</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">CAIRO (Consulted, Accountable, Informed, Responsible, Omitted)</h6>
+                                    <p class="text-xs mb-1">Adds "Omitted" to explicitly document who is not involved:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>O - Omitted:</strong> Deliberately excluded from the process</li>
+                                        <li>Helpful in politically sensitive environments</li>
+                                        <li>Makes explicit who should not participate</li>
+                                        <li>Prevents unauthorized involvement</li>
+                                        <li>Clarifies boundaries between teams</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">DACI (Driver, Approver, Contributors, Informed)</h6>
+                                    <p class="text-xs mb-1">Decision-focused variation popular in agile environments:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>D - Driver:</strong> Ensures decision process moves forward (similar to R)</li>
+                                        <li><strong>A - Approver:</strong> Has final decision authority (similar to A)</li>
+                                        <li><strong>C - Contributors:</strong> Provide input to decision (similar to C)</li>
+                                        <li><strong>I - Informed:</strong> Notified of decision outcome (similar to I)</li>
+                                        <li>Emphasizes driving decisions to completion</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">RACI-JF (RACI plus Jeopardy & Façade)</h6>
+                                    <p class="text-xs mb-1">Identifies problematic assignments:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>J - Jeopardy:</strong> Role at risk if not properly performed</li>
+                                        <li><strong>F - Façade:</strong> Role that appears important but lacks substance</li>
+                                        <li>Used for organizational diagnostics</li>
+                                        <li>Helps identify structural issues</li>
+                                        <li>Supports organizational redesign efforts</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2018/01/the-most-empowered-teams-dont-need-to-be-told-what-to-do" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Empowerment Through Role Clarity</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • How Clear Roles Enable Autonomy</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/business-functions/people-and-organizational-performance/our-insights/memo-to-the-ceo-are-you-the-source-of-workplace-dysfunction" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-presentation-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Addressing Organizational Dysfunction</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • Role Clarity and Decision Rights</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.delltechnologies.com/en-us/blog/digital-transformation-demands-new-project-management-practices/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-book-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Digital Transformation Project Management</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Dell Technologies • Governance Framework Evolution</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell Cloud Service Launch RACI Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll develop a RACI matrix for a cross-functional initiative at Dell Technologies: the launch of a new cloud service offering. This scenario will help you apply the RACI framework to clarify roles and responsibilities for a complex project involving multiple stakeholders.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Scenario Context:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Dell is launching a new cloud infrastructure service for enterprise customers</li>
+                                    <li>The initiative requires coordination across product management, engineering, sales, marketing, legal, and operations teams</li>
+                                    <li>Previous cloud service launches have experienced delays due to unclear decision rights and handoff issues</li>
+                                    <li>The executive team has requested clearer accountability for key deliverables</li>
+                                    <li>The launch timeline is aggressive, scheduled for completion in 6 months</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Key Stakeholders:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Cloud Services Product Director</li>
+                                    <li>Cloud Engineering Lead</li>
+                                    <li>Marketing Director</li>
+                                    <li>Enterprise Sales VP</li>
+                                    <li>Legal Counsel</li>
+                                    <li>Operations Director</li>
+                                    <li>Program Manager</li>
+                                    <li>Customer Success Lead</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Key Deliverables Identification</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Identify 8-10 key deliverables or decisions that would require clear role definition for the cloud service launch."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">RACI Matrix Development</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="5" placeholder="Create a RACI matrix for the deliverables you identified, assigning Responsible, Accountable, Consulted, and Informed roles to each stakeholder. Include your rationale for critical assignments."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Matrix Analysis & Recommendations</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Analyze your completed matrix for potential issues (overloaded roles, missing accountabilities, etc.) and provide recommendations for implementation."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-4ps-gtm">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: 4Ps GTM Strategy</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-rapids">
+                        <span>Next: RAPIDs Framework</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-raci');
+        });
+    </script>
+</body>
+</html>

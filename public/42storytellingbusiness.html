@@ -1,0 +1,1608 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="ri-arrow-left-line"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      
+            <!-- Business Storytelling Topic -->
+            <section id="topic-business-storytelling" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-book-open-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Storytelling in Business</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Effective Communication</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand why storytelling is a powerful business communication tool</li>
+                            <li>Learn the essential elements and structures of effective business stories</li>
+                            <li>Master techniques for incorporating data into compelling narratives</li>
+                            <li>Develop storytelling skills for different business contexts and audiences</li>
+                            <li>Apply Dell's storytelling best practices to enhance your communication impact</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>The Power of Business Storytelling</h4>
+                    <p>Storytelling is one of humanity's oldest and most powerful communication methods. In business, storytelling transforms complex information into memorable narratives that engage audiences, create emotional connections, and drive action. While facts and data inform decisions, stories provide meaning and context that help people understand why the information matters. Mastering business storytelling enhances your ability to influence, persuade, and inspire across all professional contexts.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Stories Work in Business</h5>
+                        <p class="mb-3">Research in neuroscience and psychology reveals several reasons why storytelling is particularly effective for business communication:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Neural Synchronization</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Brain coupling:</strong> When listening to stories, audience brain patterns synchronize with the storyteller's</li>
+                                    <li><strong>Deeper processing:</strong> Stories activate multiple brain regions simultaneously</li>
+                                    <li><strong>Sustained attention:</strong> Narrative structure maintains interest longer than facts alone</li>
+                                    <li><strong>Enhanced recall:</strong> Information embedded in stories is better remembered</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Emotional Connection</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Chemical response:</strong> Stories trigger oxytocin and dopamine release</li>
+                                    <li><strong>Empathy activation:</strong> Narratives enable audiences to experience others' perspectives</li>
+                                    <li><strong>Value alignment:</strong> Stories communicate shared beliefs and priorities</li>
+                                    <li><strong>Reduced resistance:</strong> Narratives bypass initial skepticism of direct persuasion</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Meaning Creation</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Contextualization:</strong> Stories place data in meaningful frameworks</li>
+                                    <li><strong>Pattern recognition:</strong> Narratives help identify cause-effect relationships</li>
+                                    <li><strong>Complexity simplification:</strong> Stories distill complex ideas into accessible forms</li>
+                                    <li><strong>Purpose connection:</strong> Narratives link actions to larger missions</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Business Impact of Effective Storytelling</h6>
+                            <p class="mb-2">At Dell Technologies, storytelling has proven to be a strategic communication approach that delivers measurable results:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Internal Communication Results</p>
+                                    <ul class="pl-5 text-sm mb-0">
+                                        <li><strong>Strategy adoption:</strong> 32% improvement in employee understanding of strategic priorities when communicated through storytelling vs. traditional approaches</li>
+                                        <li><strong>Change management:</strong> 27% less resistance to organizational changes when framed with compelling narrative</li>
+                                        <li><strong>Leadership effectiveness:</strong> Leaders using storytelling consistently rated 40% higher on influence and inspiration metrics</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-green-700 dark:text-green-400 mb-1">External Communication Results</p>
+                                    <ul class="pl-5 text-sm mb-0">
+                                        <li><strong>Sales effectiveness:</strong> Solutions presented with customer success stories achieved 23% higher conversion rates</li>
+                                        <li><strong>Brand perception:</strong> Brand narratives increased positive sentiment scores by 35% in market research</li>
+                                        <li><strong>Customer loyalty:</strong> Sharing authentic customer journey stories increased renewal rates by 18%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Facts vs. Stories: Communication Impact</h5>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-800">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Communication Element</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Facts &amp; Data Alone</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Facts Within Stories</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm">
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Audience Engagement</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Requires continuous effort to maintain attention; higher cognitive load</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Natural engagement through narrative curiosity; attention follows story arc</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Memory Retention</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">22% recall after one week (Stanford research)</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Up to 65% recall after one week when embedded in stories</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Persuasive Impact</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Intellectual agreement but limited motivational impact</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Both intellectual and emotional buy-in leading to stronger conviction</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Knowledge Transfer</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Effective for explicit knowledge; limited for tacit knowledge</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Transfers both explicit and tacit knowledge through context</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Meaning Creation</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Audience must create own framework for interpretation</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Provides ready framework for understanding significance</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Longevity</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Vulnerable to being forgotten or replaced by newer data</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Remains memorable and retold, spreading impact beyond initial audience</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Action Motivation</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Requires additional persuasion to convert understanding to action</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Naturally bridges understanding to motivation through emotional response</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Elements of Effective Business Stories</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Core Components of Business Narratives</h5>
+                        <p class="text-sm mb-3">While business storytelling differs from entertainment in its purpose and structure, the most effective business stories incorporate these essential narrative elements:</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">The Business Story Architecture</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">1</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Compelling Characters</h6>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Relatable protagonists:</strong> Customers, employees, or other stakeholders the audience identifies with</li>
+                                                <li><strong>Clear motivations:</strong> Authentic needs and desires driving actions</li>
+                                                <li><strong>Business relevance:</strong> Characters represent key perspectives or stakeholder groups</li>
+                                                <li><strong>Specificity:</strong> Enough detail to make them real without overwhelming</li>
+                                            </ul>
+                                            <div class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
+                                                <p class="text-xs italic mb-0">In business storytelling, characters can be individuals, teams, organizations, or even products—as long as they have goals and face challenges.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">2</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Meaningful Challenge</h6>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Real-world problem:</strong> A specific business challenge, market shift, or customer pain point</li>
+                                                <li><strong>Stakes and consequences:</strong> Clear impact if the challenge isn't addressed</li>
+                                                <li><strong>Relevance to audience:</strong> Challenges the audience recognizes or experiences</li>
+                                                <li><strong>Complexity acknowledged:</strong> Honest portrayal of difficulties</li>
+                                            </ul>
+                                            <div class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
+                                                <p class="text-xs italic mb-0">The challenge creates tension that engages attention and establishes why the story matters—the "so what" factor that justifies the audience's time.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">3</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Clear Narrative Arc</h6>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Logical sequence:</strong> Coherent progression of events with cause-effect links</li>
+                                                <li><strong>Context setting:</strong> Enough background for understanding without overload</li>
+                                                <li><strong>Rising action:</strong> Building complexity or stakes as the story progresses</li>
+                                                <li><strong>Turning point:</strong> Critical moment, insight, or decision that changes direction</li>
+                                            </ul>
+                                            <div class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
+                                                <p class="text-xs italic mb-0">A well-structured narrative guides the audience through complexity in a way that feels intuitive and builds toward key insights or conclusions.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">4</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Authentic Emotions</h6>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Genuine human reactions:</strong> Real feelings that arose during events</li>
+                                                <li><strong>Appropriate vulnerability:</strong> Honest portrayal of difficulties</li>
+                                                <li><strong>Professional balance:</strong> Emotional content relevant to business context</li>
+                                                <li><strong>Connection points:</strong> Moments audience can empathize with</li>
+                                            </ul>
+                                            <div class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
+                                                <p class="text-xs italic mb-0">Emotions make stories memorable and create connection—they're what transform dry information into experiences the audience can relate to personally.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">5</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Tangible Resolution</h6>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Clear outcomes:</strong> Specific results or changes that occurred</li>
+                                                <li><strong>Business value:</strong> Quantifiable impact where possible</li>
+                                                <li><strong>Lessons learned:</strong> Insights gained from the experience</li>
+                                                <li><strong>Future implications:</strong> How the resolution affects ongoing situations</li>
+                                            </ul>
+                                            <div class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
+                                                <p class="text-xs italic mb-0">Business stories must deliver clear value—the resolution shows why the story matters and what can be applied to current challenges.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">6</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Core Message</h6>
+                                            </div>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Central insight:</strong> The key takeaway or "moral of the story"</li>
+                                                <li><strong>Relevance to now:</strong> Connection to current decisions or challenges</li>
+                                                <li><strong>Audience-centered:</strong> Framed in terms of listener benefit or application</li>
+                                                <li><strong>Memorable expression:</strong> Stated clearly and concisely</li>
+                                            </ul>
+                                            <div class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
+                                                <p class="text-xs italic mb-0">The core message answers the audience's question: "What does this mean for me?" It's what you want them to remember when details fade.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Data and Evidence in Storytelling</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Integrating Data Within Stories</h6>
+                                    <p class="text-xs mb-2">Business stories must balance emotional engagement with analytical credibility. Effective data integration follows these principles:</p>
+                                    
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1"><strong>Selective use:</strong> Choose only the most relevant data that advances the narrative</li>
+                                        <li class="mb-1"><strong>Human context:</strong> Connect numbers to people and real-world impact</li>
+                                        <li class="mb-1"><strong>Visual representation:</strong> Use charts or visuals that clarify rather than complicate</li>
+                                        <li class="mb-1"><strong>Meaningful comparisons:</strong> Make data relatable through analogies or benchmarks</li>
+                                        <li class="mb-1"><strong>Progressive disclosure:</strong> Reveal data at the point in the story where it has maximum impact</li>
+                                        <li class="mb-0"><strong>Emotional bridge:</strong> Use data to heighten the emotional response, not diminish it</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Data Storytelling Example</h6>
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">Weak Approach (Data without Story)</h6>
+                                        <p class="text-xs mb-0">"Our customer support team resolved 15,428 tickets last quarter, with an average resolution time of 4.2 hours, which is a 22% improvement over the previous quarter's 5.4 hours."</p>
+                                    </div>
+                                    
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg mt-2">
+                                        <h6 class="text-xs font-medium mb-1">Strong Approach (Data within Story)</h6>
+                                        <p class="text-xs mb-0">"Last quarter, our customers were waiting nearly six hours for help with critical issues. Maria's support team set out to change that. They analyzed their workflow, identified three major bottlenecks, and implemented a new routing system. The result? Our customers now get solutions in just over four hours—almost two hours faster. One customer, a hospital IT director, told us this meant the difference between a minor inconvenience and a critical care impact."</p>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <h6 class="text-xs font-medium mb-1">The Difference</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>The story approach has characters (Maria's team, hospital director)</li>
+                                            <li>It includes a challenge and process to overcome it</li>
+                                            <li>It translates data into human impact</li>
+                                            <li>The same metrics become more meaningful and memorable</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Dell's Business Storytelling Elements</h6>
+                                <p class="text-xs mb-2">Dell Technologies has developed specific guidance for incorporating these elements in business communications:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Character Development</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Customer heroes:</strong> Focus on customer as protagonist whenever possible</li>
+                                            <li><strong>Specific personas:</strong> Use actual roles and challenges rather than generic descriptions</li>
+                                            <li><strong>Multiple perspectives:</strong> Include viewpoints from different stakeholders</li>
+                                            <li><strong>Authentic voices:</strong> Incorporate direct quotes that reflect genuine language</li>
+                                            <li><strong>Relatable goals:</strong> Emphasize universal aspirations that transcend industries</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Data Storytelling Standards</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Outcome-led metrics:</strong> Lead with impact, then detail supporting data</li>
+                                            <li><strong>Contextual comparison:</strong> Always provide relevant benchmarks</li>
+                                            <li><strong>Visual simplicity:</strong> One core insight per visualization</li>
+                                            <li><strong>Progressive detail:</strong> Layer complexity as audience understanding builds</li>
+                                            <li><strong>Sources transparency:</strong> Clear attribution for data credibility</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Business Storytelling Frameworks</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Story Structures for Business Impact</h5>
+                        <p class="text-sm mb-3">Different business contexts call for different story structures. Having a repertoire of frameworks allows you to select the most appropriate approach for your specific communication goal and audience.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">The Classic Story Arc</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <h6 class="text-xs font-medium mb-3 text-center">The Situation-Complication-Resolution Framework</h6>
+                                    
+                                    <div class="relative h-[180px] mb-3">
+                                        <!-- Story Arc Visualization -->
+                                        <svg class="w-full h-full">
+                                            <!-- Axes -->
+                                            <line x1="40" y1="150" x2="40" y2="30" stroke="#6B7280" stroke-width="1.5"></line>
+                                            <line x1="40" y1="150" x2="400" y2="150" stroke="#6B7280" stroke-width="1.5"></line>
+                                            
+                                            <!-- X-axis Labels -->
+                                            <text x="40" y="165" font-size="10" fill="currentColor">Beginning</text>
+                                            <text x="160" y="165" font-size="10" fill="currentColor">Middle</text>
+                                            <text x="370" y="165" font-size="10" fill="currentColor">End</text>
+                                            
+                                            <!-- Y-axis Label -->
+                                            <text x="20" y="90" font-size="10" fill="currentColor" transform="rotate(-90, 20, 90)">Tension</text>
+                                            
+                                            <!-- Arc Line -->
+                                            <path d="M 40,120 Q 100,120 120,110 T 200,70 T 320,40 T 380,100" fill="none" stroke="#10B981" stroke-width="2.5"></path>
+                                            
+                                            <!-- Story Element Labels -->
+                                            <text x="40" y="105" font-size="10" fill="#10B981" font-weight="bold">Situation</text>
+                                            <text x="160" y="55" font-size="10" fill="#10B981" font-weight="bold">Complication</text>
+                                            <text x="260" y="30" font-size="10" fill="#10B981" font-weight="bold">Climax</text>
+                                            <text x="370" y="105" font-size="10" fill="#10B981" font-weight="bold">Resolution</text>
+                                        </svg>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Framework Elements</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Situation:</strong> Establish the context, characters, and initial state</li>
+                                            <li><strong>Complication:</strong> Introduce the challenge, problem, or opportunity</li>
+                                            <li><strong>Rising Action:</strong> Detail attempts to address the challenge, with increasing stakes</li>
+                                            <li><strong>Climax:</strong> The turning point where a critical insight or decision changes everything</li>
+                                            <li><strong>Resolution:</strong> The outcome, solution, and lessons learned</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Business Applications</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Case studies:</strong> Showcase how customers overcame challenges</li>
+                                            <li><strong>Project retrospectives:</strong> Review what happened and why</li>
+                                            <li><strong>Change initiatives:</strong> Frame the need for change within a narrative</li>
+                                            <li><strong>Leadership messages:</strong> Communicate vision through stories of transformation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">The Challenge Framework</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <h6 class="text-xs font-medium mb-3 text-center">The "CCOR" Approach</h6>
+                                        <div class="flex flex-col gap-3 mb-3">
+                                            <div class="flex items-start gap-3">
+                                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-700 dark:text-green-400 font-bold">C</div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-1">Challenge</h6>
+                                                    <p class="text-xs mb-0">Start with the specific business challenge or customer pain point that created urgency or need. Make it relatable and concrete.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="flex items-start gap-3">
+                                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-700 dark:text-green-400 font-bold">C</div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-1">Choices</h6>
+                                                    <p class="text-xs mb-0">Outline the options that were considered in addressing the challenge. Include the pros and cons of different approaches to build credibility.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="flex items-start gap-3">
+                                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-700 dark:text-green-400 font-bold">O</div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-1">Outcome</h6>
+                                                    <p class="text-xs mb-0">Describe what happened as a result of the choices made. Include specific, measurable results and impact on people involved.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="flex items-start gap-3">
+                                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-700 dark:text-green-400 font-bold">R</div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-1">Reflection</h6>
+                                                    <p class="text-xs mb-0">Share the insights gained and how they can apply to current situations. Connect the story back to your audience's challenges.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Why This Framework Works</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Problem-centered:</strong> Starts with challenges the audience can relate to</li>
+                                                <li><strong>Decision-focused:</strong> Highlights the critical thinking process</li>
+                                                <li><strong>Results-oriented:</strong> Emphasizes tangible outcomes and impact</li>
+                                                <li><strong>Forward-looking:</strong> Connects past experiences to future applications</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Business Applications</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Sales conversations:</strong> Demonstrate problem-solving capability</li>
+                                                <li><strong>Solution presentations:</strong> Show how options were evaluated</li>
+                                                <li><strong>Team learning:</strong> Share experiences that others can benefit from</li>
+                                                <li><strong>Executive briefings:</strong> Quickly communicate decision rationale</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Additional Business Storytelling Frameworks</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">The Connection Story</h6>
+                                    <p class="text-xs mb-2">Personal stories that reveal values, experiences, or insights to build trust and rapport.</p>
+                                    <div class="mb-2">
+                                        <h6 class="text-xs mb-1">Structure:</h6>
+                                        <ol class="pl-4 text-xs mb-0">
+                                            <li><strong>Personal context:</strong> Authentic moment or challenge</li>
+                                            <li><strong>Vulnerability:</strong> Honest sharing of difficulty or learning</li>
+                                            <li><strong>Insight:</strong> What was discovered or realized</li>
+                                            <li><strong>Connection:</strong> How it relates to present situation</li>
+                                        </ol>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs mb-1">When to Use:</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Building new relationships</li>
+                                            <li>Creating psychological safety</li>
+                                            <li>Demonstrating empathy</li>
+                                            <li>Establishing credibility through experience</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">The Vision Story</h6>
+                                    <p class="text-xs mb-2">Forward-looking narratives that paint a compelling picture of a possible future to inspire action.</p>
+                                    <div class="mb-2">
+                                        <h6 class="text-xs mb-1">Structure:</h6>
+                                        <ol class="pl-4 text-xs mb-0">
+                                            <li><strong>Current reality:</strong> Honest assessment of today</li>
+                                            <li><strong>Future possibility:</strong> Vivid description of tomorrow</li>
+                                            <li><strong>Benefits:</strong> How stakeholders will be better off</li>
+                                            <li><strong>Path forward:</strong> How we'll get there together</li>
+                                        </ol>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs mb-1">When to Use:</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Strategic planning sessions</li>
+                                            <li>Change management communications</li>
+                                            <li>Launching new initiatives</li>
+                                            <li>Motivating teams through challenges</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">The Value Story</h6>
+                                    <p class="text-xs mb-2">Demonstrates the tangible and intangible benefits of a solution, product, or approach.</p>
+                                    <div class="mb-2">
+                                        <h6 class="text-xs mb-1">Structure:</h6>
+                                        <ol class="pl-4 text-xs mb-0">
+                                            <li><strong>Before state:</strong> Situation prior to solution</li>
+                                            <li><strong>Investment:</strong> What was required to change</li>
+                                            <li><strong>After state:</strong> New reality with solution</li>
+                                            <li><strong>ROI:</strong> Specific value gained (quantitative and qualitative)</li>
+                                        </ol>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs mb-1">When to Use:</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Sales conversations</li>
+                                            <li>Budget justifications</li>
+                                            <li>Case studies</li>
+                                            <li>Annual reports and reviews</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">The "Why Us" Story</h6>
+                                    <p class="text-xs mb-2">Communicates organizational purpose and differentiators through stories of origin, values, and impact.</p>
+                                    <div class="mb-2">
+                                        <h6 class="text-xs mb-1">Structure:</h6>
+                                        <ol class="pl-4 text-xs mb-0">
+                                            <li><strong>Genesis:</strong> How and why the organization started</li>
+                                            <li><strong>Mission moments:</strong> Examples of values in action</li>
+                                            <li><strong>Distinctive approach:</strong> How you do things differently</li>
+                                            <li><strong>Invitation:</strong> How the audience can participate</li>
+                                        </ol>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs mb-1">When to Use:</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Brand messaging</li>
+                                            <li>Recruitment and onboarding</li>
+                                            <li>Customer differentiation</li>
+                                            <li>Partner relationships</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">The Learning Story</h6>
+                                    <p class="text-xs mb-2">Shares lessons learned from failure, mistakes, or unexpected outcomes to foster improvement.</p>
+                                    <div class="mb-2">
+                                        <h6 class="text-xs mb-1">Structure:</h6>
+                                        <ol class="pl-4 text-xs mb-0">
+                                            <li><strong>Context:</strong> Situation and goals at the time</li>
+                                            <li><strong>Actions:</strong> What was done and why</li>
+                                            <li><strong>Unexpected results:</strong> What didn't go as planned</li>
+                                            <li><strong>Insights:</strong> What was learned and how it's applied now</li>
+                                        </ol>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs mb-1">When to Use:</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Team retrospectives</li>
+                                            <li>Organizational learning</li>
+                                            <li>Innovation discussions</li>
+                                            <li>Mentoring conversations</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">The Customer Journey Story</h6>
+                                    <p class="text-xs mb-2">Follows a customer's experience to build empathy and highlight needs or opportunities.</p>
+                                    <div class="mb-2">
+                                        <h6 class="text-xs mb-1">Structure:</h6>
+                                        <ol class="pl-4 text-xs mb-0">
+                                            <li><strong>Customer context:</strong> Who they are and their situation</li>
+                                            <li><strong>Triggering need:</strong> What prompted them to act</li>
+                                            <li><strong>Experience points:</strong> Key moments in their journey</li>
+                                            <li><strong>Outcome and impact:</strong> How their situation changed</li>
+                                        </ol>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs mb-1">When to Use:</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Product development</li>
+                                            <li>Customer experience design</li>
+                                            <li>Sales training</li>
+                                            <li>Marketing campaigns</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Dell's Framework Selection Matrix</h6>
+                                <p class="text-xs mb-2">Dell Technologies uses this matrix to guide storytellers in selecting the most effective framework:</p>
+                                
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-900">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">If your goal is to...</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Primary Framework</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Supporting Framework</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Key Components to Emphasize</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Build credibility with a new client</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Challenge Framework (CCOR)</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Connection Story</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Similar customer challenges; thoughtful decision processes; measurable outcomes</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Drive organizational change</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Vision Story</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Classic Story Arc</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Compelling future state; personal impact; clear path forward; early success examples</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Justify investment or purchase</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Value Story</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Challenge Framework</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Before/after contrast; quantifiable benefits; risk mitigation; competitive differentiation</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Establish thought leadership</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Learning Story</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">"Why Us" Story</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Unique insights; industry trends; forward-looking perspective; lessons from experience</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Improve customer experience</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Customer Journey Story</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Classic Story Arc</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Emotional touchpoints; pain points; moments of truth; customer voice and feedback</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Build team motivation</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Connection Story</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Vision Story</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Shared challenges; authentic emotion; collective achievement; purpose alignment</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Storytelling Across Business Contexts</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Adapting Storytelling for Different Purposes</h5>
+                        <p class="text-sm mb-3">Effective business storytelling requires tailoring your approach to specific contexts, audience needs, and business objectives. The same core story elements may be emphasized differently depending on the situation.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Leadership Communication</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Storytelling for Vision and Strategy</h6>
+                                        <p class="text-xs mb-2">Leaders use stories to articulate vision, inspire action, and align teams around strategic direction.</p>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg mb-3">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Key Elements to Emphasize</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Purpose and meaning:</strong> Why the direction matters to stakeholders</li>
+                                                <li><strong>Contrasting realities:</strong> Clear picture of current state vs. desired future</li>
+                                                <li><strong>Collective journey:</strong> How everyone contributes to success</li>
+                                                <li><strong>Human impact:</strong> Stories that illustrate the difference the work makes</li>
+                                                <li><strong>Milestone markers:</strong> Recognizable progress points along the way</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Example: Dell's Transformation Story</h6>
+                                            <p class="text-xs italic">When Michael Dell communicated the company's shift from hardware provider to end-to-end solutions partner, he used a narrative that:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Started with customer challenge stories that highlighted changing IT needs</li>
+                                                <li>Shared the origin story of Dell's founding purpose to deliver technology solutions that enable human potential</li>
+                                                <li>Painted a vivid picture of the future where infrastructure, security, and applications work seamlessly together</li>
+                                                <li>Included specific customer examples of early transformation success</li>
+                                                <li>Acknowledged the challenges of transition while emphasizing the opportunity ahead</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Tips for Leadership Storytelling</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Authenticity matters most:</strong> Leaders must believe the stories they tell</li>
+                                            <li><strong>Connect past, present, and future:</strong> Show evolution rather than reinvention</li>
+                                            <li><strong>Create story moments:</strong> Include memorable phrases and images that can be repeated</li>
+                                            <li><strong>Balance aspiration with pragmatism:</strong> Address challenges honestly within optimistic frame</li>
+                                            <li><strong>Invite co-creation:</strong> Allow others to contribute to and shape the narrative</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Sales and Customer Engagement</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Storytelling for Persuasion and Trust</h6>
+                                        <p class="text-xs mb-2">In sales contexts, stories build credibility, demonstrate value, and help customers envision successful outcomes.</p>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg mb-3">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Key Elements to Emphasize</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Relevant protagonists:</strong> Stories featuring similar customers or situations</li>
+                                                <li><strong>Specific challenges:</strong> Detailed pain points that resonate with prospect's experience</li>
+                                                <li><strong>Solution journey:</strong> How the solution was implemented and adopted</li>
+                                                <li><strong>Quantifiable results:</strong> Concrete outcomes and return on investment</li>
+                                                <li><strong>Unexpected benefits:</strong> Additional value discovered beyond initial goals</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Sales Story Sequence Framework</h6>
+                                            <ol class="pl-4 text-xs mb-0">
+                                                <li><strong>Connection story:</strong> Brief personal anecdote to establish rapport</li>
+                                                <li><strong>Challenge story:</strong> Similar customer's problem and its impact</li>
+                                                <li><strong>Solution story:</strong> How the specific approach addressed the challenge</li>
+                                                <li><strong>Success story:</strong> Results achieved with measurable benefits</li>
+                                                <li><strong>Possibility story:</strong> How this could apply to the prospect's situation</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Tips for Sales Storytelling</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Make the customer the hero:</strong> Focus on their challenges and successes</li>
+                                            <li><strong>Use specific details:</strong> Include industry, company size, and relevant context</li>
+                                            <li><strong>Incorporate customer quotes:</strong> Direct voice adds authenticity</li>
+                                            <li><strong>Address objections within stories:</strong> Show how concerns were overcome</li>
+                                            <li><strong>Balance emotion and logic:</strong> Connect both to drive decision-making</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Additional Business Storytelling Contexts</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Product Marketing</h6>
+                                    <p class="text-xs mb-2">Use stories to bring product benefits to life and create emotional connection with audiences.</p>
+                                    <div class="mb-2">
+                                        <h6 class="text-xs mb-1">Key Applications:</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Origin stories:</strong> How and why the product was developed</li>
+                                            <li><strong>Use case narratives:</strong> How real users solve problems</li>
+                                            <li><strong>Comparison stories:</strong> Before/after scenarios</li>
+                                            <li><strong>Innovation journeys:</strong> The development process and insights</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs mb-1">Dell Example:</h6>
+                                        <p class="text-xs mb-0">Dell's XPS laptop marketing focuses on creator stories—real professionals who use the product to bring their visions to life, highlighting how specific features enable their creative process.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Change Management</h6>
+                                    <p class="text-xs mb-2">Stories help people understand, accept, and embrace organizational changes.</p>
+                                    <div class="mb-2">
+                                        <h6 class="text-xs mb-1">Key Applications:</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Burning platform narratives:</strong> Why change is necessary</li>
+                                            <li><strong>Transition stories:</strong> How others adapted successfully</li>
+                                            <li><strong>Future state narratives:</strong> Day-in-the-life after change</li>
+                                            <li><strong>Legacy stories:</strong> Honoring the past while moving forward</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs mb-1">Dell Example:</h6>
+                                        <p class="text-xs mb-0">During the EMC integration, Dell used stories of early cross-company collaboration teams who discovered new opportunities by combining strengths from both organizations.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Knowledge Transfer</h6>
+                                    <p class="text-xs mb-2">Stories effectively transfer expertise, lessons learned, and best practices.</p>
+                                    <div class="mb-2">
+                                        <h6 class="text-xs mb-1">Key Applications:</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Project retrospectives:</strong> What worked, what didn't, and why</li>
+                                            <li><strong>Onboarding narratives:</strong> How to navigate processes</li>
+                                            <li><strong>Problem-solving cases:</strong> How issues were resolved</li>
+                                            <li><strong>Success patterns:</strong> Approaches that consistently deliver results</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs mb-1">Dell Example:</h6>
+                                        <p class="text-xs mb-0">Dell's Solutions Engineering team maintains a "lesson learned library" of narrative case studies documenting complex deployment challenges and how they were overcome.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dell's Story Selection Matrix</h6>
+                                <p class="text-xs mb-2">Dell provides this guidance for selecting story types based on audience and objective:</p>
+                                
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-900">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Audience</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">To Inform</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">To Inspire</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">To Influence</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Executive Leaders</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <strong>Case studies</strong> with clear business impact, market context, and strategic relevance
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <strong>Vision stories</strong> that connect initiatives to long-term company direction and market leadership
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <strong>Decision-point stories</strong> that show consequences of action vs. inaction in similar situations
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Customers / Clients</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <strong>Solution stories</strong> showing how similar organizations addressed comparable challenges
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <strong>Transformation narratives</strong> that show the journey to better business outcomes
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <strong>Value stories</strong> with specific ROI and competitive advantage gained by other customers
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Technical Teams</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <strong>Problem-solving narratives</strong> that detail technical approaches and architecture decisions
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <strong>Innovation stories</strong> that showcase technical breakthroughs and creative solutions
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <strong>Lesson-learned stories</strong> that candidly address challenges and how they were overcome
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Employees</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <strong>Context stories</strong> that explain organizational decisions and direction with transparency
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <strong>Purpose stories</strong> that connect daily work to customer impact and company mission
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    <strong>Change stories</strong> that show how others successfully adapted to new approaches
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Dell Case Study: Customer Listening Tour Story</h5>
+                        <p class="text-sm mb-3">This case study examines how Dell Technologies used storytelling to transform findings from a customer listening initiative into a compelling narrative that drove organizational change and product improvements.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Background</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Dell's enterprise solutions team conducted an extensive listening tour with customers who had expressed dissatisfaction with their experience. The initiative generated valuable insights, but presenting these findings effectively to multiple internal audiences presented a challenge:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li>Raw data included hundreds of interview transcripts and survey responses</li>
+                                        <li>Multiple themes and issues spanned product, support, and sales experiences</li>
+                                        <li>Findings needed to resonate with technical, business, and leadership teams</li>
+                                        <li>Action was required across organizational boundaries</li>
+                                        <li>Many teams were resistant to criticism of their processes or offerings</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">The Storytelling Challenge:</p>
+                                    <p class="text-xs mb-0">How to transform this complex dataset into a narrative that would drive organizational change across multiple functions while maintaining the authentic voice of customers and creating empathy rather than defensiveness.</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">The Narrative Approach</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">The Customer Journey Framework</h6>
+                                        <p class="text-xs mb-0">Rather than presenting findings in traditional format (organized by product or function), the team developed a narrative structure focused on the customer's journey:</p>
+                                        <ol class="pl-4 text-xs mb-0">
+                                            <li><strong>Character development:</strong> Created composite personas representing key customer segments</li>
+                                            <li><strong>Journey mapping:</strong> Plotted their experience from pre-purchase through ongoing operation</li>
+                                            <li><strong>Moment analysis:</strong> Identified critical moments of delight and frustration</li>
+                                            <li><strong>Voice preservation:</strong> Used direct customer quotes to maintain authenticity</li>
+                                            <li><strong>Gap illustration:</strong> Contrasted customer expectations with actual experiences</li>
+                                        </ol>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Multi-Level Storytelling Structure</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Executive layer:</strong> High-level journey with strategic implications and business impact</li>
+                                            <li><strong>Functional layer:</strong> Detailed experience within specific touchpoints</li>
+                                            <li><strong>Technical layer:</strong> Root cause analysis connected to customer experience</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Story Components and Delivery</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">The Core Narrative</h6>
+                                    <p class="text-xs mb-2">The team developed a central story structure following the classic arc:</p>
+                                    <ol class="pl-4 text-xs mb-0">
+                                        <li><strong>Situation:</strong> Introduced the customer personas and their business context</li>
+                                        <li><strong>Complication:</strong> Highlighted their key challenges and why they turned to Dell</li>
+                                        <li><strong>Rising action:</strong> Traced their journey through the organization and solution lifecycle</li>
+                                        <li><strong>Climax:</strong> Identified the critical moments where experiences diverged from expectations</li>
+                                        <li><strong>Resolution:</strong> Presented opportunity areas and potential improvements</li>
+                                    </ol>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Storytelling Elements</h6>
+                                    <p class="text-xs mb-2">The presentation incorporated these key elements:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Visual journey maps:</strong> Illustrated experience with emotional highs and lows</li>
+                                        <li><strong>Video clips:</strong> Short segments of actual customer interviews (with permission)</li>
+                                        <li><strong>Day-in-the-life narratives:</strong> Detailed scenarios showing customer experience</li>
+                                        <li><strong>Data visualization:</strong> Quantitative findings embedded within journey context</li>
+                                        <li><strong>Quote walls:</strong> Thematic groupings of impactful customer statements</li>
+                                        <li><strong>Contrast moments:</strong> "What we think" vs. "What customers experience"</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Delivery Approach</h6>
+                                    <p class="text-xs mb-2">The narrative was delivered through a multi-channel approach:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Executive workshops:</strong> Facilitated sessions with leadership teams</li>
+                                        <li><strong>Immersive experience rooms:</strong> Physical spaces with journey maps and artifacts</li>
+                                        <li><strong>Digital storytelling:</strong> Interactive online version for global teams</li>
+                                        <li><strong>Team activations:</strong> Department-specific deep dives with action planning</li>
+                                        <li><strong>Ongoing communication:</strong> Progress updates framed within the original narrative</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Keys to Success</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Customer-centered narrative:</strong> Made the customer the hero rather than Dell</li>
+                                    <li class="mb-1"><strong>Emotional authenticity:</strong> Preserved real frustrations without sugarcoating</li>
+                                    <li class="mb-1"><strong>Journey perspective:</strong> Connected touchpoints across organizational silos</li>
+                                    <li class="mb-1"><strong>Balanced viewpoint:</strong> Included both positive and negative experiences</li>
+                                    <li class="mb-0"><strong>Action orientation:</strong> Connected insights directly to improvement opportunities</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Challenges Overcome</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Defensive reactions:</strong> Storytelling approach created empathy rather than blame</li>
+                                    <li class="mb-1"><strong>Data overload:</strong> Narrative framework made complex findings accessible</li>
+                                    <li class="mb-1"><strong>Cross-functional coordination:</strong> Shared story created common understanding</li>
+                                    <li class="mb-1"><strong>Executive attention:</strong> Compelling format engaged leadership more effectively</li>
+                                    <li class="mb-0"><strong>Sustaining momentum:</strong> Ongoing story updates maintained focus over time</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Results &amp; Impact</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Organizational action:</strong> 27 specific improvement initiatives launched</li>
+                                    <li class="mb-1"><strong>Executive commitment:</strong> Additional resources allocated to key pain points</li>
+                                    <li class="mb-1"><strong>Experience improvements:</strong> 18-point increase in customer satisfaction scores</li>
+                                    <li class="mb-1"><strong>Cultural change:</strong> Customer journey language adopted across organization</li>
+                                    <li class="mb-0"><strong>Business impact:</strong> 22% improvement in enterprise solution renewal rates</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Key Storytelling Lessons</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Storytelling for Organizational Change</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Stories break through organizational defenses</strong> more effectively than data alone</li>
+                                        <li><strong>Customer experience narratives</strong> create shared understanding across functions</li>
+                                        <li><strong>Journey-based storytelling</strong> highlights interconnections between departments</li>
+                                        <li><strong>Authentic voices</strong> carry more weight than interpreted findings</li>
+                                        <li><strong>Narrative frameworks</strong> make complex experiences coherent and memorable</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Practical Applications</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Use journey mapping</strong> to create the narrative backbone for customer insights</li>
+                                        <li><strong>Incorporate multiple media</strong> to bring different aspects of the story to life</li>
+                                        <li><strong>Create story layers</strong> that work at different levels of detail for various audiences</li>
+                                        <li><strong>Balance emotion and analysis</strong> to engage both heart and mind</li>
+                                        <li><strong>Connect stories to action</strong> by embedding clear next steps and recommendations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="text-xs italic mt-3 mb-0">This case study demonstrates how strategic storytelling can transform complex data into compelling narratives that drive organizational change and improve customer experience.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Developing Your Business Storytelling Skills</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Practical Techniques for Better Business Stories</h5>
+                        <p class="text-sm mb-3">Storytelling is a skill that can be systematically developed. These practical techniques will help you craft more compelling business narratives for any context.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-search-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Story Mining</h6>
+                                </div>
+                                <p class="text-xs mb-2">Systematically identify and collect potential stories from your professional experience.</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Keep a story journal</strong> to capture notable experiences and insights</li>
+                                    <li><strong>Document customer conversations</strong> for authentic experiences</li>
+                                    <li><strong>Collect "moments of truth"</strong> where expectations met reality</li>
+                                    <li><strong>Look for pattern-breaking events</strong> that revealed new insights</li>
+                                    <li><strong>Identify transformational projects</strong> with clear before/after states</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-draft-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Story Crafting</h6>
+                                </div>
+                                <p class="text-xs mb-2">Transform raw experiences into structured, purposeful narratives.</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Define your core message</strong> before constructing the story</li>
+                                    <li><strong>Choose an appropriate framework</strong> for your specific purpose</li>
+                                    <li><strong>Develop relatable characters</strong> with clear motivations</li>
+                                    <li><strong>Structure with a clear beginning, middle, and end</strong></li>
+                                    <li><strong>Include specific details</strong> that create authenticity</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-edit-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Story Refinement</h6>
+                                </div>
+                                <p class="text-xs mb-2">Edit and enhance your stories for maximum impact.</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Eliminate unnecessary details</strong> that don't serve the purpose</li>
+                                    <li><strong>Strengthen the emotional arc</strong> to maintain engagement</li>
+                                    <li><strong>Ensure clear cause-and-effect relationships</strong></li>
+                                    <li><strong>Create meaningful transitions</strong> between story elements</li>
+                                    <li><strong>Craft a memorable ending</strong> that reinforces your message</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-volume-up-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Story Delivery</h6>
+                                </div>
+                                <p class="text-xs mb-2">Present your stories effectively in various business contexts.</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Adapt your pacing</strong> based on audience and time constraints</li>
+                                    <li><strong>Use purposeful pauses</strong> for emphasis and reflection</li>
+                                    <li><strong>Vary your vocal tone</strong> to maintain engagement</li>
+                                    <li><strong>Incorporate appropriate gestures and movement</strong></li>
+                                    <li><strong>Make authentic eye contact</strong> to build connection</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-image-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Visual Storytelling</h6>
+                                </div>
+                                <p class="text-xs mb-2">Enhance narratives with appropriate visual elements.</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Select images that evoke emotion</strong> rather than just illustrate</li>
+                                    <li><strong>Use visual metaphors</strong> to represent complex concepts</li>
+                                    <li><strong>Create visual sequences</strong> that support narrative progression</li>
+                                    <li><strong>Balance text and visuals</strong> for maximum comprehension</li>
+                                    <li><strong>Ensure visuals advance the story</strong> rather than distract</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-user-voice-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Audience Adaptation</h6>
+                                </div>
+                                <p class="text-xs mb-2">Tailor your stories to specific business audiences.</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Research your audience's priorities</strong> and concerns</li>
+                                    <li><strong>Adjust technical language</strong> based on audience expertise</li>
+                                    <li><strong>Consider cultural context</strong> when selecting examples</li>
+                                    <li><strong>Anticipate questions</strong> your story might generate</li>
+                                    <li><strong>Practice with representatives</strong> of your target audience</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-white dark:bg-gray-800 p-3 rounded-lg">
+                            <h6 class="text-sm font-medium mb-2">Story Development Worksheet</h6>
+                            <p class="text-xs mb-2">Use this structured approach to develop business stories:</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="border border-gray-200 dark:border-gray-700 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-2">Step 1: Story Purpose &amp; Audience</h6>
+                                    <div>
+                                        <p class="text-xs font-medium mb-1">Purpose: What do you want to achieve?</p>
+                                        <ul class="pl-4 text-xs mb-2">
+                                            <li>Inform, inspire, influence, or instruct?</li>
+                                            <li>What specific action or change do you seek?</li>
+                                        </ul>
+                                        <p class="text-xs font-medium mb-1">Audience: Who needs to hear this story?</p>
+                                        <ul class="pl-4 text-xs mb-2">
+                                            <li>What are their priorities and concerns?</li>
+                                            <li>What is their existing knowledge and perspective?</li>
+                                            <li>What will make the story relevant to them?</li>
+                                        </ul>
+                                        <p class="text-xs font-medium mb-1">Core Message: What's the essential takeaway?</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Express in one clear, actionable sentence</li>
+                                            <li>Connect to organizational priorities or values</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="border border-gray-200 dark:border-gray-700 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-2">Step 2: Story Structure &amp; Components</h6>
+                                    <div>
+                                        <p class="text-xs font-medium mb-1">Characters: Who is involved?</p>
+                                        <ul class="pl-4 text-xs mb-2">
+                                            <li>Protagonist(s) the audience will relate to</li>
+                                            <li>Supporting characters and their roles</li>
+                                        </ul>
+                                        <p class="text-xs font-medium mb-1">Challenge: What problem or opportunity arose?</p>
+                                        <ul class="pl-4 text-xs mb-2">
+                                            <li>Specific situation with concrete details</li>
+                                            <li>Stakes or consequences if not addressed</li>
+                                        </ul>
+                                        <p class="text-xs font-medium mb-1">Journey: What happened?</p>
+                                        <ul class="pl-4 text-xs mb-2">
+                                            <li>Key actions, decisions, and turning points</li>
+                                            <li>Obstacles encountered and how they were addressed</li>
+                                        </ul>
+                                        <p class="text-xs font-medium mb-1">Resolution: What was the outcome?</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Results and impact (quantitative and qualitative)</li>
+                                            <li>Lessons learned or insights gained</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+                                <div class="border border-gray-200 dark:border-gray-700 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-2">Step 3: Engagement Elements</h6>
+                                    <div>
+                                        <p class="text-xs font-medium mb-1">Sensory Details: What makes it vivid?</p>
+                                        <ul class="pl-4 text-xs mb-2">
+                                            <li>Visual elements that create mental pictures</li>
+                                            <li>Specific details that make it authentic</li>
+                                        </ul>
+                                        <p class="text-xs font-medium mb-1">Emotional Connection: What feelings does it evoke?</p>
+                                        <ul class="pl-4 text-xs mb-2">
+                                            <li>Genuine emotions experienced by characters</li>
+                                            <li>Moments of tension, challenge, or triumph</li>
+                                        </ul>
+                                        <p class="text-xs font-medium mb-1">Data Integration: What evidence supports the story?</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Key metrics or facts that add credibility</li>
+                                            <li>Contextual information that frames the situation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="border border-gray-200 dark:border-gray-700 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-2">Step 4: Delivery Planning</h6>
+                                    <div>
+                                        <p class="text-xs font-medium mb-1">Opening Hook: How will you grab attention?</p>
+                                        <ul class="pl-4 text-xs mb-2">
+                                            <li>Intriguing question, surprising fact, or bold statement</li>
+                                            <li>Immediate connection to audience concerns</li>
+                                        </ul>
+                                        <p class="text-xs font-medium mb-1">Pacing: How will you manage flow?</p>
+                                        <ul class="pl-4 text-xs mb-2">
+                                            <li>Key moments to emphasize or slow down</li>
+                                            <li>Transitions between story elements</li>
+                                        </ul>
+                                        <p class="text-xs font-medium mb-1">Conclusion: How will you reinforce the message?</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Connection back to core message</li>
+                                            <li>Clear call to action or application</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.amazon.com/Storytelling-Organizations-Steve-Denning/dp/0415393620" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-book-open-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Leader's Guide to Storytelling</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Stephen Denning • Mastering the Art and Discipline of Business Narrative</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.duarte.com/resources/books/resonate/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-presentation-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Resonate: Present Visual Stories that Transform Audiences</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Nancy Duarte • Presentation Design through Storytelling</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.storylabsinc.com/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-movie-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">StoryLabs Resources</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Free tools and frameworks for business storytelling</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Business Story Development Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll practice developing a business story using the frameworks and techniques covered in this module. This will help you apply storytelling principles to a realistic business scenario.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Scenario: Solution Implementation Success</h6>
+                            <p class="text-xs mb-2">You are a solutions consultant at Dell Technologies who recently helped a customer implement a digital workspace solution that improved employee productivity and security. You need to develop a story about this implementation that can be used in different contexts: (1) internally to share best practices with your team, and (2) with prospective customers considering similar solutions.</p>
+                            
+                            <p class="text-xs font-medium mb-1">Key information you have available:</p>
+                            <ul class="pl-4 text-xs mb-2">
+                                <li>The customer was a financial services firm with 5,000 employees</li>
+                                <li>They were experiencing productivity challenges with remote workers and security concerns</li>
+                                <li>Their legacy VPN solution was creating access issues and performance bottlenecks</li>
+                                <li>The implementation took 3 months and included some initial technical hurdles</li>
+                                <li>After implementation, the customer saw 35% faster application access times and a 42% reduction in security incidents</li>
+                                <li>IT support tickets related to remote access decreased by 68%</li>
+                                <li>The CIO reported that employee satisfaction scores improved significantly</li>
+                                <li>There were some initial resistance from both IT staff and users that had to be overcome</li>
+                            </ul>
+                            
+                            <p class="text-xs font-medium mb-1">Your task:</p>
+                            <p class="text-xs mb-0">Develop the outline of a business story about this implementation using the Challenge Framework (CCOR: Challenge, Choices, Outcome, Reflection) structure. Include all the essential story elements discussed in this module: compelling characters, meaningful challenge, narrative arc, authentic emotions, tangible resolution, and core message.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Business Story Outline</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="12" placeholder="Develop your business story outline here following the CCOR framework. Include specific details about the characters, challenge, narrative progression, emotional elements, resolution, and core message. Consider how you would adapt this story for both internal and customer audiences."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Story</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-executive-summaries">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Executive Summaries &amp; Presentations</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-feedback-managing-up">
+                        <span>Next: Delivering Feedback &amp; Managing Up</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

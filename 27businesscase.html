@@ -1,0 +1,2266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Financial Acumen</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-statements">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Financial Statement Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-kpi-metrics">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>KPI Analysis & Metrics</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-valuation">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Valuation Fundamentals</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-business-case">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Business Case Development</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-cost-analysis">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Cost Analysis & Optimization</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-investment">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Investment Prioritization</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">52%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 52%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>7/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Problem Solving</span>
+                                <span>7/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>4/6 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Business Case Topic -->
+            <section id="topic-business-case" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-presentation-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Business Case Development</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Financial Acumen</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the structure and components of an effective business case</li>
+                            <li>Apply financial analysis techniques to evaluate and support investment decisions</li>
+                            <li>Develop skills in building comprehensive financial models for business cases</li>
+                            <li>Learn methods to assess and communicate risk in business cases</li>
+                            <li>Create compelling business cases that drive strategic decision-making at Dell</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Business Case Development</h4>
+                    <p>A business case is a structured proposal that justifies the allocation of resources to a specific project, initiative, or investment. It provides decision-makers with the information needed to evaluate whether a proposed course of action aligns with organizational goals, delivers sufficient benefits, and represents an acceptable level of risk and cost. Well-constructed business cases enable informed, data-driven decisions and improve the likelihood of project success.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Business Cases Matter</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Resource optimization:</strong> Ensures capital and resources are deployed to highest-value opportunities</li>
+                            <li><strong>Decision clarity:</strong> Provides a structured framework for evaluating complex choices</li>
+                            <li><strong>Alignment:</strong> Connects investments to strategic priorities and organizational objectives</li>
+                            <li><strong>Risk management:</strong> Identifies and addresses potential risks before resources are committed</li>
+                            <li><strong>Performance benchmarking:</strong> Establishes criteria against which actual results can be measured</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">When to Develop a Business Case</h5>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mr-2">
+                                                <i class="ri-funds-box-line"></i>
+                                            </div>
+                                            <h6 class="font-medium text-blue-700 dark:text-blue-300">Capital Investments</h6>
+                                        </div>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>New manufacturing facilities</li>
+                                            <li>Major equipment purchases</li>
+                                            <li>Infrastructure upgrades</li>
+                                            <li>Technology platform investments</li>
+                                            <li>Research & development initiatives</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 mr-2">
+                                                <i class="ri-product-hunt-line"></i>
+                                            </div>
+                                            <h6 class="font-medium text-green-700 dark:text-green-300">Strategic Initiatives</h6>
+                                        </div>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>New product/service launches</li>
+                                            <li>Market expansion efforts</li>
+                                            <li>Business model transformations</li>
+                                            <li>Major process improvement projects</li>
+                                            <li>Organizational restructuring</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-600 dark:text-purple-400 mr-2">
+                                                <i class="ri-building-4-line"></i>
+                                            </div>
+                                            <h6 class="font-medium text-purple-700 dark:text-purple-300">Corporate Actions</h6>
+                                        </div>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Mergers & acquisitions</li>
+                                            <li>Divestitures & spin-offs</li>
+                                            <li>Joint ventures & partnerships</li>
+                                            <li>Major contracts & agreements</li>
+                                            <li>Strategic resource allocation decisions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-center mt-3 text-gray-500 dark:text-gray-400">Business cases should be developed whenever significant resources are being considered for allocation to an initiative with material impact</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Business Case Framework and Structure</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Anatomy of a Comprehensive Business Case</h5>
+                        <p class="text-sm mb-3">A well-structured business case follows a logical flow that provides all necessary information for decision-making while maintaining clarity and focus. The framework below outlines the core components of an effective business case document.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Executive Summary</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">A concise (1-2 page) overview of the entire business case that enables executives to quickly understand the key points without reading the entire document.</p>
+                                    <ul class="pl-5 text-xs mb-0">
+                                        <li>Problem/opportunity statement</li>
+                                        <li>Proposed solution overview</li>
+                                        <li>Value proposition and key benefits</li>
+                                        <li>Financial highlights (investment required, ROI, payback)</li>
+                                        <li>Timeline and key milestones</li>
+                                        <li>Critical risks and mitigation strategies</li>
+                                        <li>Clear recommendation with rationale</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Strategic Context & Business Need</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Establishes why this initiative matters to the organization and how it connects to broader strategic objectives.</p>
+                                    <ul class="pl-5 text-xs mb-0">
+                                        <li>Detailed problem/opportunity description</li>
+                                        <li>Market and competitive context</li>
+                                        <li>Connection to organizational strategy</li>
+                                        <li>Current state assessment</li>
+                                        <li>Business drivers and imperatives</li>
+                                        <li>Stakeholder needs and expectations</li>
+                                        <li>Consequences of inaction</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Solution Options & Recommendation</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Presents different approaches considered for addressing the business need, with analysis of their relative merits.</p>
+                                    <ul class="pl-5 text-xs mb-0">
+                                        <li>Description of alternatives evaluated</li>
+                                        <li>Methodology for option assessment</li>
+                                        <li>Comparative analysis (pros/cons, costs/benefits)</li>
+                                        <li>Decision criteria and weighting</li>
+                                        <li>Recommended option with justification</li>
+                                        <li>Implementation approach</li>
+                                        <li>Dependencies and constraints</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Financial Analysis & Benefits</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Quantifies the expected financial returns and other benefits of the recommended option.</p>
+                                    <ul class="pl-5 text-xs mb-0">
+                                        <li>Cost breakdown (CapEx, OpEx, one-time, recurring)</li>
+                                        <li>Benefit projections (revenue, savings, productivity)</li>
+                                        <li>Financial metrics (NPV, IRR, payback, ROI)</li>
+                                        <li>Non-financial benefits quantification</li>
+                                        <li>Sensitivity analysis and scenarios</li>
+                                        <li>Cost-benefit analysis over time</li>
+                                        <li>Funding sources and resource requirements</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Risk Assessment & Mitigation</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Identifies potential challenges and plans for addressing them to increase likelihood of success.</p>
+                                    <ul class="pl-5 text-xs mb-0">
+                                        <li>Key risks and probability assessment</li>
+                                        <li>Potential impact analysis</li>
+                                        <li>Risk mitigation strategies</li>
+                                        <li>Contingency plans</li>
+                                        <li>Critical success factors</li>
+                                        <li>Risk management approach</li>
+                                        <li>Assumptions and dependencies</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Implementation & Governance</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Outlines how the initiative will be executed and managed to deliver the expected benefits.</p>
+                                    <ul class="pl-5 text-xs mb-0">
+                                        <li>High-level implementation plan</li>
+                                        <li>Timeline and key milestones</li>
+                                        <li>Resource requirements and sourcing</li>
+                                        <li>Roles and responsibilities</li>
+                                        <li>Performance metrics and monitoring</li>
+                                        <li>Governance structure and processes</li>
+                                        <li>Benefits realization approach</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Business Case Development Process</h5>
+                        <p class="text-sm mb-3">Creating a compelling business case involves a structured process that ensures all key aspects are addressed thoroughly. Following this process helps develop comprehensive, evidence-based business cases that stand up to scrutiny.</p>
+                        
+                        <div class="overflow-x-auto mb-4">
+                            <div class="min-w-[700px]">
+                                <div class="flex mb-2">
+                                    <!-- Step 1 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-indigo-300 dark:border-indigo-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 1</div>
+                                            <p class="text-xs font-medium text-center">Define Opportunity & Scope</p>
+                                        </div>
+                                    </div>
+                                    <!-- Arrow -->
+                                    <div class="w-[5%] flex items-center justify-center">
+                                        <i class="ri-arrow-right-line text-gray-400"></i>
+                                    </div>
+                                    <!-- Step 2 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-indigo-300 dark:border-indigo-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 2</div>
+                                            <p class="text-xs font-medium text-center">Gather Data & Requirements</p>
+                                        </div>
+                                    </div>
+                                    <!-- Arrow -->
+                                    <div class="w-[5%] flex items-center justify-center">
+                                        <i class="ri-arrow-right-line text-gray-400"></i>
+                                    </div>
+                                    <!-- Step 3 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-indigo-300 dark:border-indigo-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 3</div>
+                                            <p class="text-xs font-medium text-center">Analyze Options</p>
+                                        </div>
+                                    </div>
+                                    <!-- Arrow -->
+                                    <div class="w-[5%] flex items-center justify-center">
+                                        <i class="ri-arrow-right-line text-gray-400"></i>
+                                    </div>
+                                    <!-- Step 4 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-indigo-300 dark:border-indigo-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 4</div>
+                                            <p class="text-xs font-medium text-center">Develop Financial Model</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Process Details -->
+                                <div class="grid grid-cols-4 gap-4 mb-4">
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                        <p class="text-xs font-medium mb-1">Key Activities:</p>
+                                        <ul class="pl-3 text-xs mb-0">
+                                            <li>Clearly articulate the problem/opportunity</li>
+                                            <li>Define business objectives and success criteria</li>
+                                            <li>Align with strategic priorities</li>
+                                            <li>Establish project boundaries and scope</li>
+                                            <li>Identify key stakeholders</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                        <p class="text-xs font-medium mb-1">Key Activities:</p>
+                                        <ul class="pl-3 text-xs mb-0">
+                                            <li>Collect market and industry data</li>
+                                            <li>Interview stakeholders and subject matter experts</li>
+                                            <li>Research technology and solution options</li>
+                                            <li>Identify constraints and dependencies</li>
+                                            <li>Document business and technical requirements</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                        <p class="text-xs font-medium mb-1">Key Activities:</p>
+                                        <ul class="pl-3 text-xs mb-0">
+                                            <li>Define 2-4 viable alternative approaches</li>
+                                            <li>Establish evaluation criteria and weighting</li>
+                                            <li>Conduct strengths/weaknesses analysis</li>
+                                            <li>Assess feasibility and risk of each option</li>
+                                            <li>Determine preferred solution approach</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                        <p class="text-xs font-medium mb-1">Key Activities:</p>
+                                        <ul class="pl-3 text-xs mb-0">
+                                            <li>Estimate costs (one-time and ongoing)</li>
+                                            <li>Quantify benefits and financial impact</li>
+                                            <li>Develop cash flow projections</li>
+                                            <li>Calculate key financial metrics</li>
+                                            <li>Conduct sensitivity analysis</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex">
+                                    <!-- Step 8 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-indigo-300 dark:border-indigo-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 8</div>
+                                            <p class="text-xs font-medium text-center">Update & Implement or Close</p>
+                                        </div>
+                                    </div>
+                                    <!-- Arrow -->
+                                    <div class="w-[5%] flex items-center justify-center">
+                                        <i class="ri-arrow-left-line text-gray-400"></i>
+                                    </div>
+                                    <!-- Step 7 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-indigo-300 dark:border-indigo-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 7</div>
+                                            <p class="text-xs font-medium text-center">Present & Review</p>
+                                        </div>
+                                    </div>
+                                    <!-- Arrow -->
+                                    <div class="w-[5%] flex items-center justify-center">
+                                        <i class="ri-arrow-left-line text-gray-400"></i>
+                                    </div>
+                                    <!-- Step 6 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-indigo-300 dark:border-indigo-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 6</div>
+                                            <p class="text-xs font-medium text-center">Document Business Case</p>
+                                        </div>
+                                    </div>
+                                    <!-- Arrow -->
+                                    <div class="w-[5%] flex items-center justify-center">
+                                        <i class="ri-arrow-left-line text-gray-400"></i>
+                                    </div>
+                                    <!-- Step 5 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-indigo-300 dark:border-indigo-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 5</div>
+                                            <p class="text-xs font-medium text-center">Assess Risks & Plan Implementation</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Process Details -->
+                                <div class="grid grid-cols-4 gap-4 mt-4">
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                        <p class="text-xs font-medium mb-1">Key Activities:</p>
+                                        <ul class="pl-3 text-xs mb-0">
+                                            <li>Incorporate feedback or address objections</li>
+                                            <li>Update business case as needed</li>
+                                            <li>For approved cases, begin implementation</li>
+                                            <li>For rejected cases, document lessons</li>
+                                            <li>Archive final documentation</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                        <p class="text-xs font-medium mb-1">Key Activities:</p>
+                                        <ul class="pl-3 text-xs mb-0">
+                                            <li>Prepare executive presentation</li>
+                                            <li>Present to key stakeholders and decision-makers</li>
+                                            <li>Answer questions and address concerns</li>
+                                            <li>Gather feedback and refine as needed</li>
+                                            <li>Secure formal approval or rejection</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                        <p class="text-xs font-medium mb-1">Key Activities:</p>
+                                        <ul class="pl-3 text-xs mb-0">
+                                            <li>Create comprehensive business case document</li>
+                                            <li>Include all supporting data and analysis</li>
+                                            <li>Craft clear, compelling executive summary</li>
+                                            <li>Review for completeness and accuracy</li>
+                                            <li>Get stakeholder pre-review and feedback</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                        <p class="text-xs font-medium mb-1">Key Activities:</p>
+                                        <ul class="pl-3 text-xs mb-0">
+                                            <li>Identify key risks and mitigation strategies</li>
+                                            <li>Develop high-level implementation plan</li>
+                                            <li>Define resource requirements and timeline</li>
+                                            <li>Establish governance and controls</li>
+                                            <li>Outline benefits realization approach</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Critical Success Factors for Business Case Development</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Stakeholder Engagement</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Identify and involve key stakeholders early</li>
+                                        <li>Address concerns and incorporate feedback</li>
+                                        <li>Secure buy-in from critical decision-makers</li>
+                                        <li>Understand organizational priorities</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Data Quality & Assumptions</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Base analysis on reliable, verifiable data</li>
+                                        <li>Document and validate all assumptions</li>
+                                        <li>Test sensitivity to assumption changes</li>
+                                        <li>Use conservative estimates for benefits</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Business Focus</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Maintain clear link to strategic objectives</li>
+                                        <li>Focus on business outcomes, not just features</li>
+                                        <li>Quantify benefits whenever possible</li>
+                                        <li>Consider total cost of ownership</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Example: Dell Business Case Structure for New Product Development</h5>
+                        <p class="text-sm mb-3">This example outlines a typical business case structure for a new product development initiative at Dell, highlighting key sections and their contents.</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-900">
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left" width="25%">Business Case Section</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left" width="40%">Key Content</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left" width="35%">Dell-Specific Considerations</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-xs">
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Executive Summary</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Product concept overview</li>
+                                                <li>Target customer segments and value proposition</li>
+                                                <li>Market opportunity size and growth trajectory</li>
+                                                <li>Differentiation from competitors</li>
+                                                <li>Financial summary (investment required, expected returns)</li>
+                                                <li>Timeline to market and key milestones</li>
+                                                <li>Strategic fit with Dell's portfolio</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Use Dell's standard executive summary template</li>
+                                                <li>Focus on alignment with current corporate priorities</li>
+                                                <li>Highlight linkage to Dell's transformation strategy</li>
+                                                <li>Emphasize differentiation in crowded product categories</li>
+                                                <li>Include reference to Dell's customer-centric design approach</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Market Analysis & Opportunity</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Target market size and segmentation</li>
+                                                <li>Growth trends and drivers</li>
+                                                <li>Competitive landscape analysis</li>
+                                                <li>Customer needs and pain points</li>
+                                                <li>Voice of customer research findings</li>
+                                                <li>Market gaps and opportunity validation</li>
+                                                <li>Go-to-market considerations</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Leverage Dell's customer segmentation model</li>
+                                                <li>Include relevant Technology Industry Analyst views</li>
+                                                <li>Reference Dell's Customer Advisory Boards feedback</li>
+                                                <li>Analyze fit with existing Dell channel partners</li>
+                                                <li>Consider regional variations in market opportunity</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Product & Solution Description</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Detailed product features and specifications</li>
+                                                <li>Technology architecture and components</li>
+                                                <li>Integration with existing product lines</li>
+                                                <li>Differentiation and unique selling points</li>
+                                                <li>Intellectual property considerations</li>
+                                                <li>Product positioning strategy</li>
+                                                <li>Pricing strategy and model</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Align with Dell's product design principles</li>
+                                                <li>Address compatibility with Dell ecosystem</li>
+                                                <li>Reference Dell's technology roadmap alignment</li>
+                                                <li>Ensure consistency with Dell branding guidelines</li>
+                                                <li>Consider services and solutions attachment opportunities</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Financial Analysis</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Development and launch costs</li>
+                                                <li>Unit economics and margin analysis</li>
+                                                <li>Sales volume projections</li>
+                                                <li>Revenue forecast (5-year horizon)</li>
+                                                <li>Gross and operating margin projections</li>
+                                                <li>Cash flow analysis</li>
+                                                <li>NPV, IRR, and payback calculations</li>
+                                                <li>Sensitivity analysis on key variables</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Use Dell's standard financial model templates</li>
+                                                <li>Apply current Dell hurdle rates for NPV calculations</li>
+                                                <li>Include services and software attach rate assumptions</li>
+                                                <li>Analyze impact of Dell's variable compensation structure</li>
+                                                <li>Factor in Dell's supply chain cost model</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Risk Assessment</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Key risks (market, technical, execution, financial)</li>
+                                                <li>Probability and impact assessment</li>
+                                                <li>Risk mitigation strategies</li>
+                                                <li>Competitive response scenarios</li>
+                                                <li>Dependencies and critical assumptions</li>
+                                                <li>Contingency plans</li>
+                                                <li>Key decision points and exit options</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Follow Dell's risk management framework</li>
+                                                <li>Include supply chain resilience assessment</li>
+                                                <li>Address product security and compliance risks</li>
+                                                <li>Consider brand and reputation implications</li>
+                                                <li>Assess go-to-market execution risks by region</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Implementation Plan</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Development roadmap and milestones</li>
+                                                <li>Resource requirements and allocation</li>
+                                                <li>Cross-functional dependencies</li>
+                                                <li>Go-to-market and launch strategy</li>
+                                                <li>Success metrics and KPIs</li>
+                                                <li>Governance structure and oversight</li>
+                                                <li>Post-launch monitoring and support</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Reference Dell's product development methodology</li>
+                                                <li>Align with existing program governance structure</li>
+                                                <li>Include change management considerations</li>
+                                                <li>Address sales enablement and training needs</li>
+                                                <li>Consider manufacturing and supply chain integration</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Recommendation & Next Steps</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Clear recommendation with rationale</li>
+                                                <li>Summary of key benefits and differentiators</li>
+                                                <li>Decision requested from leadership</li>
+                                                <li>Immediate next steps following approval</li>
+                                                <li>Required resources and expected commitments</li>
+                                                <li>Timeline for key decision points</li>
+                                                <li>Success criteria for project progression</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Present options with clear preferred recommendation</li>
+                                                <li>Highlight critical dependencies on other teams</li>
+                                                <li>Align with Dell's quarterly planning cycle</li>
+                                                <li>Indicate impacts on current product portfolio</li>
+                                                <li>Reference Dell's stage-gate approval process</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <h4>Financial Analysis in Business Cases</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Key Financial Metrics for Business Cases</h5>
+                        <p class="text-sm mb-3">Robust financial analysis is central to effective business cases. Different financial metrics provide complementary perspectives on the value and viability of a proposed initiative. Understanding when to use each metric and how to interpret them is essential for building compelling business cases.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Net Present Value (NPV)</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="flex justify-center mb-3">
+                                        <div class="bg-gray-50 dark:bg-gray-900 px-4 py-2 rounded-lg">
+                                            <p class="text-center text-sm mb-0">
+                                                <span>NPV = </span>
+                                                <span class="whitespace-nowrap">∑ <sup>n</sup><sub>t=0</sub> 
+                                                    <span class="inline-block mx-1">
+                                                        <span class="border-b border-gray-500 px-2">CF<sub>t</sub></span>
+                                                        <span class="whitespace-nowrap">(1 + r)<sup>t</sup></span>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs mb-2">The sum of all future cash flows (positive and negative) discounted to present value using an appropriate discount rate. The most comprehensive measure of project value.</p>
+                                    
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div>
+                                            <p class="text-xs font-medium mb-1">When to Use:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>For all major investment decisions</li>
+                                                <li>When comparing multiple alternatives</li>
+                                                <li>For projects with varying cash flow timing</li>
+                                                <li>When time value of money is significant</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-medium mb-1">Decision Rules:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><span class="text-green-600 dark:text-green-400">NPV > 0:</span> Project creates value, accept</li>
+                                                <li><span class="text-red-600 dark:text-red-400">NPV < 0:</span> Project destroys value, reject</li>
+                                                <li><span class="text-amber-600 dark:text-amber-400">NPV = 0:</span> Neutral value, consider strategic factors</li>
+                                                <li>When comparing: Higher NPV is preferred</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Internal Rate of Return (IRR)</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="flex justify-center mb-3">
+                                        <div class="bg-gray-50 dark:bg-gray-900 px-4 py-2 rounded-lg">
+                                            <p class="text-center text-sm mb-0">
+                                                <span>0 = </span>
+                                                <span class="whitespace-nowrap">∑ <sup>n</sup><sub>t=0</sub> 
+                                                    <span class="inline-block mx-1">
+                                                        <span class="border-b border-gray-500 px-2">CF<sub>t</sub></span>
+                                                        <span class="whitespace-nowrap">(1 + IRR)<sup>t</sup></span>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs mb-2">The discount rate that makes the NPV of all cash flows equal to zero. Represents the project's expected rate of return based on projected cash flows.</p>
+                                    
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div>
+                                            <p class="text-xs font-medium mb-1">When to Use:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>When comparing to required return rates</li>
+                                                <li>For evaluating investment efficiency</li>
+                                                <li>When explaining to stakeholders familiar with percentages</li>
+                                                <li>As a complement to NPV analysis</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-medium mb-1">Decision Rules:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><span class="text-green-600 dark:text-green-400">IRR > Hurdle Rate:</span> Accept project</li>
+                                                <li><span class="text-red-600 dark:text-red-400">IRR < Hurdle Rate:</span> Reject project</li>
+                                                <li><span class="text-amber-600 dark:text-amber-400">IRR = Hurdle Rate:</span> Indifferent</li>
+                                                <li>Caution: May have limitations with unconventional cash flows</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Payback Period</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="flex justify-center mb-3">
+                                        <div class="bg-gray-50 dark:bg-gray-900 px-4 py-2 rounded-lg">
+                                            <p class="text-center text-sm mb-0">
+                                                <span>Payback Period = </span>
+                                                <span class="whitespace-nowrap">
+                                                    <span class="border-b border-gray-500 px-2">Initial Investment</span>
+                                                    <span class="whitespace-nowrap">Annual Cash Inflow</span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs mb-2">The time required to recover the initial investment through project cash flows. Simple to calculate and understand, but ignores time value of money and cash flows after the payback period.</p>
+                                    
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div>
+                                            <p class="text-xs font-medium mb-1">When to Use:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>For liquidity assessment</li>
+                                                <li>In uncertain environments where quick recovery is valued</li>
+                                                <li>As a supplementary metric to NPV/IRR</li>
+                                                <li>When cash flow timing is a key consideration</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-medium mb-1">Decision Rules:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><span class="text-green-600 dark:text-green-400">Shorter payback:</span> Better for liquidity</li>
+                                                <li>Accept if payback period is less than maximum acceptable period</li>
+                                                <li>Use discounted payback period when possible</li>
+                                                <li>Caution: Ignores value creation after payback</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Return on Investment (ROI)</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="flex justify-center mb-3">
+                                        <div class="bg-gray-50 dark:bg-gray-900 px-4 py-2 rounded-lg">
+                                            <p class="text-center text-sm mb-0">
+                                                <span>ROI = </span>
+                                                <span class="whitespace-nowrap">
+                                                    <span class="border-b border-gray-500 px-2">(Net Benefit - Cost)</span>
+                                                    <span class="whitespace-nowrap">Cost</span>
+                                                </span>
+                                                <span> × 100%</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs mb-2">A percentage measure of the return relative to the investment cost. Simple to understand but often calculated inconsistently and may not account for time value of money.</p>
+                                    
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div>
+                                            <p class="text-xs font-medium mb-1">When to Use:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>For simple return calculations</li>
+                                                <li>When communicating with non-financial stakeholders</li>
+                                                <li>For consistent comparison across similar projects</li>
+                                                <li>When time period is standardized</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-medium mb-1">Decision Rules:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><span class="text-green-600 dark:text-green-400">ROI > 0:</span> Positive return</li>
+                                                <li><span class="text-red-600 dark:text-red-400">ROI < 0:</span> Negative return</li>
+                                                <li>Higher ROI is generally better</li>
+                                                <li>Caution: Ensure calculation consistency when comparing</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Additional Financial Considerations</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <p class="text-xs font-medium mb-1">Total Cost of Ownership (TCO)</p>
+                                    <p class="text-xs mb-1">Comprehensive assessment of all costs associated with an initiative over its lifetime, including:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Initial acquisition/development costs</li>
+                                        <li>Implementation and integration costs</li>
+                                        <li>Ongoing operational expenses</li>
+                                        <li>Maintenance and support costs</li>
+                                        <li>Upgrade and enhancement costs</li>
+                                        <li>End-of-life and disposal costs</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <p class="text-xs font-medium mb-1">Economic Value Added (EVA)</p>
+                                    <p class="text-xs mb-1">Measure of financial performance based on the value created above the required return of the company's investors:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>EVA = NOPAT - (Capital × Cost of Capital)</li>
+                                        <li>Accounts for both operating profit and capital employed</li>
+                                        <li>Useful for initiatives with significant capital requirements</li>
+                                        <li>Aligns with shareholder value creation</li>
+                                        <li>Can be challenging to allocate capital costs accurately</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <p class="text-xs font-medium mb-1">Profitability Index (PI)</p>
+                                    <p class="text-xs mb-1">Ratio of the present value of future cash flows to the initial investment:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>PI = PV of Future Cash Flows / Initial Investment</li>
+                                        <li>Measures value created per dollar invested</li>
+                                        <li>Useful for comparing projects with different sizes</li>
+                                        <li>PI > 1: Project creates value</li>
+                                        <li>PI < 1: Project destroys value</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Building a Financial Model for Business Cases</h5>
+                        <p class="text-sm mb-3">A robust financial model is the quantitative foundation of a business case. It translates business assumptions into financial projections that demonstrate the value and viability of the proposed initiative. Effective financial models balance detail with usability while providing transparency into key assumptions.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <h6 class="text-xs font-medium mb-1">Model Structure & Components</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Input section:</strong> All key variables and assumptions</li>
+                                    <li class="mb-1"><strong>Calculation sheets:</strong> Detailed projections and calculations</li>
+                                    <li class="mb-1"><strong>Output dashboard:</strong> Summary of key results and metrics</li>
+                                    <li class="mb-1"><strong>Documentation:</strong> Notes, sources, and methodology</li>
+                                    <li class="mb-1"><strong>Sensitivity analysis:</strong> Impact of changing key variables</li>
+                                    <li class="mb-0"><strong>Scenario comparison:</strong> Base, optimistic, pessimistic cases</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <h6 class="text-xs font-medium mb-1">Key Financial Projections</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Revenue model:</strong> Volume, pricing, growth assumptions</li>
+                                    <li class="mb-1"><strong>Cost structure:</strong> Fixed vs. variable, direct vs. indirect</li>
+                                    <li class="mb-1"><strong>Capital requirements:</strong> Initial and ongoing investments</li>
+                                    <li class="mb-1"><strong>Income statement:</strong> Projected P&L impact over forecast period</li>
+                                    <li class="mb-1"><strong>Cash flow statement:</strong> Timing of cash inflows and outflows</li>
+                                    <li class="mb-0"><strong>Balance sheet impact:</strong> Effect on assets, liabilities, equity</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <h6 class="text-xs font-medium mb-1">Best Practices</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Separation of inputs:</strong> Clearly distinguish assumptions from calculations</li>
+                                    <li class="mb-1"><strong>Transparency:</strong> Document methodology and data sources</li>
+                                    <li class="mb-1"><strong>Consistency:</strong> Apply consistent formatting and structure</li>
+                                    <li class="mb-1"><strong>Error checking:</strong> Build in validation and error detection</li>
+                                    <li class="mb-1"><strong>Flexibility:</strong> Design for easy scenario testing and updates</li>
+                                    <li class="mb-0"><strong>Simplicity:</strong> Keep as simple as possible while being comprehensive</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3 mb-4">
+                            <h6 class="text-sm font-medium mb-2">Common Financial Modeling Pitfalls</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-2">
+                                            <span class="font-medium text-amber-600 dark:text-amber-400">Overly optimistic projections</span>
+                                            <p class="mb-0">Assuming best-case scenarios for key variables without substantiation</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <span class="font-medium text-amber-600 dark:text-amber-400">Inadequate risk assessment</span>
+                                            <p class="mb-0">Failing to model downside scenarios or ignoring critical risks</p>
+                                        </li>
+                                        <li class="mb-0">
+                                            <span class="font-medium text-amber-600 dark:text-amber-400">Formula errors and inconsistencies</span>
+                                            <p class="mb-0">Mathematical mistakes that invalidate the entire analysis</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-2">
+                                            <span class="font-medium text-amber-600 dark:text-amber-400">Ignoring implementation costs</span>
+                                            <p class="mb-0">Underestimating resources required for successful implementation</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <span class="font-medium text-amber-600 dark:text-amber-400">Benefit timing misalignment</span>
+                                            <p class="mb-0">Projecting benefits too early in the initiative lifecycle</p>
+                                        </li>
+                                        <li class="mb-0">
+                                            <span class="font-medium text-amber-600 dark:text-amber-400">Excessive complexity</span>
+                                            <p class="mb-0">Creating models so complex they become difficult to validate or explain</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Sensitivity and Scenario Analysis Approach</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <p class="text-xs font-medium mb-1">Single-Variable Sensitivity</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Vary one key input at a time</li>
+                                        <li>Calculate impact on key financial metrics</li>
+                                        <li>Identify variables with greatest impact</li>
+                                        <li>Plot results in tornado charts</li>
+                                        <li>Focus risk mitigation on high-sensitivity variables</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-medium mb-1">Scenario Analysis</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Develop coherent sets of assumptions</li>
+                                        <li>Base case: Most likely outcome</li>
+                                        <li>Upside case: Optimistic but plausible</li>
+                                        <li>Downside case: Pessimistic but plausible</li>
+                                        <li>Worst case: Stress testing for viability</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-medium mb-1">Monte Carlo Simulation</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Define probability distributions for key variables</li>
+                                        <li>Run thousands of simulations with random variable combinations</li>
+                                        <li>Generate probability distributions of outcomes</li>
+                                        <li>Assess likelihood of achieving targets</li>
+                                        <li>Better understand full range of potential outcomes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Example: Financial Model for Dell APEX Expansion Business Case</h5>
+                        <p class="text-sm mb-3">This example demonstrates a structured financial model approach for a business case to expand Dell's APEX as-a-service offerings to new markets and customer segments.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Business Case Overview</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Initiative:</strong> Expansion of Dell APEX as-a-service portfolio to mid-market segment and EMEA region</li>
+                                    <li><strong>Investment required:</strong> $85 million over 3 years</li>
+                                    <li><strong>Timeframe:</strong> 5-year projection period with ongoing benefits</li>
+                                    <li><strong>Strategic objectives:</strong> Accelerate as-a-service transformation, expand recurring revenue, increase market share</li>
+                                    <li><strong>Business model:</strong> Subscription-based service with hardware, software, and services components</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Key Assumptions</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Initial target customers:</strong> 750 mid-market enterprises in year 1, growing to 3,600 by year 5</li>
+                                    <li><strong>Average contract value:</strong> $175,000 annually per customer, growing at 3% per year</li>
+                                    <li><strong>Customer acquisition cost:</strong> $25,000 per new customer</li>
+                                    <li><strong>Gross margin:</strong> 45% in year 1, expanding to 52% by year 5</li>
+                                    <li><strong>Customer retention rate:</strong> 85% in year 1, improving to 92% by year 5</li>
+                                    <li><strong>Discount rate (WACC):</strong> 10.5% for NPV calculations</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="overflow-x-auto mb-4">
+                            <table class="w-full text-xs border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-900">
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Financial Projection ($ Millions)</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">Year 0</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">Year 1</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">Year 2</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">Year 3</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">Year 4</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">Year 5</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Customers - Beginning</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">750</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1,538</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">2,460</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">3,260</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">New Customers</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">750</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">900</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1,150</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1,050</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">850</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Churned Customers</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(113)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(215)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(246)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(261)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Customers - Ending</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">750</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1,538</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">2,460</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">3,260</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">3,849</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Annual Recurring Revenue</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">131.3</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">278.0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">458.4</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">627.9</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">764.6</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Cost of Service Delivery</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(72.2)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(147.4)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(234.8)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(313.9)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(367.0)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Gross Profit</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">59.1</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">130.6</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">223.6</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">314.0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">397.6</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Operating Expenses</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(65.3)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(86.5)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(111.4)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(121.5)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(129.3)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Customer Acquisition Costs</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(18.8)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(22.5)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(28.8)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(26.3)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(21.3)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">EBITDA</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.0</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(25.0)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">21.6</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">83.4</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">166.2</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">247.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Development & Infrastructure Costs</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(35.0)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(28.0)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(22.0)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(15.0)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(12.0)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(10.0)</td>
+                                    </tr>
+                                    <tr class="bg-gray-50 dark:bg-gray-900 font-medium">
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Free Cash Flow</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(35.0)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(53.0)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(0.4)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">68.4</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">154.2</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">237.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Discount Factor (10.5%)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1.000</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.905</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.819</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.741</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.671</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.607</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Present Value of Cash Flows</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(35.0)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(48.0)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">(0.3)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">50.7</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">103.5</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">143.9</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Financial Metrics</h6>
+                                <table class="w-full text-xs">
+                                    <tbody>
+                                        <tr>
+                                            <td class="py-1">Net Present Value (NPV)</td>
+                                            <td class="py-1 text-right font-medium">$214.8 million</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-1">Internal Rate of Return (IRR)</td>
+                                            <td class="py-1 text-right font-medium">42.7%</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-1">Payback Period</td>
+                                            <td class="py-1 text-right font-medium">3.2 years</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-1">Profitability Index</td>
+                                            <td class="py-1 text-right font-medium">2.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-1">Year 5 ARR Run Rate</td>
+                                            <td class="py-1 text-right font-medium">$764.6 million</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-1">Terminal Value (10x EBITDA)</td>
+                                            <td class="py-1 text-right font-medium">$2,470 million</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-red-700 dark:text-red-400 mb-2">Sensitivity Analysis</h6>
+                                <table class="w-full text-xs">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left pb-1">Variable</th>
+                                            <th class="text-right pb-1">Change</th>
+                                            <th class="text-right pb-1">NPV Impact</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="py-0.5">Customer Retention</td>
+                                            <td class="py-0.5 text-right">-10%</td>
+                                            <td class="py-0.5 text-right text-red-600 dark:text-red-400">-$98.3M</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-0.5">Average Contract Value</td>
+                                            <td class="py-0.5 text-right">-10%</td>
+                                            <td class="py-0.5 text-right text-red-600 dark:text-red-400">-$76.5M</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-0.5">Customer Acquisition Cost</td>
+                                            <td class="py-0.5 text-right">+20%</td>
+                                            <td class="py-0.5 text-right text-red-600 dark:text-red-400">-$23.7M</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-0.5">Gross Margin</td>
+                                            <td class="py-0.5 text-right">-5 pts</td>
+                                            <td class="py-0.5 text-right text-red-600 dark:text-red-400">-$56.2M</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-0.5">Customer Acquisition Rate</td>
+                                            <td class="py-0.5 text-right">-15%</td>
+                                            <td class="py-0.5 text-right text-red-600 dark:text-red-400">-$45.1M</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-2">Scenario Analysis</h6>
+                                <table class="w-full text-xs">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left pb-1">Scenario</th>
+                                            <th class="text-right pb-1">NPV</th>
+                                            <th class="text-right pb-1">IRR</th>
+                                            <th class="text-right pb-1">Payback</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="py-0.5">Base Case</td>
+                                            <td class="py-0.5 text-right">$214.8M</td>
+                                            <td class="py-0.5 text-right">42.7%</td>
+                                            <td class="py-0.5 text-right">3.2 yrs</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-0.5">Optimistic</td>
+                                            <td class="py-0.5 text-right text-green-600 dark:text-green-400">$312.4M</td>
+                                            <td class="py-0.5 text-right">54.8%</td>
+                                            <td class="py-0.5 text-right">2.8 yrs</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-0.5">Conservative</td>
+                                            <td class="py-0.5 text-right text-amber-600 dark:text-amber-400">$115.7M</td>
+                                            <td class="py-0.5 text-right">24.6%</td>
+                                            <td class="py-0.5 text-right">3.7 yrs</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-0.5">Downside</td>
+                                            <td class="py-0.5 text-right text-red-600 dark:text-red-400">$43.2M</td>
+                                            <td class="py-0.5 text-right">14.9%</td>
+                                            <td class="py-0.5 text-right">4.5 yrs</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Financial Analysis Summary & Recommendation</h6>
+                            
+                            <ul class="pl-4 text-xs mb-0">
+                                <li class="mb-1"><strong>Strong financial case:</strong> The expansion initiative shows a compelling positive NPV of $214.8 million and an IRR of 42.7%, well above Dell's hurdle rate of 10.5%.</li>
+                                <li class="mb-1"><strong>Acceptable payback period:</strong> The investment is expected to pay back in 3.2 years, within Dell's target range for strategic initiatives.</li>
+                                <li class="mb-1"><strong>Significant recurring revenue growth:</strong> By Year 5, the initiative is projected to generate $764.6 million in annual recurring revenue, contributing substantially to Dell's as-a-service transformation targets.</li>
+                                <li class="mb-1"><strong>Risk assessment:</strong> Sensitivity analysis shows customer retention and average contract value are the most critical variables. Maintaining high service quality and customer satisfaction will be essential to success.</li>
+                                <li class="mb-1"><strong>Conservative projection:</strong> The financial model uses conservative assumptions on customer acquisition rates and gradually improving gross margins as scale increases.</li>
+                                <li class="mb-0"><strong>Recommendation:</strong> Approve the $85 million investment to expand the Dell APEX portfolio to mid-market and EMEA regions. The initiative aligns with strategic priorities, offers strong financial returns, and even the downside scenario remains NPV positive.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Assessing and Communicating Risk</h4>
+                    
+                    <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-red-700 dark:text-red-400 font-medium mb-2">Risk Assessment in Business Cases</h5>
+                        <p class="text-sm mb-3">Thoroughly assessing and communicating risks is essential for developing credible business cases. A comprehensive risk assessment helps decision-makers understand the full range of potential outcomes and evaluate whether the expected benefits justify the risks.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Risk Identification Framework</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">A structured approach to identifying key risks across multiple dimensions ensures comprehensive risk assessment.</p>
+                                    <table class="w-full text-xs">
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium">Market & Strategic Risks</td>
+                                                <td class="py-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Competitive response</li>
+                                                        <li>Market demand changes</li>
+                                                        <li>Customer adoption barriers</li>
+                                                        <li>Regulatory changes</li>
+                                                        <li>Industry disruption</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium">Financial Risks</td>
+                                                <td class="py-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Cost overruns</li>
+                                                        <li>Revenue shortfalls</li>
+                                                        <li>Margin pressure</li>
+                                                        <li>Currency fluctuations</li>
+                                                        <li>Return on investment underperformance</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium">Operational Risks</td>
+                                                <td class="py-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Implementation challenges</li>
+                                                        <li>Resource constraints</li>
+                                                        <li>Supply chain disruptions</li>
+                                                        <li>Quality issues</li>
+                                                        <li>Key personnel dependencies</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 pr-2 font-medium">Technical & Project Risks</td>
+                                                <td class="py-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Technology failures</li>
+                                                        <li>Integration complexities</li>
+                                                        <li>Timeline delays</li>
+                                                        <li>Scope creep</li>
+                                                        <li>Change management issues</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Risk Assessment Methodology</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Each identified risk should be systematically evaluated to determine its potential impact and likelihood, with clear mitigation strategies defined.</p>
+                                    <table class="w-full text-xs">
+                                        <thead>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <th class="py-1 text-left">Element</th>
+                                                <th class="py-1 text-left">Description</th>
+                                                <th class="py-1 text-left">Approach</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-1 font-medium">Probability</td>
+                                                <td class="py-1">Likelihood of risk occurring</td>
+                                                <td class="py-1">Rate as Low/Medium/High<br>Or use 1-5 scale with percentages</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-1 font-medium">Impact</td>
+                                                <td class="py-1">Severity if risk materializes</td>
+                                                <td class="py-1">Quantify when possible (e.g., $ value)<br>Otherwise use Low/Medium/High impact scale</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-1 font-medium">Risk Score</td>
+                                                <td class="py-1">Combined risk assessment</td>
+                                                <td class="py-1">Probability × Impact<br>Creates prioritized risk ranking</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-1 font-medium">Mitigation Plan</td>
+                                                <td class="py-1">Actions to reduce likelihood or impact</td>
+                                                <td class="py-1">Specific, actionable steps<br>Assign ownership and timing</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1 font-medium">Contingency</td>
+                                                <td class="py-1">Response if risk materializes</td>
+                                                <td class="py-1">Pre-planned responses<br>May include financial reserves</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Risk Visualization and Communication</h6>
+                            <p class="text-xs mb-3">Effective risk communication helps stakeholders quickly understand the risk profile of the proposed initiative and the strategies in place to manage those risks.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-xs font-medium mb-2">Risk Heat Map</p>
+                                    <div class="h-64 bg-gray-50 dark:bg-gray-900 rounded-lg p-2 relative">
+                                        <!-- Y-axis label -->
+                                        <div class="absolute -left-6 top-1/2 transform -translate-y-1/2 -rotate-90 text-[10px] text-gray-500 dark:text-gray-400">Impact</div>
+                                        
+                                        <!-- X-axis label -->
+                                        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-[10px] text-gray-500 dark:text-gray-400">Probability</div>
+                                        
+                                        <!-- Grid lines -->
+                                        <div class="absolute left-10 right-4 top-4 bottom-10 grid grid-cols-3 grid-rows-3 gap-0">
+                                            <div class="border-b border-r border-gray-200 dark:border-gray-700 bg-green-100/30 dark:bg-green-900/10"></div>
+                                            <div class="border-b border-r border-gray-200 dark:border-gray-700 bg-green-100/30 dark:bg-green-900/10"></div>
+                                            <div class="border-b border-gray-200 dark:border-gray-700 bg-yellow-100/30 dark:bg-yellow-900/10"></div>
+                                            <div class="border-b border-r border-gray-200 dark:border-gray-700 bg-green-100/30 dark:bg-green-900/10"></div>
+                                            <div class="border-b border-r border-gray-200 dark:border-gray-700 bg-yellow-100/30 dark:bg-yellow-900/10"></div>
+                                            <div class="border-b border-gray-200 dark:border-gray-700 bg-red-100/30 dark:bg-red-900/10"></div>
+                                            <div class="border-r border-gray-200 dark:border-gray-700 bg-yellow-100/30 dark:bg-yellow-900/10"></div>
+                                            <div class="border-r border-gray-200 dark:border-gray-700 bg-red-100/30 dark:bg-red-900/10"></div>
+                                            <div class="bg-red-100/30 dark:bg-red-900/10"></div>
+                                        </div>
+                                        
+                                        <!-- Risk points (example) -->
+                                        <div class="absolute left-[60px] bottom-[50px] w-6 h-6 rounded-full bg-purple-500/70 flex items-center justify-center text-white text-[10px] font-medium">R1</div>
+                                        <div class="absolute left-[120px] bottom-[90px] w-6 h-6 rounded-full bg-red-500/70 flex items-center justify-center text-white text-[10px] font-medium">R2</div>
+                                        <div class="absolute left-[180px] bottom-[40px] w-6 h-6 rounded-full bg-amber-500/70 flex items-center justify-center text-white text-[10px] font-medium">R3</div>
+                                        <div class="absolute left-[220px] bottom-[70px] w-6 h-6 rounded-full bg-red-500/70 flex items-center justify-center text-white text-[10px] font-medium">R4</div>
+                                        <div class="absolute left-[90px] bottom-[120px] w-6 h-6 rounded-full bg-green-500/70 flex items-center justify-center text-white text-[10px] font-medium">R5</div>
+                                        
+                                        <!-- Labels -->
+                                        <div class="absolute left-10 bottom-6 text-[8px] text-gray-500 dark:text-gray-400">Low</div>
+                                        <div class="absolute left-1/2 bottom-6 text-[8px] text-gray-500 dark:text-gray-400">Medium</div>
+                                        <div class="absolute right-4 bottom-6 text-[8px] text-gray-500 dark:text-gray-400">High</div>
+                                        
+                                        <div class="absolute left-6 bottom-10 text-[8px] text-gray-500 dark:text-gray-400">Low</div>
+                                        <div class="absolute left-6 top-1/2 text-[8px] text-gray-500 dark:text-gray-400 transform -translate-y-1/2">Medium</div>
+                                        <div class="absolute left-6 top-4 text-[8px] text-gray-500 dark:text-gray-400">High</div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <p class="text-xs font-medium mb-2">Risk Register</p>
+                                    <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-2">
+                                        <table class="w-full text-[10px]">
+                                            <thead>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <th class="p-1 text-left">ID</th>
+                                                    <th class="p-1 text-left">Risk</th>
+                                                    <th class="p-1 text-center">Impact</th>
+                                                    <th class="p-1 text-center">Prob.</th>
+                                                    <th class="p-1 text-left">Mitigation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-1">R1</td>
+                                                    <td class="p-1">Competitor launch</td>
+                                                    <td class="p-1 text-center">M</td>
+                                                    <td class="p-1 text-center">L</td>
+                                                    <td class="p-1">Accelerate timeline</td>
+                                                </tr>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-1">R2</td>
+                                                    <td class="p-1">Tech integration issues</td>
+                                                    <td class="p-1 text-center">H</td>
+                                                    <td class="p-1 text-center">M</td>
+                                                    <td class="p-1">Pre-integration testing</td>
+                                                </tr>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-1">R3</td>
+                                                    <td class="p-1">Cost overruns</td>
+                                                    <td class="p-1 text-center">M</td>
+                                                    <td class="p-1 text-center">H</td>
+                                                    <td class="p-1">Phased implementation</td>
+                                                </tr>
+                                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                    <td class="p-1">R4</td>
+                                                    <td class="p-1">Customer adoption delays</td>
+                                                    <td class="p-1 text-center">H</td>
+                                                    <td class="p-1 text-center">M</td>
+                                                    <td class="p-1">Early adopter program</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-1">R5</td>
+                                                    <td class="p-1">Resource constraints</td>
+                                                    <td class="p-1 text-center">L</td>
+                                                    <td class="p-1 text-center">M</td>
+                                                    <td class="p-1">Cross-train team members</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <p class="text-xs font-medium mt-3 mb-2">Waterfall Chart (Financial Risk)</p>
+                                    <div class="h-20 bg-gray-50 dark:bg-gray-900 rounded-lg p-2 relative">
+                                        <!-- Base case bar -->
+                                        <div class="absolute left-4 top-1/2 transform -translate-y-1/2 h-10 w-12 bg-blue-500/70 flex items-center justify-center text-white text-[10px]">Base<br>$100M</div>
+                                        
+                                        <!-- Risk impact bars -->
+                                        <div class="absolute left-[70px] top-1/2 transform -translate-y-1/2 h-5 w-12 bg-red-500/70 flex items-center justify-center text-white text-[10px]">R2<br>-$15M</div>
+                                        
+                                        <div class="absolute left-[136px] top-1/2 transform -translate-y-1/2 h-5 w-12 bg-red-500/70 flex items-center justify-center text-white text-[10px]">R3<br>-$10M</div>
+                                        
+                                        <div class="absolute left-[202px] top-1/2 transform -translate-y-1/2 h-5 w-12 bg-red-500/70 flex items-center justify-center text-white text-[10px]">R4<br>-$12M</div>
+                                        
+                                        <!-- Worst case bar -->
+                                        <div class="absolute right-4 top-1/2 transform -translate-y-1/2 h-8 w-12 bg-amber-500/70 flex items-center justify-center text-white text-[10px]">Worst<br>$63M</div>
+                                        
+                                        <!-- Connecting lines -->
+                                        <svg class="absolute inset-0 h-full w-full" viewBox="0 0 300 80">
+                                            <line x1="16" y1="40" x2="70" y2="40" stroke="#6B7280" stroke-width="1" stroke-dasharray="2,2"/>
+                                            <line x1="82" y1="40" x2="136" y2="40" stroke="#6B7280" stroke-width="1" stroke-dasharray="2,2"/>
+                                            <line x1="148" y1="40" x2="202" y2="40" stroke="#6B7280" stroke-width="1" stroke-dasharray="2,2"/>
+                                            <line x1="214" y1="40" x2="268" y2="40" stroke="#6B7280" stroke-width="1" stroke-dasharray="2,2"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Example: Risk Assessment for Dell Manufacturing Facility Expansion</h5>
+                        <p class="text-sm mb-3">This example demonstrates a comprehensive risk assessment for a proposed manufacturing facility expansion business case at Dell.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Business Case Overview</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Initiative:</strong> Expansion of Dell's manufacturing facility in Malaysia to support growth in Asia-Pacific region</li>
+                                    <li><strong>Investment required:</strong> $120 million capital expenditure</li>
+                                    <li><strong>Timeline:</strong> 18-month construction and setup; 10+ year operational horizon</li>
+                                    <li><strong>Strategic objectives:</strong> Increase production capacity by 40%, reduce shipping times by 30%, enable new product lines</li>
+                                    <li><strong>Financial benefits:</strong> Expected NPV of $175M over 10 years, IRR of 22%, payback period of 5.2 years</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-red-700 dark:text-red-400 mb-2">Risk Assessment Summary</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>High-risk areas:</strong> Supply chain disruptions, labor market constraints, construction timeline delays</li>
+                                    <li><strong>Medium-risk areas:</strong> Demand forecasting uncertainty, regulatory compliance, technology integration</li>
+                                    <li><strong>Low-risk areas:</strong> Cost estimation, quality control, competitive response</li>
+                                    <li><strong>Overall risk profile:</strong> Medium - project has significant risks but they are manageable with proper planning</li>
+                                    <li><strong>Financial risk exposure:</strong> Potential NPV reduction of up to $65M in worst-case scenario, still NPV positive</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="overflow-x-auto mb-4">
+                            <table class="w-full text-xs border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-900">
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Risk Category</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Risk Description</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Probability</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Impact</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-center">Risk Score</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Potential Financial Impact</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Mitigation Strategy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Supply Chain</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Component shortages impacting production ramp-up</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-[10px]">Medium</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 rounded-full text-[10px]">High</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 rounded-full text-[10px]">High</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            Delay in revenue realization of up to $25M in first year
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-3 mb-0">
+                                                <li>Secure long-term supplier agreements with volume commitments</li>
+                                                <li>Implement dual-sourcing strategy for critical components</li>
+                                                <li>Invest in 60-day safety stock for key components</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Labor Market</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Difficulty recruiting skilled manufacturing and technical personnel</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 rounded-full text-[10px]">High</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-[10px]">Medium</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 rounded-full text-[10px]">High</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            Increased labor costs of 15-25% above projections; potential $12M impact
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-3 mb-0">
+                                                <li>Develop local technical training programs with regional institutions</li>
+                                                <li>Implement phased hiring plan starting 6 months before completion</li>
+                                                <li>Offer competitive compensation packages with retention bonuses</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Construction</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Timeline delays due to weather, permitting, or contractor issues</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-[10px]">Medium</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-[10px]">Medium</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-[10px]">Medium</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            3-6 month delay could cost $8-15M in additional expenses and lost revenue
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-3 mb-0">
+                                                <li>Include 15% contingency in timeline and 10% in budget</li>
+                                                <li>Select contractors with proven regional experience</li>
+                                                <li>Implement milestone-based payment structure with incentives</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Market Demand</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Lower than projected demand in target markets</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-[10px]">Medium</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-[10px]">Medium</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-[10px]">Medium</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            20% lower utilization would reduce NPV by approximately $35M
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-3 mb-0">
+                                                <li>Design facility with modular production lines for flexibility</li>
+                                                <li>Conduct quarterly demand forecast reviews</li>
+                                                <li>Develop contingency plans for alternative product manufacturing</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Regulatory</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Changes in import/export regulations or environmental requirements</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-[10px]">Medium</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-[10px]">Medium</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">
+                                            <span class="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded-full text-[10px]">Medium</span>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            Potential compliance costs of $5-10M and possible delays
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-3 mb-0">
+                                                <li>Engage with local government and regulatory bodies early</li>
+                                                <li>Include compliance experts on the project team</li>
+                                                <li>Build facility to exceed current environmental standards</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-xs font-medium mb-2">Risk Impact on Financial Projections</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg h-64 relative">
+                                    <!-- Title -->
+                                    <div class="text-xs font-medium mb-4 text-center">NPV Impact of Key Risks ($ Millions)</div>
+                                    
+                                    <!-- Bars representing financial impact -->
+                                    <div class="absolute left-0 bottom-8 w-full flex items-end justify-around px-4 h-36">
+                                        <!-- Base Case -->
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-36 w-10 bg-green-500 flex items-center justify-center text-white text-xs">
+                                                <span class="transform rotate-90">$175M</span>
+                                            </div>
+                                            <span class="text-[10px] mt-1">Base Case</span>
+                                        </div>
+                                        
+                                        <!-- Supply Chain Risk -->
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-28 w-10 bg-amber-500 flex items-center justify-center text-white text-xs">
+                                                <span class="transform rotate-90">$150M</span>
+                                            </div>
+                                            <span class="text-[10px] mt-1">Supply Chain</span>
+                                        </div>
+                                        
+                                        <!-- Labor Market Risk -->
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-32 w-10 bg-amber-500 flex items-center justify-center text-white text-xs">
+                                                <span class="transform rotate-90">$163M</span>
+                                            </div>
+                                            <span class="text-[10px] mt-1">Labor</span>
+                                        </div>
+                                        
+                                        <!-- Construction Risk -->
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-30 w-10 bg-amber-500 flex items-center justify-center text-white text-xs">
+                                                <span class="transform rotate-90">$160M</span>
+                                            </div>
+                                            <span class="text-[10px] mt-1">Construction</span>
+                                        </div>
+                                        
+                                        <!-- Market Demand Risk -->
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-24 w-10 bg-red-500 flex items-center justify-center text-white text-xs">
+                                                <span class="transform rotate-90">$140M</span>
+                                            </div>
+                                            <span class="text-[10px] mt-1">Demand</span>
+                                        </div>
+                                        
+                                        <!-- Worst Case -->
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-20 w-10 bg-red-500 flex items-center justify-center text-white text-xs">
+                                                <span class="transform rotate-90">$110M</span>
+                                            </div>
+                                            <span class="text-[10px] mt-1">Worst Case</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- X and Y axis -->
+                                    <div class="absolute bottom-8 left-0 w-full h-px bg-gray-300 dark:bg-gray-600"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-xs font-medium mb-2">Risk Probability-Impact Matrix</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg h-64 relative">
+                                    <!-- Matrix grid -->
+                                    <div class="absolute top-10 right-10 bottom-10 left-10 grid grid-cols-3 grid-rows-3 gap-0">
+                                        <!-- Low probability, low impact -->
+                                        <div class="border border-gray-300 dark:border-gray-600 bg-green-100/30 dark:bg-green-900/10 flex items-center justify-center">
+                                            <span class="text-[10px] text-gray-500">Low Risk</span>
+                                        </div>
+                                        
+                                        <!-- Medium probability, low impact -->
+                                        <div class="border border-gray-300 dark:border-gray-600 bg-green-100/30 dark:bg-green-900/10 flex items-center justify-center">
+                                            <span class="text-[10px] text-gray-500">Low Risk</span>
+                                        </div>
+                                        
+                                        <!-- High probability, low impact -->
+                                        <div class="border border-gray-300 dark:border-gray-600 bg-amber-100/30 dark:bg-amber-900/10 flex items-center justify-center">
+                                            <span class="text-[10px] text-gray-500">Medium Risk</span>
+                                        </div>
+                                        
+                                        <!-- Low probability, medium impact -->
+                                        <div class="border border-gray-300 dark:border-gray-600 bg-green-100/30 dark:bg-green-900/10 flex items-center justify-center">
+                                            <span class="text-[10px] text-gray-500">Low Risk</span>
+                                        </div>
+                                        
+                                        <!-- Medium probability, medium impact -->
+                                        <div class="border border-gray-300 dark:border-gray-600 bg-amber-100/30 dark:bg-amber-900/10 flex items-center justify-center relative">
+                                            <span class="text-[10px] text-gray-500">Medium Risk</span>
+                                            
+                                            <!-- Regulatory risk -->
+                                            <div class="absolute -top-1 -left-1 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center text-white text-[8px]">R5</div>
+                                            
+                                            <!-- Market demand risk -->
+                                            <div class="absolute top-1 right-1 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center text-white text-[8px]">R4</div>
+                                            
+                                            <!-- Construction risk -->
+                                            <div class="absolute bottom-1 left-1 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center text-white text-[8px]">R3</div>
+                                        </div>
+                                        
+                                        <!-- High probability, medium impact -->
+                                        <div class="border border-gray-300 dark:border-gray-600 bg-red-100/30 dark:bg-red-900/10 flex items-center justify-center relative">
+                                            <span class="text-[10px] text-gray-500">High Risk</span>
+                                            
+                                            <!-- Labor market risk -->
+                                            <div class="absolute top-0 right-0 w-5 h-5 rounded-full bg-red-500 flex items-center justify-center text-white text-[8px]">R2</div>
+                                        </div>
+                                        
+                                        <!-- Low probability, high impact -->
+                                        <div class="border border-gray-300 dark:border-gray-600 bg-amber-100/30 dark:bg-amber-900/10 flex items-center justify-center">
+                                            <span class="text-[10px] text-gray-500">Medium Risk</span>
+                                        </div>
+                                        
+                                        <!-- Medium probability, high impact -->
+                                        <div class="border border-gray-300 dark:border-gray-600 bg-red-100/30 dark:bg-red-900/10 flex items-center justify-center relative">
+                                            <span class="text-[10px] text-gray-500">High Risk</span>
+                                            
+                                            <!-- Supply chain risk -->
+                                            <div class="absolute top-0 left-0 w-5 h-5 rounded-full bg-red-500 flex items-center justify-center text-white text-[8px]">R1</div>
+                                        </div>
+                                        
+                                        <!-- High probability, high impact -->
+                                        <div class="border border-gray-300 dark:border-gray-600 bg-red-100/30 dark:bg-red-900/10 flex items-center justify-center">
+                                            <span class="text-[10px] text-gray-500">High Risk</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Axis labels -->
+                                    <div class="absolute top-8 left-5 text-[10px] text-center transform -rotate-90">Impact</div>
+                                    <div class="absolute bottom-5 left-1/2 transform -translate-x-1/2 text-[10px] text-center">Probability</div>
+                                    
+                                    <!-- Level indicators -->
+                                    <div class="absolute left-10 bottom-6 text-[8px] text-gray-500">Low</div>
+                                    <div class="absolute left-1/2 bottom-6 text-[8px] text-gray-500 transform -translate-x-1/2">Medium</div>
+                                    <div class="absolute right-10 bottom-6 text-[8px] text-gray-500">High</div>
+                                    
+                                    <div class="absolute top-10 left-6 text-[8px] text-gray-500">Low</div>
+                                    <div class="absolute top-1/2 left-6 text-[8px] text-gray-500 transform -translate-y-1/2">Medium</div>
+                                    <div class="absolute bottom-10 left-6 text-[8px] text-gray-500">High</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-2">Risk Management Strategy & Conclusion</h6>
+                            
+                            <ul class="pl-4 text-xs mb-0">
+                                <li class="mb-1"><strong>Contingency reserves:</strong> The business case includes a 10% financial contingency ($12M) and 15% timeline contingency to account for identified risks.</li>
+                                <li class="mb-1"><strong>Risk ownership:</strong> Each key risk has been assigned to a specific executive owner with regular reporting requirements.</li>
+                                <li class="mb-1"><strong>Phased approach:</strong> The implementation plan includes stage gates to evaluate risks and adjust strategies before proceeding to subsequent phases.</li>
+                                <li class="mb-1"><strong>Balanced perspective:</strong> While risks are significant, the project remains financially viable even under reasonable worst-case scenarios (NPV of $110M vs. base case $175M).</li>
+                                <li class="mb-1"><strong>Early warning system:</strong> Key risk indicators have been defined with thresholds to trigger contingency plans.</li>
+                                <li class="mb-0"><strong>Overall assessment:</strong> The manufacturing facility expansion carries manageable risks with substantial upside potential. With proper risk management strategies in place, we recommend proceeding with the investment.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Integrating Business Cases with Other Financial Analysis Tools</h4>
+                    <p>Business case development is most effective when integrated with other analytical approaches:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Financial Analysis Tool</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Integration with Business Case Development</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Financial Statement Analysis</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Provides historical performance context for business case assumptions</li>
+                                            <li>Helps validate financial projections against past performance</li>
+                                            <li>Identifies financial statement impacts of proposed initiatives</li>
+                                            <li>Supports alignment of business case with financial reporting frameworks</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">KPI Analysis & Metrics</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Defines success metrics and targets for business case outcomes</li>
+                                            <li>Establishes measurement framework for benefits tracking</li>
+                                            <li>Connects operational improvements to financial benefits</li>
+                                            <li>Provides benchmark data for validating business case assumptions</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Valuation Fundamentals</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Supplies methodologies for determining project or initiative value</li>
+                                            <li>Provides discount rate determination techniques</li>
+                                            <li>Informs terminal value calculations for long-term investments</li>
+                                            <li>Offers comparative valuation approaches for option analysis</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Cost Analysis & Optimization</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Delivers detailed cost modeling for business case projections</li>
+                                            <li>Identifies cost reduction opportunities to improve business case value</li>
+                                            <li>Provides methodologies for calculating total cost of ownership</li>
+                                            <li>Supports activity-based costing for accurate financial projections</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2014/07/the-art-of-crafting-a-15-word-strategy-statement" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Building a Better Business Case</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Strategy Guide</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://corporatefinanceinstitute.com/resources/knowledge/modeling/what-is-financial-modeling/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-file-chart-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Financial Modeling for Business Cases</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Corporate Finance Institute • Financial Guide</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/building-a-better-business-case" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-presentation-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Strategic Business Case Development</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • Framework Guide</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell Sales Automation Platform Business Case</h5>
+                        <p class="mb-3">In this exercise, you'll develop key components of a business case for implementing a new sales automation platform at Dell Technologies. This system would streamline the sales process, improve forecasting accuracy, and enhance customer relationship management.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Business Context:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Dell's current sales systems are fragmented across multiple platforms</li>
+                                    <li>Sales teams spend 30% of time on administrative tasks vs. selling</li>
+                                    <li>Forecasting accuracy averages 65%, below industry benchmark of 80%</li>
+                                    <li>Customer data is siloed, limiting cross-selling opportunities</li>
+                                    <li>Sales cycle averages 45 days for enterprise deals; target is 30 days</li>
+                                    <li>Proposed solution: Implement unified sales automation platform</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Financial Information:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Estimated implementation cost: $12 million</li>
+                                    <li>Annual licensing and support: $2.5 million</li>
+                                    <li>Expected productivity gain: 15% more selling time</li>
+                                    <li>Average annual enterprise sales: $8 billion</li>
+                                    <li>Current sales team: 2,000 representatives globally</li>
+                                    <li>Average sales rep compensation: $150,000</li>
+                                    <li>Estimated project timeline: 18 months to full implementation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Strategic Alignment & Business Need</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Explain how this initiative aligns with Dell's strategic objectives and why it is needed now. Include the business problem being addressed and consequences of inaction..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Financial Analysis</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Develop a financial analysis of the proposed initiative. Include cost breakdown, quantified benefits, ROI calculation, payback period, and NPV analysis. Explain your assumptions..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Risk Assessment</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Identify the key risks associated with this initiative. For each risk, assess its probability and impact, and propose mitigation strategies..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Implementation Approach</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Outline a high-level implementation plan including key phases, timeline, resource requirements, and critical success factors..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Executive Summary</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Draft a concise executive summary that highlights the key points of your business case, focusing on the value proposition, financial benefits, and strategic alignment..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-valuation">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Valuation Fundamentals</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-cost-analysis">
+                        <span>Next: Cost Analysis & Optimization</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-business-case');
+        });
+    </script>
+</body>
+</html>

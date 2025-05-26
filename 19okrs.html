@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Strategic Frameworks</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-4ps">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>4Ps GTM Strategy</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-swot">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>SWOT Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-porters-five">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Porter's Five Forces</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-value-chain">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Value Chain Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-bcg-matrix">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>BCG & GE-McKinsey Matrices</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-okrs">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>OKRs</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-ansoff">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Ansoff Matrix</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">25%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 25%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>5/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>0/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Problem Solving</span>
+                                <span>0/6 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- OKRs Topic -->
+            <section id="topic-okrs" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-focus-3-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">OKRs (Objectives and Key Results)</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Strategic Frameworks</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the OKR framework for goal-setting and performance management</li>
+                            <li>Learn to write effective Objectives and measurable Key Results</li>
+                            <li>Develop skills to cascade OKRs across organizational levels</li>
+                            <li>Apply OKR principles to Dell's business context</li>
+                            <li>Explore how to implement and maintain an OKR system</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to OKRs</h4>
+                    <p>Objectives and Key Results (OKRs) is a collaborative goal-setting framework that helps organizations define and track objectives and their outcomes. Originally developed at Intel and made famous by Google, OKRs have become a popular methodology for creating alignment and engagement around measurable goals. The framework connects company, team, and personal objectives to measurable results, making everyone move together in the right direction.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why OKRs Matter</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Strategic alignment:</strong> Connects individual and team efforts to company-wide priorities</li>
+                            <li><strong>Focus and commitment:</strong> Helps teams prioritize what matters most</li>
+                            <li><strong>Transparency:</strong> Creates visibility into goals across the organization</li>
+                            <li><strong>Accountability:</strong> Establishes clear metrics for measuring progress</li>
+                            <li><strong>Agility:</strong> Regular cadence facilitates adaptation to changing conditions</li>
+                            <li><strong>Ambition:</strong> Encourages stretch goals that drive innovation and growth</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row gap-6 mb-6">
+                        <div class="flex-1 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-800/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mr-3">
+                                    <i class="ri-flag-line text-xl"></i>
+                                </div>
+                                <h5 class="text-blue-700 dark:text-blue-400 font-medium">Objectives</h5>
+                            </div>
+                            <p class="text-sm mb-3">Objectives are <strong>what</strong> you want to achieve. They are:</p>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li>Qualitative and inspirational</li>
+                                <li>Time-bound (usually quarterly)</li>
+                                <li>Action-oriented and concise</li>
+                                <li>Ambitious yet achievable</li>
+                                <li>Aligned with company mission</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex-1 bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-800/30 flex items-center justify-center text-green-600 dark:text-green-400 mr-3">
+                                    <i class="ri-bar-chart-grouped-line text-xl"></i>
+                                </div>
+                                <h5 class="text-green-700 dark:text-green-400 font-medium">Key Results</h5>
+                            </div>
+                            <p class="text-sm mb-3">Key Results measure <strong>how</strong> you'll achieve the objective. They are:</p>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li>Quantitative and measurable</li>
+                                <li>Outcome-focused, not activity-based</li>
+                                <li>Challenging but realistic</li>
+                                <li>Typically 3-5 per objective</li>
+                                <li>Have specific success criteria</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>OKR Structure and Format</h4>
+                    <p>OKRs follow a simple formula but creating effective ones requires careful consideration:</p>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-3">OKR Formula</h5>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
+                            <p class="font-medium mb-2">Objective: <span class="text-indigo-600 dark:text-indigo-400">I will [verb] [what] [contextual clarification]</span></p>
+                            <p class="font-medium">Key Results:</p>
+                            <ul class="list-decimal pl-8 mb-0">
+                                <li class="mb-1"><span class="text-green-600 dark:text-green-400">[Metric] from [current state X] to [target state Y]</span></li>
+                                <li class="mb-1"><span class="text-green-600 dark:text-green-400">[Metric] from [current state X] to [target state Y]</span></li>
+                                <li><span class="text-green-600 dark:text-green-400">[Metric] from [current state X] to [target state Y]</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Sample Company-Level OKR</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="font-medium mb-2 text-sm">Objective: Transform our customer experience to industry-leading standards</p>
+                                    <p class="text-xs font-medium">Key Results:</p>
+                                    <ol class="list-decimal pl-6 mb-0 text-xs">
+                                        <li class="mb-1">Increase Net Promoter Score from 32 to 50</li>
+                                        <li class="mb-1">Reduce average customer support response time from 24 hours to 4 hours</li>
+                                        <li>Improve first-contact resolution rate from 65% to 85%</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Sample Team-Level OKR</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="font-medium mb-2 text-sm">Objective: Revamp our customer support platform for faster issue resolution</p>
+                                    <p class="text-xs font-medium">Key Results:</p>
+                                    <ol class="list-decimal pl-6 mb-0 text-xs">
+                                        <li class="mb-1">Launch new support platform with 99.9% uptime by end of Q2</li>
+                                        <li class="mb-1">Train 100% of support staff on new platform with 90% proficiency score</li>
+                                        <li>Reduce ticket escalation rate from 25% to 10%</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Writing Effective OKRs</h4>
+                    <p>Creating impactful OKRs requires careful crafting of both objectives and key results:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h5 class="font-medium mb-3">Crafting Strong Objectives</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-4">
+                                <h6 class="text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">DO</h6>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-1">Make them aspirational and inspiring</li>
+                                    <li class="mb-1">Use clear, action-oriented language</li>
+                                    <li class="mb-1">Ensure they're aligned with company strategy</li>
+                                    <li class="mb-1">Make them meaningful to the team</li>
+                                    <li>Keep them concise and memorable</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <h6 class="text-sm font-medium text-red-600 dark:text-red-400 mb-2">DON'T</h6>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-1">Create vague or generic statements</li>
+                                    <li class="mb-1">Include metrics in the objective</li>
+                                    <li class="mb-1">Set too many objectives (3-5 max per period)</li>
+                                    <li class="mb-1">Make them too easy or impossible</li>
+                                    <li>Create a task list or project plan</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h5 class="font-medium mb-3">Defining Measurable Key Results</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-4">
+                                <h6 class="text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">DO</h6>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-1">Include specific numbers and deadlines</li>
+                                    <li class="mb-1">Focus on outcomes, not activities</li>
+                                    <li class="mb-1">Make them challenging yet achievable</li>
+                                    <li class="mb-1">Include a baseline and target value</li>
+                                    <li>Limit to 3-5 key results per objective</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <h6 class="text-sm font-medium text-red-600 dark:text-red-400 mb-2">DON'T</h6>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-1">Use binary (yes/no) metrics</li>
+                                    <li class="mb-1">Focus on inputs or activities (vs. outcomes)</li>
+                                    <li class="mb-1">Create unmeasurable key results</li>
+                                    <li class="mb-1">Set too many KRs for one objective</li>
+                                    <li>Include vague qualifiers (e.g., "improve", "optimize")</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-3">OKR Examples for Dell</h5>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Dell Department</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Objective</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Key Results</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium" rowspan="3">
+                                            Product Development
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2" rowspan="3">
+                                            Launch a market-leading AI-optimized server platform that exceeds customer expectations
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Achieve SPECjbb benchmark scores 30% higher than current top competitor
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Reduce power consumption per inference by 25% compared to previous generation
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Complete customer beta testing with 90%+ satisfaction scores from at least 15 enterprise customers
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium" rowspan="3">
+                                            Sales Organization
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2" rowspan="3">
+                                            Accelerate APEX as-a-service adoption in enterprise accounts
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Increase APEX ARR (Annual Recurring Revenue) from $250M to $500M
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Convert 30% of eligible storage customers from CapEx to APEX consumption model
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Increase average APEX contract length from 24 months to 36 months
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium" rowspan="3">
+                                            Customer Experience
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2" rowspan="3">
+                                            Transform support experience for enterprise customers
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Increase proactive issue prevention from 15% to 50% of potential incidents
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Reduce P1 ticket resolution time from 4 hours to 90 minutes
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Improve enterprise support NPS from +42 to +65
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <h4>OKR Hierarchy and Alignment</h4>
+                    <p>OKRs work best when they cascade through the organization, creating alignment from company-level goals to individual contributions:</p>
+                    
+                    <div class="mb-6">
+                        <div class="relative bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-6 overflow-x-auto">
+                            <!-- Company Level -->
+                            <div class="mb-6">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg max-w-2xl mx-auto">
+                                    <h5 class="text-blue-700 dark:text-blue-400 font-medium text-center mb-2">Company OKRs</h5>
+                                    <p class="text-sm text-center">Strategic direction and priorities for the entire organization</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Department Level -->
+                            <div class="flex justify-center mb-6">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                        <h6 class="text-indigo-700 dark:text-indigo-400 font-medium text-center mb-1">Product OKRs</h6>
+                                        <p class="text-xs text-center">Department goals supporting company strategy</p>
+                                    </div>
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                        <h6 class="text-indigo-700 dark:text-indigo-400 font-medium text-center mb-1">Sales OKRs</h6>
+                                        <p class="text-xs text-center">Department goals supporting company strategy</p>
+                                    </div>
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                        <h6 class="text-indigo-700 dark:text-indigo-400 font-medium text-center mb-1">Engineering OKRs</h6>
+                                        <p class="text-xs text-center">Department goals supporting company strategy</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Team Level -->
+                            <div class="flex justify-center mb-6">
+                                <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                        <h6 class="text-purple-700 dark:text-purple-400 font-medium text-center text-xs mb-1">Team OKRs</h6>
+                                        <p class="text-xs text-center">Team-specific contributions to department goals</p>
+                                    </div>
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                        <h6 class="text-purple-700 dark:text-purple-400 font-medium text-center text-xs mb-1">Team OKRs</h6>
+                                        <p class="text-xs text-center">Team-specific contributions to department goals</p>
+                                    </div>
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                        <h6 class="text-purple-700 dark:text-purple-400 font-medium text-center text-xs mb-1">Team OKRs</h6>
+                                        <p class="text-xs text-center">Team-specific contributions to department goals</p>
+                                    </div>
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                        <h6 class="text-purple-700 dark:text-purple-400 font-medium text-center text-xs mb-1">Team OKRs</h6>
+                                        <p class="text-xs text-center">Team-specific contributions to department goals</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Individual Level -->
+                            <div class="flex justify-center">
+                                <div class="grid grid-cols-1 md:grid-cols-6 gap-2">
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-1 rounded-lg">
+                                        <h6 class="text-green-700 dark:text-green-400 font-medium text-center text-xs">Individual OKRs</h6>
+                                    </div>
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-1 rounded-lg">
+                                        <h6 class="text-green-700 dark:text-green-400 font-medium text-center text-xs">Individual OKRs</h6>
+                                    </div>
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-1 rounded-lg">
+                                        <h6 class="text-green-700 dark:text-green-400 font-medium text-center text-xs">Individual OKRs</h6>
+                                    </div>
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-1 rounded-lg">
+                                        <h6 class="text-green-700 dark:text-green-400 font-medium text-center text-xs">Individual OKRs</h6>
+                                    </div>
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-1 rounded-lg">
+                                        <h6 class="text-green-700 dark:text-green-400 font-medium text-center text-xs">Individual OKRs</h6>
+                                    </div>
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-1 rounded-lg">
+                                        <h6 class="text-green-700 dark:text-green-400 font-medium text-center text-xs">Individual OKRs</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Connecting lines -->
+                            <div class="absolute left-1/2 top-[90px] transform -translate-x-1/2 w-0.5 h-10 bg-gray-300 dark:bg-gray-600"></div>
+                            <div class="absolute left-1/4 md:left-1/3 top-[180px] transform -translate-x-1/2 w-0.5 h-10 bg-gray-300 dark:bg-gray-600"></div>
+                            <div class="absolute left-1/2 top-[180px] transform -translate-x-1/2 w-0.5 h-10 bg-gray-300 dark:bg-gray-600"></div>
+                            <div class="absolute left-3/4 md:left-2/3 top-[180px] transform -translate-x-1/2 w-0.5 h-10 bg-gray-300 dark:bg-gray-600"></div>
+                            <div class="absolute left-1/5 md:left-1/6 top-[265px] transform -translate-x-1/2 w-0.5 h-10 bg-gray-300 dark:bg-gray-600"></div>
+                            <div class="absolute left-2/5 md:left-2/6 top-[265px] transform -translate-x-1/2 w-0.5 h-10 bg-gray-300 dark:bg-gray-600"></div>
+                            <div class="absolute left-3/5 md:left-3/6 top-[265px] transform -translate-x-1/2 w-0.5 h-10 bg-gray-300 dark:bg-gray-600"></div>
+                            <div class="absolute left-4/5 md:left-4/6 top-[265px] transform -translate-x-1/2 w-0.5 h-10 bg-gray-300 dark:bg-gray-600"></div>
+                            
+                            <!-- Horizontal connectors -->
+                            <div class="absolute left-1/4 md:left-1/3 top-[180px] transform -translate-x-1/2 translate-y-5 w-[calc(100%-33%)] h-0.5 bg-gray-300 dark:bg-gray-600"></div>
+                            <div class="absolute left-1/8 md:left-1/6 top-[265px] transform -translate-x-1/2 translate-y-5 w-[calc(100%-17%)] h-0.5 bg-gray-300 dark:bg-gray-600"></div>
+                        </div>
+                        <p class="text-xs text-center mt-2 text-gray-500 dark:text-gray-400">OKR Cascade: Creating alignment from company strategy to individual contributions</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Alignment Principles</h5>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li class="mb-2"><strong>Strategic consistency:</strong> Lower-level OKRs should contribute to higher-level objectives</li>
+                                <li class="mb-2"><strong>Bidirectional input:</strong> Both top-down and bottom-up alignment for engagement</li>
+                                <li class="mb-2"><strong>Autonomy with direction:</strong> Teams decide how to contribute to company goals</li>
+                                <li class="mb-2"><strong>Cross-functional collaboration:</strong> Shared OKRs for interdependent work</li>
+                                <li class="mb-0"><strong>Transparency:</strong> All OKRs visible across the organization</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Cascading Process</h5>
+                            <ol class="pl-5 text-sm mb-0">
+                                <li class="mb-2"><strong>Define company OKRs</strong> based on strategic priorities</li>
+                                <li class="mb-2"><strong>Communicate company direction</strong> to all department leaders</li>
+                                <li class="mb-2"><strong>Department leaders develop OKRs</strong> that support company objectives</li>
+                                <li class="mb-2"><strong>Teams create OKRs</strong> aligned with department objectives</li>
+                                <li class="mb-0"><strong>Individuals define personal OKRs</strong> supporting team goals</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-3">Dell OKR Cascade Example</h5>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse mb-3">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Level</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Objective</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Key Results</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-blue-50 dark:bg-blue-900/10">
+                                            Company<br>(Dell)
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Accelerate customer transition to as-a-service IT consumption models
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ol class="pl-5 text-sm mb-0">
+                                                <li>Grow as-a-service ARR from $1B to $3B</li>
+                                                <li>Increase as-a-service offerings from 4 to 10 product categories</li>
+                                                <li>Achieve 35% of commercial revenue from subscription and consumption models</li>
+                                            </ol>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-indigo-50 dark:bg-indigo-900/10">
+                                            Department<br>(Product Strategy)
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Develop comprehensive portfolio of as-a-service offerings across core products
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ol class="pl-5 text-sm mb-0">
+                                                <li>Launch APEX as-a-service versions of 6 new product categories</li>
+                                                <li>Achieve feature parity between traditional and as-a-service offerings</li>
+                                                <li>Develop unified customer console for all as-a-service offerings</li>
+                                            </ol>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-purple-50 dark:bg-purple-900/10">
+                                            Team<br>(Storage Product)
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Transform PowerMax storage into a compelling as-a-service offering
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ol class="pl-5 text-sm mb-0">
+                                                <li>Develop APEX Console integration for PowerMax provisioning and management</li>
+                                                <li>Create consumption-based pricing model with 3 distinct tiers</li>
+                                                <li>Build automated capacity monitoring and management capabilities</li>
+                                            </ol>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-green-50 dark:bg-green-900/10">
+                                            Individual<br>(Product Manager)
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Design PowerMax consumption pricing model that drives adoption
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ol class="pl-5 text-sm mb-0">
+                                                <li>Interview 20 top customers to validate pricing model preferences</li>
+                                                <li>Develop pricing calculator with 95% accuracy versus actual usage</li>
+                                                <li>Create competitive analysis showing TCO benefit versus 3 leading competitors</li>
+                                            </ol>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <p class="text-xs mb-0">This cascade shows how each level's OKRs support and align with higher-level objectives while becoming more specific and actionable at lower levels. The individual PM's work directly contributes to the team goal, which supports the department objective, which enables the company-level outcome.</p>
+                    </div>
+                    
+                    <h4>OKR Cycle and Cadence</h4>
+                    <p>OKRs operate on a regular cycle with defined phases:</p>
+                    
+                    <div class="flex flex-wrap md:flex-nowrap gap-2 mb-6 relative">
+                        <div class="flex-1 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                            <h5 class="text-blue-700 dark:text-blue-400 font-medium text-sm mb-2">1. Planning</h5>
+                            <p class="text-xs mb-0">Set objectives and define key results for the upcoming period. Ensure alignment across the organization.</p>
+                        </div>
+                        <div class="flex-1 bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                            <h5 class="text-green-700 dark:text-green-400 font-medium text-sm mb-2">2. Execution</h5>
+                            <p class="text-xs mb-0">Work toward objectives while regularly tracking progress on key results. Make tactical adjustments as needed.</p>
+                        </div>
+                        <div class="flex-1 bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                            <h5 class="text-purple-700 dark:text-purple-400 font-medium text-sm mb-2">3. Check-ins</h5>
+                            <p class="text-xs mb-0">Conduct regular (weekly or biweekly) status updates on key results. Address blockers and provide support.</p>
+                        </div>
+                        <div class="flex-1 bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                            <h5 class="text-amber-700 dark:text-amber-400 font-medium text-sm mb-2">4. Reflection</h5>
+                            <p class="text-xs mb-0">At period end, review performance, document learnings, and celebrate progress regardless of full completion.</p>
+                        </div>
+                        
+                        <!-- Arrow connectors -->
+                        <div class="hidden md:block absolute left-[24%] top-1/2 w-[3%] h-0.5 bg-gray-300 dark:bg-gray-600"></div>
+                        <div class="hidden md:block absolute left-[49%] top-1/2 w-[3%] h-0.5 bg-gray-300 dark:bg-gray-600"></div>
+                        <div class="hidden md:block absolute left-[74%] top-1/2 w-[3%] h-0.5 bg-gray-300 dark:bg-gray-600"></div>
+                        
+                        <!-- Arrow heads -->
+                        <div class="hidden md:block absolute left-[26%] top-1/2 transform -translate-y-1/2">
+                            <i class="ri-arrow-right-s-line text-gray-400"></i>
+                        </div>
+                        <div class="hidden md:block absolute left-[51%] top-1/2 transform -translate-y-1/2">
+                            <i class="ri-arrow-right-s-line text-gray-400"></i>
+                        </div>
+                        <div class="hidden md:block absolute left-[76%] top-1/2 transform -translate-y-1/2">
+                            <i class="ri-arrow-right-s-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">OKR Timeframes</h5>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li class="mb-2"><strong>Annual Company OKRs:</strong> Broad strategic objectives for the organization</li>
+                                <li class="mb-2"><strong>Quarterly Department/Team OKRs:</strong> Tactical objectives with 90-day timeframe</li>
+                                <li class="mb-0"><strong>Monthly Check-ins:</strong> Progress reviews and adjustments</li>
+                            </ul>
+                            <p class="text-sm mt-3 mb-0"><strong>Recommendation:</strong> Start with quarterly OKRs at all levels to establish rhythm, then introduce annual company-level OKRs after 2-3 quarters of experience.</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Scoring and Progress Tracking</h5>
+                            <div class="mb-3">
+                                <p class="text-sm mb-1">OKRs are typically scored on a 0-1.0 scale:</p>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-1"><strong>0.7-1.0:</strong> Target achieved or exceeded</li>
+                                    <li class="mb-1"><strong>0.4-0.6:</strong> Progress made but target not reached</li>
+                                    <li><strong>0.0-0.3:</strong> Little progress toward the target</li>
+                                </ul>
+                            </div>
+                            <p class="text-sm mb-1"><strong>Google's Guidance:</strong> If all OKRs are consistently scored 1.0, they're not ambitious enough. A good target is 60-70% average completion across all OKRs.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Implementing OKRs at Dell</h4>
+                    <p>Successfully implementing OKRs requires careful planning and ongoing management:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Phase 1: Preparation</h5>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li>Secure executive sponsorship</li>
+                                <li>Identify pilot teams or departments</li>
+                                <li>Develop implementation timeline</li>
+                                <li>Train leaders and key stakeholders</li>
+                                <li>Select OKR tracking tools</li>
+                                <li>Create educational materials</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Phase 2: Pilot Implementation</h5>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li>Train pilot teams thoroughly</li>
+                                <li>Set initial OKRs for pilot groups</li>
+                                <li>Establish check-in cadence</li>
+                                <li>Provide coaching and support</li>
+                                <li>Collect feedback and challenges</li>
+                                <li>Document lessons learned</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Phase 3: Full Rollout</h5>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li>Train broader organization</li>
+                                <li>Create OKR templates and examples</li>
+                                <li>Implement OKR management tools</li>
+                                <li>Establish OKR champions network</li>
+                                <li>Connect to performance conversations</li>
+                                <li>Continuously refine the process</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-yellow-700 dark:text-yellow-400 font-medium mb-2">Common OKR Implementation Mistakes</h5>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2"><strong>Treating OKRs as a task list</strong> rather than ambitious, outcome-focused goals</li>
+                                    <li class="mb-2"><strong>Setting too many OKRs</strong> instead of focusing on critical priorities</li>
+                                    <li class="mb-2"><strong>"Set and forget" mentality</strong> without regular check-ins and updates</li>
+                                    <li class="mb-0"><strong>Cascading OKRs too rigidly</strong> without room for team autonomy and input</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2"><strong>Tying OKRs directly to compensation</strong> which discourages ambitious goals</li>
+                                    <li class="mb-2"><strong>Lack of transparency</strong> that limits alignment and collaboration</li>
+                                    <li class="mb-2"><strong>Inconsistent implementation</strong> across different parts of the organization</li>
+                                    <li class="mb-0"><strong>Insufficient training and support</strong> for teams and leaders</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>OKRs vs. Other Goal-Setting Frameworks</h4>
+                    <p>Understanding how OKRs compare to other popular frameworks helps clarify when to use each approach:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Framework</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Key Characteristics</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Best For</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Limitations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">OKRs</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Ambitious, measurable goals</li>
+                                            <li>Quarterly rhythm</li>
+                                            <li>Transparent and public</li>
+                                            <li>Focused on outcomes</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Fast-moving organizations</li>
+                                            <li>Innovation-focused teams</li>
+                                            <li>Cross-functional alignment</li>
+                                            <li>Strategic execution</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Can be too ambitious</li>
+                                            <li>May not suit all functions</li>
+                                            <li>Requires cultural alignment</li>
+                                            <li>Not for stable/routine work</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">SMART Goals</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Specific, Measurable, Achievable, Relevant, Time-bound</li>
+                                            <li>Individual-focused</li>
+                                            <li>Clear success criteria</li>
+                                            <li>Typically 100% achievable</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Individual performance</li>
+                                            <li>Operational targets</li>
+                                            <li>New employee onboarding</li>
+                                            <li>Predictable work</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Less ambitious by design</li>
+                                            <li>Often not transparent</li>
+                                            <li>Less focus on alignment</li>
+                                            <li>Can encourage siloed thinking</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">KPIs</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Business health metrics</li>
+                                            <li>Ongoing measurement</li>
+                                            <li>Standard business indicators</li>
+                                            <li>Usually department-specific</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Business performance</li>
+                                            <li>Operational efficiency</li>
+                                            <li>Process monitoring</li>
+                                            <li>Financial health tracking</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Not tied to specific initiatives</li>
+                                            <li>May encourage local optimization</li>
+                                            <li>Doesn't inspire innovation</li>
+                                            <li>Often lacks strategic context</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">MBOs</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Management by Objectives</li>
+                                            <li>Annual targets</li>
+                                            <li>Tied to compensation</li>
+                                            <li>More private/confidential</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Performance reviews</li>
+                                            <li>Bonus determinations</li>
+                                            <li>Traditional organizations</li>
+                                            <li>Long-term projects</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Low visibility across teams</li>
+                                            <li>Discourages ambitious goals</li>
+                                            <li>Annual cycle is too slow</li>
+                                            <li>Limited alignment</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Combining Frameworks at Dell</h5>
+                        <p class="text-sm mb-3">Companies can effectively use multiple frameworks in complementary ways:</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Framework</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Role at Dell</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">OKRs</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Strategic objectives and transformation initiatives that require cross-functional alignment
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <p class="text-sm font-medium mb-1">Objective: Accelerate APEX as-a-service adoption</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Increase APEX ARR from $250M to $500M</li>
+                                                <li>Convert 30% of storage customers to consumption model</li>
+                                                <li>Achieve 85% customer retention rate for APEX services</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">KPIs</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Ongoing operational metrics that monitor business health and performance
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>Average Order Value</li>
+                                                <li>Customer Acquisition Cost</li>
+                                                <li>Support Ticket Resolution Time</li>
+                                                <li>Manufacturing Defect Rate</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">SMART Goals</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            Individual development objectives and personal performance targets
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>Complete Certified Scrum Master training by June 30</li>
+                                                <li>Reduce personal project delivery time by 15% in Q3</li>
+                                                <li>Mentor two junior team members this year</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <h4>OKR Tools and Resources</h4>
+                    <p>Several tools can help organizations implement and manage OKRs effectively:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Dedicated OKR Platforms</h5>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li class="mb-1">Workboard</li>
+                                <li class="mb-1">15Five</li>
+                                <li class="mb-1">Perdoo</li>
+                                <li class="mb-1">Weekdone</li>
+                                <li>Lattice</li>
+                            </ul>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 mb-0">Best for organizations fully committed to OKRs with budgets for specialized tools</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">General Purpose Tools</h5>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li class="mb-1">Asana</li>
+                                <li class="mb-1">Jira</li>
+                                <li class="mb-1">Microsoft Teams</li>
+                                <li class="mb-1">Trello</li>
+                                <li>Notion</li>
+                            </ul>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 mb-0">Good for organizations starting with OKRs or wanting to integrate with existing tools</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Simple Options</h5>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li class="mb-1">Google Sheets</li>
+                                <li class="mb-1">Microsoft Excel</li>
+                                <li class="mb-1">Confluence</li>
+                                <li class="mb-1">SharePoint</li>
+                                <li>Custom internal tool</li>
+                            </ul>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 mb-0">Appropriate for pilot programs or smaller teams testing the OKR methodology</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.youtube.com/watch?v=mJB83EZtAjc" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-video-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Google's OKR Playbook</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">YouTube • 11:52</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://felipecastro.com/en/okr/what-is-okr/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">OKR Guide: All You Need to Know</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Felipe Castro • Interactive Guide</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.whatmatters.com/resources/google-okr-playbook" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-book-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Measure What Matters</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">John Doerr • Definitive OKR Book</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Create OKRs for Dell's PC-as-a-Service Initiative</h5>
+                        <p class="mb-3">Dell is expanding its PC-as-a-Service (PCaaS) offering to transform how businesses acquire and manage their PC fleets. This subscription-based model includes hardware, software, lifecycle services, and financing in a single, predictable price per device. Create a set of OKRs to help Dell successfully grow this business.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Context Information:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>PC-as-a-Service is a strategic growth initiative for Dell</li>
+                                    <li>Current adoption is 15% of eligible commercial customers</li>
+                                    <li>Competitors are introducing similar offerings</li>
+                                    <li>Key target markets include mid-size businesses and enterprises</li>
+                                    <li>Customers value flexibility, cost predictability, and simplified management</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Your Task:</p>
+                                <ol class="pl-4 text-sm mb-0">
+                                    <li>Create one company-level OKR for the PCaaS initiative</li>
+                                    <li>Create one department-level OKR for either the product, sales, or service team</li>
+                                    <li>Create one team-level OKR that supports the department objective</li>
+                                    <li>Ensure your OKRs follow best practices for format and structure</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Company-Level OKR</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Objective: [Write your objective here]
+
+Key Results:
+1. [First key result]
+2. [Second key result]
+3. [Third key result]"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Department-Level OKR</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Objective: [Write your objective here]
+
+Key Results:
+1. [First key result]
+2. [Second key result]
+3. [Third key result]"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Team-Level OKR</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Objective: [Write your objective here]
+
+Key Results:
+1. [First key result]
+2. [Second key result]
+3. [Third key result]"></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit OKRs</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-bcg-matrix">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: BCG & GE-McKinsey Matrices</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-ansoff">
+                        <span>Next: Ansoff Matrix</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Ansoff Matrix Topic -->
+            <section id="topic-ansoff" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-grid-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Ansoff Matrix</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Strategic Frameworks</span>
+                                <span>•</span>
+                                <span>40 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the Ansoff Matrix framework for developing growth strategies</li>
+                            <li>Learn to analyze growth opportunities across markets and products</li>
+                            <li>Develop skills to assess risk and resource requirements for different growth strategies</li>
+                            <li>Apply the Ansoff Matrix to Dell's business context and growth initiatives</li>
+                            <li>Evaluate the appropriate growth strategy for different business situations</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to the Ansoff Matrix</h4>
+                    <p>The Ansoff Matrix, also known as the Product/Market Expansion Grid, is a strategic planning tool that helps organizations identify growth opportunities and develop appropriate strategies. Created by Russian-American mathematician and business manager Igor Ansoff in 1957, the matrix provides a framework for determining growth options based on markets (existing or new) and products (existing or new).</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why the Ansoff Matrix Matters</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Strategic planning:</strong> Provides a structured approach to growth decision-making</li>
+                            <li><strong>Risk assessment:</strong> Helps evaluate the relative risk of different growth strategies</li>
+                            <li><strong>Resource allocation:</strong> Guides investment decisions for growth initiatives</li>
+                            <li><strong>Portfolio balancing:</strong> Supports developing a mix of growth strategies across business units</li>
+                            <li><strong>Strategic alignment:</strong> Ensures growth initiatives align with organizational capabilities</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-xl p-4 bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg">
+                            <div class="grid grid-cols-2 gap-1">
+                                <!-- Row 1, Column 1 -->
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-tl-lg border-r border-b border-gray-200 dark:border-gray-700">
+                                    <div class="flex flex-col items-center text-center">
+                                        <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-800/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-3">
+                                            <i class="ri-anchor-line text-2xl"></i>
+                                        </div>
+                                        <h5 class="font-medium text-blue-700 dark:text-blue-400 mb-1">Market Penetration</h5>
+                                        <p class="text-sm mb-0">Existing Products, Existing Markets</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Lowest Risk</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Row 1, Column 2 -->
+                                <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-tr-lg border-l border-b border-gray-200 dark:border-gray-700">
+                                    <div class="flex flex-col items-center text-center">
+                                        <div class="w-16 h-16 rounded-full bg-green-100 dark:bg-green-800/30 flex items-center justify-center text-green-600 dark:text-green-400 mb-3">
+                                            <i class="ri-product-hunt-line text-2xl"></i>
+                                        </div>
+                                        <h5 class="font-medium text-green-700 dark:text-green-400 mb-1">Product Development</h5>
+                                        <p class="text-sm mb-0">New Products, Existing Markets</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Moderate Risk</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Row 2, Column 1 -->
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-bl-lg border-r border-t border-gray-200 dark:border-gray-700">
+                                    <div class="flex flex-col items-center text-center">
+                                        <div class="w-16 h-16 rounded-full bg-amber-100 dark:bg-amber-800/30 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-3">
+                                            <i class="ri-map-pin-line text-2xl"></i>
+                                        </div>
+                                        <h5 class="font-medium text-amber-700 dark:text-amber-400 mb-1">Market Development</h5>
+                                        <p class="text-sm mb-0">Existing Products, New Markets</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Moderate Risk</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Row 2, Column 2 -->
+                                <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-br-lg border-l border-t border-gray-200 dark:border-gray-700">
+                                    <div class="flex flex-col items-center text-center">
+                                        <div class="w-16 h-16 rounded-full bg-red-100 dark:bg-red-800/30 flex items-center justify-center text-red-600 dark:text-red-400 mb-3">
+                                            <i class="ri-rocket-line text-2xl"></i>
+                                        </div>
+                                        <h5 class="font-medium text-red-700 dark:text-red-400 mb-1">Diversification</h5>
+                                        <p class="text-sm mb-0">New Products, New Markets</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Highest Risk</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 mt-3">
+                                <div></div>
+                                <div class="flex justify-center">
+                                    <p class="text-xs font-medium mb-0">Existing</p>
+                                    <i class="ri-arrow-left-line mx-2"></i>
+                                    <p class="text-xs mb-0">Products</p>
+                                    <i class="ri-arrow-right-line mx-2"></i>
+                                    <p class="text-xs font-medium mb-0">New</p>
+                                </div>
+                            </div>
+                            <div class="flex mt-1 justify-center">
+                                <div class="flex flex-col items-center mr-3">
+                                    <p class="text-xs font-medium mb-1">Existing</p>
+                                    <i class="ri-arrow-up-line"></i>
+                                    <p class="text-xs mb-1">Markets</p>
+                                    <i class="ri-arrow-down-line"></i>
+                                    <p class="text-xs font-medium mb-0">New</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>The Four Growth Strategies of the Ansoff Matrix</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Market Penetration</h5>
+                        <p class="text-sm mb-3">Market penetration involves growing market share with existing products in existing markets. This strategy focuses on expanding the customer base or increasing usage among current customers without changing the product or targeting new markets.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Approaches</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Competitive pricing strategies</li>
+                                    <li>Increased promotional activities</li>
+                                    <li>Enhanced distribution</li>
+                                    <li>Customer loyalty programs</li>
+                                    <li>Improved customer experience</li>
+                                    <li>Market share acquisition</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Risk & Resource Profile</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li><strong>Risk level:</strong> Lowest among all strategies</li>
+                                    <li><strong>Time horizon:</strong> Short to medium-term</li>
+                                    <li><strong>Core competencies:</strong> Sales, marketing, customer service</li>
+                                    <li><strong>Investment focus:</strong> Marketing, sales enablement, pricing</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Market Penetration</h6>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li><strong>Enterprise server market share growth:</strong> Increasing sales efforts and competitive pricing to win share from HPE and Lenovo in North American mid-market segment</li>
+                                <li><strong>Commercial PC expansion:</strong> Enhancing channel partner incentives to drive higher penetration in existing corporate markets</li>
+                                <li><strong>Cross-selling strategy:</strong> Increasing wallet share by promoting storage solutions to existing server customers</li>
+                                <li><strong>Customer loyalty enhancement:</strong> Implementing new ProSupport Plus benefits to improve retention and repeat purchases</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Product Development</h5>
+                        <p class="text-sm mb-3">Product development involves creating new products or significantly enhancing existing ones to serve current markets. This strategy leverages existing customer relationships and market knowledge to introduce innovations that meet evolving needs.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Approaches</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>New product research and development</li>
+                                    <li>Product line extensions</li>
+                                    <li>Feature enhancements and upgrades</li>
+                                    <li>New service offerings</li>
+                                    <li>Product rebranding or repositioning</li>
+                                    <li>Technology upgrades</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Risk & Resource Profile</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li><strong>Risk level:</strong> Moderate</li>
+                                    <li><strong>Time horizon:</strong> Medium-term</li>
+                                    <li><strong>Core competencies:</strong> R&D, product management, engineering</li>
+                                    <li><strong>Investment focus:</strong> Product development, testing, launch</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Product Development</h6>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li><strong>APEX service portfolio:</strong> Developing subscription-based as-a-service offerings for existing enterprise customers who traditionally purchased hardware outright</li>
+                                <li><strong>AI-optimized servers:</strong> Creating specialized server hardware for AI and machine learning workloads for current data center customers</li>
+                                <li><strong>Multi-cloud management platform:</strong> Developing software to help existing customers manage hybrid cloud environments</li>
+                                <li><strong>Sustainability services:</strong> Creating new asset recovery and carbon footprint reduction services for current enterprise clients</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Market Development</h5>
+                        <p class="text-sm mb-3">Market development involves taking existing products into new markets or customer segments. This strategy leverages proven product capabilities while expanding the customer base into untapped segments, regions, or use cases.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Approaches</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Geographic expansion</li>
+                                    <li>New customer segments</li>
+                                    <li>New distribution channels</li>
+                                    <li>Alternative use cases</li>
+                                    <li>International market entry</li>
+                                    <li>Industry vertical expansion</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Risk & Resource Profile</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li><strong>Risk level:</strong> Moderate</li>
+                                    <li><strong>Time horizon:</strong> Medium to long-term</li>
+                                    <li><strong>Core competencies:</strong> Market research, channel management, regional expertise</li>
+                                    <li><strong>Investment focus:</strong> Market development, distribution, localization</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Market Development</h6>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li><strong>Healthcare vertical expansion:</strong> Adapting existing enterprise products with healthcare-specific security and compliance features to enter medical market</li>
+                                <li><strong>Emerging market growth:</strong> Expanding server and storage offerings into new geographic regions in Southeast Asia and Africa</li>
+                                <li><strong>Small business focus:</strong> Creating new delivery and support models to make enterprise-grade infrastructure accessible to small businesses</li>
+                                <li><strong>Educational segment:</strong> Targeting K-12 schools with specialized packages of existing products and customized services</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-red-700 dark:text-red-400 font-medium mb-2">Diversification</h5>
+                        <p class="text-sm mb-3">Diversification involves developing new products for new markets, representing the highest risk but potentially highest reward strategy. This approach requires developing new capabilities while learning about unfamiliar markets.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Approaches</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Related diversification (some commonality with existing business)</li>
+                                    <li>Unrelated diversification (entirely new domain)</li>
+                                    <li>Acquisitions and mergers</li>
+                                    <li>Joint ventures and partnerships</li>
+                                    <li>New business unit creation</li>
+                                    <li>Technology platform expansion</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Risk & Resource Profile</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li><strong>Risk level:</strong> Highest</li>
+                                    <li><strong>Time horizon:</strong> Long-term</li>
+                                    <li><strong>Core competencies:</strong> Various new capabilities required</li>
+                                    <li><strong>Investment focus:</strong> New product development, market research, acquisitions</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Diversification</h6>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li><strong>EMC acquisition:</strong> Dell's $67 billion acquisition of EMC represented a major diversification into enterprise storage, virtualization, and cloud computing</li>
+                                <li><strong>Secureworks expansion:</strong> Developing cybersecurity services for new industry segments not previously served by Dell's hardware business</li>
+                                <li><strong>Telehealth solutions:</strong> Creating specialized healthcare software and services for remote patient monitoring</li>
+                                <li><strong>IoT platform development:</strong> Building new Internet of Things platforms for industrial customers in manufacturing and logistics</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Strategic Considerations for Ansoff Matrix Implementation</h4>
+                    <p>Applying the Ansoff Matrix requires careful analysis of several factors to select the most appropriate growth strategy:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Risk Assessment</h5>
+                            <p class="text-sm mb-2">Risk generally increases as you move from Market Penetration toward Diversification. Key risk factors to evaluate include:</p>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li class="mb-1"><strong>Market uncertainty:</strong> How well do you understand customer needs and market dynamics?</li>
+                                <li class="mb-1"><strong>Technical uncertainty:</strong> How confident are you in your ability to develop new products?</li>
+                                <li class="mb-1"><strong>Financial risk:</strong> What investments are required and what's the potential for losses?</li>
+                                <li class="mb-1"><strong>Competitive response:</strong> How might competitors react to your strategy?</li>
+                                <li class="mb-0"><strong>Execution risk:</strong> Does your organization have the necessary capabilities?</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Resource Requirements</h5>
+                            <p class="text-sm mb-2">Different strategies demand varying resources and capabilities:</p>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li class="mb-1"><strong>Financial resources:</strong> Capital requirements increase as you move toward diversification</li>
+                                <li class="mb-1"><strong>Time horizon:</strong> More innovative strategies require longer time to return on investment</li>
+                                <li class="mb-1"><strong>Human resources:</strong> New skills and capabilities may be needed for unfamiliar products or markets</li>
+                                <li class="mb-1"><strong>Organizational structure:</strong> New markets or products may require structural changes</li>
+                                <li class="mb-0"><strong>Leadership focus:</strong> Management attention and commitment varies by strategy</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Risk and Investment Progression in the Ansoff Matrix</h5>
+                        
+                        <div class="overflow-x-auto mb-3">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-center" width="25%">Strategy</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-center" width="25%">Risk Level</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-center" width="25%">Time to ROI</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-center" width="25%">Capability Gap</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-blue-50 dark:bg-blue-900/10 font-medium">
+                                            Market Penetration
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <div class="flex items-center">
+                                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 25%"></div>
+                                                </div>
+                                                <span class="ml-2 text-xs">Low</span>
+                                            </div>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <div class="flex items-center">
+                                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 25%"></div>
+                                                </div>
+                                                <span class="ml-2 text-xs">Short</span>
+                                            </div>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <div class="flex items-center">
+                                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 25%"></div>
+                                                </div>
+                                                <span class="ml-2 text-xs">Small</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-green-50 dark:bg-green-900/10 font-medium">
+                                            Product Development
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <div class="flex items-center">
+                                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                                    <div class="bg-green-600 h-2.5 rounded-full" style="width: 50%"></div>
+                                                </div>
+                                                <span class="ml-2 text-xs">Medium</span>
+                                            </div>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <div class="flex items-center">
+                                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                                    <div class="bg-green-600 h-2.5 rounded-full" style="width: 50%"></div>
+                                                </div>
+                                                <span class="ml-2 text-xs">Medium</span>
+                                            </div>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <div class="flex items-center">
+                                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                                    <div class="bg-green-600 h-2.5 rounded-full" style="width: 60%"></div>
+                                                </div>
+                                                <span class="ml-2 text-xs">Significant</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-amber-50 dark:bg-amber-900/10 font-medium">
+                                            Market Development
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <div class="flex items-center">
+                                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                                    <div class="bg-amber-600 h-2.5 rounded-full" style="width: 50%"></div>
+                                                </div>
+                                                <span class="ml-2 text-xs">Medium</span>
+                                            </div>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <div class="flex items-center">
+                                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                                    <div class="bg-amber-600 h-2.5 rounded-full" style="width: 60%"></div>
+                                                </div>
+                                                <span class="ml-2 text-xs">Medium-Long</span>
+                                            </div>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <div class="flex items-center">
+                                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                                    <div class="bg-amber-600 h-2.5 rounded-full" style="width: 50%"></div>
+                                                </div>
+                                                <span class="ml-2 text-xs">Moderate</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 bg-red-50 dark:bg-red-900/10 font-medium">
+                                            Diversification
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <div class="flex items-center">
+                                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                                    <div class="bg-red-600 h-2.5 rounded-full" style="width: 90%"></div>
+                                                </div>
+                                                <span class="ml-2 text-xs">High</span>
+                                            </div>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <div class="flex items-center">
+                                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                                    <div class="bg-red-600 h-2.5 rounded-full" style="width: 90%"></div>
+                                                </div>
+                                                <span class="ml-2 text-xs">Long</span>
+                                            </div>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <div class="flex items-center">
+                                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                                    <div class="bg-red-600 h-2.5 rounded-full" style="width: 90%"></div>
+                                                </div>
+                                                <span class="ml-2 text-xs">Large</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <p class="text-xs mb-0">This comparison shows how risk, time to return on investment, and the capability gap progressively increase as you move from Market Penetration toward Diversification. Organizations should carefully evaluate their risk tolerance and resource availability when selecting growth strategies.</p>
+                    </div>
+                    
+                    <h4>Strategic Growth Portfolio Approach</h4>
+                    <p>Most successful organizations implement a portfolio of Ansoff strategies rather than focusing on just one approach:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Benefits of a Portfolio Approach</h5>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li class="mb-2"><strong>Risk balancing:</strong> Higher-risk strategies can be offset by safer ones</li>
+                                <li class="mb-2"><strong>Time horizon management:</strong> Mix of short, medium, and long-term growth initiatives</li>
+                                <li class="mb-2"><strong>Resource utilization:</strong> Optimizes use of different organizational capabilities</li>
+                                <li class="mb-0"><strong>Organizational learning:</strong> Develops various growth muscles simultaneously</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Portfolio Allocation Considerations</h5>
+                            <ul class="pl-5 text-sm mb-0">
+                                <li class="mb-2"><strong>Risk tolerance:</strong> What level of overall risk is appropriate?</li>
+                                <li class="mb-2"><strong>Financial constraints:</strong> How much investment capital is available?</li>
+                                <li class="mb-2"><strong>Organizational capacity:</strong> How many initiatives can be managed effectively?</li>
+                                <li class="mb-0"><strong>Strategic priorities:</strong> Which growth avenues best support long-term vision?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell's Balanced Ansoff Portfolio Approach</h5>
+                        <p class="text-sm mb-3">Dell has implemented a balanced portfolio of growth strategies across its business units:</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left" width="25%">Growth Strategy</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left" width="40%">Dell Examples</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left" width="35%">Strategic Rationale</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-blue-50 dark:bg-blue-900/10">
+                                            Market Penetration
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>Commercial PC market share expansion</li>
+                                                <li>Dell Technologies Partner Program enhancements</li>
+                                                <li>Enterprise customer cross-selling initiatives</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>Protects core business revenue</li>
+                                                <li>Leverages established sales channels</li>
+                                                <li>Generates cash flow to fund other strategies</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-green-50 dark:bg-green-900/10">
+                                            Product Development
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>APEX as-a-service portfolio</li>
+                                                <li>PowerStore modern storage architecture</li>
+                                                <li>AI-optimized servers and solutions</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>Addresses evolving customer needs</li>
+                                                <li>Shifts toward recurring revenue models</li>
+                                                <li>Defends against technology disruption</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-amber-50 dark:bg-amber-900/10">
+                                            Market Development
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>Emerging market expansion (Asia-Pacific)</li>
+                                                <li>Small business segment initiatives</li>
+                                                <li>Industry vertical specialization (healthcare, retail)</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>Extends life cycle of established products</li>
+                                                <li>Taps into higher-growth regions and segments</li>
+                                                <li>Reduces dependency on saturated markets</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium bg-red-50 dark:bg-red-900/10">
+                                            Diversification
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>EMC acquisition (enterprise storage ecosystem)</li>
+                                                <li>Boomi acquisition (cloud integration platform)</li>
+                                                <li>VMware stake (virtualization and cloud platforms)</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>Expanded into higher-growth, higher-margin businesses</li>
+                                                <li>Acquired leading technology and talent</li>
+                                                <li>Reduced dependency on declining PC market</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <p class="text-xs mt-3 mb-0">Dell's balanced approach allows it to maintain revenue from established businesses while developing new growth avenues. This portfolio approach helps manage risk while still pursuing high-potential opportunities that can transform the business for the future.</p>
+                    </div>
+                    
+                    <h4>Applying the Ansoff Matrix</h4>
+                    <p>Follow these steps to apply the Ansoff Matrix to your growth planning process:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">1. Situation Assessment</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Analyze current market position</li>
+                                <li>Evaluate competitive landscape</li>
+                                <li>Review product portfolio performance</li>
+                                <li>Identify growth gaps and targets</li>
+                                <li>Assess organizational capabilities</li>
+                                <li>Define strategic growth objectives</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">2. Strategy Development</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Identify potential strategies in each quadrant</li>
+                                <li>Evaluate risk and resource requirements</li>
+                                <li>Assess potential returns and timeframes</li>
+                                <li>Consider capability gaps and investments</li>
+                                <li>Develop portfolio mix across quadrants</li>
+                                <li>Prioritize initiatives based on strategic fit</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">3. Implementation Planning</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Develop detailed action plans</li>
+                                <li>Allocate resources and budget</li>
+                                <li>Establish metrics and milestones</li>
+                                <li>Assign ownership and accountability</li>
+                                <li>Create risk mitigation strategies</li>
+                                <li>Set up regular review cadence</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Integrating Ansoff with Other Strategic Frameworks</h4>
+                    <p>The Ansoff Matrix can be effectively combined with other strategic frameworks:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Framework</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Integration Approach</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Benefits</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">SWOT Analysis</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Use SWOT to identify strengths/weaknesses relevant to each Ansoff strategy</li>
+                                            <li>Map opportunities to specific Ansoff quadrants</li>
+                                            <li>Identify threats that may impact specific growth strategies</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        SWOT provides the internal and external context to inform which Ansoff strategies are most viable for your specific situation
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">BCG Matrix</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Use Cash Cows to fund higher-risk Ansoff strategies</li>
+                                            <li>Apply Market Penetration to Stars to maintain leadership</li>
+                                            <li>Consider Product Development for Question Marks</li>
+                                            <li>Use Market Development or Diversification for Dogs with potential</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        The BCG Matrix helps identify which business units should pursue which Ansoff strategies based on their current portfolio position
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Porter's Five Forces</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Analyze competitive intensity in potential new markets</li>
+                                            <li>Evaluate supplier/buyer power across different strategies</li>
+                                            <li>Assess entry barriers for diversification strategies</li>
+                                            <li>Identify substitute threats requiring product development</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Five Forces provides competitive context for evaluating the attractiveness of different markets and product opportunities in the Ansoff Matrix
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Value Chain Analysis</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Identify value chain capabilities needed for each strategy</li>
+                                            <li>Assess capability gaps for new products or markets</li>
+                                            <li>Evaluate value chain reconfiguration requirements</li>
+                                            <li>Identify potential competitive advantages</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Value Chain Analysis helps determine operational feasibility of different Ansoff strategies and identifies required capability investments
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Best Practices for Ansoff Matrix Application</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h5 class="font-medium mb-2">Strategic Planning</h5>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li class="mb-2"><strong>Portfolio approach:</strong> Balance initiatives across multiple quadrants</li>
+                                    <li class="mb-2"><strong>Capability assessment:</strong> Realistically evaluate organizational capabilities</li>
+                                    <li class="mb-2"><strong>Customer centricity:</strong> Base strategies on genuine customer needs</li>
+                                    <li class="mb-0"><strong>Competitive analysis:</strong> Evaluate competitor responses to your strategies</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-medium mb-2">Implementation Success</h5>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li class="mb-2"><strong>Clear ownership:</strong> Assign responsibility for each growth initiative</li>
+                                    <li class="mb-2"><strong>Resource commitment:</strong> Ensure sufficient resources for implementation</li>
+                                    <li class="mb-2"><strong>Phased approach:</strong> Consider staged implementation for higher-risk strategies</li>
+                                    <li class="mb-0"><strong>Regular reassessment:</strong> Review and adjust strategies as market conditions change</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.youtube.com/watch?v=SizpD3BsNMw" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-video-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Ansoff Matrix Explained</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">YouTube • 10:23</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mindtools.com/ac5a0kf/the-ansoff-matrix" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Ansoff Matrix</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">MindTools • Interactive Guide</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://hbr.org/1957/09/strategies-for-diversification" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Strategies for Diversification</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Original Article by Ansoff</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell's Edge Computing Growth Strategy</h5>
+                        <p class="mb-3">Dell is expanding its presence in the edge computing market with specialized hardware, software, and services for processing data closer to where it's generated. Use the Ansoff Matrix to develop a comprehensive growth strategy for Dell's edge computing business.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Context Information:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Edge computing market is growing at 30%+ annually</li>
+                                    <li>Dell has existing server and networking hardware expertise</li>
+                                    <li>Key edge computing use cases include manufacturing, retail, healthcare, and telecommunications</li>
+                                    <li>Major competitors include HPE, Cisco, and numerous specialized startups</li>
+                                    <li>Edge solutions often require industry-specific knowledge and specialized software</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Your Task:</p>
+                                <ol class="pl-4 text-sm mb-0">
+                                    <li>Identify one growth opportunity in each Ansoff quadrant for Dell's edge computing business</li>
+                                    <li>Evaluate the relative risk and resource requirements for each opportunity</li>
+                                    <li>Recommend which strategies should be prioritized</li>
+                                    <li>Suggest how to create a balanced portfolio approach</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Market Penetration Opportunities</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="What market penetration opportunities exist for Dell's edge computing business?"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Product Development Opportunities</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="What product development opportunities exist for Dell's edge computing business?"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Market Development Opportunities</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="What market development opportunities exist for Dell's edge computing business?"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Diversification Opportunities</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="What diversification opportunities exist for Dell's edge computing business?"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Portfolio Recommendations</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="What is your recommended portfolio approach for Dell's edge computing growth strategy?"></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-okrs">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: OKRs</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" id="back-to-modules">
+                        <span>Back to Modules</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Back to modules button
+            document.getElementById('back-to-modules')?.addEventListener('click', function() {
+                // This would typically navigate to a modules dashboard page
+                // For this implementation, we'll just show the first topic as a placeholder
+                showTopic('topic-okrs');
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-okrs');
+        });
+    </script>
+</body>
+</html>

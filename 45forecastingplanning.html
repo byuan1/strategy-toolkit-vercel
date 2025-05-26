@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management Essentials</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Product & Ops Foundations</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-supply-chain">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Supply Chain Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-forecasting">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Forecasting & Planning</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-lifecycle">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Lifecycle Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-transitions">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Transitions</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-marketing">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Marketing</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-pricing">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Pricing</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-inventory">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Inventory Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-demand-shaping">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Demand Shaping</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-ethics">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Ethics</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">23%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 23%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Effective Communication</span>
+                                <span>3/3 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Product & Ops Foundations</span>
+                                <span>1/9 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>0/6 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Forecasting & Planning Topic -->
+            <section id="topic-forecasting" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-line-chart-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Forecasting & Planning</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Product & Ops Foundations</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the fundamental concepts and methodologies of forecasting in business</li>
+                            <li>Learn how to evaluate forecast accuracy and improve forecast quality</li>
+                            <li>Explore the connection between forecasting and operational/strategic planning</li>
+                            <li>Recognize how different planning horizons require different approaches</li>
+                            <li>Apply forecasting and planning concepts to strategic decision-making</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Fundamentals of Business Forecasting</h4>
+                    <p>Forecasting is the process of making informed predictions about future business conditions to guide decision-making. Effective forecasting provides the foundation for planning activities across the organization—from strategic initiatives to day-to-day operations. In a world of increasing volatility and complexity, robust forecasting capabilities have become a critical competitive advantage, enabling organizations to anticipate changes, allocate resources efficiently, and respond proactively to emerging opportunities and challenges.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">The Strategic Value of Forecasting</h5>
+                        <p class="mb-3">Forecasting delivers value to organizations in multiple ways, influencing decisions across different business functions and timeframes.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Strategic Decision Support</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Identify market trends and shifts</li>
+                                    <li>Guide resource allocation decisions</li>
+                                    <li>Inform portfolio management</li>
+                                    <li>Support investment planning</li>
+                                    <li>Anticipate competitive moves</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Operational Excellence</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Optimize inventory levels</li>
+                                    <li>Guide capacity planning</li>
+                                    <li>Improve labor scheduling</li>
+                                    <li>Enhance supply chain coordination</li>
+                                    <li>Balance supply and demand</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Financial Management</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Create reliable budgets</li>
+                                    <li>Project cash flow requirements</li>
+                                    <li>Set realistic performance targets</li>
+                                    <li>Manage investor expectations</li>
+                                    <li>Support pricing decisions</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Forecast Types and Applications</h6>
+                            <p class="mb-2">Businesses require different types of forecasts to address various planning needs:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Demand Forecasting</p>
+                                    <p class="text-sm mb-0">Predicts customer demand for products or services across different timeframes, geographies, and segments. Demand forecasts drive production planning, inventory management, and sales strategies. They typically incorporate market dynamics, pricing factors, competitive actions, and customer behavior patterns. These forecasts often serve as the starting point for many other planning activities across the organization.</p>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-green-700 dark:text-green-400 mb-1">Financial Forecasting</p>
+                                    <p class="text-sm mb-0">Projects an organization's financial performance, including revenue, costs, margins, and cash flow. Financial forecasts guide budgeting processes, investor communications, and resource allocation decisions. They integrate operational plans with financial outcomes to ensure alignment between business activities and financial objectives. Sophisticated financial forecasts model multiple scenarios to prepare for different potential futures.</p>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-purple-700 dark:text-purple-400 mb-1">Resource Forecasting</p>
+                                    <p class="text-sm mb-0">Anticipates requirements for various resources including labor, materials, equipment, and facilities. Resource forecasts enable efficient capacity planning, prevent bottlenecks, and optimize asset utilization. They coordinate supply chain activities with production needs and link operational capabilities with business opportunities. These forecasts help balance cost control with service level objectives.</p>
+                                </div>
+                                
+                                <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-red-700 dark:text-red-400 mb-1">Market/Technology Forecasting</p>
+                                    <p class="text-sm mb-0">Identifies emerging trends, technologies, and market shifts that will impact the business environment. These strategic forecasts inform long-term planning, R&D investments, and business model evolution. They combine quantitative analysis with qualitative insights from experts across various domains. Market forecasts often leverage external data sources and specialized research to identify early signals of change.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">The Forecasting Process</h5>
+                                <div class="relative">
+                                    <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-8">
+                                        <!-- Step 1 -->
+                                        <div class="flex flex-col items-center text-center">
+                                            <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-2">
+                                                <i class="ri-goals-line text-2xl"></i>
+                                            </div>
+                                            <h6 class="font-medium text-sm">Define Purpose & Scope</h6>
+                                            <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Clarify objectives, timeline, granularity, and stakeholders</p>
+                                        </div>
+                                        
+                                        <!-- Connector -->
+                                        <div class="hidden md:block w-8 h-1 bg-gray-200 dark:bg-gray-700 self-start mt-8"></div>
+                                        
+                                        <!-- Step 2 -->
+                                        <div class="flex flex-col items-center text-center">
+                                            <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-2">
+                                                <i class="ri-database-2-line text-2xl"></i>
+                                            </div>
+                                            <h6 class="font-medium text-sm">Gather & Prepare Data</h6>
+                                            <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Collect historical data, identify patterns, and clean anomalies</p>
+                                        </div>
+                                        
+                                        <!-- Connector -->
+                                        <div class="hidden md:block w-8 h-1 bg-gray-200 dark:bg-gray-700 self-start mt-8"></div>
+                                        
+                                        <!-- Step 3 -->
+                                        <div class="flex flex-col items-center text-center">
+                                            <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-2">
+                                                <i class="ri-bar-chart-box-line text-2xl"></i>
+                                            </div>
+                                            <h6 class="font-medium text-sm">Select Methods</h6>
+                                            <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Choose appropriate forecasting techniques based on context</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+                                        <!-- Step 6 -->
+                                        <div class="flex flex-col items-center text-center order-1 md:order-none">
+                                            <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-2">
+                                                <i class="ri-refresh-line text-2xl"></i>
+                                            </div>
+                                            <h6 class="font-medium text-sm">Monitor & Revise</h6>
+                                            <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Track forecast performance and update as conditions change</p>
+                                        </div>
+                                        
+                                        <!-- Connector -->
+                                        <div class="hidden md:block w-8 h-1 bg-gray-200 dark:bg-gray-700 self-start mt-8"></div>
+                                        
+                                        <!-- Step 5 -->
+                                        <div class="flex flex-col items-center text-center order-2 md:order-none">
+                                            <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-2">
+                                                <i class="ri-presentation-line text-2xl"></i>
+                                            </div>
+                                            <h6 class="font-medium text-sm">Communicate & Act</h6>
+                                            <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Present insights and integrate into planning processes</p>
+                                        </div>
+                                        
+                                        <!-- Connector -->
+                                        <div class="hidden md:block w-8 h-1 bg-gray-200 dark:bg-gray-700 self-start mt-8"></div>
+                                        
+                                        <!-- Step 4 -->
+                                        <div class="flex flex-col items-center text-center order-3 md:order-none">
+                                            <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-2">
+                                                <i class="ri-file-chart-line text-2xl"></i>
+                                            </div>
+                                            <h6 class="font-medium text-sm">Develop & Validate</h6>
+                                            <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Generate forecasts and assess accuracy with testing</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Circular arrow connecting last to first step -->
+                                    <div class="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-gray-300 dark:text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-center mt-4 text-gray-500 dark:text-gray-400">An effective forecasting process is iterative and adaptive, continuously improving as new information becomes available and business conditions evolve.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Forecasting Methodologies</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Approaches to Forecasting</h5>
+                        <p class="text-sm mb-3">Organizations employ a variety of forecasting techniques, each with distinct characteristics, advantages, and limitations. Selecting the appropriate methodology depends on the forecast purpose, data availability, time horizon, and required accuracy.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Quantitative Methods</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">1</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Time Series Analysis</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Uses historical patterns to predict future values, assuming that past patterns will continue.</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-1">Moving Averages</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Description:</strong> Averages data points over specific periods</li>
+                                                        <li><strong>Best for:</strong> Smoothing short-term fluctuations</li>
+                                                        <li><strong>Limitations:</strong> Lags behind trends; doesn't capture seasonality</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-1">Exponential Smoothing</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Description:</strong> Weighted averages with newer data receiving more weight</li>
+                                                        <li><strong>Best for:</strong> Data with gradual trends and seasonality</li>
+                                                        <li><strong>Limitations:</strong> Less effective with sudden shifts or complex patterns</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-1">ARIMA Models</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Description:</strong> Models that capture autoregressive and moving average properties</li>
+                                                        <li><strong>Best for:</strong> Complex time series with trends and seasonal patterns</li>
+                                                        <li><strong>Limitations:</strong> Requires significant historical data; technically complex</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">2</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Causal/Regression Methods</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Identifies relationships between the forecast variable and other factors that influence it.</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-1">Linear Regression</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Description:</strong> Establishes linear relationships between variables</li>
+                                                        <li><strong>Best for:</strong> Identifying direct cause-effect relationships</li>
+                                                        <li><strong>Limitations:</strong> Assumes linear relationships; sensitive to outliers</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-1">Multiple Regression</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Description:</strong> Incorporates multiple variables that influence the outcome</li>
+                                                        <li><strong>Best for:</strong> Complex scenarios with multiple drivers</li>
+                                                        <li><strong>Limitations:</strong> Requires identifying relevant variables; can be over-fitted</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-1">Econometric Models</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Description:</strong> Sophisticated models that incorporate economic theory</li>
+                                                        <li><strong>Best for:</strong> Forecasting influenced by economic factors</li>
+                                                        <li><strong>Limitations:</strong> Complex to develop; requires economic expertise</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">3</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Advanced Analytics Methods</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Leverages sophisticated algorithms and computing power to identify complex patterns.</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-1">Machine Learning</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Description:</strong> Algorithms that learn patterns from data without explicit programming</li>
+                                                        <li><strong>Best for:</strong> Complex data with many variables and non-linear relationships</li>
+                                                        <li><strong>Limitations:</strong> Requires large datasets; may be difficult to interpret</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-1">Neural Networks</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Description:</strong> Computational models inspired by human brain structure</li>
+                                                        <li><strong>Best for:</strong> Pattern recognition and complex non-linear forecasting</li>
+                                                        <li><strong>Limitations:</strong> "Black box" nature; requires significant computing resources</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-1">Ensemble Methods</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Description:</strong> Combines multiple forecasting techniques to improve accuracy</li>
+                                                        <li><strong>Best for:</strong> High-stakes forecasts where accuracy is critical</li>
+                                                        <li><strong>Limitations:</strong> Increased complexity; requires multiple models</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">4</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Simulation Methods</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Creates computer models that replicate system behavior to forecast outcomes under different conditions.</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-1">Monte Carlo Simulation</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Description:</strong> Uses random sampling to model probability of different outcomes</li>
+                                                        <li><strong>Best for:</strong> Situations with significant uncertainty and multiple variables</li>
+                                                        <li><strong>Limitations:</strong> Quality depends on assumptions and probability distributions</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-1">System Dynamics</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Description:</strong> Models complex systems with feedback loops and time delays</li>
+                                                        <li><strong>Best for:</strong> Understanding long-term behavior of complex systems</li>
+                                                        <li><strong>Limitations:</strong> Requires deep system understanding; challenging to validate</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-1">Discrete Event Simulation</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Description:</strong> Models systems as sequences of discrete events over time</li>
+                                                        <li><strong>Best for:</strong> Operational scenarios with queuing and resource constraints</li>
+                                                        <li><strong>Limitations:</strong> Data-intensive; may not capture continuous interactions</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Qualitative Methods</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Expert-Based Methods</h6>
+                                    <div class="grid grid-cols-1 gap-2">
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium mb-1">Delphi Method</h6>
+                                            <p class="text-xs mb-1">Structured technique that collects expert opinions through sequential questionnaires, with controlled feedback between rounds.</p>
+                                            <div class="flex flex-col gap-1">
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs font-medium">Advantages:</span>
+                                                    <span class="text-xs">Reduces bias; captures diverse expertise; suitable for long-term forecasting</span>
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs font-medium">Limitations:</span>
+                                                    <span class="text-xs">Time-consuming; depends on expert selection; may produce conservative results</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium mb-1">Expert Panels</h6>
+                                            <p class="text-xs mb-1">Brings together subject matter experts for collaborative forecasting through structured discussion.</p>
+                                            <div class="flex flex-col gap-1">
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs font-medium">Advantages:</span>
+                                                    <span class="text-xs">Dynamic interaction; rich contextual insights; diverse perspectives</span>
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs font-medium">Limitations:</span>
+                                                    <span class="text-xs">Potential for groupthink; dominant personalities may skew outcomes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium mb-1">Executive Judgment</h6>
+                                            <p class="text-xs mb-1">Leverages experience and intuition of senior leaders to forecast business outcomes.</p>
+                                            <div class="flex flex-col gap-1">
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs font-medium">Advantages:</span>
+                                                    <span class="text-xs">Incorporates tacit knowledge; considers strategic factors; aligns with decision-making</span>
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs font-medium">Limitations:</span>
+                                                    <span class="text-xs">Subject to biases; variable quality; may lack analytical rigor</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Market Research Methods</h6>
+                                    <div class="grid grid-cols-1 gap-2">
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium mb-1">Customer Intention Surveys</h6>
+                                            <p class="text-xs mb-1">Collects data directly from customers about their future purchase plans and intentions.</p>
+                                            <div class="flex flex-col gap-1">
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs font-medium">Advantages:</span>
+                                                    <span class="text-xs">Direct voice of customer; identifies changing preferences; segment-specific insights</span>
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs font-medium">Limitations:</span>
+                                                    <span class="text-xs">Gap between intentions and behavior; sample selection issues; response biases</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium mb-1">Focus Groups & Interviews</h6>
+                                            <p class="text-xs mb-1">In-depth qualitative research to understand customer needs, preferences, and potential behaviors.</p>
+                                            <div class="flex flex-col gap-1">
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs font-medium">Advantages:</span>
+                                                    <span class="text-xs">Rich contextual insights; identifies emerging needs; explores motivations</span>
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs font-medium">Limitations:</span>
+                                                    <span class="text-xs">Not statistically representative; moderator influence; social desirability bias</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium mb-1">Sales Force Composite</h6>
+                                            <p class="text-xs mb-1">Aggregates individual forecasts from sales representatives who have direct customer contact.</p>
+                                            <div class="flex flex-col gap-1">
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs font-medium">Advantages:</span>
+                                                    <span class="text-xs">Incorporates field-level intelligence; customer-specific insights; early warning signals</span>
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    <span class="text-xs font-medium">Limitations:</span>
+                                                    <span class="text-xs">Potential bias from incentives; variable forecasting skills; limited strategic perspective</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Choosing the Right Method: Decision Factors</h6>
+                                <p class="text-xs mb-2">The optimal forecasting approach depends on several contextual factors:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Time Factors</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Forecast horizon:</strong> Shorter horizons favor quantitative methods; longer horizons often require qualitative approaches</li>
+                                            <li><strong>Data history:</strong> Limited history may necessitate more qualitative input</li>
+                                            <li><strong>Urgency:</strong> Quick decisions may require faster, simpler methods</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Business Context</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Decision importance:</strong> Higher-stakes decisions justify more sophisticated approaches</li>
+                                            <li><strong>Market stability:</strong> Stable environments favor quantitative methods; volatile markets may require more qualitative insight</li>
+                                            <li><strong>Data availability:</strong> Quality and quantity of relevant data influence method selection</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Organizational Factors</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Analytical capability:</strong> Available skills and technology influence feasible methods</li>
+                                            <li><strong>Decision culture:</strong> Some organizations place more value on data vs. expert judgment</li>
+                                            <li><strong>Resource constraints:</strong> Budget and time limitations affect method selection</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Forecast Accuracy & Improvement</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Measuring and Enhancing Forecast Performance</h5>
+                        <p class="text-sm mb-3">Effective forecasting requires ongoing measurement of accuracy and continuous improvement efforts. Understanding forecast performance helps organizations refine their approaches and build greater confidence in planning processes.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Accuracy Metrics</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Key Performance Indicators for Forecasts</h6>
+                                        <p class="text-xs mb-2">Organizations use various metrics to evaluate forecast quality:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Error Magnitude Measures</h6>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Mean Absolute Error (MAE)</h6>
+                                                        <p class="text-xs mb-1">Average of absolute differences between forecasted and actual values.</p>
+                                                        <div class="flex items-center gap-1">
+                                                            <span class="text-xs font-medium">Advantages:</span>
+                                                            <span class="text-xs">Simple to understand; treats all errors equally</span>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Mean Absolute Percentage Error (MAPE)</h6>
+                                                        <p class="text-xs mb-1">Average of absolute percentage errors.</p>
+                                                        <div class="flex items-center gap-1">
+                                                            <span class="text-xs font-medium">Advantages:</span>
+                                                            <span class="text-xs">Scale-independent; allows comparison across products</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Bias Measures</h6>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Mean Error (ME)</h6>
+                                                        <p class="text-xs mb-1">Average difference between forecasted and actual values.</p>
+                                                        <div class="flex items-center gap-1">
+                                                            <span class="text-xs font-medium">Purpose:</span>
+                                                            <span class="text-xs">Identifies systematic over or under-forecasting</span>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Mean Percentage Error (MPE)</h6>
+                                                        <p class="text-xs mb-1">Average of percentage errors (can be positive or negative).</p>
+                                                        <div class="flex items-center gap-1">
+                                                            <span class="text-xs font-medium">Purpose:</span>
+                                                            <span class="text-xs">Scale-independent bias measure</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Advanced Measures</h6>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Tracking Signal</h6>
+                                                        <p class="text-xs mb-1">Cumulative sum of errors divided by MAE.</p>
+                                                        <div class="flex items-center gap-1">
+                                                            <span class="text-xs font-medium">Purpose:</span>
+                                                            <span class="text-xs">Monitors forecast system for developing bias</span>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Theil's U-Statistic</h6>
+                                                        <p class="text-xs mb-1">Compares forecast accuracy against a naive model.</p>
+                                                        <div class="flex items-center gap-1">
+                                                            <span class="text-xs font-medium">Purpose:</span>
+                                                            <span class="text-xs">Evaluates if sophisticated methods add value</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Error Analysis</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Decomposing Forecast Errors</h6>
+                                        <p class="text-xs mb-2">Understanding the sources of error helps target improvement efforts:</p>
+                                        
+                                        <div class="flex flex-col gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Bias Error</h6>
+                                                <p class="text-xs mb-1">Systematic tendency to over or under-forecast.</p>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-center gap-1">
+                                                        <span class="text-xs font-medium">Potential causes:</span>
+                                                        <span class="text-xs">Incentive structures; cognitive biases; outdated assumptions</span>
+                                                    </div>
+                                                    <div class="flex items-center gap-1">
+                                                        <span class="text-xs font-medium">Improvement approaches:</span>
+                                                        <span class="text-xs">Bias adjustment factors; neutral forecasting processes; incentive realignment</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Random Error</h6>
+                                                <p class="text-xs mb-1">Unpredictable variation that cannot be modeled systematically.</p>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-center gap-1">
+                                                        <span class="text-xs font-medium">Potential causes:</span>
+                                                        <span class="text-xs">Inherent market volatility; unexpected events; measurement noise</span>
+                                                    </div>
+                                                    <div class="flex items-center gap-1">
+                                                        <span class="text-xs font-medium">Improvement approaches:</span>
+                                                        <span class="text-xs">Scenario planning; prediction intervals; forecast ranges vs. point estimates</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Model Error</h6>
+                                                <p class="text-xs mb-1">Systematic error from incorrect relationships or missing variables.</p>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-center gap-1">
+                                                        <span class="text-xs font-medium">Potential causes:</span>
+                                                        <span class="text-xs">Omitted variables; incorrect functional form; parameter instability</span>
+                                                    </div>
+                                                    <div class="flex items-center gap-1">
+                                                        <span class="text-xs font-medium">Improvement approaches:</span>
+                                                        <span class="text-xs">Model refinement; additional variables; alternative methods</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Visualization Techniques</h6>
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0.5">Error Pattern Analysis</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Waterfall charts:</strong> Decompose variance between forecast and actuals</li>
+                                                        <li><strong>Scatter plots:</strong> Identify relationships between error and other variables</li>
+                                                        <li><strong>Control charts:</strong> Highlight when forecast errors exceed expected variation</li>
+                                                    </ul>
+                                                </div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0.5">Performance Tracking</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Forecast vs. actual comparisons:</strong> Track accuracy over time</li>
+                                                        <li><strong>Method comparison:</strong> Benchmark different forecasting approaches</li>
+                                                        <li><strong>Forecast cone:</strong> Show uncertainty expansion over longer horizons</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Forecast Improvement Strategies</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Process Improvements</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Structured review cycles:</strong> Regular evaluation of forecast accuracy</li>
+                                        <li><strong>Cross-functional input:</strong> Incorporate diverse perspectives in forecast development</li>
+                                        <li><strong>Forecast reconciliation:</strong> Align forecasts across different levels and horizons</li>
+                                        <li><strong>Clear ownership:</strong> Establish accountability for forecast accuracy</li>
+                                        <li><strong>Documentation:</strong> Record assumptions and methodologies to enable learning</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Methodological Enhancements</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Forecast combination:</strong> Blend multiple approaches to reduce overall error</li>
+                                        <li><strong>Segmentation:</strong> Develop specialized forecasts for different categories</li>
+                                        <li><strong>Additional variables:</strong> Incorporate new data sources and leading indicators</li>
+                                        <li><strong>Exception handling:</strong> Develop protocols for unusual events or outliers</li>
+                                        <li><strong>Automated monitoring:</strong> Implement early warning systems for forecast drift</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Organizational Capabilities</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Skills development:</strong> Train forecasters in statistical concepts and methods</li>
+                                        <li><strong>Technology investment:</strong> Implement specialized forecasting and analytics tools</li>
+                                        <li><strong>Data quality initiatives:</strong> Improve the accuracy and accessibility of input data</li>
+                                        <li><strong>Incentive alignment:</strong> Reward forecast accuracy rather than optimism or conservatism</li>
+                                        <li><strong>Knowledge management:</strong> Capture and share forecasting best practices</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Forecasting Maturity Model</h6>
+                                <p class="text-xs mb-2">Organizations typically evolve through several stages in their forecasting capabilities:</p>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs border-collapse">
+                                        <thead>
+                                            <tr class="bg-white dark:bg-gray-800">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Maturity Level</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Characteristics</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Improvement Focus</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Level 1: Reactive</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Ad hoc forecasting processes</li>
+                                                        <li>Limited historical data use</li>
+                                                        <li>Siloed departmental forecasts</li>
+                                                        <li>Minimal accuracy measurement</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Establish consistent processes</li>
+                                                        <li>Implement basic accuracy metrics</li>
+                                                        <li>Develop data collection systems</li>
+                                                        <li>Create forecast documentation</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Level 2: Structured</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Standardized forecasting methods</li>
+                                                        <li>Regular accuracy tracking</li>
+                                                        <li>Basic statistical techniques</li>
+                                                        <li>Clear ownership of forecasts</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Implement more advanced methods</li>
+                                                        <li>Begin cross-functional integration</li>
+                                                        <li>Develop error analysis capabilities</li>
+                                                        <li>Expand data sources</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Level 3: Integrated</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Cross-functional forecast alignment</li>
+                                                        <li>Multiple methodologies in use</li>
+                                                        <li>Systematic bias correction</li>
+                                                        <li>Specialized forecasting tools</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Implement forecast combination</li>
+                                                        <li>Develop segmentation strategies</li>
+                                                        <li>Enhance exception handling</li>
+                                                        <li>Improve process efficiency</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Level 4: Advanced</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Sophisticated statistical methods</li>
+                                                        <li>Automated monitoring systems</li>
+                                                        <li>Probabilistic forecasting</li>
+                                                        <li>Scenario-based planning integration</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Implement machine learning techniques</li>
+                                                        <li>Develop real-time adjustments</li>
+                                                        <li>Enhance uncertainty quantification</li>
+                                                        <li>Increase forecast granularity</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Level 5: Predictive</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>AI-driven forecasting systems</li>
+                                                        <li>Real-time adaptation to changes</li>
+                                                        <li>External data integration</li>
+                                                        <li>Continuous learning algorithms</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Develop predictive ecosystem</li>
+                                                        <li>Advance algorithmic decision-making</li>
+                                                        <li>Enhance external data sensing</li>
+                                                        <li>Implement edge computing capabilities</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>From Forecasting to Planning</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Integrating Forecasts into Planning Processes</h5>
+                        <p class="text-sm mb-3">Forecasts provide valuable insights, but their real value comes from integration into planning processes that drive action. Effective organizations create clear connections between forecasting and various planning activities across different time horizons.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Planning Horizons</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Different Time Horizons Require Different Approaches</h6>
+                                        <p class="text-xs mb-2">Planning activities span multiple time frames, each with distinct characteristics:</p>
+                                        
+                                        <div class="flex flex-col gap-3">
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Strategic Planning (3-10+ years)</h6>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Focus Areas</h6>
+                                                        <ul class="pl-4 text-xs mb-1">
+                                                            <li>Market positioning and evolution</li>
+                                                            <li>Portfolio strategy and investment allocation</li>
+                                                            <li>Technology roadmaps and innovation direction</li>
+                                                            <li>Long-term capability development</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Forecasting Approach</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Scenario planning and alternative futures</li>
+                                                            <li>Market trend and discontinuity analysis</li>
+                                                            <li>Qualitative methods including expert panels</li>
+                                                            <li>Macro-level quantitative models</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Tactical Planning (1-3 years)</h6>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Focus Areas</h6>
+                                                        <ul class="pl-4 text-xs mb-1">
+                                                            <li>Annual operating plans and budgeting</li>
+                                                            <li>Resource allocation and capacity planning</li>
+                                                            <li>Product roadmaps and development cycles</li>
+                                                            <li>Market expansion and organizational changes</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Forecasting Approach</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Causal models with market drivers</li>
+                                                            <li>Time series analysis with extended horizons</li>
+                                                            <li>Combined quantitative-qualitative methods</li>
+                                                            <li>Product-level demand and financial projections</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Operational Planning (0-12 months)</h6>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Focus Areas</h6>
+                                                        <ul class="pl-4 text-xs mb-1">
+                                                            <li>Production scheduling and inventory planning</li>
+                                                            <li>Sales and marketing campaign execution</li>
+                                                            <li>Labor scheduling and resource deployment</li>
+                                                            <li>Cash flow management and short-term finances</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Forecasting Approach</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Statistical time series forecasting</li>
+                                                            <li>Detailed quantitative models with high granularity</li>
+                                                            <li>Sales pipeline and order analysis</li>
+                                                            <li>High-frequency data with frequent updates</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Planning Processes</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Connecting Forecasts to Critical Business Processes</h6>
+                                        <p class="text-xs mb-2">Forecasts feed into various planning activities that guide business operations:</p>
+                                        
+                                        <div class="flex flex-col gap-3">
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Integrated Business Planning (IBP)</h6>
+                                                <p class="text-xs mb-1">Aligns demand, supply, financial, and strategic planning into a cohesive process with regular review cycles.</p>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[80px]">Key elements:</span>
+                                                        <span class="text-xs">Product portfolio review, demand analysis, supply capability assessment, financial integration, executive decision-making</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[80px]">Forecast role:</span>
+                                                        <span class="text-xs">Demand forecasts serve as starting point for cross-functional alignment; financial forecasts enable resource decisions</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Sales & Operations Planning (S&OP)</h6>
+                                                <p class="text-xs mb-1">Balances customer demand with production capabilities to optimize operational performance.</p>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[80px]">Key elements:</span>
+                                                        <span class="text-xs">Demand planning, supply planning, reconciliation and trade-offs, executive approval</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[80px]">Forecast role:</span>
+                                                        <span class="text-xs">Unconstrained demand forecasts drive capacity decisions; supply forecasts inform procurement planning</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Financial Planning & Analysis (FP&A)</h6>
+                                                <p class="text-xs mb-1">Translates operational plans into financial projections and monitors performance.</p>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[80px]">Key elements:</span>
+                                                        <span class="text-xs">Budgeting, financial modeling, variance analysis, rolling forecasts, cash flow planning</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[80px]">Forecast role:</span>
+                                                        <span class="text-xs">Revenue forecasts drive budget creation; cost projections inform expense management; cash forecasts support treasury operations</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Planning Process Integration</h6>
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium mb-1">Challenges in Connecting Forecasting and Planning</h6>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0.5">Common Obstacles</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Organizational silos:</strong> Departments creating independent forecasts</li>
+                                                        <li><strong>Timing misalignment:</strong> Different processes operating on different cycles</li>
+                                                        <li><strong>Granularity differences:</strong> Aggregate vs. detailed planning needs</li>
+                                                        <li><strong>Competing objectives:</strong> Accuracy vs. performance targets</li>
+                                                    </ul>
+                                                </div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0.5">Success Factors</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Single source of truth:</strong> Unified forecasting platform</li>
+                                                        <li><strong>Clear decision rights:</strong> Who can influence or change forecasts</li>
+                                                        <li><strong>Process synchronization:</strong> Aligned calendars and cycles</li>
+                                                        <li><strong>Cross-functional governance:</strong> Joint oversight of forecasting</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Strategic Forecasting Considerations</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Handling Uncertainty</h6>
+                                    <p class="text-xs mb-2">Strategic planning must account for significant uncertainty in long-term forecasts:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Scenario planning:</strong> Develop multiple plausible futures to test strategic options</li>
+                                        <li><strong>Sensitivity analysis:</strong> Identify which variables have greatest impact on outcomes</li>
+                                        <li><strong>Prediction intervals:</strong> Communicate ranges rather than point forecasts</li>
+                                        <li><strong>Decision trees:</strong> Map choices and outcomes for different forecast scenarios</li>
+                                        <li><strong>Stress testing:</strong> Evaluate plans against extreme but plausible scenarios</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Trend Analysis</h6>
+                                    <p class="text-xs mb-2">Strategic forecasting requires identifying and analyzing key trends:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>STEEP analysis:</strong> Evaluate social, technological, economic, environmental, and political trends</li>
+                                        <li><strong>Weak signal detection:</strong> Identify early indicators of emerging shifts</li>
+                                        <li><strong>Cross-impact analysis:</strong> Assess how trends interact and influence each other</li>
+                                        <li><strong>Discontinuity identification:</strong> Spot potential disruptions to current patterns</li>
+                                        <li><strong>Horizon scanning:</strong> Systematic search for emerging opportunities and threats</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Strategic Optionality</h6>
+                                    <p class="text-xs mb-2">Build flexibility into plans to adapt to different forecast outcomes:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Real options approach:</strong> Create valuable future choices through current investments</li>
+                                        <li><strong>Staged investment:</strong> Break large commitments into decision gates based on forecast validation</li>
+                                        <li><strong>Flexible capabilities:</strong> Build adaptable systems that work across multiple scenarios</li>
+                                        <li><strong>Hedging strategies:</strong> Mitigate risks from forecast errors through diversification</li>
+                                        <li><strong>Leading indicators:</strong> Identify early signals that indicate which scenario is emerging</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Integrating Technology Forecasting with Strategic Planning</h6>
+                                <p class="text-xs mb-2">Technology companies must integrate technology forecasting into their strategic planning:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Technology Forecasting Methods</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Technology roadmapping:</strong> Maps evolution of technologies against time and capabilities</li>
+                                            <li><strong>Patent analysis:</strong> Examines patterns in R&D activity and intellectual property</li>
+                                            <li><strong>S-curve analysis:</strong> Tracks technology maturity and adoption lifecycle phases</li>
+                                            <li><strong>Expert-based methods:</strong> Leverages specialist knowledge to anticipate breakthroughs</li>
+                                            <li><strong>Bibliometric analysis:</strong> Analyzes patterns in research publications and citations</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Strategic Planning Integration</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Capability alignment:</strong> Match technology forecasts with required organizational capabilities</li>
+                                            <li><strong>Investment timing:</strong> Schedule R&D and capital investments based on technology readiness</li>
+                                            <li><strong>Portfolio balancing:</strong> Maintain mix of current, emerging, and future technologies</li>
+                                            <li><strong>Ecosystem mapping:</strong> Identify partnership opportunities based on technology forecasts</li>
+                                            <li><strong>Skill development:</strong> Plan talent acquisition based on projected technology needs</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Advanced Topics in Forecasting & Planning</h5>
+                        <p class="text-sm mb-3">As forecasting and planning capabilities mature, organizations can adopt more sophisticated approaches to enhance accuracy, integration, and strategic value.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Collaborative Forecasting</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Collaborative forecasting processes incorporate multiple perspectives and information sources:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li><strong>Collaborative Planning, Forecasting, and Replenishment (CPFR):</strong> Framework for sharing forecasts between supply chain partners to improve coordination</li>
+                                        <li><strong>Forecast Value Added (FVA) Analysis:</strong> Methodology to measure how each step in a collaborative process impacts forecast accuracy</li>
+                                        <li><strong>Prediction Markets:</strong> Structured marketplaces where participants can "bet" on forecast outcomes to aggregate collective judgment</li>
+                                        <li><strong>Hybrid Committees:</strong> Cross-functional groups that combine statistical forecasts with expert judgment through structured processes</li>
+                                        <li><strong>Multi-level Reconciliation:</strong> Techniques to align forecasts across different organizational levels and dimensions</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Implementation Considerations:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Process design:</strong> Establish clear roles, inputs, and decision points for collaborative forecasting</li>
+                                        <li><strong>Technology enablement:</strong> Provide platforms that facilitate information sharing and feedback</li>
+                                        <li><strong>Incentive alignment:</strong> Ensure reward structures encourage accuracy rather than bias</li>
+                                        <li><strong>Expertise mapping:</strong> Identify which participants add value to which forecasting domains</li>
+                                        <li><strong>Continuous learning:</strong> Regularly review collaboration effectiveness and refine processes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Digital Transformation in Planning</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">New technologies are revolutionizing forecasting and planning capabilities:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li><strong>Predictive Analytics:</strong> Advanced algorithms that identify patterns and relationships in data to generate forecasts with minimal human intervention</li>
+                                        <li><strong>Artificial Intelligence (AI):</strong> Self-learning systems that continuously improve forecasting models based on new data and outcomes</li>
+                                        <li><strong>Real-time Data Integration:</strong> Systems that incorporate streaming data to update forecasts dynamically as conditions change</li>
+                                        <li><strong>Digital Twins:</strong> Virtual replicas of physical systems that enable simulation-based forecasting and planning</li>
+                                        <li><strong>Autonomous Planning:</strong> AI-driven systems that not only forecast but also make and implement planning decisions</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Implementation Path:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Data foundation:</strong> Create robust data architecture with high-quality, accessible information</li>
+                                        <li><strong>Process redesign:</strong> Adapt workflows to leverage new technical capabilities</li>
+                                        <li><strong>Change management:</strong> Prepare the organization for new ways of working with technology</li>
+                                        <li><strong>Human-AI collaboration:</strong> Develop interfaces that combine algorithmic and human intelligence</li>
+                                        <li><strong>Governance frameworks:</strong> Establish oversight of automated forecasting and planning systems</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Planning Under Extreme Uncertainty</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Robust Planning Approaches</h6>
+                                    <p class="text-xs mb-2">Methods that enable planning when traditional forecasting breaks down:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Assumption-Based Planning:</strong> Identifies critical assumptions and tracks their validity</li>
+                                        <li><strong>Discovery-Driven Planning:</strong> Treats plans as hypotheses to be tested through checkpoints</li>
+                                        <li><strong>Minimum Viable Planning:</strong> Creates lightweight plans focused on immediate steps with frequent reassessment</li>
+                                        <li><strong>Windtunneling:</strong> Tests strategic options against diverse scenarios to identify robust choices</li>
+                                        <li><strong>Adaptive Planning:</strong> Builds monitoring and adjustment mechanisms directly into plans</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Decision-Making Frameworks</h6>
+                                    <p class="text-xs mb-2">Structures for making decisions when forecasts have high uncertainty:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Options-Based Planning:</strong> Creates future decision rights through current investments</li>
+                                        <li><strong>Decision Analysis:</strong> Structures choices around explicit probabilities and values</li>
+                                        <li><strong>Bayesian Approach:</strong> Updates probability estimates as new information becomes available</li>
+                                        <li><strong>Least-Regret Strategy:</strong> Minimizes downside across multiple possible futures</li>
+                                        <li><strong>Decision Staging:</strong> Breaks complex decisions into smaller, sequential choices</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Competency Development</h6>
+                                    <p class="text-xs mb-2">Organizational capabilities needed for planning in uncertain environments:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Sensing capabilities:</strong> Systems to detect early signals of change</li>
+                                        <li><strong>Mental agility:</strong> Ability to challenge assumptions and shift perspectives</li>
+                                        <li><strong>Decisiveness amid ambiguity:</strong> Making appropriate choices without complete information</li>
+                                        <li><strong>Resource fluidity:</strong> Capability to quickly reallocate resources as conditions change</li>
+                                        <li><strong>Psychological safety:</strong> Environment where risks and failures can be discussed openly</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Industry-Specific Forecasting and Planning Considerations</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Technology Industry Dynamics</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Product lifecycle compression:</strong> Shortening cycles require faster forecasting and planning processes</li>
+                                        <li><strong>Platform ecosystems:</strong> Need to forecast interdependent demand across product portfolios</li>
+                                        <li><strong>Component constraints:</strong> Critical parts availability can drive forecast-based allocation decisions</li>
+                                        <li><strong>Innovation forecasting:</strong> Predicting new product adoption rates and penetration curves</li>
+                                        <li><strong>Service transformation:</strong> Shifting from product-centric to service-based forecasting models</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Advanced Practices in Technology</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Digital signal detection:</strong> Using web scraping and social media analysis for early trend identification</li>
+                                        <li><strong>Component-level planning:</strong> Bottom-up forecasting based on shared components across products</li>
+                                        <li><strong>Channel mix modeling:</strong> Forecasting demand across multiple purchase and delivery channels</li>
+                                        <li><strong>Configuration analytics:</strong> Predicting customer option and feature selections</li>
+                                        <li><strong>Hybrid portfolio planning:</strong> Integrating hardware, software, and services forecasting</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Strategic Applications</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Applying Forecasting and Planning Concepts</h5>
+                        <p class="text-sm mb-3">For strategy professionals, forecasting and planning concepts can be applied across various business contexts to improve decision-making and drive strategic initiatives.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-pie-chart-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Portfolio Strategy</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Market opportunity sizing:</strong> Forecast addressable markets and growth trajectories for different segments</li>
+                                    <li><strong>Product lifecycle planning:</strong> Project evolution of product portfolios across maturity stages</li>
+                                    <li><strong>Investment allocation:</strong> Use forecasted returns to optimize resource distribution</li>
+                                    <li><strong>Pipeline valuation:</strong> Estimate future value of new products and innovations</li>
+                                    <li><strong>Portfolio risk analysis:</strong> Assess vulnerability to forecast errors across the portfolio</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-global-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Market Strategy</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Market entry timing:</strong> Forecast market readiness and competitive dynamics</li>
+                                    <li><strong>Channel evolution:</strong> Project shifts in customer purchasing behaviors and channels</li>
+                                    <li><strong>Competitive response modeling:</strong> Anticipate competitor reactions to strategic moves</li>
+                                    <li><strong>Geographic expansion:</strong> Evaluate market potential across different regions</li>
+                                    <li><strong>Customer segment forecasting:</strong> Identify growth opportunities across different customer groups</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-building-4-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Organizational Strategy</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Capability planning:</strong> Forecast required organizational capabilities based on strategy</li>
+                                    <li><strong>Workforce planning:</strong> Project talent needs and development requirements</li>
+                                    <li><strong>Change readiness:</strong> Assess organizational capacity to implement planned changes</li>
+                                    <li><strong>Operating model design:</strong> Develop structures aligned with forecasted business needs</li>
+                                    <li><strong>Cultural evolution:</strong> Plan interventions to shift organizational behaviors</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-scales-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Mergers & Acquisitions</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Target identification:</strong> Forecast which companies will create strategic value</li>
+                                    <li><strong>Valuation modeling:</strong> Project future cash flows and synergies</li>
+                                    <li><strong>Integration planning:</strong> Develop realistic timelines and resource requirements</li>
+                                    <li><strong>Synergy realization:</strong> Forecast actual benefits from combined operations</li>
+                                    <li><strong>Divestiture timing:</strong> Determine optimal exit points based on value forecasts</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-lightbulb-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Innovation Strategy</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Technology roadmapping:</strong> Forecast evolution of key technologies</li>
+                                    <li><strong>R&D portfolio optimization:</strong> Allocate resources based on forecasted returns</li>
+                                    <li><strong>Adoption curve modeling:</strong> Project market uptake of innovations</li>
+                                    <li><strong>Disruption analysis:</strong> Identify potential threats to current business models</li>
+                                    <li><strong>Partnering strategy:</strong> Determine which capabilities to develop vs. acquire</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-line-chart-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Financial Strategy</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Capital allocation:</strong> Optimize investment decisions based on forecasted returns</li>
+                                    <li><strong>Funding strategy:</strong> Project capital needs and optimal financing approaches</li>
+                                    <li><strong>Cost transformation:</strong> Develop realistic cost reduction targets and timelines</li>
+                                    <li><strong>Financial risk management:</strong> Identify and mitigate exposure to forecast uncertainty</li>
+                                    <li><strong>Investor communications:</strong> Develop credible guidance aligned with internal forecasts</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-white dark:bg-gray-800 p-3 rounded-lg">
+                            <h6 class="text-sm font-medium mb-2">Assessing Strategic Opportunities</h6>
+                            <p class="text-xs mb-2">A structured approach to evaluating strategic options using forecasting and planning concepts:</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-2">Strategic Opportunity Assessment Framework</h6>
+                                    <ol class="pl-4 text-xs mb-0">
+                                        <li><strong>Market potential analysis:</strong> Forecast market size, growth rates, and addressable segments</li>
+                                        <li><strong>Competitive positioning forecast:</strong> Project likely competitive landscape evolution</li>
+                                        <li><strong>Capability assessment:</strong> Evaluate current vs. required capabilities to succeed</li>
+                                        <li><strong>Financial projection:</strong> Model revenue, cost structure, and expected returns</li>
+                                        <li><strong>Risk scenario analysis:</strong> Identify key uncertainties and potential outcomes</li>
+                                        <li><strong>Resource requirement planning:</strong> Determine investment needs and timeline</li>
+                                        <li><strong>Strategic fit evaluation:</strong> Assess alignment with overall strategy and portfolio</li>
+                                    </ol>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-2">Opportunity Evaluation Questions</h6>
+                                    <ol class="pl-4 text-xs mb-0">
+                                        <li>How confident are we in our market forecasts, and what data supports them?</li>
+                                        <li>What key assumptions underlie our projections, and how sensitive are outcomes to these assumptions?</li>
+                                        <li>How does this opportunity perform across different potential future scenarios?</li>
+                                        <li>What leading indicators would signal whether our forecasts are on track?</li>
+                                        <li>What alternatives exist for deploying the required resources?</li>
+                                        <li>How does the timing of this opportunity align with other strategic initiatives?</li>
+                                        <li>What capabilities must we develop or acquire to execute successfully?</li>
+                                        <li>How will we measure progress and adjust course if forecasts prove inaccurate?</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Technology Strategy Considerations</h6>
+                                <p class="text-xs mb-2">For technology companies, effective forecasting and planning require addressing these key questions:</p>
+                                <ol class="pl-4 text-xs mb-0">
+                                    <li>How will customer needs and preferences evolve over different time horizons?</li>
+                                    <li>What technology inflection points might disrupt current product categories and business models?</li>
+                                    <li>How will the ecosystem of partners, suppliers, and complementors evolve?</li>
+                                    <li>What capabilities should be developed internally versus accessed through partnerships?</li>
+                                    <li>How should R&D investments be balanced between incremental improvements and breakthrough innovations?</li>
+                                    <li>What strategic options should be created now to enable future flexibility?</li>
+                                    <li>How will regulatory and compliance requirements change across different markets?</li>
+                                    <li>What workforce skills and organizational capabilities will be needed to execute the strategy?</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2009/01/four-steps-to-forecast-total-market-demand" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Four Steps to Forecast Total Market Demand</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • A practical approach to market forecasting</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/bias-busters-taking-the-bias-out-of-forecasting" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-mental-health-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Taking the Bias Out of Forecasting</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • Techniques for improving forecast accuracy</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://sloanreview.mit.edu/article/using-scenario-planning-to-reshape-strategy/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-road-map-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Using Scenario Planning to Reshape Strategy</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">MIT Sloan • Integrating scenarios into strategic planning</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Strategic Forecasting Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll apply forecasting and planning concepts to a strategic business scenario that involves evaluating future market opportunities.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Scenario: Emerging Technology Market Assessment</h6>
+                            <p class="text-xs mb-2">As part of the strategy team, you've been asked to develop a forecast for an emerging technology segment and recommend an approach for market entry. The segment involves advanced AI-powered devices for enterprise customers, which represents a natural extension of current product lines but requires new capabilities.</p>
+                            <p class="text-xs mb-2">Available information:</p>
+                            <ul class="pl-4 text-xs mb-2">
+                                <li>The total addressable market is currently small but growing at 40% annually</li>
+                                <li>Early adopters are primarily in financial services, healthcare, and manufacturing</li>
+                                <li>Three startups currently dominate the space, but major competitors have not yet entered</li>
+                                <li>The technology requires specialized AI expertise that would need to be acquired or developed</li>
+                                <li>Regulatory requirements are evolving and may impact product development and go-to-market approaches</li>
+                                <li>The company could enter through internal development, acquisition, or strategic partnership</li>
+                            </ul>
+                            
+                            <p class="text-xs font-medium mb-1">Your task:</p>
+                            <p class="text-xs mb-0">Develop a structured approach to forecasting this market opportunity and creating a strategic plan for potential entry.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Market Forecasting Approach</label>
+                                <p class="text-xs mb-1">What methods would you use to forecast this market opportunity, and what data would you need to collect?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Describe your forecasting methodology, including quantitative and qualitative approaches you would employ, key variables to analyze, and how you would handle the uncertainty inherent in emerging markets."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Scenario Development</label>
+                                <p class="text-xs mb-1">What alternative scenarios would you develop for this market, and what key variables would differentiate them?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline 2-3 distinct scenarios for how this market might evolve, including the key drivers that would lead to each scenario and the implications for market entry strategy."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Strategic Planning Integration</label>
+                                <p class="text-xs mb-1">How would you integrate your market forecast into a strategic planning process?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Describe how you would translate your market forecast into strategic options, evaluation criteria, decision timelines, and implementation planning. Consider capability development, resource allocation, and risk management."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Monitoring and Adaptation</label>
+                                <p class="text-xs mb-1">What approach would you recommend for monitoring forecast accuracy and adapting the strategy over time?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline the key metrics you would track, early warning indicators that might signal a need to adjust the strategy, and the governance process for making course corrections as the market evolves."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-supply-chain">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Supply Chain Management</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-lifecycle">
+                        <span>Next: Lifecycle Management</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-forecasting');
+        });
+    </script>
+</body>
+</html>

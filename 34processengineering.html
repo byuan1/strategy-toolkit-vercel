@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Organizational Behavior</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-raci">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>RACI Framework</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-rapids">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>RAPIDs Framework</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-process-maps">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Process Maps</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-process-reengineering">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Process Reengineering</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-change-management">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Kotter's Change Management</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">63%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 63%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>6/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>1/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Organizational Behavior</span>
+                                <span>3/5 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Process Reengineering Topic -->
+            <section id="topic-process-reengineering" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-refresh-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Process Reengineering</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Organizational Behavior</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the core principles of business process reengineering and how it differs from other improvement approaches</li>
+                            <li>Learn the methodology for radical process redesign to achieve breakthrough performance improvements</li>
+                            <li>Identify when process reengineering is appropriate versus incremental improvement</li>
+                            <li>Develop skills to lead or participate in reengineering initiatives</li>
+                            <li>Apply reengineering concepts to Dell business contexts to drive transformation</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Process Reengineering</h4>
+                    <p>Business Process Reengineering (BPR) is a management approach focused on the radical redesign and reimagining of core business processes to achieve dramatic improvements in critical performance measures such as cost, quality, service, and speed. Unlike incremental improvement approaches, reengineering involves fundamentally rethinking how work should be done, often leveraging technology to enable entirely new ways of operating.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Process Reengineering: Transformational Change</h5>
+                        <p class="mb-3">Process reengineering represents a discontinuous approach to organizational change, focused on breakthrough rather than incremental improvement:</p>
+                        <ul class="pl-5 mb-3">
+                            <li><strong>Clean-slate redesign:</strong> Starting with a blank page rather than tweaking existing processes</li>
+                            <li><strong>Cross-functional perspective:</strong> Breaking down organizational silos and optimizing end-to-end</li>
+                            <li><strong>Outcome-focused:</strong> Designing backward from desired customer outcomes</li>
+                            <li><strong>Technology-enabled:</strong> Leveraging digital capabilities to reimagine what's possible</li>
+                            <li><strong>Transformational change:</strong> Seeking order-of-magnitude improvements rather than incremental gains</li>
+                        </ul>
+                        <p class="mb-0">At Dell Technologies, process reengineering has been a key driver behind major transformations such as the shift to direct-to-consumer sales in the company's early days, the implementation of build-to-order manufacturing, and more recently, the transition to digital service delivery models. These reengineering initiatives have fundamentally changed how Dell operates and competes in the marketplace.</p>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Process Reengineering vs. Other Improvement Approaches</h5>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-800">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Characteristic</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Process Reengineering</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Continuous Improvement</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Six Sigma</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Lean</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Approach</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Radical redesign, clean slate</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Small, ongoing improvements</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Data-driven problem solving</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Waste elimination</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Improvement Target</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">5-10x breakthrough</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">5-15% incremental</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">50-80% defect reduction</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">30-50% efficiency gain</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Timeframe</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">6-18 months</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Weeks to months</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">3-6 months per project</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">1-3 months per kaizen</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Resource Impact</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">High (transformational)</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Low (localized)</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Medium (cross-functional)</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Medium (value stream)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Risk Level</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">High</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Low</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Medium</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Medium</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Primary Focus</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Process reinvention</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Process refinement</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Variation reduction</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Flow optimization</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Technology Role</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Fundamental enabler</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Supporting tool</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Analytical enabler</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Minimal focus</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mt-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-2 text-center">When to Choose Process Reengineering</h6>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Ideal Scenarios</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Current processes are fundamentally broken</li>
+                                                <li>Company faces existential competitive threats</li>
+                                                <li>Industry disruption requires new business models</li>
+                                                <li>Technologies enable completely new approaches</li>
+                                                <li>Customer expectations have dramatically shifted</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg">
+                                            <h6 class="text-xs font-medium text-red-700 dark:text-red-400 mb-2">Situations to Avoid</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Organization lacks change readiness</li>
+                                                <li>Current processes meet basic requirements</li>
+                                                <li>Resources for major change are unavailable</li>
+                                                <li>Recent major changes are still being absorbed</li>
+                                                <li>Problems are primarily execution-based</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Process Reengineering Principles</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Core Principles for Successful Reengineering</h5>
+                        <p class="text-sm mb-3">Process reengineering is guided by several fundamental principles that shape how organizations approach radical process redesign. These principles help teams break away from conventional thinking and create truly innovative solutions.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Foundational Principles</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Organize Around Outcomes, Not Tasks</p>
+                                            <p class="mb-0">Design processes based on the desired end result rather than organizing work around specialized functions or tasks. Combine multiple specialized jobs into one integrated process with clear accountability for outcomes.</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Have Those Who Need the Results Perform the Process</p>
+                                            <p class="mb-0">Move work from specialists to generalists wherever possible. Empower those closest to the information or customer to perform the work, eliminating handoffs and transfers that add complexity without adding value.</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Treat Geographically Dispersed Resources as Centralized</p>
+                                            <p class="mb-0">Use technology to gain the benefits of both centralization (economies of scale, consistency) and decentralization (responsiveness, service). Create unified virtual processes regardless of physical location.</p>
+                                        </li>
+                                        <li>
+                                            <p class="font-medium mb-0.5">Capture Information Once, at the Source</p>
+                                            <p class="mb-0">Eliminate redundant data collection, storage, and handling. Integrate systems to ensure information flows seamlessly across the process without re-entry, reconciliation, or duplicate storage.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Design Principles</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Start with a Clean Slate</p>
+                                            <p class="mb-0">Begin with the question "If we were starting fresh today, how would we design this process?" rather than trying to improve existing processes. Challenge all assumptions about how work should be organized.</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Design for Exception Handling, Not Control</p>
+                                            <p class="mb-0">Create processes for the typical case and handle exceptions as they occur rather than designing controls for every possible exception. Build flexibility and adaptability rather than rigid procedures.</p>
+                                        </li>
+                                        <li class="mb-2">
+                                            <p class="font-medium mb-0.5">Integrate Decision-Making into Work</p>
+                                            <p class="mb-0">Ensure those performing the work can make necessary decisions rather than separating decision-making from work execution. Compress vertical hierarchies to reduce approvals and reviews that don't add value.</p>
+                                        </li>
+                                        <li>
+                                            <p class="font-medium mb-0.5">Put Control Points Where Work is Performed</p>
+                                            <p class="mb-0">Build quality checks and controls into the process at the point where work is done rather than adding separate inspection steps. Use technology to provide real-time feedback and measurement.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Technology Enablement Principles</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Transformative Use of Technology</h6>
+                                    <p class="text-xs mb-1">Technology as a process enabler, not just automator:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Use technology to break old rules and create new ways of working</li>
+                                        <li>Focus on capabilities that enable process reinvention</li>
+                                        <li>Apply technology to eliminate geographic constraints</li>
+                                        <li>Enable self-service models where appropriate</li>
+                                        <li>Create intelligent workflows, not just digital versions of manual ones</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Data Integration</h6>
+                                    <p class="text-xs mb-1">Creating a single source of truth:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Eliminate silos and duplicate data repositories</li>
+                                        <li>Design for real-time information availability</li>
+                                        <li>Create common data models across functions</li>
+                                        <li>Ensure consistent definitions across the enterprise</li>
+                                        <li>Provide contextual data access at point of need</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Human-Technology Interaction</h6>
+                                    <p class="text-xs mb-1">Optimizing the human role:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Automate routine tasks to free humans for higher-value work</li>
+                                        <li>Design intuitive, user-centered interfaces</li>
+                                        <li>Provide decision support with analytics and AI</li>
+                                        <li>Enable collaboration across time and location</li>
+                                        <li>Balance automation with human judgment and creativity</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Process Reengineering Methodology</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">A Structured Approach to Radical Process Redesign</h5>
+                        <p class="text-sm mb-3">Successful process reengineering follows a structured methodology that balances the need for creative reimagining with disciplined implementation. The following phases provide a framework for executing reengineering initiatives.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Process Reengineering Phases</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-x-auto">
+                                        <div class="min-w-[700px]">
+                                            <div class="relative h-[120px] mb-3">
+                                                <!-- Process Flow Chart -->
+                                                <svg class="absolute inset-0 h-full w-full" viewBox="0 0 700 120">
+                                                    <!-- Phase Boxes -->
+                                                    <rect x="10" y="40" width="120" height="60" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+                                                    <text x="70" y="70" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="bold">1. Mobilize</text>
+                                                    
+                                                    <rect x="150" y="40" width="120" height="60" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                                                    <text x="210" y="70" text-anchor="middle" font-size="11" fill="#3730a3" font-weight="bold">2. Diagnose</text>
+                                                    
+                                                    <rect x="290" y="40" width="120" height="60" rx="5" fill="#f3e8ff" stroke="#a855f7" stroke-width="2"/>
+                                                    <text x="350" y="70" text-anchor="middle" font-size="11" fill="#6b21a8" font-weight="bold">3. Redesign</text>
+                                                    
+                                                    <rect x="430" y="40" width="120" height="60" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"/>
+                                                    <text x="490" y="70" text-anchor="middle" font-size="11" fill="#86198f" font-weight="bold">4. Implement</text>
+                                                    
+                                                    <rect x="570" y="40" width="120" height="60" rx="5" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+                                                    <text x="630" y="70" text-anchor="middle" font-size="11" fill="#166534" font-weight="bold">5. Sustain</text>
+                                                    
+                                                    <!-- Flow Arrows -->
+                                                    <line x1="130" y1="70" x2="145" y2="70" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                    <line x1="270" y1="70" x2="285" y2="70" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                    <line x1="410" y1="70" x2="425" y2="70" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                    <line x1="550" y1="70" x2="565" y2="70" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                    
+                                                    <!-- Arrowhead marker -->
+                                                    <defs>
+                                                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                            <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+                                                        </marker>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Phase 1: Mobilize</h6>
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Key Activities</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Establish reengineering vision and objectives</li>
+                                                    <li>Secure executive sponsorship and resources</li>
+                                                    <li>Define scope and boundaries</li>
+                                                    <li>Assemble cross-functional reengineering team</li>
+                                                    <li>Develop communication plan</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Key Deliverables</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Reengineering charter</li>
+                                                    <li>Case for change</li>
+                                                    <li>Team structure and governance</li>
+                                                    <li>Success metrics and targets</li>
+                                                    <li>Project plan and timeline</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Success Factors</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Clear vision of transformation goals</li>
+                                                    <li>Active executive sponsorship</li>
+                                                    <li>Appropriate team composition</li>
+                                                    <li>Effective change narrative</li>
+                                                    <li>Adequate dedicated resources</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Phase 2: Diagnose</h6>
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Key Activities</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Document current process understanding</li>
+                                                    <li>Identify customer needs and expectations</li>
+                                                    <li>Benchmark industry best practices</li>
+                                                    <li>Analyze pain points and root causes</li>
+                                                    <li>Assess technology capabilities and gaps</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Key Deliverables</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Current state assessment</li>
+                                                    <li>Customer journey and pain points</li>
+                                                    <li>Benchmark comparisons</li>
+                                                    <li>Opportunity assessment</li>
+                                                    <li>Process enabler analysis</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Success Factors</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Fact-based understanding of issues</li>
+                                                    <li>Clear customer perspective</li>
+                                                    <li>Willingness to challenge assumptions</li>
+                                                    <li>Looking beyond industry boundaries</li>
+                                                    <li>Focus on root causes, not symptoms</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Phase 3: Redesign</h6>
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Key Activities</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Envision ideal future state process</li>
+                                                    <li>Challenge fundamental assumptions</li>
+                                                    <li>Apply reengineering principles</li>
+                                                    <li>Develop new process designs</li>
+                                                    <li>Validate designs with stakeholders</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Key Deliverables</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Future state process designs</li>
+                                                    <li>Implementation requirements</li>
+                                                    <li>Business case and ROI analysis</li>
+                                                    <li>Technology enablement plan</li>
+                                                    <li>Organizational impact assessment</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Success Factors</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Creative thinking beyond constraints</li>
+                                                    <li>Balancing innovation with feasibility</li>
+                                                    <li>Involvement of key stakeholders</li>
+                                                    <li>Focus on measurable outcomes</li>
+                                                    <li>Considering all enablers (not just technology)</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Phase 4: Implement</h6>
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Key Activities</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Create detailed implementation roadmap</li>
+                                                    <li>Develop technical solutions</li>
+                                                    <li>Redesign organizational structures</li>
+                                                    <li>Train staff on new processes</li>
+                                                    <li>Manage transition to new process</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Key Deliverables</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Implementation plan and timeline</li>
+                                                    <li>Technical systems and tools</li>
+                                                    <li>New policies and procedures</li>
+                                                    <li>Training and change management materials</li>
+                                                    <li>Performance measurement dashboard</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Success Factors</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Strong project management discipline</li>
+                                                    <li>Effective change management</li>
+                                                    <li>Adequate testing and validation</li>
+                                                    <li>Flexible adaptation to challenges</li>
+                                                    <li>Maintaining momentum and focus</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Phase 5: Sustain</h6>
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Key Activities</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Monitor performance against targets</li>
+                                                    <li>Refine processes based on results</li>
+                                                    <li>Address emerging issues</li>
+                                                    <li>Transfer ownership to business teams</li>
+                                                    <li>Document lessons learned</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Key Deliverables</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Performance tracking mechanisms</li>
+                                                    <li>Process governance structure</li>
+                                                    <li>Continuous improvement processes</li>
+                                                    <li>Knowledge transfer documentation</li>
+                                                    <li>Success stories and results reporting</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-span-1">
+                                                <p class="text-xs font-medium mb-1">Success Factors</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Clear accountability for ongoing performance</li>
+                                                    <li>Integration with business-as-usual</li>
+                                                    <li>Reinforcement of new behaviors</li>
+                                                    <li>Recognition of achievements</li>
+                                                    <li>Systematic approach to future changes</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Critical Success Factors for BPR Initiatives</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Leadership and Governance</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Strong, visible executive sponsorship</li>
+                                        <li>Clear decision-making authority</li>
+                                        <li>Direct linkage to strategic objectives</li>
+                                        <li>Willingness to challenge status quo</li>
+                                        <li>Demonstrated commitment to change</li>
+                                        <li>Accountability for outcomes, not activities</li>
+                                        <li>Balance of ambition and pragmatism</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">People and Organization</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Cross-functional team composition</li>
+                                        <li>Dedicated, skilled resources</li>
+                                        <li>Comprehensive change management</li>
+                                        <li>Stakeholder engagement at all levels</li>
+                                        <li>Effective communication strategy</li>
+                                        <li>Investment in training and development</li>
+                                        <li>Alignment of incentives with new process goals</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Methodology and Approach</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>End-to-end process perspective</li>
+                                        <li>Customer-focused design principles</li>
+                                        <li>Data-driven analysis and decision-making</li>
+                                        <li>Appropriate scope and boundaries</li>
+                                        <li>Well-defined success metrics</li>
+                                        <li>Balanced consideration of all enablers</li>
+                                        <li>Iterative, agile implementation approach</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Change Management for Process Reengineering</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Managing the Human Side of Process Transformation</h5>
+                        <p class="text-sm mb-3">Process reengineering creates significant change that affects how people work, collaborate, and measure success. Effective change management is critical for overcoming resistance and ensuring successful adoption of reengineered processes.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Reengineering Impact Assessment</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Understanding the full impact of process changes on people and organization:</p>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Role and Skill Impacts</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Identification of roles that will change or be eliminated</li>
+                                            <li>Assessment of new skills and capabilities required</li>
+                                            <li>Gap analysis between current and future state</li>
+                                            <li>Career path implications for affected employees</li>
+                                            <li>Talent development and acquisition requirements</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Organizational Structure Impacts</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Changes to reporting relationships and hierarchies</li>
+                                            <li>Shifts in department boundaries and responsibilities</li>
+                                            <li>New collaboration requirements across functions</li>
+                                            <li>Changes to decision-making authority</li>
+                                            <li>Potential consolidation or dispersion of teams</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Cultural and Behavioral Impacts</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Required shifts in mindsets and mental models</li>
+                                            <li>Changes to performance measures and incentives</li>
+                                            <li>Impact on established work patterns and routines</li>
+                                            <li>New expectations for collaboration and teamwork</li>
+                                            <li>Potential resistance points and concerns</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Stakeholder Engagement Strategy</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[300px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Stakeholder Analysis</h6>
+                                            <p class="text-xs mb-1">Systematic approach to understanding and managing stakeholders:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Identify all stakeholder groups affected by the change</li>
+                                                <li>Assess stakeholder influence, interest, and impact</li>
+                                                <li>Analyze potential resistance and support factors</li>
+                                                <li>Determine engagement approach for each group</li>
+                                                <li>Identify key influencers and change champions</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Communication Strategy</h6>
+                                            <p class="text-xs mb-1">Tailored messaging to build awareness and understanding:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Develop compelling change narrative and vision</li>
+                                                <li>Create stakeholder-specific messaging</li>
+                                                <li>Establish communication cadence and channels</li>
+                                                <li>Balance transparency with appropriate timing</li>
+                                                <li>Incorporate feedback mechanisms</li>
+                                                <li>Prepare for difficult conversations</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Involvement and Co-Creation</h6>
+                                            <p class="text-xs mb-1">Engaging stakeholders in the reengineering process:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Involve key stakeholders in process design</li>
+                                                <li>Create opportunities for input and feedback</li>
+                                                <li>Establish representative user groups</li>
+                                                <li>Develop network of change advocates</li>
+                                                <li>Use pilot implementations to build ownership</li>
+                                                <li>Celebrate early adopters and success stories</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Implementation Change Support</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Learning & Development</h6>
+                                    <p class="text-xs mb-1">Building capabilities for the new process:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Skills gap analysis for new processes</li>
+                                        <li>Comprehensive training program development</li>
+                                        <li>Just-in-time learning deployment</li>
+                                        <li>Multiple learning formats (classroom, online, job aids)</li>
+                                        <li>Performance support tools and resources</li>
+                                        <li>Validation of learning effectiveness</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Transition Management</h6>
+                                    <p class="text-xs mb-1">Moving from current to future state:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Detailed cutover planning and coordination</li>
+                                        <li>Business continuity during transition</li>
+                                        <li>Contingency and rollback procedures</li>
+                                        <li>Hypercare support for initial implementation</li>
+                                        <li>Quick wins to build momentum</li>
+                                        <li>Monitoring for unexpected consequences</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Reinforcement & Sustainability</h6>
+                                    <p class="text-xs mb-1">Ensuring changes stick and evolve:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Alignment of performance metrics and incentives</li>
+                                        <li>Leadership modeling of new behaviors</li>
+                                        <li>Recognition and reward for adoption</li>
+                                        <li>Ongoing coaching and support</li>
+                                        <li>Monitoring of adherence and outcomes</li>
+                                        <li>Mechanisms for continuous improvement</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Addressing Resistance</h6>
+                                <p class="text-xs mb-1">Reengineering often faces significant resistance due to its transformational nature. Effective strategies include:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Make the case for change compelling:</strong> Clearly articulate why the status quo is not sustainable</li>
+                                        <li><strong>Address concerns openly:</strong> Acknowledge legitimate worries and provide honest responses</li>
+                                        <li><strong>Focus on the "what's in it for me":</strong> Help individuals understand personal benefits</li>
+                                        <li><strong>Create safe spaces for dialogue:</strong> Allow for constructive questioning and feedback</li>
+                                    </ul>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Involve resistors in the solution:</strong> Convert potential blockers into change agents</li>
+                                        <li><strong>Demonstrate early successes:</strong> Build momentum with visible wins</li>
+                                        <li><strong>Provide adequate support:</strong> Ensure people have the tools and skills to succeed</li>
+                                        <li><strong>Remove organizational barriers:</strong> Address systemic issues that prevent adoption</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Dell Case Study: Order-to-Cash Process Reengineering</h5>
+                        <p class="text-sm mb-3">This example illustrates how Dell Technologies applied process reengineering principles to transform its order-to-cash process, resulting in significant improvements in efficiency, customer experience, and financial performance.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Challenge Context</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Dell faced several challenges with its order-to-cash process:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li>Complex, fragmented processes evolved over time across multiple geographies</li>
+                                        <li>High exception rates requiring manual intervention (over 30% of orders)</li>
+                                        <li>Significant differences in process execution across business units</li>
+                                        <li>Multiple disconnected systems requiring manual data transfer</li>
+                                        <li>Long order-to-cash cycle times impacting working capital</li>
+                                        <li>Limited visibility into process status for customers and internal teams</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Business Impact:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Inconsistent customer experience across segments and regions</li>
+                                        <li>High operational costs from manual processes and rework</li>
+                                        <li>Delayed cash collection affecting working capital</li>
+                                        <li>Inability to scale efficiently during high-demand periods</li>
+                                        <li>Compliance challenges due to process variations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Reengineering Approach</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Mobilize Phase</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Established executive steering committee with C-suite representation</li>
+                                            <li>Created dedicated cross-functional team with business and IT members</li>
+                                            <li>Defined clear success metrics and business case</li>
+                                            <li>Developed comprehensive communication strategy</li>
+                                            <li>Secured resources and funding for 18-month transformation</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Diagnose Phase</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Mapped current state processes across all regions and business units</li>
+                                            <li>Analyzed exception patterns and root causes</li>
+                                            <li>Conducted customer journey mapping with key segments</li>
+                                            <li>Benchmarked against industry leaders and digital natives</li>
+                                            <li>Performed comprehensive technology assessment</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Redesign Approach</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Applied clean-slate design principles guided by customer journey</li>
+                                            <li>Conducted design thinking workshops with diverse stakeholders</li>
+                                            <li>Created digital-first architecture leveraging cloud and automation</li>
+                                            <li>Developed new organizational model focused on end-to-end ownership</li>
+                                            <li>Designed phased implementation roadmap</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Key Reengineering Elements</h6>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Process Area</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Traditional Approach</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Reengineered Approach</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Reengineering Principles Applied</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Order Creation & Validation</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Multiple order entry systems by channel</li>
+                                                    <li>Sequential validation steps across departments</li>
+                                                    <li>Manual credit and fraud checks</li>
+                                                    <li>Batch processing of orders</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Unified digital order platform across channels</li>
+                                                    <li>Real-time validation during order entry</li>
+                                                    <li>Automated risk scoring with manual review only for exceptions</li>
+                                                    <li>Continuous order processing flow</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Capture information once at source</li>
+                                                    <li>Put control points where work is performed</li>
+                                                    <li>Treat geographically dispersed resources as centralized</li>
+                                                    <li>Design for exception handling, not control</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Customer Communication</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Fragmented status updates by department</li>
+                                                    <li>Limited visibility into order progress</li>
+                                                    <li>Customer service team as information broker</li>
+                                                    <li>Reactive communication about issues</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Customer portal with real-time status visibility</li>
+                                                    <li>Proactive notification of status changes</li>
+                                                    <li>Self-service options for common changes</li>
+                                                    <li>Personalized communication based on customer preferences</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Have those who need results perform the process</li>
+                                                    <li>Organize around outcomes, not tasks</li>
+                                                    <li>Integrate decision-making into work</li>
+                                                    <li>Start with a clean slate approach</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Fulfillment & Logistics</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Separate systems for inventory and fulfillment</li>
+                                                    <li>Manual carrier selection and shipment creation</li>
+                                                    <li>Limited optimization across locations</li>
+                                                    <li>Batch-based wave processing</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Integrated inventory and order management platform</li>
+                                                    <li>Dynamic fulfillment optimization across network</li>
+                                                    <li>Automated carrier selection based on business rules</li>
+                                                    <li>Continuous flow processing</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Transformative use of technology</li>
+                                                    <li>Data integration across functions</li>
+                                                    <li>Capture information once at source</li>
+                                                    <li>Organize around outcomes, not tasks</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Invoicing & Payment</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Complex approval workflows for invoices</li>
+                                                    <li>Paper-based invoicing for many customers</li>
+                                                    <li>Limited payment options by region</li>
+                                                    <li>Manual cash application process</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Digital invoicing with customer-preferred formats</li>
+                                                    <li>Streamlined approvals with exceptions-only review</li>
+                                                    <li>Expanded electronic payment options</li>
+                                                    <li>Automated matching and cash application</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Design for exception handling, not control</li>
+                                                    <li>Have those who need results perform the process</li>
+                                                    <li>Put control points where work is performed</li>
+                                                    <li>Integrate decision-making into work</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Organizational Structure</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Functional silos with specialized roles</li>
+                                                    <li>Multiple handoffs between departments</li>
+                                                    <li>Geographic organization of operations</li>
+                                                    <li>Management focus on functional excellence</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Cross-functional order management teams</li>
+                                                    <li>End-to-end process ownership</li>
+                                                    <li>Customer segment-based organization</li>
+                                                    <li>Process performance metrics and governance</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Organize around outcomes, not tasks</li>
+                                                    <li>Treat geographically dispersed resources as centralized</li>
+                                                    <li>Have those who need results perform the process</li>
+                                                    <li>Integrate decision-making into work</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Implementation Approach</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Phased implementation:</strong> Staged rollout by process component and customer segment</li>
+                                    <li class="mb-1"><strong>Digital foundation:</strong> Built cloud-based platform for order management as technical backbone</li>
+                                    <li class="mb-1"><strong>Process labs:</strong> Established environment to test new processes before full implementation</li>
+                                    <li class="mb-1"><strong>Agile methodology:</strong> Used iterative approach for technology development</li>
+                                    <li class="mb-1"><strong>Change champions:</strong> Network of 150+ champions across business units to drive adoption</li>
+                                    <li class="mb-0"><strong>Hypercare model:</strong> Intensive support during transition periods</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Change Management</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Strategic communication:</strong> Executive roadshows and townhalls to build awareness</li>
+                                    <li class="mb-1"><strong>Skills development:</strong> Comprehensive training program with multiple formats</li>
+                                    <li class="mb-1"><strong>Role transitions:</strong> Support for employees moving to new roles or responsibilities</li>
+                                    <li class="mb-1"><strong>Impact mapping:</strong> Detailed assessment of how changes affected each stakeholder</li>
+                                    <li class="mb-1"><strong>Performance management:</strong> Aligned metrics and incentives with new process goals</li>
+                                    <li class="mb-0"><strong>Cultural reinforcement:</strong> Recognition programs for adopting new ways of working</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Results & Business Impact</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Cycle time reduction:</strong> Order-to-cash cycle time reduced by 65% (from 12 days to 4.2 days)</li>
+                                    <li class="mb-1"><strong>Exception reduction:</strong> Manual exceptions decreased from 30% to 7% of orders</li>
+                                    <li class="mb-1"><strong>Working capital improvement:</strong> $320M improvement in cash flow from faster collections</li>
+                                    <li class="mb-1"><strong>Cost savings:</strong> 28% reduction in order processing costs ($42M annually)</li>
+                                    <li class="mb-1"><strong>Customer experience:</strong> 23-point increase in order experience satisfaction scores</li>
+                                    <li class="mb-0"><strong>Scalability:</strong> 40% increase in order processing capacity with same resources</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Key Learnings & Best Practices</h6>
+                            <ul class="pl-4 text-xs mb-2">
+                                <li class="mb-1"><strong>Executive commitment:</strong> Consistent sponsorship maintained momentum during challenging phases</li>
+                                <li class="mb-1"><strong>Customer focus:</strong> Designing processes from customer perspective avoided internal optimization traps</li>
+                                <li class="mb-1"><strong>Technology-process alignment:</strong> Concurrent redesign of processes and systems created synergy</li>
+                                <li class="mb-1"><strong>Change investment:</strong> Significant resources for change management paid dividends in adoption</li>
+                                <li class="mb-0"><strong>Iterative approach:</strong> Flexible implementation plan allowed for learning and course correction</li>
+                            </ul>
+                            <p class="text-xs mb-0"><strong>Sustainability Strategy:</strong> Dell established a dedicated Order-to-Cash Center of Excellence with ongoing responsibility for process governance, continuous improvement, and performance monitoring. The Center maintains process standards, provides expertise for further enhancements, and ensures the reengineered process continues to evolve to meet changing business needs.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Technology as a Reengineering Enabler</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Leveraging Digital Capabilities for Process Transformation</h5>
+                        <p class="text-sm mb-3">Technology plays a critical role in enabling new process possibilities that would be unachievable through organizational changes alone. Modern digital technologies create opportunities for fundamentally reimagining how work gets done and value is delivered to customers.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Enabling Technologies</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Cloud Computing & SaaS Platforms</h6>
+                                        <p class="text-xs mb-1">Enabling scalable, flexible process infrastructure:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Reengineering enablement:</strong> Rapid deployment of new capabilities without capital investment</li>
+                                            <li><strong>Process innovation:</strong> Global access, elastic capacity, built-in resilience</li>
+                                            <li><strong>Example applications:</strong> Cloud ERP platforms, CRM systems, integrated workflow systems</li>
+                                            <li><strong>Dell application:</strong> Migration from legacy on-premises systems to cloud-based order management platform</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Automation & Robotics</h6>
+                                        <p class="text-xs mb-1">Eliminating manual effort and increasing consistency:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Reengineering enablement:</strong> Removing human steps from routine processes</li>
+                                            <li><strong>Process innovation:</strong> 24/7 operation, perfect consistency, rapid scaling</li>
+                                            <li><strong>Example applications:</strong> RPA for data entry, automated validation, workflow orchestration</li>
+                                            <li><strong>Dell application:</strong> Automation of 60+ manual steps in order processing and fulfillment</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">AI & Machine Learning</h6>
+                                        <p class="text-xs mb-1">Adding intelligence and prediction to processes:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Reengineering enablement:</strong> Replacing human judgment with algorithmic intelligence</li>
+                                            <li><strong>Process innovation:</strong> Predictive capabilities, pattern recognition, contextual decisions</li>
+                                            <li><strong>Example applications:</strong> Fraud detection, demand forecasting, intelligent routing</li>
+                                            <li><strong>Dell application:</strong> AI-powered order risk scoring and dynamic fulfillment optimization</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">APIs & Integration Platforms</h6>
+                                        <p class="text-xs mb-1">Connecting systems and data across processes:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Reengineering enablement:</strong> Breaking down system silos without full replacement</li>
+                                            <li><strong>Process innovation:</strong> Real-time data exchange, modular architecture, ecosystem integration</li>
+                                            <li><strong>Example applications:</strong> API gateways, iPaaS, event-driven architectures</li>
+                                            <li><strong>Dell application:</strong> API-based integration layer connecting 15+ systems in the order-to-cash process</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Technology-Enabled Process Innovations</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Digital Self-Service Models</h6>
+                                            <p class="text-xs mb-1">Shifting process execution to customers and partners:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Traditional process:</strong> Agent-mediated interactions with sequential processing</li>
+                                                <li><strong>Reengineered process:</strong> Customer-driven digital experiences with immediate execution</li>
+                                                <li><strong>Enabling technologies:</strong> Mobile apps, portals, chatbots, embedded workflows</li>
+                                                <li><strong>Value creation:</strong> Reduced service costs, improved customer satisfaction, 24/7 availability</li>
+                                                <li><strong>Dell example:</strong> Self-service customer portal for order management and support</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Straight-Through Processing</h6>
+                                            <p class="text-xs mb-1">End-to-end automation without human intervention:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Traditional process:</strong> Multiple human touchpoints and system handoffs</li>
+                                                <li><strong>Reengineered process:</strong> Fully automated process flow from initiation to completion</li>
+                                                <li><strong>Enabling technologies:</strong> Workflow automation, business rules engines, RPA, system integration</li>
+                                                <li><strong>Value creation:</strong> Dramatic cycle time reduction, perfect consistency, scalable operations</li>
+                                                <li><strong>Dell example:</strong> Touchless order processing for standard configurations</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Real-Time Analytics & Decision Support</h6>
+                                            <p class="text-xs mb-1">Embedding intelligence into operational processes:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Traditional process:</strong> Decisions based on historic reports and experience</li>
+                                                <li><strong>Reengineered process:</strong> Data-driven decisions supported by real-time analytics</li>
+                                                <li><strong>Enabling technologies:</strong> Big data platforms, dashboards, embedded analytics, AI assistants</li>
+                                                <li><strong>Value creation:</strong> Better decision quality, faster response to issues, continuous optimization</li>
+                                                <li><strong>Dell example:</strong> Real-time supply chain optimization for order fulfillment</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Process Virtualization</h6>
+                                            <p class="text-xs mb-1">Replacing physical activities with digital alternatives:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Traditional process:</strong> Location-bound activities requiring physical presence</li>
+                                                <li><strong>Reengineered process:</strong> Location-independent digital experiences</li>
+                                                <li><strong>Enabling technologies:</strong> Video conferencing, digital signatures, virtual collaboration, AR/VR</li>
+                                                <li><strong>Value creation:</strong> Geographic flexibility, eliminated travel, expanded access</li>
+                                                <li><strong>Dell example:</strong> Virtual technical support with remote diagnostics and repair guidance</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Technology Strategy for Reengineering</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Technology Assessment</h6>
+                                    <p class="text-xs mb-1">Evaluating capabilities and opportunities:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Inventory current technology landscape</li>
+                                        <li>Identify capability gaps for target processes</li>
+                                        <li>Assess emerging technologies for applicability</li>
+                                        <li>Evaluate build vs. buy options</li>
+                                        <li>Consider implementation complexity and risk</li>
+                                        <li>Determine technical debt implications</li>
+                                        <li>Create technology roadmap aligned with process vision</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Architecture Principles</h6>
+                                    <p class="text-xs mb-1">Guiding technology decisions:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Design for change and adaptability</li>
+                                        <li>Prioritize integration and interoperability</li>
+                                        <li>Balance standardization with flexibility</li>
+                                        <li>Consider scalability requirements</li>
+                                        <li>Address security and compliance by design</li>
+                                        <li>Maintain appropriate data governance</li>
+                                        <li>Architect for resilience and continuity</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Implementation Approach</h6>
+                                    <p class="text-xs mb-1">Executing the technology strategy:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Create balanced teams of business and IT</li>
+                                        <li>Use agile/iterative development methods</li>
+                                        <li>Implement minimum viable capabilities first</li>
+                                        <li>Establish technical governance standards</li>
+                                        <li>Plan for appropriate testing and validation</li>
+                                        <li>Consider transition and cutover strategies</li>
+                                        <li>Develop technical support and maintenance model</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Common Technology Pitfalls in Reengineering</h6>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Automating broken processes:</strong> Digitizing current inefficiencies rather than reimagining the process</li>
+                                        <li><strong>Technology-first thinking:</strong> Letting technology capabilities drive process design rather than business needs</li>
+                                        <li><strong>Underestimating integration challenges:</strong> Failing to address the complexity of connecting systems</li>
+                                        <li><strong>Inadequate user experience design:</strong> Creating technically sound but difficult-to-use solutions</li>
+                                    </ul>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Scope creep:</strong> Adding features beyond what's needed for process effectiveness</li>
+                                        <li><strong>Overlooking data quality issues:</strong> Not addressing underlying data problems that impact process performance</li>
+                                        <li><strong>Insufficient testing:</strong> Failing to validate solutions under realistic conditions</li>
+                                        <li><strong>Neglecting business continuity:</strong> Inadequate planning for transition between old and new systems</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>BPR vs. Continuous Improvement</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">When to Choose Reengineering vs. Incremental Improvement</h5>
+                        <p class="text-sm mb-3">Organizations face a strategic choice between radical process reengineering and continuous improvement approaches. Understanding when each approach is appropriate helps leaders select the right intervention strategy for their specific situation.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Choosing the Right Approach</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">When Reengineering is Most Appropriate</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Process fundamentally broken:</strong> Current process is incapable of meeting basic requirements</li>
+                                            <li><strong>Dramatic performance gap:</strong> Order-of-magnitude improvement needed to meet objectives</li>
+                                            <li><strong>Structural constraints:</strong> Current organization or systems prevent incremental progress</li>
+                                            <li><strong>Industry disruption:</strong> Competitive landscape requires fundamental business model changes</li>
+                                            <li><strong>Technology leapfrog:</strong> New technologies enable radically different process approaches</li>
+                                            <li><strong>Customer expectations shift:</strong> Dramatic changes in what customers value or expect</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">When Continuous Improvement is Most Appropriate</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Fundamentally sound process:</strong> Basic process design meets needs but efficiency can be improved</li>
+                                            <li><strong>Incremental targets:</strong> Performance improvements of 5-20% are sufficient</li>
+                                            <li><strong>Resource constraints:</strong> Limited capacity for transformational change</li>
+                                            <li><strong>Recent major changes:</strong> Organization still absorbing other significant changes</li>
+                                            <li><strong>Specific problem areas:</strong> Issues are localized rather than systemic</li>
+                                            <li><strong>Continuous learning culture:</strong> Organization values ongoing experimentation and refinement</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Situational Decision Framework</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[320px] pr-1">
+                                        <table class="w-full text-xs border-collapse mb-3">
+                                            <thead>
+                                                <tr class="bg-gray-50 dark:bg-gray-900">
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Decision Factor</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Favor Reengineering If...</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Favor Continuous Improvement If...</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Performance Gap</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        Current performance is 50%+ below target
+                                                    </td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        Current performance is within 20-30% of target
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Process Stability</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        Process is unstable with high variation
+                                                    </td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        Process is stable and predictable
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Technology Landscape</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        Legacy systems constrain improvement
+                                                    </td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        Current systems are flexible and extensible
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Competitive Position</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        Significant competitive disadvantage
+                                                    </td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        Competitive parity or slight disadvantage
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Organizational Readiness</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        High urgency and executive support
+                                                    </td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        Limited capacity for disruptive change
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Risk Tolerance</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        Willing to accept higher risk for breakthrough
+                                                    </td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        Conservative approach with predictable results
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Time Horizon</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        Can invest in longer-term transformation
+                                                    </td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                        Needs quick wins and rapid results
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        
+                                        <h6 class="text-xs font-medium mb-1">Hybrid Approach: Targeted Reengineering</h6>
+                                        <p class="text-xs mb-1">In many situations, organizations can benefit from a middle path between full reengineering and incremental improvement:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Scope:</strong> Apply reengineering principles to specific high-impact process components</li>
+                                            <li><strong>Scale:</strong> Implement transformational change in limited areas while improving others incrementally</li>
+                                            <li><strong>Sequencing:</strong> Use continuous improvement to stabilize processes before targeted reengineering</li>
+                                            <li><strong>Integration:</strong> Combine reengineering for process design with continuous improvement for execution</li>
+                                            <li><strong>Benefits:</strong> Balances breakthrough performance with manageable risk and resource requirements</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Complementary Strategies in Practice</h6>
+                            
+                            <div class="mb-3">
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-900">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Strategy Element</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Reengineering Contribution</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Continuous Improvement Contribution</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Integration Approach</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Process Design</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Clean-slate redesign of core process architecture
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Refinement of process details and exceptions
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Design macro process through reengineering; refine micro processes through continuous improvement
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Technology Strategy</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Platform transformation and major system changes
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    System optimization and feature enhancements
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Implement new platforms while continuously improving existing systems during transition
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Organizational Change</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Structural changes and new role definitions
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Skill development and behavioral adjustments
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Establish new organizational model while continuously developing capabilities
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Implementation Approach</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Structured transformation program with governance
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Team-based improvements with rapid cycles
+                                                </td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                    Program structure for major changes with embedded improvement teams for ongoing refinement
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Dell's Integrated Approach</h6>
+                                    <p class="text-xs mb-1">Dell's strategy combines reengineering with continuous improvement:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Strategic reengineering of core business processes</li>
+                                        <li>Continuous improvement through operational excellence</li>
+                                        <li>Innovation labs for testing transformational concepts</li>
+                                        <li>Process governance to align improvement efforts</li>
+                                        <li>Technology roadmaps with both transformational and incremental elements</li>
+                                        <li>Skill building for both methodologies</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Assessment Process</h6>
+                                    <p class="text-xs mb-1">How Dell evaluates improvement approaches:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Process performance analysis against benchmarks</li>
+                                        <li>Customer experience mapping to identify pain points</li>
+                                        <li>Competitive analysis of capability gaps</li>
+                                        <li>Technology assessment for enabling opportunities</li>
+                                        <li>Organizational readiness evaluation</li>
+                                        <li>Strategic alignment with business objectives</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Governance Framework</h6>
+                                    <p class="text-xs mb-1">Structure for managing different approaches:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Executive steering committee for major reengineering</li>
+                                        <li>Business process owners for ongoing governance</li>
+                                        <li>Continuous improvement teams within functions</li>
+                                        <li>Digital transformation office for technology enablement</li>
+                                        <li>Integrated performance measurement system</li>
+                                        <li>Portfolio management across all initiatives</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/1990/07/reengineering-work-dont-automate-obliterate" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Reengineering Work: Don't Automate, Obliterate</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Michael Hammer's Original BPR Article</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://hbr.org/2018/03/why-digital-transformation-is-now-on-the-ceos-shoulders" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-presentation-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Why Digital Transformation Is Now on the CEO's Shoulders</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Modern Process Transformation</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.delltechnologies.com/en-us/perspectives/how-digital-transformation-drives-business-value/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-book-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">How Digital Transformation Drives Business Value</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Dell Technologies • Technology-Enabled Process Change</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell Technical Support Process Reengineering Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll apply process reengineering principles to transform Dell's technical support process for enterprise customers. This scenario will help you develop practical skills in identifying opportunities for radical process redesign and creating a reengineering strategy.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Scenario Context:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Dell's enterprise technical support process has evolved incrementally over many years</li>
+                                    <li>Current process involves multiple handoffs between tiers of support engineers</li>
+                                    <li>Average time to resolution for complex issues is 4.3 days</li>
+                                    <li>Customer satisfaction scores have declined by 12 points in the past year</li>
+                                    <li>Competitors are offering AI-powered proactive support with 60% faster resolution</li>
+                                    <li>Your task is to develop a reengineering approach to transform the support experience</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Current Process Challenges:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Customers must navigate an IVR system and repeat information at each tier</li>
+                                    <li>Support cases are handed off between 3-4 different engineers on average</li>
+                                    <li>Engineers have limited visibility into customer environment and configuration</li>
+                                    <li>Diagnostics are primarily manual and require customer participation</li>
+                                    <li>Knowledge management is fragmented across multiple repositories</li>
+                                    <li>Communication is primarily reactive and case-based rather than relationship-based</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Reengineering Vision & Principles</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Describe your vision for a reengineered support process. What fundamental principles would guide your redesign? What key outcomes would you target?"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Reengineered Process Design</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline your reengineered process design. How would you fundamentally reimagine the support experience? What breakthrough technologies would you leverage? How would roles and responsibilities change?"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Implementation Strategy</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Describe your implementation approach. How would you manage the transition? What change management challenges do you anticipate? How would you measure success?"></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-process-maps">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Process Maps</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-change-management">
+                        <span>Next: Kotter's Change Management</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-process-reengineering');
+        });
+    </script>
+</body>
+</html>

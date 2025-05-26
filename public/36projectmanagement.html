@@ -1,0 +1,1619 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+      <div class="mb-6">
+        <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <i class="ri-arrow-left-line"></i>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    
+            <!-- Project Management Fundamentals Topic -->
+            <section id="topic-project-fundamentals" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-task-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Project Management Fundamentals</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Project Management</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the fundamentals of project management and key terminology</li>
+                            <li>Differentiate between various project management methodologies and their applications</li>
+                            <li>Recognize the core components of the project management lifecycle</li>
+                            <li>Identify the triple constraint and other critical project success factors</li>
+                            <li>Develop a foundational understanding of project management tools and techniques used at Dell</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Project Management</h4>
+                    <p>Project management is the application of knowledge, skills, tools, and techniques to project activities to meet the project requirements. In today's fast-paced business environment, effective project management is critical for organizations to deliver value, manage change, and maintain competitive advantage. At Dell Technologies, project management helps us deliver innovative products and services to our customers while managing resources efficiently and minimizing risks.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">What is a Project?</h5>
+                        <p class="mb-3">A project is a temporary endeavor undertaken to create a unique product, service, or result. Projects are distinct from operations in several key ways:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Projects</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Temporary:</strong> Have a defined beginning and end</li>
+                                    <li><strong>Unique:</strong> Create a specific deliverable or outcome</li>
+                                    <li><strong>Progressive:</strong> Developed in incremental steps</li>
+                                    <li><strong>Resource-constrained:</strong> Operate within defined limits</li>
+                                    <li><strong>Cross-functional:</strong> Often require diverse expertise</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-gray-600 dark:text-gray-400">Operations</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Ongoing:</strong> Continuous business activities</li>
+                                    <li><strong>Repetitive:</strong> Produce similar outputs over time</li>
+                                    <li><strong>Stable:</strong> Focus on maintaining consistency</li>
+                                    <li><strong>Process-oriented:</strong> Follow established procedures</li>
+                                    <li><strong>Departmental:</strong> Often within functional areas</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Examples of Projects at Dell Technologies</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Product Development</p>
+                                    <ul class="pl-4 text-sm mb-0">
+                                        <li>New laptop product line launch</li>
+                                        <li>Server hardware refresh</li>
+                                        <li>Software feature development</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-green-700 dark:text-green-400 mb-1">Business Transformation</p>
+                                    <ul class="pl-4 text-sm mb-0">
+                                        <li>Digital transformation initiatives</li>
+                                        <li>Business process reengineering</li>
+                                        <li>System implementation</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-purple-700 dark:text-purple-400 mb-1">Customer Solutions</p>
+                                    <ul class="pl-4 text-sm mb-0">
+                                        <li>Enterprise infrastructure deployment</li>
+                                        <li>Data center migrations</li>
+                                        <li>Cloud implementation services</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Key Project Management Concepts</h5>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-800">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Concept</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Definition</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Why It Matters</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm">
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Project Scope</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">The work required to deliver a product, service, or result with the specified features and functions</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Defines project boundaries and prevents scope creep, which can derail timelines and budgets</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Project Schedule</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">The planned dates for performing activities and meeting milestones</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Establishes timeline expectations and enables resource planning and coordination</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Project Budget</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">The approved cost estimate for the project</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Provides financial guardrails and helps measure project performance</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Project Risk</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">An uncertain event that, if it occurs, can affect project objectives positively or negatively</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Anticipating risks enables proactive management and contingency planning</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Stakeholders</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Individuals or organizations actively involved in the project or whose interests may be affected by the project</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Stakeholder alignment is critical for project success and adoption</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Deliverables</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Unique and verifiable products, results, or capabilities produced to complete a process, phase, or project</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Provide tangible measurement points for project progress and success</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Milestones</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Significant points or events in the project</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Help track progress and provide natural checkpoints for assessment</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Project Management Methodologies</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Approaches to Managing Projects</h5>
+                        <p class="text-sm mb-3">Different project management methodologies have evolved to address various types of projects and organizational contexts. Understanding the strengths and applications of each methodology helps in selecting the right approach for your project.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Common Project Management Methodologies</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3 space-y-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+                                            <div class="flex items-center mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-700 dark:text-blue-400 mr-2">
+                                                    <i class="ri-arrow-right-line"></i>
+                                                </div>
+                                                <h6 class="font-medium text-blue-700 dark:text-blue-400">Waterfall</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">A linear, sequential approach where each phase must be completed before the next begins.</p>
+                                            <h6 class="text-xs font-medium mb-1">Key Characteristics:</h6>
+                                            <ul class="text-xs pl-4 mb-2">
+                                                <li>Clear phases: Initiation, Planning, Execution, Monitoring, Closure</li>
+                                                <li>Extensive upfront planning</li>
+                                                <li>Formal documentation at each phase</li>
+                                                <li>Limited changes once project begins</li>
+                                            </ul>
+                                            <h6 class="text-xs font-medium mb-1">Best For:</h6>
+                                            <ul class="text-xs pl-4 mb-0">
+                                                <li>Projects with well-defined requirements</li>
+                                                <li>Hardware development</li>
+                                                <li>Regulatory/compliance-driven projects</li>
+                                                <li>Construction and infrastructure</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
+                                            <div class="flex items-center mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-700 dark:text-green-400 mr-2">
+                                                    <i class="ri-refresh-line"></i>
+                                                </div>
+                                                <h6 class="font-medium text-green-700 dark:text-green-400">Agile</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">An iterative approach that delivers value incrementally and adapts to changing requirements.</p>
+                                            <h6 class="text-xs font-medium mb-1">Key Characteristics:</h6>
+                                            <ul class="text-xs pl-4 mb-2">
+                                                <li>Iterative development cycles (sprints)</li>
+                                                <li>Customer collaboration and feedback</li>
+                                                <li>Self-organizing teams</li>
+                                                <li>Embraces change throughout the project</li>
+                                            </ul>
+                                            <h6 class="text-xs font-medium mb-1">Best For:</h6>
+                                            <ul class="text-xs pl-4 mb-0">
+                                                <li>Software development</li>
+                                                <li>Projects with evolving requirements</li>
+                                                <li>Innovation and new product development</li>
+                                                <li>When customer feedback is essential</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-3">
+                                            <div class="flex items-center mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-700 dark:text-purple-400 mr-2">
+                                                    <i class="ri-speed-line"></i>
+                                                </div>
+                                                <h6 class="font-medium text-purple-700 dark:text-purple-400">Lean</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Focuses on maximizing value while minimizing waste throughout the project lifecycle.</p>
+                                            <h6 class="text-xs font-medium mb-1">Key Characteristics:</h6>
+                                            <ul class="text-xs pl-4 mb-2">
+                                                <li>Value stream mapping</li>
+                                                <li>Waste elimination (non-value activities)</li>
+                                                <li>Continuous improvement</li>
+                                                <li>Just-in-time delivery</li>
+                                            </ul>
+                                            <h6 class="text-xs font-medium mb-1">Best For:</h6>
+                                            <ul class="text-xs pl-4 mb-0">
+                                                <li>Manufacturing projects</li>
+                                                <li>Process improvement initiatives</li>
+                                                <li>Supply chain optimization</li>
+                                                <li>Resource-constrained environments</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3">
+                                            <div class="flex items-center mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                                    <i class="ri-sticky-note-line"></i>
+                                                </div>
+                                                <h6 class="font-medium text-amber-700 dark:text-amber-400">Kanban</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">A visual method focused on delivering work continuously by managing workflow and limiting work in progress.</p>
+                                            <h6 class="text-xs font-medium mb-1">Key Characteristics:</h6>
+                                            <ul class="text-xs pl-4 mb-2">
+                                                <li>Visual workflow board</li>
+                                                <li>Work-in-progress limits</li>
+                                                <li>Continuous delivery</li>
+                                                <li>Pull-based system</li>
+                                            </ul>
+                                            <h6 class="text-xs font-medium mb-1">Best For:</h6>
+                                            <ul class="text-xs pl-4 mb-0">
+                                                <li>Support and maintenance teams</li>
+                                                <li>Service delivery operations</li>
+                                                <li>Projects with frequent changing priorities</li>
+                                                <li>Continuous workflow environments</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-red-50 dark:bg-red-900/20 rounded-lg p-3">
+                                            <div class="flex items-center mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center text-red-700 dark:text-red-400 mr-2">
+                                                    <i class="ri-scales-3-line"></i>
+                                                </div>
+                                                <h6 class="font-medium text-red-700 dark:text-red-400">Hybrid</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Combines elements of different methodologies to leverage the strengths of each approach based on project needs.</p>
+                                            <h6 class="text-xs font-medium mb-1">Key Characteristics:</h6>
+                                            <ul class="text-xs pl-4 mb-2">
+                                                <li>Tailored to organizational context</li>
+                                                <li>Combines structure with flexibility</li>
+                                                <li>Often uses Waterfall for planning and Agile for execution</li>
+                                                <li>Adaptable governance framework</li>
+                                            </ul>
+                                            <h6 class="text-xs font-medium mb-1">Best For:</h6>
+                                            <ul class="text-xs pl-4 mb-0">
+                                                <li>Complex, large-scale projects</li>
+                                                <li>Enterprise transformations</li>
+                                                <li>Product development with hardware and software components</li>
+                                                <li>Organizations transitioning from traditional to agile approaches</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Methodology Selection at Dell</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-3">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Methodology Selection Factors</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Project size and complexity</li>
+                                        <li>Stability of requirements</li>
+                                        <li>Organizational culture</li>
+                                        <li>Team skills and experience</li>
+                                        <li>Risk profile and constraints</li>
+                                        <li>Customer engagement model</li>
+                                        <li>Regulatory requirements</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg md:col-span-2">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Dell's Methodology Approach</h6>
+                                    <p class="text-xs mb-1">Dell Technologies uses a flexible methodology framework that adapts to different project types:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Dell Product Development:</strong> Primarily Agile methodologies for software with stage-gate approval processes for hardware</li>
+                                        <li><strong>Enterprise Client Solutions:</strong> Hybrid approaches with Waterfall planning and Agile delivery</li>
+                                        <li><strong>IT Projects:</strong> Mix of Agile (new development), Kanban (support), and Waterfall (infrastructure)</li>
+                                        <li><strong>Business Transformation:</strong> Tailored approaches combining structured program management with iterative implementation</li>
+                                        <li><strong>Manufacturing/Operations:</strong> Lean methodologies integrated with traditional project management</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Dell Methodology Framework Example: XPS Laptop Development</h6>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Hardware Development (Waterfall Elements)</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Defined phases with gate reviews</li>
+                                            <li>Detailed specifications and requirements</li>
+                                            <li>Sequential development of physical components</li>
+                                            <li>Structured testing and validation processes</li>
+                                            <li>Formal design freeze and change control</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Software Development (Agile Elements)</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Iterative development of features</li>
+                                            <li>Sprint planning and reviews</li>
+                                            <li>Continuous integration and testing</li>
+                                            <li>User experience feedback loops</li>
+                                            <li>Flexible prioritization of software features</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="text-xs mt-2 text-center italic mb-0">This hybrid approach enables Dell to balance the physical constraints of hardware development with the flexibility needed for software innovation, resulting in products that meet both quality standards and customer expectations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Project Life Cycle</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">The Phases of a Project</h5>
+                        <p class="text-sm mb-3">Regardless of methodology, most projects follow a general lifecycle that includes several phases. Understanding these phases helps project managers and team members organize work effectively and ensure all necessary activities are completed.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Standard Project Life Cycle</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-4">
+                                        <div class="flex justify-center mb-4">
+                                            <div class="overflow-x-auto">
+                                                <div class="min-w-[700px]">
+                                                    <div class="relative h-[120px]">
+                                                        <!-- Project Lifecycle Diagram -->
+                                                        <svg class="absolute inset-0 h-full w-full" viewBox="0 0 700 120">
+                                                            <!-- Phase boxes -->
+                                                            <rect x="10" y="40" width="120" height="60" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"></rect>
+                                                            <text x="70" y="70" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="bold">Initiation</text>
+                                                            
+                                                            <rect x="150" y="40" width="120" height="60" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"></rect>
+                                                            <text x="210" y="70" text-anchor="middle" font-size="12" fill="#3730a3" font-weight="bold">Planning</text>
+                                                            
+                                                            <rect x="290" y="40" width="120" height="60" rx="5" fill="#f3e8ff" stroke="#a855f7" stroke-width="2"></rect>
+                                                            <text x="350" y="70" text-anchor="middle" font-size="12" fill="#6b21a8" font-weight="bold">Execution</text>
+                                                            
+                                                            <rect x="430" y="40" width="120" height="60" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"></rect>
+                                                            <text x="490" y="70" text-anchor="middle" font-size="12" fill="#86198f" font-weight="bold">Monitoring &amp; Controlling</text>
+                                                            
+                                                            <rect x="570" y="40" width="120" height="60" rx="5" fill="#dcfce7" stroke="#22c55e" stroke-width="2"></rect>
+                                                            <text x="630" y="70" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold">Closure</text>
+                                                            
+                                                            <!-- Arrows connecting phases -->
+                                                            <line x1="130" y1="70" x2="145" y2="70" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"></line>
+                                                            <line x1="270" y1="70" x2="285" y2="70" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"></line>
+                                                            <line x1="410" y1="70" x2="425" y2="70" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"></line>
+                                                            <line x1="550" y1="70" x2="565" y2="70" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"></line>
+                                                            
+                                                            <!-- Monitoring & Controlling feedback loop -->
+                                                            <path d="M 490,30 C 490,10 350,10 350,30" stroke="#d946ef" stroke-width="2" fill="none" marker-end="url(#arrowhead-purple)"></path>
+                                                            
+                                                            <!-- Arrowhead markers -->
+                                                            <defs>
+                                                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"></polygon>
+                                                                </marker>
+                                                                <marker id="arrowhead-purple" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#d946ef"></polygon>
+                                                                </marker>
+                                                            </defs>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                                        <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Initiation</h6>
+                                            <p class="text-xs mb-1"><em>Define the project</em></p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Identify business need/opportunity</li>
+                                                <li>Develop project charter</li>
+                                                <li>Identify key stakeholders</li>
+                                                <li>Conduct feasibility analysis</li>
+                                                <li>Secure initial authorization</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Planning</h6>
+                                            <p class="text-xs mb-1"><em>Map out the project</em></p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Define scope and requirements</li>
+                                                <li>Create work breakdown structure</li>
+                                                <li>Develop schedule and budget</li>
+                                                <li>Plan for resources and procurement</li>
+                                                <li>Identify risks and response strategies</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Execution</h6>
+                                            <p class="text-xs mb-1"><em>Build the deliverables</em></p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Direct and manage work</li>
+                                                <li>Build project deliverables</li>
+                                                <li>Manage team and resources</li>
+                                                <li>Implement quality standards</li>
+                                                <li>Distribute information</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-pink-50 dark:bg-pink-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-pink-700 dark:text-pink-400 mb-1">Monitoring &amp; Controlling</h6>
+                                            <p class="text-xs mb-1"><em>Track and optimize</em></p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Track progress against plan</li>
+                                                <li>Manage changes and issues</li>
+                                                <li>Control scope, schedule, and cost</li>
+                                                <li>Perform quality control</li>
+                                                <li>Mitigate risks</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Closure</h6>
+                                            <p class="text-xs mb-1"><em>Complete and transition</em></p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Verify scope completion</li>
+                                                <li>Obtain formal acceptance</li>
+                                                <li>Document lessons learned</li>
+                                                <li>Release resources</li>
+                                                <li>Archive project records</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Key Documents and Deliverables by Phase</h6>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Phase</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Key Documents</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Common Deliverables</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Dell Examples</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Initiation</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Project Charter</li>
+                                                    <li>Business Case</li>
+                                                    <li>Stakeholder Register</li>
+                                                    <li>Project Mandate</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Approved Project Charter</li>
+                                                    <li>Initial Scope Statement</li>
+                                                    <li>Project Authorization</li>
+                                                    <li>Stakeholder Analysis</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>New Product Introduction Brief</li>
+                                                    <li>IT Portfolio Investment Request</li>
+                                                    <li>Project Opportunity Assessment</li>
+                                                    <li>Innovation Opportunity Document</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Planning</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Project Management Plan</li>
+                                                    <li>Scope Statement</li>
+                                                    <li>Work Breakdown Structure</li>
+                                                    <li>Risk Register</li>
+                                                    <li>Communications Plan</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Approved Project Plan</li>
+                                                    <li>Schedule Baseline</li>
+                                                    <li>Budget Baseline</li>
+                                                    <li>Resource Plan</li>
+                                                    <li>Quality Management Plan</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Product Development Plan</li>
+                                                    <li>Service Delivery Framework</li>
+                                                    <li>Platform Engineering Roadmap</li>
+                                                    <li>Solution Architecture Document</li>
+                                                    <li>Project RAID Log</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Execution</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Work Packages</li>
+                                                    <li>Change Requests</li>
+                                                    <li>Status Reports</li>
+                                                    <li>Technical Documentation</li>
+                                                    <li>Team Performance Assessments</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Project Deliverables</li>
+                                                    <li>Quality Results</li>
+                                                    <li>Updated Project Documents</li>
+                                                    <li>Procurement Documentation</li>
+                                                    <li>Team Development</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Software Code/Applications</li>
+                                                    <li>Hardware Prototypes</li>
+                                                    <li>Implementation Playbooks</li>
+                                                    <li>Training Materials</li>
+                                                    <li>Solution Validation Reports</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Monitoring &amp; Controlling</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Performance Reports</li>
+                                                    <li>Change Control Logs</li>
+                                                    <li>Issue Logs</li>
+                                                    <li>Risk Updates</li>
+                                                    <li>Quality Control Measurements</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Corrective/Preventive Actions</li>
+                                                    <li>Forecasts and Projections</li>
+                                                    <li>Validated Deliverables</li>
+                                                    <li>Risk Response Results</li>
+                                                    <li>Performance Improvement Plans</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Program Status Dashboard</li>
+                                                    <li>Milestone Review Presentations</li>
+                                                    <li>Quality Assurance Reports</li>
+                                                    <li>Budget Variance Analysis</li>
+                                                    <li>Executive Steering Committee Updates</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Closure</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Final Project Report</li>
+                                                    <li>Lessons Learned Documentation</li>
+                                                    <li>Project Archives</li>
+                                                    <li>Formal Acceptance Documents</li>
+                                                    <li>Transition Plan</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Customer Acceptance</li>
+                                                    <li>Released Project Resources</li>
+                                                    <li>Administrative Closure</li>
+                                                    <li>Knowledge Transfer</li>
+                                                    <li>Post-Implementation Review</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Product Launch Retrospective</li>
+                                                    <li>Service Transition Document</li>
+                                                    <li>Benefits Realization Report</li>
+                                                    <li>Operations Handover Guide</li>
+                                                    <li>Project Post-Mortem Analysis</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Life Cycle Variations in Different Methodologies</h6>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Waterfall</h6>
+                                        <p class="text-xs mb-0">Sequential phases with formal transition gates between each phase. Planning is comprehensive and upfront, with each phase completed before moving to the next. Changes typically go through formal change control processes.</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Agile</h6>
+                                        <p class="text-xs mb-0">Iterative cycles (sprints) with continuous planning, execution, and review. The project evolves through repeated cycles of development. Each iteration contains elements of all traditional phases, but at a smaller scale focused on specific deliverables.</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Hybrid</h6>
+                                        <p class="text-xs mb-0">Combines elements of both approaches. May use traditional phases at the program level while executing in iterative cycles at the team level. Planning might be done in phases while execution is iterative, with regular adaptation based on feedback and results.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>The Triple Constraint and Project Success Factors</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Balancing Competing Project Demands</h5>
+                        <p class="text-sm mb-3">Project managers must balance competing demands to deliver successful projects. The Triple Constraint (also known as the Iron Triangle) represents the primary competing factors that must be balanced in any project.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">The Triple Constraint</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="flex justify-center mb-3">
+                                        <div class="w-64 h-64 relative">
+                                            <svg viewBox="0 0 200 200" class="w-full h-full">
+                                                <!-- Triangle -->
+                                                <polygon points="100,20 180,160 20,160" fill="none" stroke="#22c55e" stroke-width="2"></polygon>
+                                                
+                                                <!-- Labels -->
+                                                <text x="100" y="10" text-anchor="middle" font-size="12" fill="#059669" font-weight="bold">SCOPE</text>
+                                                <text x="195" y="170" text-anchor="middle" font-size="12" fill="#059669" font-weight="bold">TIME</text>
+                                                <text x="5" y="170" text-anchor="middle" font-size="12" fill="#059669" font-weight="bold">COST</text>
+                                                
+                                                <!-- Quality in center -->
+                                                <text x="100" y="110" text-anchor="middle" font-size="14" fill="#059669" font-weight="bold">QUALITY</text>
+                                                
+                                                <!-- Inner triangle outline representing quality -->
+                                                <polygon points="100,60 140,130 60,130" fill="none" stroke="#22c55e" stroke-width="1" stroke-dasharray="4"></polygon>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Understanding the Constraints</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Scope:</strong> The work that must be performed to deliver the product, service, or result with the specified features and functions</li>
+                                            <li><strong>Time:</strong> The time available to complete the project, often represented in a schedule with defined milestones and deadlines</li>
+                                            <li><strong>Cost:</strong> The budget allocated for the project, including resources, materials, equipment, and labor</li>
+                                            <li><strong>Quality:</strong> The degree to which the project fulfills requirements and meets stakeholder expectations (often impacted by adjustments to the other constraints)</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">The Balancing Act</h6>
+                                        <p class="text-xs mb-1">Changes to one constraint typically affect at least one of the others:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Increasing scope typically requires more time or cost (or both)</li>
+                                            <li>Reducing timeline often requires reducing scope or increasing cost</li>
+                                            <li>Reducing budget may require reducing scope or extending timeline</li>
+                                            <li>Maintaining high quality with constraints in flux typically requires adjustments to the others</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Project Success Factors</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Beyond the Triple Constraint</h6>
+                                            <p class="text-xs mb-1">While managing the triple constraint is important, successful projects require attention to many other factors:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Clear Objectives:</strong> Well-defined and measurable project goals</li>
+                                                <li><strong>Executive Support:</strong> Active engagement from leadership</li>
+                                                <li><strong>User Involvement:</strong> Continual feedback from end users and stakeholders</li>
+                                                <li><strong>Skilled Team:</strong> Competent team members with necessary expertise</li>
+                                                <li><strong>Effective Communication:</strong> Clear and consistent information sharing</li>
+                                                <li><strong>Change Management:</strong> Process for handling scope changes and other adjustments</li>
+                                                <li><strong>Risk Management:</strong> Proactive identification and mitigation of potential issues</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Measuring Project Success</h6>
+                                            <p class="text-xs mb-1">Different stakeholders may define success differently:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Project Management Success:</strong> Delivered on time, within budget, according to scope</li>
+                                                <li><strong>Product Success:</strong> Solution meets technical and quality requirements</li>
+                                                <li><strong>Business Success:</strong> Delivers intended business outcomes and benefits</li>
+                                                <li><strong>Strategic Success:</strong> Contributes to longer-term business goals and objectives</li>
+                                                <li><strong>Stakeholder Satisfaction:</strong> Meets expectations of key stakeholders</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Critical Success Factors at Dell</h6>
+                                            <p class="text-xs mb-1">Dell's project management approach emphasizes these key success factors:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Customer-Centric Focus:</strong> Ensuring projects deliver value to customers</li>
+                                                <li><strong>Business Case Alignment:</strong> Maintaining connection to business objectives</li>
+                                                <li><strong>Agile Decision Making:</strong> Empowering teams to make decisions quickly</li>
+                                                <li><strong>Cross-Functional Collaboration:</strong> Breaking down silos between departments</li>
+                                                <li><strong>Scalable Governance:</strong> Right-sized controls based on project complexity</li>
+                                                <li><strong>Continuous Learning:</strong> Implementing lessons from previous projects</li>
+                                                <li><strong>Technology Enablement:</strong> Leveraging tools to improve efficiency</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Common Project Challenges and Strategies</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Scope Management Challenges</h6>
+                                    <ul class="pl-4 text-xs mb-2">
+                                        <li>Scope creep (uncontrolled changes)</li>
+                                        <li>Unclear requirements</li>
+                                        <li>Gold plating (adding unnecessary features)</li>
+                                        <li>Stakeholder expectation misalignment</li>
+                                    </ul>
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Strategies</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Clear scope statement and WBS</li>
+                                        <li>Formal change control process</li>
+                                        <li>Regular stakeholder alignment</li>
+                                        <li>Requirements traceability matrix</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Schedule Management Challenges</h6>
+                                    <ul class="pl-4 text-xs mb-2">
+                                        <li>Unrealistic timelines</li>
+                                        <li>Task dependencies and bottlenecks</li>
+                                        <li>Resource availability conflicts</li>
+                                        <li>Estimation inaccuracies</li>
+                                    </ul>
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Strategies</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Historical data-based estimating</li>
+                                        <li>Critical path analysis</li>
+                                        <li>Buffer/contingency planning</li>
+                                        <li>Regular schedule reviews</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Cost Management Challenges</h6>
+                                    <ul class="pl-4 text-xs mb-2">
+                                        <li>Budget constraints</li>
+                                        <li>Unexpected expenses</li>
+                                        <li>Vendor and procurement issues</li>
+                                        <li>Inability to track actual costs</li>
+                                    </ul>
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Strategies</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Detailed cost baseline</li>
+                                        <li>Earned value management</li>
+                                        <li>Regular financial reviews</li>
+                                        <li>Procurement planning</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Dell Success Story: XPS Laptop Development</h6>
+                                <p class="text-xs mb-2">The development of Dell's premium XPS laptop line demonstrates effective management of the triple constraint:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Scope Management</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Prioritized features using MoSCoW method (Must-have, Should-have, Could-have, Won't-have)</li>
+                                            <li>Created detailed product requirement documents with clear acceptance criteria</li>
+                                            <li>Implemented structured change review process with executive oversight</li>
+                                            <li>Maintained feature backlog for future releases</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Schedule Management</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Used phased approach with parallel workstreams</li>
+                                            <li>Implemented critical chain methodology to identify and manage constraints</li>
+                                            <li>Created rolling wave planning for detailed near-term activities</li>
+                                            <li>Established early supplier involvement to reduce timeline risks</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Cost Management</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Developed detailed bottom-up cost estimation</li>
+                                            <li>Used value engineering to optimize cost/performance balance</li>
+                                            <li>Implemented tiered decision authority based on financial impact</li>
+                                            <li>Established regular cost review cadence with finance partners</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="text-xs italic mt-2 mb-0">Result: The project delivered a premium laptop that met quality expectations, launched on schedule for a key selling season, and maintained target margins - demonstrating how effective constraint management leads to project success.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Project Management Roles and Responsibilities</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Key Players in Project Success</h5>
+                        <p class="text-sm mb-3">Successful projects require clear roles and responsibilities. Understanding who does what ensures accountability, improves communication, and increases the likelihood of project success.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Core Project Team Roles</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Project Manager</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Overall responsibility for project planning and execution</li>
+                                            <li>Manages the triple constraint (scope, schedule, budget)</li>
+                                            <li>Leads the project team and coordinates resources</li>
+                                            <li>Communicates with stakeholders and reports on progress</li>
+                                            <li>Identifies and manages risks and issues</li>
+                                            <li>Ensures quality of deliverables</li>
+                                            <li>Facilitates decision-making and problem resolution</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Project Sponsor</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Executive-level champion who authorizes the project</li>
+                                            <li>Secures funding and resources</li>
+                                            <li>Provides strategic direction and priorities</li>
+                                            <li>Removes organizational obstacles</li>
+                                            <li>Makes critical decisions when escalated</li>
+                                            <li>Approves major deliverables and changes</li>
+                                            <li>Accountable for realizing business benefits</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Team Members</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Subject matter experts in specific disciplines</li>
+                                            <li>Execute assigned tasks and activities</li>
+                                            <li>Produce project deliverables</li>
+                                            <li>Provide expertise and recommendations</li>
+                                            <li>Report progress and raise issues</li>
+                                            <li>Participate in project meetings</li>
+                                            <li>Contribute to continuous improvement</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Extended Project Roles</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Stakeholders</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Individuals or groups affected by or interested in the project</li>
+                                                <li>Provide requirements and expectations</li>
+                                                <li>Review and approve deliverables (when appropriate)</li>
+                                                <li>May contribute resources or expertise</li>
+                                                <li>Can influence project decisions and outcomes</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Business Owner/Product Owner</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Represents the business interests in the project</li>
+                                                <li>Defines and prioritizes requirements</li>
+                                                <li>Makes day-to-day business decisions</li>
+                                                <li>Validates that deliverables meet business needs</li>
+                                                <li>Manages scope and feature prioritization</li>
+                                                <li>Accountable for product success and adoption</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Program Manager</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Manages multiple related projects to achieve broader objectives</li>
+                                                <li>Coordinates interdependencies between projects</li>
+                                                <li>Manages shared resources across projects</li>
+                                                <li>Ensures alignment with program strategy</li>
+                                                <li>Manages overall program risks and issues</li>
+                                                <li>Oversees benefits realization for the program</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Specialized Roles</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Project Coordinator:</strong> Provides administrative support to the project manager</li>
+                                                <li><strong>Business Analyst:</strong> Defines and documents business requirements</li>
+                                                <li><strong>Technical Lead:</strong> Provides technical direction and oversight</li>
+                                                <li><strong>Change Manager:</strong> Facilitates organizational change adoption</li>
+                                                <li><strong>Quality Assurance Lead:</strong> Ensures deliverables meet quality standards</li>
+                                                <li><strong>Scrum Master:</strong> Facilitates agile processes and removes impediments</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Project Management at Dell Technologies</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Project Manager Expectations</h6>
+                                    <p class="text-xs mb-1">Dell project managers are expected to be:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Strategic partners to the business</li>
+                                        <li>Adaptable to different methodologies</li>
+                                        <li>Customer-centric in approach</li>
+                                        <li>Collaborative across functions</li>
+                                        <li>Data-driven in decision making</li>
+                                        <li>Agile in responding to change</li>
+                                        <li>Technology-savvy and innovative</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Competency Areas</h6>
+                                    <p class="text-xs mb-1">Key competencies for Dell project managers:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Technical:</strong> Project management methods, tools, and processes</li>
+                                        <li><strong>Business:</strong> Industry knowledge and business acumen</li>
+                                        <li><strong>Leadership:</strong> Team motivation and stakeholder management</li>
+                                        <li><strong>Strategic:</strong> Alignment with organizational goals</li>
+                                        <li><strong>Digital:</strong> Technology leverage and digital fluency</li>
+                                        <li><strong>Adaptive:</strong> Flexibility in approach and methodology</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Career Progression</h6>
+                                    <p class="text-xs mb-1">Project management career path at Dell:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Project Coordinator → Project Manager</li>
+                                        <li>Project Manager → Senior Project Manager</li>
+                                        <li>Senior PM → Program Manager</li>
+                                        <li>Program Manager → Portfolio Manager</li>
+                                        <li>Portfolio Manager → Director, PMO</li>
+                                        <li>Specialization in methodologies, domains, or industries</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dell's Project Management Organization Structure</h6>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Organizational Approaches</h6>
+                                        <p class="text-xs mb-1">Dell uses different organizational structures depending on project type:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Functional:</strong> PMs report to functional departments for specialized projects</li>
+                                            <li><strong>Matrix:</strong> PMs balance functional reporting with project responsibilities</li>
+                                            <li><strong>Projectized:</strong> Dedicated teams for major strategic initiatives</li>
+                                            <li><strong>PMO-led:</strong> Project Management Office provides standards and governance</li>
+                                            <li><strong>Agile Teams:</strong> Cross-functional teams with scrum masters for software development</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Dell Project Management Office (PMO)</h6>
+                                        <p class="text-xs mb-1">The Dell PMO provides:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Standardized methodology and processes</li>
+                                            <li>Project management tools and templates</li>
+                                            <li>Portfolio management and prioritization</li>
+                                            <li>PM coaching and skill development</li>
+                                            <li>Resource management support</li>
+                                            <li>Project health monitoring and reporting</li>
+                                            <li>Cross-project dependency management</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Project Management Tools and Technologies</h5>
+                        <p class="text-sm mb-3">Modern project management relies on a variety of tools and technologies to plan, execute, and monitor projects effectively. Dell Technologies utilizes a range of tools depending on project type, methodology, and team needs.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Common Tool Categories</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Planning and Scheduling</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Gantt chart tools for timeline visualization</li>
+                                            <li>Critical path analysis software</li>
+                                            <li>Resource allocation and leveling tools</li>
+                                            <li>Work breakdown structure builders</li>
+                                            <li>Portfolio management solutions</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Team Collaboration</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Document sharing and co-editing platforms</li>
+                                            <li>Virtual meeting and videoconferencing</li>
+                                            <li>Team messaging and communication</li>
+                                            <li>Knowledge management systems</li>
+                                            <li>Workflow automation tools</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Methodology-Specific Tools</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Agile boards and backlog management</li>
+                                            <li>Kanban visualization boards</li>
+                                            <li>Sprint planning and velocity tracking</li>
+                                            <li>Requirements management systems</li>
+                                            <li>Risk registers and management tools</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Dell's Project Management Toolkit</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Enterprise Project Management</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Microsoft Project for detailed project planning</li>
+                                            <li>Project Server/Project Online for portfolio management</li>
+                                            <li>Custom internal PMO tools for governance and reporting</li>
+                                            <li>Financial management systems integrated with project tools</li>
+                                            <li>Executive dashboards for program oversight</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Agile and Development</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>JIRA for issue tracking and agile management</li>
+                                            <li>Confluence for documentation and knowledge sharing</li>
+                                            <li>Azure DevOps for development projects and CI/CD pipelines</li>
+                                            <li>Miro and similar tools for virtual whiteboarding</li>
+                                            <li>Custom agile metrics dashboards</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Collaboration and Communication</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Microsoft Teams for communication and meetings</li>
+                                            <li>SharePoint for document management</li>
+                                            <li>Power BI for data visualization and reporting</li>
+                                            <li>OneNote for meeting notes and action tracking</li>
+                                            <li>Custom stakeholder management solutions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Best Practices for Tool Selection and Use</h6>
+                            <ul class="pl-4 text-xs mb-2">
+                                <li><strong>Right-size for project needs:</strong> Match tool complexity to project complexity</li>
+                                <li><strong>Ensure team capability:</strong> Consider team familiarity and learning curve</li>
+                                <li><strong>Focus on integration:</strong> Prioritize tools that work well together</li>
+                                <li><strong>Balance standardization with flexibility:</strong> Use common platforms but allow for customization</li>
+                                <li><strong>Prioritize user experience:</strong> Tools should enhance, not hinder, productivity</li>
+                                <li><strong>Consider stakeholder access:</strong> Ensure appropriate visibility for different audiences</li>
+                                <li><strong>Enable data-driven decisions:</strong> Tools should provide actionable insights</li>
+                            </ul>
+                            <p class="text-xs italic mb-0">At Dell, the emphasis is on purposeful tool selection rather than tool proliferation. The right tools should support your project management approach, not define it. Start with clear processes, then identify tools that enable those processes efficiently.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.pmi.org/pmbok-guide-standards" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-book-open-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">PMBOK® Guide</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Project Management Institute • Foundational PM Standards</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.scrumguides.org/scrum-guide.html" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-arrow-go-forward-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Scrum Guide</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Schwaber &amp; Sutherland • Official Scrum Framework Guide</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.delltechnologies.com/en-us/services/consulting-services/project-management.htm" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-dell-fill"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Dell Project Management</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Dell Technologies • Project Management Services</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Project Methodology Selection Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll analyze different project scenarios and determine the most appropriate project management methodology based on the characteristics of each situation.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Instructions:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Review the project scenarios below</li>
+                                    <li>For each scenario, select the most appropriate methodology (Waterfall, Agile, Hybrid, Lean, or Kanban)</li>
+                                    <li>Provide a brief justification for your selection</li>
+                                    <li>Consider the key characteristics of each methodology and how they align with the project needs</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Evaluation Criteria:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Alignment of methodology with project type</li>
+                                    <li>Consideration of stakeholder dynamics</li>
+                                    <li>Appropriateness for requirements clarity</li>
+                                    <li>Suitability for project constraints</li>
+                                    <li>Organizational context alignment</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Project Scenarios</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <h6 class="text-blue-700 dark:text-blue-400 font-medium mb-1">Scenario 1: Data Center Migration</h6>
+                                    <p class="text-xs mb-2">Dell is migrating a major customer's data center to a new location. The project has:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Clear requirements and specifications</li>
+                                        <li>Strict regulatory compliance needs</li>
+                                        <li>Fixed timeline with a non-negotiable cutover date</li>
+                                        <li>Detailed technical documentation requirements</li>
+                                        <li>Multiple dependent workstreams and vendors</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <h6 class="text-green-700 dark:text-green-400 font-medium mb-1">Scenario 2: Customer Portal Development</h6>
+                                    <p class="text-xs mb-2">Dell is developing a new customer self-service portal. The project has:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>High-level requirements that will evolve as users provide feedback</li>
+                                        <li>Need for frequent customer interaction and testing</li>
+                                        <li>Flexible launch date with phased deployment options</li>
+                                        <li>Cross-functional team with developers, designers, and business analysts</li>
+                                        <li>Opportunity to deliver incremental value to users</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-purple-700 dark:text-purple-400 font-medium mb-1">Scenario 3: Manufacturing Process Improvement</h6>
+                                    <p class="text-xs mb-2">Dell is optimizing its laptop assembly line. The project has:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Focus on reducing waste and improving efficiency</li>
+                                        <li>Need to maintain production during implementation</li>
+                                        <li>Multiple small improvement opportunities</li>
+                                        <li>Value stream mapping as a key activity</li>
+                                        <li>Strong emphasis on metrics and measurement</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                    <h6 class="text-amber-700 dark:text-amber-400 font-medium mb-1">Scenario 4: New Product Launch</h6>
+                                    <p class="text-xs mb-2">Dell is launching a new server product line. The project has:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Hardware development with fixed specifications</li>
+                                        <li>Software components with evolving requirements</li>
+                                        <li>Regulatory testing and certification needs</li>
+                                        <li>Cross-functional teams across engineering, marketing, and operations</li>
+                                        <li>Fixed target launch date for a major industry event</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Scenario 1: Data Center Migration</label>
+                                <select class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm mb-2">
+                                    <option selected="" disabled="">Select methodology...</option>
+                                    <option>Waterfall</option>
+                                    <option>Agile</option>
+                                    <option>Hybrid</option>
+                                    <option>Lean</option>
+                                    <option>Kanban</option>
+                                </select>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="2" placeholder="Explain your selection..."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Scenario 2: Customer Portal Development</label>
+                                <select class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm mb-2">
+                                    <option selected="" disabled="">Select methodology...</option>
+                                    <option>Waterfall</option>
+                                    <option>Agile</option>
+                                    <option>Hybrid</option>
+                                    <option>Lean</option>
+                                    <option>Kanban</option>
+                                </select>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="2" placeholder="Explain your selection..."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Scenario 3: Manufacturing Process Improvement</label>
+                                <select class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm mb-2">
+                                    <option selected="" disabled="">Select methodology...</option>
+                                    <option>Waterfall</option>
+                                    <option>Agile</option>
+                                    <option>Hybrid</option>
+                                    <option>Lean</option>
+                                    <option>Kanban</option>
+                                </select>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="2" placeholder="Explain your selection..."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Scenario 4: New Product Launch</label>
+                                <select class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm mb-2">
+                                    <option selected="" disabled="">Select methodology...</option>
+                                    <option>Waterfall</option>
+                                    <option>Agile</option>
+                                    <option>Hybrid</option>
+                                    <option>Lean</option>
+                                    <option>Kanban</option>
+                                </select>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="2" placeholder="Explain your selection..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Answers</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-change-management">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Kotter's Change Management</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-scope-management">
+                        <span>Next: Scope Management</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

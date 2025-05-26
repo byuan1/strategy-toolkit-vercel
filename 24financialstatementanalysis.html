@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Financial Acumen</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-financial-statements">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Financial Statement Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-kpi-metrics">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>KPI Analysis & Metrics</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-valuation">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Valuation Fundamentals</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-business-case">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Business Case Development</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-cost-analysis">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Cost Analysis & Optimization</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-investment">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Investment Prioritization</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">47%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 47%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>7/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Problem Solving</span>
+                                <span>7/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>1/6 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Financial Statement Analysis Topic -->
+            <section id="topic-financial-statements" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-file-chart-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Financial Statement Analysis</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Financial Acumen</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the structure and purpose of the three main financial statements</li>
+                            <li>Learn to analyze financial statements to assess business performance</li>
+                            <li>Develop skills to calculate and interpret key financial ratios</li>
+                            <li>Apply financial statement analysis to Dell's business context</li>
+                            <li>Recognize financial trends and patterns that inform strategic decisions</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Financial Statements</h4>
+                    <p>Financial statements are the formalized records that outline the financial activities and position of a business. They provide a structured view of a company's financial performance, strength, and operational efficiency. For strategic decision-makers, these statements serve as critical tools for understanding a company's health, identifying trends, comparing performance against competitors, and making informed business decisions.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Financial Statement Analysis Matters</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Strategic decision support:</strong> Provides data-driven foundation for business decisions</li>
+                            <li><strong>Performance evaluation:</strong> Helps assess past performance and current financial health</li>
+                            <li><strong>Trend identification:</strong> Reveals patterns and directional shifts in the business</li>
+                            <li><strong>Competitor benchmarking:</strong> Enables comparison against industry peers and competitors</li>
+                            <li><strong>Resource allocation:</strong> Informs decisions about where to invest or reduce spending</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">The Three Core Financial Statements</h5>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                                        <div class="flex items-center mb-3">
+                                            <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mr-3">
+                                                <i class="ri-scales-3-line"></i>
+                                            </div>
+                                            <h6 class="font-medium text-blue-700 dark:text-blue-300">Balance Sheet</h6>
+                                        </div>
+                                        <p class="text-sm mb-2">A snapshot of the company's financial position at a specific point in time.</p>
+                                        <p class="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1">Shows:</p>
+                                        <ul class="text-xs pl-4 mb-0">
+                                            <li>Assets (what the company owns)</li>
+                                            <li>Liabilities (what the company owes)</li>
+                                            <li>Shareholders' equity (net worth)</li>
+                                        </ul>
+                                        <p class="text-xs mt-2 mb-0 italic text-center">Assets = Liabilities + Equity</p>
+                                    </div>
+                                    
+                                    <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                                        <div class="flex items-center mb-3">
+                                            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 mr-3">
+                                                <i class="ri-funds-line"></i>
+                                            </div>
+                                            <h6 class="font-medium text-green-700 dark:text-green-300">Income Statement</h6>
+                                        </div>
+                                        <p class="text-sm mb-2">A report of the company's financial performance over a specific period.</p>
+                                        <p class="text-xs font-medium text-green-700 dark:text-green-300 mb-1">Shows:</p>
+                                        <ul class="text-xs pl-4 mb-0">
+                                            <li>Revenue (money earned)</li>
+                                            <li>Expenses (costs incurred)</li>
+                                            <li>Profit or loss (bottom line)</li>
+                                        </ul>
+                                        <p class="text-xs mt-2 mb-0 italic text-center">Revenue - Expenses = Profit</p>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
+                                        <div class="flex items-center mb-3">
+                                            <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-600 dark:text-purple-400 mr-3">
+                                                <i class="ri-exchange-funds-line"></i>
+                                            </div>
+                                            <h6 class="font-medium text-purple-700 dark:text-purple-300">Cash Flow Statement</h6>
+                                        </div>
+                                        <p class="text-sm mb-2">A record of the actual cash moving in and out of the business.</p>
+                                        <p class="text-xs font-medium text-purple-700 dark:text-purple-300 mb-1">Shows:</p>
+                                        <ul class="text-xs pl-4 mb-0">
+                                            <li>Operating cash flows (from day-to-day business)</li>
+                                            <li>Investing cash flows (from assets)</li>
+                                            <li>Financing cash flows (from debt/equity)</li>
+                                        </ul>
+                                        <p class="text-xs mt-2 mb-0 italic text-center">Beginning Cash + Net Cash Flow = Ending Cash</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-center mt-3 text-gray-500 dark:text-gray-400">Together, these statements provide a comprehensive view of a company's financial health and performance</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Balance Sheet Analysis</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Understanding the Balance Sheet Structure</h5>
+                        <p class="text-sm mb-3">The balance sheet provides a snapshot of a company's financial position at a specific point in time, showing what the company owns (assets), what it owes (liabilities), and the residual value belonging to shareholders (equity).</p>
+                        
+                        <div class="overflow-x-auto mb-3">
+                            <div class="min-w-[600px]">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-sm font-medium mb-2">Assets</h6>
+                                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                            <div class="mb-2">
+                                                <p class="text-sm font-medium mb-1">Current Assets</p>
+                                                <ul class="pl-5 text-xs mb-0">
+                                                    <li>Cash and Cash Equivalents</li>
+                                                    <li>Short-term Investments</li>
+                                                    <li>Accounts Receivable</li>
+                                                    <li>Inventory</li>
+                                                    <li>Prepaid Expenses</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium mb-1">Non-Current Assets</p>
+                                                <ul class="pl-5 text-xs mb-0">
+                                                    <li>Property, Plant, and Equipment</li>
+                                                    <li>Intangible Assets</li>
+                                                    <li>Goodwill</li>
+                                                    <li>Long-term Investments</li>
+                                                    <li>Deferred Tax Assets</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-sm font-medium mb-2">Liabilities & Equity</h6>
+                                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                            <div class="mb-2">
+                                                <p class="text-sm font-medium mb-1">Current Liabilities</p>
+                                                <ul class="pl-5 text-xs mb-0">
+                                                    <li>Accounts Payable</li>
+                                                    <li>Short-term Debt</li>
+                                                    <li>Current Portion of Long-term Debt</li>
+                                                    <li>Accrued Expenses</li>
+                                                    <li>Deferred Revenue</li>
+                                                </ul>
+                                            </div>
+                                            <div class="mb-2">
+                                                <p class="text-sm font-medium mb-1">Non-Current Liabilities</p>
+                                                <ul class="pl-5 text-xs mb-0">
+                                                    <li>Long-term Debt</li>
+                                                    <li>Pension Obligations</li>
+                                                    <li>Deferred Tax Liabilities</li>
+                                                    <li>Long-term Lease Obligations</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium mb-1">Shareholders' Equity</p>
+                                                <ul class="pl-5 text-xs mb-0">
+                                                    <li>Common Stock</li>
+                                                    <li>Additional Paid-in Capital</li>
+                                                    <li>Retained Earnings</li>
+                                                    <li>Treasury Stock</li>
+                                                    <li>Accumulated Other Comprehensive Income</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Balance Sheet Insights</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li><strong>Liquidity:</strong> Ability to meet short-term obligations</li>
+                                    <li><strong>Solvency:</strong> Long-term financial stability</li>
+                                    <li><strong>Asset utilization:</strong> Efficiency in using assets</li>
+                                    <li><strong>Capital structure:</strong> Mix of debt and equity financing</li>
+                                    <li><strong>Growth indicators:</strong> Changes in asset/liability composition</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Strategic Questions to Consider</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Is the company maintaining adequate liquidity?</li>
+                                    <li>How efficiently is the company using its assets?</li>
+                                    <li>Is the debt level sustainable and appropriate?</li>
+                                    <li>What trends are evident in working capital?</li>
+                                    <li>How does the capital structure compare to competitors?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Example: Dell Technologies Simplified Balance Sheet Analysis</h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-900">
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Key Metrics ($ Billions)</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">FY2022</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">FY2023</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">% Change</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Analysis</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Cash & Investments</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$9.5</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$8.3</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-red-600 dark:text-red-400">-12.6%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Cash position decreased, potentially due to debt repayment or strategic investments</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Accounts Receivable</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$12.9</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$11.2</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-red-600 dark:text-red-400">-13.2%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Improved collection efficiency or possibly lower sales volume near year-end</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Inventory</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$5.9</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$5.2</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-red-600 dark:text-red-400">-11.9%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Supply chain optimization or adjusted inventory strategy in changing market</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Total Assets</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$123.4</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$110.1</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-red-600 dark:text-red-400">-10.8%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Overall decrease in company size, possibly through divestitures or strategic restructuring</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Total Debt</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$27.8</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$23.6</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">-15.1%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Significant debt reduction, strengthening the balance sheet and reducing interest expenses</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Shareholders' Equity</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$12.8</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$15.1</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+17.9%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Increased equity position indicates retained profits and stronger financial foundation</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                            <h6 class="text-sm font-medium mb-1">Strategic Insights:</h6>
+                            <ol class="pl-5 text-xs mb-0">
+                                <li>Dell appears to be deliberately deleveraging by reducing debt significantly</li>
+                                <li>Working capital efficiency has improved with lower inventory and receivables</li>
+                                <li>The increase in shareholders' equity suggests strong profitability and retention of earnings</li>
+                                <li>Overall balance sheet has become leaner but stronger, with improved debt-to-equity ratio</li>
+                                <li>Financial flexibility has increased, potentially positioning for future strategic investments</li>
+                            </ol>
+                        </div>
+                        <p class="text-xs mt-2 mb-0 italic text-gray-500 dark:text-gray-400 text-center">Note: Data simplified for educational purposes. For actual analysis, refer to Dell's official financial statements.</p>
+                    </div>
+                    
+                    <h4>Income Statement Analysis</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Understanding the Income Statement Structure</h5>
+                        <p class="text-sm mb-3">The income statement (also called profit and loss statement or P&L) shows a company's revenues, costs, and expenses over a specific period, revealing whether the company is operating at a profit or loss.</p>
+                        
+                        <div class="overflow-x-auto mb-3">
+                            <div class="min-w-[600px]">
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <table class="w-full text-sm">
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-2 font-medium">Revenue</td>
+                                                <td class="p-2">Total sales from products and services</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
+                                                <td class="p-2 pl-6">- Cost of Goods Sold (COGS)</td>
+                                                <td class="p-2">Direct costs attributable to product/service delivery</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700 font-medium text-green-700 dark:text-green-400">
+                                                <td class="p-2">=&nbsp;&nbsp;Gross Profit</td>
+                                                <td class="p-2">Revenue minus COGS</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
+                                                <td class="p-2 pl-6">- Operating Expenses</td>
+                                                <td class="p-2">Costs of running the business</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700 pl-10 text-gray-600 dark:text-gray-400">
+                                                <td class="p-2 pl-10">• Sales & Marketing</td>
+                                                <td class="p-2">Expenses for promoting and selling products/services</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 pl-10 text-gray-600 dark:text-gray-400">
+                                                <td class="p-2 pl-10">• Research & Development</td>
+                                                <td class="p-2">Costs for innovation and new product development</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700 pl-10 text-gray-600 dark:text-gray-400">
+                                                <td class="p-2 pl-10">• General & Administrative</td>
+                                                <td class="p-2">Overhead costs for running the organization</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700 font-medium text-blue-700 dark:text-blue-400">
+                                                <td class="p-2">=&nbsp;&nbsp;Operating Income (EBIT)</td>
+                                                <td class="p-2">Earnings before interest and taxes</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
+                                                <td class="p-2 pl-6">- Interest Expense</td>
+                                                <td class="p-2">Cost of borrowed money</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-2 pl-6">+ Other Income/Expenses</td>
+                                                <td class="p-2">Non-operating revenue or costs</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700 font-medium text-indigo-700 dark:text-indigo-400">
+                                                <td class="p-2">=&nbsp;&nbsp;Income Before Taxes</td>
+                                                <td class="p-2">Profit before tax obligations</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
+                                                <td class="p-2 pl-6">- Income Taxes</td>
+                                                <td class="p-2">Tax obligations to government authorities</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700 font-medium text-purple-700 dark:text-purple-400">
+                                                <td class="p-2">=&nbsp;&nbsp;Net Income</td>
+                                                <td class="p-2">Bottom line profit or loss</td>
+                                            </tr>
+                                            <tr class="bg-gray-50 dark:bg-gray-900">
+                                                <td class="p-2 pl-6">Earnings Per Share (EPS)</td>
+                                                <td class="p-2">Net income divided by outstanding shares</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Income Statement Insights</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li><strong>Profitability:</strong> Overall financial performance</li>
+                                    <li><strong>Margin analysis:</strong> Efficiency in revenue conversion</li>
+                                    <li><strong>Expense structure:</strong> Cost control and allocation</li>
+                                    <li><strong>Growth patterns:</strong> Trends in revenue and earnings</li>
+                                    <li><strong>Operational efficiency:</strong> Cost management effectiveness</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Strategic Questions to Consider</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Is revenue growth sustainable and from what sources?</li>
+                                    <li>Are margins expanding, stable, or contracting?</li>
+                                    <li>How is the expense structure changing over time?</li>
+                                    <li>Is the company generating sufficient profit to fund its strategy?</li>
+                                    <li>How do operating metrics compare to competitors?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Example: Dell Technologies Simplified Income Statement Analysis</h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-900">
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Key Metrics ($ Billions)</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">FY2022</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">FY2023</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">% Change</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Analysis</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Revenue</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$101.2</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$102.3</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+1.1%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Modest growth in challenging market conditions</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Gross Profit</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$31.2</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$33.5</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+7.4%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Significant improvement in gross margin, suggesting favorable product mix or pricing power</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Gross Margin %</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">30.8%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">32.7%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+1.9 pts</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Strong margin expansion despite modest revenue growth</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Operating Expenses</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$22.4</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$21.8</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">-2.7%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Effective cost control measures and operational efficiency improvements</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Operating Income</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$8.8</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$11.7</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+32.9%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Substantial operating leverage from gross margin expansion and cost reductions</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Operating Margin %</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">8.7%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">11.4%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+2.7 pts</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Significant profitability improvement from operations</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Net Income</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$5.6</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$8.4</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+50.0%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Dramatic increase in bottom-line profitability, enhanced by reduced interest expense</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                            <h6 class="text-sm font-medium mb-1">Strategic Insights:</h6>
+                            <ol class="pl-5 text-xs mb-0">
+                                <li>Dell has successfully shifted toward higher-margin products/services even with modest revenue growth</li>
+                                <li>Operational efficiency initiatives have clearly yielded results with declining operating expenses</li>
+                                <li>The business model is demonstrating significant operating leverage, where small revenue increases translate to larger profit increases</li>
+                                <li>Debt reduction (seen in the balance sheet) has likely contributed to improved net income by reducing interest expenses</li>
+                                <li>The financial performance suggests Dell is prioritizing profitability over pure revenue growth in its strategy</li>
+                            </ol>
+                        </div>
+                        <p class="text-xs mt-2 mb-0 italic text-gray-500 dark:text-gray-400 text-center">Note: Data simplified for educational purposes. For actual analysis, refer to Dell's official financial statements.</p>
+                    </div>
+                    
+                    <h4>Cash Flow Statement Analysis</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Understanding the Cash Flow Statement Structure</h5>
+                        <p class="text-sm mb-3">The cash flow statement tracks the actual movement of cash into and out of the business over a specific period. It helps reconcile the gap between reported profits and actual cash position, showing how the company generates and uses its cash.</p>
+                        
+                        <div class="overflow-x-auto mb-3">
+                            <div class="min-w-[600px]">
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-sm font-medium mb-2">1. Cash Flow from Operating Activities</h6>
+                                        <div class="ml-5">
+                                            <p class="text-xs mb-1">Shows cash generated from day-to-day business operations</p>
+                                            <ul class="pl-5 text-xs mb-0">
+                                                <li>Starts with net income</li>
+                                                <li>Adjusts for non-cash items (depreciation, amortization)</li>
+                                                <li>Adjusts for changes in working capital (receivables, inventory, payables)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6 class="text-sm font-medium mb-2">2. Cash Flow from Investing Activities</h6>
+                                        <div class="ml-5">
+                                            <p class="text-xs mb-1">Shows cash used for or generated from investment assets</p>
+                                            <ul class="pl-5 text-xs mb-0">
+                                                <li>Capital expenditures (equipment, facilities)</li>
+                                                <li>Acquisitions or divestments of businesses</li>
+                                                <li>Purchases or sales of investments</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6 class="text-sm font-medium mb-2">3. Cash Flow from Financing Activities</h6>
+                                        <div class="ml-5">
+                                            <p class="text-xs mb-1">Shows cash flows related to funding the business</p>
+                                            <ul class="pl-5 text-xs mb-0">
+                                                <li>Debt issuance or repayment</li>
+                                                <li>Equity issuance or share repurchases</li>
+                                                <li>Dividend payments</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-sm font-medium mb-2">4. Net Change in Cash Position</h6>
+                                        <div class="ml-5">
+                                            <p class="text-xs mb-1">Sum of the three categories above</p>
+                                            <ul class="pl-5 text-xs mb-0">
+                                                <li>Beginning cash balance + Net change = Ending cash balance</li>
+                                                <li>Reconciles to the cash position on the balance sheet</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Cash Flow Insights</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li><strong>Cash generation:</strong> Ability to produce cash from operations</li>
+                                    <li><strong>Investment patterns:</strong> Capital allocation priorities</li>
+                                    <li><strong>Financing decisions:</strong> Debt management and shareholder returns</li>
+                                    <li><strong>Free cash flow:</strong> Cash available after essential spending</li>
+                                    <li><strong>Cash conversion:</strong> Efficiency in turning profits to cash</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Strategic Questions to Consider</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Is the business generating sufficient operating cash flow?</li>
+                                    <li>How is capital being allocated among different priorities?</li>
+                                    <li>What is the relationship between reported profits and cash flow?</li>
+                                    <li>Is the company self-funding or dependent on external financing?</li>
+                                    <li>What trends are evident in free cash flow generation?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Example: Dell Technologies Simplified Cash Flow Analysis</h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-900">
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Key Metrics ($ Billions)</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">FY2022</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">FY2023</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">% Change</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Analysis</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Net Income</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$5.6</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$8.4</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+50.0%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Substantial improvement in profitability</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Operating Cash Flow</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$10.3</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$13.1</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+27.2%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Strong cash generation from business operations with working capital improvements</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Cash Flow to Net Income Ratio</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1.84x</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1.56x</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-red-600 dark:text-red-400">-15.2%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Cash flow growth not keeping pace with profit growth, suggesting changing working capital dynamics</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Capital Expenditures</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$2.1</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$2.4</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-red-600 dark:text-red-400">+14.3%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Increased investment in infrastructure and capabilities</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Free Cash Flow</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$8.2</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$10.7</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+30.5%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Strong discretionary cash flow after capital investments</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Debt Repayment</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$7.4</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$5.8</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">-21.6%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Continued focus on deleveraging but at a reduced pace</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Share Repurchases</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$1.1</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$4.2</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+281.8%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Significant increase in returning cash to shareholders</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-3 p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                            <h6 class="text-sm font-medium mb-1">Strategic Insights:</h6>
+                            <ol class="pl-5 text-xs mb-0">
+                                <li>Dell is generating robust and growing cash flows from operations, demonstrating strong business fundamentals</li>
+                                <li>The company has balanced multiple cash priorities: increasing capital investments, continuing debt reduction, and significantly expanding share repurchases</li>
+                                <li>The shift from debt reduction to share repurchases suggests a transition in capital allocation strategy as the balance sheet has strengthened</li>
+                                <li>Strong free cash flow generation provides Dell with strategic flexibility for future investments or shareholder returns</li>
+                                <li>The decrease in cash flow to net income ratio bears monitoring to ensure quality of earnings remains strong</li>
+                            </ol>
+                        </div>
+                        <p class="text-xs mt-2 mb-0 italic text-gray-500 dark:text-gray-400 text-center">Note: Data simplified for educational purposes. For actual analysis, refer to Dell's official financial statements.</p>
+                    </div>
+                    
+                    <h4>Financial Ratio Analysis</h4>
+                    <p>Financial ratios provide standardized metrics for evaluating a company's performance and comparing it against historical trends and industry benchmarks. They help translate raw financial data into meaningful insights about different aspects of the business.</p>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Key Financial Ratio Categories</h5>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Profitability Ratios</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <table class="w-full text-sm">
+                                        <thead>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <th class="p-1 text-left">Ratio</th>
+                                                <th class="p-1 text-left">Formula</th>
+                                                <th class="p-1 text-left">Insights</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1 font-medium">Gross Margin</td>
+                                                <td class="p-1">Gross Profit ÷ Revenue</td>
+                                                <td class="p-1 text-xs">Efficiency in production and pricing</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1 font-medium">Operating Margin</td>
+                                                <td class="p-1">Operating Income ÷ Revenue</td>
+                                                <td class="p-1 text-xs">Operational efficiency and cost control</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1 font-medium">Net Profit Margin</td>
+                                                <td class="p-1">Net Income ÷ Revenue</td>
+                                                <td class="p-1 text-xs">Overall profitability after all costs</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-1 font-medium">Return on Assets (ROA)</td>
+                                                <td class="p-1">Net Income ÷ Total Assets</td>
+                                                <td class="p-1 text-xs">Efficiency in using assets to generate profit</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Liquidity Ratios</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <table class="w-full text-sm">
+                                        <thead>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <th class="p-1 text-left">Ratio</th>
+                                                <th class="p-1 text-left">Formula</th>
+                                                <th class="p-1 text-left">Insights</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1 font-medium">Current Ratio</td>
+                                                <td class="p-1">Current Assets ÷ Current Liabilities</td>
+                                                <td class="p-1 text-xs">Short-term debt payment capability</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1 font-medium">Quick Ratio</td>
+                                                <td class="p-1">(Current Assets - Inventory) ÷ Current Liabilities</td>
+                                                <td class="p-1 text-xs">Immediate debt payment capability</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-1 font-medium">Cash Ratio</td>
+                                                <td class="p-1">Cash & Equivalents ÷ Current Liabilities</td>
+                                                <td class="p-1 text-xs">Ability to cover short-term obligations with cash</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Efficiency Ratios</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <table class="w-full text-sm">
+                                        <thead>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <th class="p-1 text-left">Ratio</th>
+                                                <th class="p-1 text-left">Formula</th>
+                                                <th class="p-1 text-left">Insights</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1 font-medium">Inventory Turnover</td>
+                                                <td class="p-1">COGS ÷ Average Inventory</td>
+                                                <td class="p-1 text-xs">Efficiency in managing inventory</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1 font-medium">Receivables Turnover</td>
+                                                <td class="p-1">Revenue ÷ Average Accounts Receivable</td>
+                                                <td class="p-1 text-xs">Efficiency in collecting payments</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-1 font-medium">Asset Turnover</td>
+                                                <td class="p-1">Revenue ÷ Average Total Assets</td>
+                                                <td class="p-1 text-xs">Efficiency in using assets to generate sales</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Leverage Ratios</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <table class="w-full text-sm">
+                                        <thead>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <th class="p-1 text-left">Ratio</th>
+                                                <th class="p-1 text-left">Formula</th>
+                                                <th class="p-1 text-left">Insights</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1 font-medium">Debt-to-Equity</td>
+                                                <td class="p-1">Total Debt ÷ Total Equity</td>
+                                                <td class="p-1 text-xs">Financial risk and capital structure</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1 font-medium">Debt-to-Assets</td>
+                                                <td class="p-1">Total Debt ÷ Total Assets</td>
+                                                <td class="p-1 text-xs">Proportion of assets financed by debt</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-1 font-medium">Interest Coverage</td>
+                                                <td class="p-1">EBIT ÷ Interest Expense</td>
+                                                <td class="p-1 text-xs">Ability to meet interest payment obligations</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Example: Dell Technologies Key Financial Ratios Analysis</h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-900">
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Ratio</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">FY2022</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">FY2023</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">Change</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-right">Industry Avg</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Analysis</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Profitability -->
+                                    <tr class="bg-blue-50 dark:bg-blue-900/20">
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium" colspan="6">Profitability Ratios</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Gross Margin %</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">30.8%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">32.7%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+1.9 pts</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">31.5%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Improved above industry average, indicating stronger pricing power or favorable cost structure</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Operating Margin %</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">8.7%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">11.4%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+2.7 pts</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">9.8%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Significant outperformance vs. industry, demonstrating superior operational efficiency</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Return on Assets</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">4.5%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">7.6%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+3.1 pts</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">5.7%</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Dramatically improved asset utilization, now exceeding industry benchmarks</td>
+                                    </tr>
+                                    
+                                    <!-- Liquidity -->
+                                    <tr class="bg-green-50 dark:bg-green-900/20">
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium" colspan="6">Liquidity Ratios</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Current Ratio</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1.31</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1.36</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+0.05</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1.25</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Healthy short-term liquidity position above industry average</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Quick Ratio</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1.05</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1.09</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+0.04</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.98</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Strong immediate liquidity even excluding inventory</td>
+                                    </tr>
+                                    
+                                    <!-- Efficiency -->
+                                    <tr class="bg-purple-50 dark:bg-purple-900/20">
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium" colspan="6">Efficiency Ratios</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Inventory Turnover</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">15.2</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">17.4</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+2.2</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">12.8</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Superior inventory management compared to competitors</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Asset Turnover</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.82</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.93</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+0.11</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">0.87</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Improving asset utilization efficiency, now above industry average</td>
+                                    </tr>
+                                    
+                                    <!-- Leverage -->
+                                    <tr class="bg-amber-50 dark:bg-amber-900/20">
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium" colspan="6">Leverage Ratios</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Debt-to-Equity</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">2.17</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1.56</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">-0.61</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">1.82</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Substantial deleveraging has strengthened the balance sheet beyond industry norms</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">Interest Coverage</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">6.8</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">11.3</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-green-600 dark:text-green-400">+4.5</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">7.2</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">Very strong ability to service debt obligations with operating profits</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                            <h6 class="text-sm font-medium mb-1">Integrated Analysis:</h6>
+                            <ol class="pl-5 text-xs mb-0">
+                                <li>Dell demonstrates a holistic improvement across all key financial ratio categories, indicating strong strategic execution</li>
+                                <li>The company has significantly outperformed industry averages in profitability metrics while building a stronger balance sheet</li>
+                                <li>Operational improvements are evident in both margin expansion and efficiency metrics</li>
+                                <li>The deleveraging strategy has significantly reduced financial risk while improving profitability metrics</li>
+                                <li>The combination of strong liquidity, reduced leverage, and superior operational performance positions Dell well for future growth opportunities or navigating market uncertainties</li>
+                            </ol>
+                        </div>
+                        <p class="text-xs mt-2 mb-0 italic text-gray-500 dark:text-gray-400 text-center">Note: Data and industry averages simplified for educational purposes. For actual analysis, refer to Dell's official financial statements and industry reports.</p>
+                    </div>
+                    
+                    <h4>Linking Financial Analysis to Strategic Decision-Making</h4>
+                    <p>Financial statement analysis is most valuable when it directly informs strategic business decisions. Here's how to connect financial insights to strategic choices across different functional areas:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h5 class="font-medium mb-2">Financial Insights for Growth Strategy</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <table class="w-full text-sm">
+                                    <tbody>
+                                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                                            <td class="p-2 font-medium">Profit Margins</td>
+                                            <td class="p-2 text-xs">
+                                                <p class="mb-1"><strong>If below target:</strong> Re-evaluate pricing strategy, product mix, or cost structure</p>
+                                                <p class="mb-0"><strong>If above target:</strong> Consider investing in expansion or market share growth</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                                            <td class="p-2 font-medium">Revenue Growth Trends</td>
+                                            <td class="p-2 text-xs">
+                                                <p class="mb-1"><strong>If declining:</strong> Evaluate product lifecycle, competitive positioning, or market dynamics</p>
+                                                <p class="mb-0"><strong>If accelerating:</strong> Assess capacity to support growth and potential scaling challenges</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 font-medium">Cash Flow Generation</td>
+                                            <td class="p-2 text-xs">
+                                                <p class="mb-1"><strong>If strong:</strong> Consider strategic acquisitions, expansion, or returning value to shareholders</p>
+                                                <p class="mb-0"><strong>If weak:</strong> Focus on working capital improvements or operational efficiencies</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h5 class="font-medium mb-2">Financial Insights for Risk Management</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <table class="w-full text-sm">
+                                    <tbody>
+                                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                                            <td class="p-2 font-medium">Leverage Ratios</td>
+                                            <td class="p-2 text-xs">
+                                                <p class="mb-1"><strong>If high:</strong> Consider debt reduction or restructuring; limit expansion requiring additional debt</p>
+                                                <p class="mb-0"><strong>If low:</strong> Evaluate if capital structure is optimized or if debt capacity is underutilized</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                                            <td class="p-2 font-medium">Liquidity Metrics</td>
+                                            <td class="p-2 text-xs">
+                                                <p class="mb-1"><strong>If tight:</strong> Develop working capital improvement initiatives or consider raising capital</p>
+                                                <p class="mb-0"><strong>If excessive:</strong> Assess if capital is being deployed efficiently or if shareholder returns should increase</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 font-medium">Earnings Volatility</td>
+                                            <td class="p-2 text-xs">
+                                                <p class="mb-1"><strong>If high:</strong> Explore business diversification or hedging strategies</p>
+                                                <p class="mb-0"><strong>If low:</strong> Consider if growth opportunities are being sacrificed for stability</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h5 class="font-medium mb-2">Financial Insights for Operational Decisions</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <table class="w-full text-sm">
+                                    <tbody>
+                                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                                            <td class="p-2 font-medium">Efficiency Ratios</td>
+                                            <td class="p-2 text-xs">
+                                                <p class="mb-1"><strong>If declining:</strong> Identify operational bottlenecks or inefficiencies</p>
+                                                <p class="mb-0"><strong>If improving:</strong> Document best practices and consider expanding successful approaches</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                                            <td class="p-2 font-medium">Cost Structure Analysis</td>
+                                            <td class="p-2 text-xs">
+                                                <p class="mb-1"><strong>If costs rising faster than revenue:</strong> Implement cost containment or restructuring</p>
+                                                <p class="mb-0"><strong>If costs well-managed:</strong> Ensure quality and customer satisfaction aren't suffering</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 font-medium">Working Capital Metrics</td>
+                                            <td class="p-2 text-xs">
+                                                <p class="mb-1"><strong>If inventory turnover low:</strong> Review procurement, production planning, and demand forecasting</p>
+                                                <p class="mb-0"><strong>If receivables growing:</strong> Evaluate credit policies and collection processes</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h5 class="font-medium mb-2">Financial Insights for Investment Decisions</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <table class="w-full text-sm">
+                                    <tbody>
+                                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                                            <td class="p-2 font-medium">Return on Investment</td>
+                                            <td class="p-2 text-xs">
+                                                <p class="mb-1"><strong>If below cost of capital:</strong> Re-evaluate capital allocation framework</p>
+                                                <p class="mb-0"><strong>If strong and consistent:</strong> Consider increasing investment in high-performing areas</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                                            <td class="p-2 font-medium">Capital Expenditure Trends</td>
+                                            <td class="p-2 text-xs">
+                                                <p class="mb-1"><strong>If below depreciation:</strong> Assess if maintenance investment is sufficient</p>
+                                                <p class="mb-0"><strong>If significantly increasing:</strong> Ensure proper controls and ROI monitoring</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 font-medium">Segment Performance</td>
+                                            <td class="p-2 text-xs">
+                                                <p class="mb-1"><strong>If widely divergent:</strong> Consider portfolio rebalancing or divestment of underperformers</p>
+                                                <p class="mb-0"><strong>If uniformly strong:</strong> Evaluate if synergies are being fully leveraged</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Example: Strategic Recommendations Based on Dell's Financial Analysis</h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-900">
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Financial Insight</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Strategic Implication</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Potential Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <p class="font-medium mb-1">Improving Gross Margin (30.8% → 32.7%)</p>
+                                            <p class="text-xs mb-0">With modest revenue growth but expanding margins</p>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <p class="text-sm mb-0">Dell has successfully shifted its product mix toward higher-margin offerings and/or improved pricing power</p>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Continue investing in premium product segments</li>
+                                                <li>Analyze which product categories are driving margin expansion</li>
+                                                <li>Consider further de-emphasis of lower-margin business lines</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <p class="font-medium mb-1">Strong Free Cash Flow Generation ($8.2B → $10.7B)</p>
+                                            <p class="text-xs mb-0">With increasing capital allocation to share repurchases</p>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <p class="text-sm mb-0">Dell's core operations are generating significant excess cash, and the company is transitioning from debt reduction to shareholder returns</p>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Evaluate potential strategic acquisitions in high-growth adjacent areas</li>
+                                                <li>Consider initiating or increasing dividend to broaden investor appeal</li>
+                                                <li>Assess if R&D investments are sufficient for long-term competitiveness</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <p class="font-medium mb-1">Improved Leverage Position (Debt-to-Equity: 2.17 → 1.56)</p>
+                                            <p class="text-xs mb-0">With increasing interest coverage ratio (6.8 → 11.3)</p>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <p class="text-sm mb-0">Dell has significantly strengthened its balance sheet, reducing financial risk and creating strategic flexibility</p>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Consider opportunistic refinancing to further reduce interest costs</li>
+                                                <li>Develop capacity planning for potential economic downturn resilience</li>
+                                                <li>Evaluate optimal long-term capital structure targets</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <p class="font-medium mb-1">Inventory and Asset Turnover Improvements</p>
+                                            <p class="text-xs mb-0">With both metrics exceeding industry averages</p>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <p class="text-sm mb-0">Dell maintains operational excellence in asset management, creating competitive advantage in capital efficiency</p>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Document best practices and expand successful approaches</li>
+                                                <li>Consider applying similar efficiency models to newer business areas</li>
+                                                <li>Ensure supply chain resilience isn't compromised by lean operations</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-3 p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                            <h6 class="text-sm font-medium mb-1">Integrated Strategic Direction:</h6>
+                            <p class="text-xs mb-2">Dell's financial performance shows a company that has successfully transitioned from a restructuring and deleveraging phase to a position of financial strength and operational excellence. The financial analysis suggests Dell should:</p>
+                            <ol class="pl-5 text-xs mb-0">
+                                <li>Continue the shift toward higher-value, higher-margin offerings while maintaining operational discipline</li>
+                                <li>Balance increased shareholder returns with strategic investments in long-term growth opportunities</li>
+                                <li>Leverage its strengthened balance sheet for strategic flexibility in a potentially volatile market</li>
+                                <li>Export its operational excellence in asset management to newer business segments</li>
+                                <li>Maintain focus on cash flow generation while potentially increasing growth investments</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <h4>Common Challenges in Financial Statement Analysis</h4>
+                    <p>While financial statement analysis provides valuable insights, several challenges and limitations should be considered:</p>
+                    
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-yellow-700 dark:text-yellow-400 font-medium mb-2">Challenges and How to Address Them</h5>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2"><strong>Accounting differences:</strong> Variations in accounting methods between companies<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Review accounting policies in footnotes; adjust for comparability</span></li>
+                                    <li class="mb-2"><strong>One-time items:</strong> Non-recurring events that distort trend analysis<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Identify and adjust for unusual items to focus on core performance</span></li>
+                                    <li class="mb-0"><strong>Incomplete disclosure:</strong> Limited information about key business aspects<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Supplement with industry research and management discussions</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2"><strong>Timing issues:</strong> Financial statements represent specific points in time<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Analyze multiple periods and watch for seasonal patterns</span></li>
+                                    <li class="mb-2"><strong>Industry differences:</strong> Metrics vary in importance across industries<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Focus on industry-specific KPIs and appropriate benchmarks</span></li>
+                                    <li class="mb-0"><strong>Forward-looking limitations:</strong> Historical focus of financial statements<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Combine with market trends and management guidance</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Integrating with Other Financial Analysis Tools</h4>
+                    <p>Financial statement analysis is most powerful when integrated with other analytical approaches:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Complementary Tool</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Integration with Financial Statement Analysis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">KPI Analysis & Metrics</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Connect financial results to operational and market metrics</li>
+                                            <li>Develop drivers-based models showing how operational KPIs affect financial outcomes</li>
+                                            <li>Create balanced scorecards that link financial and non-financial measures</li>
+                                            <li>Identify leading indicators that precede financial performance changes</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Valuation Techniques</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Use financial statement trends to develop forecast assumptions</li>
+                                            <li>Apply multiple-based valuation using financial ratios and metrics</li>
+                                            <li>Perform discounted cash flow analysis based on historical financial patterns</li>
+                                            <li>Assess how financial performance impacts valuation multiples</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Business Case Development</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Use historical financial performance to calibrate business case projections</li>
+                                            <li>Incorporate financial constraints and targets from statement analysis</li>
+                                            <li>Develop reasonable scenarios based on historical financial variability</li>
+                                            <li>Set appropriate investment criteria based on company financial profile</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Cost Analysis & Optimization</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Identify cost structure issues from financial statement trends</li>
+                                            <li>Set cost optimization targets based on industry benchmarking</li>
+                                            <li>Develop detailed cost models that roll up to financial statement categories</li>
+                                            <li>Track impact of cost initiatives on financial performance metrics</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.wallstreetprep.com/knowledge/financial-statement-analysis/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Financial Statement Analysis Guide</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Wall Street Prep • Comprehensive Tutorial</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://corporatefinanceinstitute.com/resources/accounting/financial-statement-analysis/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Financial Ratios & Analysis</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Corporate Finance Institute • Expert Guide</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://investor.dell.com/financial-information/quarterly-results" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary flex-shrink-0">
+                                    <i class="ri-file-chart-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Dell Financial Information</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Dell Technologies • Official Reports</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell vs. Competitor Financial Analysis</h5>
+                        <p class="mb-3">In this exercise, you'll analyze Dell Technologies' financial performance compared to a key competitor (HPE) to identify competitive strengths, weaknesses, and strategic implications.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Simplified Financial Metrics:</p>
+                                <div class="bg-white dark:bg-gray-900 rounded-lg p-3 text-xs">
+                                    <table class="w-full border-collapse">
+                                        <thead>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <th class="p-1 text-left">Metric</th>
+                                                <th class="p-1 text-right">Dell</th>
+                                                <th class="p-1 text-right">HPE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1">Revenue Growth</td>
+                                                <td class="p-1 text-right">+1.1%</td>
+                                                <td class="p-1 text-right">-3.5%</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1">Gross Margin</td>
+                                                <td class="p-1 text-right">32.7%</td>
+                                                <td class="p-1 text-right">33.8%</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1">Operating Margin</td>
+                                                <td class="p-1 text-right">11.4%</td>
+                                                <td class="p-1 text-right">9.2%</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1">Free Cash Flow / Revenue</td>
+                                                <td class="p-1 text-right">10.5%</td>
+                                                <td class="p-1 text-right">8.1%</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1">Debt-to-Equity Ratio</td>
+                                                <td class="p-1 text-right">1.56</td>
+                                                <td class="p-1 text-right">1.23</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="p-1">Inventory Turnover</td>
+                                                <td class="p-1 text-right">17.4</td>
+                                                <td class="p-1 text-right">13.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-1">R&D Expense / Revenue</td>
+                                                <td class="p-1 text-right">4.6%</td>
+                                                <td class="p-1 text-right">6.8%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Your Task:</p>
+                                <ol class="pl-4 text-sm mb-0">
+                                    <li>Analyze the comparative financial performance</li>
+                                    <li>Identify Dell's key strengths and weaknesses vs. HPE</li>
+                                    <li>Interpret what the financial differences suggest about each company's strategy</li>
+                                    <li>Recommend actions Dell should consider based on this analysis</li>
+                                    <li>Suggest additional financial metrics that would enhance your analysis</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Comparative Analysis</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Analyze the key differences between Dell and HPE's financial metrics. What patterns do you observe?"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Strategic Implications</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="What do these financial differences suggest about Dell and HPE's business strategies and priorities?"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Recommendations for Dell</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Based on your analysis, what actions should Dell consider to maintain or strengthen its competitive position?"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Additional Metrics</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="2" placeholder="What additional financial metrics would enhance your competitive analysis? Why?"></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" id="back-to-modules">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Back to Modules</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-kpi-metrics">
+                        <span>Next: KPI Analysis & Metrics</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Back to modules button
+            document.getElementById('back-to-modules')?.addEventListener('click', function() {
+                // This would typically navigate to a modules dashboard page
+                // For this implementation, we'll just show the first topic as a placeholder
+                showTopic('topic-financial-statements');
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-financial-statements');
+        });
+    </script>
+</body>
+</html>

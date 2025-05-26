@@ -1,0 +1,2163 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="ri-arrow-left-line"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      
+            <!-- Marketing Topic -->
+            <section id="topic-marketing" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-megaphone-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Marketing Strategy</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Product &amp; Ops Foundations</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand core strategic marketing concepts and frameworks for technology products</li>
+                            <li>Learn how to develop effective customer segmentation, targeting, and positioning</li>
+                            <li>Explore value proposition development and differentiation strategies</li>
+                            <li>Gain insights into B2B marketing and technology marketing approaches</li>
+                            <li>Develop skills to align marketing strategy with overall business objectives</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Strategic Marketing Foundations</h4>
+                    <p>Strategic marketing is the process of aligning an organization's objectives, capabilities, and resources with marketplace opportunities. In technology organizations, strategic marketing serves as the crucial link between customer needs and company offerings. Rather than merely promoting products, strategic marketing helps define what products should be built, who they should target, and how they should be positioned to create sustainable competitive advantage. For strategy professionals, understanding marketing fundamentals is essential for developing products that not only meet customer needs but create compelling value that can be effectively communicated and delivered to the right audiences.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">The Strategic Role of Marketing</h5>
+                        <p class="mb-3">Marketing serves multiple critical functions that directly impact business performance and strategic outcomes:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Market Intelligence</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Identifying emerging customer needs</li>
+                                    <li>Monitoring competitive activity</li>
+                                    <li>Detecting market trends and shifts</li>
+                                    <li>Gathering customer feedback</li>
+                                    <li>Evaluating market opportunities</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Strategic Direction</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Target market selection</li>
+                                    <li>Positioning strategy development</li>
+                                    <li>Value proposition crafting</li>
+                                    <li>Market entry planning</li>
+                                    <li>Growth opportunity evaluation</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Go-to-Market Execution</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Channel strategy development</li>
+                                    <li>Messaging and communication</li>
+                                    <li>Demand generation activities</li>
+                                    <li>Customer journey orchestration</li>
+                                    <li>Sales enablement and support</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Evolution of Strategic Marketing</h6>
+                            <p class="mb-2">The practice of marketing has evolved substantially as markets, technologies, and customer behaviors have changed:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Product-Centric Era</p>
+                                    <p class="text-sm mb-0">Early marketing focused primarily on promoting product features and technical advantages. Companies operated with the belief that superior products would naturally attract customers. Marketing efforts emphasized product specifications, functionality, and performance metrics. This approach, while still present in some technical markets, frequently failed to address actual customer needs or communicate meaningful benefits.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Market-Oriented Era</p>
+                                    <p class="text-sm mb-0">As competition increased, marketing evolved to focus on identifying and addressing specific customer segments. This approach emphasized market research, competitive positioning, and customer needs analysis. Organizations developed formal marketing departments responsible for understanding market requirements and communicating them to product development teams. The focus shifted from simply promoting products to developing offerings that met specific market needs.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Customer-Centric Era</p>
+                                    <p class="text-sm mb-0">Further evolution brought a deeper focus on individual customer relationships and experiences. Marketing expanded to encompass the entire customer journey, from awareness through purchase and beyond. The emphasis shifted to metrics like customer lifetime value, loyalty, and satisfaction. Digital tools enabled more personalized and targeted marketing approaches. Organizations developed customer success functions to ensure adoption and value realization.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Digital &amp; Data-Driven Era</p>
+                                    <p class="text-sm mb-0">The current evolution leverages advanced analytics, AI, and digital platforms to create highly personalized and optimized marketing. This approach enables real-time decision-making, predictive customer insights, and attribution across complex journeys. Marketing has become more scientific, with sophisticated testing and optimization capabilities. Organizations can now deliver contextualized experiences at scale, creating new opportunities for differentiation and growth.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">The Strategic Marketing Framework</h5>
+                                
+                                <div class="relative">
+                                    <svg class="w-full h-[280px]">
+                                        <!-- Outer box -->
+                                        <rect x="30" y="20" width="540" height="240" fill="none" stroke="#6B7280" stroke-width="1.5" rx="4"></rect>
+                                        
+                                        <!-- Top box: Market Analysis -->
+                                        <rect x="70" y="30" width="460" height="60" fill="#EDF2F7" stroke="#6B7280" stroke-width="1" rx="3" class="dark:fill-gray-800"></rect>
+                                        <text x="300" y="55" font-size="14" text-anchor="middle" fill="currentColor" font-weight="bold">Market Analysis</text>
+                                        <text x="300" y="75" font-size="10" text-anchor="middle" fill="currentColor">Customer Needs • Competitive Landscape • Market Trends • Buying Behavior</text>
+                                        
+                                        <!-- Middle sections -->
+                                        <g>
+                                            <!-- Left box: Segmentation -->
+                                            <rect x="70" y="100" width="140" height="100" fill="#EDF2F7" stroke="#6B7280" stroke-width="1" rx="3" class="dark:fill-gray-800"></rect>
+                                            <text x="140" y="125" font-size="12" text-anchor="middle" fill="currentColor" font-weight="bold">Segmentation</text>
+                                            <text x="140" y="145" font-size="10" text-anchor="middle" fill="currentColor">Identifying distinct</text>
+                                            <text x="140" y="160" font-size="10" text-anchor="middle" fill="currentColor">customer groups with</text>
+                                            <text x="140" y="175" font-size="10" text-anchor="middle" fill="currentColor">similar needs and</text>
+                                            <text x="140" y="190" font-size="10" text-anchor="middle" fill="currentColor">behaviors</text>
+                                            
+                                            <!-- Middle box: Targeting -->
+                                            <rect x="220" y="100" width="140" height="100" fill="#EDF2F7" stroke="#6B7280" stroke-width="1" rx="3" class="dark:fill-gray-800"></rect>
+                                            <text x="290" y="125" font-size="12" text-anchor="middle" fill="currentColor" font-weight="bold">Targeting</text>
+                                            <text x="290" y="145" font-size="10" text-anchor="middle" fill="currentColor">Selecting segments</text>
+                                            <text x="290" y="160" font-size="10" text-anchor="middle" fill="currentColor">to pursue based on</text>
+                                            <text x="290" y="175" font-size="10" text-anchor="middle" fill="currentColor">attractiveness and</text>
+                                            <text x="290" y="190" font-size="10" text-anchor="middle" fill="currentColor">company capabilities</text>
+                                            
+                                            <!-- Right box: Positioning -->
+                                            <rect x="370" y="100" width="160" height="100" fill="#EDF2F7" stroke="#6B7280" stroke-width="1" rx="3" class="dark:fill-gray-800"></rect>
+                                            <text x="450" y="125" font-size="12" text-anchor="middle" fill="currentColor" font-weight="bold">Positioning</text>
+                                            <text x="450" y="145" font-size="10" text-anchor="middle" fill="currentColor">Creating a distinctive</text>
+                                            <text x="450" y="160" font-size="10" text-anchor="middle" fill="currentColor">place in the customer's</text>
+                                            <text x="450" y="175" font-size="10" text-anchor="middle" fill="currentColor">mind relative to</text>
+                                            <text x="450" y="190" font-size="10" text-anchor="middle" fill="currentColor">competing offerings</text>
+                                        </g>
+                                        
+                                        <!-- Bottom box: Go-to-Market Strategy -->
+                                        <rect x="70" y="210" width="460" height="40" fill="#EDF2F7" stroke="#6B7280" stroke-width="1" rx="3" class="dark:fill-gray-800"></rect>
+                                        <text x="300" y="230" font-size="12" text-anchor="middle" fill="currentColor" font-weight="bold">Go-to-Market Strategy</text>
+                                        <text x="300" y="245" font-size="10" text-anchor="middle" fill="currentColor">Product Strategy • Pricing • Channel Strategy • Messaging • Demand Generation</text>
+                                        
+                                        <!-- Arrows -->
+                                        <line x1="300" y1="90" x2="300" y2="100" stroke="#6B7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                        <line x1="300" y1="200" x2="300" y2="210" stroke="#6B7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                        
+                                        <!-- Arrow marker definition -->
+                                        <defs>
+                                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                <polygon points="0 0, 10 3.5, 0 7" fill="#6B7280"></polygon>
+                                            </marker>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                
+                                <p class="text-xs text-center mt-2 text-gray-500 dark:text-gray-400">The strategic marketing framework provides a structured approach to developing marketing strategy. Beginning with market analysis, it progresses through the STP process (Segmentation, Targeting, Positioning) and culminates in go-to-market execution. This systematic approach ensures that marketing decisions are rooted in customer and market insights.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Market Analysis &amp; Customer Insights</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Understanding Market Dynamics</h5>
+                        <p class="text-sm mb-3">Effective marketing strategy begins with a deep understanding of the market landscape and customer needs. This foundation of insights drives all subsequent strategic decisions and ensures that marketing activities are aligned with genuine market opportunities.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Market Research Frameworks</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">1</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Market Sizing &amp; Dynamics</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Quantifying market opportunity and analyzing key trends.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Elements</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Total addressable market (TAM):</strong> Overall market opportunity</li>
+                                                    <li><strong>Serviceable available market (SAM):</strong> Portion you can realistically target</li>
+                                                    <li><strong>Market growth rate:</strong> Historical and projected expansion</li>
+                                                    <li><strong>Market share distribution:</strong> Competitive landscape analysis</li>
+                                                    <li><strong>Market drivers &amp; barriers:</strong> Forces influencing market evolution</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">2</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Customer Analysis</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Understanding the needs, behaviors, and decision processes of potential customers.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Elements</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Needs assessment:</strong> Identifying problems customers need to solve</li>
+                                                    <li><strong>Buying process:</strong> Understanding decision journey and influences</li>
+                                                    <li><strong>Buyer personas:</strong> Detailed profiles of typical customers</li>
+                                                    <li><strong>Pain points:</strong> Critical challenges customers face</li>
+                                                    <li><strong>Jobs-to-be-done:</strong> Tasks customers are trying to accomplish</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">3</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Competitive Intelligence</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Analyzing competitive landscape to identify threats and opportunities.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Elements</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Direct competitor analysis:</strong> Similar offerings targeting same customers</li>
+                                                    <li><strong>Indirect competitors:</strong> Alternative approaches to solving customer problems</li>
+                                                    <li><strong>Positioning analysis:</strong> How competitors are perceived by customers</li>
+                                                    <li><strong>Capability assessment:</strong> Strengths and weaknesses of competitors</li>
+                                                    <li><strong>Strategic direction:</strong> Where competitors appear to be heading</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Customer Insights Development</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Converting research data into actionable customer insights requires structured approaches:</p>
+                                    
+                                    <div class="grid grid-cols-1 gap-3">
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Jobs-to-be-Done Framework</h6>
+                                            <p class="text-xs mb-1">Understanding what customers are trying to accomplish in their lives or work.</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Core Elements</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Functional jobs:</strong> Practical tasks customers need to complete</li>
+                                                        <li><strong>Emotional jobs:</strong> How customers want to feel or be perceived</li>
+                                                        <li><strong>Social jobs:</strong> How customers want to interact with others</li>
+                                                        <li><strong>Job circumstances:</strong> Contextual factors that influence job execution</li>
+                                                        <li><strong>Success criteria:</strong> How customers measure successful job completion</li>
+                                                    </ul>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Strategic Application</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li>Identifies innovation opportunities by focusing on customer goals rather than product features</li>
+                                                        <li>Helps develop value propositions aligned with customer priorities</li>
+                                                        <li>Enables identification of underserved market segments</li>
+                                                        <li>Provides foundation for messaging that resonates with customer needs</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Buyer Persona Development</h6>
+                                            <p class="text-xs mb-1">Creating semi-fictional representations of ideal customers based on research and data.</p>
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-0.5">Persona Components</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Demographics:</strong> Role, industry, company size, education, experience</li>
+                                                    <li><strong>Psychographics:</strong> Values, attitudes, interests, personality traits</li>
+                                                    <li><strong>Goals &amp; challenges:</strong> Primary objectives and obstacles faced</li>
+                                                    <li><strong>Decision criteria:</strong> Factors considered in purchase decisions</li>
+                                                    <li><strong>Information sources:</strong> How they research and learn about solutions</li>
+                                                    <li><strong>Objections:</strong> Common hesitations or resistance points</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">B2B Customer Journey Analysis</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Understanding the complex B2B buying process to identify critical intervention points:</p>
+                                    
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Modern B2B Buying Journey</h6>
+                                        <div class="overflow-x-auto">
+                                            <table class="w-full text-xs">
+                                                <thead>
+                                                    <tr class="bg-white dark:bg-gray-900">
+                                                        <th class="p-1 text-left">Journey Stage</th>
+                                                        <th class="p-1 text-left">Buyer Activities</th>
+                                                        <th class="p-1 text-left">Marketing Implications</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Problem Identification</td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Recognizing business challenges</li>
+                                                                <li>Building internal consensus on needs</li>
+                                                                <li>Initial research on potential approaches</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Thought leadership content</li>
+                                                                <li>Educational materials</li>
+                                                                <li>Problem framing narratives</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Solution Exploration</td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Researching potential solutions</li>
+                                                                <li>Identifying vendors and options</li>
+                                                                <li>Developing initial requirements</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Solution guides and comparisons</li>
+                                                                <li>Case studies and testimonials</li>
+                                                                <li>High-level solution overviews</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Requirements Building</td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Formalizing selection criteria</li>
+                                                                <li>Building stakeholder alignment</li>
+                                                                <li>Developing evaluation framework</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>ROI calculators and tools</li>
+                                                                <li>Detailed specifications</li>
+                                                                <li>Comparative analysis content</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Supplier Selection</td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Evaluating competing options</li>
+                                                                <li>Conducting demos and trials</li>
+                                                                <li>Validating vendor claims</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Proof points and validation</li>
+                                                                <li>Technical documentation</li>
+                                                                <li>Competitive differentiation</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Validation &amp; Consensus</td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Building consensus among stakeholders</li>
+                                                                <li>Risk assessment and mitigation</li>
+                                                                <li>Final business case development</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Implementation roadmaps</li>
+                                                                <li>Risk mitigation information</li>
+                                                                <li>Business case templates</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Purchase Decision</td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Contract negotiation</li>
+                                                                <li>Approval process navigation</li>
+                                                                <li>Purchase completion</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Negotiation facilitation</li>
+                                                                <li>Implementation planning support</li>
+                                                                <li>Onboarding preparation</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">B2B Buying Groups</h6>
+                                        <p class="text-xs mb-1">Understanding the complex web of stakeholders involved in B2B purchase decisions:</p>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-0.5">Key Stakeholders</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Champion:</strong> Internal advocate for the solution</li>
+                                                    <li><strong>Economic buyer:</strong> Controls budget and final approval</li>
+                                                    <li><strong>Technical evaluator:</strong> Assesses functionality and implementation</li>
+                                                    <li><strong>End user:</strong> Will work with the solution daily</li>
+                                                    <li><strong>Procurement:</strong> Manages vendor selection and negotiation</li>
+                                                    <li><strong>Influencer:</strong> Shapes opinions without formal decision authority</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-0.5">Marketing Implications</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Develop persona-specific messaging and content</li>
+                                                    <li>Create tools to facilitate internal consensus building</li>
+                                                    <li>Enable champions with persuasive materials</li>
+                                                    <li>Address role-specific concerns and priorities</li>
+                                                    <li>Provide content that bridges communication gaps between stakeholders</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">The Technology Adoption Lifecycle</h6>
+                            
+                            <div class="mb-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Understanding Technology Adoption Patterns</h6>
+                                <p class="text-xs mb-2">The Technology Adoption Lifecycle model describes how different customer segments adopt new technologies at different rates:</p>
+                                
+                                <div class="relative h-[140px] mb-3">
+                                    <svg class="w-full h-full">
+                                        <!-- Bell curve -->
+                                        <path d="M 40,120 Q 100,115 180,70 T 300,30 T 420,70 T 560,120" fill="none" stroke="#6B7280" stroke-width="1.5"></path>
+                                        
+                                        <!-- Segment areas -->
+                                        <path d="M 40,120 Q 100,115 180,70 L 180,120 Z" fill="rgba(76, 29, 149, 0.3)" stroke="none"></path>
+                                        <path d="M 180,120 L 180,70 Q 240,40 300,30 L 300,120 Z" fill="rgba(79, 70, 229, 0.3)" stroke="none"></path>
+                                        <path d="M 300,120 L 300,30 Q 360,40 420,70 L 420,120 Z" fill="rgba(59, 130, 246, 0.3)" stroke="none"></path>
+                                        <path d="M 420,120 L 420,70 Q 480,110 560,120 L 560,120 Z" fill="rgba(16, 185, 129, 0.3)" stroke="none"></path>
+                                        
+                                        <!-- Segment dividers -->
+                                        <line x1="180" y1="20" x2="180" y2="120" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,4"></line>
+                                        <line x1="300" y1="20" x2="300" y2="120" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,4"></line>
+                                        <line x1="420" y1="20" x2="420" y2="120" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,4"></line>
+                                        
+                                        <!-- Labels -->
+                                        <text x="110" y="85" font-size="10" text-anchor="middle" fill="currentColor" font-weight="bold">Innovators &amp;</text>
+                                        <text x="110" y="98" font-size="10" text-anchor="middle" fill="currentColor" font-weight="bold">Early Adopters</text>
+                                        <text x="240" y="65" font-size="10" text-anchor="middle" fill="currentColor" font-weight="bold">Early</text>
+                                        <text x="240" y="78" font-size="10" text-anchor="middle" fill="currentColor" font-weight="bold">Majority</text>
+                                        <text x="360" y="65" font-size="10" text-anchor="middle" fill="currentColor" font-weight="bold">Late</text>
+                                        <text x="360" y="78" font-size="10" text-anchor="middle" fill="currentColor" font-weight="bold">Majority</text>
+                                        <text x="490" y="85" font-size="10" text-anchor="middle" fill="currentColor" font-weight="bold">Laggards</text>
+                                        
+                                        <!-- Percentage labels -->
+                                        <text x="110" y="112" font-size="9" text-anchor="middle" fill="currentColor">~16%</text>
+                                        <text x="240" y="112" font-size="9" text-anchor="middle" fill="currentColor">~34%</text>
+                                        <text x="360" y="112" font-size="9" text-anchor="middle" fill="currentColor">~34%</text>
+                                        <text x="490" y="112" font-size="9" text-anchor="middle" fill="currentColor">~16%</text>
+                                        
+                                        <!-- Chasm -->
+                                        <path d="M 170,120 L 170,75 Q 175,72 190,75 L 190,120 Z" fill="rgba(239, 68, 68, 0.5)" stroke="none"></path>
+                                        <text x="180" y="135" font-size="9" text-anchor="middle" fill="rgba(239, 68, 68, 1)">The Chasm</text>
+                                    </svg>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Innovators &amp; Early Adopters</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Characteristics:</strong> Technology enthusiasts and visionaries who embrace innovation</li>
+                                            <li><strong>Motivations:</strong> Competitive advantage, being first, solving problems in new ways</li>
+                                            <li><strong>Marketing approach:</strong> Technical depth, vision articulation, exclusivity</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Early Majority</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Characteristics:</strong> Pragmatists who adopt proven technology with clear benefits</li>
+                                            <li><strong>Motivations:</strong> Productivity improvement, risk mitigation, ROI validation</li>
+                                            <li><strong>Marketing approach:</strong> Case studies, industry validation, practical solutions</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Late Majority</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Characteristics:</strong> Conservatives who wait until technology is well-established</li>
+                                            <li><strong>Motivations:</strong> Cost reduction, standardization, avoiding competitive disadvantage</li>
+                                            <li><strong>Marketing approach:</strong> Turnkey solutions, simplified messaging, established standards</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Laggards</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Characteristics:</strong> Skeptics who adopt only when necessary or traditional options unavailable</li>
+                                            <li><strong>Motivations:</strong> Maintaining status quo, avoiding disruption, compliance requirements</li>
+                                            <li><strong>Marketing approach:</strong> Low-risk messaging, compatibility with existing systems, minimal change</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">The Chasm: Critical Strategic Challenge</h6>
+                                <p class="text-xs mb-2">Geoffrey Moore's "Crossing the Chasm" identifies the critical gap between early adopters and the early majority:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">The Challenge</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Early market success with innovators and early adopters doesn't automatically translate to mainstream adoption</li>
+                                            <li>Early adopters embrace disruptive technology; mainstream customers require complete solutions</li>
+                                            <li>References from visionaries don't persuade pragmatists who want industry-specific proof</li>
+                                            <li>Many products fail to cross this gap despite initial enthusiasm</li>
+                                            <li>Different marketing approaches needed for each side of the chasm</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Crossing Strategies</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Beachhead approach:</strong> Focus on a single target segment with a complete solution</li>
+                                            <li><strong>Whole product solution:</strong> Develop the extended offering needed for mainstream success</li>
+                                            <li><strong>Segment-specific positioning:</strong> Messaging tailored to pragmatist concerns</li>
+                                            <li><strong>Vertical market strategy:</strong> Dominate one vertical before expanding to others</li>
+                                            <li><strong>Partner ecosystem:</strong> Build complementary partnerships to complete the solution</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Segmentation, Targeting &amp; Positioning</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">The STP Framework</h5>
+                        <p class="text-sm mb-3">Segmentation, Targeting, and Positioning (STP) forms the strategic core of modern marketing. This structured approach enables organizations to identify distinct customer groups, select the most attractive segments to pursue, and develop compelling market positions that resonate with target customers.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Market Segmentation</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">B2B Segmentation Approaches</h6>
+                                        <p class="text-xs mb-2">Dividing the overall market into distinct segments with similar needs and characteristics:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Firmographic Segmentation</h6>
+                                                <p class="text-xs mb-1">Dividing the market based on organizational characteristics.</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Industry vertical:</strong> Different sectors with unique challenges</li>
+                                                    <li><strong>Company size:</strong> Revenue, employee count, or market capitalization</li>
+                                                    <li><strong>Geographic location:</strong> Regional, national, or international presence</li>
+                                                    <li><strong>Growth stage:</strong> Startup, growth, mature, or declining</li>
+                                                    <li><strong>Ownership structure:</strong> Public, private, non-profit, government</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Needs-Based Segmentation</h6>
+                                                <p class="text-xs mb-1">Grouping customers by their specific needs and pain points.</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Problem type:</strong> The specific challenges customers need to solve</li>
+                                                    <li><strong>Priority level:</strong> Urgency and importance of the need</li>
+                                                    <li><strong>Performance requirements:</strong> Expected capabilities and outcomes</li>
+                                                    <li><strong>Integration needs:</strong> Requirements for working with existing systems</li>
+                                                    <li><strong>Service expectations:</strong> Level of support and assistance needed</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Behavioral Segmentation</h6>
+                                                <p class="text-xs mb-1">Segmenting based on observed customer behaviors and interactions.</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Purchase process:</strong> How decisions are made and who's involved</li>
+                                                    <li><strong>Technology adoption profile:</strong> Early adopter vs. mainstream</li>
+                                                    <li><strong>Loyalty patterns:</strong> Frequent switchers vs. long-term relationships</li>
+                                                    <li><strong>Usage patterns:</strong> Heavy vs. light users of similar solutions</li>
+                                                    <li><strong>Information seeking behavior:</strong> Research methods and sources</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Segmentation Success Factors</h6>
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                            <p class="text-xs mb-1">Effective segmentation must meet several key criteria:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Measurable:</strong> Segments can be identified and sized quantitatively</li>
+                                                <li><strong>Substantial:</strong> Segments are large enough to be worth pursuing</li>
+                                                <li><strong>Accessible:</strong> Segments can be effectively reached through marketing channels</li>
+                                                <li><strong>Differentiable:</strong> Segments respond differently to marketing programs</li>
+                                                <li><strong>Actionable:</strong> Effective programs can be designed for the segments</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Market Targeting</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Target Segment Evaluation</h6>
+                                        <p class="text-xs mb-2">Selecting which segments to pursue based on systematic evaluation:</p>
+                                        
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg mb-3">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Segment Attractiveness Assessment</h6>
+                                            <div class="overflow-x-auto">
+                                                <table class="w-full text-xs">
+                                                    <thead>
+                                                        <tr class="bg-white dark:bg-gray-900">
+                                                            <th class="p-1 text-left">Criterion</th>
+                                                            <th class="p-1 text-left">Key Questions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Segment size &amp; growth</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>How large is the segment now and in the future?</li>
+                                                                    <li>What is the projected growth rate?</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Competitive intensity</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>How many competitors target this segment?</li>
+                                                                    <li>How strong is their position and offering?</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Profit potential</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>What are typical margins in this segment?</li>
+                                                                    <li>What is the customer lifetime value potential?</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Market access</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>How efficiently can we reach this segment?</li>
+                                                                    <li>What channels are most effective?</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Purchase drivers</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>What factors most influence buying decisions?</li>
+                                                                    <li>How price-sensitive is this segment?</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Company Capability Assessment</h6>
+                                            <div class="overflow-x-auto">
+                                                <table class="w-full text-xs">
+                                                    <thead>
+                                                        <tr class="bg-white dark:bg-gray-900">
+                                                            <th class="p-1 text-left">Capability Area</th>
+                                                            <th class="p-1 text-left">Key Questions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Product-market fit</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>How well does our offering match segment needs?</li>
+                                                                    <li>What gaps exist in our solution?</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Competitive advantage</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>What unique value can we offer this segment?</li>
+                                                                    <li>How sustainable is our differentiation?</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Go-to-market capabilities</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Do we have the right channels to reach this segment?</li>
+                                                                    <li>Do we have appropriate marketing resources?</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Resource requirements</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>What investment is needed to serve this segment?</li>
+                                                                    <li>What is the expected return on investment?</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Strategic alignment</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Does this segment align with our company vision?</li>
+                                                                    <li>Does it support our long-term strategic goals?</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Target Market Strategy Options</h6>
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Concentrated Strategy (Niche Focus)</h6>
+                                                    <p class="text-xs mb-0.5">Focusing resources on a single market segment for maximum penetration.</p>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Best for:</span>
+                                                        <span class="text-xs">Limited resources, specialized expertise, clearly defined segments</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Advantages:</span>
+                                                        <span class="text-xs">Deep segment expertise, efficient resource use, strong positioning</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Risks:</span>
+                                                        <span class="text-xs">Vulnerability to segment changes, limited growth potential</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Selective Specialization</h6>
+                                                    <p class="text-xs mb-0.5">Targeting multiple unrelated segments with different offerings for each.</p>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Best for:</span>
+                                                        <span class="text-xs">Diverse capabilities, fragmented markets, risk diversification needs</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Advantages:</span>
+                                                        <span class="text-xs">Diversified risk, broader market coverage, multiple growth avenues</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Risks:</span>
+                                                        <span class="text-xs">Resource dilution, operational complexity, potentially weaker positioning</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Product Specialization</h6>
+                                                    <p class="text-xs mb-0.5">Focusing on specific product category across multiple segments.</p>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Best for:</span>
+                                                        <span class="text-xs">Strong product expertise, adaptable solutions, segment similarities</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Advantages:</span>
+                                                        <span class="text-xs">Strong reputation in product category, economies of scale, broad appeal</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Risks:</span>
+                                                        <span class="text-xs">Product disruption vulnerability, segment-specific needs underserved</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Market Positioning</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Positioning Strategy Development</h6>
+                                        <p class="text-xs mb-2">Creating a distinctive place in the customer's mind relative to competing alternatives:</p>
+                                        
+                                        <div class="flex flex-col gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Positioning Elements</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Frame of reference:</span>
+                                                        <span class="text-xs">The category or context in which you want customers to think about your offering</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Points of difference:</span>
+                                                        <span class="text-xs">Unique attributes or benefits that set you apart from competitors</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Points of parity:</span>
+                                                        <span class="text-xs">Category requirements where you must be at least equal to competitors</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Reason to believe:</span>
+                                                        <span class="text-xs">Evidence that supports your positioning claims and builds credibility</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Positioning Statement Formula</h6>
+                                                <p class="text-xs italic mb-2">For [target segment], [your offering] is the [category/frame of reference] that [key point of difference] because [reason to believe].</p>
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Example Positioning Statement</h6>
+                                                    <p class="text-xs mb-0">For IT directors at mid-sized financial services firms, Our SecureCloud platform is the enterprise security solution that delivers comprehensive protection with 50% faster implementation because of our proprietary automated compliance configuration technology and library of pre-built financial industry controls.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Common Positioning Approaches</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Value leadership:</strong> Best balance of benefits vs. cost (e.g., "Enterprise-grade security with mid-market pricing")</li>
+                                                    <li><strong>Performance leadership:</strong> Superior capabilities or results (e.g., "99.999% uptime reliability")</li>
+                                                    <li><strong>Innovation leadership:</strong> Most advanced or forward-thinking (e.g., "First AI-powered solution for compliance management")</li>
+                                                    <li><strong>Customer intimacy:</strong> Best understanding of customer needs (e.g., "Built by financial professionals for financial professionals")</li>
+                                                    <li><strong>Specialization:</strong> Focused expertise in specific area (e.g., "The only platform designed exclusively for community banks")</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Perceptual Mapping</h6>
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                            <p class="text-xs mb-1">Visual technique to analyze competitive positioning across key attributes:</p>
+                                            <div class="relative h-[150px] mb-2">
+                                                <svg class="w-full h-full">
+                                                    <!-- Axes -->
+                                                    <line x1="30" y1="120" x2="260" y2="120" stroke="#6B7280" stroke-width="1.5"></line>
+                                                    <line x1="30" y1="120" x2="30" y2="10" stroke="#6B7280" stroke-width="1.5"></line>
+                                                    
+                                                    <!-- Axis labels -->
+                                                    <text x="145" y="140" font-size="10" text-anchor="middle" fill="currentColor">Ease of Implementation</text>
+                                                    <text x="15" y="65" font-size="10" text-anchor="middle" fill="currentColor" transform="rotate(-90, 15, 65)">Feature Richness</text>
+                                                    
+                                                    <!-- Low/High labels -->
+                                                    <text x="40" y="130" font-size="8" text-anchor="middle" fill="currentColor">Low</text>
+                                                    <text x="250" y="130" font-size="8" text-anchor="middle" fill="currentColor">High</text>
+                                                    <text x="20" y="110" font-size="8" text-anchor="middle" fill="currentColor">Low</text>
+                                                    <text x="20" y="20" font-size="8" text-anchor="middle" fill="currentColor">High</text>
+                                                    
+                                                    <!-- Competition dots -->
+                                                    <circle cx="70" cy="40" r="15" fill="rgba(239, 68, 68, 0.2)" stroke="rgba(239, 68, 68, 0.8)" stroke-width="1.5"></circle>
+                                                    <text x="70" y="43" font-size="9" text-anchor="middle" fill="currentColor">Competitor A</text>
+                                                    
+                                                    <circle cx="190" cy="90" r="15" fill="rgba(59, 130, 246, 0.2)" stroke="rgba(59, 130, 246, 0.8)" stroke-width="1.5"></circle>
+                                                    <text x="190" y="93" font-size="9" text-anchor="middle" fill="currentColor">Competitor B</text>
+                                                    
+                                                    <circle cx="110" cy="95" r="15" fill="rgba(16, 185, 129, 0.2)" stroke="rgba(16, 185, 129, 0.8)" stroke-width="1.5"></circle>
+                                                    <text x="110" y="98" font-size="9" text-anchor="middle" fill="currentColor">Competitor C</text>
+                                                    
+                                                    <!-- Our positioning -->
+                                                    <circle cx="180" cy="40" r="18" fill="rgba(99, 102, 241, 0.2)" stroke="rgba(99, 102, 241, 0.8)" stroke-width="2.5"></circle>
+                                                    <text x="180" y="43" font-size="9" text-anchor="middle" fill="currentColor">Our Product</text>
+                                                    
+                                                    <!-- Opportunity space -->
+                                                    <circle cx="220" cy="30" r="20" fill="none" stroke="rgba(16, 185, 129, 0.3)" stroke-width="1.5" stroke-dasharray="3,3"></circle>
+                                                    <text x="220" y="33" font-size="8" text-anchor="middle" fill="rgba(16, 185, 129, 0.8)">Opportunity</text>
+                                                </svg>
+                                            </div>
+                                            <p class="text-xs mb-0">Perceptual maps visualize how products are positioned relative to key buying criteria, identifying gaps and opportunities in the market. The example above shows positioning across implementation ease and feature richness dimensions, revealing a potential opportunity space.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Value Proposition Development</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Value Proposition Canvas</h6>
+                                    <p class="text-xs mb-2">Strategic tool to align product offering with customer needs:</p>
+                                    <div class="grid grid-cols-1 gap-3">
+                                        <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                            <h6 class="text-xs font-medium mb-0.5">Customer Profile</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Customer jobs:</strong> What customers are trying to accomplish</li>
+                                                <li><strong>Pains:</strong> Negative experiences, risks, and obstacles related to jobs</li>
+                                                <li><strong>Gains:</strong> Benefits and positive outcomes customers seek</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                            <h6 class="text-xs font-medium mb-0.5">Value Map</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Products &amp; services:</strong> What you offer to help customers complete jobs</li>
+                                                <li><strong>Pain relievers:</strong> How your offering alleviates specific customer pains</li>
+                                                <li><strong>Gain creators:</strong> How your offering generates customer benefits</li>
+                                            </ul>
+                                        </div>
+                                        <div class="text-xs text-center italic">
+                                            A strong value proposition achieves fit between the customer profile and your value map, directly addressing important jobs, pains, and gains.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Differentiation Strategy</h6>
+                                    <p class="text-xs mb-2">Creating meaningful distinction from competitors:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li><strong>Functional differentiation:</strong> Superior performance, features, technology</li>
+                                        <li><strong>Operational differentiation:</strong> Better delivery, reliability, efficiency</li>
+                                        <li><strong>Relationship differentiation:</strong> Superior customer experience, service, trust</li>
+                                        <li><strong>Economic differentiation:</strong> Better value or ROI proposition</li>
+                                        <li><strong>Strategic differentiation:</strong> Unique approach or business model</li>
+                                    </ul>
+                                    
+                                    <h6 class="text-xs font-medium mb-1">Differentiation Tests</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Importance:</strong> Does it address something customers truly value?</li>
+                                        <li><strong>Distinctiveness:</strong> Is it significantly different from competitors?</li>
+                                        <li><strong>Superiority:</strong> Is it demonstrably better than alternative approaches?</li>
+                                        <li><strong>Communicability:</strong> Can it be clearly explained and understood?</li>
+                                        <li><strong>Preemptiveness:</strong> Is it difficult for competitors to copy?</li>
+                                        <li><strong>Affordability:</strong> Can customers afford the offering and still achieve ROI?</li>
+                                        <li><strong>Profitability:</strong> Can it be delivered while meeting business objectives?</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">B2B Value Proposition Examples</h6>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-1">Solution-Focused Value Proposition</h6>
+                                        <p class="text-xs italic mb-1">"Our integrated security platform helps enterprise IT teams reduce security incidents by 85% while cutting administrative overhead by 40% through our unified management console and automated threat response capabilities."</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Identifies specific target audience</li>
+                                            <li>Quantifies key benefits</li>
+                                            <li>Explains underlying capabilities</li>
+                                            <li>Addresses both business and technical value</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-1">Pain-Focused Value Proposition</h6>
+                                        <p class="text-xs italic mb-1">"For mid-sized manufacturers struggling with high supply chain volatility, our predictive analytics platform provides 95% forecast accuracy two weeks further into the future than traditional methods, enabling 15% inventory reduction while maintaining service levels."</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Addresses specific pain point</li>
+                                            <li>Highlights clear performance advantage</li>
+                                            <li>Connects to business outcomes</li>
+                                            <li>Provides specific measurable impact</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-1">Aspiration-Focused Value Proposition</h6>
+                                        <p class="text-xs italic mb-1">"We help healthcare IT leaders become strategic business partners by providing the only analytics platform that connects clinical outcomes to financial performance, enabling more strategic resource allocation and demonstrable ROI for technology investments."</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Appeals to professional aspirations</li>
+                                            <li>Claims unique capability</li>
+                                            <li>Bridges technical and business outcomes</li>
+                                            <li>Focuses on strategic rather than tactical value</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Go-to-Market Strategy</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Bringing Products to Market</h5>
+                        <p class="text-sm mb-3">The go-to-market (GTM) strategy encompasses all aspects of how an organization reaches target customers and delivers its value proposition. For technology products, an effective GTM strategy aligns channels, messaging, pricing, and sales approaches into a cohesive system that efficiently acquires and retains customers.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Channel Strategy</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">B2B Channel Options</h6>
+                                        <p class="text-xs mb-2">Different routes to market offer varying levels of control, reach, and cost:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Direct Channels</h6>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Field Sales Teams</h6>
+                                                        <ul class="pl-4 text-xs mb-1">
+                                                            <li><strong>Best for:</strong> Complex, high-value enterprise solutions requiring consultative sales</li>
+                                                            <li><strong>Advantages:</strong> High control, relationship building, complex deal management</li>
+                                                            <li><strong>Limitations:</strong> Expensive, scale challenges, geographic constraints</li>
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Inside Sales Teams</h6>
+                                                        <ul class="pl-4 text-xs mb-1">
+                                                            <li><strong>Best for:</strong> Mid-market solutions, defined offerings with moderate complexity</li>
+                                                            <li><strong>Advantages:</strong> Cost-efficient, scalable, broader geographic coverage</li>
+                                                            <li><strong>Limitations:</strong> Less relationship depth, challenging for most complex solutions</li>
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">E-Commerce</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Best for:</strong> Standardized offerings, renewals, add-ons, self-service evaluation</li>
+                                                            <li><strong>Advantages:</strong> Highly scalable, low transaction costs, 24/7 availability</li>
+                                                            <li><strong>Limitations:</strong> Limited for complex solutions, minimal relationship building</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Indirect Channels</h6>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Value-Added Resellers (VARs)</h6>
+                                                        <ul class="pl-4 text-xs mb-1">
+                                                            <li><strong>Best for:</strong> Solutions requiring local implementation, customization, or integration</li>
+                                                            <li><strong>Advantages:</strong> Extended market reach, integration expertise, local presence</li>
+                                                            <li><strong>Limitations:</strong> Margin sharing, potential channel conflict, less brand control</li>
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Distributors</h6>
+                                                        <ul class="pl-4 text-xs mb-1">
+                                                            <li><strong>Best for:</strong> High-volume products, extensive geographic reach</li>
+                                                            <li><strong>Advantages:</strong> Broad market coverage, logistics management, partner networks</li>
+                                                            <li><strong>Limitations:</strong> Limited solution selling, reduced margins, less customer engagement</li>
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">OEM Partnerships</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Best for:</strong> Technology components integrated into broader solutions</li>
+                                                            <li><strong>Advantages:</strong> Volume opportunities, established customer base access</li>
+                                                            <li><strong>Limitations:</strong> Brand invisibility, dependence on partner success, margin pressure</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Multi-Channel Strategy</h6>
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                            <p class="text-xs mb-1">Most technology companies leverage multiple channels, requiring strategic coordination:</p>
+                                            <ul class="pl-4 text-xs mb-3">
+                                                <li><strong>Channel selection criteria:</strong> Customer preferences, solution complexity, economics</li>
+                                                <li><strong>Channel conflict management:</strong> Clear rules of engagement, compensation alignment</li>
+                                                <li><strong>Channel enablement:</strong> Training, tools, and content to support partner success</li>
+                                                <li><strong>Channel evolution:</strong> Adaptive strategies as products and markets mature</li>
+                                            </ul>
+                                            
+                                            <h6 class="text-xs font-medium mb-1">Common Technology Channel Models</h6>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Enterprise Hybrid Model</h6>
+                                                    <p class="text-xs mb-0">Direct field sales for strategic accounts, partners for mid-market, inside sales and e-commerce for small business. Creates comprehensive coverage with optimized economics for each segment.</p>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Partner-Led Model</h6>
+                                                    <p class="text-xs mb-0">Minimal direct sales, extensive partner ecosystem with tiered partnership programs. Maximizes reach and scale with lower direct costs, often employed by platform technology providers.</p>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Direct-to-Developer Model</h6>
+                                                    <p class="text-xs mb-0">Self-service adoption with digital touchpoints, followed by inside sales engagement as usage grows. Common for API-based services and developer tools using product-led growth approach.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Product Marketing</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Messaging Framework Development</h6>
+                                        <p class="text-xs mb-2">Structured approach to creating consistent, compelling communication:</p>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg mb-3">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Messaging Hierarchy</h6>
+                                            <div class="overflow-x-auto">
+                                                <table class="w-full text-xs">
+                                                    <thead>
+                                                        <tr class="bg-white dark:bg-gray-900">
+                                                            <th class="p-1 text-left">Level</th>
+                                                            <th class="p-1 text-left">Purpose</th>
+                                                            <th class="p-1 text-left">Elements</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Brand Message</td>
+                                                            <td class="p-1">Convey overall brand positioning and promise</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Brand promise</li>
+                                                                    <li>Mission statement</li>
+                                                                    <li>Core values</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Solution Message</td>
+                                                            <td class="p-1">Articulate broad solution category value</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Problem statement</li>
+                                                                    <li>Solution approach</li>
+                                                                    <li>Key differentiators</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Product Message</td>
+                                                            <td class="p-1">Communicate specific product value propositions</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Product positioning</li>
+                                                                    <li>Feature-benefit connections</li>
+                                                                    <li>Competitive advantages</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Audience Message</td>
+                                                            <td class="p-1">Target specific personas with relevant value</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Role-specific benefits</li>
+                                                                    <li>Use cases and scenarios</li>
+                                                                    <li>Pain point resolution</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Campaign Message</td>
+                                                            <td class="p-1">Focus on specific, timely marketing initiatives</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Campaign theme</li>
+                                                                    <li>Call to action</li>
+                                                                    <li>Promotion details</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Message Testing Approaches</h6>
+                                            <p class="text-xs mb-1">Validating messaging effectiveness with target audiences:</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Qualitative Testing</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Focus groups:</strong> Facilitated discussions to gather feedback on message concepts</li>
+                                                        <li><strong>Customer interviews:</strong> One-on-one conversations to explore message resonance</li>
+                                                        <li><strong>Cognitive walkthroughs:</strong> Observing customer reactions to messaging in context</li>
+                                                        <li><strong>Sales team validation:</strong> Feedback from those who will deliver messages to customers</li>
+                                                    </ul>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Quantitative Testing</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Message preference studies:</strong> Measuring relative appeal of different messages</li>
+                                                        <li><strong>A/B testing:</strong> Comparing performance of alternative messages in real campaigns</li>
+                                                        <li><strong>Comprehension testing:</strong> Assessing how well audiences understand key points</li>
+                                                        <li><strong>Message recall:</strong> Measuring what customers remember after exposure</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Content Marketing Strategy</h6>
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                            <p class="text-xs mb-1">Creating valuable content aligned with customer journeys:</p>
+                                            <div class="overflow-x-auto">
+                                                <table class="w-full text-xs">
+                                                    <thead>
+                                                        <tr class="bg-white dark:bg-gray-900">
+                                                            <th class="p-1 text-left">Buyer Stage</th>
+                                                            <th class="p-1 text-left">Content Purpose</th>
+                                                            <th class="p-1 text-left">Content Types</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Awareness</td>
+                                                            <td class="p-1">Educate about problems and challenges</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Industry trend reports</li>
+                                                                    <li>Educational blog posts</li>
+                                                                    <li>Thought leadership</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Consideration</td>
+                                                            <td class="p-1">Compare approaches and solutions</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Solution guides</li>
+                                                                    <li>Webinars and videos</li>
+                                                                    <li>Case studies and use cases</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Decision</td>
+                                                            <td class="p-1">Validate specific solution choice</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Product comparisons</li>
+                                                                    <li>ROI calculators</li>
+                                                                    <li>Technical specifications</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Adoption</td>
+                                                            <td class="p-1">Maximize value realization</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Implementation guides</li>
+                                                                    <li>Training materials</li>
+                                                                    <li>Best practice documents</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Advocacy</td>
+                                                            <td class="p-1">Encourage expansion and referrals</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Customer success stories</li>
+                                                                    <li>Advanced use cases</li>
+                                                                    <li>User community content</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            
+                                            <h6 class="text-xs font-medium mt-3 mb-1">B2B Content Strategy Best Practices</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Solution-focused content:</strong> Emphasize business outcomes over product features</li>
+                                                <li><strong>Deep expertise:</strong> Demonstrate thought leadership and specialized knowledge</li>
+                                                <li><strong>Customer validation:</strong> Incorporate customer stories and proof points</li>
+                                                <li><strong>Sales enablement:</strong> Create content that supports sales conversations</li>
+                                                <li><strong>Multi-format approach:</strong> Provide content in various formats for different preferences</li>
+                                                <li><strong>Progressive disclosure:</strong> Structure content to deliver appropriate detail at each stage</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">The Product-Led Growth Model</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">PLG Core Principles</h6>
+                                    <p class="text-xs mb-2">Product-led growth uses the product itself as the primary driver of customer acquisition, expansion, and retention:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Product as primary acquisition channel:</strong> Users can immediately experience value without sales interaction</li>
+                                        <li><strong>Time-to-value optimization:</strong> Designed to deliver meaningful value quickly</li>
+                                        <li><strong>User-centric design:</strong> Intuitive interfaces that minimize learning curve</li>
+                                        <li><strong>Value-driven expansion:</strong> Growth occurs through demonstrated value, not just sales efforts</li>
+                                        <li><strong>Customer success embedded in product:</strong> Self-service guidance and value discovery</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">PLG Business Models</h6>
+                                    <p class="text-xs mb-2">Common approaches to implementing product-led growth:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Freemium:</strong> Free tier with limited functionality, paid tiers for additional features</li>
+                                        <li><strong>Free trial:</strong> Time-limited access to full product capabilities</li>
+                                        <li><strong>Open core:</strong> Open source foundation with proprietary premium features</li>
+                                        <li><strong>Usage-based:</strong> Pay only for what is consumed, minimal upfront commitment</li>
+                                        <li><strong>Land and expand:</strong> Start small with easy adoption, grow through added modules and users</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">PLG Metrics</h6>
+                                    <p class="text-xs mb-2">Key performance indicators for product-led strategies:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Time to value:</strong> How quickly users achieve initial meaningful value</li>
+                                        <li><strong>Product-qualified leads (PQLs):</strong> Users showing behavioral signs of purchase intent</li>
+                                        <li><strong>Activation rate:</strong> Percentage of new users who complete key value actions</li>
+                                        <li><strong>Conversion rate:</strong> Free to paid user conversion percentage</li>
+                                        <li><strong>Expansion revenue:</strong> Growth from existing customers upgrading or adding users</li>
+                                        <li><strong>Net revenue retention:</strong> Revenue changes from existing customers over time</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">PLG and Enterprise Sales Integration</h6>
+                                <p class="text-xs mb-2">Modern B2B technology companies often blend product-led and sales-led approaches:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Sales-Assisted PLG Model</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Self-service adoption:</strong> Users begin with product-led experience</li>
+                                            <li><strong>Sales engagement triggers:</strong> Based on usage patterns, company size, or other criteria</li>
+                                            <li><strong>Targeted sales intervention:</strong> Focus on complex needs and larger opportunities</li>
+                                            <li><strong>Data-driven approach:</strong> Product usage informs sales conversations</li>
+                                            <li><strong>Value-added selling:</strong> Sales teams focus on strategic value, not just transactions</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Implementation Considerations</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Access model:</strong> How to balance open access with qualification processes</li>
+                                            <li><strong>Sales compensation:</strong> Aligning incentives for product-led and sales activities</li>
+                                            <li><strong>Organizational structure:</strong> Roles and responsibilities across marketing, sales, and product</li>
+                                            <li><strong>Customer journey mapping:</strong> When and how sales should engage in the customer journey</li>
+                                            <li><strong>Technology stack:</strong> Tools to track user behavior and identify sales opportunities</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">B2B Technology Marketing Trends</h5>
+                        <p class="text-sm mb-3">Technology marketing continues to evolve as buyer behaviors change and new engagement channels emerge. Understanding current trends helps strategy professionals align marketing approaches with broader business and market shifts.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="text-sm font-medium text-primary mb-2">Account-Based Marketing (ABM)</h6>
+                                <p class="text-xs mb-2">Targeted marketing to specific high-value accounts as markets rather than individuals:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Strategic account selection:</strong> Identifying and prioritizing target organizations</li>
+                                    <li><strong>Deep account research:</strong> Understanding specific account needs and dynamics</li>
+                                    <li><strong>Personalized content:</strong> Creating account-specific messaging and materials</li>
+                                    <li><strong>Coordinated engagement:</strong> Aligning marketing and sales activities</li>
+                                    <li><strong>Multi-channel orchestration:</strong> Delivering consistent experiences across touchpoints</li>
+                                    <li><strong>Account-level measurement:</strong> Evaluating success at the organization level</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="text-sm font-medium text-primary mb-2">Intent Data &amp; AI-Driven Marketing</h6>
+                                <p class="text-xs mb-2">Using behavioral signals and AI to identify and engage prospects showing purchase intent:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Buyer intent signals:</strong> Tracking research and engagement behaviors</li>
+                                    <li><strong>AI-powered recommendations:</strong> Suggesting next best actions based on patterns</li>
+                                    <li><strong>Predictive lead scoring:</strong> Identifying highest-potential opportunities</li>
+                                    <li><strong>Personalization at scale:</strong> Customizing experiences based on behavior</li>
+                                    <li><strong>Journey orchestration:</strong> Automatically adapting experiences to individual paths</li>
+                                    <li><strong>Attribution modeling:</strong> Understanding complex influence paths across channels</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="text-sm font-medium text-primary mb-2">Community-Led Growth</h6>
+                                <p class="text-xs mb-2">Building active user communities that drive adoption, engagement, and advocacy:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>User communities:</strong> Creating spaces for customers to connect and share</li>
+                                    <li><strong>Developer ecosystems:</strong> Fostering contribution and extension of platforms</li>
+                                    <li><strong>Advocacy programs:</strong> Encouraging and rewarding customer champions</li>
+                                    <li><strong>Educational initiatives:</strong> Building capability through training and certification</li>
+                                    <li><strong>User-generated content:</strong> Facilitating knowledge sharing among customers</li>
+                                    <li><strong>Co-creation opportunities:</strong> Involving community in product development</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Marketing Technology Evolution</h6>
+                            <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                <p class="text-xs mb-2">The marketing technology landscape continues to expand and evolve, creating new capabilities and challenges:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-2">Customer Data Platforms</h6>
+                                        <p class="text-xs mb-2">Unified customer data management systems that create comprehensive profiles:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Integration of data across marketing, sales, service, and product touchpoints</li>
+                                            <li>Creation of persistent, unified customer profiles</li>
+                                            <li>Real-time segmentation and activation capabilities</li>
+                                            <li>Privacy compliance and consent management</li>
+                                            <li>Predictive analytics and next-best-action recommendations</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-2">Revenue Operations Platforms</h6>
+                                        <p class="text-xs mb-2">Integrated systems that align marketing, sales, and customer success:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>End-to-end revenue process visibility and management</li>
+                                            <li>Unified metrics and reporting across customer-facing functions</li>
+                                            <li>Automated handoffs between marketing, sales, and customer success</li>
+                                            <li>Consistent customer experience across the complete lifecycle</li>
+                                            <li>Shared accountability for revenue outcomes</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-2">Conversational Marketing &amp; Sales</h6>
+                                        <p class="text-xs mb-2">Real-time, dialogue-based engagement approaches:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>AI-powered chatbots and virtual assistants</li>
+                                            <li>Intelligent routing to appropriate human resources</li>
+                                            <li>Contextual engagement based on behavior and intent</li>
+                                            <li>Integrated into buying processes to accelerate decisions</li>
+                                            <li>Continuous learning from conversation patterns</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Strategic Marketing Measurement</h6>
+                            <p class="text-xs mb-2">Evolving approaches to measuring marketing impact and ROI:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Modern Marketing Metrics Framework</h6>
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-xs">
+                                            <thead>
+                                                <tr class="bg-white dark:bg-gray-800">
+                                                    <th class="p-1 text-left">Metric Type</th>
+                                                    <th class="p-1 text-left">Key Metrics</th>
+                                                    <th class="p-1 text-left">Strategic Value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="p-1 font-medium">Financial Impact</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Marketing-influenced revenue</li>
+                                                            <li>Customer acquisition cost (CAC)</li>
+                                                            <li>Marketing ROI</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="p-1">Demonstrates marketing's contribution to business outcomes</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-1 font-medium">Customer Journey</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Conversion rates by stage</li>
+                                                            <li>Time-in-stage velocity</li>
+                                                            <li>Drop-off points</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="p-1">Identifies optimization opportunities across the buying process</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-1 font-medium">Engagement Quality</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Content engagement depth</li>
+                                                            <li>Buying group coverage</li>
+                                                            <li>Sales readiness indicators</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="p-1">Measures meaningful interaction beyond volume metrics</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-1 font-medium">Market Impact</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Share of voice</li>
+                                                            <li>Competitive win rate</li>
+                                                            <li>Brand perception metrics</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="p-1">Assesses broader market position and influence</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Measurement Challenges &amp; Solutions</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Attribution complexity:</strong> Using multi-touch attribution models to understand influence across touchpoints</li>
+                                        <li><strong>Long sales cycles:</strong> Implementing leading indicators and milestone metrics for early insight</li>
+                                        <li><strong>Digital/physical integration:</strong> Creating unified measurement across online and offline channels</li>
+                                        <li><strong>Privacy limitations:</strong> Adapting to reduced tracking capabilities with privacy-centric approaches</li>
+                                        <li><strong>Cross-functional impact:</strong> Developing shared metrics between marketing, sales, and customer success</li>
+                                    </ul>
+                                    
+                                    <h6 class="text-xs font-medium mt-3 mb-1">Strategic Measurement Approach</h6>
+                                    <ol class="pl-4 text-xs mb-0">
+                                        <li>Define clear marketing objectives aligned with business goals</li>
+                                        <li>Establish metrics taxonomy with leading and lagging indicators</li>
+                                        <li>Implement consistent measurement methodologies</li>
+                                        <li>Develop dashboards that provide actionable insights</li>
+                                        <li>Create regular review cadence for data-driven decisions</li>
+                                        <li>Continuously refine measurement approaches as capabilities evolve</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Strategic Application: Marketing &amp; Product Strategy Integration</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Aligning Marketing with Product Strategy</h5>
+                        <p class="text-sm mb-3">For strategy professionals, the integration of marketing and product strategy is critical for creating coherent customer experiences and maximizing business value. When properly aligned, marketing amplifies product strengths, while product development addresses genuine market needs.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Product-Marketing Alignment Framework</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">A structured approach to ensuring integration across key areas:</p>
+                                    <div class="grid grid-cols-1 gap-3">
+                                        <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Strategic Alignment</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Shared market definition:</strong> Common understanding of target markets and segments</li>
+                                                <li><strong>Consistent success metrics:</strong> Aligned KPIs across product and marketing</li>
+                                                <li><strong>Coordinated roadmaps:</strong> Synchronized product and marketing planning</li>
+                                                <li><strong>Unified positioning:</strong> Agreement on market positioning and differentiation</li>
+                                                <li><strong>Integrated customer experience:</strong> Cohesive experience from marketing to product</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Process Integration</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Joint planning cadence:</strong> Coordinated planning processes and reviews</li>
+                                                <li><strong>Customer insight sharing:</strong> Common research and insight development</li>
+                                                <li><strong>Launch synchronization:</strong> Integrated product launch management</li>
+                                                <li><strong>Feedback mechanisms:</strong> Shared channels for market and customer feedback</li>
+                                                <li><strong>Cross-functional governance:</strong> Decision making frameworks that include both perspectives</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Team Collaboration</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Role clarity:</strong> Clear definition of responsibilities and handoffs</li>
+                                                <li><strong>Regular touchpoints:</strong> Scheduled meetings and information sharing</li>
+                                                <li><strong>Embedded relationships:</strong> Marketing representation in product teams and vice versa</li>
+                                                <li><strong>Shared objectives:</strong> Aligned incentives and performance goals</li>
+                                                <li><strong>Cross-training:</strong> Building understanding of each function's processes</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Lifecycle-Based Marketing Strategy</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Adapting marketing strategies to different product lifecycle stages:</p>
+                                    
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-xs">
+                                            <thead>
+                                                <tr class="bg-amber-50 dark:bg-amber-900/20">
+                                                    <th class="p-1 text-left">Lifecycle Stage</th>
+                                                    <th class="p-1 text-left">Marketing Focus</th>
+                                                    <th class="p-1 text-left">Key Tactics</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="p-1 font-medium">Introduction</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Market education</li>
+                                                            <li>Early adopter acquisition</li>
+                                                            <li>Problem awareness</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Thought leadership content</li>
+                                                            <li>Industry speaking engagements</li>
+                                                            <li>Targeted early adopter programs</li>
+                                                            <li>Problem-focused messaging</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-1 font-medium">Growth</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Market share expansion</li>
+                                                            <li>Brand differentiation</li>
+                                                            <li>Channel development</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Customer success stories</li>
+                                                            <li>Competitive differentiation</li>
+                                                            <li>Channel enablement</li>
+                                                            <li>Solution-focused messaging</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-1 font-medium">Maturity</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Loyalty and retention</li>
+                                                            <li>Solution expansion</li>
+                                                            <li>Operational efficiency</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Customer loyalty programs</li>
+                                                            <li>Cross-sell and upsell campaigns</li>
+                                                            <li>Segment-specific marketing</li>
+                                                            <li>Value optimization messaging</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-1 font-medium">Decline/Transition</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Migration planning</li>
+                                                            <li>Value preservation</li>
+                                                            <li>Relationship continuity</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Migration path communication</li>
+                                                            <li>Transition incentive programs</li>
+                                                            <li>Support/EOL messaging</li>
+                                                            <li>Next-generation previews</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="mt-3 p-2 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                                        <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Portfolio Marketing Considerations</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Portfolio coherence:</strong> Creating clear relationships between products in the portfolio</li>
+                                            <li><strong>Cross-product messaging:</strong> Developing narrative that spans multiple offerings</li>
+                                            <li><strong>Migration pathways:</strong> Establishing clear customer journeys across portfolio</li>
+                                            <li><strong>Resource allocation:</strong> Balancing marketing investment across portfolio stages</li>
+                                            <li><strong>Brand architecture:</strong> Creating consistent yet distinctive branding across portfolio</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Marketing Strategy Decisions for Emerging Technologies</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Category Creation vs. Entry</h6>
+                                    <p class="text-xs mb-2">Determining whether to create a new category or enter an existing one:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Category Creation Approach</h6>
+                                        <ul class="pl-4 text-xs mb-1">
+                                            <li><strong>Best when:</strong> Truly novel solution without clear classification</li>
+                                            <li><strong>Advantages:</strong> Market leadership, premium positioning, less direct competition</li>
+                                            <li><strong>Challenges:</strong> Market education investment, longer sales cycles, legitimacy building</li>
+                                        </ul>
+                                        <h6 class="text-xs font-medium mb-0.5">Category Entry Approach</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Best when:</strong> Solution fits established category with clear differentiation</li>
+                                            <li><strong>Advantages:</strong> Established demand, clearer buying process, lower education needs</li>
+                                            <li><strong>Challenges:</strong> Competitive differentiation, positioning constraints, price pressure</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Innovation Marketing Strategy</h6>
+                                    <p class="text-xs mb-2">Marketing approaches specifically designed for innovative solutions:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Early adopter cultivation:</strong> Strategic identification and development of lighthouse customers</li>
+                                        <li><strong>Reference architecture:</strong> Creating frameworks for implementing innovative approaches</li>
+                                        <li><strong>Outcome quantification:</strong> Developing methodology to measure new types of value</li>
+                                        <li><strong>Risk reduction mechanisms:</strong> Programs to decrease adoption barriers and perceived risk</li>
+                                        <li><strong>Industry validation:</strong> Building credibility through analyst relationships and awards</li>
+                                        <li><strong>Vision-led content:</strong> Thought leadership that explains future direction and possibilities</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Crossing the Chasm Strategy</h6>
+                                    <p class="text-xs mb-2">Strategy for moving from early adopters to mainstream market:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Target beachhead segment:</strong> Identify a single, accessible mainstream segment to focus on first</li>
+                                        <li><strong>Whole product solution:</strong> Develop complete solution with all required elements for success</li>
+                                        <li><strong>Value chain partnerships:</strong> Build ecosystem of partners that complement the core offering</li>
+                                        <li><strong>Pragmatist messaging:</strong> Shift from visionary to practical, results-focused communication</li>
+                                        <li><strong>Social proof development:</strong> Create reference customers within the target segment</li>
+                                        <li><strong>Distribution channel alignment:</strong> Establish appropriate channels for mainstream buyers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Strategic Marketing Decision Framework</h6>
+                                <p class="text-xs mb-2">Key decisions that strategic marketers must address in technology companies:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <ol class="pl-4 text-xs mb-0">
+                                            <li><strong>Market selection:</strong> Which segments and customers to prioritize based on potential value and fit</li>
+                                            <li><strong>Positioning strategy:</strong> How to establish a distinctive, valuable place in customers' minds</li>
+                                            <li><strong>Go-to-market model:</strong> What channels and approaches will most efficiently reach target customers</li>
+                                            <li><strong>Customer acquisition approach:</strong> How to attract and convert prospects in a sustainable way</li>
+                                            <li><strong>Growth strategy:</strong> Whether to focus on new customer acquisition, expansion, or retention</li>
+                                        </ol>
+                                    </div>
+                                    <div>
+                                        <ol start="6" class="pl-4 text-xs mb-0">
+                                            <li><strong>Partner ecosystem strategy:</strong> What types of partnerships will enhance value proposition</li>
+                                            <li><strong>Content and messaging approach:</strong> How to communicate value in a compelling, differentiated way</li>
+                                            <li><strong>Marketing technology stack:</strong> What tools and platforms will enable marketing strategy</li>
+                                            <li><strong>Marketing organization:</strong> How to structure and resource marketing teams for success</li>
+                                            <li><strong>Marketing-product integration:</strong> How to ensure alignment between marketing and product</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <p class="text-xs italic mt-2 mb-0">These strategic decisions should be revisited periodically as market conditions, competitive dynamics, and organizational capabilities evolve. They form the foundation of marketing strategy and directly impact business results.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2013/05/what-is-a-chief-digital-office" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Strategic Positioning</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Framework for developing compelling market positions</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/the-new-b2b-growth-equation" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-file-list-3-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The New B2B Growth Equation</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey &amp; Company • Modern approaches to B2B marketing and growth</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.christenseninstitute.org/books/competing-against-luck/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-book-open-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Competing Against Luck</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Clayton Christensen • Jobs-to-be-Done framework for innovation and marketing</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Strategic Marketing Analysis Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll apply strategic marketing concepts to develop an approach for a technology product entering a new market segment.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Scenario: Enterprise Security Solution Market Entry</h6>
+                            <p class="text-xs mb-2">You're developing the marketing strategy for a new enterprise security solution with these characteristics:</p>
+                            <ul class="pl-4 text-xs mb-3">
+                                <li>The solution combines AI-powered threat detection with automated response capabilities</li>
+                                <li>It offers significantly faster threat detection than conventional solutions (minutes vs. hours)</li>
+                                <li>Implementation requires moderate technical expertise but is less complex than competitive offerings</li>
+                                <li>The solution is designed for mid-sized enterprises (1,000-5,000 employees) across various industries</li>
+                                <li>Your company is established in adjacent technology markets but new to enterprise security</li>
+                                <li>Several established competitors dominate the market with more complex but comprehensive solutions</li>
+                            </ul>
+                            
+                            <p class="text-xs font-medium mb-1">Your task:</p>
+                            <p class="text-xs mb-0">Develop a strategic marketing approach for this solution that addresses key elements of market segmentation, positioning, and go-to-market strategy.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Target Segment Analysis</label>
+                                <p class="text-xs mb-1">Which specific segments within the mid-sized enterprise market should you prioritize and why?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Identify and describe the most attractive segments to target, including their characteristics, needs, and why they represent the best opportunity for your solution. Consider both firmographic and behavioral factors in your analysis."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Positioning Strategy</label>
+                                <p class="text-xs mb-1">How would you position this solution in the competitive landscape?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Develop a positioning approach that differentiates your solution from competitors. Include your frame of reference, points of difference, and key value proposition. Create a positioning statement and explain why this positioning would resonate with your target segments."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Go-to-Market Strategy</label>
+                                <p class="text-xs mb-1">What channel and marketing approach would you recommend?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline your recommended go-to-market strategy, including channel selection, content approach, and demand generation strategy. Explain how this approach aligns with the buying process of your target segments and addresses competitive challenges."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Messaging Framework</label>
+                                <p class="text-xs mb-1">Develop key messaging elements for this solution.</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Create the core elements of your messaging framework, including primary message, supporting points, and proof points. Ensure your messaging addresses the needs of your target segments and reinforces your positioning strategy."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-transitions">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Transitions</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-pricing">
+                        <span>Next: Pricing</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

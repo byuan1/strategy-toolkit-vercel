@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 text-primary">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management Essentials</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Strategic Frameworks</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-porters-five-forces">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Porter's Five Forces</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-value-chain">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Value-Chain Analysis</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">36%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 36%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Structured Problem Solving</span>
+                                <span>3/3 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>3/3 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>1/2 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Value-Chain Analysis Topic -->
+            <section id="topic-value-chain" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-link-m text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Value-Chain Analysis</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Strategic Frameworks</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Master the core components of value chain analysis and its strategic applications</li>
+                            <li>Develop skills to identify and evaluate sources of competitive advantage within a value chain</li>
+                            <li>Apply value chain analysis to Dell's specific business units and operational models</li>
+                            <li>Generate actionable strategic recommendations based on value chain insights</li>
+                            <li>Understand how to integrate value chain analysis with other strategic frameworks</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Value Chain Analysis: Foundation and Purpose</h4>
+                    <p>Developed by Harvard Business School professor Michael Porter in 1985, value chain analysis provides a systematic approach for examining how a company's activities generate value and competitive advantage. By disaggregating a firm into its strategically relevant activities, this framework enables consultants to understand the sources of differentiation, cost position, and potential areas for performance improvement. For strategic consultants, value chain analysis serves as a critical tool for identifying how companies can create and sustain competitive advantage through the configuration of their internal activities.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Core Components of the Value Chain Framework</h5>
+                        <p class="mb-3">Porter's value chain model breaks down a firm's activities into two broad categories: primary activities and support activities. Each activity can be a source of competitive advantage through either cost leadership or differentiation.</p>
+                        
+                        <div class="relative overflow-x-auto mb-6">
+                            <!-- Value Chain Diagram -->
+                            <div class="min-w-[750px] h-[380px] bg-white dark:bg-gray-900 rounded-lg p-6 relative">
+                                <!-- Support Activities (Horizontal Bars) -->
+                                <div class="absolute top-6 left-6 right-6 h-[160px]">
+                                    <!-- Firm Infrastructure -->
+                                    <div class="absolute top-0 left-0 right-0 h-[32px] bg-blue-100 dark:bg-blue-900/30 rounded-t-lg border border-blue-300 dark:border-blue-700 flex items-center px-4">
+                                        <span class="font-medium text-blue-700 dark:text-blue-300 text-sm">Firm Infrastructure</span>
+                                    </div>
+                                    
+                                    <!-- Human Resource Management -->
+                                    <div class="absolute top-[40px] left-0 right-0 h-[32px] bg-blue-100 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 flex items-center px-4">
+                                        <span class="font-medium text-blue-700 dark:text-blue-300 text-sm">Human Resource Management</span>
+                                    </div>
+                                    
+                                    <!-- Technology Development -->
+                                    <div class="absolute top-[80px] left-0 right-0 h-[32px] bg-blue-100 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 flex items-center px-4">
+                                        <span class="font-medium text-blue-700 dark:text-blue-300 text-sm">Technology Development</span>
+                                    </div>
+                                    
+                                    <!-- Procurement -->
+                                    <div class="absolute top-[120px] left-0 right-0 h-[32px] bg-blue-100 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 flex items-center px-4">
+                                        <span class="font-medium text-blue-700 dark:text-blue-300 text-sm">Procurement</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Primary Activities (Boxes at bottom) -->
+                                <div class="absolute top-[180px] left-6 right-6 h-[140px]">
+                                    <!-- Inbound Logistics -->
+                                    <div class="absolute bottom-0 left-0 w-[120px] h-[120px] bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-bl-lg flex flex-col items-center justify-center p-2">
+                                        <span class="font-medium text-green-700 dark:text-green-300 text-sm text-center">Inbound Logistics</span>
+                                        <div class="mt-2 text-xs text-center text-gray-600 dark:text-gray-400">
+                                            Receiving, storing, inventory control
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Operations -->
+                                    <div class="absolute bottom-0 left-[128px] w-[120px] h-[120px] bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 flex flex-col items-center justify-center p-2">
+                                        <span class="font-medium text-green-700 dark:text-green-300 text-sm text-center">Operations</span>
+                                        <div class="mt-2 text-xs text-center text-gray-600 dark:text-gray-400">
+                                            Manufacturing, assembly, testing
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Outbound Logistics -->
+                                    <div class="absolute bottom-0 left-[256px] w-[120px] h-[120px] bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 flex flex-col items-center justify-center p-2">
+                                        <span class="font-medium text-green-700 dark:text-green-300 text-sm text-center">Outbound Logistics</span>
+                                        <div class="mt-2 text-xs text-center text-gray-600 dark:text-gray-400">
+                                            Order processing, shipping, distribution
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Marketing & Sales -->
+                                    <div class="absolute bottom-0 left-[384px] w-[120px] h-[120px] bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 flex flex-col items-center justify-center p-2">
+                                        <span class="font-medium text-green-700 dark:text-green-300 text-sm text-center">Marketing & Sales</span>
+                                        <div class="mt-2 text-xs text-center text-gray-600 dark:text-gray-400">
+                                            Advertising, promotion, pricing, channel management
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Service -->
+                                    <div class="absolute bottom-0 left-[512px] w-[120px] h-[120px] bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-br-lg flex flex-col items-center justify-center p-2">
+                                        <span class="font-medium text-green-700 dark:text-green-300 text-sm text-center">Service</span>
+                                        <div class="mt-2 text-xs text-center text-gray-600 dark:text-gray-400">
+                                            Installation, support, training, parts
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Margin Arrow -->
+                                <div class="absolute top-[140px] right-0 h-[160px] w-[20px] flex items-center justify-center">
+                                    <div class="h-full w-[2px] bg-red-400 dark:bg-red-600"></div>
+                                    <div class="absolute top-1/2 transform -translate-y-1/2 -translate-x-1/2 -rotate-90">
+                                        <span class="text-xs font-medium text-red-600 dark:text-red-400 whitespace-nowrap">Margin</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Support and Primary Labels -->
+                                <div class="absolute top-[90px] left-[-20px] transform -rotate-90">
+                                    <span class="text-xs font-medium text-blue-600 dark:text-blue-400 whitespace-nowrap">Support Activities</span>
+                                </div>
+                                <div class="absolute top-[240px] left-[-20px] transform -rotate-90">
+                                    <span class="text-xs font-medium text-green-600 dark:text-green-400 whitespace-nowrap">Primary Activities</span>
+                                </div>
+                                
+                                <!-- Value Direction Arrow -->
+                                <div class="absolute bottom-[-30px] left-6 right-6 flex justify-center">
+                                    <div class="flex items-center">
+                                        <div class="h-[2px] w-[100px] bg-gray-400 dark:bg-gray-600"></div>
+                                        <i class="ri-arrow-right-line text-gray-400 dark:text-gray-600"></i>
+                                        <span class="text-xs ml-2 text-gray-600 dark:text-gray-400">Value Creation Flow</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-green-600 dark:text-green-400">Primary Activities</h6>
+                                <p class="text-sm mb-3">Activities directly involved in creating and delivering a product or service to customers:</p>
+                                <div class="space-y-3 text-sm">
+                                    <div>
+                                        <h6 class="font-medium mb-1">1. Inbound Logistics</h6>
+                                        <p class="pl-4 text-xs">Activities related to receiving, storing, and distributing inputs to products/services.</p>
+                                        <ul class="pl-8 text-xs mt-1">
+                                            <li>Supplier relationships and management</li>
+                                            <li>Material receiving and inspection</li>
+                                            <li>Inventory management and warehousing</li>
+                                            <li>Component quality control</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium mb-1">2. Operations</h6>
+                                        <p class="pl-4 text-xs">Activities that transform inputs into final products or services.</p>
+                                        <ul class="pl-8 text-xs mt-1">
+                                            <li>Manufacturing and assembly</li>
+                                            <li>Testing and quality assurance</li>
+                                            <li>Packaging and preparation</li>
+                                            <li>Facility operations</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium mb-1">3. Outbound Logistics</h6>
+                                        <p class="pl-4 text-xs">Activities associated with collecting, storing, and distributing products to customers.</p>
+                                        <ul class="pl-8 text-xs mt-1">
+                                            <li>Order processing and fulfillment</li>
+                                            <li>Finished goods warehousing</li>
+                                            <li>Shipping and delivery</li>
+                                            <li>Distribution network management</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium mb-1">4. Marketing & Sales</h6>
+                                        <p class="pl-4 text-xs">Activities that inform buyers about products/services and induce them to purchase.</p>
+                                        <ul class="pl-8 text-xs mt-1">
+                                            <li>Advertising and promotion</li>
+                                            <li>Channel strategy and management</li>
+                                            <li>Pricing and quoting</li>
+                                            <li>Sales force operations</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium mb-1">5. Service</h6>
+                                        <p class="pl-4 text-xs">Activities that maintain and enhance product value after purchase.</p>
+                                        <ul class="pl-8 text-xs mt-1">
+                                            <li>Installation and setup</li>
+                                            <li>Technical support and troubleshooting</li>
+                                            <li>Warranty management and repairs</li>
+                                            <li>Product updates and maintenance</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-blue-600 dark:text-blue-400">Support Activities</h6>
+                                <p class="text-sm mb-3">Activities that support primary activities and each other, providing inputs and infrastructure for the value chain:</p>
+                                <div class="space-y-3 text-sm">
+                                    <div>
+                                        <h6 class="font-medium mb-1">1. Firm Infrastructure</h6>
+                                        <p class="pl-4 text-xs">General management, planning, finance, legal, quality management, and other functions that support the entire value chain.</p>
+                                        <ul class="pl-8 text-xs mt-1">
+                                            <li>Corporate governance and strategy</li>
+                                            <li>Financial management and accounting</li>
+                                            <li>Legal affairs and regulatory compliance</li>
+                                            <li>Quality management systems</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium mb-1">2. Human Resource Management</h6>
+                                        <p class="pl-4 text-xs">Activities involved in recruiting, hiring, training, developing, and compensating personnel.</p>
+                                        <ul class="pl-8 text-xs mt-1">
+                                            <li>Recruitment and hiring</li>
+                                            <li>Training and development</li>
+                                            <li>Compensation and benefits</li>
+                                            <li>Employee relations and culture</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium mb-1">3. Technology Development</h6>
+                                        <p class="pl-4 text-xs">Activities related to managing and processing information, as well as protecting and enhancing a firm's technology assets.</p>
+                                        <ul class="pl-8 text-xs mt-1">
+                                            <li>R&D and product design</li>
+                                            <li>Process technology improvement</li>
+                                            <li>IT systems and infrastructure</li>
+                                            <li>Knowledge management</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium mb-1">4. Procurement</h6>
+                                        <p class="pl-4 text-xs">Activities related to purchasing inputs used throughout the organization's value chain.</p>
+                                        <ul class="pl-8 text-xs mt-1">
+                                            <li>Vendor selection and evaluation</li>
+                                            <li>Purchasing processes</li>
+                                            <li>Contract management</li>
+                                            <li>Material sourcing strategies</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-white dark:bg-gray-900 p-4 rounded-lg">
+                            <h6 class="font-medium mb-2">Value Chain Analysis Process</h6>
+                            <p class="text-sm mb-3">To effectively conduct a value chain analysis, consultants typically follow these key steps:</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                    <h6 class="text-sm font-medium mb-2 text-primary">1. Identify Activities</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1">Map out all activities in the value chain</li>
+                                        <li class="mb-1">Disaggregate primary and support activities into discrete steps</li>
+                                        <li class="mb-1">Define clear boundaries between activities</li>
+                                        <li class="mb-1">Identify interdependencies between activities</li>
+                                        <li>Document workflow and information flows</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                    <h6 class="text-sm font-medium mb-2 text-primary">2. Analyze Value Creation</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1">Assess how each activity contributes to customer value</li>
+                                        <li class="mb-1">Determine cost structure for each activity</li>
+                                        <li class="mb-1">Identify drivers of cost and differentiation</li>
+                                        <li class="mb-1">Evaluate performance metrics for each activity</li>
+                                        <li>Identify competitive strengths and weaknesses</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                    <h6 class="text-sm font-medium mb-2 text-primary">3. Identify Strategic Opportunities</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1">Benchmark activities against competitors</li>
+                                        <li class="mb-1">Identify potential sources of competitive advantage</li>
+                                        <li class="mb-1">Evaluate linkages between activities for optimization</li>
+                                        <li class="mb-1">Assess make vs. buy decisions for certain activities</li>
+                                        <li>Develop recommendations for value enhancement</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h6 class="text-sm font-medium mb-2">Types of Value Chain Competitive Advantage</h6>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-2 text-primary">Cost Advantage</h6>
+                                        <p class="text-xs mb-2">Performing value chain activities more efficiently than competitors.</p>
+                                        <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                            <p class="font-medium mb-1">Sources of Cost Advantage:</p>
+                                            <ul class="pl-3 mb-0">
+                                                <li class="mb-1">Scale economies</li>
+                                                <li class="mb-1">Learning and experience curve effects</li>
+                                                <li class="mb-1">Capacity utilization optimization</li>
+                                                <li class="mb-1">Linkages optimization between activities</li>
+                                                <li class="mb-1">Process technology innovation</li>
+                                                <li>Location advantages</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-2 text-primary">Differentiation Advantage</h6>
+                                        <p class="text-xs mb-2">Performing value chain activities in a unique way that creates greater buyer value.</p>
+                                        <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                            <p class="font-medium mb-1">Sources of Differentiation Advantage:</p>
+                                            <ul class="pl-3 mb-0">
+                                                <li class="mb-1">Product features and performance</li>
+                                                <li class="mb-1">Customization capabilities</li>
+                                                <li class="mb-1">Customer service and support quality</li>
+                                                <li class="mb-1">Delivery speed and reliability</li>
+                                                <li class="mb-1">Brand reputation and marketing</li>
+                                                <li>Integration with customer value chains</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h6 class="text-sm font-medium mb-2">Common Pitfalls in Value Chain Analysis</h6>
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                    <ul class="pl-4 text-xs mb-0 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
+                                        <li><strong>Incorrect Activity Definition:</strong> Defining activities too broadly or narrowly, obscuring important insights</li>
+                                        <li><strong>Overemphasis on Cost Reduction:</strong> Focusing exclusively on cost without considering differentiation potential</li>
+                                        <li><strong>Overlooking Linkages:</strong> Analyzing activities in isolation without understanding interdependencies</li>
+                                        <li><strong>Static Analysis:</strong> Failing to consider how the value chain will evolve over time</li>
+                                        <li><strong>Internal Focus:</strong> Not extending analysis to supplier and customer value chains</li>
+                                        <li><strong>Missing Industry Evolution:</strong> Not accounting for how industry value chains are changing</li>
+                                        <li><strong>Neglecting Technology Impact:</strong> Underestimating how technology can transform value chain activities</li>
+                                        <li><strong>Inadequate Benchmarking:</strong> Not comparing value chain activities against relevant competitors</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Modern Value Chain Frameworks and Digital Transformation</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-3">Evolving Value Chains in the Digital Era</h5>
+                        <p class="text-sm mb-4">Porter's original value chain model has evolved significantly to address the realities of modern business, particularly in technology and service industries. Digital transformation has fundamentally reshaped how value is created, captured, and delivered across industries.</p>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
+                            <h6 class="text-sm font-medium mb-3">Key Transformations in Modern Value Chains</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Digital Disintermediation</h6>
+                                    <p class="text-xs mb-2">Digital technologies enabling the removal of traditional intermediaries from value chains.</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Key Characteristics:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1">Direct customer relationships</li>
+                                            <li class="mb-1">Elimination of distribution layers</li>
+                                            <li class="mb-1">Data-driven customer insights</li>
+                                            <li>Platform-based business models</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Value Chain Disaggregation</h6>
+                                    <p class="text-xs mb-2">Breaking traditional integrated value chains into specialized components performed by different entities.</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Key Characteristics:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1">Specialized value chain partners</li>
+                                            <li class="mb-1">Outsourcing of non-core activities</li>
+                                            <li class="mb-1">Focus on core competencies</li>
+                                            <li>Ecosystem orchestration</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Service-Based Value Creation</h6>
+                                    <p class="text-xs mb-2">Shift from product-centric to service-centric value creation models with ongoing customer relationships.</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Key Characteristics:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1">Subscription and as-a-service models</li>
+                                            <li class="mb-1">Continuous customer engagement</li>
+                                            <li class="mb-1">Value from outcomes, not ownership</li>
+                                            <li>Expanded post-purchase value creation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Data-Driven Value Chains</h6>
+                                    <p class="text-xs mb-2">Leveraging data as a core asset that drives value and transforms activities across the value chain.</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Key Characteristics:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1">Data as strategic asset</li>
+                                            <li class="mb-1">AI/ML-enhanced processes</li>
+                                            <li class="mb-1">Predictive operations and maintenance</li>
+                                            <li>Analytics-driven decision making</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Platform Ecosystems</h6>
+                                    <p class="text-xs mb-2">Shift from linear value chains to multi-sided platforms that enable interactions between different participant groups.</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Key Characteristics:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1">Multi-sided interactions</li>
+                                            <li class="mb-1">Network effects as value driver</li>
+                                            <li class="mb-1">Ecosystem partner management</li>
+                                            <li>Open vs. closed platform strategies</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Customer Co-Creation</h6>
+                                    <p class="text-xs mb-2">Engaging customers as active participants in the value creation process rather than passive recipients.</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Key Characteristics:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1">Customer as value partner</li>
+                                            <li class="mb-1">Customization and personalization</li>
+                                            <li class="mb-1">Community-driven innovation</li>
+                                            <li>User-generated content</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                            <h6 class="text-sm font-medium mb-3">Technology Industry Value Chain Evolution</h6>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full text-xs">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Value Chain Element</th>
+                                            <th class="text-center p-2 border border-gray-200 dark:border-gray-700">Traditional Hardware Model</th>
+                                            <th class="text-center p-2 border border-gray-200 dark:border-gray-700">Modern Technology Value Chain</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Key Transformation Drivers</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Inbound Logistics</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>Component-focused</div>
+                                                <div class="mt-1 text-gray-500">Physical inventory management</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>IP and capability-focused</div>
+                                                <div class="mt-1 text-gray-500">Digital + physical supply chain</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Intellectual property importance</li>
+                                                    <li>Digital content management</li>
+                                                    <li>Just-in-time integrated supply chains</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Operations</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>Manufacturing-centric</div>
+                                                <div class="mt-1 text-gray-500">Physical assembly focus</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>Hybrid physical-digital</div>
+                                                <div class="mt-1 text-gray-500">Automated and software-defined</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Software/hardware integration</li>
+                                                    <li>Automated manufacturing</li>
+                                                    <li>Configure-to-order models</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Outbound Logistics</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>Physical distribution</div>
+                                                <div class="mt-1 text-gray-500">Reseller and channel focus</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>Omnichannel delivery</div>
+                                                <div class="mt-1 text-gray-500">Digital + physical fulfillment</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Direct customer relationships</li>
+                                                    <li>Digital product activation</li>
+                                                    <li>Cloud service delivery</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Marketing & Sales</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>Product feature-focused</div>
+                                                <div class="mt-1 text-gray-500">Transaction-oriented</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>Solution and outcome-focused</div>
+                                                <div class="mt-1 text-gray-500">Relationship-oriented</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Subscription revenue models</li>
+                                                    <li>Data-driven customer insights</li>
+                                                    <li>Ecosystem selling approaches</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Service</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>Post-purchase activity</div>
+                                                <div class="mt-1 text-gray-500">Break/fix orientation</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>Continuous value delivery</div>
+                                                <div class="mt-1 text-gray-500">Proactive and predictive</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Telemetry and predictive analytics</li>
+                                                    <li>Remote management capabilities</li>
+                                                    <li>Value-add service integration</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Technology Development</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>Product engineering focus</div>
+                                                <div class="mt-1 text-gray-500">Internal R&D driven</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>Platform and ecosystem focus</div>
+                                                <div class="mt-1 text-gray-500">Open innovation models</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>API and developer ecosystems</li>
+                                                    <li>Co-innovation with partners</li>
+                                                    <li>Data-driven innovation</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Procurement</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>Component sourcing</div>
+                                                <div class="mt-1 text-gray-500">Transactional purchasing</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
+                                                <div>Ecosystem development</div>
+                                                <div class="mt-1 text-gray-500">Strategic partnerships</div>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Value-add partner integration</li>
+                                                    <li>Service procurement focus</li>
+                                                    <li>Digital procurement platforms</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-4 bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Implications for Technology Companies:</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Value Chain Reconfiguration:</strong> Technology companies must continuously reassess and reconfigure their value chains as industry dynamics evolve, particularly as boundaries between hardware, software, and services blur</li>
+                                    <li class="mb-1"><strong>Ecosystem Management:</strong> Strategic management of partner ecosystems becomes a core competency, as value creation increasingly occurs through interconnected networks rather than linear chains</li>
+                                    <li class="mb-1"><strong>Digital Capabilities:</strong> The transition from physical to hybrid digital-physical value chains requires new capabilities in data management, analytics, software development, and digital customer engagement</li>
+                                    <li class="mb-1"><strong>Recurring Revenue Focus:</strong> Value capture shifts from one-time product transactions to ongoing service relationships, requiring transformation of marketing, sales, delivery, and financial models</li>
+                                    <li><strong>Customer Experience Integration:</strong> Value chains increasingly integrate customer experience as a defining element, requiring seamless coordination across traditionally separate activities</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Dell's Value Chain Analysis</h4>
+                    
+                    <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-emerald-700 dark:text-emerald-400 font-medium mb-3">Dell's Traditional Direct Model Value Chain</h5>
+                        <p class="text-sm mb-4">Dell's historical competitive advantage was largely built on its innovative direct-to-customer business model, which created a fundamentally different value chain configuration compared to traditional PC manufacturers. Understanding this original value chain provides context for how Dell has evolved its approach over time.</p>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
+                            <h6 class="text-sm font-medium mb-3">Dell's Direct Model Value Chain Advantages</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Traditional PC Industry Value Chain (1990s)</h6>
+                                    <div class="p-3 border border-gray-200 dark:border-gray-700 rounded-lg">
+                                        <!-- Traditional Value Chain Diagram -->
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex flex-col items-center">
+                                                <div class="w-[80px] h-[40px] flex items-center justify-center bg-gray-100 dark:bg-gray-900 rounded border border-gray-300 dark:border-gray-700 text-center text-xs">
+                                                    Component Suppliers
+                                                </div>
+                                            </div>
+                                            <div class="w-[30px] text-center">
+                                                <i class="ri-arrow-right-line text-gray-400"></i>
+                                            </div>
+                                            <div class="flex flex-col items-center">
+                                                <div class="w-[80px] h-[40px] flex items-center justify-center bg-gray-100 dark:bg-gray-900 rounded border border-gray-300 dark:border-gray-700 text-center text-xs">
+                                                    PC Manufacturer
+                                                </div>
+                                            </div>
+                                            <div class="w-[30px] text-center">
+                                                <i class="ri-arrow-right-line text-gray-400"></i>
+                                            </div>
+                                            <div class="flex flex-col items-center">
+                                                <div class="w-[80px] h-[40px] flex items-center justify-center bg-gray-100 dark:bg-gray-900 rounded border border-gray-300 dark:border-gray-700 text-center text-xs">
+                                                    Distributors
+                                                </div>
+                                            </div>
+                                            <div class="w-[30px] text-center">
+                                                <i class="ri-arrow-right-line text-gray-400"></i>
+                                            </div>
+                                            <div class="flex flex-col items-center">
+                                                <div class="w-[80px] h-[40px] flex items-center justify-center bg-gray-100 dark:bg-gray-900 rounded border border-gray-300 dark:border-gray-700 text-center text-xs">
+                                                    Retailers/Resellers
+                                                </div>
+                                            </div>
+                                            <div class="w-[30px] text-center">
+                                                <i class="ri-arrow-right-line text-gray-400"></i>
+                                            </div>
+                                            <div class="flex flex-col items-center">
+                                                <div class="w-[80px] h-[40px] flex items-center justify-center bg-gray-100 dark:bg-gray-900 rounded border border-gray-300 dark:border-gray-700 text-center text-xs">
+                                                    End Customers
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+                                            <p class="font-medium mb-1">Key Challenges:</p>
+                                            <ul class="pl-4 mb-0">
+                                                <li>Multiple inventory points across chain</li>
+                                                <li>Long lead times and forecasting challenges</li>
+                                                <li>Limited customer relationship data</li>
+                                                <li>Channel conflicts and margin stacking</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Dell's Direct Model Value Chain</h6>
+                                    <div class="p-3 border border-gray-200 dark:border-gray-700 rounded-lg">
+                                        <!-- Dell Direct Value Chain Diagram -->
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex flex-col items-center">
+                                                <div class="w-[80px] h-[40px] flex items-center justify-center bg-gray-100 dark:bg-gray-900 rounded border border-gray-300 dark:border-gray-700 text-center text-xs">
+                                                    Component Suppliers
+                                                </div>
+                                            </div>
+                                            <div class="w-[30px] text-center">
+                                                <i class="ri-arrow-right-line text-gray-400"></i>
+                                            </div>
+                                            <div class="flex flex-col items-center">
+                                                <div class="w-[80px] h-[40px] flex items-center justify-center bg-emerald-100 dark:bg-emerald-900/30 rounded border border-emerald-300 dark:border-emerald-700 text-center text-xs font-medium">
+                                                    Dell
+                                                </div>
+                                            </div>
+                                            <div class="w-[30px] text-center">
+                                                <i class="ri-arrow-right-line text-gray-400"></i>
+                                            </div>
+                                            <div class="flex flex-col items-center">
+                                                <div class="w-[80px] h-[40px] flex items-center justify-center bg-gray-100 dark:bg-gray-900 rounded border border-gray-300 dark:border-gray-700 text-center text-xs">
+                                                    End Customers
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+                                            <p class="font-medium mb-1">Key Advantages:</p>
+                                            <ul class="pl-4 mb-0">
+                                                <li>Build-to-order manufacturing eliminating finished goods inventory</li>
+                                                <li>Direct customer insight driving product development</li>
+                                                <li>Negative cash conversion cycle through supplier management</li>
+                                                <li>Elimination of distributor/retailer margins</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-x-auto mb-4">
+                                <table class="min-w-full text-xs">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Value Chain Activity</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Dell's Direct Model Approach</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Competitive Advantage Created</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Inbound Logistics</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Just-in-time component delivery</li>
+                                                    <li>Vendor-managed inventory</li>
+                                                    <li>Supplier co-location near manufacturing</li>
+                                                    <li>Electronic supply chain integration</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Minimal component inventory (5-6 days vs. industry 30+ days)</li>
+                                                    <li>Rapid response to component price changes</li>
+                                                    <li>Reduced obsolescence risk</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Operations</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Build-to-order manufacturing</li>
+                                                    <li>Cell-based assembly process</li>
+                                                    <li>Standardized component architecture</li>
+                                                    <li>Postponement strategy for customization</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Zero finished goods inventory</li>
+                                                    <li>Customization without efficiency loss</li>
+                                                    <li>Rapid production cycles (hours vs. days)</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Outbound Logistics</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Direct-to-customer shipping</li>
+                                                    <li>Third-party logistics partnerships</li>
+                                                    <li>Merge-in-transit capabilities</li>
+                                                    <li>Regional fulfillment centers</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Elimination of distribution layer costs</li>
+                                                    <li>Complete order tracking visibility</li>
+                                                    <li>Customized delivery experience</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Marketing & Sales</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Direct customer relationships</li>
+                                                    <li>Online configuration and ordering</li>
+                                                    <li>Segment-specific sales teams</li>
+                                                    <li>Data-driven customer insights</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Elimination of channel margin costs</li>
+                                                    <li>Superior customer data for targeting</li>
+                                                    <li>Rapid feedback loop to product development</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Service</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Direct technical support</li>
+                                                    <li>Online self-service knowledge base</li>
+                                                    <li>Remote diagnostics</li>
+                                                    <li>Third-party on-site service partners</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Complete customer history visibility</li>
+                                                    <li>Service as customer feedback channel</li>
+                                                    <li>Cost efficiency through tiered support</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Financial Impact of Dell's Direct Model:</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Negative Cash Conversion Cycle:</strong> Dell's model generated the rare advantage of receiving payment from customers before paying suppliers, creating a negative cash conversion cycle of -40 days compared to +30 days for traditional competitors</li>
+                                    <li class="mb-1"><strong>Inventory Advantage:</strong> Dell's inventory turnover of 30-50x per year compared to competitor averages of 10-12x significantly reduced working capital requirements and obsolescence risk</li>
+                                    <li class="mb-1"><strong>Pricing Flexibility:</strong> Real-time component cost visibility combined with direct pricing allowed Dell to pass through cost reductions faster than channel-bound competitors, creating pricing pressure while maintaining margins</li>
+                                    <li class="mb-1"><strong>Sales Efficiency:</strong> Direct customer acquisition costs were lower as a percentage of revenue compared to channel incentives and marketing programs required by traditional models</li>
+                                    <li><strong>Cost Structure:</strong> Dell consistently achieved SG&A costs 5-7% lower than major competitors operating through traditional channels, enabling either higher margins or more aggressive pricing</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                            <h6 class="text-sm font-medium mb-3">Dell's Value Chain Evolution</h6>
+                            
+                            <div class="overflow-x-auto mb-4">
+                                <table class="min-w-full text-xs">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Value Chain Transformation</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Key Changes</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Strategic Rationale</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Channel Expansion<br>(2007-2010)</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Addition of retail distribution</li>
+                                                    <li>Hybrid sales model development</li>
+                                                    <li>Channel conflict management systems</li>
+                                                    <li>Mass market product lines</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Access to customers preferring in-store experience</li>
+                                                    <li>Response to shifts in consumer buying behavior</li>
+                                                    <li>Competitive response to market share challenges</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Enterprise Solutions Focus<br>(2009-2012)</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Expanded server and storage portfolio</li>
+                                                    <li>Solution-oriented sales approach</li>
+                                                    <li>Enterprise services capability development</li>
+                                                    <li>Vertical market expertise build-out</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Higher margin product and solution focus</li>
+                                                    <li>Reduced exposure to commoditized PC segments</li>
+                                                    <li>Expansion of enterprise relationships</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">End-to-End Solutions<br>(EMC Acquisition)<br>(2016-2018)</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Full infrastructure portfolio integration</li>
+                                                    <li>Software-defined datacenter capabilities</li>
+                                                    <li>Hybrid cloud enablement solutions</li>
+                                                    <li>Global services organization expansion</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Complete enterprise technology portfolio</li>
+                                                    <li>Strategic response to industry convergence</li>
+                                                    <li>Higher-value customer engagements</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">As-a-Service Transformation<br>(2019-Present)</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>APEX flexible consumption offerings</li>
+                                                    <li>Outcome-based service models</li>
+                                                    <li>Cloud-like operational experiences</li>
+                                                    <li>Subscription-based pricing options</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Addressing cloud-driven customer expectations</li>
+                                                    <li>Building recurring revenue streams</li>
+                                                    <li>Reducing exposure to capital expenditure cycles</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Competitive Advantage Evolution</h6>
+                                    <p class="text-xs mb-3">The evolution of Dell's value chain has transformed its sources of competitive advantage:</p>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                            <p class="font-medium mb-1">Traditional Advantages</p>
+                                            <ul class="pl-3 mb-0">
+                                                <li class="mb-1">Cost efficiency</li>
+                                                <li class="mb-1">Inventory management</li>
+                                                <li class="mb-1">Customization capability</li>
+                                                <li>Price-performance value</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                            <p class="font-medium mb-1">Emerging Advantages</p>
+                                            <ul class="pl-3 mb-0">
+                                                <li class="mb-1">Solution integration</li>
+                                                <li class="mb-1">Cross-portfolio synergies</li>
+                                                <li class="mb-1">Subscription relationships</li>
+                                                <li>Multi-cloud enablement</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">Persistent Value Chain Strengths</h6>
+                                    <p class="text-xs mb-2">Despite significant evolution, several core strengths from Dell's original value chain model remain relevant:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1"><strong>Direct Customer Relationships:</strong> Even with channel expansion, Dell maintains direct relationships with many customers, providing valuable insights</li>
+                                            <li class="mb-1"><strong>Configure-to-Order Capabilities:</strong> Customization abilities remain a differentiator, now extended to complex infrastructure solutions</li>
+                                            <li class="mb-1"><strong>Supply Chain Excellence:</strong> Advanced logistics and inventory management capabilities continue to provide operational advantages</li>
+                                            <li><strong>Customer Data Leverage:</strong> Dell's history of customer data collection provides advantages in targeted marketing and solution development</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-emerald-700 dark:text-emerald-400 font-medium mb-3">Dell's Current Value Chain Analysis: APEX Cloud Services</h5>
+                        <p class="text-sm mb-4">Dell's APEX portfolio represents the company's most significant value chain transformation, shifting from a product-centric to a service-centric model. This as-a-service offering fundamentally reorients Dell's activities around continuous value delivery rather than point-in-time transactions.</p>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
+                            <h6 class="text-sm font-medium mb-3">APEX Value Chain Analysis</h6>
+                            
+                            <div class="overflow-x-auto mb-6">
+                                <table class="min-w-full text-xs">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Value Chain Activity</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Traditional Hardware Approach</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">APEX As-a-Service Approach</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Value Creation Impact</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Inbound Logistics</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Component sourcing</li>
+                                                    <li>Just-in-time delivery</li>
+                                                    <li>Inventory management</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Pre-configured solution inventory</li>
+                                                    <li>Capacity planning analytics</li>
+                                                    <li>Resource pool management</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Improved deployment speed</li>
+                                                    <li>Buffer capacity optimization</li>
+                                                    <li>Smoother infrastructure pipeline</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Operations</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Manufacturing and assembly</li>
+                                                    <li>Testing and QA</li>
+                                                    <li>Order fulfillment</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Solution engineering standardization</li>
+                                                    <li>Cloud management platform integration</li>
+                                                    <li>Continuous platform innovation</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Greater consistency</li>
+                                                    <li>Automated operations</li>
+                                                    <li>Continuous functionality expansion</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Outbound Logistics</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Shipping and delivery</li>
+                                                    <li>Installation coordination</li>
+                                                    <li>Product handover</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Infrastructure deployment</li>
+                                                    <li>Service provisioning</li>
+                                                    <li>Continuous capacity delivery</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Faster time-to-value</li>
+                                                    <li>Reduced customer effort</li>
+                                                    <li>Elastic scaling capability</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Marketing & Sales</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Product specification and pricing</li>
+                                                    <li>Transaction-focused sales</li>
+                                                    <li>Product feature marketing</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Business outcome discussions</li>
+                                                    <li>Consumption-based pricing models</li>
+                                                    <li>Service level positioning</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Higher-level business conversations</li>
+                                                    <li>Flexible financial options</li>
+                                                    <li>Clearer value proposition</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Service</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Break/fix support</li>
+                                                    <li>Warranty management</li>
+                                                    <li>Reactive problem resolution</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Proactive operations management</li>
+                                                    <li>Continuous service level monitoring</li>
+                                                    <li>Predictive maintenance</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Fewer customer disruptions</li>
+                                                    <li>Focused customer IT resources</li>
+                                                    <li>Continuous service improvement</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Technology Development</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Hardware product development</li>
+                                                    <li>Discrete component innovation</li>
+                                                    <li>Feature-focused R&D</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Software-defined platform development</li>
+                                                    <li>API and integration capabilities</li>
+                                                    <li>Automation and orchestration</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Continuous innovation delivery</li>
+                                                    <li>Greater ecosystem integration</li>
+                                                    <li>Enhanced operational efficiency</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Human Resource Management</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Manufacturing and logistics skills</li>
+                                                    <li>Transactional sales capabilities</li>
+                                                    <li>Product-focused engineering</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Service delivery expertise</li>
+                                                    <li>DevOps and SRE capabilities</li>
+                                                    <li>Outcome-based sales skills</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Enhanced customer experience</li>
+                                                    <li>More consultative relationships</li>
+                                                    <li>Workforce modernization</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Firm Infrastructure</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Transaction-based accounting</li>
+                                                    <li>Product P&L structures</li>
+                                                    <li>Capital-intensive financial model</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Subscription revenue recognition</li>
+                                                    <li>Service-based financial metrics</li>
+                                                    <li>Customer lifetime value focus</li>
+                                                </ul>
+                                            </td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>More predictable revenue streams</li>
+                                                    <li>Improved investor attractiveness</li>
+                                                    <li>Long-term customer relationships</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">APEX Value Chain Strengths</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1"><strong>End-to-End Integration:</strong> APEX delivers a complete solution including hardware, software, and services, creating a more comprehensive value proposition than traditional product sales</li>
+                                            <li class="mb-1"><strong>Customer Experience Simplification:</strong> The model eliminates many customer pain points around procurement, deployment, and operations, creating a differentiated experience</li>
+                                            <li class="mb-1"><strong>Continuous Value Delivery:</strong> Unlike traditional hardware transactions, APEX creates ongoing touchpoints for value delivery, strengthening customer relationships</li>
+                                            <li class="mb-1"><strong>Flexibility Advantage:</strong> The consumption-based model provides customers with cloud-like flexibility while maintaining on-premises deployment advantages</li>
+                                            <li><strong>Ecosystem Integration:</strong> APEX's API-first architecture facilitates integration with other services and platforms, expanding its value proposition</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">APEX Value Chain Challenges</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1"><strong>Capital Intensity:</strong> Dell must finance the upfront infrastructure costs, creating balance sheet pressure not present in traditional sales models</li>
+                                            <li class="mb-1"><strong>Operations Complexity:</strong> Managing distributed infrastructure at customer locations while delivering cloud-like experiences introduces operational challenges</li>
+                                            <li class="mb-1"><strong>Sales Transformation:</strong> The shift from transaction to consumption selling requires significant sales force retraining and compensation restructuring</li>
+                                            <li class="mb-1"><strong>Competitive Differentiation:</strong> Creating distinct advantages versus both public cloud providers and other infrastructure vendors offering similar as-a-service models is challenging</li>
+                                            <li><strong>Financial Model Transition:</strong> The shift from upfront revenue recognition to subscription revenue creates near-term financial reporting impacts</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">Strategic Implications of APEX Value Chain Transformation:</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Business Model Evolution:</strong> The APEX value chain represents Dell's most significant business model innovation since the direct model, fundamentally changing how value is created and captured</li>
+                                    <li class="mb-1"><strong>Competitive Positioning:</strong> This transformation positions Dell as a hybrid cloud enabler rather than just a hardware provider, creating a more strategic role in customer IT environments</li>
+                                    <li class="mb-1"><strong>Financial Profile Shift:</strong> The transition toward recurring revenue aligns with investor preferences for subscription businesses, potentially improving valuation multiples over time</li>
+                                    <li class="mb-1"><strong>Organizational Implications:</strong> Successfully executing this value chain transformation requires significant organizational change across R&D, sales, service delivery, and finance functions</li>
+                                    <li><strong>Strategic Differentiation:</strong> The APEX value chain leverages Dell's existing infrastructure expertise while addressing the cloud operating model preferences of modern customers, creating a potentially sustainable competitive advantage</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Strategic Recommendations from Value Chain Analysis</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-3">Optimizing Dell's Value Chain for Future Advantage</h5>
+                        <p class="text-sm mb-4">Based on comprehensive value chain analysis of Dell's evolving business models, the following strategic recommendations emerge to enhance competitive positioning and drive sustainable growth.</p>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+                            <h6 class="text-sm font-medium mb-3">Key Strategic Imperatives</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">1. Accelerate Software-Defined Infrastructure Capabilities</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Value Chain Impact:</p>
+                                        <ul class="pl-3 mb-2">
+                                            <li class="mb-1">Shifts Technology Development focus from hardware to software innovation</li>
+                                            <li class="mb-1">Creates greater differentiation in Operations through automation</li>
+                                            <li class="mb-1">Enhances Service through proactive management capabilities</li>
+                                            <li>Supports higher margins through software-driven value</li>
+                                        </ul>
+                                        <p class="font-medium mb-1">Implementation Actions:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1">Increase R&D investment in software-defined infrastructure by 25%</li>
+                                            <li class="mb-1">Develop API-first architecture across all infrastructure products</li>
+                                            <li class="mb-1">Acquire capabilities in orchestration and automation software</li>
+                                            <li>Create developer enablement programs for infrastructure platforms</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">2. Transform Service Value Chain Components</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Value Chain Impact:</p>
+                                        <ul class="pl-3 mb-2">
+                                            <li class="mb-1">Elevates Service from cost center to value creator</li>
+                                            <li class="mb-1">Creates stronger linkage between Service and Sales activities</li>
+                                            <li class="mb-1">Builds ongoing customer touchpoints for relationship development</li>
+                                            <li>Enables data collection for continuous product improvement</li>
+                                        </ul>
+                                        <p class="font-medium mb-1">Implementation Actions:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1">Develop outcome-based service offerings with predictive capabilities</li>
+                                            <li class="mb-1">Create service adoption and success metrics in sales compensation</li>
+                                            <li class="mb-1">Implement telemetry across product lines for proactive support</li>
+                                            <li>Establish Customer Success function to drive adoption and expansion</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">3. Integrate Value Chains Across Business Units</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Value Chain Impact:</p>
+                                        <ul class="pl-3 mb-2">
+                                            <li class="mb-1">Creates operational efficiencies through shared activities</li>
+                                            <li class="mb-1">Enables cross-portfolio solution development</li>
+                                            <li class="mb-1">Strengthens customer relationships through unified engagement</li>
+                                            <li>Reduces redundancies in support activities</li>
+                                        </ul>
+                                        <p class="font-medium mb-1">Implementation Actions:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1">Establish cross-BU solution development teams with integrated roadmaps</li>
+                                            <li class="mb-1">Create unified customer success management across product lines</li>
+                                            <li class="mb-1">Develop integrated procurement strategies across business units</li>
+                                            <li>Implement shared technology platforms for customer engagement</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">4. Establish AI-Optimized Infrastructure Value Chain</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Value Chain Impact:</p>
+                                        <ul class="pl-3 mb-2">
+                                            <li class="mb-1">Creates new high-margin product and service opportunities</li>
+                                            <li class="mb-1">Differentiates Technology Development activities</li>
+                                            <li class="mb-1">Shifts Marketing & Sales toward emerging high-growth segment</li>
+                                            <li>Enhances value proposition vs. cloud-only competitors</li>
+                                        </ul>
+                                        <p class="font-medium mb-1">Implementation Actions:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1">Create dedicated AI infrastructure business unit with specialized activities</li>
+                                            <li class="mb-1">Develop co-innovation partnerships with AI software providers</li>
+                                            <li class="mb-1">Build vertical-specific AI solution offerings with industry expertise</li>
+                                            <li>Implement AI solution labs for customer proof-of-concept development</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">5. Modernize Supply Chain for Sustainability</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Value Chain Impact:</p>
+                                        <ul class="pl-3 mb-2">
+                                            <li class="mb-1">Transforms Inbound Logistics for environmental efficiency</li>
+                                            <li class="mb-1">Creates differentiation potential in Operations</li>
+                                            <li class="mb-1">Enhances Marketing & Sales with sustainability messaging</li>
+                                            <li>Reduces long-term operational costs and risk exposure</li>
+                                        </ul>
+                                        <p class="font-medium mb-1">Implementation Actions:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1">Implement circular economy initiatives across product lifecycle</li>
+                                            <li class="mb-1">Develop supplier sustainability scorecard and requirements</li>
+                                            <li class="mb-1">Reduce carbon footprint in logistics and manufacturing by 30%</li>
+                                            <li>Create product design standards that prioritize repairability and recycling</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">6. Redefine Channel Partner Value Chain Integration</h6>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded-lg text-xs">
+                                        <p class="font-medium mb-1">Value Chain Impact:</p>
+                                        <ul class="pl-3 mb-2">
+                                            <li class="mb-1">Transforms Outbound Logistics through partner enablement</li>
+                                            <li class="mb-1">Extends Marketing & Sales reach through ecosystem</li>
+                                            <li class="mb-1">Creates scale efficiency in Service delivery</li>
+                                            <li>Enhances overall market coverage and solution delivery</li>
+                                        </ul>
+                                        <p class="font-medium mb-1">Implementation Actions:</p>
+                                        <ul class="pl-3 mb-0">
+                                            <li class="mb-1">Develop API-driven partner platforms for service delivery</li>
+                                            <li class="mb-1">Create outcome-based partner incentives rather than volume focus</li>
+                                            <li class="mb-1">Build co-delivery models for as-a-service offerings</li>
+                                            <li>Implement partner specialization tracks for emerging technologies</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Implementation Roadmap:</h6>
+                                <div class="overflow-x-auto">
+                                    <table class="min-w-full text-xs">
+                                        <thead>
+                                            <tr class="bg-white dark:bg-gray-900 border-b border-purple-200 dark:border-purple-800">
+                                                <th class="text-left p-2">Timeframe</th>
+                                                <th class="text-left p-2">Key Initiatives</th>
+                                                <th class="text-left p-2">Expected Impact</th>
+                                                <th class="text-left p-2">Primary Value Chain Focus</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="border-b border-purple-200 dark:border-purple-800">
+                                                <td class="p-2 align-top">Near-Term<br>(0-12 months)</td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Expand APEX portfolio coverage</li>
+                                                        <li>Implement cross-BU customer success teams</li>
+                                                        <li>Launch sustainability measurement dashboard</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>15% growth in APEX pipeline</li>
+                                                        <li>10% improvement in solution attach rates</li>
+                                                        <li>Baseline sustainability metrics established</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Service</li>
+                                                        <li>Marketing & Sales</li>
+                                                        <li>Operations</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-purple-200 dark:border-purple-800">
+                                                <td class="p-2 align-top">Mid-Term<br>(1-2 years)</td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>API-first architecture implementation</li>
+                                                        <li>AI infrastructure business unit formation</li>
+                                                        <li>Channel partner service enablement platform</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>30% increase in ecosystem integrations</li>
+                                                        <li>25% growth in AI infrastructure revenue</li>
+                                                        <li>20% of APEX deals through partners</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Technology Development</li>
+                                                        <li>Outbound Logistics</li>
+                                                        <li>Human Resource Management</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 align-top">Long-Term<br>(2-3+ years)</td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Supply chain circular economy transformation</li>
+                                                        <li>Fully integrated value chains across BUs</li>
+                                                        <li>Platform-based business model expansion</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>50% reduction in environmental footprint</li>
+                                                        <li>35% of revenue from as-a-service models</li>
+                                                        <li>20% cost reduction through value chain integration</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 align-top">
+                                                    <ul class="pl-3 mb-0">
+                                                        <li>Inbound Logistics</li>
+                                                        <li>Firm Infrastructure</li>
+                                                        <li>All Primary Activities</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Practical Application Exercises</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Value Chain Analysis Practice</h5>
+                        <p class="mb-3">Apply value chain analysis to these Dell-specific business scenarios:</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Exercise 1: Value Chain Analysis for Dell's Client Solutions Group</h6>
+                            <p class="text-xs mb-2">Apply value chain analysis to identify competitive advantages for Dell's commercial PC business:</p>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                <p class="mb-2"><strong>Dell Client Solutions Group Context:</strong></p>
+                                <ul class="mb-2">
+                                    <li>Dell's commercial PC business focuses on enterprise, government, and education segments</li>
+                                    <li>Key competitors include HP Inc., Lenovo, and increasingly Microsoft Surface</li>
+                                    <li>Core products include Latitude laptops, OptiPlex desktops, and Precision workstations</li>
+                                    <li>The industry is experiencing growth in premium devices and as-a-service models</li>
+                                    <li>Device security and management capabilities are increasingly important differentiation factors</li>
+                                </ul>
+                                <p class="mb-2"><strong>Key Questions to Address:</strong></p>
+                                <ol>
+                                    <li>For each primary and support activity in Dell's commercial PC value chain, identify current strengths and weaknesses</li>
+                                    <li>Where are the most significant opportunities to create competitive advantage through value chain reconfiguration?</li>
+                                    <li>How should Dell's value chain evolve to address the shift toward device-as-a-service and cloud-based management?</li>
+                                    <li>What strategic tradeoffs might Dell need to make in optimizing its value chain? (e.g. efficiency vs. customization)</li>
+                                </ol>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium mb-1">Your Value Chain Analysis</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="10" placeholder="Conduct a comprehensive value chain analysis for Dell's Commercial PC business. For each primary and support activity, assess Dell's strengths and weaknesses. Identify the linkages between activities that create the most value. Based on your analysis, develop specific recommendations for how Dell should reconfigure its value chain to strengthen competitive advantages and adapt to market shifts toward as-a-service models."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Exercise 2: Value Chain Transition Strategy</h6>
+                            <p class="text-xs mb-2">Develop a strategy for transitioning Dell's server business from traditional product sales to as-a-service models:</p>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                <p class="mb-2"><strong>Dell Server Business Context:</strong></p>
+                                <ul class="mb-2">
+                                    <li>Dell's PowerEdge server business operates primarily on a capital expenditure model</li>
+                                    <li>The APEX initiative aims to transform this to a consumption-based offering</li>
+                                    <li>The transition affects every aspect of the value chain from R&D to Service</li>
+                                    <li>Customers expect cloud-like flexibility with on-premises security and performance</li>
+                                    <li>Dell must maintain revenue and margin during the multi-year transition</li>
+                                </ul>
+                                <p class="mb-2"><strong>Task:</strong></p>
+                                <p class="mb-1">Develop a value chain transition plan that addresses:</p>
+                                <ol>
+                                    <li>How each primary and support activity in the value chain must evolve</li>
+                                    <li>Key capabilities that need to be developed or acquired</li>
+                                    <li>Priority activities that represent the greatest challenges and opportunities</li>
+                                    <li>Metrics to track progress of the value chain transformation</li>
+                                </ol>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium mb-1">Your Value Chain Transition Strategy</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="10" placeholder="Create a comprehensive value chain transition strategy for Dell's server business as it evolves from a product-centric to an as-a-service model. For each value chain activity, describe the current state, target future state, and specific actions required to bridge the gap. Identify the key dependencies between activities that must be managed during the transition. Develop a phased implementation plan with specific metrics to track progress. Address how Dell can maintain financial performance while making this fundamental value chain transformation."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="font-medium mb-2">Exercise 3: Value Chain Competitive Analysis</h6>
+                                <p class="text-xs mb-2">Compare Dell's value chain with key competitors:</p>
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                    <p class="mb-2"><strong>Competitive Context:</strong></p>
+                                    <p class="mb-2">Dell competes with several players that have different value chain configurations:</p>
+                                    <ul>
+                                        <li><strong>HP Inc.:</strong> Similar integrated hardware manufacturer with retail presence</li>
+                                        <li><strong>Lenovo:</strong> Global manufacturer with strong presence in China and emerging markets</li>
+                                        <li><strong>AWS:</strong> Pure cloud provider with consumption-based model</li>
+                                        <li><strong>Microsoft:</strong> Software and cloud provider with growing hardware business</li>
+                                    </ul>
+                                    <p class="mb-0"><strong>Key Questions:</strong></p>
+                                    <ol>
+                                        <li>How do competitors' value chains differ from Dell's?</li>
+                                        <li>What competitive advantages do these differences create?</li>
+                                        <li>What elements should Dell adopt or adapt?</li>
+                                    </ol>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="block text-sm font-medium mb-1">Your Competitive Value Chain Analysis</label>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Compare and contrast Dell's value chain with three major competitors (HP Inc., Lenovo, and AWS), focusing on how their different approaches create competitive advantages. For each, identify the most notable differences in primary and support activities, and analyze how these differences translate to market positioning. Based on this comparison, recommend three specific value chain elements Dell should adopt or modify to strengthen its competitive position."></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="font-medium mb-2">Exercise 4: Value Chain Digital Transformation</h6>
+                                <p class="text-xs mb-2">Analyze how AI and automation will transform Dell's value chain:</p>
+                                <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
+                                    <p class="mb-2"><strong>Digital Transformation Context:</strong></p>
+                                    <p class="mb-3">Emerging technologies are creating opportunities to fundamentally transform value chain activities:</p>
+                                    <ul>
+                                        <li>AI-enabled demand forecasting and inventory optimization</li>
+                                        <li>Predictive maintenance and intelligent remote support</li>
+                                        <li>Advanced manufacturing automation and 3D printing</li>
+                                        <li>Digital twins for product development and operations</li>
+                                        <li>AI-powered customer insights and personalization</li>
+                                    </ul>
+                                    <p class="mb-0"><strong>Task:</strong></p>
+                                    <p>Assess how Dell should implement these technologies across its value chain to create competitive advantage.</p>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="block text-sm font-medium mb-1">Your Digital Value Chain Strategy</label>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Develop a digital transformation strategy for Dell's value chain, focusing on AI and automation. For each primary and support activity, identify high-impact digital technologies and explain how they will transform the activity. Prioritize these transformations based on their potential impact on cost, differentiation, and customer experience. Develop a three-year roadmap for implementing these technologies, considering dependencies between value chain activities. Address potential challenges and mitigation strategies for this transformation."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-4 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Exercises</button>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/1985/07/how-information-gives-you-competitive-advantage" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">How Information Gives You Competitive Advantage</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Michael E. Porter & Victor E. Millar</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/competing-in-a-world-of-sectors-without-borders" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-book-read-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Competing in a World of Sectors Without Borders</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey Quarterly • Modern value chain evolution</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.bcg.com/publications/2021/transformative-power-of-digital-supply-chain" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-link-m"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Transformative Power of the Digital Supply Chain</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Boston Consulting Group • Digital value chain transformation</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 prev-topic" data-prev="topic-porters-five-forces">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Porter's Five Forces</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" disabled>
+                        <span>Next Module</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with value chain topic visible
+            showTopic('topic-value-chain');
+        });
+    </script>
+</body>
+</html>

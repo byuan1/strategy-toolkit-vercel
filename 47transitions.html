@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management Essentials</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Product & Ops Foundations</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-supply-chain">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Supply Chain Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-forecasting">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Forecasting & Planning</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-lifecycle">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Lifecycle Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-transitions">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Transitions</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-marketing">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Marketing</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-pricing">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Pricing</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-inventory">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Inventory Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-demand-shaping">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Demand Shaping</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-ethics">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Ethics</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">28%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 28%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Effective Communication</span>
+                                <span>3/3 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Product & Ops Foundations</span>
+                                <span>3/9 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>0/6 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Transitions Topic -->
+            <section id="topic-transitions" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-arrow-left-right-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Transitions</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Product & Ops Foundations</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the strategic importance of product transitions in technology portfolios</li>
+                            <li>Learn key frameworks for planning and executing successful product transitions</li>
+                            <li>Identify critical factors that influence transition strategy and timing</li>
+                            <li>Recognize common challenges and mitigation strategies in product transitions</li>
+                            <li>Apply transition planning concepts to optimize portfolio value and customer experience</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Understanding Product Transitions</h4>
+                    <p>Product transitions represent critical inflection points in a technology portfolio's evolution. These strategic shifts involve moving customers from existing products to new ones, phasing out legacy offerings, or introducing next-generation platforms. Well-executed transitions preserve customer relationships, maximize revenue potential, mitigate competitive threats, and minimize operational disruption. Conversely, poorly managed transitions can result in customer churn, revenue gaps, supply chain complications, and damaged market reputation. For strategy teams, mastering the art and science of product transitions is essential for maintaining competitive advantage in rapidly evolving technology markets.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Types of Product Transitions</h5>
+                        <p class="mb-3">Product transitions come in several forms, each with distinct strategic implications and management challenges:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">End-of-Life (EOL) Transitions</h6>
+                                <p class="text-sm mb-2">Managed retirement of products that have reached the end of their useful life.</p>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li><strong>Primary drivers:</strong> Market obsolescence, declining margins, support costs</li>
+                                    <li><strong>Key challenges:</strong> Customer migration, service continuity, inventory management</li>
+                                    <li><strong>Strategic focus:</strong> Preserving customer relationships while optimizing resources</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Generational Transitions</h6>
+                                <p class="text-sm mb-2">Migration from current to next-generation products within the same product line.</p>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li><strong>Primary drivers:</strong> Technology advancement, competitive pressure, cost structure</li>
+                                    <li><strong>Key challenges:</strong> Transition timing, cannibalization management, adoption incentives</li>
+                                    <li><strong>Strategic focus:</strong> Maximizing customer value while accelerating upgrade cycles</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Platform Transitions</h6>
+                                <p class="text-sm mb-2">Fundamental shifts in underlying technology architecture or business model.</p>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li><strong>Primary drivers:</strong> Strategic repositioning, technology disruption, market evolution</li>
+                                    <li><strong>Key challenges:</strong> Compatibility, learning curve, business model alignment</li>
+                                    <li><strong>Strategic focus:</strong> Creating compelling value proposition for significant change</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">The Strategic Value of Effective Transitions</h6>
+                            <p class="mb-2">Well-executed product transitions create substantial business value across multiple dimensions:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Financial Outcomes</p>
+                                    <ul class="pl-5 text-sm mb-0">
+                                        <li><strong>Revenue optimization:</strong> Minimizing revenue dips between product generations</li>
+                                        <li><strong>Margin improvement:</strong> Shifting customers to higher-margin newer products</li>
+                                        <li><strong>Inventory efficiency:</strong> Reducing excess and obsolete inventory costs</li>
+                                        <li><strong>Development ROI:</strong> Accelerating adoption of new offerings to maximize returns</li>
+                                        <li><strong>Support cost reduction:</strong> Consolidating technical support around current platforms</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-green-700 dark:text-green-400 mb-1">Strategic Advantages</p>
+                                    <ul class="pl-5 text-sm mb-0">
+                                        <li><strong>Customer retention:</strong> Maintaining relationships through product evolutions</li>
+                                        <li><strong>Competitive positioning:</strong> Establishing leadership with next-generation offerings</li>
+                                        <li><strong>Market perception:</strong> Demonstrating innovation and forward momentum</li>
+                                        <li><strong>Ecosystem development:</strong> Building partner commitment to new platforms</li>
+                                        <li><strong>Organizational focus:</strong> Concentrating resources on strategic priorities</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Product Transition Framework</h5>
+                                
+                                <div class="relative h-[160px] mb-6">
+                                    <svg class="w-full h-full">
+                                        <!-- Base timeline -->
+                                        <line x1="40" y1="80" x2="560" y2="80" stroke="#6B7280" stroke-width="1.5" />
+                                        
+                                        <!-- Phase markers -->
+                                        <line x1="100" y1="70" x2="100" y2="90" stroke="#6B7280" stroke-width="1.5" />
+                                        <line x1="220" y1="70" x2="220" y2="90" stroke="#6B7280" stroke-width="1.5" />
+                                        <line x1="340" y1="70" x2="340" y2="90" stroke="#6B7280" stroke-width="1.5" />
+                                        <line x1="460" y1="70" x2="460" y2="90" stroke="#6B7280" stroke-width="1.5" />
+                                        
+                                        <!-- Old product curve -->
+                                        <path d="M 40,80 Q 120,40 220,50 T 340,100 T 460,140" fill="none" stroke="#EF4444" stroke-width="2" />
+                                        
+                                        <!-- New product curve -->
+                                        <path d="M 100,140 Q 180,130 220,110 T 340,60 T 500,40" fill="none" stroke="#10B981" stroke-width="2" />
+                                        
+                                        <!-- Labels -->
+                                        <text x="35" y="60" font-size="10" fill="#EF4444">Current Product</text>
+                                        <text x="35" y="150" font-size="10" fill="#10B981">New Product</text>
+                                        
+                                        <!-- Phase Labels -->
+                                        <text x="70" y="105" font-size="10" fill="currentColor" text-anchor="middle">Planning</text>
+                                        <text x="160" y="105" font-size="10" fill="currentColor" text-anchor="middle">Announcement</text>
+                                        <text x="280" y="105" font-size="10" fill="currentColor" text-anchor="middle">Migration</text>
+                                        <text x="400" y="105" font-size="10" fill="currentColor" text-anchor="middle">Retirement</text>
+                                        <text x="520" y="105" font-size="10" fill="currentColor" text-anchor="middle">Completion</text>
+                                    </svg>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-5 gap-2 text-center">
+                                    <div>
+                                        <h6 class="text-xs font-medium">Planning Phase</h6>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Internal preparation and strategy development before external announcement</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium">Announcement Phase</h6>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Market communication and initial customer engagement</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium">Migration Phase</h6>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Active customer transition with both products available</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium">Retirement Phase</h6>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Final migration push with end-of-life processes initiated</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium">Completion Phase</h6>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Transition completed with full focus on new product</p>
+                                    </div>
+                                </div>
+                                
+                                <p class="text-xs text-center mt-4 text-gray-500 dark:text-gray-400">The transition framework maps the relative position and focus as products shift from current to new generations, with overlapping availability during key migration periods.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Transition Planning and Strategy</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Developing an Effective Transition Strategy</h5>
+                        <p class="text-sm mb-3">A comprehensive transition strategy addresses multiple factors to ensure smooth product evolution while maximizing business value throughout the process.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Transition Strategy Decisions</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">1</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Transition Timing</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">When to initiate and how quickly to execute the transition process.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Considerations</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Market readiness:</strong> Customer adoption willingness</li>
+                                                    <li><strong>Competitive dynamics:</strong> Rival positioning and timing</li>
+                                                    <li><strong>New product readiness:</strong> Quality and feature completeness</li>
+                                                    <li><strong>Financial impact:</strong> Revenue and margin implications</li>
+                                                    <li><strong>Supply chain readiness:</strong> Operational capabilities</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">2</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Transition Approach</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">How to structure the transition process and customer migration.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Considerations</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Migration path:</strong> Clear upgrade journey for customers</li>
+                                                    <li><strong>Segmentation:</strong> Different approaches for customer segments</li>
+                                                    <li><strong>Incentive structure:</strong> Mechanisms to encourage adoption</li>
+                                                    <li><strong>Communication strategy:</strong> Messaging and education</li>
+                                                    <li><strong>Operational execution:</strong> Implementation approach</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">3</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Transition Scope</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">What aspects of the product and ecosystem are changing during transition.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Considerations</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Feature continuity:</strong> Maintaining critical capabilities</li>
+                                                    <li><strong>Compatibility:</strong> Connection with existing ecosystem</li>
+                                                    <li><strong>Data migration:</strong> Moving customer information</li>
+                                                    <li><strong>Process changes:</strong> Operational adjustments</li>
+                                                    <li><strong>Support transition:</strong> Maintenance and service evolution</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4 p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                        <h6 class="text-sm font-medium mb-2 text-indigo-700 dark:text-indigo-400">Transition Approach Models</h6>
+                                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium mb-1">Flash Cut Transition</h6>
+                                                <div class="mb-2 h-16 relative">
+                                                    <svg class="w-full h-full">
+                                                        <line x1="10" y1="40" x2="90" y2="40" stroke="#EF4444" stroke-width="3" />
+                                                        <line x1="90" y1="40" x2="170" y2="40" stroke="#10B981" stroke-width="3" />
+                                                        <line x1="85" y1="20" x2="85" y2="60" stroke="#6B7280" stroke-width="1.5" stroke-dasharray="2,2" />
+                                                        <line x1="95" y1="20" x2="95" y2="60" stroke="#6B7280" stroke-width="1.5" stroke-dasharray="2,2" />
+                                                    </svg>
+                                                </div>
+                                                <p class="text-xs mb-1"><strong>Description:</strong> Rapid, complete transition with minimal overlap period</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Best for:</strong> Simple products with easy migration</li>
+                                                    <li><strong>Advantages:</strong> Clean break, lower cost, focused messaging</li>
+                                                    <li><strong>Risks:</strong> Customer disruption, support spikes, operational stress</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium mb-1">Phased Transition</h6>
+                                                <div class="mb-2 h-16 relative">
+                                                    <svg class="w-full h-full">
+                                                        <line x1="10" y1="40" x2="170" y2="40" stroke="#EF4444" stroke-width="3" />
+                                                        <line x1="50" y1="40" x2="170" y2="40" stroke="#10B981" stroke-width="3" stroke-opacity="0.3" />
+                                                        <line x1="50" y1="40" x2="50" y2="40" stroke="#10B981" stroke-width="3" />
+                                                        <line x1="80" y1="40" x2="80" y2="40" stroke="#10B981" stroke-width="3" />
+                                                        <line x1="110" y1="40" x2="110" y2="40" stroke="#10B981" stroke-width="3" />
+                                                        <line x1="140" y1="40" x2="170" y2="40" stroke="#10B981" stroke-width="3" />
+                                                        
+                                                        <line x1="50" y1="20" x2="50" y2="60" stroke="#6B7280" stroke-width="1" stroke-dasharray="2,2" />
+                                                        <line x1="80" y1="20" x2="80" y2="60" stroke="#6B7280" stroke-width="1" stroke-dasharray="2,2" />
+                                                        <line x1="110" y1="20" x2="110" y2="60" stroke="#6B7280" stroke-width="1" stroke-dasharray="2,2" />
+                                                        <line x1="140" y1="20" x2="140" y2="60" stroke="#6B7280" stroke-width="1" stroke-dasharray="2,2" />
+                                                    </svg>
+                                                </div>
+                                                <p class="text-xs mb-1"><strong>Description:</strong> Gradual feature migration across multiple stages</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Best for:</strong> Complex platforms with multiple components</li>
+                                                    <li><strong>Advantages:</strong> Reduced risk, manageable workloads, learning integration</li>
+                                                    <li><strong>Risks:</strong> Extended timeline, higher cost, potential confusion</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium mb-1">Parallel Transition</h6>
+                                                <div class="mb-2 h-16 relative">
+                                                    <svg class="w-full h-full">
+                                                        <line x1="10" y1="30" x2="170" y2="30" stroke="#EF4444" stroke-width="3" />
+                                                        <line x1="50" y1="50" x2="170" y2="50" stroke="#10B981" stroke-width="3" />
+                                                        <line x1="50" y1="20" x2="50" y2="60" stroke="#6B7280" stroke-width="1" stroke-dasharray="2,2" />
+                                                        <line x1="170" y1="20" x2="170" y2="60" stroke="#6B7280" stroke-width="1" stroke-dasharray="2,2" />
+                                                    </svg>
+                                                </div>
+                                                <p class="text-xs mb-1"><strong>Description:</strong> Extended period where both systems operate simultaneously</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Best for:</strong> Mission-critical systems with little tolerance for disruption</li>
+                                                    <li><strong>Advantages:</strong> Lower risk, customer choice, fallback options</li>
+                                                    <li><strong>Risks:</strong> Higher cost, operational complexity, delayed benefits</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium mb-1">Segmented Transition</h6>
+                                                <div class="mb-2 h-16 relative">
+                                                    <svg class="w-full h-full">
+                                                        <line x1="10" y1="20" x2="170" y2="20" stroke="#EF4444" stroke-width="3" stroke-opacity="0.7" />
+                                                        <line x1="10" y1="35" x2="170" y2="35" stroke="#EF4444" stroke-width="3" stroke-opacity="0.5" />
+                                                        <line x1="10" y1="50" x2="170" y2="50" stroke="#EF4444" stroke-width="3" stroke-opacity="0.3" />
+                                                        
+                                                        <line x1="40" y1="20" x2="170" y2="20" stroke="#10B981" stroke-width="3" />
+                                                        <line x1="80" y1="35" x2="170" y2="35" stroke="#10B981" stroke-width="3" />
+                                                        <line x1="120" y1="50" x2="170" y2="50" stroke="#10B981" stroke-width="3" />
+                                                        
+                                                        <line x1="40" y1="10" x2="40" y2="25" stroke="#6B7280" stroke-width="1" stroke-dasharray="2,2" />
+                                                        <line x1="80" y1="25" x2="80" y2="40" stroke="#6B7280" stroke-width="1" stroke-dasharray="2,2" />
+                                                        <line x1="120" y1="40" x2="120" y2="55" stroke="#6B7280" stroke-width="1" stroke-dasharray="2,2" />
+                                                    </svg>
+                                                </div>
+                                                <p class="text-xs mb-1"><strong>Description:</strong> Different customer segments transitioned at different times</p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Best for:</strong> Diverse customer base with varying needs and risk tolerance</li>
+                                                    <li><strong>Advantages:</strong> Targeted approach, progressive learning, focused support</li>
+                                                    <li><strong>Risks:</strong> Segment favoritism perceptions, extended support requirements</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Customer Migration Planning</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Customer migration is a critical component of successful transitions, requiring thoughtful planning and execution.</p>
+                                    
+                                    <div class="grid grid-cols-1 gap-3">
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Customer Segmentation</h6>
+                                            <p class="text-xs mb-1">Group customers to tailor transition approaches based on similar needs and behaviors.</p>
+                                            <div class="overflow-x-auto">
+                                                <table class="w-full text-xs">
+                                                    <thead>
+                                                        <tr class="bg-white dark:bg-gray-800">
+                                                            <th class="p-1 text-left">Segment Type</th>
+                                                            <th class="p-1 text-left">Transition Approach</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Strategic customers</td>
+                                                            <td class="p-1">High-touch, account-specific planning with extensive support</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Early adopters</td>
+                                                            <td class="p-1">Priority access to new products with incentives for providing feedback</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Mainstream users</td>
+                                                            <td class="p-1">Structured programs with standard migration paths and support</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Late adopters</td>
+                                                            <td class="p-1">Compelling incentives and extensive education to drive migration</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Risk-sensitive users</td>
+                                                            <td class="p-1">Extended transition periods with comprehensive validation support</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Migration Incentives</h6>
+                                            <p class="text-xs mb-1">Strategic tools to encourage customer adoption of new products.</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Financial incentives:</strong> Promotional pricing, trade-in programs, loyalty rewards</li>
+                                                <li><strong>Capability incentives:</strong> Exclusive features, performance improvements, new functionality</li>
+                                                <li><strong>Support incentives:</strong> Enhanced service levels, extended warranties, priority assistance</li>
+                                                <li><strong>Transition assistance:</strong> Migration services, data transfer, implementation support</li>
+                                                <li><strong>Risk reduction:</strong> Trial periods, money-back guarantees, parallel operations</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Communication Strategy</h6>
+                                            <p class="text-xs mb-1">Structured approach to educating and informing customers throughout transition.</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Early notification:</strong> Advance warning with appropriate level of detail</li>
+                                                <li><strong>Value messaging:</strong> Clear articulation of benefits and improvements</li>
+                                                <li><strong>Timeline transparency:</strong> Well-defined schedule with key milestones</li>
+                                                <li><strong>Education program:</strong> Resources for understanding changes and new features</li>
+                                                <li><strong>Support channels:</strong> Clear access points for assistance throughout migration</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Operational Transition Planning</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Successful product transitions require careful coordination across multiple operational areas.</p>
+                                    
+                                    <div class="grid grid-cols-1 gap-3">
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Supply Chain Transition</h6>
+                                            <p class="text-xs mb-1">Coordinating manufacturing, inventory, and distribution through product transitions.</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Inventory management:</strong> Balancing old product drawdown with new product ramp-up</li>
+                                                <li><strong>Component planning:</strong> Managing shared components and unique requirements</li>
+                                                <li><strong>Supplier coordination:</strong> Aligning with partners on transition plans</li>
+                                                <li><strong>Manufacturing transition:</strong> Production line adjustments and capacity balancing</li>
+                                                <li><strong>Logistics planning:</strong> Distribution channels and fulfillment approach</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Service Transition</h6>
+                                            <p class="text-xs mb-1">Ensuring continuity of support while managing the evolution of service capabilities.</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Support readiness:</strong> Training, knowledge base development, tool preparation</li>
+                                                <li><strong>Spare parts strategy:</strong> Availability planning for both product generations</li>
+                                                <li><strong>Technical documentation:</strong> Updating and organizing product information</li>
+                                                <li><strong>Service contract transitions:</strong> Alignment with new product terms and conditions</li>
+                                                <li><strong>Technical escalation:</strong> Processes for addressing migration-specific issues</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Sales & Channel Transition</h6>
+                                            <p class="text-xs mb-1">Managing the sales organization and partner ecosystem through product evolution.</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Sales training:</strong> Educating teams on new positioning and capabilities</li>
+                                                <li><strong>Compensation alignment:</strong> Incentive structures to support transition goals</li>
+                                                <li><strong>Channel enablement:</strong> Partner readiness and support materials</li>
+                                                <li><strong>Quotation systems:</strong> Updates to pricing and configuration tools</li>
+                                                <li><strong>Pipeline management:</strong> Strategy for deals in progress during transition</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Transition Governance & Execution</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Transition Governance Structure</h6>
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">Key Roles and Responsibilities</h6>
+                                        <div class="overflow-x-auto">
+                                            <table class="w-full text-xs">
+                                                <thead>
+                                                    <tr class="bg-white dark:bg-gray-800">
+                                                        <th class="p-1 text-left">Role</th>
+                                                        <th class="p-1 text-left">Key Responsibilities</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Executive Sponsor</td>
+                                                        <td class="p-1">Strategic oversight, resource commitment, major decision authority</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Transition Program Manager</td>
+                                                        <td class="p-1">Overall coordination, plan development, cross-functional alignment</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Product Management Lead</td>
+                                                        <td class="p-1">Feature planning, roadmap alignment, value proposition development</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Marketing Lead</td>
+                                                        <td class="p-1">Communication planning, messaging strategy, launch coordination</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Sales & Channel Lead</td>
+                                                        <td class="p-1">Revenue management, compensation alignment, partner readiness</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Operations Lead</td>
+                                                        <td class="p-1">Supply chain coordination, inventory planning, logistics alignment</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Service & Support Lead</td>
+                                                        <td class="p-1">Support readiness, knowledge transfer, escalation management</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Finance Lead</td>
+                                                        <td class="p-1">Financial modeling, revenue recognition, budget alignment</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                        <h6 class="text-xs font-medium mt-3 mb-1">Governance Cadence</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Executive steering committee:</strong> Monthly oversight of transition progress and decisions</li>
+                                            <li><strong>Transition working team:</strong> Weekly cross-functional coordination and issue resolution</li>
+                                            <li><strong>Functional team meetings:</strong> Regular coordination within workstreams</li>
+                                            <li><strong>Customer migration reviews:</strong> Regular assessment of adoption progress</li>
+                                            <li><strong>Financial impact analysis:</strong> Ongoing monitoring of business metrics</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Key Performance Indicators</h6>
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-1">Transition Metrics</h6>
+                                        <p class="text-xs mb-1">Critical measures to track transition progress and success:</p>
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-0.5">Customer Migration Metrics</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Migration rate:</strong> Percentage of customers moved to new product</li>
+                                                    <li><strong>Segment adoption:</strong> Transition progress by customer segment</li>
+                                                    <li><strong>Conversion success:</strong> Percentage of targeted customers that transition</li>
+                                                    <li><strong>Customer satisfaction:</strong> Experience metrics during migration</li>
+                                                    <li><strong>Migration timeline:</strong> Actual vs. planned transition progress</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-0.5">Financial Metrics</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Revenue continuity:</strong> Maintenance of revenue through transition</li>
+                                                    <li><strong>Transition costs:</strong> Expenses associated with migration activities</li>
+                                                    <li><strong>New product attach rate:</strong> Additional sales with transitions</li>
+                                                    <li><strong>Discount effectiveness:</strong> Impact of incentives on adoption</li>
+                                                    <li><strong>Revenue crossover:</strong> Point where new product revenue exceeds old</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-white dark:bg-gray-800 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-0.5">Operational Metrics</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Inventory management:</strong> Drawdown of old product, availability of new</li>
+                                                    <li><strong>Support incidents:</strong> Volume and nature of transition-related issues</li>
+                                                    <li><strong>Technical escalations:</strong> Migration-related technical problems</li>
+                                                    <li><strong>Training completion:</strong> Readiness of staff for supporting transition</li>
+                                                    <li><strong>System cutover:</strong> Success of backend system transitions</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Transition Risk Management</h6>
+                                <p class="text-xs mb-2">Proactive identification and mitigation of potential transition challenges:</p>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs">
+                                        <thead>
+                                            <tr class="bg-white dark:bg-gray-800">
+                                                <th class="p-1 text-left">Risk Category</th>
+                                                <th class="p-1 text-left">Common Risks</th>
+                                                <th class="p-1 text-left">Mitigation Strategies</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="p-1 font-medium">Customer Risks</td>
+                                                <td class="p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Resistance to change</li>
+                                                        <li>Compatibility concerns</li>
+                                                        <li>Competitive vulnerability</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Early customer involvement in planning</li>
+                                                        <li>Compelling value proposition</li>
+                                                        <li>Comprehensive migration support</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-1 font-medium">Financial Risks</td>
+                                                <td class="p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Revenue gaps during transition</li>
+                                                        <li>Excess inventory costs</li>
+                                                        <li>Transition expense overruns</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Careful demand planning</li>
+                                                        <li>Phased inventory management</li>
+                                                        <li>Financial buffer allocation</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-1 font-medium">Operational Risks</td>
+                                                <td class="p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Supply chain disruptions</li>
+                                                        <li>Support capability gaps</li>
+                                                        <li>System integration failures</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Detailed operational planning</li>
+                                                        <li>Thorough staff training</li>
+                                                        <li>Phased implementation approach</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-1 font-medium">Competitive Risks</td>
+                                                <td class="p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Targeting during transition</li>
+                                                        <li>Disruptive market moves</li>
+                                                        <li>FUD (fear, uncertainty, doubt) tactics</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Competitive intelligence monitoring</li>
+                                                        <li>Proactive messaging strategy</li>
+                                                        <li>Customer relationship reinforcement</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-1 font-medium">Technical Risks</td>
+                                                <td class="p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Performance or quality issues</li>
+                                                        <li>Migration tool failures</li>
+                                                        <li>Unexpected compatibility problems</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-1">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Extensive pre-release testing</li>
+                                                        <li>Early adopter programs</li>
+                                                        <li>Rapid response technical teams</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Platform and Technology Transitions</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Managing Significant Technology Shifts</h5>
+                        <p class="text-sm mb-3">Platform transitions represent the most complex and strategic form of product evolution. These fundamental shifts in underlying technologies or architectures require special consideration and planning to execute successfully.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Types of Platform Transitions</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <p class="text-xs mb-2">Technology companies encounter several forms of platform transitions, each with unique strategic implications:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Architecture Transitions</h6>
+                                                <p class="text-xs mb-1">Fundamental changes to the underlying technical architecture of products.</p>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Examples</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>On-premises to cloud-based applications</li>
+                                                            <li>Monolithic to microservices architecture</li>
+                                                            <li>Hardware-defined to software-defined systems</li>
+                                                            <li>CPU architecture transitions (e.g., x86 to ARM)</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Key Challenges</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Technical compatibility with existing systems</li>
+                                                            <li>Performance and functionality parity</li>
+                                                            <li>Skills and knowledge transition</li>
+                                                            <li>Operational model changes</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Business Model Transitions</h6>
+                                                <p class="text-xs mb-1">Shifts in how products are sold, delivered, and monetized.</p>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Examples</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Perpetual licensing to subscription models</li>
+                                                            <li>Product sales to as-a-service offerings</li>
+                                                            <li>Fixed pricing to consumption-based billing</li>
+                                                            <li>Channel-led to direct-to-customer approaches</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Key Challenges</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Sales compensation and incentive alignment</li>
+                                                            <li>Revenue recognition and financial impacts</li>
+                                                            <li>Customer buying process changes</li>
+                                                            <li>Operational system adjustments</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Ecosystem Transitions</h6>
+                                                <p class="text-xs mb-1">Evolution of the broader network in which products operate and integrate.</p>
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Examples</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Closed to open platforms</li>
+                                                            <li>Proprietary to standard interfaces</li>
+                                                            <li>Single-vendor to multi-vendor environments</li>
+                                                            <li>Industry-specific to cross-industry platforms</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="text-xs font-medium mb-0.5">Key Challenges</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Partner development and enablement</li>
+                                                            <li>API and integration management</li>
+                                                            <li>Value distribution across ecosystem</li>
+                                                            <li>Governance and quality control</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Platform Transition Strategy</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Strategic Considerations</h6>
+                                        <p class="text-xs mb-2">Platform transitions require careful strategic planning to balance multiple factors:</p>
+                                        
+                                        <div class="flex flex-col gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Transition Sequencing</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key Decision:</span>
+                                                        <span class="text-xs">How to order and phase the introduction of platform changes</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Options:</span>
+                                                        <span class="text-xs">All-at-once vs. iterative introduction; feature-by-feature vs. segment-by-segment approach</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Considerations:</span>
+                                                        <span class="text-xs">Technical dependencies, customer readiness, risk tolerance, resource constraints</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Backward Compatibility</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key Decision:</span>
+                                                        <span class="text-xs">Level of compatibility with existing systems, data, and workflows</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Options:</span>
+                                                        <span class="text-xs">Full backward compatibility; limited compatibility with bridges; clean break requiring migration</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Considerations:</span>
+                                                        <span class="text-xs">Technical limitations, customer investment protection, innovation constraints, maintenance costs</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Migration Tools & Services</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key Decision:</span>
+                                                        <span class="text-xs">What enablement tools and services to provide for transitioning customers</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Options:</span>
+                                                        <span class="text-xs">Self-service tools; automated migration utilities; professional services; partner-led transitions</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Considerations:</span>
+                                                        <span class="text-xs">Migration complexity, customer capabilities, cost, scale requirements, risk management</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Platform Transition Models</h6>
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0.5">Parallel Platform Model</h6>
+                                                    <p class="text-xs mb-0.5">Maintaining both old and new platforms simultaneously for an extended period.</p>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Best for:</span>
+                                                        <span class="text-xs">Mission-critical systems with diverse customer environments</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Advantages:</span>
+                                                        <span class="text-xs">Lower risk, customer choice, gradual migration</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Disadvantages:</span>
+                                                        <span class="text-xs">Higher cost, divided focus, longer transition period</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0.5">Bridged Transition Model</h6>
+                                                    <p class="text-xs mb-0.5">Creating temporary compatibility layers to ease migration between platforms.</p>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Best for:</span>
+                                                        <span class="text-xs">Significant architectural changes with substantial customer investments</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Advantages:</span>
+                                                        <span class="text-xs">Smoother migration path, investment protection, flexibility</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Disadvantages:</span>
+                                                        <span class="text-xs">Technical complexity, performance overhead, maintenance burden</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0.5">Staged Feature Migration</h6>
+                                                    <p class="text-xs mb-0.5">Incrementally moving functionality from old to new platform over time.</p>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Best for:</span>
+                                                        <span class="text-xs">Complex products with many distinct capabilities</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Advantages:</span>
+                                                        <span class="text-xs">Manageable scope, progressive learning, faster initial delivery</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Disadvantages:</span>
+                                                        <span class="text-xs">Extended transition period, potential user confusion, multiple migrations</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h6 class="text-xs font-medium mb-0.5">Complete Replacement</h6>
+                                                    <p class="text-xs mb-0.5">Full replacement of old platform with new platform at a defined cutover point.</p>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Best for:</span>
+                                                        <span class="text-xs">Fundamental shifts with limited legacy dependencies</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Advantages:</span>
+                                                        <span class="text-xs">Clean architectural break, focused development, clear messaging</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium">Disadvantages:</span>
+                                                        <span class="text-xs">Higher migration risk, potential customer disruption, all-or-nothing outcome</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Critical Success Factors</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Compelling Value Articulation</h6>
+                                    <p class="text-xs mb-2">Clearly defining and communicating the benefits of the platform transition.</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Business-outcome focus:</strong> Emphasizing tangible benefits over technical features</li>
+                                        <li><strong>Total value perspective:</strong> Accounting for all costs and benefits of transition</li>
+                                        <li><strong>Segment-specific messaging:</strong> Tailoring value propositions to different customer types</li>
+                                        <li><strong>Future-proofing narrative:</strong> Explaining long-term advantages of the new platform</li>
+                                        <li><strong>Competitive comparison:</strong> Positioning relative to market alternatives</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Customer Experience Focus</h6>
+                                    <p class="text-xs mb-2">Prioritizing a smooth and positive experience throughout the transition.</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Comprehensive readiness:</strong> Ensuring supporting elements are fully prepared</li>
+                                        <li><strong>Progressive disclosure:</strong> Revealing complexity in manageable portions</li>
+                                        <li><strong>Migration simplification:</strong> Minimizing customer effort requirements</li>
+                                        <li><strong>Success acknowledgment:</strong> Celebrating and reinforcing progress</li>
+                                        <li><strong>Continuous feedback:</strong> Actively soliciting and acting on transition experience</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Ecosystem Enablement</h6>
+                                    <p class="text-xs mb-2">Supporting the broader partner network through the platform evolution.</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Early partner involvement:</strong> Including key partners in transition planning</li>
+                                        <li><strong>Tool provision:</strong> Supplying resources for partner enablement</li>
+                                        <li><strong>Business model alignment:</strong> Ensuring partner economics work with new platform</li>
+                                        <li><strong>Certification programs:</strong> Creating verification of partner readiness</li>
+                                        <li><strong>Co-marketing support:</strong> Helping partners communicate changes to customers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Financial Management in Platform Transitions</h6>
+                                <p class="text-xs mb-2">Managing the economic aspects of major platform shifts requires careful planning:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Revenue Management Strategies</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Transition incentives:</strong> Structured offers to encourage migration at optimal times</li>
+                                            <li><strong>Bundling approaches:</strong> Packaging old and new offerings to maintain revenue</li>
+                                            <li><strong>License conversion:</strong> Programs to shift between business models while preserving value</li>
+                                            <li><strong>Grandfathering policies:</strong> Determining how to handle existing customer agreements</li>
+                                            <li><strong>Price architecture:</strong> Designing pricing that facilitates transition decisions</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Investment Planning</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Dual platform costs:</strong> Budgeting for parallel operation during transition periods</li>
+                                            <li><strong>Migration tooling:</strong> Investing in capabilities to facilitate smooth transitions</li>
+                                            <li><strong>Technical debt management:</strong> Addressing legacy issues vs. carrying forward</li>
+                                            <li><strong>Customer incentive funding:</strong> Allocating resources for transition programs</li>
+                                            <li><strong>Ecosystem enablement:</strong> Supporting partner transitions and readiness</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Managing End-of-Life Transitions</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Strategic Approaches to Product Retirement</h5>
+                        <p class="text-sm mb-3">End-of-life (EOL) transitions require deliberate planning and execution to preserve customer relationships, maximize remaining value, and ensure a smooth transition to replacement offerings. Well-managed EOL processes are critical to maintaining customer trust and protecting long-term business value.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">EOL Decision Framework</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">End-of-Life Determination</h6>
+                                        <p class="text-xs mb-2">Multiple factors influence the decision to retire a product:</p>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg mb-2">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Business Factors</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Financial performance:</strong> Declining margin levels, unprofitable maintenance</li>
+                                                <li><strong>Market demand:</strong> Decreasing sales volume, shrinking addressable market</li>
+                                                <li><strong>Competitive position:</strong> Eroding differentiation, competitive disadvantage</li>
+                                                <li><strong>Portfolio strategy:</strong> Strategic fit with overall offering direction</li>
+                                                <li><strong>Resource allocation:</strong> Better investment opportunities elsewhere</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg mb-2">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Technical Factors</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Technical limitations:</strong> Architecture constraints preventing evolution</li>
+                                                <li><strong>Support challenges:</strong> Difficulty maintaining expertise or tools</li>
+                                                <li><strong>Component obsolescence:</strong> Key parts no longer available</li>
+                                                <li><strong>Security concerns:</strong> Inability to meet evolving security requirements</li>
+                                                <li><strong>Technical debt:</strong> Excessive maintenance burden for limited value</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Customer Factors</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Usage patterns:</strong> Declining active usage among customer base</li>
+                                                <li><strong>Customer migration:</strong> Availability of acceptable alternatives</li>
+                                                <li><strong>Contractual obligations:</strong> Support commitments and SLAs</li>
+                                                <li><strong>Customer impact:</strong> Disruption level for remaining users</li>
+                                                <li><strong>Relationship considerations:</strong> Strategic customer dependencies</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">EOL Timeline Planning</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">EOL Phase Structure</h6>
+                                        <p class="text-xs mb-2">A well-structured EOL process includes several distinct phases with clear milestones:</p>
+                                        
+                                        <div class="flex flex-col gap-3">
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">1. EOL Announcement</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Description:</span>
+                                                        <span class="text-xs">Official notification to customers and partners about retirement plans</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Timing:</span>
+                                                        <span class="text-xs">Typically 6-24 months before end of sales, depending on product complexity</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key activities:</span>
+                                                        <span class="text-xs">Customer communication, migration path definition, transition planning</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">2. End of Marketing (EOM)</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Description:</span>
+                                                        <span class="text-xs">Cessation of active marketing and promotion of the product</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Timing:</span>
+                                                        <span class="text-xs">Often 3-6 months after EOL announcement and before end of sales</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key activities:</span>
+                                                        <span class="text-xs">Removal from marketing materials, website updates, sales redirection</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">3. End of Sales (EOS)</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Description:</span>
+                                                        <span class="text-xs">Final date for new purchases of the product</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Timing:</span>
+                                                        <span class="text-xs">Set date when product is no longer available for new purchase</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key activities:</span>
+                                                        <span class="text-xs">Final order programs, system updates, inventory management, sales team redirection</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">4. End of Software Maintenance (EOSM)</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Description:</span>
+                                                        <span class="text-xs">Cessation of new features, enhancements, and non-critical updates</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Timing:</span>
+                                                        <span class="text-xs">Typically 12-24 months after end of sales for software products</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key activities:</span>
+                                                        <span class="text-xs">Final updates, documentation finalization, knowledge base completion</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">5. End of Support (EOS)</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Description:</span>
+                                                        <span class="text-xs">Termination of standard support services, including security patches</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Timing:</span>
+                                                        <span class="text-xs">Usually 3-5 years after end of sales, depending on product type</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key activities:</span>
+                                                        <span class="text-xs">Final customer notifications, knowledge transfer, support team reassignment</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">6. End of Extended Support (EOES)</h6>
+                                                <div class="flex flex-col gap-1">
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Description:</span>
+                                                        <span class="text-xs">Conclusion of any premium or extended support options</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Timing:</span>
+                                                        <span class="text-xs">Optional phase, typically 1-3 years after standard support ends</span>
+                                                    </div>
+                                                    <div class="flex items-start gap-1">
+                                                        <span class="text-xs font-medium min-w-[90px]">Key activities:</span>
+                                                        <span class="text-xs">Final sustained engineering, support at premium pricing, last-resort assistance</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">EOL Communication and Execution</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Customer Communication Strategy</h6>
+                                    <p class="text-xs mb-2">Effective EOL notifications require thoughtful communication planning:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Clear timeline presentation:</strong> Visual representation of key dates and milestones</li>
+                                        <li><strong>Multi-channel approach:</strong> Direct email, product notices, account team outreach</li>
+                                        <li><strong>Segmented messaging:</strong> Tailored communications for different customer types</li>
+                                        <li><strong>Migration emphasis:</strong> Focus on transition paths rather than discontinuation</li>
+                                        <li><strong>Rationale transparency:</strong> Appropriate context for the decision</li>
+                                        <li><strong>Support options clarity:</strong> Clear explanation of available assistance</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Migration Enablement</h6>
+                                    <p class="text-xs mb-2">Supporting customer transitions from retiring products:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Migration paths documentation:</strong> Step-by-step guides for transition options</li>
+                                        <li><strong>Transition planning workshops:</strong> Assistance with customer-specific planning</li>
+                                        <li><strong>Migration tools:</strong> Utilities for transferring data and configurations</li>
+                                        <li><strong>Transition services:</strong> Implementation assistance offerings (free or paid)</li>
+                                        <li><strong>Training resources:</strong> Educational materials for new product capabilities</li>
+                                        <li><strong>Technical support:</strong> Dedicated assistance for migration-related questions</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Internal Readiness</h6>
+                                    <p class="text-xs mb-2">Preparing the organization to manage the EOL process:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Sales team guidance:</strong> Clear direction on managing EOL conversations</li>
+                                        <li><strong>Support team preparation:</strong> Training on migration assistance and common issues</li>
+                                        <li><strong>Order processing updates:</strong> System changes to manage final order periods</li>
+                                        <li><strong>Knowledge management:</strong> Documentation preservation and accessibility</li>
+                                        <li><strong>Partner communication:</strong> Channel enablement for managing transitions</li>
+                                        <li><strong>Financial reconciliation:</strong> Revenue recognition and contract handling</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Special Considerations in EOL Transitions</h6>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">High-Impact Customer Scenarios</h6>
+                                        <p class="text-xs mb-1">Strategies for managing complex customer situations:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Mission-critical deployments:</strong> Custom transition plans with extended timelines</li>
+                                            <li><strong>Highly customized implementations:</strong> Specialized migration assistance and validation</li>
+                                            <li><strong>Regulatory environments:</strong> Documentation support for compliance verification</li>
+                                            <li><strong>Limited migration options:</strong> Last-time buy programs with extended warranties</li>
+                                            <li><strong>Strategic accounts:</strong> Executive-sponsored transition planning and oversight</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Legal and Compliance Considerations</h6>
+                                        <p class="text-xs mb-1">Managing regulatory and contractual obligations:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Contract review:</strong> Assessment of support and maintenance commitments</li>
+                                            <li><strong>Industry regulations:</strong> Compliance with sector-specific requirements</li>
+                                            <li><strong>Documentation retention:</strong> Preservation of manuals and technical information</li>
+                                            <li><strong>Intellectual property:</strong> Management of patents and proprietary technology</li>
+                                            <li><strong>Data management:</strong> Handling of customer data during transitions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Strategic Application: Transition Decision-Making</h5>
+                        <p class="text-sm mb-3">For strategy professionals, product transitions represent critical decision points that require balancing multiple business objectives and stakeholder interests. The following frameworks provide structured approaches for navigating these complex decisions.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Transition Timing Decision Framework</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Determining the optimal timing for initiating product transitions:</p>
+                                    <div class="grid grid-cols-1 gap-3">
+                                        <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium mb-1">Market Factors</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Competitive timing:</strong> When are competitors making similar moves?</li>
+                                                <li><strong>Market readiness:</strong> How prepared are customers for the transition?</li>
+                                                <li><strong>Industry cycles:</strong> What seasonal or cyclical factors should be considered?</li>
+                                                <li><strong>Technology lifecycle:</strong> Where is the technology in its adoption curve?</li>
+                                                <li><strong>Ecosystem readiness:</strong> Are complementary products and services available?</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium mb-1">Product Factors</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Current product momentum:</strong> Is the existing product still growing?</li>
+                                                <li><strong>New product readiness:</strong> How mature is the replacement offering?</li>
+                                                <li><strong>Feature parity:</strong> Are all critical capabilities available in the new product?</li>
+                                                <li><strong>Migration complexity:</strong> How difficult will the transition be for customers?</li>
+                                                <li><strong>Quality confidence:</strong> How reliable is the new product in real-world use?</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="bg-white dark:bg-gray-800 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium mb-1">Business Factors</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Financial impact:</strong> How will the transition affect revenue and margins?</li>
+                                                <li><strong>Resource availability:</strong> Are sufficient resources available to support the transition?</li>
+                                                <li><strong>Strategic alignment:</strong> How does timing align with broader business initiatives?</li>
+                                                <li><strong>Opportunity cost:</strong> What other priorities compete for resources?</li>
+                                                <li><strong>Risk tolerance:</strong> What is the organization's capacity for transition-related disruption?</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Transition Strategy Selection Framework</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Choosing the optimal approach for executing product transitions:</p>
+                                    <div class="overflow-x-auto mb-2">
+                                        <table class="w-full text-xs border-collapse">
+                                            <thead>
+                                                <tr class="bg-white dark:bg-gray-800">
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Approach</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Best When</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-1 text-left">Avoid When</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Flash Cut</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Simple products with few dependencies</li>
+                                                            <li>Low-risk transitions with easy fallbacks</li>
+                                                            <li>Limited resources for extended transitions</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Mission-critical applications</li>
+                                                            <li>Complex migration requirements</li>
+                                                            <li>High-value strategic customers</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Phased</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Complex products with multiple components</li>
+                                                            <li>Modular offerings with independent parts</li>
+                                                            <li>Limited migration resources available</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Tightly integrated systems</li>
+                                                            <li>Short time-to-market requirements</li>
+                                                            <li>Clear, simple value propositions needed</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Parallel</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Risk-sensitive customer environments</li>
+                                                            <li>High-value, mission-critical systems</li>
+                                                            <li>Complex validation requirements</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Limited support resources</li>
+                                                            <li>Cost-sensitive contexts</li>
+                                                            <li>Technical dependencies between systems</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1 font-medium">Segmented</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Diverse customer base with different needs</li>
+                                                            <li>Varying levels of customer sophistication</li>
+                                                            <li>Limited transition support capacity</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Homogeneous customer needs</li>
+                                                            <li>Interdependent customer environments</li>
+                                                            <li>Simple products with easy migrations</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p class="text-xs italic mb-0">Selection factors should include customer impact, resource requirements, risk profile, and strategic urgency. Many transitions may use hybrid approaches that combine elements of multiple strategies.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Portfolio-Level Transition Planning</h6>
+                            <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                <p class="text-xs mb-2">Managing transitions across multiple products requires holistic portfolio planning:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-2">Transition Sequencing</h6>
+                                        <p class="text-xs mb-2">Determining the optimal order for multiple product transitions:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Customer impact minimization:</strong> Sequence to reduce disruption for key accounts</li>
+                                            <li><strong>Resource leveling:</strong> Schedule to optimize use of limited support resources</li>
+                                            <li><strong>Risk distribution:</strong> Arrange to avoid concentration of transition risk</li>
+                                            <li><strong>Revenue management:</strong> Order to maintain stable financial performance</li>
+                                            <li><strong>Dependency mapping:</strong> Plan based on technical and operational dependencies</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-2">Portfolio Communication</h6>
+                                        <p class="text-xs mb-2">Developing clear messaging about broader portfolio evolution:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Technology roadmap transparency:</strong> Providing visibility into future direction</li>
+                                            <li><strong>Investment protection narrative:</strong> Explaining how customer investments are preserved</li>
+                                            <li><strong>Strategic rationale:</strong> Communicating the "why" behind transition decisions</li>
+                                            <li><strong>Portfolio simplification:</strong> Framing transitions as strategic portfolio improvements</li>
+                                            <li><strong>Commitment reinforcement:</strong> Emphasizing ongoing support for customer success</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-2">Portfolio Transition Governance</h6>
+                                        <p class="text-xs mb-2">Establishing oversight for multi-product transitions:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Portfolio transition office:</strong> Central coordination for cross-product efforts</li>
+                                            <li><strong>Integrated planning:</strong> Unified approach across product teams</li>
+                                            <li><strong>Resource allocation:</strong> Strategic distribution of transition support capabilities</li>
+                                            <li><strong>Cross-product dependencies:</strong> Management of interdependencies between migrations</li>
+                                            <li><strong>Consolidated tracking:</strong> Unified reporting on transition progress</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Technology Industry Transition Case Examples</h6>
+                            <p class="text-xs mb-2">Lessons from notable technology industry product transitions:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-1">Business Model Transition: Software to SaaS</h6>
+                                    <p class="text-xs mb-2">Industry-wide transition from perpetual licensing to subscription models</p>
+                                    <div class="text-xs">
+                                        <p class="mb-1"><strong>Key challenges:</strong></p>
+                                        <ul class="pl-4 mb-2">
+                                            <li>Financial model transition for both vendor and customer</li>
+                                            <li>On-premises to cloud migration complexity</li>
+                                            <li>Sales compensation and channel restructuring</li>
+                                            <li>Customer resistance to operational model changes</li>
+                                        </ul>
+                                        <p class="mb-1"><strong>Success factors:</strong></p>
+                                        <ul class="pl-4 mb-0">
+                                            <li>Clear value proposition emphasizing long-term advantages</li>
+                                            <li>Phased approach with bridge licensing options</li>
+                                            <li>Comprehensive data migration tools and services</li>
+                                            <li>Financial incentives to accelerate customer adoption</li>
+                                            <li>Strong executive leadership and commitment</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-1">Platform Transition: Hardware Architecture</h6>
+                                    <p class="text-xs mb-2">Major processor architecture transitions in computing platforms</p>
+                                    <div class="text-xs">
+                                        <p class="mb-1"><strong>Key challenges:</strong></p>
+                                        <ul class="pl-4 mb-2">
+                                            <li>Software compatibility and application ecosystem</li>
+                                            <li>Performance expectations and optimization</li>
+                                            <li>Hardware and peripherals integration</li>
+                                            <li>Developer tools and support ecosystem</li>
+                                        </ul>
+                                        <p class="mb-1"><strong>Success factors:</strong></p>
+                                        <ul class="pl-4 mb-0">
+                                            <li>Emulation and translation layer technologies</li>
+                                            <li>Extended transition periods with dual support</li>
+                                            <li>Developer preview programs and extensive tooling</li>
+                                            <li>Clear performance and capability advantages</li>
+                                            <li>Ecosystem investment to ensure application readiness</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs italic mt-3 mb-0">These case examples illustrate that successful transitions require clear value propositions, comprehensive support for migration, appropriate incentives, and careful management of the ecosystem. The most successful transitions maintain a strong focus on customer experience throughout the process.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2008/10/reinventing-your-business-model" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Managing Product Transitions</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Strategic framework for navigating technology transitions</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/enduring-ideas-the-three-horizons-of-growth" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-file-list-3-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Three Horizons of Growth</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • Framework for managing transitions across product generations</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://sloanreview.mit.edu/article/the-next-wave-of-business-models-in-asia/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-loop-right-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Platform Transition Management</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">MIT Sloan • Strategies for major technology platform shifts</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Product Transition Strategy Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll apply product transition concepts to develop a strategic approach for a complex technology transition scenario.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Scenario: Enterprise Software Platform Transition</h6>
+                            <p class="text-xs mb-2">You're leading strategy for a technology company with the following situation:</p>
+                            <ul class="pl-4 text-xs mb-3">
+                                <li>Your company has a widely deployed enterprise software platform (Product A) with an on-premises architecture that has been in market for 8 years.</li>
+                                <li>You've developed a next-generation cloud-native version (Product B) that offers significant new capabilities but requires substantial changes to customer environments.</li>
+                                <li>The customer base includes both large enterprises with complex implementations and smaller organizations with simpler deployments.</li>
+                                <li>Your company wants to complete the majority of customer transitions within 24 months while minimizing revenue disruption and customer dissatisfaction.</li>
+                                <li>Competitors are making similar transitions, creating market pressure to move quickly while also presenting competitive risk during the transition period.</li>
+                            </ul>
+                            
+                            <p class="text-xs font-medium mb-1">Your task:</p>
+                            <p class="text-xs mb-0">Develop a comprehensive transition strategy addressing key aspects of this platform shift and outlining an approach that balances competing objectives.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Transition Approach</label>
+                                <p class="text-xs mb-1">What type of transition strategy would you recommend, and why?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline your recommended transition approach, explaining why it's appropriate for this scenario. Consider factors like approach type (flash cut, phased, parallel, segmented), timing, and key milestones."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Customer Migration Strategy</label>
+                                <p class="text-xs mb-1">How would you approach customer segmentation and migration planning?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Describe your customer segmentation strategy, migration prioritization approach, and key incentives or support offerings to drive adoption. Include how you would handle different customer types and risk levels."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">End-of-Life Planning</label>
+                                <p class="text-xs mb-1">What EOL strategy would you implement for the legacy product?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline a timeline and approach for the EOL process of the legacy product, including key milestones, support considerations, and how you would handle customers who cannot or will not migrate within your desired timeframe."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Risk Management Plan</label>
+                                <p class="text-xs mb-1">What key risks would you anticipate and how would you mitigate them?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Identify the top 3-5 risks associated with this transition and outline specific mitigation strategies for each. Consider customer, competitive, financial, and operational risks."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-lifecycle">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Lifecycle Management</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-marketing">
+                        <span>Next: Marketing</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-transitions');
+        });
+    </script>
+</body>
+</html>

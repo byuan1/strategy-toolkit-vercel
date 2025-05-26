@@ -1,0 +1,1618 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="ri-arrow-left-line"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      
+            <!-- Workplan Development Topic -->
+            <section id="topic-workplan-development" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-calendar-check-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Workplan Development</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Project Management Essentials</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the fundamental components and importance of effective workplan development</li>
+                            <li>Learn structured approaches to break down project work into manageable components</li>
+                            <li>Develop skills in activity sequencing, estimating, and schedule development</li>
+                            <li>Apply resource allocation and leveling techniques for optimal workplans</li>
+                            <li>Master workplan monitoring and control methods used at Dell</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Workplan Development</h4>
+                    <p>A workplan is a comprehensive blueprint that outlines how a project will move from concept to completion. It defines what needs to be done, who will do it, when it will happen, and how it will be accomplished. Effective workplan development is critical to project success—it creates clarity, establishes expectations, enables resource planning, and provides a baseline for monitoring progress.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Workplan Development Matters</h5>
+                        <p class="mb-3">A well-developed workplan provides numerous benefits throughout the project lifecycle:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Strategic Benefits</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Alignment with objectives:</strong> Ensures project activities support strategic goals</li>
+                                    <li><strong>Resource optimization:</strong> Enables efficient allocation of people and budget</li>
+                                    <li><strong>Risk mitigation:</strong> Identifies potential bottlenecks and dependencies early</li>
+                                    <li><strong>Stakeholder confidence:</strong> Demonstrates thoughtful planning and preparation</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Operational Benefits</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Clarity and direction:</strong> Provides a clear roadmap for all team members</li>
+                                    <li><strong>Accountability:</strong> Establishes who is responsible for each activity</li>
+                                    <li><strong>Coordination:</strong> Facilitates collaboration across functional teams</li>
+                                    <li><strong>Prioritization:</strong> Helps focus on critical path activities</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Management Benefits</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Performance tracking:</strong> Establishes a baseline for measuring progress</li>
+                                    <li><strong>Decision support:</strong> Provides data for trade-off decisions</li>
+                                    <li><strong>Change management:</strong> Facilitates impact assessment of scope changes</li>
+                                    <li><strong>Communication:</strong> Creates a common reference for status reporting</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">At Dell Technologies</h6>
+                            <p class="mb-2">Workplan development is a cornerstone of Dell's project management approach, providing numerous benefits:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Time-to-Market Optimization</p>
+                                    <p class="text-sm mb-0">In Dell's fast-paced product development environment, detailed workplans enable parallel activities, critical path optimization, and resource balancing to reduce time-to-market for new products—a key competitive advantage in the technology industry.</p>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-green-700 dark:text-green-400 mb-1">Global Coordination</p>
+                                    <p class="text-sm mb-0">With teams distributed across the globe, Dell's workplans incorporate time zone considerations, cultural factors, and cross-functional dependencies to ensure seamless collaboration across engineering, supply chain, marketing, and sales teams.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Components of an Effective Workplan</h5>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-800">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Component</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Description</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Example at Dell</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm">
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Work Breakdown Structure (WBS)</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Hierarchical decomposition of project work into manageable components</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Product launch WBS with design, manufacturing, marketing, and sales components</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Activity List</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Comprehensive inventory of all tasks required to complete the project</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Detailed task list for software development with 200+ discrete activities</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Activity Attributes</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Detailed information about each activity including duration, resources, constraints</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Task descriptions with skill requirements, effort hours, and complexity ratings</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Activity Sequencing</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Logical relationships and dependencies between activities</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Network diagram showing manufacturing process dependencies</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Resource Requirements</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">People, materials, equipment, and other resources needed for activities</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Resource plan specifying engineering and design talent allocation</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Duration Estimates</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Time required to complete each activity based on resource availability</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Three-point estimates (optimistic, most likely, pessimistic) for testing phases</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Project Schedule</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Timeline with start and finish dates for all project activities</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Gantt chart showing 6-month product development cycle with milestones</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Critical Path</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Sequence of activities that determines the shortest possible project duration</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Highlighted critical path in server deployment project with slack analysis</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>The Workplan Development Process</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">A Systematic Approach to Workplan Creation</h5>
+                        <p class="text-sm mb-3">Developing a comprehensive workplan involves a structured process that transforms high-level project objectives into detailed, actionable plans. This systematic approach ensures all aspects of the project are properly defined, sequenced, and resourced.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">The Workplan Development Process Flow</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-4">
+                                        <div class="flex justify-center mb-4">
+                                            <div class="overflow-x-auto">
+                                                <div class="min-w-[700px]">
+                                                    <div class="relative h-[160px]">
+                                                        <!-- Workplan Development Process Flow -->
+                                                        <svg class="absolute inset-0 h-full w-full" viewBox="0 0 700 160">
+                                                            <!-- Process boxes -->
+                                                            <rect x="10" y="60" width="100" height="60" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"></rect>
+                                                            <text x="60" y="90" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="bold">1. Define Scope &amp; Objectives</text>
+                                                            
+                                                            <rect x="130" y="60" width="100" height="60" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"></rect>
+                                                            <text x="180" y="90" text-anchor="middle" font-size="11" fill="#3730a3" font-weight="bold">2. Create Work Breakdown Structure</text>
+                                                            
+                                                            <rect x="250" y="60" width="100" height="60" rx="5" fill="#ede9fe" stroke="#8b5cf6" stroke-width="2"></rect>
+                                                            <text x="300" y="90" text-anchor="middle" font-size="11" fill="#5b21b6" font-weight="bold">3. Identify Activity Dependencies</text>
+                                                            
+                                                            <rect x="370" y="60" width="100" height="60" rx="5" fill="#f3e8ff" stroke="#a855f7" stroke-width="2"></rect>
+                                                            <text x="420" y="90" text-anchor="middle" font-size="11" fill="#6b21a8" font-weight="bold">4. Estimate Activity Durations</text>
+                                                            
+                                                            <rect x="490" y="60" width="100" height="60" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"></rect>
+                                                            <text x="540" y="90" text-anchor="middle" font-size="11" fill="#86198f" font-weight="bold">5. Assign Resources</text>
+                                                            
+                                                            <rect x="610" y="60" width="80" height="60" rx="5" fill="#fce7f3" stroke="#ec4899" stroke-width="2"></rect>
+                                                            <text x="650" y="90" text-anchor="middle" font-size="11" fill="#9d174d" font-weight="bold">6. Develop Schedule</text>
+                                                            
+                                                            <!-- Arrows connecting processes -->
+                                                            <line x1="110" y1="90" x2="125" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"></line>
+                                                            <line x1="230" y1="90" x2="245" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"></line>
+                                                            <line x1="350" y1="90" x2="365" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"></line>
+                                                            <line x1="470" y1="90" x2="485" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"></line>
+                                                            <line x1="590" y1="90" x2="605" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"></line>
+                                                            
+                                                            <!-- Feedback and iteration loop -->
+                                                            <path d="M 650,130 C 650,150 300,150 300,130" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="4" fill="none" marker-end="url(#arrowhead-feedback)"></path>
+                                                            <text x="475" y="145" text-anchor="middle" font-size="10" fill="#ec4899" font-style="italic">Refinement and Optimization</text>
+                                                            
+                                                            <!-- Arrowhead markers -->
+                                                            <defs>
+                                                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"></polygon>
+                                                                </marker>
+                                                                <marker id="arrowhead-feedback" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#ec4899"></polygon>
+                                                                </marker>
+                                                            </defs>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">1. Define Scope &amp; Objectives</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg md:col-span-2">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Process Description</h6>
+                                    <p class="text-xs mb-1">The first step in workplan development is establishing a clear understanding of what the project needs to accomplish. This involves reviewing project charters, scope statements, requirements documentation, and other inputs to ensure the workplan aligns with project goals and constraints.</p>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mt-2 mb-1">Key Activities</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Review project charter and scope documentation</li>
+                                        <li>Clarify project goals, deliverables, and success criteria</li>
+                                        <li>Understand constraints (budget, timeline, resources)</li>
+                                        <li>Identify key stakeholders and their expectations</li>
+                                        <li>Recognize assumptions and boundary conditions</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                    <h6 class="text-xs font-medium mb-1">Dell Application</h6>
+                                    <p class="text-xs mb-2">At Dell, scope definition includes:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Product requirements documents (PRDs) for development projects</li>
+                                        <li>Business requirements for internal initiatives</li>
+                                        <li>Statements of work (SOWs) for customer implementations</li>
+                                        <li>Clear in/out of scope lists to prevent misunderstandings</li>
+                                        <li>Project classification to determine appropriate planning level</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h6 class="text-sm font-medium mb-2">2. Create Work Breakdown Structure (WBS)</h6>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg md:col-span-2">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Process Description</h6>
+                                <p class="text-xs mb-1">The WBS divides the project into manageable components by breaking down deliverables into progressively smaller work packages. This hierarchical decomposition provides a visual and logical representation of all project work, ensuring nothing is overlooked.</p>
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mt-2 mb-1">Key Activities</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Identify major deliverables and project phases</li>
+                                    <li>Decompose high-level deliverables into smaller components</li>
+                                    <li>Continue breakdown until components are manageable and can be accurately estimated</li>
+                                    <li>Verify each component has a clear owner and measurable completion criteria</li>
+                                    <li>Number or code WBS elements for easy reference</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <h6 class="text-xs font-medium mb-1">Dell Application</h6>
+                                <p class="text-xs mb-2">Dell's WBS approach includes:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Standardized templates based on project type (product, IT, services)</li>
+                                    <li>Cross-functional workshops for collaborative decomposition</li>
+                                    <li>Appropriate decomposition level based on project complexity</li>
+                                    <li>WBS Dictionary with detailed descriptions of each component</li>
+                                    <li>Integration with Dell's project management systems</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3 bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-xs font-medium mb-2 text-center">Sample WBS for Dell Product Launch</h6>
+                            <div class="overflow-x-auto">
+                                <div class="min-w-[700px] mx-auto">
+                                    <!-- WBS Tree Structure -->
+                                    <div class="flex flex-col items-center">
+                                        <!-- Level 1 -->
+                                        <div class="w-60 p-2 bg-blue-100 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 rounded-lg mb-4 text-center">
+                                            <p class="text-xs font-medium m-0">Dell XPS Laptop Launch</p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.0</p>
+                                        </div>
+                                        
+                                        <!-- Connecting lines -->
+                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                        <div class="w-[650px] h-px bg-gray-400 dark:bg-gray-600"></div>
+                                        <div class="flex justify-between w-[650px]">
+                                            <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                            <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                            <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                            <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                        </div>
+                                        
+                                        <!-- Level 2 -->
+                                        <div class="flex justify-between w-[650px]">
+                                            <div class="w-32 p-2 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-lg text-center">
+                                                <p class="text-xs font-medium m-0">Product Development</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.1</p>
+                                            </div>
+                                            <div class="w-32 p-2 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-lg text-center">
+                                                <p class="text-xs font-medium m-0">Manufacturing</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.2</p>
+                                            </div>
+                                            <div class="w-32 p-2 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-lg text-center">
+                                                <p class="text-xs font-medium m-0">Marketing</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.3</p>
+                                            </div>
+                                            <div class="w-32 p-2 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-lg text-center">
+                                                <p class="text-xs font-medium m-0">Sales &amp; Distribution</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.4</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Connect lines to level 3 for Product Development -->
+                                        <div class="flex justify-between w-[650px]">
+                                            <div class="w-32 flex flex-col items-center">
+                                                <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                <div class="w-28 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                <div class="flex justify-between w-28">
+                                                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Placeholder divs for other branches -->
+                                            <div class="w-32"></div>
+                                            <div class="w-32"></div>
+                                            <div class="w-32"></div>
+                                        </div>
+                                        
+                                        <!-- Level 3 for Product Development -->
+                                        <div class="flex w-full justify-between mb-3">
+                                            <div class="flex justify-between w-28 ml-[8px]">
+                                                <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                    <p class="text-xs font-medium m-0">Design</p>
+                                                    <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.1.1</p>
+                                                </div>
+                                                <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                    <p class="text-xs font-medium m-0">Build</p>
+                                                    <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.1.2</p>
+                                                </div>
+                                                <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                    <p class="text-xs font-medium m-0">Test</p>
+                                                    <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.1.3</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Empty spaces for other branches -->
+                                            <div class="w-32"></div>
+                                            <div class="w-32"></div>
+                                            <div class="w-32"></div>
+                                        </div>
+                                        
+                                        <p class="text-xs italic text-gray-500 dark:text-gray-400">Note: This is a simplified WBS. Real project WBS would continue decomposition to work package level (usually level 4 or 5).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h6 class="text-sm font-medium mb-2">3. Identify Activity Dependencies</h6>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg md:col-span-2">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Process Description</h6>
+                                <p class="text-xs mb-1">Identifying logical relationships between activities determines the sequence in which work must be performed. Dependencies establish the project's critical path and influence how changes in one activity affect others.</p>
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mt-2 mb-1">Key Activities</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>List all activities derived from the work packages in the WBS</li>
+                                    <li>Identify mandatory dependencies (hard logic) based on physical limitations</li>
+                                    <li>Determine discretionary dependencies (soft logic) based on best practices</li>
+                                    <li>Consider external dependencies related to non-project factors</li>
+                                    <li>Define the type of relationship (Finish-to-Start, Start-to-Start, etc.)</li>
+                                    <li>Document leads and lags in relationships when applicable</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <h6 class="text-xs font-medium mb-1">Dell Application</h6>
+                                <p class="text-xs mb-2">At Dell, dependency analysis includes:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Cross-functional dependency mapping sessions</li>
+                                    <li>Precedence diagramming in Microsoft Project</li>
+                                    <li>Tracking of external dependencies (suppliers, partners)</li>
+                                    <li>Validation with subject matter experts</li>
+                                    <li>Regular dependency reviews throughout the project</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3 bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-xs font-medium mb-1">Common Dependency Types</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg mb-2">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Finish-to-Start (FS)</h6>
+                                        <p class="text-xs mb-1">The predecessor activity must finish before the successor can start.</p>
+                                        <p class="text-xs italic mb-0"><strong>Example:</strong> Hardware design must be completed before prototype manufacturing can begin.</p>
+                                    </div>
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Start-to-Start (SS)</h6>
+                                        <p class="text-xs mb-1">The successor activity can start once the predecessor activity has started.</p>
+                                        <p class="text-xs italic mb-0"><strong>Example:</strong> Software documentation can begin after coding has started (but doesn't need to wait for coding to finish).</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg mb-2">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Finish-to-Finish (FF)</h6>
+                                        <p class="text-xs mb-1">The successor activity cannot finish until the predecessor activity finishes.</p>
+                                        <p class="text-xs italic mb-0"><strong>Example:</strong> Quality testing cannot be completed until all production units are manufactured.</p>
+                                    </div>
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Start-to-Finish (SF)</h6>
+                                        <p class="text-xs mb-1">The successor activity cannot finish until the predecessor activity starts (rarely used).</p>
+                                        <p class="text-xs italic mb-0"><strong>Example:</strong> The current system cannot be shut down until the new system starts operating.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Duration Estimation and Resource Planning</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">4. Estimate Activity Durations</h5>
+                        <p class="text-sm mb-3">Accurate duration estimates are critical for realistic schedule development. This step involves determining how long each activity will take based on the scope of work, resource availability, and historical performance data.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Estimation Techniques</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Expert Judgment</h6>
+                                        <p class="text-xs mb-1">Leveraging experience and expertise of those familiar with similar work.</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>When to use:</strong> Unique activities with limited historical data</li>
+                                            <li><strong>Advantage:</strong> Incorporates tacit knowledge and context</li>
+                                            <li><strong>Challenge:</strong> May be influenced by biases or optimism</li>
+                                            <li><strong>Dell example:</strong> Consulting senior engineers for new technology implementation estimates</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Analogous Estimating</h6>
+                                        <p class="text-xs mb-1">Using actual durations from similar previous activities.</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>When to use:</strong> Early planning stages with limited detail</li>
+                                            <li><strong>Advantage:</strong> Quick and based on actual experience</li>
+                                            <li><strong>Challenge:</strong> May not account for specific differences</li>
+                                            <li><strong>Dell example:</strong> Using previous laptop development timelines to estimate new model</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Parametric Estimating</h6>
+                                        <p class="text-xs mb-1">Using mathematical models based on known parameters and metrics.</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>When to use:</strong> Repetitive activities with consistent productivity</li>
+                                            <li><strong>Advantage:</strong> Highly objective and scalable</li>
+                                            <li><strong>Challenge:</strong> Requires reliable historical metrics</li>
+                                            <li><strong>Dell example:</strong> Software development estimates based on function points</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Three-Point Estimation</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">PERT Three-Point Estimation</h6>
+                                            <p class="text-xs mb-1">Uses three scenarios to calculate a weighted average that accounts for uncertainty:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Optimistic (O):</strong> Best-case scenario (10% probability)</li>
+                                                <li><strong>Most Likely (M):</strong> Expected scenario (60% probability)</li>
+                                                <li><strong>Pessimistic (P):</strong> Worst-case scenario (10% probability)</li>
+                                                <li><strong>Formula:</strong> Expected Duration = (O + 4M + P) ÷ 6</li>
+                                                <li><strong>Standard Deviation:</strong> (P - O) ÷ 6</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Example Application</h6>
+                                            <p class="text-xs mb-1">For a software testing phase:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Optimistic:</strong> 5 days (if few defects found)</li>
+                                                <li><strong>Most Likely:</strong> 10 days (based on typical projects)</li>
+                                                <li><strong>Pessimistic:</strong> 21 days (if many defects require fixes)</li>
+                                                <li><strong>Calculation:</strong> (5 + 4(10) + 21) ÷ 6 = 11 days</li>
+                                                <li><strong>Standard Deviation:</strong> (21 - 5) ÷ 6 = 2.67 days</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Best Practices for Estimation</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Use multiple techniques</strong> to validate estimates</li>
+                                                <li><strong>Document assumptions</strong> underlying each estimate</li>
+                                                <li><strong>Include time buffers</strong> for high-risk activities</li>
+                                                <li><strong>Consider historical performance</strong> and lessons learned</li>
+                                                <li><strong>Update estimates</strong> as more information becomes available</li>
+                                                <li><strong>Account for resource productivity</strong> and availability</li>
+                                                <li><strong>Involve team members</strong> who will perform the work</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">5. Assign Resources</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Resource Types</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Human Resources:</strong> Team members with specific skills and roles</li>
+                                        <li><strong>Equipment:</strong> Machinery, tools, testing facilities</li>
+                                        <li><strong>Materials:</strong> Components, supplies, consumables</li>
+                                        <li><strong>Budget:</strong> Financial resources allocated to activities</li>
+                                        <li><strong>Facilities:</strong> Space, rooms, locations</li>
+                                        <li><strong>Vendor Services:</strong> External contractors and suppliers</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Resource Allocation Process</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Identify required skills and resources for each activity</li>
+                                        <li>Determine resource availability and constraints</li>
+                                        <li>Match activities to appropriate resources</li>
+                                        <li>Consider resource capabilities and proficiency</li>
+                                        <li>Document resource assignments in workplan</li>
+                                        <li>Review for overallocation and conflicts</li>
+                                        <li>Negotiate resource commitments with functional managers</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Resource Leveling</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Identify overallocated resources and peak demand periods</li>
+                                        <li>Adjust start/finish dates within available float</li>
+                                        <li>Split activities where possible to balance workload</li>
+                                        <li>Consider alternative resources with similar skills</li>
+                                        <li>Negotiate additional resources for peak periods</li>
+                                        <li>Modify activity dependencies to smooth resource demand</li>
+                                        <li>Document impact on project timeline if changes affect critical path</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Dell's Resource Management Approach</h6>
+                                <p class="text-xs mb-2">Dell employs several strategies to optimize resource allocation across its project portfolio:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Resource Pools and Matrix Structure</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Functional teams (engineering, marketing, operations) maintain resource pools</li>
+                                            <li>Matrix organization allows sharing resources across multiple projects</li>
+                                            <li>Skills database tracks capabilities and proficiency levels</li>
+                                            <li>Resource managers coordinate allocations across projects</li>
+                                            <li>Capacity planning at department level ensures resource availability</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Resource Utilization Optimization</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Resource forecasting 3-6 months in advance for planning</li>
+                                            <li>Part-time allocations for specialized resources across projects</li>
+                                            <li>Balancing resource utilization targets (typically 70-80%)</li>
+                                            <li>Regular resource review meetings with functional managers</li>
+                                            <li>Escalation process for resource conflicts between projects</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Schedule Development and Critical Path Analysis</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">6. Develop Schedule</h5>
+                        <p class="text-sm mb-3">Schedule development integrates all previous steps to create a timeline with specific start and finish dates for all activities. This becomes the project's time baseline against which progress will be measured.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Schedule Development Process</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Network Diagram Analysis</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Create a network diagram showing activity sequence and dependencies</li>
+                                            <li>Perform forward pass to calculate early start and finish dates</li>
+                                            <li>Perform backward pass to calculate late start and finish dates</li>
+                                            <li>Identify float or slack time for each activity</li>
+                                            <li>Determine the critical path (sequence with zero float)</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Schedule Constraints</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Imposed dates:</strong> Required start or finish dates for specific activities</li>
+                                            <li><strong>Key milestones:</strong> Specific events that must occur on particular dates</li>
+                                            <li><strong>External dependencies:</strong> Activities dependent on factors outside the project</li>
+                                            <li><strong>Resource limitations:</strong> Limited availability of key resources</li>
+                                            <li><strong>Organizational policies:</strong> Working hours, holidays, approval cycles</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Schedule Refinement</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Apply resource leveling to balance workloads</li>
+                                            <li>Adjust for schedule constraints and milestones</li>
+                                            <li>Integrate buffers for high-risk activities</li>
+                                            <li>Implement compression techniques if needed (fast-tracking, crashing)</li>
+                                            <li>Review and validate the schedule with stakeholders</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Critical Path Method</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Critical Path Fundamentals</h6>
+                                            <p class="text-xs mb-1">The critical path is the sequence of activities that determines the shortest possible project duration. Any delay in a critical path activity will delay the entire project unless mitigation actions are taken.</p>
+                                            <h6 class="text-xs font-medium mt-2 mb-1">Key Concepts:</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Float (or Slack):</strong> The amount of time an activity can be delayed without delaying the project</li>
+                                                <li><strong>Critical Path:</strong> The sequence of activities with zero float</li>
+                                                <li><strong>Near-Critical Paths:</strong> Activity sequences with minimal float</li>
+                                                <li><strong>Critical Path Drag:</strong> The amount of time a critical activity adds to the project duration</li>
+                                                <li><strong>Criticality Index:</strong> The probability an activity will be on the critical path</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Benefits of Critical Path Analysis</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Identifies activities that directly impact project duration</li>
+                                                <li>Helps prioritize resources on activities with zero float</li>
+                                                <li>Enables focused risk management on critical activities</li>
+                                                <li>Provides data for what-if scenario analysis</li>
+                                                <li>Supports schedule compression decisions</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Schedule Compression Techniques</h6>
+                                            <p class="text-xs mb-1">When project deadlines require shortening the schedule:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Fast-tracking:</strong> Performing activities in parallel that would normally be done in sequence</li>
+                                                <li><strong>Crashing:</strong> Adding resources to critical path activities to reduce duration</li>
+                                                <li><strong>Scope reduction:</strong> Eliminating or simplifying deliverables</li>
+                                                <li><strong>Alternative methods:</strong> Using different approaches with shorter durations</li>
+                                                <li><strong>Schedule reserve:</strong> Using contingency time built into the schedule</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Schedule Visualization: Gantt Chart Example</h6>
+                            
+                            <div class="overflow-x-auto">
+                                <div class="min-w-[800px]">
+                                    <div class="h-[320px] relative">
+                                        <!-- Simplified Gantt Chart Example -->
+                                        <div class="flex">
+                                            <!-- Task Labels Column -->
+                                            <div class="w-[200px] pr-2 border-r border-gray-300 dark:border-gray-700">
+                                                <div class="h-10 flex items-center font-medium">
+                                                    <span class="text-xs">Task Name</span>
+                                                </div>
+                                                <div class="h-10 flex items-center">
+                                                    <span class="text-xs">Design Hardware</span>
+                                                </div>
+                                                <div class="h-10 flex items-center">
+                                                    <span class="text-xs">Prototype Development</span>
+                                                </div>
+                                                <div class="h-10 flex items-center">
+                                                    <span class="text-xs">Software Development</span>
+                                                </div>
+                                                <div class="h-10 flex items-center">
+                                                    <span class="text-xs">Integration Testing</span>
+                                                </div>
+                                                <div class="h-10 flex items-center">
+                                                    <span class="text-xs">User Acceptance Testing</span>
+                                                </div>
+                                                <div class="h-10 flex items-center">
+                                                    <span class="text-xs">Documentation</span>
+                                                </div>
+                                                <div class="h-10 flex items-center">
+                                                    <span class="text-xs">Manufacturing Setup</span>
+                                                </div>
+                                                <div class="h-10 flex items-center">
+                                                    <span class="text-xs">Production</span>
+                                                </div>
+                                                <div class="h-10 flex items-center">
+                                                    <span class="text-xs">Marketing Campaign</span>
+                                                </div>
+                                                <div class="h-10 flex items-center">
+                                                    <span class="text-xs">Launch Event</span>
+                                                </div>
+                                                <div class="h-10 flex items-center">
+                                                    <span class="text-xs">Distribution</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Gantt Timeline -->
+                                            <div class="flex-1 relative">
+                                                <!-- Timeline Header -->
+                                                <div class="h-10 border-b border-gray-300 dark:border-gray-700 flex">
+                                                    <div class="w-[50px] text-xs text-center border-r border-gray-300 dark:border-gray-700">Week 1</div>
+                                                    <div class="w-[50px] text-xs text-center border-r border-gray-300 dark:border-gray-700">Week 2</div>
+                                                    <div class="w-[50px] text-xs text-center border-r border-gray-300 dark:border-gray-700">Week 3</div>
+                                                    <div class="w-[50px] text-xs text-center border-r border-gray-300 dark:border-gray-700">Week 4</div>
+                                                    <div class="w-[50px] text-xs text-center border-r border-gray-300 dark:border-gray-700">Week 5</div>
+                                                    <div class="w-[50px] text-xs text-center border-r border-gray-300 dark:border-gray-700">Week 6</div>
+                                                    <div class="w-[50px] text-xs text-center border-r border-gray-300 dark:border-gray-700">Week 7</div>
+                                                    <div class="w-[50px] text-xs text-center border-r border-gray-300 dark:border-gray-700">Week 8</div>
+                                                    <div class="w-[50px] text-xs text-center border-r border-gray-300 dark:border-gray-700">Week 9</div>
+                                                    <div class="w-[50px] text-xs text-center border-r border-gray-300 dark:border-gray-700">Week 10</div>
+                                                    <div class="w-[50px] text-xs text-center border-r border-gray-300 dark:border-gray-700">Week 11</div>
+                                                    <div class="w-[50px] text-xs text-center">Week 12</div>
+                                                </div>
+                                                
+                                                <!-- Task Bars -->
+                                                <div class="h-10 relative">
+                                                    <div class="absolute left-0 top-[10px] h-5 w-[100px] bg-purple-500 dark:bg-purple-700 rounded-sm text-xs text-white flex items-center justify-center">Design</div>
+                                                </div>
+                                                
+                                                <div class="h-10 relative">
+                                                    <div class="absolute left-[100px] top-[10px] h-5 w-[100px] bg-blue-500 dark:bg-blue-700 rounded-sm text-xs text-white flex items-center justify-center">Prototype</div>
+                                                </div>
+                                                
+                                                <div class="h-10 relative">
+                                                    <div class="absolute left-[50px] top-[10px] h-5 w-[150px] bg-green-500 dark:bg-green-700 rounded-sm text-xs text-white flex items-center justify-center">Software Dev</div>
+                                                </div>
+                                                
+                                                <div class="h-10 relative">
+                                                    <div class="absolute left-[200px] top-[10px] h-5 w-[100px] bg-red-500 dark:bg-red-700 rounded-sm text-xs text-white flex items-center justify-center">Integration</div>
+                                                </div>
+                                                
+                                                <div class="h-10 relative">
+                                                    <div class="absolute left-[300px] top-[10px] h-5 w-[50px] bg-yellow-500 dark:bg-yellow-700 rounded-sm text-xs text-white flex items-center justify-center">UAT</div>
+                                                </div>
+                                                
+                                                <div class="h-10 relative">
+                                                    <div class="absolute left-[100px] top-[10px] h-5 w-[200px] bg-gray-500 dark:bg-gray-600 rounded-sm text-xs text-white flex items-center justify-center">Documentation</div>
+                                                </div>
+                                                
+                                                <div class="h-10 relative">
+                                                    <div class="absolute left-[150px] top-[10px] h-5 w-[150px] bg-indigo-500 dark:bg-indigo-700 rounded-sm text-xs text-white flex items-center justify-center">Mfg Setup</div>
+                                                </div>
+                                                
+                                                <div class="h-10 relative">
+                                                    <div class="absolute left-[300px] top-[10px] h-5 w-[150px] bg-pink-500 dark:bg-pink-700 rounded-sm text-xs text-white flex items-center justify-center">Production</div>
+                                                </div>
+                                                
+                                                <div class="h-10 relative">
+                                                    <div class="absolute left-[200px] top-[10px] h-5 w-[250px] bg-teal-500 dark:bg-teal-700 rounded-sm text-xs text-white flex items-center justify-center">Marketing Campaign</div>
+                                                </div>
+                                                
+                                                <div class="h-10 relative">
+                                                    <div class="absolute left-[450px] top-[10px] h-5 w-[50px] bg-orange-500 dark:bg-orange-700 rounded-sm text-xs text-white flex items-center justify-center">Launch</div>
+                                                </div>
+                                                
+                                                <div class="h-10 relative">
+                                                    <div class="absolute left-[500px] top-[10px] h-5 w-[100px] bg-cyan-500 dark:bg-cyan-700 rounded-sm text-xs text-white flex items-center justify-center">Distribution</div>
+                                                </div>
+                                                
+                                                <!-- Milestone Markers -->
+                                                <div class="absolute left-[100px] top-[13px] w-4 h-4 bg-white dark:bg-gray-900 border-2 border-purple-700 dark:border-purple-400 transform rotate-45"></div>
+                                                <div class="absolute left-[200px] top-[13px] w-4 h-4 bg-white dark:bg-gray-900 border-2 border-blue-700 dark:border-blue-400 transform rotate-45"></div>
+                                                <div class="absolute left-[300px] top-[13px] w-4 h-4 bg-white dark:bg-gray-900 border-2 border-red-700 dark:border-red-400 transform rotate-45"></div>
+                                                <div class="absolute left-[450px] top-[13px] w-4 h-4 bg-white dark:bg-gray-900 border-2 border-orange-700 dark:border-orange-400 transform rotate-45"></div>
+
+                                                <!-- Critical Path Highlight -->
+                                                <div class="absolute left-0 top-0 w-full h-[10px] border-b-2 border-dashed border-red-500 dark:border-red-400 pointer-events-none"></div>
+                                                <div class="absolute left-0 top-[30px] w-full h-[10px] border-b-2 border-dashed border-red-500 dark:border-red-400 pointer-events-none"></div>
+                                                <div class="absolute left-0 top-[70px] w-full h-[10px] border-b-2 border-dashed border-red-500 dark:border-red-400 pointer-events-none"></div>
+                                                <div class="absolute left-0 top-[110px] w-full h-[10px] border-b-2 border-dashed border-red-500 dark:border-red-400 pointer-events-none"></div>
+                                                <div class="absolute left-0 top-[310px] w-full h-[10px] border-b-2 border-dashed border-red-500 dark:border-red-400 pointer-events-none"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex mt-2">
+                                        <div class="flex items-center mr-4">
+                                            <div class="w-3 h-0 border-b-2 border-dashed border-red-500 dark:border-red-400 mr-1"></div>
+                                            <span class="text-xs">Critical Path</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="w-3 h-3 bg-white dark:bg-gray-900 border-2 border-purple-700 dark:border-purple-400 transform rotate-45 mr-1"></div>
+                                            <span class="text-xs">Milestone</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dell's Schedule Management Approach</h6>
+                                <p class="text-xs mb-2">Dell employs several best practices for effective schedule management:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Schedule Governance</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Tiered schedule review process based on project complexity</li>
+                                            <li>Weekly schedule updates and status reporting</li>
+                                            <li>Formal change control for schedule baseline modifications</li>
+                                            <li>Schedule performance metrics (SPI) to track progress</li>
+                                            <li>Executive dashboards highlighting critical path status</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Schedule Integration</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Enterprise portfolio management system for cross-project visibility</li>
+                                            <li>Resource capacity planning across multiple projects</li>
+                                            <li>Dependency management for related projects</li>
+                                            <li>Integration with financial systems for budget tracking</li>
+                                            <li>Alignment with corporate milestone calendars</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Workplan Monitoring and Control</h5>
+                        <p class="text-sm mb-3">Once the workplan is established, project managers must continuously monitor progress and take corrective actions when deviations occur. Effective monitoring and control ensures the project stays on track toward its objectives.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Progress Tracking</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Status updates:</strong> Regular collection of activity progress information</li>
+                                    <li class="mb-1"><strong>Percent complete:</strong> Measuring work accomplished against plan</li>
+                                    <li class="mb-1"><strong>Milestone tracking:</strong> Monitoring achievement of key events</li>
+                                    <li class="mb-1"><strong>Actual vs. planned:</strong> Comparing current status to baseline</li>
+                                    <li class="mb-0"><strong>Earned value:</strong> Quantifying the value of work performed</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Schedule Analysis</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Variance analysis:</strong> Identifying deviations from baseline</li>
+                                    <li class="mb-1"><strong>Trend analysis:</strong> Examining patterns of variance over time</li>
+                                    <li class="mb-1"><strong>Critical path monitoring:</strong> Focusing on activities with zero float</li>
+                                    <li class="mb-1"><strong>Schedule performance index (SPI):</strong> Measuring schedule efficiency</li>
+                                    <li class="mb-0"><strong>Forecast updates:</strong> Projecting future performance based on trends</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Corrective Actions</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Schedule compression:</strong> Fast-tracking or crashing behind-schedule activities</li>
+                                    <li class="mb-1"><strong>Resource reallocation:</strong> Shifting resources to critical activities</li>
+                                    <li class="mb-1"><strong>Scope refinement:</strong> Adjusting deliverables to meet time constraints</li>
+                                    <li class="mb-1"><strong>Process optimization:</strong> Improving efficiency of remaining work</li>
+                                    <li class="mb-0"><strong>Recovery planning:</strong> Developing targeted plans for troubled areas</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Earned Value Management (EVM)</h6>
+                            <p class="text-xs mb-2">EVM is a powerful technique that integrates scope, schedule, and cost performance. It provides objective metrics to assess project health and forecast future performance:</p>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-100 dark:bg-gray-800">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">EVM Term</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Description</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Formula</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Interpretation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Planned Value (PV)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">The budgeted cost of work scheduled to be done</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Budgeted cost × Planned % complete</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">How much work should have been completed by now (in cost terms)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Earned Value (EV)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">The budgeted cost of work actually performed</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Budgeted cost × Actual % complete</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Value of work actually completed (in cost terms)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Actual Cost (AC)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">The actual cost incurred for work performed</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Sum of actual costs to date</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">How much has been spent so far</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Schedule Variance (SV)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Difference between earned value and planned value</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">EV - PV</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Positive: ahead of schedule; Negative: behind schedule</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Cost Variance (CV)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Difference between earned value and actual cost</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">EV - AC</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Positive: under budget; Negative: over budget</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Schedule Performance Index (SPI)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Ratio of earned value to planned value</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">EV ÷ PV</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">&gt;1: ahead of schedule; &lt;1: behind schedule</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Cost Performance Index (CPI)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Ratio of earned value to actual cost</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">EV ÷ AC</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">&gt;1: under budget; &lt;1: over budget</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-3 text-xs">
+                                <p class="italic">Note: EVM is most commonly used on large-scale projects and programs at Dell, particularly for government contracts and major enterprise initiatives where precise tracking and reporting are required.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Dell Case Study: Enterprise Server Launch Workplan</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Workplan Development in Action</h5>
+                        <p class="text-sm mb-3">This case study examines how Dell applied workplan development principles for the launch of a new enterprise server product line, highlighting key challenges faced and strategies employed.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Project Context</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Dell's Enterprise Solutions Group was tasked with developing and launching a new line of high-performance servers targeting the AI and machine learning market. The project involved:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li>Designing specialized hardware for AI workloads</li>
+                                        <li>Developing custom cooling solutions for high-density configurations</li>
+                                        <li>Creating management software for AI workload optimization</li>
+                                        <li>Establishing new manufacturing processes</li>
+                                        <li>Developing services packages for AI implementation</li>
+                                        <li>Creating marketing and sales enablement materials</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Project Constraints:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>9-month development timeline to align with industry conference</li>
+                                        <li>Fixed budget established by annual R&amp;D allocation</li>
+                                        <li>Limited availability of specialized engineering resources</li>
+                                        <li>Supply chain constraints for advanced components</li>
+                                        <li>Integration requirements with existing Dell product ecosystem</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Workplan Development Approach</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">1. Scope Definition</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Conducted customer research to identify key requirements</li>
+                                            <li>Created detailed product requirements document (PRD)</li>
+                                            <li>Established clear feature prioritization using MoSCoW method</li>
+                                            <li>Defined explicit in/out of scope boundaries</li>
+                                            <li>Aligned scope with strategic product roadmap</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">2. WBS Development</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Conducted cross-functional WBS workshop with all stakeholders</li>
+                                            <li>Used Dell's standard product development WBS template as starting point</li>
+                                            <li>Created 5-level WBS with detailed work packages</li>
+                                            <li>Developed comprehensive WBS dictionary</li>
+                                            <li>Validated WBS with technical leads and project sponsors</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">3-6. Dependencies, Estimates, Resources &amp; Schedule</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Identified 200+ activities with dependencies across functions</li>
+                                            <li>Used three-point estimation for high-uncertainty activities</li>
+                                            <li>Applied parametric estimates for software development based on story points</li>
+                                            <li>Coordinated resource allocation across five global teams</li>
+                                            <li>Developed integrated master schedule with critical path analysis</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3 mb-4">
+                            <h6 class="text-sm font-medium mb-2">Key Workplan Elements</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-2">Critical Path Management</h6>
+                                    <p class="text-xs mb-2">The critical path analysis identified several high-risk activities:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Development of custom GPU cooling solution</li>
+                                        <li>Procurement of specialized AI accelerator chips</li>
+                                        <li>Integration testing with third-party AI frameworks</li>
+                                        <li>Certification requirements for high-power components</li>
+                                    </ul>
+                                    <p class="text-xs mt-2 mb-0">The project team implemented several strategies to manage critical path risks:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Weekly critical path review meetings</li>
+                                        <li>Dedicated resource assignments to critical activities</li>
+                                        <li>Early procurement of long-lead components</li>
+                                        <li>Parallel testing tracks for certification requirements</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-2">Resource Optimization</h6>
+                                    <p class="text-xs mb-2">The workplan needed to address several resource challenges:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Limited availability of specialized AI engineers</li>
+                                        <li>Competition for resources with other strategic projects</li>
+                                        <li>Globally distributed teams across multiple time zones</li>
+                                        <li>Shared test facilities with limited availability</li>
+                                    </ul>
+                                    <p class="text-xs mt-2 mb-0">Resource optimization strategies included:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Staggered development phases to level resource demands</li>
+                                        <li>Follow-the-sun approach for 24-hour development cycles</li>
+                                        <li>Temporary contractor resources for peak demand periods</li>
+                                        <li>Negotiated dedicated test facility time blocks</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-2">Milestone Planning</h6>
+                                    <p class="text-xs mb-2">The workplan established key milestones to track progress:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Requirements freeze (Month 1)</li>
+                                        <li>Design completion and review (Month 3)</li>
+                                        <li>Prototype build complete (Month 4)</li>
+                                        <li>Software alpha release (Month 5)</li>
+                                        <li>Integration testing complete (Month 6)</li>
+                                        <li>Regulatory certification complete (Month 7)</li>
+                                        <li>Production readiness review (Month 8)</li>
+                                        <li>Product launch (Month 9)</li>
+                                    </ul>
+                                    <p class="text-xs mt-2 mb-0">Each milestone had defined acceptance criteria and formal review processes to ensure quality gates were properly managed.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Challenges Encountered</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Supply chain disruption:</strong> Key component delivery delayed by 3 weeks</li>
+                                    <li class="mb-1"><strong>Technical complexity:</strong> Cooling solution required more design iterations than planned</li>
+                                    <li class="mb-1"><strong>Resource conflicts:</strong> Key engineers pulled to support customer escalations</li>
+                                    <li class="mb-1"><strong>Scope expansion:</strong> Late requirements from major customer for additional features</li>
+                                    <li class="mb-0"><strong>Testing issues:</strong> Performance testing revealed unexpected thermal issues</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Workplan Adaptations</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Fast-tracking integration:</strong> Overlapped testing with final development phases</li>
+                                    <li class="mb-1"><strong>Resource reallocation:</strong> Temporarily pulled in engineers from other projects</li>
+                                    <li class="mb-1"><strong>Schedule compression:</strong> Added resources to critical path activities</li>
+                                    <li class="mb-1"><strong>Scope management:</strong> Deferred non-critical features to post-launch update</li>
+                                    <li class="mb-0"><strong>Alternative sourcing:</strong> Identified backup suppliers for critical components</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Results &amp; Outcomes</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>On-time launch:</strong> Product launched at industry conference as planned</li>
+                                    <li class="mb-1"><strong>Budget performance:</strong> 5% over budget due to expediting costs</li>
+                                    <li class="mb-1"><strong>Scope delivery:</strong> Core features complete, three minor features deferred</li>
+                                    <li class="mb-1"><strong>Quality metrics:</strong> All performance specifications met after final optimization</li>
+                                    <li class="mb-0"><strong>Market reception:</strong> Product received industry award for innovation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Lessons Learned</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Workplan Development Insights</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Early cross-functional involvement</strong> in WBS and dependency mapping proved critical</li>
+                                        <li><strong>Three-point estimation</strong> was particularly valuable for novel technical activities</li>
+                                        <li><strong>Resource buffer planning</strong> should be incorporated for specialized skills</li>
+                                        <li><strong>Critical path sensitivity analysis</strong> helped anticipate potential bottlenecks</li>
+                                        <li><strong>Integrated planning</strong> across hardware, software, and services teams improved coordination</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Process Improvements for Future Projects</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Implement more robust <strong>supply chain risk assessment</strong> for critical components</li>
+                                        <li>Establish <strong>formal resource agreements</strong> with functional managers to prevent reassignment</li>
+                                        <li>Develop more detailed <strong>testing phase workplans</strong> with specific performance criteria</li>
+                                        <li>Create <strong>modular schedule templates</strong> for common development activities</li>
+                                        <li>Incorporate <strong>regular what-if scenario planning</strong> in status meetings</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Workplan Development Best Practices</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Keys to Successful Workplan Development</h5>
+                        <p class="text-sm mb-3">Based on Dell's experience across thousands of projects, these best practices can help you develop effective workplans regardless of project size or complexity.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-700 dark:text-blue-400 mr-2">
+                                        <i class="ri-team-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-blue-700 dark:text-blue-400">Collaborative Development</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Involve cross-functional stakeholders from the beginning</li>
+                                    <li>Conduct facilitated WBS workshops with subject matter experts</li>
+                                    <li>Ensure task owners participate in estimating their work</li>
+                                    <li>Create shared understanding of interdependencies</li>
+                                    <li>Validate the workplan with those who will execute it</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-700 dark:text-blue-400 mr-2">
+                                        <i class="ri-scales-3-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-blue-700 dark:text-blue-400">Right-Sized Approach</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Tailor workplan detail to project size and complexity</li>
+                                    <li>Focus greater detail on high-risk and near-term activities</li>
+                                    <li>Use rolling wave planning for long-duration projects</li>
+                                    <li>Avoid excessive detail that creates maintenance burden</li>
+                                    <li>Balance formality with practicality and usability</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-700 dark:text-blue-400 mr-2">
+                                        <i class="ri-eye-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-blue-700 dark:text-blue-400">Reality-Based Planning</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Base estimates on historical data when available</li>
+                                    <li>Account for non-project time (meetings, admin, etc.)</li>
+                                    <li>Consider resource productivity and efficiency factors</li>
+                                    <li>Incorporate appropriate contingency for risks</li>
+                                    <li>Challenge overly optimistic or pessimistic assumptions</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-700 dark:text-blue-400 mr-2">
+                                        <i class="ri-link-m text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-blue-700 dark:text-blue-400">Integrated Planning</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Align workplan with scope, budget, and resource plans</li>
+                                    <li>Consider external dependencies and constraints</li>
+                                    <li>Coordinate with related projects and programs</li>
+                                    <li>Integrate with organizational calendars and cycles</li>
+                                    <li>Connect workplan to overall business objectives</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-700 dark:text-blue-400 mr-2">
+                                        <i class="ri-dashboard-3-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-blue-700 dark:text-blue-400">Actionable Structure</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Create clear ownership for each activity</li>
+                                    <li>Define measurable completion criteria</li>
+                                    <li>Use consistent naming conventions</li>
+                                    <li>Organize work in logical sequence and groupings</li>
+                                    <li>Ensure activities are at appropriate level of granularity</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-700 dark:text-blue-400 mr-2">
+                                        <i class="ri-refresh-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-blue-700 dark:text-blue-400">Adaptive Approach</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Establish clear change control procedures</li>
+                                    <li>Update workplan as new information becomes available</li>
+                                    <li>Regularly review and refine the critical path</li>
+                                    <li>Conduct periodic what-if scenario planning</li>
+                                    <li>Document and apply lessons learned to future workplans</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.pmi.org/pmbok-guide-standards/foundational/pmbok" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-book-open-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">PMBOK® Guide</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Project Management Institute • Schedule Management Knowledge Area</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.microsoft.com/en-us/microsoft-365/project/project-management-software" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-microsoft-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Microsoft Project</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Microsoft • Project Planning Software</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.smartsheet.com/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-table-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Smartsheet</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Smartsheet • Work Management Platform</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">WBS Development Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll practice developing a Work Breakdown Structure (WBS) for a Dell marketing campaign launch. This will help you apply the workplan development concepts learned in this module to a realistic scenario.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Project Scenario: Dell Sustainability Marketing Campaign</h6>
+                            <p class="text-xs mb-2">Dell is planning to launch a major marketing campaign highlighting its sustainability initiatives and eco-friendly product features. The campaign will include digital content, social media, events, and sales enablement materials. Your task is to create a high-level WBS for this marketing campaign launch.</p>
+                            
+                            <p class="text-xs font-medium mb-1">Key project elements:</p>
+                            <ul class="pl-4 text-xs mb-2">
+                                <li>Campaign strategy development and messaging</li>
+                                <li>Digital content creation (website, videos, infographics)</li>
+                                <li>Social media campaign across multiple platforms</li>
+                                <li>Virtual launch event</li>
+                                <li>Media and analyst relations</li>
+                                <li>Sales enablement materials</li>
+                                <li>Performance measurement and reporting</li>
+                            </ul>
+                            
+                            <p class="text-xs font-medium mb-1">Project constraints:</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>3-month timeline to align with Earth Day</li>
+                                <li>Fixed marketing budget</li>
+                                <li>Coordination required with product teams and sustainability office</li>
+                                <li>Global campaign requiring regional adaptations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Level 1 WBS: Major Deliverables</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="List the major deliverables or phases that would form the first level of your WBS (e.g., 1.0 Campaign Planning, 2.0 Content Development, etc.)"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Level 2 WBS: For One Major Deliverable</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Select one of your major deliverables and decompose it into its sub-deliverables (e.g., 2.1 Website Content, 2.2 Video Production, etc.)"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">WBS Dictionary: For One Work Package</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Select one work package and write a WBS dictionary entry that includes: description, deliverables, acceptance criteria, estimated duration, and resources required."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit WBS</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" disabled="">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-stakeholder-engagement">
+                        <span>Next: Stakeholder Engagement &amp; Influence</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

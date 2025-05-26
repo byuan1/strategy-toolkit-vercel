@@ -1,0 +1,1933 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="ri-arrow-left-line"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      
+            <!-- Demand Shaping Topic -->
+            <section id="topic-demand-shaping" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-equalizer-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Demand Shaping</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Product &amp; Ops Foundations</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the strategic importance of demand shaping in balancing supply and demand</li>
+                            <li>Learn key demand shaping mechanisms across pricing, product, and promotion dimensions</li>
+                            <li>Master frameworks for developing integrated demand shaping strategies</li>
+                            <li>Develop skills to implement demand shaping tactics for different business scenarios</li>
+                            <li>Explore modern approaches to data-driven and personalized demand management</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Demand Shaping Fundamentals</h4>
+                    <p>Demand shaping is the strategic manipulation of customer demand patterns to achieve business objectives through deliberate actions across pricing, product, promotion, and placement dimensions. While traditional demand management focuses on forecasting and responding to anticipated demand, demand shaping takes a more proactive approach by actively influencing what, when, and how customers buy. For technology companies with complex product portfolios, constrained component supplies, and evolving business models, effective demand shaping is a critical capability that bridges strategy, marketing, sales, and operations.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">The Strategic Value of Demand Shaping</h5>
+                        <p class="mb-3">Demand shaping creates strategic value across multiple dimensions of the business:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Supply Chain Optimization</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Aligns demand with available supply</li>
+                                    <li>Redirects demand to unconstrained components</li>
+                                    <li>Balances production across facilities</li>
+                                    <li>Optimizes transportation and logistics</li>
+                                    <li>Reduces inventory carrying costs</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Financial Performance</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Enhances revenue and profit mix</li>
+                                    <li>Improves contribution margins</li>
+                                    <li>Reduces discounting pressure</li>
+                                    <li>Accelerates cash flow cycles</li>
+                                    <li>Optimizes resource utilization</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Strategic Positioning</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Facilitates business model transitions</li>
+                                    <li>Supports product portfolio evolution</li>
+                                    <li>Enables customer segment prioritization</li>
+                                    <li>Accelerates innovation adoption</li>
+                                    <li>Creates competitive differentiation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Demand Shaping vs. Traditional Approaches</h6>
+                            <p class="mb-2">Understanding how demand shaping differs from related concepts is essential for effective application:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Demand Shaping vs. Demand Planning</p>
+                                    <p class="text-sm mb-0">Demand planning is primarily focused on forecasting what customers will want and developing plans to meet that anticipated demand. It is fundamentally a reactive approach that attempts to predict future demand as accurately as possible. In contrast, demand shaping takes a proactive approach by deliberately influencing customer purchasing decisions to create more favorable demand patterns. While demand planning accepts customer behavior as a given, demand shaping sees it as malleable and seeks to align it with business capabilities and objectives.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Demand Shaping vs. Marketing</p>
+                                    <p class="text-sm mb-0">Traditional marketing aims to maximize overall demand for products and services, often focusing on total revenue or market share growth. Marketing typically operates somewhat independently from supply chain considerations. Demand shaping, however, integrates marketing activities with operational realities, directing demand not just toward any company offerings, but specifically toward the most advantageous products from a holistic business perspective. While marketing generally pulls in one direction (more demand), demand shaping may simultaneously increase demand for some products while decreasing it for others.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Demand Shaping vs. Allocation</p>
+                                    <p class="text-sm mb-0">In constrained supply environments, allocation refers to the process of distributing limited product availability across customers based on predetermined rules or priorities. Allocation is fundamentally about managing scarcity after demand has materialized. Demand shaping, on the other hand, works earlier in the process by influencing customer preferences before orders are placed. Effective demand shaping can reduce the need for allocation by directing customer demand toward available options, though both approaches are often used in complement when managing supply constraints.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Demand Shaping Strategic Framework</h5>
+                                
+                                <div class="relative">
+                                    <svg class="w-full h-[280px]">
+                                        <!-- Outer box -->
+                                        <rect x="30" y="20" width="540" height="240" fill="none" stroke="#6B7280" stroke-width="1.5" rx="4"></rect>
+                                        
+                                        <!-- Top box: Business Objectives -->
+                                        <rect x="70" y="30" width="460" height="60" fill="#EDF2F7" stroke="#6B7280" stroke-width="1" rx="3" class="dark:fill-gray-800"></rect>
+                                        <text x="300" y="55" font-size="14" text-anchor="middle" fill="currentColor" font-weight="bold">Business Objectives</text>
+                                        <text x="300" y="75" font-size="10" text-anchor="middle" fill="currentColor">Revenue Mix • Margin Enhancement • Resource Utilization • Strategic Transitions</text>
+                                        
+                                        <!-- Middle sections -->
+                                        <g>
+                                            <!-- Left box: Supply Factors -->
+                                            <rect x="70" y="100" width="220" height="100" fill="#EDF2F7" stroke="#6B7280" stroke-width="1" rx="3" class="dark:fill-gray-800"></rect>
+                                            <text x="180" y="125" font-size="12" text-anchor="middle" fill="currentColor" font-weight="bold">Supply Factors</text>
+                                            <text x="180" y="145" font-size="10" text-anchor="middle" fill="currentColor">• Component constraints</text>
+                                            <text x="180" y="160" font-size="10" text-anchor="middle" fill="currentColor">• Production capacity</text>
+                                            <text x="180" y="175" font-size="10" text-anchor="middle" fill="currentColor">• Inventory positions</text>
+                                            <text x="180" y="190" font-size="10" text-anchor="middle" fill="currentColor">• Cost structures</text>
+                                            
+                                            <!-- Right box: Demand Factors -->
+                                            <rect x="310" y="100" width="220" height="100" fill="#EDF2F7" stroke="#6B7280" stroke-width="1" rx="3" class="dark:fill-gray-800"></rect>
+                                            <text x="420" y="125" font-size="12" text-anchor="middle" fill="currentColor" font-weight="bold">Demand Factors</text>
+                                            <text x="420" y="145" font-size="10" text-anchor="middle" fill="currentColor">• Customer preferences</text>
+                                            <text x="420" y="160" font-size="10" text-anchor="middle" fill="currentColor">• Price sensitivity</text>
+                                            <text x="420" y="175" font-size="10" text-anchor="middle" fill="currentColor">• Competitive dynamics</text>
+                                            <text x="420" y="190" font-size="10" text-anchor="middle" fill="currentColor">• Market trends</text>
+                                        </g>
+                                        
+                                        <!-- Bottom box: Demand Shaping Mechanisms -->
+                                        <rect x="70" y="210" width="460" height="40" fill="#EDF2F7" stroke="#6B7280" stroke-width="1" rx="3" class="dark:fill-gray-800"></rect>
+                                        <text x="300" y="230" font-size="12" text-anchor="middle" fill="currentColor" font-weight="bold">Demand Shaping Mechanisms</text>
+                                        <text x="300" y="245" font-size="10" text-anchor="middle" fill="currentColor">Pricing • Product • Promotion • Placement • Process • People</text>
+                                        
+                                        <!-- Arrows -->
+                                        <line x1="300" y1="90" x2="300" y2="100" stroke="#6B7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                        <line x1="180" y1="200" x2="180" y2="210" stroke="#6B7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                        <line x1="420" y1="200" x2="420" y2="210" stroke="#6B7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                        
+                                        <!-- Arrow marker definition -->
+                                        <defs>
+                                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                <polygon points="0 0, 10 3.5, 0 7" fill="#6B7280"></polygon>
+                                            </marker>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                
+                                <p class="text-xs text-center mt-2 text-gray-500 dark:text-gray-400">The demand shaping strategic framework illustrates how business objectives drive the identification of supply and demand factors that must be balanced. These factors then inform the selection and implementation of appropriate demand shaping mechanisms that will influence customer behavior in ways that support business goals. This systematic approach ensures that demand shaping efforts align with overall strategy while considering both operational capabilities and market realities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Demand Shaping Mechanisms</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Core Demand Shaping Levers</h5>
+                        <p class="text-sm mb-3">Effective demand shaping requires coordinated action across multiple dimensions of the marketing mix and beyond. Each lever offers distinct capabilities for influencing customer behavior in support of business objectives.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Pricing Mechanisms</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">1</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Differential Pricing</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Strategic price variation across products, configurations, or channels to influence buyer decisions.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Applications</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Configuration steering:</strong> Using price differences to encourage selection of preferred options</li>
+                                                    <li><strong>Portfolio balancing:</strong> Adjusting relative pricing across product lines to achieve desired mix</li>
+                                                    <li><strong>Channel optimization:</strong> Different pricing by channel to drive traffic to preferred buying paths</li>
+                                                    <li><strong>Regional balancing:</strong> Geographically-targeted pricing to shift demand across regions</li>
+                                                    <li><strong>Customer segmentation:</strong> Different pricing for different customer segments based on strategic value</li>
+                                                </ul>
+                                            </div>
+                                            <div class="mt-2 bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Technology Industry Examples</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Higher pricing for configurations with constrained components to reduce demand</li>
+                                                    <li>Premium pricing for immediate availability vs. discount for extended lead times</li>
+                                                    <li>Strategic price positioning to encourage adoption of next-generation products</li>
+                                                    <li>Value-based pricing tiers that segment customers by willingness to pay</li>
+                                                    <li>Using pricing to incentivize self-service vs. assisted purchase channels</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">2</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Promotional Pricing</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Temporary price adjustments to accelerate demand or influence timing of purchases.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Applications</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Time-limited offers:</strong> Creating urgency with expiring promotions</li>
+                                                    <li><strong>Volume incentives:</strong> Tiered pricing based on purchase quantity to encourage larger orders</li>
+                                                    <li><strong>Bundle promotions:</strong> Discounts for purchasing complementary products together</li>
+                                                    <li><strong>Inventory clearance:</strong> Aggressive pricing to reduce excess stock</li>
+                                                    <li><strong>Counter-seasonal incentives:</strong> Promotional pricing during typically slow periods</li>
+                                                </ul>
+                                            </div>
+                                            <div class="mt-2 bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Technology Industry Examples</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Back-to-school and holiday season promotional calendars</li>
+                                                    <li>Limited-time offers to accelerate demand for overstock configurations</li>
+                                                    <li>End-of-quarter promotions to achieve financial targets</li>
+                                                    <li>Bundle pricing to attach peripherals and accessories to core products</li>
+                                                    <li>Flash sales to drive spike demand for specific products when needed</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">3</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Pricing Structure</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Fundamental pricing model design that shapes customer purchasing behavior.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Key Applications</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Subscription models:</strong> Recurring payment structures that create predictable revenue</li>
+                                                    <li><strong>Usage-based pricing:</strong> Pay-for-what-you-use models that align with value delivery</li>
+                                                    <li><strong>Outcome-based pricing:</strong> Tying payment to customer results or performance metrics</li>
+                                                    <li><strong>Freemium structures:</strong> Free basic access with premium paid tiers</li>
+                                                    <li><strong>Financing options:</strong> Payment terms that reduce upfront cost barriers</li>
+                                                </ul>
+                                            </div>
+                                            <div class="mt-2 bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Technology Industry Examples</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>As-a-Service models for hardware to shift from capex to opex spending</li>
+                                                    <li>Consumption-based cloud pricing to align with customer value</li>
+                                                    <li>Tiered subscription plans with features segmented by level</li>
+                                                    <li>Zero-percent financing programs to accelerate enterprise purchases</li>
+                                                    <li>Lease-to-own programs that reduce initial adoption barriers</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Product Mechanisms</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Using product design, configuration, and availability to influence demand patterns:</p>
+                                    
+                                    <div class="grid grid-cols-1 gap-3">
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Product Configuration Management</h6>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Strategic Approach</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li>Deliberately designing available product configurations to direct customer choices</li>
+                                                        <li>Adjusting feature bundling to emphasize certain components over others</li>
+                                                        <li>Limiting configuration options to simplify supply chain complexity</li>
+                                                        <li>Curating "good-better-best" options to encourage upsell</li>
+                                                        <li>Creating solution bundles that combine products in advantageous ways</li>
+                                                    </ul>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Technology Industry Examples</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li>Limiting customization options during component shortages</li>
+                                                        <li>Creating pre-configured bundles optimized for available inventory</li>
+                                                        <li>Designing "hero SKUs" that concentrate volume on efficient configurations</li>
+                                                        <li>Strategically packaging software features into different edition levels</li>
+                                                        <li>Developing regional-specific configurations to address local preferences</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Product Availability Management</h6>
+                                            <p class="text-xs mb-1">Strategically controlling when, where, and how products are made available:</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Strategic Approach</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li>Managing lead times to influence urgency and order timing</li>
+                                                        <li>Controlling product distribution across channels and geographies</li>
+                                                        <li>Setting inventory allocations by customer segment or product line</li>
+                                                        <li>Creating artificial scarcity through limited releases or editions</li>
+                                                        <li>Timing product introductions and end-of-life transitions</li>
+                                                    </ul>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Technology Industry Examples</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li>Expedited shipping options at premium prices during high demand</li>
+                                                        <li>Channel-exclusive configurations to drive traffic to specific partners</li>
+                                                        <li>Limited production runs of specialty editions to create excitement</li>
+                                                        <li>Strategic allocation of constrained products to priority customers</li>
+                                                        <li>Phased geographic rollouts to manage global demand patterns</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Promotion and Communication</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Utilizing marketing communications to highlight specific offerings and influence customer decisions:</p>
+                                    
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Marketing Focus Adjustment</h6>
+                                        <div class="overflow-x-auto">
+                                            <table class="w-full text-xs">
+                                                <thead>
+                                                    <tr class="bg-white dark:bg-gray-900">
+                                                        <th class="p-1 text-left">Approach</th>
+                                                        <th class="p-1 text-left">Strategic Application</th>
+                                                        <th class="p-1 text-left">Technology Examples</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Feature Emphasis</td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Highlighting specific features or capabilities</li>
+                                                                <li>Directing attention to differentiating elements</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Emphasizing software capabilities over hardware specs</li>
+                                                                <li>Focusing on performance aspects not requiring constrained components</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Product Spotlight</td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Concentrating marketing resources on specific products</li>
+                                                                <li>Creating higher visibility for strategic offerings</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Featuring high-margin configurations in advertising</li>
+                                                                <li>Showcasing products with better availability or supply position</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 font-medium">Use Case Targeting</td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Promoting specific applications or solutions</li>
+                                                                <li>Connecting products to high-value customer needs</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="p-1">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Highlighting remote work solutions during supply constraints</li>
+                                                                <li>Promoting use cases that utilize available configurations</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Digital Marketing Optimization</h6>
+                                        <p class="text-xs mb-1">Leveraging digital channels for precise demand shaping:</p>
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-0.5">Search Engine Marketing</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Adjusting keyword bidding to focus on preferred products</li>
+                                                    <li>Optimizing landing pages to showcase strategic configurations</li>
+                                                    <li>Using negative keywords to reduce demand for constrained items</li>
+                                                    <li>Creating geo-targeted campaigns to balance regional demand</li>
+                                                    <li>Directing search traffic toward products with better margins or availability</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-0.5">Website and Digital Experience</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Adjusting product placement and visibility on e-commerce platforms</li>
+                                                    <li>Using recommendation engines to suggest preferred alternatives</li>
+                                                    <li>Implementing dynamic pricing and promotions based on inventory position</li>
+                                                    <li>Creating guided selling tools that direct customers to optimal choices</li>
+                                                    <li>Employing personalization to match offerings to customer segment priorities</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Sales and Channel Mechanisms</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Sales Incentive Alignment</h6>
+                                    <p class="text-xs mb-2">Directing sales team behavior through compensation and recognition:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Strategic Approaches</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Differential compensation:</strong> Varied commission rates based on strategic value</li>
+                                            <li><strong>Multipliers and accelerators:</strong> Enhanced rewards for priority products</li>
+                                            <li><strong>Quota design:</strong> Setting targets that direct focus to strategic offerings</li>
+                                            <li><strong>SPIFFs and contests:</strong> Short-term incentives for specific focus areas</li>
+                                            <li><strong>Recognition programs:</strong> Highlighting success in strategic product sales</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Technology Implementation</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Higher commissions for subscription vs. traditional license sales</li>
+                                            <li>Incentive multipliers for high-margin configurations</li>
+                                            <li>Compensation bonuses for selling current-generation products</li>
+                                            <li>Commission adjustments for products with better supply positions</li>
+                                            <li>Spiffs for attached services and accessories that improve margin</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Sales Enablement &amp; Tools</h6>
+                                    <p class="text-xs mb-2">Equipping sales teams with information and tools to shape customer decisions:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Strategic Approaches</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Guided selling tools:</strong> Systems that direct toward optimal solutions</li>
+                                            <li><strong>Messaging and talk tracks:</strong> Structured communication approaches</li>
+                                            <li><strong>Alternative recommendation guidance:</strong> Frameworks for suggesting substitutes</li>
+                                            <li><strong>Competitive positioning:</strong> Materials for differentiating strategic products</li>
+                                            <li><strong>Value calculators:</strong> Tools demonstrating ROI of preferred options</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Technology Implementation</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Configuration tools highlighting recommended options</li>
+                                            <li>Availability indicators showing lead times by configuration</li>
+                                            <li>Battlecards for positioning premium offerings against competitors</li>
+                                            <li>Talking points emphasizing value of subscription offerings</li>
+                                            <li>Alternative suggestion engines for constrained products</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Channel Management</h6>
+                                    <p class="text-xs mb-2">Using partner and distribution strategies to shape demand:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Strategic Approaches</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Partner program design:</strong> Creating tiered benefits and requirements</li>
+                                            <li><strong>Channel incentives:</strong> Special pricing and rebates for focus areas</li>
+                                            <li><strong>Distribution strategy:</strong> Controlling product flow through channels</li>
+                                            <li><strong>Channel enablement:</strong> Tools and training for partner success</li>
+                                            <li><strong>Co-marketing:</strong> Shared campaigns focused on priority offerings</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Technology Implementation</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Channel-exclusive configurations to drive specific routes to market</li>
+                                            <li>Enhanced margin for partners selling strategic product lines</li>
+                                            <li>Development funds tied to new offering adoption targets</li>
+                                            <li>Certification requirements focused on priority solutions</li>
+                                            <li>Deal registration bonuses for strategic product categories</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Demand Shaping Mechanism Matrix</h6>
+                                <p class="text-xs mb-2">Framework for selecting appropriate mechanisms based on demand shaping objectives:</p>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs border-collapse">
+                                        <thead>
+                                            <tr class="bg-white dark:bg-gray-900">
+                                                <th class="p-2 text-left border border-indigo-100 dark:border-indigo-900">Business Objective</th>
+                                                <th class="p-2 text-left border border-indigo-100 dark:border-indigo-900">Pricing Mechanisms</th>
+                                                <th class="p-2 text-left border border-indigo-100 dark:border-indigo-900">Product Mechanisms</th>
+                                                <th class="p-2 text-left border border-indigo-100 dark:border-indigo-900">Promotion &amp; Communication</th>
+                                                <th class="p-2 text-left border border-indigo-100 dark:border-indigo-900">Sales &amp; Channel</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="p-2 font-medium border border-indigo-100 dark:border-indigo-900">Increase Average Selling Price</td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Value-based pricing tiers</li>
+                                                        <li>Limited discounting</li>
+                                                        <li>Bundle pricing</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Premium configuration options</li>
+                                                        <li>Feature bundling in higher tiers</li>
+                                                        <li>Solution packaging</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Premium feature emphasis</li>
+                                                        <li>Value messaging</li>
+                                                        <li>ROI focused content</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>High-tier incentives</li>
+                                                        <li>Premium upsell training</li>
+                                                        <li>Value-selling enablement</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 font-medium border border-indigo-100 dark:border-indigo-900">Manage Supply Constraints</td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Premium pricing for constrained items</li>
+                                                        <li>Incentive pricing for alternatives</li>
+                                                        <li>Lead-time based pricing</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Reduced configuration options</li>
+                                                        <li>Prioritized product availability</li>
+                                                        <li>Alternative design options</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Focus on unconstrained alternatives</li>
+                                                        <li>Highlight substitutes</li>
+                                                        <li>Manage availability messaging</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Alternative recommendation tools</li>
+                                                        <li>Allocation guidance</li>
+                                                        <li>Strategic customer prioritization</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 font-medium border border-indigo-100 dark:border-indigo-900">Accelerate Business Model Shift</td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Subscription pricing advantages</li>
+                                                        <li>Migration incentive pricing</li>
+                                                        <li>New model promotional offers</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Feature differentiation favoring new model</li>
+                                                        <li>Exclusive capabilities in new offerings</li>
+                                                        <li>End-of-life for legacy models</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>New model benefit messaging</li>
+                                                        <li>Success story highlighting</li>
+                                                        <li>Transition path education</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Enhanced incentives for new model</li>
+                                                        <li>Partner enablement for transition</li>
+                                                        <li>Migration sales playbooks</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 font-medium border border-indigo-100 dark:border-indigo-900">Balance Seasonal Demand</td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Counter-seasonal incentives</li>
+                                                        <li>Pre-order discounts</li>
+                                                        <li>Volume pricing for early orders</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Off-season exclusive configurations</li>
+                                                        <li>Pre-built inventory availability</li>
+                                                        <li>Expedited delivery options</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Off-season campaign development</li>
+                                                        <li>Early purchase benefit messaging</li>
+                                                        <li>Planning advantage content</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2 border border-indigo-100 dark:border-indigo-900">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Non-peak season incentives</li>
+                                                        <li>Forecast commitment rewards</li>
+                                                        <li>Long-term planning enablement</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Strategic Applications of Demand Shaping</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Demand Shaping for Business Scenarios</h5>
+                        <p class="text-sm mb-3">Demand shaping strategies must be tailored to specific business scenarios and objectives. Technology companies face several common scenarios where effective demand shaping creates significant strategic value.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Supply Constraint Management</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Strategic Approach</h6>
+                                        <p class="text-xs mb-2">How to shape demand during component shortages or capacity limitations:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Primary Objectives</h6>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">1. Redirect Demand to Available Alternatives</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Identify suitable substitutes for constrained configurations</li>
+                                                            <li>Create incentives for customers to select alternatives</li>
+                                                            <li>Develop messaging that positions alternatives favorably</li>
+                                                            <li>Train sales teams on effective alternative recommendation</li>
+                                                            <li>Modify digital experiences to highlight available options</li>
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">2. Optimize Revenue and Margin During Constraints</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Develop allocation strategies that prioritize strategic customers/products</li>
+                                                            <li>Capture appropriate price premium for constrained items</li>
+                                                            <li>Focus on high-margin product configurations</li>
+                                                            <li>Reduce or eliminate discounting during constraint periods</li>
+                                                            <li>Balance short-term profit against long-term customer relationships</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Implementation Tactics</h6>
+                                                <p class="text-xs mb-1">Key mechanisms during supply constraints:</p>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Pricing Approaches</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Differential pricing:</strong> Higher prices for constrained configurations</li>
+                                                            <li><strong>Incentive pricing:</strong> Discounts for accepting alternative configurations</li>
+                                                            <li><strong>Lead time pricing:</strong> Premium pricing for expedited delivery</li>
+                                                            <li><strong>Value-added bundles:</strong> Packaging constrained items with high-margin accessories</li>
+                                                            <li><strong>Dynamic pricing:</strong> Adjusting prices based on real-time availability</li>
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Product and Promotion Approaches</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Configuration simplification:</strong> Reducing options to focus on available components</li>
+                                                            <li><strong>Alternative highlighting:</strong> Promotional focus on unconstrained products</li>
+                                                            <li><strong>Specification adjustments:</strong> Modifying product designs to use available parts</li>
+                                                            <li><strong>Marketing message shift:</strong> Emphasizing features unaffected by constraints</li>
+                                                            <li><strong>Limited edition positioning:</strong> Creating scarcity-based value perception</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Product Lifecycle Management</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">New Product Introduction</h6>
+                                        <p class="text-xs mb-2">Shaping demand during product launches and transitions:</p>
+                                        
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg mb-3">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Launch Phase Demand Shaping</h6>
+                                            <div class="overflow-x-auto">
+                                                <table class="w-full text-xs">
+                                                    <thead>
+                                                        <tr class="bg-white dark:bg-gray-900">
+                                                            <th class="p-1 text-left">Objective</th>
+                                                            <th class="p-1 text-left">Challenge</th>
+                                                            <th class="p-1 text-left">Demand Shaping Approaches</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Control Adoption Rate</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Initial supply limitations</li>
+                                                                    <li>Manufacturing ramp constraints</li>
+                                                                    <li>Support capacity building</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Premium early-adopter pricing</li>
+                                                                    <li>Phased regional availability</li>
+                                                                    <li>Controlled channel distribution</li>
+                                                                    <li>Invitation or waitlist programs</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Optimize Product Mix</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Varied margin across configurations</li>
+                                                                    <li>Uneven component availability</li>
+                                                                    <li>Manufacturing efficiency variations</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Configuration-specific launch timing</li>
+                                                                    <li>Promotional focus on strategic models</li>
+                                                                    <li>Channel incentives for priority configurations</li>
+                                                                    <li>"Hero SKU" marketing emphasis</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Balance New/Legacy Products</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Legacy inventory clearance needs</li>
+                                                                    <li>Cannibalization concerns</li>
+                                                                    <li>Customer transition timing</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Segment-specific targeting strategies</li>
+                                                                    <li>Value-based positioning differentiation</li>
+                                                                    <li>Legacy clearance pricing with target customers</li>
+                                                                    <li>New product reservation programs</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">End-of-Life Management</h6>
+                                            <p class="text-xs mb-1">Shaping demand during product discontinuation phases:</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Strategic Objectives</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Inventory optimization:</strong> Balancing end-of-life inventory to minimize write-offs</li>
+                                                        <li><strong>Customer transition:</strong> Facilitating migration to newer offerings</li>
+                                                        <li><strong>Revenue management:</strong> Maintaining price integrity while clearing inventory</li>
+                                                        <li><strong>Channel management:</strong> Supporting partners through product transitions</li>
+                                                        <li><strong>Customer experience:</strong> Ensuring positive experience during transitions</li>
+                                                    </ul>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Demand Shaping Tactics</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Targeted clearance:</strong> Segmented promotional offers to specific customer groups</li>
+                                                        <li><strong>Trade-in programs:</strong> Incentives for customers to upgrade to new products</li>
+                                                        <li><strong>Channel incentives:</strong> Special pricing or spiffs for partners to clear inventory</li>
+                                                        <li><strong>Bundle strategies:</strong> Packaging end-of-life products with services or accessories</li>
+                                                        <li><strong>Migration messaging:</strong> Communication focusing on transition benefits</li>
+                                                        <li><strong>Availability management:</strong> Strategic control of remaining inventory allocation</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Business Model Transitions</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Traditional to Subscription Transition</h6>
+                                    <p class="text-xs mb-2">Shaping demand to accelerate business model evolution:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Strategic Challenges</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Revenue recognition shift:</strong> Managing transition from upfront to recurring revenue</li>
+                                            <li><strong>Customer adoption resistance:</strong> Overcoming preference for traditional ownership models</li>
+                                            <li><strong>Internal misalignment:</strong> Sales teams accustomed to traditional transaction models</li>
+                                            <li><strong>Market education needs:</strong> Explaining value proposition of new consumption models</li>
+                                            <li><strong>Competitive positioning:</strong> Managing during period when both models are available</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Demand Shaping Approaches</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Pricing structure:</strong> Creating economic advantages for subscription vs. traditional</li>
+                                            <li><strong>Feature differentiation:</strong> Offering enhanced capabilities in subscription models</li>
+                                            <li><strong>Sales compensation:</strong> Higher incentives for subscription vs. traditional sales</li>
+                                            <li><strong>Migration programs:</strong> Special offers for converting existing customers</li>
+                                            <li><strong>Marketing emphasis:</strong> Shifting messaging to highlight subscription benefits</li>
+                                            <li><strong>Trial programs:</strong> Low-risk adoption paths to experience subscription benefits</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Hardware to As-a-Service Transition</h6>
+                                    <p class="text-xs mb-2">Shaping demand for consumption-based technology offerings:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Strategic Challenges</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>CapEx to OpEx shift:</strong> Aligning with customer budget and procurement processes</li>
+                                            <li><strong>Mindset transition:</strong> Moving from ownership to service consumption psychology</li>
+                                            <li><strong>Financial impacts:</strong> Managing cash flow changes during model transition</li>
+                                            <li><strong>Asset management:</strong> Building capabilities for lifecycle and usage monitoring</li>
+                                            <li><strong>Value communication:</strong> Articulating total cost of ownership advantages</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Demand Shaping Approaches</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Value-based messaging:</strong> TCO and business outcome focused communication</li>
+                                            <li><strong>Flexible consumption:</strong> Creating varying consumption models for different needs</li>
+                                            <li><strong>Service bundling:</strong> Including high-value services available only in as-a-service</li>
+                                            <li><strong>Customer success programs:</strong> Ensuring adoption and value realization</li>
+                                            <li><strong>Partner incentives:</strong> Channel compensation aligned with new model</li>
+                                            <li><strong>Risk-reduction offers:</strong> Trial periods or satisfaction guarantees</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Market Segment Prioritization</h6>
+                                <p class="text-xs mb-2">Shaping demand to focus on strategic customer segments:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-1">Enterprise Segment Focus</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Solution packaging:</strong> Creating enterprise-specific offerings not available to others</li>
+                                            <li><strong>Enterprise program benefits:</strong> Unique services, support, or terms</li>
+                                            <li><strong>Key account coverage:</strong> Dedicated resources and prioritized attention</li>
+                                            <li><strong>Strategic pricing:</strong> Segment-specific pricing models and structures</li>
+                                            <li><strong>Co-innovation opportunities:</strong> Early access to roadmap and development</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-1">Mid-Market Expansion</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Simplified offerings:</strong> Right-sized solutions for mid-market requirements</li>
+                                            <li><strong>Self-service enablement:</strong> Digital tools to reduce sales touch requirements</li>
+                                            <li><strong>Partner-led approaches:</strong> Channel programs focused on mid-market reach</li>
+                                            <li><strong>Financing options:</strong> Flexible payment terms suited to mid-market budgets</li>
+                                            <li><strong>Industry-specific solutions:</strong> Vertical market offerings with targeted value</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-1">Public Sector Focus</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Compliance packaging:</strong> Pre-configured solutions meeting sector requirements</li>
+                                            <li><strong>Contract vehicles:</strong> Simplified procurement through approved channels</li>
+                                            <li><strong>Budget-aligned offers:</strong> Products and payment structures matching cycles</li>
+                                            <li><strong>Specialized partner programs:</strong> Channel enablement for sector expertise</li>
+                                            <li><strong>Targeted campaign development:</strong> Sector-specific messaging and outreach</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <p class="text-xs italic mt-2 mb-0">Successful segment prioritization requires coordinated demand shaping across all customer touchpoints—from product design through marketing, sales, and support—to create a cohesive experience that directs resources toward strategic segments while maintaining appropriate coverage of others.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Advanced Demand Shaping Approaches</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Data-Driven and Personalized Demand Shaping</h5>
+                        <p class="text-sm mb-3">Modern technology capabilities are enabling more sophisticated, data-driven approaches to demand shaping. These advanced methods leverage analytics, personalization, and digital channels to create highly targeted influence on customer decision-making.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Analytics-Powered Demand Shaping</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Predictive Analytics Applications</h6>
+                                        <p class="text-xs mb-2">Using advanced analytics to drive more effective demand shaping:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Propensity Modeling</h6>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Application to Demand Shaping</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Predicting which customers are most likely to respond to specific offers</li>
+                                                            <li>Identifying propensity to purchase particular products or configurations</li>
+                                                            <li>Calculating likelihood of upgrading, expanding, or transitioning to new models</li>
+                                                            <li>Determining price sensitivity across different customer segments</li>
+                                                            <li>Forecasting responsiveness to different messaging approaches</li>
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Implementation Examples</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Next best action tools:</strong> Guiding sales teams to optimal customer recommendations</li>
+                                                            <li><strong>Targeted campaigns:</strong> Precision marketing to customers with high propensity for specific products</li>
+                                                            <li><strong>Personalized pricing:</strong> Tailoring offers based on predicted price sensitivity</li>
+                                                            <li><strong>Proactive subscription conversion:</strong> Identifying candidates most ready for business model shift</li>
+                                                            <li><strong>Supply constraint management:</strong> Targeting customers most likely to accept alternatives</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Price Optimization Analytics</h6>
+                                                <p class="text-xs mb-1">Using data to identify optimal pricing for demand shaping:</p>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Application to Demand Shaping</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>Determining optimal price points to achieve specific demand volumes</li>
+                                                            <li>Calculating price differentials needed to shift demand between products</li>
+                                                            <li>Identifying promotion levels that balance revenue with inventory clearance</li>
+                                                            <li>Predicting elasticity impacts across different customer segments</li>
+                                                            <li>Simulating revenue and margin outcomes of price change scenarios</li>
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Implementation Examples</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Dynamic pricing engines:</strong> Real-time price adjustments based on supply/demand conditions</li>
+                                                            <li><strong>Promotion optimization systems:</strong> Analytics-driven promotional pricing decisions</li>
+                                                            <li><strong>Discount management tools:</strong> Data-guided approval workflows with predicted outcomes</li>
+                                                            <li><strong>Configuration price optimization:</strong> Setting price differentials to achieve desired mix</li>
+                                                            <li><strong>Competitor price response modeling:</strong> Predicting market reactions to price moves</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Personalized Demand Shaping</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Customer-Specific Approaches</h6>
+                                        <p class="text-xs mb-2">Tailoring demand shaping to individual customer characteristics:</p>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg mb-3">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Digital Experience Personalization</h6>
+                                            <div class="overflow-x-auto">
+                                                <table class="w-full text-xs">
+                                                    <thead>
+                                                        <tr class="bg-white dark:bg-gray-900">
+                                                            <th class="p-1 text-left">Personalization Element</th>
+                                                            <th class="p-1 text-left">Demand Shaping Application</th>
+                                                            <th class="p-1 text-left">Technology Example</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Dynamic Content</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Tailored messaging based on customer attributes</li>
+                                                                    <li>Segment-specific value propositions</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Industry-specific messaging for enterprise solutions</li>
+                                                                    <li>Role-based content highlighting relevant benefits</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Product Recommendations</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>AI-driven product suggestions aligned with strategy</li>
+                                                                    <li>Personalized configuration guidance</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Recommendation engines promoting strategic configurations</li>
+                                                                    <li>Personalized upgrade suggestions based on current equipment</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Tailored Offers</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Customer-specific incentives and promotions</li>
+                                                                    <li>Personalized bundling suggestions</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Configuration-specific trade-in values based on owned products</li>
+                                                                    <li>Personalized subscription transition offers</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Account-Based Demand Shaping</h6>
+                                            <p class="text-xs mb-1">Coordinated approaches targeted to specific strategic accounts:</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Strategic Approach</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li>Treating high-value accounts as distinct markets with tailored approaches</li>
+                                                        <li>Developing account-specific demand shaping strategies across all dimensions</li>
+                                                        <li>Coordinating pricing, product, and promotional tactics for individual accounts</li>
+                                                        <li>Creating personalized customer experiences throughout the buying journey</li>
+                                                        <li>Aligning account plans with company-wide demand shaping objectives</li>
+                                                    </ul>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Implementation Examples</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Account-specific offers:</strong> Custom-tailored pricing and bundles for key accounts</li>
+                                                        <li><strong>Custom product configurations:</strong> Specific feature sets designed for account requirements</li>
+                                                        <li><strong>Executive sponsorship:</strong> Senior leadership involvement in strategic account engagement</li>
+                                                        <li><strong>Co-marketing initiatives:</strong> Joint promotional activities with key accounts</li>
+                                                        <li><strong>Strategic roadmap alignment:</strong> Shared development planning with priority customers</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Automated and AI-Enabled Demand Shaping</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dynamic Pricing Systems</h6>
+                                    <p class="text-xs mb-2">Automated pricing adjustments based on real-time conditions:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Key Capabilities</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Real-time optimization:</strong> Continuous price adjustments based on current data</li>
+                                            <li><strong>Multi-factor algorithms:</strong> Incorporating inventory, demand, competition, and margin</li>
+                                            <li><strong>Business rule integration:</strong> Embedding strategic constraints and objectives</li>
+                                            <li><strong>Segment-specific pricing:</strong> Different algorithms for different customer segments</li>
+                                            <li><strong>A/B testing capabilities:</strong> Experimental frameworks for pricing strategy refinement</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Technology Applications</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Dynamic configuration pricing based on component availability</li>
+                                            <li>Automated discount optimization based on deal characteristics</li>
+                                            <li>Real-time competitive price monitoring and adjustment</li>
+                                            <li>Personalized promotional pricing based on customer history</li>
+                                            <li>Dynamic bundle pricing optimized for attachment rates</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">AI-Powered Recommendation Engines</h6>
+                                    <p class="text-xs mb-2">Intelligent systems that guide customers to optimal choices:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Key Capabilities</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Machine learning models:</strong> Systems that improve with additional data and interactions</li>
+                                            <li><strong>Multi-objective optimization:</strong> Balancing customer needs with business objectives</li>
+                                            <li><strong>Contextual awareness:</strong> Adapting recommendations to current situation</li>
+                                            <li><strong>Behavioral analysis:</strong> Learning from past customer decisions and patterns</li>
+                                            <li><strong>Natural language processing:</strong> Understanding customer requirements from text</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Technology Applications</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Guided selling tools that recommend strategic configurations</li>
+                                            <li>Product alternative suggestions during supply constraints</li>
+                                            <li>Personalized solution bundles optimized for margin and availability</li>
+                                            <li>Next-best-offer recommendations for customer expansion</li>
+                                            <li>Migration path suggestions for customers on legacy products</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">AI Marketing Optimization</h6>
+                                    <p class="text-xs mb-2">Automated content and campaign management for demand shaping:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Key Capabilities</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Content personalization:</strong> Automated tailoring of messaging to recipients</li>
+                                            <li><strong>Multi-channel orchestration:</strong> Coordinating campaigns across touchpoints</li>
+                                            <li><strong>Message optimization:</strong> Testing and refining communications</li>
+                                            <li><strong>Timing optimization:</strong> Determining ideal moments for customer engagement</li>
+                                            <li><strong>Audience segmentation:</strong> AI-driven customer grouping based on behavior</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Technology Applications</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Automated email campaigns focusing on strategic products</li>
+                                            <li>Dynamic web content highlighting preferred configurations</li>
+                                            <li>Personalized digital advertising promoting margin-rich offerings</li>
+                                            <li>Targeted promotions based on inventory positions</li>
+                                            <li>Real-time messaging adjustment based on response data</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Emerging Technologies in Demand Shaping</h6>
+                                <p class="text-xs mb-2">Innovative approaches at the cutting edge of demand management:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Intelligent Supply-Demand Matching</h6>
+                                        <div class="bg-white dark:bg-gray-900 p-3 rounded">
+                                            <p class="text-xs mb-2">Advanced systems that dynamically balance supply and demand in real-time:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Digital twins:</strong> Virtual replicas of supply chains enabling scenario planning</li>
+                                                <li><strong>Integrated supply-demand platforms:</strong> Unified systems connecting demand signals to supply capabilities</li>
+                                                <li><strong>Autonomic adjustment:</strong> Self-regulating systems that modify demand shaping tactics based on supply conditions</li>
+                                                <li><strong>Predictive constraint management:</strong> Proactive demand shaping before constraints materialize</li>
+                                                <li><strong>Cross-enterprise optimization:</strong> Coordinated demand shaping across partners and suppliers</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Hyper-Personalization at Scale</h6>
+                                        <div class="bg-white dark:bg-gray-900 p-3 rounded">
+                                            <p class="text-xs mb-2">Creating individually tailored experiences for mass markets:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Individual customer DNA:</strong> Comprehensive profiles incorporating all interactions and preferences</li>
+                                                <li><strong>Real-time journey orchestration:</strong> Dynamic adjustment of customer experience at each touchpoint</li>
+                                                <li><strong>Micro-segment targeting:</strong> Extremely granular audience segmentation with specific messaging</li>
+                                                <li><strong>Behavioral economics application:</strong> Leveraging psychological insights for personalized nudges</li>
+                                                <li><strong>Augmented intelligence:</strong> Human-AI collaboration for complex demand shaping scenarios</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3 bg-white dark:bg-gray-900 p-2 rounded">
+                                    <h6 class="text-xs font-medium mb-1">Case Study: AI-Driven Demand Shaping for Component Constraints</h6>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Business Challenge</h6>
+                                            <p class="text-xs mb-0">A leading technology hardware manufacturer faced severe supply constraints for key components during a period of strong demand. Traditional approaches of manual allocation and sales team guidance proved insufficient to effectively balance customer needs with supply realities. The company needed to develop a more sophisticated, data-driven approach to shape demand toward available configurations while maintaining revenue targets and customer satisfaction.</p>
+                                            
+                                            <h6 class="text-xs font-medium mt-2 mb-1">Strategic Approach</h6>
+                                            <ol class="pl-4 text-xs mb-0">
+                                                <li><strong>Integrated Data Platform:</strong> Created unified view of:
+                                                    <ul class="pl-4">
+                                                        <li>Real-time component availability and constraints</li>
+                                                        <li>Customer purchase history and preferences</li>
+                                                        <li>Product margin and inventory positions</li>
+                                                        <li>Sales pipeline and opportunity data</li>
+                                                    </ul>
+                                                </li>
+                                                <li><strong>AI Recommendation Engine:</strong> Developed system to:
+                                                    <ul class="pl-4">
+                                                        <li>Predict customer configuration flexibility</li>
+                                                        <li>Identify optimal alternative configurations</li>
+                                                        <li>Calculate personalized incentive levels needed for substitution</li>
+                                                        <li>Prioritize accounts based on strategic value</li>
+                                                    </ul>
+                                                </li>
+                                                <li><strong>Omnichannel Implementation:</strong> Deployed across:
+                                                    <ul class="pl-4">
+                                                        <li>E-commerce platform with dynamic recommendations</li>
+                                                        <li>Sales tools providing guided selling assistance</li>
+                                                        <li>Marketing automation for targeted campaigns</li>
+                                                        <li>Partner portal for channel guidance</li>
+                                                    </ul>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Implementation Highlights</h6>
+                                            <ol class="pl-4 text-xs mb-0">
+                                                <li><strong>Dynamic Digital Experience:</strong>
+                                                    <ul class="pl-4">
+                                                        <li>Real-time configuration tool highlighting available options</li>
+                                                        <li>Personalized banners promoting unconstrained configurations</li>
+                                                        <li>Intelligent search prioritizing available products</li>
+                                                        <li>Targeted promotional offers based on inventory positions</li>
+                                                    </ul>
+                                                </li>
+                                                <li><strong>AI-Powered Sales Guidance:</strong>
+                                                    <ul class="pl-4">
+                                                        <li>Account-specific alternative recommendations</li>
+                                                        <li>Dynamic discount authority based on configuration strategy</li>
+                                                        <li>Real-time availability updates and alternatives</li>
+                                                        <li>Automated communication templates for constraints</li>
+                                                    </ul>
+                                                </li>
+                                                <li><strong>Automated Marketing Orchestration:</strong>
+                                                    <ul class="pl-4">
+                                                        <li>Targeted campaigns promoting strategic configurations</li>
+                                                        <li>Personalized messaging based on purchase history</li>
+                                                        <li>Dynamic content emphasizing available features</li>
+                                                        <li>Strategic account-based marketing for key customers</li>
+                                                    </ul>
+                                                </li>
+                                                <li><strong>Results:</strong> Within 90 days, achieved 32% reduction in constrained component demand while increasing overall revenue by 8% and improving customer satisfaction scores through proactive alternative recommendations.</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Implementing Effective Demand Shaping</h5>
+                        <p class="text-sm mb-3">Successful demand shaping requires a strategic, integrated approach that spans organizational boundaries. The implementation framework below outlines key elements for developing and executing effective demand shaping initiatives.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="text-sm font-medium text-primary mb-2">1. Governance &amp; Alignment</h6>
+                                <p class="text-xs mb-2">Establishing structure and processes for demand shaping decisions:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Cross-functional team:</strong> Creating a dedicated group spanning sales, marketing, product, operations, and finance</li>
+                                    <li><strong>Strategic objectives:</strong> Clearly defining desired outcomes of demand shaping activities</li>
+                                    <li><strong>Decision frameworks:</strong> Establishing protocols for evaluating and approving demand initiatives</li>
+                                    <li><strong>Prioritization methodology:</strong> Approach for balancing competing objectives</li>
+                                    <li><strong>Incentive alignment:</strong> Ensuring reward systems support demand shaping goals</li>
+                                    <li><strong>Communication plan:</strong> Approach for updating stakeholders on strategy and outcomes</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="text-sm font-medium text-primary mb-2">2. Insights &amp; Planning</h6>
+                                <p class="text-xs mb-2">Developing information foundation for effective demand shaping:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Data integration:</strong> Connecting supply, demand, financial, and customer information</li>
+                                    <li><strong>Market intelligence:</strong> Understanding competitive landscape and customer preferences</li>
+                                    <li><strong>Scenario planning:</strong> Modeling different demand patterns and supply situations</li>
+                                    <li><strong>Segmentation analysis:</strong> Identifying strategic customer groups for targeted approaches</li>
+                                    <li><strong>Elasticity assessment:</strong> Understanding price sensitivity across products and segments</li>
+                                    <li><strong>Channel insights:</strong> Partner capabilities and impact on demand patterns</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="text-sm font-medium text-primary mb-2">3. Execution &amp; Measurement</h6>
+                                <p class="text-xs mb-2">Implementing and optimizing demand shaping initiatives:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Tactical planning:</strong> Detailed mechanism selection and implementation approach</li>
+                                    <li><strong>Tool development:</strong> Creating systems and materials to support execution</li>
+                                    <li><strong>Training and enablement:</strong> Preparing teams to execute demand shaping activities</li>
+                                    <li><strong>Customer experience:</strong> Ensuring positive perception of demand shaping actions</li>
+                                    <li><strong>Performance metrics:</strong> Tracking KPIs to measure impact and effectiveness</li>
+                                    <li><strong>Adjustment process:</strong> Approach for refining tactics based on results</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Demand Shaping Operational Cadence</h6>
+                            <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                <p class="text-xs mb-2">Establishing a structured process for ongoing demand shaping activities:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-2">Integrated Business Planning Integration</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Strategic horizon (Annual):</strong>
+                                                <ul class="pl-4">
+                                                    <li>Product roadmap alignment with demand shaping strategy</li>
+                                                    <li>Annual marketing and promotion calendar development</li>
+                                                    <li>Channel program design to support demand objectives</li>
+                                                    <li>Long-term capacity planning and constraint identification</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Tactical horizon (Quarterly):</strong>
+                                                <ul class="pl-4">
+                                                    <li>Quarterly demand shaping focus areas and priorities</li>
+                                                    <li>Product mix targets and configuration strategies</li>
+                                                    <li>Promotional and pricing plan adjustments</li>
+                                                    <li>Sales incentive alignment with objectives</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Operational horizon (Monthly/Weekly):</strong>
+                                                <ul class="pl-4">
+                                                    <li>Near-term supply constraint responses</li>
+                                                    <li>Tactical campaign adjustments based on performance</li>
+                                                    <li>Pricing and promotion fine-tuning</li>
+                                                    <li>Sales guidance and priority updates</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-2">Decision-Making Process</h6>
+                                        <div class="overflow-x-auto">
+                                            <table class="w-full text-xs">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="p-1 text-left border border-gray-200 dark:border-gray-700">Review Cadence</th>
+                                                        <th class="p-1 text-left border border-gray-200 dark:border-gray-700">Key Activities</th>
+                                                        <th class="p-1 text-left border border-gray-200 dark:border-gray-700">Primary Participants</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="p-1 border border-gray-200 dark:border-gray-700">Weekly Tactical</td>
+                                                        <td class="p-1 border border-gray-200 dark:border-gray-700">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Supply constraint updates</li>
+                                                                <li>Short-term action approvals</li>
+                                                                <li>Performance monitoring</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="p-1 border border-gray-200 dark:border-gray-700">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Operations leadership</li>
+                                                                <li>Sales leadership</li>
+                                                                <li>Marketing execution team</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 border border-gray-200 dark:border-gray-700">Monthly Strategic</td>
+                                                        <td class="p-1 border border-gray-200 dark:border-gray-700">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Initiative performance review</li>
+                                                                <li>Forecast vs. actual analysis</li>
+                                                                <li>Mid-course adjustments</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="p-1 border border-gray-200 dark:border-gray-700">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Product leadership</li>
+                                                                <li>Supply chain executives</li>
+                                                                <li>Marketing leadership</li>
+                                                                <li>Sales executives</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-1 border border-gray-200 dark:border-gray-700">Quarterly Executive</td>
+                                                        <td class="p-1 border border-gray-200 dark:border-gray-700">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Strategic alignment review</li>
+                                                                <li>Major initiative approval</li>
+                                                                <li>Resource allocation decisions</li>
+                                                            </ul>
+                                                        </td>
+                                                        <td class="p-1 border border-gray-200 dark:border-gray-700">
+                                                            <ul class="pl-4 mb-0">
+                                                                <li>Executive leadership team</li>
+                                                                <li>Business unit leaders</li>
+                                                                <li>Regional leadership</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Performance Measurement Framework</h6>
+                            <p class="text-xs mb-2">Comprehensive approach to measuring demand shaping effectiveness:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-1">Financial Performance</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Revenue impact:</strong> Change in revenue attributable to demand shaping</li>
+                                        <li><strong>Margin enhancement:</strong> Improvement in profit margins from mix shifts</li>
+                                        <li><strong>Discount rate changes:</strong> Reduction in price concessions</li>
+                                        <li><strong>Average selling price (ASP):</strong> Changes in transaction values</li>
+                                        <li><strong>Attachment rates:</strong> Increases in complementary product sales</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-1">Operational Performance</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Configuration mix:</strong> Shifts toward targeted product configurations</li>
+                                        <li><strong>Constraint alleviation:</strong> Reduction in demand for constrained items</li>
+                                        <li><strong>Lead time management:</strong> Impact on delivery timeframes</li>
+                                        <li><strong>Inventory optimization:</strong> Improved inventory turn rates</li>
+                                        <li><strong>Production efficiency:</strong> Manufacturing capacity utilization</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-1">Strategic Performance</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Business model transition:</strong> Progress toward target revenue models</li>
+                                        <li><strong>Customer segment penetration:</strong> Growth in strategic customer segments</li>
+                                        <li><strong>Product adoption curves:</strong> Acceleration of new product adoption</li>
+                                        <li><strong>Customer satisfaction:</strong> Impact on experience and loyalty metrics</li>
+                                        <li><strong>Competitive position:</strong> Market share and positioning changes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium mb-1">Organizational Capability Development</h6>
+                                <p class="text-xs mb-0">Building sustainable demand shaping capabilities requires investment in several key areas:</p>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs mt-2">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-900">
+                                                <th class="p-2 text-left">Capability Area</th>
+                                                <th class="p-2 text-left">Key Elements</th>
+                                                <th class="p-2 text-left">Strategic Importance</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="p-2 font-medium">Data &amp; Analytics</td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Integrated data platforms</li>
+                                                        <li>Predictive analytics capabilities</li>
+                                                        <li>Real-time monitoring systems</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Enables fact-based decision making</li>
+                                                        <li>Supports targeted intervention planning</li>
+                                                        <li>Facilitates impact measurement</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 font-medium">Process Integration</td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Cross-functional workflows</li>
+                                                        <li>Decision frameworks and protocols</li>
+                                                        <li>Information sharing mechanisms</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Creates consistent execution approach</li>
+                                                        <li>Speeds response to changing conditions</li>
+                                                        <li>Ensures coordinated actions</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 font-medium">Skill Development</td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Training programs</li>
+                                                        <li>Knowledge management systems</li>
+                                                        <li>Centers of excellence</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Builds organizational expertise</li>
+                                                        <li>Improves execution quality</li>
+                                                        <li>Enables innovation in approaches</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 font-medium">Technology Enablement</td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Sales and marketing automation</li>
+                                                        <li>Recommendation engines</li>
+                                                        <li>Dynamic pricing systems</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Scales demand shaping capabilities</li>
+                                                        <li>Enables personalization at scale</li>
+                                                        <li>Supports real-time adjustments</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2013/05/a-better-way-to-manage-customer" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Demand Shaping in Technology</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Strategic approaches to balancing demand and supply</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/capabilities/operations/our-insights/the-sales-and-operations-planning-imperative" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-file-list-3-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Integrated Business Planning</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey &amp; Company • Incorporating demand shaping into S&amp;OP processes</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.bcg.com/publications/2017/retail-marketing-sales-pricing-digital-revolution-demystifying-opportunities-for-b2b-companies" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-book-open-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Dynamic Pricing Strategies</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Boston Consulting Group • Advanced pricing techniques for demand management</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Demand Shaping Strategy Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll apply demand shaping concepts to develop a strategy for a technology company facing several business challenges.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Scenario: Technology Hardware Business Transformation</h6>
+                            <p class="text-xs mb-2">You're developing a demand shaping strategy for a technology hardware company with the following situation:</p>
+                            <ul class="pl-4 text-xs mb-3">
+                                <li>The company is transitioning from a traditional hardware selling model to an "as-a-service" subscription approach</li>
+                                <li>Currently facing a 30% supply shortfall for critical components used in high-end server products</li>
+                                <li>Legacy product inventory is at 150% of target levels while new products have limited availability</li>
+                                <li>Sales teams are still primarily incentivized based on hardware transaction volume</li>
+                                <li>Customer adoption of the subscription model has been slower than projected (15% vs. 30% target)</li>
+                                <li>Competition has been aggressive with pricing on traditional hardware to slow the company's transition</li>
+                            </ul>
+                            
+                            <p class="text-xs font-medium mb-1">Your task:</p>
+                            <p class="text-xs mb-0">Develop a comprehensive demand shaping strategy that addresses these challenges and accelerates the company's business transformation while optimizing financial performance during the transition.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Supply Constraint Response</label>
+                                <p class="text-xs mb-1">How would you shape demand to manage the component shortage situation?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Describe your recommended demand shaping approaches to address the 30% component supply shortfall for high-end servers. Include specific mechanisms across pricing, product, promotion, and sales dimensions that would effectively manage demand while maintaining revenue and customer satisfaction."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Business Model Transition Strategy</label>
+                                <p class="text-xs mb-1">How would you accelerate the shift to the subscription model?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline your demand shaping strategy to accelerate the transition from traditional hardware to the 'as-a-service' subscription model. Address how you would overcome customer adoption barriers, competitive challenges, and internal sales alignment issues through targeted demand shaping mechanisms."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Inventory Optimization Approach</label>
+                                <p class="text-xs mb-1">How would you address the inventory imbalance between legacy and new products?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Develop a demand shaping strategy to simultaneously reduce excess legacy product inventory while managing limited availability of new products. Include specific approaches for different customer segments, channel strategies, and promotional tactics that balance immediate inventory objectives with long-term strategic goals."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Implementation Plan</label>
+                                <p class="text-xs mb-1">How would you organize to execute this demand shaping strategy?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline your implementation approach for the demand shaping strategy, including governance structure, cross-functional coordination, key metrics for measuring success, and critical enablers required for effective execution. Address potential barriers and how you would overcome them."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Strategy</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-inventory">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Inventory Management</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-ethics">
+                        <span>Next: Ethics</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

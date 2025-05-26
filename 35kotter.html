@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Organizational Behavior</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-raci">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>RACI Framework</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-rapids">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>RAPIDs Framework</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-process-maps">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Process Maps</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-process-reengineering">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Process Reengineering</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-change-management">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Kotter's Change Management</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">64%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 64%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>6/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>1/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Organizational Behavior</span>
+                                <span>4/5 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Kotter's Change Management Topic -->
+            <section id="topic-change-management" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-rocket-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Kotter's Change Management</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Organizational Behavior</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the fundamentals of organizational change management and why it's critical for business success</li>
+                            <li>Learn John Kotter's 8-Step Change Model and how each stage contributes to successful transformation</li>
+                            <li>Identify common change management pitfalls and strategies to overcome resistance</li>
+                            <li>Apply Kotter's model to real-world organizational changes at Dell</li>
+                            <li>Develop skills to lead change initiatives in your role, regardless of positional authority</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Change Management</h4>
+                    <p>Change management is the structured approach to transitioning individuals, teams, and organizations from a current state to a desired future state. In today's rapidly evolving business landscape, the ability to effectively manage change has become a critical competency for organizations seeking to remain competitive. Kotter's 8-Step Change Model, developed by Harvard Business School professor John Kotter, provides a comprehensive framework for implementing significant organizational changes successfully.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Change Management Matters</h5>
+                        <p class="mb-3">The statistics on organizational change initiatives are sobering:</p>
+                        <ul class="pl-5 mb-3">
+                            <li><strong>70% of change initiatives fail</strong> to achieve their intended outcomes</li>
+                            <li>Only <strong>34% of changes</strong> produce sustained improvement</li>
+                            <li>Employee resistance is cited as a <strong>primary reason for failure</strong> in 39% of cases</li>
+                            <li>Organizations with excellent change management are <strong>6x more likely</strong> to meet objectives</li>
+                            <li>The <strong>cost of poorly managed change</strong> includes productivity drops, turnover, and missed market opportunities</li>
+                        </ul>
+                        <p class="mb-0">At Dell Technologies, effective change management has been pivotal in navigating major transformations, including the EMC merger, the shift to services-led business models, and adapting to remote work during the pandemic. By applying structured change management methodologies like Kotter's model, Dell has been able to maintain operational effectiveness while implementing strategic changes that keep the company competitive in a rapidly evolving technology landscape.</p>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Common Types of Organizational Change</h5>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mr-2">
+                                                <i class="ri-building-line text-sm"></i>
+                                            </div>
+                                            <h6 class="font-medium text-blue-700 dark:text-blue-300">Structural Change</h6>
+                                        </div>
+                                        <p class="text-xs mb-1">Changes to organizational hierarchy, reporting relationships, or departmental configurations:</p>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Reorganizations and restructuring</li>
+                                            <li>Mergers and acquisitions</li>
+                                            <li>Creation of new business units</li>
+                                            <li>Shifts between centralized and decentralized models</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 mr-2">
+                                                <i class="ri-flow-chart text-sm"></i>
+                                            </div>
+                                            <h6 class="font-medium text-green-700 dark:text-green-300">Process Change</h6>
+                                        </div>
+                                        <p class="text-xs mb-1">Modifications to how work gets done within the organization:</p>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Business process reengineering</li>
+                                            <li>Implementation of new workflows</li>
+                                            <li>Quality improvement initiatives</li>
+                                            <li>Automation and digital transformation</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-600 dark:text-purple-400 mr-2">
+                                                <i class="ri-heart-line text-sm"></i>
+                                            </div>
+                                            <h6 class="font-medium text-purple-700 dark:text-purple-300">Cultural Change</h6>
+                                        </div>
+                                        <p class="text-xs mb-1">Shifts in organizational values, beliefs, behaviors, and norms:</p>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>Cultural transformation initiatives</li>
+                                            <li>Diversity and inclusion programs</li>
+                                            <li>Values and mission realignment</li>
+                                            <li>Leadership style and behavioral changes</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3">
+                                        <div class="flex items-center mb-2">
+                                            <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400 mr-2">
+                                                <i class="ri-customer-service-line text-sm"></i>
+                                            </div>
+                                            <h6 class="font-medium text-amber-700 dark:text-amber-300">Strategic Change</h6>
+                                        </div>
+                                        <p class="text-xs mb-1">Fundamental shifts in organizational direction or business model:</p>
+                                        <ul class="text-xs pl-3 space-y-1 mb-0">
+                                            <li>New product or market strategies</li>
+                                            <li>Business model transformation</li>
+                                            <li>Major technology shifts</li>
+                                            <li>Changes in competitive positioning</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-2 text-center">Why Organizations Struggle with Change</h6>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                                        <div class="px-3 py-1.5 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                                            <p class="text-xs font-medium text-red-700 dark:text-red-400 mb-0.5">Human Factors</p>
+                                            <p class="text-xs m-0">Natural resistance to change, comfort with status quo, fear of unknown</p>
+                                        </div>
+                                        <div class="px-3 py-1.5 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                                            <p class="text-xs font-medium text-red-700 dark:text-red-400 mb-0.5">Organizational Factors</p>
+                                            <p class="text-xs m-0">Rigid structures, siloed departments, conflicting priorities</p>
+                                        </div>
+                                        <div class="px-3 py-1.5 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                                            <p class="text-xs font-medium text-red-700 dark:text-red-400 mb-0.5">Leadership Factors</p>
+                                            <p class="text-xs m-0">Inadequate communication, lack of clear vision, insufficient follow-through</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Kotter's 8-Step Change Model</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">A Proven Framework for Successful Change</h5>
+                        <p class="text-sm mb-3">John Kotter's 8-Step Change Model, introduced in his 1996 book "Leading Change," provides a comprehensive roadmap for implementing organizational change successfully. The model is based on Kotter's observation of more than 100 companies attempting major transformations and identifies both the key elements of successful change and the common pitfalls that lead to failure.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">The 8 Steps of Kotter's Change Model</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-4">
+                                        <div class="flex justify-center mb-4">
+                                            <div class="overflow-x-auto">
+                                                <div class="min-w-[700px]">
+                                                    <div class="relative h-[220px]">
+                                                        <!-- Step Boxes -->
+                                                        <svg class="absolute inset-0 h-full w-full" viewBox="0 0 700 220">
+                                                            <!-- Phase One: Creating a Climate for Change -->
+                                                            <rect x="10" y="10" width="680" height="30" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+                                                            <text x="350" y="30" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="bold">Phase 1: Creating a Climate for Change</text>
+                                                            
+                                                            <rect x="20" y="50" width="200" height="70" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+                                                            <text x="120" y="80" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="bold">Step 1:</text>
+                                                            <text x="120" y="100" text-anchor="middle" font-size="12" fill="#1e40af">Create a Sense of Urgency</text>
+                                                            
+                                                            <rect x="250" y="50" width="200" height="70" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+                                                            <text x="350" y="80" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="bold">Step 2:</text>
+                                                            <text x="350" y="100" text-anchor="middle" font-size="12" fill="#1e40af">Build a Guiding Coalition</text>
+                                                            
+                                                            <rect x="480" y="50" width="200" height="70" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+                                                            <text x="580" y="80" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="bold">Step 3:</text>
+                                                            <text x="580" y="100" text-anchor="middle" font-size="12" fill="#1e40af">Form a Strategic Vision</text>
+                                                            
+                                                            <!-- Phase Two: Engaging & Enabling the Organization -->
+                                                            <rect x="10" y="130" width="680" height="30" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                                                            <text x="350" y="150" text-anchor="middle" font-size="12" fill="#3730a3" font-weight="bold">Phase 2: Engaging & Enabling the Organization</text>
+                                                            
+                                                            <rect x="20" y="170" width="150" height="70" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                                                            <text x="95" y="200" text-anchor="middle" font-size="12" fill="#3730a3" font-weight="bold">Step 4:</text>
+                                                            <text x="95" y="220" text-anchor="middle" font-size="12" fill="#3730a3">Communicate the Vision</text>
+                                                            
+                                                            <rect x="190" y="170" width="150" height="70" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                                                            <text x="265" y="200" text-anchor="middle" font-size="12" fill="#3730a3" font-weight="bold">Step 5:</text>
+                                                            <text x="265" y="220" text-anchor="middle" font-size="12" fill="#3730a3">Enable Action</text>
+                                                            
+                                                            <rect x="360" y="170" width="150" height="70" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                                                            <text x="435" y="200" text-anchor="middle" font-size="12" fill="#3730a3" font-weight="bold">Step 6:</text>
+                                                            <text x="435" y="220" text-anchor="middle" font-size="12" fill="#3730a3">Generate Short-term Wins</text>
+                                                            
+                                                            <!-- Phase Three: Implementing & Sustaining Change -->
+                                                            <rect x="530" y="170" width="150" height="70" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"/>
+                                                            <text x="605" y="200" text-anchor="middle" font-size="12" fill="#86198f" font-weight="bold">Step 7:</text>
+                                                            <text x="605" y="220" text-anchor="middle" font-size="12" fill="#86198f">Sustain Acceleration</text>
+                                                            
+                                                            <!-- Arrow connectors (simplified) -->
+                                                            <line x1="120" y1="125" x2="120" y2="130" stroke="#6b7280" stroke-width="1.5"/>
+                                                            <line x1="350" y1="125" x2="350" y2="130" stroke="#6b7280" stroke-width="1.5"/>
+                                                            <line x1="580" y1="125" x2="580" y2="130" stroke="#6b7280" stroke-width="1.5"/>
+                                                            
+                                                            <line x1="170" y1="85" x2="245" y2="85" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                                            <line x1="400" y1="85" x2="475" y2="85" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                                            
+                                                            <line x1="95" y1="165" x2="95" y2="170" stroke="#6b7280" stroke-width="1.5"/>
+                                                            <line x1="265" y1="165" x2="265" y2="170" stroke="#6b7280" stroke-width="1.5"/>
+                                                            <line x1="435" y1="165" x2="435" y2="170" stroke="#6b7280" stroke-width="1.5"/>
+                                                            <line x1="605" y1="165" x2="605" y2="170" stroke="#6b7280" stroke-width="1.5"/>
+                                                            
+                                                            <line x1="145" y1="205" x2="185" y2="205" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                                            <line x1="315" y1="205" x2="355" y2="205" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                                            <line x1="485" y1="205" x2="525" y2="205" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                                            
+                                                            <!-- Phase Three Label (position adjusted) -->
+                                                            <rect x="10" y="250" width="680" height="30" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"/>
+                                                            <text x="350" y="270" text-anchor="middle" font-size="12" fill="#86198f" font-weight="bold">Phase 3: Implementing & Sustaining Change</text>
+                                                            
+                                                            <!-- Step 8 (positioned below) -->
+                                                            <rect x="270" y="290" width="200" height="70" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"/>
+                                                            <text x="370" y="320" text-anchor="middle" font-size="12" fill="#86198f" font-weight="bold">Step 8:</text>
+                                                            <text x="370" y="340" text-anchor="middle" font-size="12" fill="#86198f">Institute Change</text>
+                                                            
+                                                            <!-- Connect Step 7 to Phase 3 -->
+                                                            <line x1="605" y1="240" x2="605" y2="250" stroke="#6b7280" stroke-width="1.5"/>
+                                                            
+                                                            <!-- Connect Step 7 to Step 8 -->
+                                                            <path d="M 605,250 C 605,270 370,270 370,290" stroke="#6b7280" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+                                                            
+                                                            <!-- Arrowhead marker -->
+                                                            <defs>
+                                                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+                                                                </marker>
+                                                            </defs>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Step 1: Create a Sense of Urgency</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg md:col-span-2">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Key Actions</h6>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li><strong>Identify and discuss crises, potential crises, or major opportunities</strong> that make change necessary</li>
+                                        <li><strong>Create compelling narratives</strong> that connect external realities to internal needs for change</li>
+                                        <li><strong>Use data and emotional appeals</strong> to help stakeholders understand why maintaining the status quo is more dangerous than change</li>
+                                        <li><strong>Engage customers, stakeholders, and industry experts</strong> to provide external perspectives</li>
+                                        <li><strong>Be honest and candid</strong> about the current situation and the potential consequences of inaction</li>
+                                    </ul>
+                                    
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Why This Matters</h6>
+                                    <p class="text-xs mb-0">Without a sense of urgency, people won't give the extra effort often required for change. Kotter suggests that for change to be successful, 75% of a company's management needs to "buy into" the change. Creating a sense of urgency establishes the foundation for getting people motivated to move forward with the change initiative.</p>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                    <h6 class="text-xs font-medium mb-1">Dell Example: Urgency for Digital Transformation</h6>
+                                    <p class="text-xs mb-2">When Dell began its digital transformation journey, leadership created urgency by:</p>
+                                    <ul class="pl-4 text-xs mb-2">
+                                        <li>Sharing analysis showing revenue shifts toward service-based models</li>
+                                        <li>Highlighting competitor moves in the as-a-service space</li>
+                                        <li>Presenting customer feedback requesting consumption-based offerings</li>
+                                        <li>Demonstrating growth projections for traditional vs. digital business models</li>
+                                    </ul>
+                                    <p class="text-xs italic mb-0">Result: Employees understood why traditional hardware-centric approaches were no longer sufficient, creating motivation for transformation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h6 class="text-sm font-medium mb-2">Step 2: Build a Guiding Coalition</h6>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg md:col-span-2">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Key Actions</h6>
+                                <ul class="pl-4 text-xs mb-3">
+                                    <li><strong>Assemble a group with enough power and influence</strong> to lead the change effort</li>
+                                    <li><strong>Ensure the coalition includes a diverse mix</strong> of skills, expertise, positions, and perspectives</li>
+                                    <li><strong>Build trust and establish a shared objective</strong> among coalition members</li>
+                                    <li><strong>Include both formal leaders and informal influencers</strong> from different levels of the organization</li>
+                                    <li><strong>Develop effective teamwork capabilities</strong> within the coalition to function as a cohesive unit</li>
+                                </ul>
+                                
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Why This Matters</h6>
+                                <p class="text-xs mb-0">No single individual, regardless of how competent or charismatic, has all the expertise, credibility, and authority needed to implement significant change. A strong guiding coalition brings together the necessary resources, credibility, and leadership to drive change across organizational boundaries and guide the initiative through challenges.</p>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <h6 class="text-xs font-medium mb-1">Dell Example: EMC Integration Coalition</h6>
+                                <p class="text-xs mb-2">During the Dell-EMC merger, a guiding coalition was formed that included:</p>
+                                <ul class="pl-4 text-xs mb-2">
+                                    <li>Executive leaders from both Dell and EMC</li>
+                                    <li>Middle managers with strong operational knowledge</li>
+                                    <li>Technical experts from key product areas</li>
+                                    <li>HR professionals experienced in cultural integration</li>
+                                    <li>Customer-facing team members to represent voice of customer</li>
+                                </ul>
+                                <p class="text-xs italic mb-0">Result: The coalition provided leadership across all aspects of integration, ensuring balanced decision-making that considered all key stakeholder perspectives.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h6 class="text-sm font-medium mb-2">Step 3: Form a Strategic Vision</h6>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg md:col-span-2">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Key Actions</h6>
+                                <ul class="pl-4 text-xs mb-3">
+                                    <li><strong>Create a clear vision</strong> that helps direct the change effort</li>
+                                    <li><strong>Develop strategies</strong> for achieving that vision</li>
+                                    <li><strong>Ensure the vision is imaginable, desirable, feasible, focused, flexible, and communicable</strong></li>
+                                    <li><strong>Make the vision concrete</strong> enough to guide decision-making</li>
+                                    <li><strong>Connect the vision to core organizational values</strong> and strategic objectives</li>
+                                </ul>
+                                
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Why This Matters</h6>
+                                <p class="text-xs mb-0">A clear, compelling vision serves multiple purposes: it simplifies hundreds of detailed decisions, motivates people to take action in the right direction, and coordinates the actions of different groups efficiently. Without a solid vision, change efforts can dissolve into a list of confusing, incompatible projects that take the organization in the wrong direction or nowhere at all.</p>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <h6 class="text-xs font-medium mb-1">Dell Example: Project APEX Vision</h6>
+                                <p class="text-xs mb-2">When developing the APEX cloud services platform, Dell created a vision that included:</p>
+                                <ul class="pl-4 text-xs mb-2">
+                                    <li>Simplified customer experience across all Dell offerings</li>
+                                    <li>Consistent as-a-service consumption model</li>
+                                    <li>Integration of infrastructure, software, and services</li>
+                                    <li>Flexibility for customers to choose deployment models</li>
+                                    <li>Outcome-based technology solutions</li>
+                                </ul>
+                                <p class="text-xs italic mb-0">Result: The vision provided clear direction for product development, go-to-market strategy, and organizational alignment around the cloud services transformation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h6 class="text-sm font-medium mb-2">Step 4: Communicate the Vision</h6>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg md:col-span-2">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Key Actions</h6>
+                                <ul class="pl-4 text-xs mb-3">
+                                    <li><strong>Use every possible communication channel and opportunity</strong> to broadcast the vision</li>
+                                    <li><strong>Keep the message simple, memorable, and authentic</strong></li>
+                                    <li><strong>Repeat the vision frequently</strong> – people need to hear a message multiple times before it sinks in</li>
+                                    <li><strong>Lead by example</strong> – the guiding coalition should model the behavior expected of others</li>
+                                    <li><strong>Address inconsistencies and concerns openly</strong> to build credibility</li>
+                                    <li><strong>Create two-way communication channels</strong> to hear and address employee concerns</li>
+                                </ul>
+                                
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Why This Matters</h6>
+                                <p class="text-xs mb-0">Most change initiatives fail to reach their potential because organizations under-communicate by a factor of 10 (or even 100 or 1,000). Without credible, abundant communication, employees' hearts and minds are never captured. Effective communication helps overcome skepticism, builds understanding and buy-in, and provides people with the context they need to make decisions aligned with the change vision.</p>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <h6 class="text-xs font-medium mb-1">Dell Example: Work From Anywhere Communication</h6>
+                                <p class="text-xs mb-2">When Dell transitioned to its Connected Workplace model, communication included:</p>
+                                <ul class="pl-4 text-xs mb-2">
+                                    <li>Regular town halls with executive leadership</li>
+                                    <li>Dedicated intranet portal with resources and updates</li>
+                                    <li>Manager toolkits with talking points and FAQs</li>
+                                    <li>Video testimonials from early adopters</li>
+                                    <li>Regular email updates with progress metrics</li>
+                                    <li>Virtual Q&A sessions with program leaders</li>
+                                </ul>
+                                <p class="text-xs italic mb-0">Result: Consistent, multi-channel communication created broad understanding of the flexible work vision and addressed concerns proactively.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h6 class="text-sm font-medium mb-2">Step 5: Enable Action by Removing Barriers</h6>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg md:col-span-2">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Key Actions</h6>
+                                <ul class="pl-4 text-xs mb-3">
+                                    <li><strong>Remove structural barriers</strong> that block action and implementation</li>
+                                    <li><strong>Align systems (such as performance management and compensation)</strong> with the change vision</li>
+                                    <li><strong>Provide training and skills development</strong> needed for the new ways of working</li>
+                                    <li><strong>Address resistant managers or leaders</strong> who undermine change efforts</li>
+                                    <li><strong>Provide resources</strong> (time, budget, support) necessary for implementation</li>
+                                    <li><strong>Empower people to act</strong> on the vision by encouraging risk-taking and nontraditional ideas</li>
+                                </ul>
+                                
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Why This Matters</h6>
+                                <p class="text-xs mb-0">Even when people understand and support the vision, they may feel disempowered by obstacles in their path. By removing barriers, leaders facilitate action and demonstrate their commitment to the change. Empowering employees leads to broader engagement and more effective implementation, as front-line staff often have valuable insights about how to overcome challenges.</p>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <h6 class="text-xs font-medium mb-1">Dell Example: Direct Sales Model Transformation</h6>
+                                <p class="text-xs mb-2">When Dell expanded beyond its direct sales model to include channel partners, barrier removal included:</p>
+                                <ul class="pl-4 text-xs mb-2">
+                                    <li>Redesigning compensation plans to prevent channel conflict</li>
+                                    <li>Creating new CRM systems to manage partner relationships</li>
+                                    <li>Developing training programs on partner engagement</li>
+                                    <li>Establishing clear rules of engagement for direct vs. partner sales</li>
+                                    <li>Reorganizing teams to better support the hybrid model</li>
+                                </ul>
+                                <p class="text-xs italic mb-0">Result: By addressing structural and systemic barriers, Dell successfully expanded its go-to-market strategy while minimizing internal resistance and channel conflicts.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h6 class="text-sm font-medium mb-2">Step 6: Generate Short-Term Wins</h6>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg md:col-span-2">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Key Actions</h6>
+                                <ul class="pl-4 text-xs mb-3">
+                                    <li><strong>Plan for visible performance improvements</strong> that can be implemented quickly</li>
+                                    <li><strong>Create early wins that are unambiguous</strong> and clearly related to the change effort</li>
+                                    <li><strong>Publicly recognize and reward</strong> people who make the wins possible</li>
+                                    <li><strong>Choose projects that are achievable</strong> without help from strong critics of the change</li>
+                                    <li><strong>Document and communicate success stories</strong> throughout the organization</li>
+                                    <li><strong>Use momentum from early wins</strong> to tackle larger, more difficult change projects</li>
+                                </ul>
+                                
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Why This Matters</h6>
+                                <p class="text-xs mb-0">Major change takes time, and transformation efforts risk losing momentum if there are no short-term wins to celebrate. Short-term wins provide evidence that sacrifices are worth it, reward change agents with positive feedback, help fine-tune the vision and strategies, undermine cynics, and build momentum. Without short-term wins, too many employees give up or actively join the resistance.</p>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <h6 class="text-xs font-medium mb-1">Dell Example: Supply Chain Transformation</h6>
+                                <p class="text-xs mb-2">During Dell's multi-year supply chain modernization, short-term wins included:</p>
+                                <ul class="pl-4 text-xs mb-2">
+                                    <li>10% inventory reduction in the first quarter</li>
+                                    <li>Successful pilot of new forecasting algorithm in one product category</li>
+                                    <li>Implementation of automated quality checks at one manufacturing site</li>
+                                    <li>Reduced lead time for customized enterprise servers by 25%</li>
+                                    <li>Early adoption of digital tracking by key suppliers</li>
+                                </ul>
+                                <p class="text-xs italic mb-0">Result: By celebrating these early successes, Dell maintained momentum for the larger transformation while providing proof of concept for further changes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h6 class="text-sm font-medium mb-2">Step 7: Sustain Acceleration</h6>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg md:col-span-2">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Key Actions</h6>
+                                <ul class="pl-4 text-xs mb-3">
+                                    <li><strong>Use increased credibility from early wins</strong> to change systems, structures, and policies that don't align with the vision</li>
+                                    <li><strong>Hire, promote, and develop employees</strong> who can implement the vision</li>
+                                    <li><strong>Reinvigorate the change process</strong> with new projects and change agents</li>
+                                    <li><strong>Continue to eliminate unnecessary interdependencies</strong> that can slow progress</li>
+                                    <li><strong>Maintain urgency and momentum</strong> by launching larger change initiatives</li>
+                                    <li><strong>Keep leadership engaged and supportive</strong> throughout the longer-term transformation</li>
+                                </ul>
+                                
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Why This Matters</h6>
+                                <p class="text-xs mb-0">Many change initiatives fail because victory is declared too early. Real change runs deep and takes time. After early successes, it's critical to build on the momentum and drive deeper changes. Resistance may remain and resurface if pressure is removed. By sustaining acceleration, organizations can tackle bigger issues and ensure that changes become firmly anchored in the organizational culture.</p>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <h6 class="text-xs font-medium mb-1">Dell Example: Services Transformation</h6>
+                                <p class="text-xs mb-2">As Dell shifted toward services, acceleration was sustained through:</p>
+                                <ul class="pl-4 text-xs mb-2">
+                                    <li>Creating a dedicated services organization with P&L responsibility</li>
+                                    <li>Revising hiring profiles to emphasize consulting and solution skills</li>
+                                    <li>Implementing service-focused KPIs across all business units</li>
+                                    <li>Launching services-led go-to-market strategies for enterprise clients</li>
+                                    <li>Acquiring additional services capabilities to fill portfolio gaps</li>
+                                </ul>
+                                <p class="text-xs italic mb-0">Result: By continuing to drive changes after initial successes, services grew from a support function to a strategic business that now represents a significant portion of Dell's revenue and margin.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h6 class="text-sm font-medium mb-2">Step 8: Institute Change</h6>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg md:col-span-2">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Key Actions</h6>
+                                <ul class="pl-4 text-xs mb-3">
+                                    <li><strong>Articulate connections</strong> between new behaviors and organizational success</li>
+                                    <li><strong>Develop methods to ensure leadership development</strong> and succession embody the new approaches</li>
+                                    <li><strong>Create new systems and processes</strong> that reinforce the changes</li>
+                                    <li><strong>Align reward and recognition systems</strong> with the new ways of operating</li>
+                                    <li><strong>Update onboarding and training programs</strong> to reflect the new norms</li>
+                                    <li><strong>Tell success stories</strong> that highlight the journey and benefits of change</li>
+                                </ul>
+                                
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Why This Matters</h6>
+                                <p class="text-xs mb-0">Until new behaviors are rooted in social norms and shared values, they are subject to degradation as soon as the pressure for change is removed. Two factors are particularly important for institutionalizing change: (1) showing people how the changes have improved performance, and (2) ensuring the next generation of management personifies the new approach. Changes must become "the way we do things around here" to truly stick.</p>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <h6 class="text-xs font-medium mb-1">Dell Example: Culture of Innovation</h6>
+                                <p class="text-xs mb-2">To institutionalize its innovation culture shift, Dell implemented:</p>
+                                <ul class="pl-4 text-xs mb-2">
+                                    <li>Innovation metrics in performance reviews at all levels</li>
+                                    <li>Dedicated innovation time for all engineering teams</li>
+                                    <li>Innovation awards and recognition programs</li>
+                                    <li>Updated leadership competency models emphasizing innovation</li>
+                                    <li>Revised hiring processes to identify innovative mindsets</li>
+                                    <li>Regular innovation showcases and internal "Shark Tank" events</li>
+                                </ul>
+                                <p class="text-xs italic mb-0">Result: Innovation became embedded in Dell's culture rather than being seen as a temporary initiative, creating lasting change in how the company approaches product and solution development.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Diagnosing Change Readiness</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Assessing Organizational Preparedness for Change</h5>
+                        <p class="text-sm mb-3">Before implementing Kotter's 8-Step Model, it's important to assess your organization's readiness for change. This evaluation helps identify potential obstacles and tailor your approach to address specific organizational dynamics. The following framework provides a structured way to evaluate change readiness.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Dimensions of Change Readiness</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Leadership Readiness</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Commitment:</strong> Level of visible executive support for the change</li>
+                                            <li><strong>Alignment:</strong> Degree of consensus among leadership on direction and approach</li>
+                                            <li><strong>Capability:</strong> Leaders' experience and skill in managing change</li>
+                                            <li><strong>Credibility:</strong> Trust employees have in leadership's decisions</li>
+                                            <li><strong>Communication:</strong> Leadership's ability to articulate a compelling case for change</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Cultural Readiness</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Innovation orientation:</strong> Openness to new ideas and approaches</li>
+                                            <li><strong>Risk tolerance:</strong> Acceptance of experimentation and potential failure</li>
+                                            <li><strong>Collaboration:</strong> Ability to work across functional boundaries</li>
+                                            <li><strong>Adaptability:</strong> History of successfully navigating previous changes</li>
+                                            <li><strong>Trust levels:</strong> General environment of psychological safety</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Structural Readiness</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Resources:</strong> Availability of time, budget, and people for change</li>
+                                            <li><strong>Systems:</strong> Flexibility of existing processes and technologies</li>
+                                            <li><strong>Governance:</strong> Decision-making processes and authority structures</li>
+                                            <li><strong>Metrics:</strong> Measurement systems to track progress and impact</li>
+                                            <li><strong>Incentives:</strong> Alignment of rewards with desired new behaviors</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Stakeholder Readiness Assessment</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Awareness</h6>
+                                            <p class="text-xs mb-1">Evaluate stakeholders' understanding of:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>The need for change and why maintaining status quo is not viable</li>
+                                                <li>How the change aligns with organizational strategy and priorities</li>
+                                                <li>The scope and scale of the proposed changes</li>
+                                                <li>The timeline and key milestones for implementation</li>
+                                                <li>How success will be measured and recognized</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Desire</h6>
+                                            <p class="text-xs mb-1">Assess stakeholders' motivation based on:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Personal impact ("What's in it for me?")</li>
+                                                <li>Perceived risks and rewards associated with the change</li>
+                                                <li>Organizational context and history of change efforts</li>
+                                                <li>Level of trust in change leaders and sponsors</li>
+                                                <li>Competing priorities and commitments</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Knowledge</h6>
+                                            <p class="text-xs mb-1">Evaluate stakeholders' understanding of:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>New skills and competencies required</li>
+                                                <li>Changed processes and procedures</li>
+                                                <li>New roles and responsibilities</li>
+                                                <li>New systems or technologies</li>
+                                                <li>Available training and support resources</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Ability</h6>
+                                            <p class="text-xs mb-1">Assess stakeholders' capability to:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Perform effectively in the new environment</li>
+                                                <li>Apply new skills and knowledge in practice</li>
+                                                <li>Access necessary resources and support</li>
+                                                <li>Overcome barriers to implementation</li>
+                                                <li>Maintain performance during transition</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Readiness Assessment Tools</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Stakeholder Analysis Matrix</h6>
+                                    <p class="text-xs mb-1">Map stakeholders based on:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Level of influence in the organization</li>
+                                        <li>Degree of impact from the change</li>
+                                        <li>Current level of support or resistance</li>
+                                        <li>Key concerns and interests</li>
+                                        <li>Preferred communication channels</li>
+                                    </ul>
+                                    <p class="text-xs mt-1 italic mb-0">Use to develop targeted engagement strategies for different stakeholder groups</p>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Force Field Analysis</h6>
+                                    <p class="text-xs mb-1">Identify and evaluate:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Driving forces supporting the change</li>
+                                        <li>Restraining forces opposing the change</li>
+                                        <li>Relative strength of each force</li>
+                                        <li>Potential strategies to strengthen drivers</li>
+                                        <li>Methods to weaken or remove restraints</li>
+                                    </ul>
+                                    <p class="text-xs mt-1 italic mb-0">Use to develop action plans that leverage drivers and address barriers</p>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Organizational Network Analysis</h6>
+                                    <p class="text-xs mb-1">Map informal networks to identify:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Key influencers at all organizational levels</li>
+                                        <li>Information flow patterns</li>
+                                        <li>Potential change champions</li>
+                                        <li>Communication bottlenecks</li>
+                                        <li>Isolated groups or departments</li>
+                                    </ul>
+                                    <p class="text-xs mt-1 italic mb-0">Use to leverage informal networks for change acceleration and communication</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Dell's Readiness Assessment Approach</h6>
+                                <p class="text-xs mb-2">At Dell Technologies, change readiness assessments typically involve:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Pulse surveys:</strong> Short, focused questionnaires to gauge employee understanding and sentiment</li>
+                                    <li><strong>Leadership alignment sessions:</strong> Structured workshops to build consensus on change approach</li>
+                                    <li><strong>Change impact analysis:</strong> Detailed mapping of how changes affect different roles and functions</li>
+                                    <li><strong>Cultural assessment:</strong> Evaluation of current culture against desired future state</li>
+                                    <li><strong>Capability analysis:</strong> Identification of skills gaps that need to be addressed</li>
+                                </ul>
+                                <p class="text-xs mt-2 mb-0">These assessments inform the tailoring of Kotter's model to Dell's specific context, ensuring a change approach that addresses the unique challenges and leverages the specific strengths of the organization.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Overcoming Resistance to Change</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Managing Resistance as a Natural Part of Change</h5>
+                        <p class="text-sm mb-3">Resistance to change is a natural human response and should be expected in any change initiative. Rather than viewing resistance as an obstacle to overcome, effective change leaders recognize it as valuable feedback that can strengthen the change approach. Understanding common sources of resistance and employing targeted strategies to address them is critical for successful change implementation.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Common Sources of Resistance</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Loss and Uncertainty</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Loss of control:</strong> Feeling that changes are being imposed</li>
+                                            <li><strong>Loss of competence:</strong> Fear of not being able to perform effectively in the new environment</li>
+                                            <li><strong>Loss of relationships:</strong> Concern about disruption to teams and working relationships</li>
+                                            <li><strong>Loss of identity:</strong> Changes that impact how people define themselves professionally</li>
+                                            <li><strong>Uncertainty about future:</strong> Lack of clarity about what changes mean for individuals</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Lack of Conviction</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Misunderstanding:</strong> Incorrect assumptions about what the change entails</li>
+                                            <li><strong>Low trust:</strong> Skepticism based on past failed change efforts</li>
+                                            <li><strong>Different assessment:</strong> Genuine disagreement about the need for change</li>
+                                            <li><strong>Perceived negative impact:</strong> Belief that the change will cause more harm than good</li>
+                                            <li><strong>Initiative fatigue:</strong> Exhaustion from too many concurrent changes</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Implementation Challenges</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Capability gaps:</strong> Lack of skills or knowledge to implement the change</li>
+                                            <li><strong>Resource constraints:</strong> Insufficient time, tools, or support</li>
+                                            <li><strong>Systemic barriers:</strong> Existing processes or structures that block implementation</li>
+                                            <li><strong>Competing commitments:</strong> Other priorities that take precedence</li>
+                                            <li><strong>Misaligned incentives:</strong> Reward systems that don't support the desired behaviors</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Resistance Management Strategies</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Education and Communication</h6>
+                                            <p class="text-xs mb-1">When resistance stems from misunderstanding:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Share detailed information about the what, why, and how of the change</li>
+                                                <li>Create two-way communication channels for questions and concerns</li>
+                                                <li>Provide examples and scenarios to make the change tangible</li>
+                                                <li>Address misconceptions proactively and transparently</li>
+                                                <li>Use multiple communication channels to reach different audiences</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Participation and Involvement</h6>
+                                            <p class="text-xs mb-1">When resistance stems from feelings of exclusion:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Involve potential resistors in change design and implementation</li>
+                                                <li>Create feedback mechanisms for input on implementation approaches</li>
+                                                <li>Form cross-functional working groups to address specific aspects of the change</li>
+                                                <li>Conduct collaborative workshops to develop solutions to challenges</li>
+                                                <li>Leverage the expertise of those most affected by the change</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Facilitation and Support</h6>
+                                            <p class="text-xs mb-1">When resistance stems from capability or resource gaps:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Provide training and skill development opportunities</li>
+                                                <li>Create support systems and resources for the transition period</li>
+                                                <li>Assign mentors or coaches to help navigate the change</li>
+                                                <li>Adjust workloads to create space for learning and adaptation</li>
+                                                <li>Establish help mechanisms for troubleshooting issues</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Negotiation and Agreement</h6>
+                                            <p class="text-xs mb-1">When resistance stems from perceived negative impact:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Identify specific concerns and legitimate issues</li>
+                                                <li>Develop compromises that address key interests</li>
+                                                <li>Create transition arrangements that ease the change</li>
+                                                <li>Adjust implementation timelines where appropriate</li>
+                                                <li>Find ways to recognize and compensate for sacrifices made</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Resistance as a Resource</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Reframing Resistance</h6>
+                                    <p class="text-xs mb-1">Shifting perspective on resistance:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>View resistance as engagement rather than opposition</li>
+                                        <li>Recognize that resisters care enough to engage</li>
+                                        <li>Appreciate resistance as valuable feedback</li>
+                                        <li>See resistance as a signal of issues needing attention</li>
+                                        <li>Treat resisters with respect and appreciation</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Learning from Resistance</h6>
+                                    <p class="text-xs mb-1">Using resistance to improve change:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Identify blind spots in change plans</li>
+                                        <li>Surface unintended consequences</li>
+                                        <li>Discover implementation challenges early</li>
+                                        <li>Uncover cultural barriers that need addressing</li>
+                                        <li>Generate ideas for refining the approach</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Engaging Resisters</h6>
+                                    <p class="text-xs mb-1">Turning resistance into support:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Have one-on-one conversations to understand concerns</li>
+                                        <li>Assign critics to problem-solving teams</li>
+                                        <li>Ask resisters to suggest alternative approaches</li>
+                                        <li>Engage strong voices as implementation advisors</li>
+                                        <li>Convert former resisters into change advocates</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dell's Experience with Resistance Management</h6>
+                                <p class="text-xs mb-2">During Dell's transformation from hardware manufacturer to solutions provider, resistance emerged from several quarters:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Sales teams</strong> were concerned about changing compensation structures and sales cycles</li>
+                                    <li><strong>Product engineers</strong> worried about reduced focus on hardware innovation</li>
+                                    <li><strong>Operations leaders</strong> questioned how services would integrate with manufacturing processes</li>
+                                    <li><strong>Channel partners</strong> expressed concern about changing partnership models</li>
+                                </ul>
+                                <p class="text-xs mt-2 mb-0">Dell's approach included creating joint teams of "resisters" and "champions" to design implementation plans, establishing innovation funds to support hardware advancement alongside services growth, and developing transition frameworks that allowed gradual adaptation to new business models. These approaches not only reduced resistance but strengthened the overall transformation by incorporating diverse perspectives and addressing legitimate concerns.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Dell Case Study: Digital Workplace Transformation</h5>
+                        <p class="text-sm mb-3">This case study examines how Dell Technologies applied Kotter's 8-Step Change Model to implement its Connected Workplace transformation, transitioning from traditional office environments to a flexible, technology-enabled work model.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Challenge Context</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Dell faced several challenges with its traditional workplace model:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li>Rising real estate costs across global locations</li>
+                                        <li>Increasing employee expectations for flexibility</li>
+                                        <li>Need to attract talent in competitive markets</li>
+                                        <li>Sustainability goals requiring reduced carbon footprint</li>
+                                        <li>Inconsistent collaboration across global teams</li>
+                                        <li>Technology limitations in supporting remote work</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Transformation Objectives:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Create a flexible work program enabling 50% of employees to work remotely</li>
+                                        <li>Reduce office space requirements by 30%</li>
+                                        <li>Improve employee satisfaction and retention by 15%</li>
+                                        <li>Reduce carbon emissions from commuting by 40%</li>
+                                        <li>Enhance collaboration across global teams</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Kotter Model Application</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">1. Creating Urgency</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Shared employee survey data showing flexibility as top request</li>
+                                            <li>Presented financial analysis of real estate cost trajectory</li>
+                                            <li>Highlighted competitor moves toward flexible work</li>
+                                            <li>Demonstrated technology trends enabling remote collaboration</li>
+                                            <li>Connected to corporate sustainability commitments</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">2. Building a Coalition</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Formed cross-functional steering committee with HR, IT, Facilities, Finance</li>
+                                            <li>Enlisted executive sponsors from each business unit</li>
+                                            <li>Identified and engaged informal influencers at various levels</li>
+                                            <li>Created network of "Connected Workplace Ambassadors"</li>
+                                            <li>Engaged employee resource groups for diverse perspectives</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">3. Creating a Vision</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Developed "Work Your Way" vision emphasizing choice and flexibility</li>
+                                            <li>Created guiding principles for the new work model</li>
+                                            <li>Established clear metrics for success</li>
+                                            <li>Designed future state employee experience journey</li>
+                                            <li>Connected vision to Dell's purpose and values</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Kotter Model Implementation (continued)</h6>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Kotter Step</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Implementation Actions</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Results & Outcomes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">4. Communicating the Vision</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Launched dedicated intranet portal with resources and FAQs</li>
+                                                    <li>Held executive town halls in all major locations</li>
+                                                    <li>Created manager toolkits with talking points</li>
+                                                    <li>Developed video series featuring employee testimonials</li>
+                                                    <li>Published regular newsletter with progress updates</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>92% of employees reported awareness of the initiative</li>
+                                                    <li>80% understood how it would affect their work</li>
+                                                    <li>High engagement with communication materials</li>
+                                                    <li>Reduced rumors and misinformation</li>
+                                                    <li>Consistent messaging across organization</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">5. Removing Barriers</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Implemented new collaboration tools (Teams, Zoom, etc.)</li>
+                                                    <li>Updated HR policies for remote work eligibility</li>
+                                                    <li>Revised performance management to focus on outcomes</li>
+                                                    <li>Provided technology stipends for home office setup</li>
+                                                    <li>Trained managers on leading remote teams</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>95% of eligible employees had necessary technology</li>
+                                                    <li>Reduced policy exceptions and approval bottlenecks</li>
+                                                    <li>Increased manager confidence in remote leadership</li>
+                                                    <li>Improved virtual collaboration capabilities</li>
+                                                    <li>Streamlined process for flexible work arrangements</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">6. Generating Short-term Wins</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Piloted program with IT organization first</li>
+                                                    <li>Tracked and published productivity and satisfaction data</li>
+                                                    <li>Celebrated early adopter departments' successes</li>
+                                                    <li>Highlighted cost savings from initial office consolidations</li>
+                                                    <li>Recognized managers who successfully led virtual teams</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>IT pilot showed 20% productivity improvement</li>
+                                                    <li>$3.2M in initial real estate savings</li>
+                                                    <li>15-point increase in employee satisfaction in pilot teams</li>
+                                                    <li>Increased interest from other departments</li>
+                                                    <li>Success stories created momentum for broader adoption</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">7. Sustaining Acceleration</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Phased rollout to all business units globally</li>
+                                                    <li>Redesigned office spaces for collaboration and hoteling</li>
+                                                    <li>Expanded training programs based on early learnings</li>
+                                                    <li>Enhanced digital workplace technology capabilities</li>
+                                                    <li>Created Connected Workplace Center of Excellence</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Program expanded from 20% to 60% of eligible workforce</li>
+                                                    <li>35% reduction in global real estate footprint</li>
+                                                    <li>Acceleration of adoption timeline by 6 months</li>
+                                                    <li>Continuous improvement based on user feedback</li>
+                                                    <li>Evolution into broader digital workplace strategy</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">8. Institutionalizing Change</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Updated employer branding to highlight flexibility</li>
+                                                    <li>Incorporated virtual leadership into management development</li>
+                                                    <li>Revised space planning standards and protocols</li>
+                                                    <li>Updated onboarding to include remote work training</li>
+                                                    <li>Integrated program metrics into business reporting</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>"Work Your Way" became core part of Dell culture</li>
+                                                    <li>25% improvement in talent acquisition in key markets</li>
+                                                    <li>60% of Dell employees worked flexibly by default</li>
+                                                    <li>Program highlighted in annual sustainability report</li>
+                                                    <li>Model prepared Dell for COVID-19 remote work transition</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Key Success Factors</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Executive engagement:</strong> Active championing from CEO and leadership team</li>
+                                    <li class="mb-1"><strong>Clear connection to strategy:</strong> Initiative linked to talent, sustainability, and cost objectives</li>
+                                    <li class="mb-1"><strong>Data-driven approach:</strong> Measurable metrics throughout implementation</li>
+                                    <li class="mb-1"><strong>Comprehensive change management:</strong> Attention to both practical and emotional aspects of change</li>
+                                    <li class="mb-0"><strong>Technology enablement:</strong> Strong digital foundation to support new work models</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Business Impact</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Financial:</strong> $12M annual savings in real estate and facility costs</li>
+                                    <li class="mb-1"><strong>Productivity:</strong> 16% increase in employee productivity metrics</li>
+                                    <li class="mb-1"><strong>Talent:</strong> 18% improvement in retention in key roles</li>
+                                    <li class="mb-1"><strong>Sustainability:</strong> 25,000 metric tons reduction in carbon emissions</li>
+                                    <li class="mb-0"><strong>Resilience:</strong> Enhanced business continuity capabilities</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Lessons Learned</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Manager enablement:</strong> Critical to provide specific training for leading remote teams</li>
+                                    <li class="mb-1"><strong>Technology first:</strong> Digital foundations must precede policy changes</li>
+                                    <li class="mb-1"><strong>Cultural variation:</strong> Implementation needed adaptation for different regional contexts</li>
+                                    <li class="mb-1"><strong>Continuous feedback:</strong> Regular employee input improved program quality</li>
+                                    <li class="mb-0"><strong>Balance:</strong> Important to maintain in-person connection points alongside virtual work</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Kotter's Model: Critical to Success</h6>
+                            <p class="text-xs mb-2">The structured approach of Kotter's 8-Step Model provided several advantages for Dell's transformation:</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li class="mb-1"><strong>Balanced focus:</strong> Addressed both technical and human aspects of the change</li>
+                                <li class="mb-1"><strong>Change sequence:</strong> Creating urgency and vision before implementation prevented resistance</li>
+                                <li class="mb-1"><strong>Coalition approach:</strong> Cross-functional leadership ensured comprehensive planning</li>
+                                <li class="mb-1"><strong>Short-term wins:</strong> Pilot successes built confidence for broader implementation</li>
+                                <li class="mb-0"><strong>Institutionalization:</strong> Focus on embedding changes in culture ensured sustainability</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Change Leadership at All Levels</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Leading Change Without Formal Authority</h5>
+                        <p class="text-sm mb-3">While Kotter's model is often applied at the organizational level with executive sponsorship, the principles can be adapted for leading change at any level. Change leadership is not limited to those with positional authority. Individuals throughout the organization can influence change by understanding the model and applying key concepts within their sphere of influence.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Change Leadership Approaches by Level</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Executive Leadership</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Sponsor and champion the change</strong> through visible commitment</li>
+                                            <li><strong>Allocate resources</strong> and remove organizational barriers</li>
+                                            <li><strong>Align organizational systems</strong> (incentives, metrics, etc.) with the change</li>
+                                            <li><strong>Hold other leaders accountable</strong> for supporting the change</li>
+                                            <li><strong>Connect the change to strategy</strong> and communicate the big picture</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Middle Management</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Translate the vision</strong> into specific implications for their teams</li>
+                                            <li><strong>Address practical implementation challenges</strong> at the operational level</li>
+                                            <li><strong>Provide coaching and support</strong> to team members during transition</li>
+                                            <li><strong>Bridge between strategic vision</strong> and front-line execution</li>
+                                            <li><strong>Identify and remove barriers</strong> within their area of control</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Individual Contributors</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Volunteer for change initiatives</strong> and pilot programs</li>
+                                            <li><strong>Provide feedback</strong> on implementation challenges and opportunities</li>
+                                            <li><strong>Support peers</strong> who are struggling with the change</li>
+                                            <li><strong>Share success stories</strong> and positive experiences</li>
+                                            <li><strong>Build technical skills</strong> needed for the new ways of working</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Change Leadership Without Authority</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Build Credibility</h6>
+                                            <p class="text-xs mb-1">Establish the foundation for influence:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Develop expertise in relevant subject areas</li>
+                                                <li>Demonstrate reliability and follow-through</li>
+                                                <li>Build relationships based on trust</li>
+                                                <li>Model the behaviors you want to see in others</li>
+                                                <li>Base recommendations on data and evidence</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Create Coalitions</h6>
+                                            <p class="text-xs mb-1">Expand your sphere of influence:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Identify others who share your change vision</li>
+                                                <li>Build relationships across organizational boundaries</li>
+                                                <li>Connect with influential stakeholders</li>
+                                                <li>Create informal networks of change supporters</li>
+                                                <li>Bring diverse perspectives and skills together</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Focus on Local Impact</h6>
+                                            <p class="text-xs mb-1">Start where you have influence:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Begin with changes within your immediate control</li>
+                                                <li>Create pilot projects in your area of responsibility</li>
+                                                <li>Document results and lessons learned</li>
+                                                <li>Use successful pilots as proof of concept</li>
+                                                <li>Connect local changes to broader organizational goals</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Influence Through Evidence</h6>
+                                            <p class="text-xs mb-1">Build a compelling case for change:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Gather data that demonstrates the need for change</li>
+                                                <li>Create visual representations of current state issues</li>
+                                                <li>Benchmark against competitors or best practices</li>
+                                                <li>Quantify the benefits of proposed changes</li>
+                                                <li>Present information in formats that resonate with decision-makers</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Applying Kotter's Steps at Any Level</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg md:col-span-2">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Create a Sense of Urgency</h6>
+                                    <p class="text-xs mb-1">Without formal authority, you can:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Share customer feedback and marketplace trends</li>
+                                        <li>Highlight competitive threats or opportunities</li>
+                                        <li>Present data on current performance gaps</li>
+                                        <li>Tell stories that illustrate the need for change</li>
+                                        <li>Connect the change to widely shared values and aspirations</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg md:col-span-2">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Form a Strategic Vision</h6>
+                                    <p class="text-xs mb-1">Without formal authority, you can:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Draft a vision for your area of influence</li>
+                                        <li>Connect your vision to broader organizational priorities</li>
+                                        <li>Create concrete examples of what success would look like</li>
+                                        <li>Involve others in refining and developing the vision</li>
+                                        <li>Test the vision with stakeholders to build support</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Enable Action</h6>
+                                    <p class="text-xs mb-1">Without formal authority, you can:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Suggest process improvements within your team</li>
+                                        <li>Offer to develop tools or resources</li>
+                                        <li>Volunteer to lead working groups</li>
+                                        <li>Share knowledge and best practices</li>
+                                        <li>Identify and raise awareness of barriers</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Generate Wins</h6>
+                                    <p class="text-xs mb-1">Without formal authority, you can:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Implement changes in your area of control</li>
+                                        <li>Document and share positive results</li>
+                                        <li>Recognize others who contribute to success</li>
+                                        <li>Connect wins to the larger vision</li>
+                                        <li>Use successes to build credibility</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Sustain Acceleration</h6>
+                                    <p class="text-xs mb-1">Without formal authority, you can:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Build upon initial successes</li>
+                                        <li>Expand your coalition of supporters</li>
+                                        <li>Identify additional improvement opportunities</li>
+                                        <li>Share progress with key stakeholders</li>
+                                        <li>Continue to connect work to the vision</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Institute Change</h6>
+                                    <p class="text-xs mb-1">Without formal authority, you can:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Document new processes and best practices</li>
+                                        <li>Help onboard new team members to new ways of working</li>
+                                        <li>Reinforce and recognize changed behaviors</li>
+                                        <li>Offer to train or coach others</li>
+                                        <li>Continue modeling the new approaches</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Example: Dell Engineer Leads Process Innovation</h6>
+                                <p class="text-xs mb-2">A Dell systems engineer without formal authority noticed inefficiencies in product testing procedures that were causing delays and quality issues. Rather than waiting for top-down change, the engineer:</p>
+                                <ul class="pl-4 text-xs mb-2">
+                                    <li><strong>Created urgency</strong> by documenting time lost and quality issues from current process</li>
+                                    <li><strong>Built a coalition</strong> with colleagues from engineering, quality, and operations</li>
+                                    <li><strong>Developed a vision</strong> for a streamlined, automated testing approach</li>
+                                    <li><strong>Communicated</strong> by creating simple visual explanations of the proposed improvements</li>
+                                    <li><strong>Removed barriers</strong> by developing a prototype testing tool on own initiative</li>
+                                    <li><strong>Generated short-term wins</strong> by implementing the new approach for one product component</li>
+                                    <li><strong>Sustained momentum</strong> by documenting 40% time savings and sharing with leadership</li>
+                                    <li><strong>Institutionalized the change</strong> by creating documentation and training peers</li>
+                                </ul>
+                                <p class="text-xs mb-0">The initiative was eventually adopted across the product line, and the engineer was recognized with a Dell innovation award and later promoted to a formal leadership role. This example demonstrates how Kotter's principles can be applied by anyone with the initiative to drive positive change.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Integrating Change Management Across Frameworks</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Connecting Kotter's Model to Other Organizational Tools</h5>
+                        <p class="text-sm mb-3">Change management is most effective when integrated with other organizational frameworks and tools. By connecting Kotter's model with frameworks like RACI, RAPIDs, Process Mapping, and Reengineering, organizations can create a comprehensive approach that addresses both the technical and human aspects of transformation.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Kotter's Model + RACI</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Integrating Kotter's change approach with RACI role assignments:</p>
+                                    
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-xs border-collapse">
+                                            <thead>
+                                                <tr class="bg-gray-50 dark:bg-gray-900">
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Kotter's Step</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Responsible</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Accountable</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Consulted</th>
+                                                    <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Informed</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Create Urgency</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Change Team</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Executive Sponsor</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Stakeholders, Customers</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">All Employees</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Build Coalition</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Change Leader</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Executive Sponsor</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Key Influencers</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Leadership Team</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Form Vision</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Guiding Coalition</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Executive Sponsor</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Stakeholders</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">All Employees</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Communicate</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Communications Team</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Change Leader</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Leadership, HR</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">All Employees</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Enable Action</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Functional Managers</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">Change Leader</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">HR, Training</td>
+                                                    <td class="border border-gray-200 dark:border-gray-700 p-2">All Employees</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <h6 class="text-xs font-medium mb-1">Integration Benefits</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Clarifies specific responsibilities for each change phase</li>
+                                            <li>Prevents critical steps from falling through the cracks</li>
+                                            <li>Ensures appropriate stakeholder involvement</li>
+                                            <li>Creates accountability for change process execution</li>
+                                            <li>Helps identify resource gaps in the change team</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Kotter's Model + RAPIDs</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Using RAPIDs to clarify decision rights in change initiatives:</p>
+                                    
+                                    <div class="overflow-y-auto max-h-[250px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Change Strategy Decisions</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Recommend:</strong> Change Team with input from stakeholders</li>
+                                                <li><strong>Agree:</strong> Functional leaders impacted by the change</li>
+                                                <li><strong>Perform:</strong> Cross-functional implementation teams</li>
+                                                <li><strong>Input:</strong> Subject matter experts, middle managers, key users</li>
+                                                <li><strong>Decide:</strong> Executive Sponsor or Steering Committee</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Implementation Approach Decisions</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Recommend:</strong> Change Team and Implementation Leads</li>
+                                                <li><strong>Agree:</strong> HR, Finance, IT (as needed)</li>
+                                                <li><strong>Perform:</strong> Functional teams and project resources</li>
+                                                <li><strong>Input:</strong> Process owners, end users, support teams</li>
+                                                <li><strong>Decide:</strong> Change Leader with Guiding Coalition</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Resource Allocation Decisions</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Recommend:</strong> Change Leader with business case</li>
+                                                <li><strong>Agree:</strong> Finance, Functional Leaders</li>
+                                                <li><strong>Perform:</strong> Project Management Office</li>
+                                                <li><strong>Input:</strong> Implementation teams, resource managers</li>
+                                                <li><strong>Decide:</strong> Executive Sponsor or Leadership Team</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <h6 class="text-xs font-medium mb-1">Integration Benefits</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Accelerates decision-making during change implementation</li>
+                                            <li>Reduces confusion about who makes critical decisions</li>
+                                            <li>Ensures appropriate stakeholder involvement</li>
+                                            <li>Prevents decision bottlenecks that slow progress</li>
+                                            <li>Creates transparency in the change governance process</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Kotter's Model + Process Maps</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Using process mapping to support change implementation:</p>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Creating Urgency</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Map current state processes to visually highlight inefficiencies</li>
+                                            <li>Quantify waste, delays, and pain points in existing processes</li>
+                                            <li>Compare current performance to competitive benchmarks</li>
+                                            <li>Use value stream mapping to identify non-value-added activities</li>
+                                            <li>Create visual representation of customer impact of current state</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Creating Vision</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Develop future state process maps to illustrate the vision</li>
+                                            <li>Quantify expected improvements in key performance indicators</li>
+                                            <li>Create side-by-side comparisons of current vs. future state</li>
+                                            <li>Map customer journey improvements in the future state</li>
+                                            <li>Use visual process models in communication materials</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Enabling Action & Sustaining Change</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Create detailed implementation roadmaps based on process changes</li>
+                                            <li>Develop transition state maps to guide implementation</li>
+                                            <li>Use process documentation for training and knowledge transfer</li>
+                                            <li>Track process metrics to demonstrate wins and progress</li>
+                                            <li>Update process documentation to institutionalize changes</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Kotter's Model + Reengineering</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Integrating transformational process change with people-focused change management:</p>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Complementary Strengths</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Process Reengineering:</strong> Provides technical methodology for redesigning processes</li>
+                                            <li><strong>Kotter's Model:</strong> Addresses human aspects of implementing radical change</li>
+                                            <li><strong>Combined Approach:</strong> Ensures both technical excellence and successful adoption</li>
+                                            <li><strong>Balance:</strong> Technical feasibility with organizational readiness</li>
+                                            <li><strong>Coverage:</strong> Addresses both "what" needs to change and "how" to implement it</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Integration Points</h6>
+                                        <ul class="pl-4 text-xs mb-2">
+                                            <li><strong>Mobilize + Urgency/Coalition:</strong> Combined kickoff with technical and change workstreams</li>
+                                            <li><strong>Diagnose + Vision:</strong> Use technical assessment to inform compelling vision</li>
+                                            <li><strong>Redesign + Communication:</strong> Involve stakeholders in process redesign to build buy-in</li>
+                                            <li><strong>Implement + Enable Action/Wins:</strong> Phased implementation with visible success metrics</li>
+                                            <li><strong>Sustain + Institute Change:</strong> Embed new processes in operations with ongoing reinforcement</li>
+                                        </ul>
+                                        <p class="text-xs mb-0">This integration creates a powerful approach that addresses both the technical design of new processes and the human factors that determine whether those designs will be successfully implemented and sustained.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell's Integrated Change Approach</h6>
+                            
+                            <p class="text-xs mb-2">Dell Technologies has developed an integrated approach to change that combines these frameworks:</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Assessment & Planning</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Kotter: Create urgency and build coalition</li>
+                                        <li>Process Maps: Document current state</li>
+                                        <li>RACI: Define change team roles</li>
+                                        <li>RAPIDs: Establish decision framework</li>
+                                        <li>Output: Comprehensive change strategy with clear roles, governance, and baseline</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Design & Mobilization</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Kotter: Create vision and communicate</li>
+                                        <li>Reengineering: Redesign processes</li>
+                                        <li>Process Maps: Create future state maps</li>
+                                        <li>RAPIDs: Make key design decisions</li>
+                                        <li>Output: Future state design with supporting communication plan and stakeholder buy-in</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Implementation & Sustainability</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Kotter: Enable action, generate wins, sustain, institute</li>
+                                        <li>RACI: Clarify implementation responsibilities</li>
+                                        <li>Process Maps: Document new procedures</li>
+                                        <li>Reengineering: Implement and refine new processes</li>
+                                        <li>Output: Successful implementation with sustainable adoption and ongoing governance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Case Example: Dell's Supply Chain Transformation</h6>
+                                <p class="text-xs mb-2">When Dell undertook a major supply chain transformation, it integrated these frameworks as follows:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Assessment:</strong> Used process mapping to document current state flows and identify inefficiencies while applying Kotter's approach to build urgency around competitive necessity</li>
+                                    <li><strong>Planning:</strong> Created RACI matrix for the transformation team and established RAPIDs decision framework for key project decisions</li>
+                                    <li><strong>Design:</strong> Applied reengineering principles to redesign core processes while using Kotter's coalition approach to involve stakeholders in design</li>
+                                    <li><strong>Implementation:</strong> Created detailed implementation plan with clear roles and decision rights, while focusing on generating visible wins</li>
+                                    <li><strong>Sustainability:</strong> Updated all process documentation, trained teams on new approaches, and established governance mechanisms for ongoing improvement</li>
+                                </ul>
+                                <p class="text-xs mt-2 mb-0">This integrated approach was credited with enabling one of Dell's most successful transformations, reducing supply chain costs by 18% while improving on-time delivery performance by 35% and reducing inventory by 25%.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2012/11/accelerate" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Accelerate!</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • John Kotter's Updated Change Model</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.delltechnologies.com/en-us/perspectives/digital-transformation-is-a-change-management-strategy/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-presentation-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Digital Transformation is a Change Management Strategy</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Dell Technologies • Change Management for Digital Transformation</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-science-of-organizational-transformations" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-book-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Science of Organizational Transformations</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • Research on Change Success Factors</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell Product Launch Change Management Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll apply Kotter's 8-Step Change Model to plan a change management approach for a major product launch at Dell Technologies. This scenario will help you develop practical skills in leading organizational change in a business context.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Scenario Context:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Dell is preparing to launch a new sustainability-focused product line that will require significant changes to sales, marketing, and support processes</li>
+                                    <li>The products feature eco-friendly materials, energy efficiency, and circular economy design principles</li>
+                                    <li>Sales teams will need to shift from hardware-centric to sustainability-benefits selling</li>
+                                    <li>Marketing will need to develop new messaging and customer engagement models</li>
+                                    <li>Service teams will need training on new repair, recycling, and sustainability reporting</li>
+                                    <li>The initiative is strategically important but faces internal skepticism about market potential</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Your Challenge:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Develop a change management plan using Kotter's 8-Step Model</li>
+                                    <li>Consider how to build urgency and overcome resistance</li>
+                                    <li>Identify key stakeholders for your guiding coalition</li>
+                                    <li>Create a compelling vision for the transformation</li>
+                                    <li>Plan communication and barrier removal strategies</li>
+                                    <li>Identify potential short-term wins and approaches for sustaining the change</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Creating a Climate for Change (Steps 1-3)</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Describe your approach for creating urgency, building a guiding coalition, and forming a strategic vision for this product launch."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Engaging & Enabling the Organization (Steps 4-6)</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Describe how you would communicate the vision, enable action by removing barriers, and generate short-term wins during the implementation."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Implementing & Sustaining Change (Steps 7-8)</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Describe your approach for sustaining acceleration and institutionalizing the change in Dell's culture and operations."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Plan</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-process-reengineering">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Process Reengineering</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-module-summary">
+                        <span>Next: Module Summary</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-change-management');
+        });
+    </script>
+</body>
+</html>

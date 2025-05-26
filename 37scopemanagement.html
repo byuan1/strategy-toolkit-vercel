@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Project Management</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-project-fundamentals">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Project Management Fundamentals</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-scope-management">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Scope Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-schedule-management">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Schedule Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-cost-management">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Budget & Cost Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-risk-management">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Risk Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-project-communication">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Project Communication</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-agile-management">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Agile Project Management</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">66%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 66%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>6/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Organizational Behavior</span>
+                                <span>5/5 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Project Management</span>
+                                <span>1/7 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Scope Management Topic -->
+            <section id="topic-scope-management" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-focus-3-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Scope Management</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Project Management</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the importance of project scope management and its impact on project success</li>
+                            <li>Learn the key scope management processes and how they integrate throughout the project lifecycle</li>
+                            <li>Master techniques for defining, documenting, and controlling project scope</li>
+                            <li>Develop skills in creating and using a Work Breakdown Structure (WBS)</li>
+                            <li>Implement effective scope change control to prevent scope creep and maintain project focus</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Scope Management</h4>
+                    <p>Scope management is one of the most critical aspects of project management—it involves defining, documenting, and controlling what work is required to complete a project successfully. Effective scope management ensures that a project includes all the work required, and only the work required, to achieve the project's objectives. In many ways, scope management serves as the foundation for all other project management processes.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Scope Management Matters</h5>
+                        <p class="mb-3">Scope management is essential for project success for several key reasons:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Benefits of Good Scope Management</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Provides clear boundaries:</strong> Defines what is and isn't included in the project</li>
+                                    <li><strong>Enables accurate planning:</strong> Facilitates precise estimation of time, cost, and resources</li>
+                                    <li><strong>Prevents scope creep:</strong> Controls unauthorized or unmanaged changes to requirements</li>
+                                    <li><strong>Manages stakeholder expectations:</strong> Ensures alignment on project deliverables</li>
+                                    <li><strong>Supports informed decision-making:</strong> Provides a baseline for evaluating change requests</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-red-500 dark:text-red-400">Consequences of Poor Scope Management</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Schedule overruns:</strong> Additional work extends timelines beyond planned dates</li>
+                                    <li><strong>Budget overruns:</strong> Unplanned work requires additional resources and funding</li>
+                                    <li><strong>Quality issues:</strong> Resources stretched to accommodate added scope</li>
+                                    <li><strong>Stakeholder dissatisfaction:</strong> Misaligned expectations about deliverables</li>
+                                    <li><strong>Team burnout:</strong> Constant changes and additions create overwork and frustration</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">At Dell Technologies</h6>
+                            <p class="mb-2">Scope management is particularly important at Dell due to the complex, integrated nature of our technology solutions. A few examples of how scope management impacts Dell projects:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Product Development</p>
+                                    <p class="text-sm mb-0">Clearly defined feature sets are critical for new product releases. A seemingly minor feature addition late in development can impact hardware design, software integration, manufacturing processes, testing requirements, and documentation—potentially delaying an entire product launch.</p>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-green-700 dark:text-green-400 mb-1">Enterprise Solutions</p>
+                                    <p class="text-sm mb-0">For complex customer infrastructure implementations, precise scope definition ensures Dell delivers exactly what customers expect. Unclear scope can lead to "solution creep," where additional components or services are included without corresponding pricing adjustments.</p>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-purple-700 dark:text-purple-400 mb-1">Software Development</p>
+                                    <p class="text-sm mb-0">In Dell's agile software development projects, scope is managed at both the release and sprint levels. Product owners continually refine and prioritize backlog items to ensure the most valuable features are delivered within time and resource constraints.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Key Scope Management Concepts</h5>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-800">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Concept</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Definition</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Example</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm">
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Project Scope</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">The work required to deliver a product, service, or result with the specified features and functions</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">For a laptop development project: all design, development, testing, and production setup activities</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Product Scope</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Features and functions that characterize a product, service, or result</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">The laptop's specifications: weight, battery life, processor, connectivity options, etc.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Scope Baseline</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">The approved version of a scope statement, WBS, and WBS dictionary that can be changed only through formal change control procedures</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">The approved project scope document for Dell's data center migration project</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Scope Creep</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">The uncontrolled expansion of product or project scope without adjustments to time, cost, and resources</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Adding an unplanned touchscreen feature to a laptop design late in development</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Gold Plating</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Adding features or functionality not requested by the customer or not needed to meet requirements</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Developer adding an elaborate graphing feature to a simple data tracking tool</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Requirements</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Conditions or capabilities that must be met by a project or product to satisfy a contract, standard, specification, or stakeholder needs</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">A server must support 1,000 concurrent user connections with response times under 2 seconds</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Deliverables</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Unique and verifiable products, results, or capabilities required to be produced to complete a process, phase, or project</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Final hardware design specifications, functional prototype, and test results documentation</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Scope Management Processes</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">The Scope Management Process Flow</h5>
+                        <p class="text-sm mb-3">Scope management consists of six interconnected processes that span the project lifecycle. Each process builds upon the previous one to ensure that project scope is properly defined, documented, and controlled.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">The Six Processes of Scope Management</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-4">
+                                        <div class="flex justify-center mb-4">
+                                            <div class="overflow-x-auto">
+                                                <div class="min-w-[700px]">
+                                                    <div class="relative h-[160px]">
+                                                        <!-- Scope Management Process Flow -->
+                                                        <svg class="absolute inset-0 h-full w-full" viewBox="0 0 700 160">
+                                                            <!-- Process boxes -->
+                                                            <rect x="10" y="60" width="110" height="60" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+                                                            <text x="65" y="90" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="bold">1. Plan Scope Management</text>
+                                                            
+                                                            <rect x="140" y="60" width="110" height="60" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                                                            <text x="195" y="90" text-anchor="middle" font-size="11" fill="#3730a3" font-weight="bold">2. Collect Requirements</text>
+                                                            
+                                                            <rect x="270" y="60" width="110" height="60" rx="5" fill="#ede9fe" stroke="#8b5cf6" stroke-width="2"/>
+                                                            <text x="325" y="90" text-anchor="middle" font-size="11" fill="#5b21b6" font-weight="bold">3. Define Scope</text>
+                                                            
+                                                            <rect x="400" y="60" width="110" height="60" rx="5" fill="#f3e8ff" stroke="#a855f7" stroke-width="2"/>
+                                                            <text x="455" y="90" text-anchor="middle" font-size="11" fill="#6b21a8" font-weight="bold">4. Create WBS</text>
+                                                            
+                                                            <rect x="530" y="60" width="70" height="60" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"/>
+                                                            <text x="565" y="90" text-anchor="middle" font-size="11" fill="#86198f" font-weight="bold">5. Validate Scope</text>
+                                                            
+                                                            <rect x="620" y="60" width="70" height="60" rx="5" fill="#fce7f3" stroke="#ec4899" stroke-width="2"/>
+                                                            <text x="655" y="90" text-anchor="middle" font-size="11" fill="#9d174d" font-weight="bold">6. Control Scope</text>
+                                                            
+                                                            <!-- Phase indicators -->
+                                                            <rect x="10" y="10" width="350" height="25" rx="3" fill="#dbeafe" fill-opacity="0.5" stroke="#3b82f6" stroke-width="1" stroke-dasharray="2"/>
+                                                            <text x="185" y="26" text-anchor="middle" font-size="10" fill="#1e40af">Planning Phase</text>
+                                                            
+                                                            <rect x="400" y="10" width="110" height="25" rx="3" fill="#ede9fe" fill-opacity="0.5" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="2"/>
+                                                            <text x="455" y="26" text-anchor="middle" font-size="10" fill="#5b21b6">Execution Phase</text>
+                                                            
+                                                            <rect x="530" y="10" width="160" height="25" rx="3" fill="#fae8ff" fill-opacity="0.5" stroke="#d946ef" stroke-width="1" stroke-dasharray="2"/>
+                                                            <text x="610" y="26" text-anchor="middle" font-size="10" fill="#86198f">Monitoring & Controlling Phase</text>
+                                                            
+                                                            <!-- Arrows connecting processes -->
+                                                            <line x1="120" y1="90" x2="135" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                            <line x1="250" y1="90" x2="265" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                            <line x1="380" y1="90" x2="395" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                            <line x1="510" y1="90" x2="525" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                            <line x1="600" y1="90" x2="615" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                            
+                                                            <!-- Feedback loops -->
+                                                            <path d="M 655,60 C 655,40 325,40 325,55" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="4" fill="none" marker-end="url(#arrowhead-feedback)"/>
+                                                            
+                                                            <!-- Arrowhead markers -->
+                                                            <defs>
+                                                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+                                                                </marker>
+                                                                <marker id="arrowhead-feedback" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#ec4899"/>
+                                                                </marker>
+                                                            </defs>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">1. Plan Scope Management</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg md:col-span-2">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Process Description</h6>
+                                    <p class="text-xs mb-1">The process of creating a scope management plan that documents how the project scope will be defined, validated, and controlled. This process establishes the framework for managing scope throughout the project.</p>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mt-2 mb-1">Key Activities</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Review project charter and business case to understand project objectives</li>
+                                        <li>Analyze organizational process assets and enterprise environmental factors</li>
+                                        <li>Determine appropriate scope management approaches based on project characteristics</li>
+                                        <li>Define roles and responsibilities for scope management activities</li>
+                                        <li>Document the processes for scope definition, documentation, validation, and control</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                    <h6 class="text-xs font-medium mb-1">Dell Application</h6>
+                                    <p class="text-xs mb-2">At Dell, scope planning includes:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Tailoring scope management approach to the project type and methodology (e.g., waterfall vs. agile)</li>
+                                        <li>Defining how scope changes will be evaluated for impact on the triple constraint</li>
+                                        <li>Establishing scope prioritization mechanisms</li>
+                                        <li>Specifying documentation requirements and approval processes</li>
+                                        <li>Setting scope variance thresholds that trigger escalation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h6 class="text-sm font-medium mb-2">2. Collect Requirements</h6>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg md:col-span-2">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Process Description</h6>
+                                <p class="text-xs mb-1">The process of determining, documenting, and managing stakeholder needs and requirements to meet project objectives. This process provides the foundation for defining and managing the project scope.</p>
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mt-2 mb-1">Key Activities</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Identify and analyze stakeholders to understand their needs and expectations</li>
+                                    <li>Use various techniques to gather detailed requirements from stakeholders</li>
+                                    <li>Document requirements in appropriate formats for different audiences</li>
+                                    <li>Develop a requirements traceability matrix to track requirements through the project</li>
+                                    <li>Establish prioritization criteria for requirements</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <h6 class="text-xs font-medium mb-1">Dell Application</h6>
+                                <p class="text-xs mb-2">Dell uses various techniques to collect requirements:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Contextual inquiry for customer-facing products</li>
+                                    <li>Joint Application Development (JAD) sessions for internal systems</li>
+                                    <li>User stories and acceptance criteria for agile projects</li>
+                                    <li>Business Requirements Documents (BRDs) for enterprise projects</li>
+                                    <li>Requirements workshops with key stakeholders</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3 bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-xs font-medium mb-1">Requirements Gathering Techniques</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Interviews</h6>
+                                    <p class="text-xs mb-1">One-on-one or small group conversations to gather detailed information from stakeholders.</p>
+                                    <p class="text-xs italic mb-0"><strong>Best for:</strong> In-depth exploration of specific stakeholder needs and expectations.</p>
+                                </div>
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Focus Groups</h6>
+                                    <p class="text-xs mb-1">Moderated discussions with prequalified stakeholders to learn about expectations, attitudes, and needs.</p>
+                                    <p class="text-xs italic mb-0"><strong>Best for:</strong> Gathering diverse perspectives and uncovering consensus areas.</p>
+                                </div>
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Workshops</h6>
+                                    <p class="text-xs mb-1">Focused sessions bringing key stakeholders together to define product requirements.</p>
+                                    <p class="text-xs italic mb-0"><strong>Best for:</strong> Cross-functional alignment and rapid requirements definition.</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Surveys/Questionnaires</h6>
+                                    <p class="text-xs mb-1">Written sets of questions designed to quickly gather information from a large group of respondents.</p>
+                                    <p class="text-xs italic mb-0"><strong>Best for:</strong> Collecting data from large, geographically dispersed stakeholder groups.</p>
+                                </div>
+                                <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-red-700 dark:text-red-400 mb-1">Observation</h6>
+                                    <p class="text-xs mb-1">Directly viewing individuals performing their jobs to understand how processes work and where improvements can be made.</p>
+                                    <p class="text-xs italic mb-0"><strong>Best for:</strong> Understanding current workflows and operational pain points.</p>
+                                </div>
+                                <div class="bg-pink-50 dark:bg-pink-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-pink-700 dark:text-pink-400 mb-1">Prototyping</h6>
+                                    <p class="text-xs mb-1">Developing an early version of a product to gather feedback before implementing the full solution.</p>
+                                    <p class="text-xs italic mb-0"><strong>Best for:</strong> Visualizing complex requirements and validating user experience design.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h6 class="text-sm font-medium mb-2">3. Define Scope</h6>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg md:col-span-2">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Process Description</h6>
+                                <p class="text-xs mb-1">The process of developing a detailed description of the project and its deliverables. This process articulates the boundaries of the project and establishes the criteria for what is and is not included in the project's work.</p>
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mt-2 mb-1">Key Activities</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Analyze product requirements to translate them into project deliverables</li>
+                                    <li>Establish project boundaries by explicitly stating what is in and out of scope</li>
+                                    <li>Develop detailed descriptions of project and product scope</li>
+                                    <li>Identify constraints and assumptions that affect scope definition</li>
+                                    <li>Document acceptance criteria for deliverables</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <h6 class="text-xs font-medium mb-1">Dell Application</h6>
+                                <p class="text-xs mb-2">Dell's scope definition process involves:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Creating detailed scope statements approved by project sponsor and key stakeholders</li>
+                                    <li>Developing explicit "in/out of scope" lists for clarity</li>
+                                    <li>Using scope definition templates tailored to project type</li>
+                                    <li>Establishing measurable acceptance criteria for deliverables</li>
+                                    <li>Documenting dependencies and constraints</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3 bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-xs font-medium mb-2">Components of a Project Scope Statement</h6>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Component</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Description</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Dell Example</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Product Scope Description</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Progressively elaborated characteristics of the product, service, or result the project will create</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">"A 13" premium business laptop with 24-hour battery life, military-grade durability, and integrated security features"</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Deliverables</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Any unique and verifiable product, result, or capability required to be produced to complete the project</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">"Final hardware design specifications, functional prototype, manufacturing process documentation, user manual"</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Acceptance Criteria</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">The conditions that must be met before project deliverables are accepted</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">"Battery must sustain 24 hours of active use on a single charge under standard load conditions"</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Project Exclusions</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Specific items identified as not included in the project</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">"Development of accessory peripherals such as docking stations is NOT included in this project"</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Constraints</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Specific factors that limit options for the project</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">"Product must use the existing supply chain for component sourcing"</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Assumptions</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Factors considered to be true for planning purposes</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">"Next-generation processor from Intel will be available by Q3 according to their roadmap"</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Work Breakdown Structure (WBS)</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">4. Create Work Breakdown Structure</h5>
+                        <p class="text-sm mb-3">The Work Breakdown Structure (WBS) is a hierarchical decomposition of the total scope of work to be carried out by the project team to accomplish the project objectives and create the required deliverables. The WBS organizes and defines the total scope of the project and represents the work specified in the current approved project scope statement.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">WBS Fundamentals</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Purpose of the WBS</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Breaks down complex projects into manageable components</li>
+                                            <li>Provides a structural framework for scope definition</li>
+                                            <li>Facilitates accurate estimation of time, cost, and resources</li>
+                                            <li>Serves as a foundation for schedule development</li>
+                                            <li>Creates a baseline for measuring progress and performance</li>
+                                            <li>Helps identify all work to ensure nothing is missed</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">WBS Structure</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Hierarchical:</strong> Organized from the top down with increasing detail at lower levels</li>
+                                            <li><strong>Deliverable-oriented:</strong> Focused on tangible outputs, not activities</li>
+                                            <li><strong>Progressive:</strong> Top levels represent major deliverables or phases</li>
+                                            <li><strong>Decomposed:</strong> Each level breaks down into smaller, more manageable components</li>
+                                            <li><strong>Comprehensive:</strong> Includes 100% of the work defined in the scope</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Key WBS Terminology</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>WBS Element:</strong> Any component at any level of the WBS</li>
+                                            <li><strong>Control Account:</strong> Management control point for cost and schedule integration</li>
+                                            <li><strong>Work Package:</strong> Lowest level WBS component that can be scheduled, cost estimated, monitored, and controlled</li>
+                                            <li><strong>Planning Package:</strong> Work breakdown component below the control account but above work packages</li>
+                                            <li><strong>WBS Dictionary:</strong> Document that provides detailed information about each WBS component</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">WBS Development Process</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Step 1: Identify Major Deliverables</h6>
+                                            <p class="text-xs mb-1">Start with the project's major deliverables or phases:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Review the project scope statement and requirements documentation</li>
+                                                <li>Identify key deliverables, milestones, or project phases</li>
+                                                <li>Consider using standard templates from similar past projects</li>
+                                                <li>Validate with stakeholders to ensure completeness</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Step 2: Decompose Each Deliverable</h6>
+                                            <p class="text-xs mb-1">Break down each major deliverable into smaller components:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Analyze each deliverable to identify logical sub-deliverables</li>
+                                                <li>Decompose until components are manageable and can be estimated</li>
+                                                <li>Apply the "80-hour rule" or "two-week rule" for work packages</li>
+                                                <li>Ensure components are unique with no overlap</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">Step 3: Create WBS Dictionary</h6>
+                                            <p class="text-xs mb-1">Document details about each WBS component:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Code of account identifier for each component</li>
+                                                <li>Description of work to be performed</li>
+                                                <li>Responsible organization or individual</li>
+                                                <li>List of schedule milestones</li>
+                                                <li>Required resources</li>
+                                                <li>Cost estimates</li>
+                                                <li>Quality requirements</li>
+                                                <li>Acceptance criteria</li>
+                                                <li>Technical references</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Step 4: Verify Completeness</h6>
+                                            <p class="text-xs mb-1">Ensure the WBS covers all project scope:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Confirm 100% rule - sum of work at each level equals 100% of work in parent element</li>
+                                                <li>Review with subject matter experts for completeness</li>
+                                                <li>Check alignment with scope statement and requirements</li>
+                                                <li>Ensure all deliverables have a place in the WBS</li>
+                                                <li>Validate with key stakeholders</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">WBS Example: Dell Software Implementation Project</h6>
+                            
+                            <div class="mb-4">
+                                <h6 class="text-xs font-medium mb-2">WBS Visual Representation</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg overflow-x-auto">
+                                    <div class="min-w-[800px]">
+                                        <!-- WBS Tree Structure -->
+                                        <div class="flex flex-col items-center">
+                                            <!-- Level 1 -->
+                                            <div class="w-60 p-2 bg-blue-100 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 rounded-lg mb-4 text-center">
+                                                <p class="text-xs font-medium m-0">CRM System Implementation</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.0</p>
+                                            </div>
+                                            
+                                            <!-- Connecting lines -->
+                                            <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                            <div class="w-[700px] h-px bg-gray-400 dark:bg-gray-600"></div>
+                                            <div class="flex justify-between w-[700px]">
+                                                <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                            </div>
+                                            
+                                            <!-- Level 2 -->
+                                            <div class="flex justify-between w-[700px]">
+                                                <div class="w-32 p-2 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-lg text-center">
+                                                    <p class="text-xs font-medium m-0">Project Management</p>
+                                                    <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.1</p>
+                                                </div>
+                                                <div class="w-32 p-2 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-lg text-center">
+                                                    <p class="text-xs font-medium m-0">Requirements</p>
+                                                    <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.2</p>
+                                                </div>
+                                                <div class="w-32 p-2 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-lg text-center">
+                                                    <p class="text-xs font-medium m-0">System Configuration</p>
+                                                    <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.3</p>
+                                                </div>
+                                                <div class="w-32 p-2 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-lg text-center">
+                                                    <p class="text-xs font-medium m-0">Testing</p>
+                                                    <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.4</p>
+                                                </div>
+                                                <div class="w-32 p-2 bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 rounded-lg text-center">
+                                                    <p class="text-xs font-medium m-0">Deployment</p>
+                                                    <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.5</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Connect lines to level 3 -->
+                                            <div class="flex justify-between w-[700px]">
+                                                <div class="mx-auto w-32 flex flex-col items-center">
+                                                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="w-28 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="flex justify-between w-28">
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="mx-auto w-32 flex flex-col items-center">
+                                                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="w-28 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="flex justify-between w-28">
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="mx-auto w-32 flex flex-col items-center">
+                                                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="w-28 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="flex justify-between w-28">
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="mx-auto w-32 flex flex-col items-center">
+                                                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="w-28 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="flex justify-between w-28">
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="mx-auto w-32 flex flex-col items-center">
+                                                    <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="w-28 h-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    <div class="flex justify-between w-28">
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                        <div class="h-4 w-px bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Level 3 for Project Management -->
+                                            <div class="flex w-full justify-between mb-4">
+                                                <div class="ml-[11px] flex justify-between w-28">
+                                                    <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">Planning</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.1.1</p>
+                                                    </div>
+                                                    <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">Control</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.1.2</p>
+                                                    </div>
+                                                    <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">Closure</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.1.3</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Level 3 for Requirements -->
+                                                <div class="ml-[10px] flex justify-between w-28">
+                                                    <div class="w-12 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">Gathering</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.2.1</p>
+                                                    </div>
+                                                    <div class="w-12 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">Analysis</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.2.2</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Level 3 for System Configuration -->
+                                                <div class="ml-[8px] flex justify-between w-28">
+                                                    <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">Setup</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.3.1</p>
+                                                    </div>
+                                                    <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">Dev</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.3.2</p>
+                                                    </div>
+                                                    <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">Data</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.3.3</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Level 3 for Testing -->
+                                                <div class="ml-[10px] flex justify-between w-28">
+                                                    <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">Plan</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.4.1</p>
+                                                    </div>
+                                                    <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">Execute</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.4.2</p>
+                                                    </div>
+                                                    <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">UAT</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.4.3</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Level 3 for Deployment -->
+                                                <div class="mr-[11px] flex justify-between w-28">
+                                                    <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">Plan</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.5.1</p>
+                                                    </div>
+                                                    <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">Training</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.5.2</p>
+                                                    </div>
+                                                    <div class="w-8 p-1 bg-purple-100 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 rounded text-center">
+                                                        <p class="text-xs font-medium m-0">Go-Live</p>
+                                                        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">1.5.3</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">WBS Dictionary Example (Partial)</h6>
+                                    <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                                        <h6 class="text-xs font-medium">WBS Element: 1.3.2 – System Configuration - Development</h6>
+                                        <div class="text-xs">
+                                            <p class="mb-1"><strong>Description:</strong> Customization and development of CRM system components to meet business requirements. Includes workflow configurations, custom fields, user interface modifications, and report development.</p>
+                                            
+                                            <p class="mb-1"><strong>Deliverables:</strong></p>
+                                            <ul class="pl-4 mb-1">
+                                                <li>Configured sales process workflows</li>
+                                                <li>Custom field configurations</li>
+                                                <li>Custom reporting dashboards</li>
+                                                <li>Integration components with existing systems</li>
+                                            </ul>
+                                            
+                                            <p class="mb-1"><strong>Acceptance Criteria:</strong></p>
+                                            <ul class="pl-4 mb-1">
+                                                <li>All configurations documented and tested in development environment</li>
+                                                <li>Configuration aligns with approved requirements</li>
+                                                <li>Technical review completed and approved</li>
+                                            </ul>
+                                            
+                                            <p class="mb-1"><strong>Assigned To:</strong> Development Team</p>
+                                            <p class="mb-1"><strong>Estimated Duration:</strong> 6 weeks</p>
+                                            <p class="mb-1"><strong>Estimated Effort:</strong> 480 hours</p>
+                                            <p class="mb-0"><strong>Dependencies:</strong> Requirements Analysis (1.2.2), System Setup (1.3.1)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">WBS Best Practices at Dell</h6>
+                                    <ul class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg pl-5 text-xs mb-0">
+                                        <li><strong>Standardized Coding System:</strong> Dell uses a consistent WBS numbering system across projects for easy reference and integration</li>
+                                        <li><strong>Template Library:</strong> Maintains standard WBS templates for common project types (product development, IT implementation, etc.)</li>
+                                        <li><strong>Visual Tools:</strong> Utilizes Microsoft Project, Smartsheet, and Jira for WBS development and management</li>
+                                        <li><strong>Collaborative Development:</strong> Involves cross-functional teams in WBS creation to ensure all perspectives are considered</li>
+                                        <li><strong>Appropriate Detail Level:</strong> Right-sizes WBS detail based on project complexity and duration</li>
+                                        <li><strong>Integration with Other Tools:</strong> Links WBS components to scheduling, resource management, and cost tracking systems</li>
+                                        <li><strong>Regular Reviews:</strong> Conducts formal WBS reviews at key project milestones to keep the WBS aligned with evolving requirements</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Scope Validation and Control</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">5. Validate Scope & 6. Control Scope</h5>
+                        <p class="text-sm mb-3">Once the project scope is defined and broken down into manageable components, the final two scope management processes focus on ensuring the work is completed correctly (validation) and managed effectively (control). These processes are critical for maintaining the integrity of the project scope throughout execution.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Validate Scope</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Process Description</h6>
+                                        <p class="text-xs mb-1">Scope validation is the process of formalizing acceptance of the completed project deliverables. It involves reviewing deliverables with the customer or sponsor to ensure they are completed satisfactorily and obtaining formal acceptance.</p>
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Key Activities</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Inspect deliverables to verify they meet requirements and acceptance criteria</li>
+                                            <li>Review work results with stakeholders</li>
+                                            <li>Document formal acceptance or rejection of deliverables</li>
+                                            <li>Update project documents with validation results</li>
+                                            <li>Process change requests for rejected deliverables</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Validation Techniques</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Inspections:</strong> Formal reviews of deliverables against requirements</li>
+                                            <li><strong>Demonstrations:</strong> Showing functionality or features to stakeholders</li>
+                                            <li><strong>User acceptance testing:</strong> Having end users test deliverables</li>
+                                            <li><strong>Sign-off meetings:</strong> Formal meetings to review and accept deliverables</li>
+                                            <li><strong>Phased acceptance:</strong> Incremental validation at key milestones</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Control Scope</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Process Description</h6>
+                                        <p class="text-xs mb-1">Scope control is the process of monitoring the status of the project and product scope and managing changes to the scope baseline. It ensures that all requested changes and recommended corrective or preventive actions are processed through integrated change control.</p>
+                                        <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mt-2 mb-1">Key Activities</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Monitor project status against scope baseline</li>
+                                            <li>Manage changes to the project scope</li>
+                                            <li>Assess impact of scope changes on time, cost, and quality</li>
+                                            <li>Update scope documents when changes are approved</li>
+                                            <li>Implement corrective and preventive actions as needed</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Techniques for Scope Control</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Variance analysis:</strong> Comparing actual work to the scope baseline</li>
+                                            <li><strong>Change control board:</strong> Formal review and approval of scope changes</li>
+                                            <li><strong>Configuration management:</strong> Tracking and controlling project assets</li>
+                                            <li><strong>Performance measurement:</strong> Using earned value or other metrics</li>
+                                            <li><strong>Regular scope reviews:</strong> Periodic checks for unauthorized changes</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Managing Scope Changes</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Change Management Process</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Request:</strong> Document the proposed change</li>
+                                        <li><strong>Assess:</strong> Analyze impact on scope, schedule, cost</li>
+                                        <li><strong>Decide:</strong> Approve, reject, or defer change</li>
+                                        <li><strong>Implement:</strong> Update plans and execute change</li>
+                                        <li><strong>Verify:</strong> Confirm change is properly implemented</li>
+                                        <li><strong>Close:</strong> Document the completed change</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Preventing Scope Creep</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Develop clear, detailed requirements upfront</li>
+                                        <li>Create explicit in/out of scope lists</li>
+                                        <li>Establish and enforce a formal change control process</li>
+                                        <li>Educate stakeholders about change impacts</li>
+                                        <li>Document all change decisions</li>
+                                        <li>Regularly review project scope with the team</li>
+                                        <li>Create a "parking lot" for future feature requests</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Types of Scope Changes</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Addition:</strong> New features or requirements</li>
+                                        <li><strong>Deletion:</strong> Removing planned deliverables</li>
+                                        <li><strong>Modification:</strong> Changing existing requirements</li>
+                                        <li><strong>Clarification:</strong> Resolving ambiguity in requirements</li>
+                                        <li><strong>Correction:</strong> Fixing errors in scope definition</li>
+                                        <li><strong>External:</strong> Changes due to external factors</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dell's Change Control Process</h6>
+                                <p class="text-xs mb-2">Dell's approach to scope change control incorporates these key elements:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Process Structure</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Tiered approval levels</strong> based on impact magnitude (Project Manager, Steering Committee, Executive Sponsor)</li>
+                                            <li><strong>Change Control Board (CCB)</strong> for cross-functional review of significant changes</li>
+                                            <li><strong>Standardized change request forms</strong> that capture all necessary information</li>
+                                            <li><strong>Digital workflow system</strong> for tracking change requests from submission to closure</li>
+                                            <li><strong>Regular change review meetings</strong> as part of project governance</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Assessment Criteria</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Business value</strong> - benefits vs. costs of the change</li>
+                                            <li><strong>Schedule impact</strong> - effect on critical path and milestone dates</li>
+                                            <li><strong>Resource requirements</strong> - additional people, materials, or equipment needed</li>
+                                            <li><strong>Ripple effects</strong> - impact on other project components or systems</li>
+                                            <li><strong>Risk profile changes</strong> - new risks introduced or existing risks modified</li>
+                                            <li><strong>Strategic alignment</strong> - consistency with project and organizational goals</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Dell Case Study: Server Product Development Scope Management</h5>
+                        <p class="text-sm mb-3">This case study examines how Dell applied effective scope management processes during the development of a new enterprise server product line, highlighting challenges faced and strategies employed to maintain scope integrity.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Project Context</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Dell's Enterprise Solutions Group was tasked with developing a new line of high-performance, energy-efficient servers targeting the growing cloud computing market. The project involved:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li>Hardware engineering for new server architecture</li>
+                                        <li>Integration of next-generation processors and components</li>
+                                        <li>Embedded systems software development</li>
+                                        <li>Advanced cooling system design</li>
+                                        <li>Manufacturing process development</li>
+                                        <li>Regulatory certification and compliance</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Project Constraints:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>12-month development timeline to align with competitor releases</li>
+                                        <li>Fixed budget established by annual R&D allocation</li>
+                                        <li>Performance targets needed to outpace competing products</li>
+                                        <li>Supply chain limitations for new component technologies</li>
+                                        <li>Need to utilize existing manufacturing facilities</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Scope Management Approach</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">1. Scope Planning</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Created detailed scope management plan outlining processes, tools, and roles</li>
+                                            <li>Established multi-level change approval thresholds based on impact</li>
+                                            <li>Defined standard documentation for hardware, software, and manufacturing scope</li>
+                                            <li>Configured Dell's product lifecycle management system to track scope components</li>
+                                            <li>Established requirements prioritization methodology (must-have, should-have, could-have)</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">2. Requirements Collection</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Conducted workshops with key customers to gather performance requirements</li>
+                                            <li>Analyzed competitor products to establish benchmark targets</li>
+                                            <li>Consulted with manufacturing teams on production constraints</li>
+                                            <li>Worked with procurement to understand component availability</li>
+                                            <li>Created detailed requirements document with verification methods for each requirement</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">3. Scope Definition</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Developed comprehensive scope statement with technical specifications</li>
+                                            <li>Created clear "in/out of scope" lists to prevent misunderstandings</li>
+                                            <li>Established measurable acceptance criteria for all key deliverables</li>
+                                            <li>Documented assumptions about technology availability and performance</li>
+                                            <li>Identified explicit phase gates for scope verification</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Scope Management Implementation</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">4. WBS Development</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Created hierarchical WBS organized by major system components</li>
+                                            <li>Used Dell's standard product development WBS template as starting point</li>
+                                            <li>Decomposed work to level 5 for technical components, level 3 for management</li>
+                                            <li>Developed detailed WBS dictionary for engineering components</li>
+                                            <li>Integrated WBS with project schedule and resource assignments</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">5. Scope Validation</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Implemented formal design reviews at key milestones</li>
+                                            <li>Created verification test plans for each technical requirement</li>
+                                            <li>Established stage-gate review process with formal acceptance criteria</li>
+                                            <li>Involved key stakeholders in validation activities</li>
+                                            <li>Documented verification results in product lifecycle management system</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">6. Scope Control</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Established weekly change control board meetings</li>
+                                            <li>Implemented digital change request workflow and tracking system</li>
+                                            <li>Required impact assessment for all proposed changes</li>
+                                            <li>Created change request parking lot for post-release consideration</li>
+                                            <li>Conducted regular scope variance analysis against baseline</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Challenges & Solutions</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Challenge 1: Late-Breaking Technology</h6>
+                                        <p class="text-xs mb-1">Six months into development, a new processor technology became available with significant performance advantages.</p>
+                                        <p class="text-xs font-medium mb-0.5">Solution:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Used change control process to formally evaluate impact</li>
+                                            <li>Created decision matrix comparing benefits vs. schedule/cost impacts</li>
+                                            <li>Approved change with offsetting scope reductions in less critical features</li>
+                                            <li>Implemented parallel workstreams to minimize schedule impact</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Challenge 2: Feature Creep</h6>
+                                        <p class="text-xs mb-1">Marketing and sales teams continually requested additional features to match competitor announcements.</p>
+                                        <p class="text-xs font-medium mb-0.5">Solution:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Enforced rigid change control process for all requests</li>
+                                            <li>Compared requests against original requirements prioritization</li>
+                                            <li>Created "version 2" feature list for post-release planning</li>
+                                            <li>Required executive approval for any changes affecting critical path</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Challenge 3: Regulatory Requirements</h6>
+                                        <p class="text-xs mb-1">New energy efficiency regulations were announced mid-project, requiring design modifications.</p>
+                                        <p class="text-xs font-medium mb-0.5">Solution:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Treated regulatory changes as mandatory scope changes</li>
+                                            <li>Conducted immediate impact assessment on affected components</li>
+                                            <li>Reallocated resources from lower-priority features</li>
+                                            <li>Extended timeline for non-critical markets to accommodate changes</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Key Success Factors</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Clear scope baseline:</strong> Detailed scope definition created alignment</li>
+                                    <li class="mb-1"><strong>Rigorous change control:</strong> Formal process prevented unmanaged scope expansion</li>
+                                    <li class="mb-1"><strong>Stakeholder engagement:</strong> Regular involvement in scope discussions built understanding</li>
+                                    <li class="mb-1"><strong>Requirements prioritization:</strong> MoSCoW method helped decision-making when changes were needed</li>
+                                    <li class="mb-0"><strong>Digital tools:</strong> PLM system and change tracking enabled effective management of complex scope</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Business Impact</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>On-time release:</strong> Product launched within 2 weeks of original target despite major scope changes</li>
+                                    <li class="mb-1"><strong>Budget management:</strong> Completed within 8% of original budget despite technology upgrades</li>
+                                    <li class="mb-1"><strong>Performance targets:</strong> Met or exceeded all critical performance specifications</li>
+                                    <li class="mb-1"><strong>Market reception:</strong> Product received industry awards for innovation and efficiency</li>
+                                    <li class="mb-0"><strong>Financial performance:</strong> Exceeded first-year sales targets by 22%</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Lessons Learned</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Early stakeholder alignment</strong> on scope priorities reduced conflicts later</li>
+                                    <li class="mb-1"><strong>Change impact visualization</strong> helped decision-makers understand tradeoffs</li>
+                                    <li class="mb-1"><strong>Buffer planning</strong> for critical components provided flexibility</li>
+                                    <li class="mb-1"><strong>Formal change process</strong> discipline was essential despite pressure to bypass</li>
+                                    <li class="mb-0"><strong>Scope management training</strong> for non-project team stakeholders improved collaboration</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">From Theory to Practice: Scope Management Impact</h6>
+                            <p class="text-xs mb-2">This case demonstrates how effective scope management directly contributed to project success by:</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li class="mb-1"><strong>Creating clarity and alignment</strong> among diverse stakeholders through detailed scope definition</li>
+                                <li class="mb-1"><strong>Enabling informed decision-making</strong> when changes were needed through structured assessment processes</li>
+                                <li class="mb-1"><strong>Providing flexibility within constraints</strong> by establishing clear priorities and change thresholds</li>
+                                <li class="mb-1"><strong>Maintaining focus on critical requirements</strong> despite pressure to expand features</li>
+                                <li class="mb-0"><strong>Balancing innovation with predictability</strong> through systematic evaluation of new opportunities</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Scope Management for Different Project Types</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Adapting Scope Management Approaches</h5>
+                        <p class="text-sm mb-3">Different types of projects require tailored approaches to scope management. Understanding the characteristics of various project types helps you adapt scope management processes appropriately while maintaining core principles.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-code-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Agile/Software Projects</h6>
+                                </div>
+                                <div class="mb-3">
+                                    <h6 class="text-xs font-medium mb-1">Key Characteristics</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Evolving requirements and priorities</li>
+                                        <li>Iterative development cycles</li>
+                                        <li>Continuous stakeholder feedback</li>
+                                        <li>Emphasis on working software over documentation</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Scope Management Adaptations</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Product backlog</strong> instead of fixed scope statement</li>
+                                        <li><strong>User stories</strong> in place of traditional requirements</li>
+                                        <li><strong>Prioritization</strong> through backlog grooming</li>
+                                        <li><strong>Sprint scope</strong> fixed for iteration, product scope flexible</li>
+                                        <li><strong>Continuous validation</strong> through sprint reviews</li>
+                                        <li><strong>Change integrated</strong> into process rather than exceptional</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-computer-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Hardware Development</h6>
+                                </div>
+                                <div class="mb-3">
+                                    <h6 class="text-xs font-medium mb-1">Key Characteristics</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Physical constraints and specifications</li>
+                                        <li>High change implementation costs</li>
+                                        <li>Manufacturing and supply chain dependencies</li>
+                                        <li>Regulatory compliance requirements</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Scope Management Adaptations</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Detailed specifications</strong> with engineering tolerances</li>
+                                        <li><strong>Stricter change control</strong> due to higher change costs</li>
+                                        <li><strong>Phased freezes</strong> for different design elements</li>
+                                        <li><strong>Prototype validation</strong> at multiple development stages</li>
+                                        <li><strong>Formal verification</strong> against requirements</li>
+                                        <li><strong>Compliance tracking</strong> as part of scope management</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-building-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Business Transformation</h6>
+                                </div>
+                                <div class="mb-3">
+                                    <h6 class="text-xs font-medium mb-1">Key Characteristics</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Large, complex initiatives</li>
+                                        <li>Multiple workstreams and dependencies</li>
+                                        <li>Organizational change components</li>
+                                        <li>High stakeholder complexity</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Scope Management Adaptations</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Multi-level scope definition</strong> (program/project/workstream)</li>
+                                        <li><strong>Phased approach</strong> with progressive scope elaboration</li>
+                                        <li><strong>Benefits-driven scope</strong> focused on outcomes</li>
+                                        <li><strong>Governance framework</strong> with formal decision rights</li>
+                                        <li><strong>Change impact analysis</strong> across multiple dimensions</li>
+                                        <li><strong>Stakeholder alignment processes</strong> for scope decisions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Scope Management Best Practices by Project Type</h6>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Project Type</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Requirements Collection</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">WBS Approach</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Change Control</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Validation Approach</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Agile Software</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                User stories with acceptance criteria; continuous refinement; prioritized backlog
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Feature-based with epics, features, and stories; may use story mapping techniques
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Backlog grooming; sprint-level scope control; adaptive planning
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Continuous through sprint demos; acceptance testing; definition of done
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Hardware Development</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Detailed technical specifications; engineering requirements; compliance standards
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Component-based; systems engineering approach; includes verification elements
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Formal CCB process; design freeze milestones; engineering change orders
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Staged reviews (PDR, CDR); prototyping; testing against specifications
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Business Transformation</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Business case; stakeholder workshops; current/future state analysis; business requirements
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Workstream-based; alignment with benefits realization; includes organizational change elements
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Governance committees; impact analysis across workstreams; strategic assessment
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Milestone reviews; KPI measurement; business outcome validation; stakeholder acceptance
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Infrastructure/IT</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Technical requirements; performance specifications; service level agreements
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                System-based; includes integration elements; deployment and transition components
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Change advisory board; configuration management; impact assessment
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Performance testing; UAT; staged deployments; operational readiness review
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Services/Solutions</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Statement of work; customer requirements; service specifications
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Deliverable-based; includes customer touchpoints; often tied to payment milestones
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Formal change requests; customer approval process; SOW amendments
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Deliverable acceptance; customer sign-off; service transition; knowledge transfer
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Dell's Hybrid Approach for Complex Products</h6>
+                                <p class="text-xs mb-2">For projects that include both hardware and software elements (like integrated server solutions), Dell uses a hybrid scope management approach:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Framework Components</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Staged hardware scope</strong> with early definition and progressive freezes</li>
+                                            <li><strong>Agile software scope</strong> with more flexibility for adaptation</li>
+                                            <li><strong>Integration points</strong> clearly defined in scope baseline</li>
+                                            <li><strong>Coordinated validation</strong> across hardware and software elements</li>
+                                            <li><strong>Multi-track WBS</strong> with different detail levels for different components</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Change Management Approach</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Tiered change control</strong> based on impact to integration points</li>
+                                            <li><strong>Two-speed approach</strong> with stricter control for hardware, more flexibility for software</li>
+                                            <li><strong>Cross-functional assessment</strong> of changes affecting multiple components</li>
+                                            <li><strong>Change windows</strong> aligned with development milestones</li>
+                                            <li><strong>Impact visualization</strong> to show ripple effects across the system</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="text-xs italic mt-2 mb-0">This approach allows Dell to maintain predictability for physical components while enabling adaptability for software elements, creating an optimal balance for integrated product development.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.pmi.org/pmbok-guide-standards/foundational/pmbok" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-book-open-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">PMBOK® Guide: Scope Management</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Project Management Institute • Scope Management Knowledge Area</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.delltechnologies.com/en-us/services/consulting-services/project-management.htm" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-dell-fill"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Dell Project Management</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Dell Technologies • Project Management Methodologies</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.wbstools.com/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-tools-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">WBS Tools</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">WBS Tools • Work Breakdown Structure Resources</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Scope Statement Development Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll practice creating a project scope statement for a new Dell initiative. This will help you apply the scope definition concepts learned in this module to a realistic scenario.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Project Scenario: Customer Experience Platform Enhancement</h6>
+                            <p class="text-xs mb-2">Dell is planning to enhance its online customer experience platform with new capabilities for product configuration, support, and personalization. The project aims to increase customer satisfaction, improve conversion rates, and reduce support calls.</p>
+                            
+                            <p class="text-xs font-medium mb-1">High-level requirements include:</p>
+                            <ul class="pl-4 text-xs mb-2">
+                                <li>Interactive 3D product configurator for visualizing custom configurations</li>
+                                <li>Personalized product recommendations based on customer profile and past purchases</li>
+                                <li>Enhanced self-service support with guided troubleshooting capabilities</li>
+                                <li>Virtual reality product demonstrations for enterprise solutions</li>
+                                <li>Social media integration for reviews and recommendations</li>
+                                <li>Mobile app enhancements for consistent cross-platform experience</li>
+                                <li>Analytics dashboard for customer behavior and preferences</li>
+                            </ul>
+                            
+                            <p class="text-xs font-medium mb-1">Project constraints:</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>Budget: $1.2 million</li>
+                                <li>Timeline: 8 months to initial launch, 12 months for full implementation</li>
+                                <li>Must integrate with existing CRM and ERP systems</li>
+                                <li>Must comply with global privacy regulations</li>
+                                <li>Current website platform must be maintained during development</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Project Scope Description</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Write a concise description of the project scope, including the overall purpose and key deliverables..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">In Scope / Out of Scope</label>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="List items that are explicitly IN scope..."></textarea>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="List items that are explicitly OUT of scope..."></textarea>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Acceptance Criteria</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Define the specific criteria that must be met for project deliverables to be accepted..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Constraints and Assumptions</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="List key constraints and assumptions that impact the project scope..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Scope Statement</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-project-fundamentals">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Project Management Fundamentals</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-schedule-management">
+                        <span>Next: Schedule Management</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-scope-management');
+        });
+    </script>
+</body>
+</html>

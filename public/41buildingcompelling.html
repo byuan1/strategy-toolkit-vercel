@@ -1,0 +1,1619 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="ri-arrow-left-line"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      
+            <!-- Executive Summaries & Presentations Topic -->
+            <section id="topic-executive-summaries" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-file-chart-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Building Compelling Executive Summaries &amp; Presentations</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Effective Communication</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the critical components and structure of effective executive summaries</li>
+                            <li>Learn to craft presentations that communicate complex information clearly and persuasively</li>
+                            <li>Master data visualization techniques that enhance understanding and drive decision-making</li>
+                            <li>Develop audience-centered communication skills tailored to executive stakeholders</li>
+                            <li>Apply Dell's best practices for professional business presentations</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Executive Communication</h4>
+                    <p>Executive communication is a specialized form of business communication designed to convey critical information to senior leaders and decision-makers. Whether in written executive summaries or formal presentations, this type of communication must be concise, focused on business impact, and structured to facilitate quick understanding and decision-making. Mastering executive communication is essential for professional advancement and for driving organizational initiatives forward.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">The Executive Mindset</h5>
+                        <p class="mb-3">To communicate effectively with executives, it's essential to understand their perspective and priorities:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Time Constraints</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Limited bandwidth:</strong> Executives manage numerous priorities simultaneously</li>
+                                    <li><strong>Decision focus:</strong> Need clear options and recommendations</li>
+                                    <li><strong>Value orientation:</strong> Want to quickly understand business impact</li>
+                                    <li><strong>Interrupt-driven:</strong> Often have fragmented attention</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Strategic View</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Big picture focus:</strong> Concerned with organizational implications</li>
+                                    <li><strong>Future-oriented:</strong> Interested in long-term impact</li>
+                                    <li><strong>Cross-functional lens:</strong> Evaluate how initiatives affect multiple areas</li>
+                                    <li><strong>External awareness:</strong> Consider market, competitive, and customer context</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Decision Drivers</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Business outcomes:</strong> Revenue, profit, market share impact</li>
+                                    <li><strong>Resource implications:</strong> Cost, time, and people requirements</li>
+                                    <li><strong>Risk assessment:</strong> Potential downsides and mitigation strategies</li>
+                                    <li><strong>Strategic alignment:</strong> Fit with organizational priorities</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Executive Communication at Dell</h6>
+                            <p class="mb-2">At Dell Technologies, executive communication has evolved to reflect the company's data-driven culture and customer-centric approach:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Focus on Business Impact</p>
+                                    <p class="text-sm mb-0">Dell's executive communication emphasizes tangible business metrics and customer outcomes. All recommendations must connect to Dell's strategic priorities and demonstrate measurable value, whether through revenue growth, cost savings, customer experience improvements, or competitive differentiation.</p>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-green-700 dark:text-green-400 mb-1">Data-Informed Decisions</p>
+                                    <p class="text-sm mb-0">Dell's leadership expects communications to be backed by relevant data and insights. Executive summaries and presentations must include supporting evidence, clear metrics, and appropriate visualizations that facilitate rapid comprehension and informed decision-making.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Executive Communication vs. General Business Communication</h5>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-800">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Attribute</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">General Business Communication</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Executive Communication</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm">
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Length &amp; Detail</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Can be comprehensive with full context and supporting details</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Concise, focused on key points with details available on request</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Structure</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">May follow standard formats with gradual information development</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Front-loaded with recommendations and conclusions first</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Content Focus</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">May include operational details, processes, and implementation</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Emphasizes business impact, strategic implications, and decisions needed</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Data Presentation</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Can include raw data and detailed analysis</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Synthesized insights with focused visualizations</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Language</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">May include technical terminology and detailed explanations</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Business-focused language with minimal jargon</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Call to Action</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">May focus on next steps and implementation tasks</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Clear decision requests and strategic implications</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Supporting Materials</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Often integrated into main document or presentation</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Provided as appendices or available upon request</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Executive Summary Structure and Best Practices</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Crafting Powerful Executive Summaries</h5>
+                        <p class="text-sm mb-3">An executive summary is a concise document that presents the most important information from a larger report, proposal, or analysis in a format that busy executives can quickly digest. It should enable decision-makers to understand the key points without needing to read the entire document.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Core Components of an Executive Summary</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-4">
+                                        <div class="flex flex-col md:flex-row gap-4">
+                                            <div class="flex-1 p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium text-xs mb-2">1. Purpose &amp; Context</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Clearly state why this document exists</li>
+                                                    <li>Provide minimal necessary background</li>
+                                                    <li>Establish relevance to current business priorities</li>
+                                                    <li>Identify intended outcome or decision needed</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="flex-1 p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium text-xs mb-2">2. Key Findings or Insights</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Highlight 3-5 most important discoveries</li>
+                                                    <li>Focus on business impact and implications</li>
+                                                    <li>Present data-backed insights, not just data</li>
+                                                    <li>Connect findings to organizational objectives</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex flex-col md:flex-row gap-4 mt-4">
+                                            <div class="flex-1 p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium text-xs mb-2">3. Recommendations</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Present clear, actionable recommendations</li>
+                                                    <li>Provide rationale for each recommendation</li>
+                                                    <li>Consider alternatives evaluated and rejected</li>
+                                                    <li>Include resource implications and constraints</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="flex-1 p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium text-xs mb-2">4. Business Impact</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Quantify expected outcomes (revenue, cost, etc.)</li>
+                                                    <li>Address risks and mitigation strategies</li>
+                                                    <li>Include timeline for implementation and results</li>
+                                                    <li>Highlight competitive or market implications</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex flex-col md:flex-row gap-4 mt-4">
+                                            <div class="flex-1 p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium text-xs mb-2">5. Next Steps</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Specify immediate actions required</li>
+                                                    <li>Clarify decisions needed from executives</li>
+                                                    <li>Outline implementation approach (if applicable)</li>
+                                                    <li>Include key milestones for tracking progress</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="flex-1 p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium text-xs mb-2">6. Supporting Evidence</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Include only the most compelling data points</li>
+                                                    <li>Use visuals to communicate complex information</li>
+                                                    <li>Reference source documents for details</li>
+                                                    <li>Acknowledge assumptions and limitations</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Executive Summary Format and Flow</h6>
+                            
+                            <div class="mb-4">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Sample Executive Summary Structure</h6>
+                                <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                                    <div class="mb-4">
+                                        <h6 class="font-bold text-sm mb-1">EXECUTIVE SUMMARY: [Project/Initiative Name]</h6>
+                                        <p class="italic text-xs text-gray-500 dark:text-gray-400 mb-2">Prepared by: [Name], [Date]</p>
+                                        <hr class="border-gray-200 dark:border-gray-700 mb-3">
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <h6 class="font-medium text-xs mb-1">PURPOSE</h6>
+                                        <p class="text-xs mb-0">This summary presents findings and recommendations from [project/analysis] to [inform decision/drive action]. We are seeking [approval/input/resources] to proceed with recommendations.</p>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <h6 class="font-medium text-xs mb-1">SITUATION</h6>
+                                        <p class="text-xs mb-0">[1-2 sentences on current business context and why this matters now]</p>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <h6 class="font-medium text-xs mb-1">KEY FINDINGS</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Finding 1: [Concise statement with supporting data point]</li>
+                                            <li>Finding 2: [Concise statement with supporting data point]</li>
+                                            <li>Finding 3: [Concise statement with supporting data point]</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <h6 class="font-medium text-xs mb-1">RECOMMENDATIONS</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Primary recommendation:</strong> [Clear action statement]</li>
+                                            <li><strong>Supporting actions:</strong> [Brief bullet points on implementation]</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <h6 class="font-medium text-xs mb-1">BUSINESS IMPACT</h6>
+                                        <div class="grid grid-cols-2 gap-2 text-xs">
+                                            <div>
+                                                <p class="mb-1"><strong>Benefits:</strong></p>
+                                                <ul class="pl-4 mb-0">
+                                                    <li>$X million revenue opportunity</li>
+                                                    <li>Y% improvement in [key metric]</li>
+                                                    <li>Competitive advantage in [area]</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <p class="mb-1"><strong>Risks/Considerations:</strong></p>
+                                                <ul class="pl-4 mb-0">
+                                                    <li>Implementation challenge: [with mitigation]</li>
+                                                    <li>Resource requirement: [X FTEs, $Y budget]</li>
+                                                    <li>Timeline constraint: [key milestone date]</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="font-medium text-xs mb-1">NEXT STEPS &amp; DECISION NEEDED</h6>
+                                        <ol class="pl-4 text-xs mb-0">
+                                            <li>Approval required by [date] to [specific action]</li>
+                                            <li>Resource allocation for [specific need]</li>
+                                            <li>Key implementation dates: [brief timeline]</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Content Best Practices</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1"><strong>Be concise and focused:</strong> Limit to 1-2 pages for most business contexts</li>
+                                        <li class="mb-1"><strong>Front-load key information:</strong> Most important points should appear first</li>
+                                        <li class="mb-1"><strong>Use meaningful headings:</strong> Make the document scannable</li>
+                                        <li class="mb-1"><strong>Quantify when possible:</strong> Use specific metrics and data points</li>
+                                        <li class="mb-1"><strong>Focus on "so what":</strong> Emphasize implications, not just facts</li>
+                                        <li class="mb-0"><strong>Be action-oriented:</strong> Clear recommendations and decision requests</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Style and Format Best Practices</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1"><strong>Use bullet points:</strong> Break up text for easier scanning</li>
+                                        <li class="mb-1"><strong>Apply consistent formatting:</strong> Maintain visual hierarchy</li>
+                                        <li class="mb-1"><strong>Incorporate visual elements:</strong> Charts, tables, or diagrams for key data</li>
+                                        <li class="mb-1"><strong>Write in active voice:</strong> "We recommend..." vs. "It is recommended..."</li>
+                                        <li class="mb-1"><strong>Avoid technical jargon:</strong> Use business language accessible to all executives</li>
+                                        <li class="mb-0"><strong>Proofread carefully:</strong> Errors undermine credibility with executives</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Dell's Executive Summary Approach</h6>
+                                <p class="text-xs mb-2">At Dell Technologies, executive summaries follow these specific guidelines:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Action-first format:</strong> Begin with specific decision request or recommended action</li>
+                                    <li><strong>Business case focus:</strong> Clear articulation of financial impact, customer value, and competitive implications</li>
+                                    <li><strong>Quantified outcomes:</strong> All recommendations include projected business metrics</li>
+                                    <li><strong>Consistent structure:</strong> Standardized template for cross-functional alignment</li>
+                                    <li><strong>Visual enhancement:</strong> Strategic use of charts and callout boxes for key data points</li>
+                                    <li><strong>Digital optimization:</strong> Designed to be effective when viewed on tablets and mobile devices</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Effective Executive Presentations</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Designing Presentations for Decision-Makers</h5>
+                        <p class="text-sm mb-3">Executive presentations require a different approach than general business presentations. They must be carefully designed to respect executives' limited time, address their strategic focus, and facilitate decision-making. The principles of executive summaries apply to presentations, but with additional considerations for visual communication and delivery.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Presentation Structure</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <h6 class="text-xs font-medium mb-1">The Executive Presentation Framework</h6>
+                                    <p class="text-xs mb-3">Effective executive presentations follow a clear structure that respects decision-makers' time and priorities:</p>
+                                    
+                                    <div class="mb-3">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-700 dark:text-green-400 font-medium text-xs">1</div>
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400">Executive Overview (1 slide)</h6>
+                                        </div>
+                                        <ul class="pl-8 text-xs mb-0">
+                                            <li>Concise summary of the entire presentation</li>
+                                            <li>Key message and primary recommendation</li>
+                                            <li>Critical business impact points</li>
+                                            <li>Decision request clearly articulated</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-700 dark:text-green-400 font-medium text-xs">2</div>
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400">Situation &amp; Context (1-2 slides)</h6>
+                                        </div>
+                                        <ul class="pl-8 text-xs mb-0">
+                                            <li>Brief background on why this matters now</li>
+                                            <li>Current state assessment</li>
+                                            <li>Key challenges or opportunities</li>
+                                            <li>Relevant market or competitive context</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-700 dark:text-green-400 font-medium text-xs">3</div>
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400">Key Findings &amp; Insights (2-3 slides)</h6>
+                                        </div>
+                                        <ul class="pl-8 text-xs mb-0">
+                                            <li>Major discoveries from analysis</li>
+                                            <li>Data visualizations showing critical trends</li>
+                                            <li>Business implications of findings</li>
+                                            <li>Connections to strategic priorities</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-700 dark:text-green-400 font-medium text-xs">4</div>
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400">Recommendations &amp; Options (1-2 slides)</h6>
+                                        </div>
+                                        <ul class="pl-8 text-xs mb-0">
+                                            <li>Clear, actionable recommendations</li>
+                                            <li>Options considered with pros/cons</li>
+                                            <li>Rationale for preferred approach</li>
+                                            <li>Implementation considerations</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-700 dark:text-green-400 font-medium text-xs">5</div>
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400">Business Impact (1 slide)</h6>
+                                        </div>
+                                        <ul class="pl-8 text-xs mb-0">
+                                            <li>Quantified benefits and expected outcomes</li>
+                                            <li>Investment required (time, budget, resources)</li>
+                                            <li>Risks and mitigation strategies</li>
+                                            <li>Timeline for implementation and results</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-700 dark:text-green-400 font-medium text-xs">6</div>
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400">Next Steps &amp; Decision Request (1 slide)</h6>
+                                        </div>
+                                        <ul class="pl-8 text-xs mb-0">
+                                            <li>Specific decisions needed now</li>
+                                            <li>Clear action items with owners</li>
+                                            <li>Critical milestones and dates</li>
+                                            <li>Follow-up commitments</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Slide Design Best Practices</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[450px] pr-1">
+                                        <h6 class="text-xs font-medium mb-2">Principles of Effective Slide Design</h6>
+                                        
+                                        <div class="mb-4">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">1. One Message Per Slide</h6>
+                                            <div class="grid grid-cols-2 gap-3">
+                                                <div class="p-2 border border-red-200 dark:border-red-900 rounded-lg">
+                                                    <h6 class="text-xs text-red-600 dark:text-red-400 font-medium mb-1">❌ Instead of This</h6>
+                                                    <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                                                        <p class="text-[10px] font-medium mb-1">Q2 Performance Analysis</p>
+                                                        <p class="text-[10px] mb-1">• Revenue increased 5% YoY but missed target by 2%</p>
+                                                        <p class="text-[10px] mb-1">• OPEX reduced by 3.5% through efficiency initiatives</p>
+                                                        <p class="text-[10px] mb-1">• NPS scores improved in enterprise segment</p>
+                                                        <p class="text-[10px] mb-1">• Product mix shifted toward higher-margin offerings</p>
+                                                        <p class="text-[10px] mb-0">• Channel partner performance varied significantly</p>
+                                                    </div>
+                                                </div>
+                                                <div class="p-2 border border-green-200 dark:border-green-900 rounded-lg">
+                                                    <h6 class="text-xs text-green-600 dark:text-green-400 font-medium mb-1">✓ Do This</h6>
+                                                    <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                                                        <p class="text-[10px] font-medium mb-1">Q2 Revenue: Growth Continues But Gap to Target Persists</p>
+                                                        <div class="flex items-center gap-1 mb-1">
+                                                            <div class="w-[60px] h-[40px] bg-gray-200 dark:bg-gray-700 rounded-sm"></div>
+                                                            <div>
+                                                                <p class="text-[10px] font-medium mb-0">5% YoY Growth</p>
+                                                                <p class="text-[10px] text-red-500 mb-0">2% Below Target</p>
+                                                            </div>
+                                                        </div>
+                                                        <p class="text-[10px] mt-1 mb-0">Key driver: Enterprise segment underperformance (-4% vs. target)</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-4">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">2. Effective Use of Slide Real Estate</h6>
+                                            <div class="grid grid-cols-2 gap-3">
+                                                <div class="p-2 border border-red-200 dark:border-red-900 rounded-lg">
+                                                    <h6 class="text-xs text-red-600 dark:text-red-400 font-medium mb-1">❌ Instead of This</h6>
+                                                    <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg relative">
+                                                        <p class="text-[10px] font-medium mb-1">Customer Satisfaction Metrics</p>
+                                                        <div class="w-[100px] h-[60px] mx-auto bg-gray-200 dark:bg-gray-700 rounded-sm mb-1"></div>
+                                                        <p class="text-[10px] mb-1 text-center">Overall NPS trend</p>
+                                                        <p class="text-[10px] mb-0">• Small chart with limited visual impact</p>
+                                                        <p class="text-[10px] mb-0">• Wasted space around the edges</p>
+                                                        <p class="text-[10px] mb-0">• No clear focal point or hierarchy</p>
+                                                    </div>
+                                                </div>
+                                                <div class="p-2 border border-green-200 dark:border-green-900 rounded-lg">
+                                                    <h6 class="text-xs text-green-600 dark:text-green-400 font-medium mb-1">✓ Do This</h6>
+                                                    <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                                                        <p class="text-[10px] font-medium mb-1">Enterprise NPS Reached All-Time High in Q2</p>
+                                                        <div class="flex items-start gap-1 mb-1">
+                                                            <div class="flex-1 h-[70px] bg-gray-200 dark:bg-gray-700 rounded-sm"></div>
+                                                            <div class="w-[50px]">
+                                                                <p class="text-[10px] font-medium text-green-600 dark:text-green-400 mb-0">+48</p>
+                                                                <p class="text-[10px] mb-0">+12 pts YoY</p>
+                                                                <p class="text-[10px] font-medium mt-2 mb-0">Key drivers:</p>
+                                                                <p class="text-[10px] mb-0">• Support</p>
+                                                                <p class="text-[10px] mb-0">• Reliability</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-4">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">3. Visual Hierarchy and Focus</h6>
+                                            <div class="grid grid-cols-2 gap-3">
+                                                <div class="p-2 border border-red-200 dark:border-red-900 rounded-lg">
+                                                    <h6 class="text-xs text-red-600 dark:text-red-400 font-medium mb-1">❌ Instead of This</h6>
+                                                    <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                                                        <p class="text-[10px] mb-1">Competitive Analysis</p>
+                                                        <table class="w-full text-[9px] border-collapse">
+                                                            <tbody><tr>
+                                                                <th class="border p-0.5">Feature</th>
+                                                                <th class="border p-0.5">Us</th>
+                                                                <th class="border p-0.5">Comp A</th>
+                                                                <th class="border p-0.5">Comp B</th>
+                                                                <th class="border p-0.5">Comp C</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border p-0.5">Feature 1</td>
+                                                                <td class="border p-0.5">Yes</td>
+                                                                <td class="border p-0.5">Yes</td>
+                                                                <td class="border p-0.5">No</td>
+                                                                <td class="border p-0.5">Yes</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border p-0.5">Feature 2</td>
+                                                                <td class="border p-0.5">Yes</td>
+                                                                <td class="border p-0.5">No</td>
+                                                                <td class="border p-0.5">No</td>
+                                                                <td class="border p-0.5">Yes</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border p-0.5">Feature 3</td>
+                                                                <td class="border p-0.5">Yes</td>
+                                                                <td class="border p-0.5">Yes</td>
+                                                                <td class="border p-0.5">Yes</td>
+                                                                <td class="border p-0.5">No</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border p-0.5">Feature 4</td>
+                                                                <td class="border p-0.5">No</td>
+                                                                <td class="border p-0.5">No</td>
+                                                                <td class="border p-0.5">Yes</td>
+                                                                <td class="border p-0.5">No</td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                        <p class="text-[9px] mt-1 mb-0">Data with no visual hierarchy or focus</p>
+                                                    </div>
+                                                </div>
+                                                <div class="p-2 border border-green-200 dark:border-green-900 rounded-lg">
+                                                    <h6 class="text-xs text-green-600 dark:text-green-400 font-medium mb-1">✓ Do This</h6>
+                                                    <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                                                        <p class="text-[10px] font-medium mb-1">Our Premium Features Create Clear Competitive Advantage</p>
+                                                        <div class="h-[80px] bg-gray-200 dark:bg-gray-700 rounded-sm mb-1"></div>
+                                                        <p class="text-[10px] font-medium text-green-600 dark:text-green-400 mb-0">Key Insight: We lead in 3 of 4 premium features that customers value most</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">4. Meaningful Title Structure</h6>
+                                            <div class="grid grid-cols-2 gap-3">
+                                                <div class="p-2 border border-red-200 dark:border-red-900 rounded-lg">
+                                                    <h6 class="text-xs text-red-600 dark:text-red-400 font-medium mb-1">❌ Instead of This</h6>
+                                                    <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                                                        <p class="text-[10px] font-medium mb-1">Market Opportunity Analysis</p>
+                                                        <p class="text-[10px] mb-1">• Growing market for cloud solutions</p>
+                                                        <p class="text-[10px] mb-1">• 24% CAGR projected for next 3 years</p>
+                                                        <p class="text-[10px] mb-1">• Enterprise segment most profitable</p>
+                                                        <p class="text-[10px] mb-0">• Potential $350M total addressable market</p>
+                                                        <p class="text-[9px] italic mt-1 mb-0">Generic title doesn't convey a message</p>
+                                                    </div>
+                                                </div>
+                                                <div class="p-2 border border-green-200 dark:border-green-900 rounded-lg">
+                                                    <h6 class="text-xs text-green-600 dark:text-green-400 font-medium mb-1">✓ Do This</h6>
+                                                    <div class="bg-gray-50 dark:bg-gray-900 p-2 rounded-lg">
+                                                        <p class="text-[10px] font-medium mb-1">$350M Enterprise Cloud Opportunity Represents Our Highest-Margin Growth Vector</p>
+                                                        <p class="text-[10px] mb-1">• Enterprise cloud segment growing at 24% CAGR</p>
+                                                        <p class="text-[10px] mb-1">• Our current market share: only 8%</p>
+                                                        <p class="text-[10px] mb-1">• 5% share gain = $17.5M new revenue</p>
+                                                        <p class="text-[10px] mb-0">• 65% gross margin vs. 42% portfolio average</p>
+                                                        <p class="text-[9px] italic mt-1 mb-0">Informative title conveys the key message</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Executive Presentation Delivery</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Preparation Strategies</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Anticipate questions:</strong> Prepare for executive inquiries</li>
+                                        <li><strong>Know your data:</strong> Understand all figures and their sources</li>
+                                        <li><strong>Develop backup slides:</strong> Create supporting detail slides</li>
+                                        <li><strong>Practice transitions:</strong> Be prepared to jump to key points</li>
+                                        <li><strong>Rehearse with stakeholders:</strong> Preview with key advisors</li>
+                                        <li><strong>Prepare executive summary:</strong> Create a one-page takeaway</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Delivery Techniques</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Be concise:</strong> Get to the point quickly</li>
+                                        <li><strong>Start with the conclusion:</strong> Lead with key message</li>
+                                        <li><strong>Focus on business impact:</strong> Connect to strategic priorities</li>
+                                        <li><strong>Read the room:</strong> Adapt to executive engagement</li>
+                                        <li><strong>Manage time effectively:</strong> Respect time constraints</li>
+                                        <li><strong>Be confident but humble:</strong> Acknowledge limitations</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Managing Executive Interactions</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Handle interruptions:</strong> Address questions directly</li>
+                                        <li><strong>Provide concise answers:</strong> Avoid lengthy explanations</li>
+                                        <li><strong>Acknowledge concerns:</strong> Validate executive perspectives</li>
+                                        <li><strong>Stay focused:</strong> Bring discussion back to key objectives</li>
+                                        <li><strong>Capture action items:</strong> Note follow-up commitments</li>
+                                        <li><strong>Close with next steps:</strong> Clarify decisions and timeline</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Dell's Presentation Approach</h6>
+                                <p class="text-xs mb-2">At Dell Technologies, executive presentations follow these specific principles:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Design Elements</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Statement titles:</strong> Each slide title conveys the key message</li>
+                                            <li><strong>Data visualization:</strong> Consistent approach to charts and graphs</li>
+                                            <li><strong>Visual simplicity:</strong> Clean, uncluttered design with ample white space</li>
+                                            <li><strong>Consistent formatting:</strong> Standard templates with clear hierarchy</li>
+                                            <li><strong>"So what" callouts:</strong> Highlighted business implications for each data point</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Delivery Expectations</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Executive preview:</strong> Circulate key slides to executives in advance</li>
+                                            <li><strong>Pre-reading approach:</strong> Assume executives have reviewed materials</li>
+                                            <li><strong>Discussion focus:</strong> Emphasize decisions and strategic implications</li>
+                                            <li><strong>Two-minute rule:</strong> Be prepared to deliver key message in two minutes</li>
+                                            <li><strong>Follow-up discipline:</strong> Send summary note with clear next steps</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Data Visualization for Executive Communication</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Making Data Meaningful and Impactful</h5>
+                        <p class="text-sm mb-3">Effective data visualization is critical for executive communication, as it enables complex information to be quickly understood and supports better decision-making. Well-designed visualizations highlight key insights, reveal patterns and trends, and make data more memorable and persuasive.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Data Visualization Principles</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Core Principles for Executive Data Visualization</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Focus on insights, not just data:</strong> Highlight what the data means, not just what it shows</li>
+                                            <li><strong>Simplify complexity:</strong> Remove unnecessary details and visual noise</li>
+                                            <li><strong>Guide attention:</strong> Use visual hierarchy to direct focus to key points</li>
+                                            <li><strong>Create context:</strong> Show comparisons, benchmarks, or targets to add meaning</li>
+                                            <li><strong>Be honest:</strong> Represent data accurately without distortion</li>
+                                            <li><strong>Choose appropriate formats:</strong> Select the right visualization for the type of data and message</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">The Visualization Selection Process</h6>
+                                        <p class="text-xs mb-1">Follow these steps to choose the most effective visualization:</p>
+                                        <ol class="pl-4 text-xs mb-0">
+                                            <li><strong>Identify the key message:</strong> What specific insight do you want to communicate?</li>
+                                            <li><strong>Determine the relationship type:</strong> Comparison, composition, distribution, trend, or correlation?</li>
+                                            <li><strong>Consider your data structure:</strong> How many variables and data points do you have?</li>
+                                            <li><strong>Select the appropriate visualization:</strong> Choose based on the above factors</li>
+                                            <li><strong>Refine for clarity:</strong> Remove clutter and enhance key elements</li>
+                                            <li><strong>Test for comprehension:</strong> Ensure your audience will understand quickly</li>
+                                        </ol>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Common Visualization Pitfalls to Avoid</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Data overload:</strong> Including too much information in one visual</li>
+                                            <li><strong>Misleading scales:</strong> Using non-zero baselines or inconsistent scales</li>
+                                            <li><strong>Poor color choices:</strong> Using colors that don't print well or distract</li>
+                                            <li><strong>Inappropriate chart types:</strong> Using pie charts for many categories or line charts for unrelated data</li>
+                                            <li><strong>Missing context:</strong> Failing to provide benchmarks or comparisons</li>
+                                            <li><strong>Unclear labels:</strong> Using abbreviations or technical terms without explanation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Chart Selection Guide</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[450px] pr-1">
+                                        <h6 class="text-xs font-medium mb-2">When to Use Different Visualization Types</h6>
+                                        
+                                        <div class="mb-4">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">For Comparisons</h6>
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <div class="p-2 bg-purple-50 dark:bg-purple-900/10 rounded-lg">
+                                                    <h6 class="text-xs font-medium mb-1">Bar Charts</h6>
+                                                    <div class="w-full h-[50px] bg-gray-200 dark:bg-gray-700 rounded-sm mb-1"></div>
+                                                    <p class="text-[10px] mb-0"><strong>Best for:</strong> Comparing values across categories</p>
+                                                    <p class="text-[10px] mb-0"><strong>Executive use:</strong> Product performance comparison, regional results</p>
+                                                </div>
+                                                <div class="p-2 bg-purple-50 dark:bg-purple-900/10 rounded-lg">
+                                                    <h6 class="text-xs font-medium mb-1">Bullet Charts</h6>
+                                                    <div class="w-full h-[50px] bg-gray-200 dark:bg-gray-700 rounded-sm mb-1"></div>
+                                                    <p class="text-[10px] mb-0"><strong>Best for:</strong> Showing progress against targets</p>
+                                                    <p class="text-[10px] mb-0"><strong>Executive use:</strong> KPI dashboards, performance to goal</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-4">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">For Composition</h6>
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <div class="p-2 bg-purple-50 dark:bg-purple-900/10 rounded-lg">
+                                                    <h6 class="text-xs font-medium mb-1">Pie Charts</h6>
+                                                    <div class="w-full h-[50px] bg-gray-200 dark:bg-gray-700 rounded-sm mb-1"></div>
+                                                    <p class="text-[10px] mb-0"><strong>Best for:</strong> Part-to-whole relationships (max 5-7 segments)</p>
+                                                    <p class="text-[10px] mb-0"><strong>Executive use:</strong> Market share, budget allocation</p>
+                                                </div>
+                                                <div class="p-2 bg-purple-50 dark:bg-purple-900/10 rounded-lg">
+                                                    <h6 class="text-xs font-medium mb-1">Stacked Bar Charts</h6>
+                                                    <div class="w-full h-[50px] bg-gray-200 dark:bg-gray-700 rounded-sm mb-1"></div>
+                                                    <p class="text-[10px] mb-0"><strong>Best for:</strong> Showing part-to-whole across categories</p>
+                                                    <p class="text-[10px] mb-0"><strong>Executive use:</strong> Product mix by region, revenue breakdown</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-4">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">For Trends</h6>
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <div class="p-2 bg-purple-50 dark:bg-purple-900/10 rounded-lg">
+                                                    <h6 class="text-xs font-medium mb-1">Line Charts</h6>
+                                                    <div class="w-full h-[50px] bg-gray-200 dark:bg-gray-700 rounded-sm mb-1"></div>
+                                                    <p class="text-[10px] mb-0"><strong>Best for:</strong> Showing changes over time</p>
+                                                    <p class="text-[10px] mb-0"><strong>Executive use:</strong> Sales trends, growth trajectories</p>
+                                                </div>
+                                                <div class="p-2 bg-purple-50 dark:bg-purple-900/10 rounded-lg">
+                                                    <h6 class="text-xs font-medium mb-1">Spark Lines</h6>
+                                                    <div class="w-full h-[50px] bg-gray-200 dark:bg-gray-700 rounded-sm mb-1"></div>
+                                                    <p class="text-[10px] mb-0"><strong>Best for:</strong> Showing trends in small spaces</p>
+                                                    <p class="text-[10px] mb-0"><strong>Executive use:</strong> Dashboard indicators, inline trends</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-4">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">For Relationships</h6>
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <div class="p-2 bg-purple-50 dark:bg-purple-900/10 rounded-lg">
+                                                    <h6 class="text-xs font-medium mb-1">Scatter Plots</h6>
+                                                    <div class="w-full h-[50px] bg-gray-200 dark:bg-gray-700 rounded-sm mb-1"></div>
+                                                    <p class="text-[10px] mb-0"><strong>Best for:</strong> Showing correlation between variables</p>
+                                                    <p class="text-[10px] mb-0"><strong>Executive use:</strong> Price vs. demand, investment vs. return</p>
+                                                </div>
+                                                <div class="p-2 bg-purple-50 dark:bg-purple-900/10 rounded-lg">
+                                                    <h6 class="text-xs font-medium mb-1">Heat Maps</h6>
+                                                    <div class="w-full h-[50px] bg-gray-200 dark:bg-gray-700 rounded-sm mb-1"></div>
+                                                    <p class="text-[10px] mb-0"><strong>Best for:</strong> Showing patterns across two dimensions</p>
+                                                    <p class="text-[10px] mb-0"><strong>Executive use:</strong> Performance by product/region, risk analysis</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">For Executive Dashboards</h6>
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <div class="p-2 bg-purple-50 dark:bg-purple-900/10 rounded-lg">
+                                                    <h6 class="text-xs font-medium mb-1">Gauges &amp; Indicators</h6>
+                                                    <div class="w-full h-[50px] bg-gray-200 dark:bg-gray-700 rounded-sm mb-1"></div>
+                                                    <p class="text-[10px] mb-0"><strong>Best for:</strong> Showing KPI status at a glance</p>
+                                                    <p class="text-[10px] mb-0"><strong>Executive use:</strong> Metric status indicators, performance summaries</p>
+                                                </div>
+                                                <div class="p-2 bg-purple-50 dark:bg-purple-900/10 rounded-lg">
+                                                    <h6 class="text-xs font-medium mb-1">Small Multiples</h6>
+                                                    <div class="w-full h-[50px] bg-gray-200 dark:bg-gray-700 rounded-sm mb-1"></div>
+                                                    <p class="text-[10px] mb-0"><strong>Best for:</strong> Comparing many items in the same format</p>
+                                                    <p class="text-[10px] mb-0"><strong>Executive use:</strong> Cross-regional comparisons, multi-metric views</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Data Visualization Enhancement Techniques</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Focus Attention</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Highlight key data points:</strong> Use color or size to emphasize important elements</li>
+                                        <li><strong>Annotate insights:</strong> Add callouts to explain significance</li>
+                                        <li><strong>Use visual hierarchy:</strong> Make important information visually prominent</li>
+                                        <li><strong>Reduce noise:</strong> Remove gridlines, unnecessary labels, and decorative elements</li>
+                                        <li><strong>Direct the eye:</strong> Use arrows, boxes, or color to guide attention</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Add Context</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Include benchmarks:</strong> Show industry averages or competitors</li>
+                                        <li><strong>Display targets:</strong> Include goal lines or threshold indicators</li>
+                                        <li><strong>Show historical context:</strong> Include prior periods for comparison</li>
+                                        <li><strong>Add reference points:</strong> Include baselines or "normal" ranges</li>
+                                        <li><strong>Use consistent scales:</strong> Maintain same axes across related charts</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Improve Readability</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Use clear titles:</strong> Make them informative and action-oriented</li>
+                                        <li><strong>Label directly:</strong> Place labels close to data points</li>
+                                        <li><strong>Choose accessible colors:</strong> Use color-blind friendly palettes</li>
+                                        <li><strong>Maintain sufficient contrast:</strong> Ensure readability in all formats</li>
+                                        <li><strong>Keep consistent formatting:</strong> Use standard approaches across slides</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dell's Data Visualization Standards</h6>
+                                <p class="text-xs mb-2">At Dell Technologies, data visualization for executive communication follows these guidelines:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Design Standards</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Color system:</strong> Dell blue for primary data, gray for secondary/comparative data, accent colors for highlights</li>
+                                            <li><strong>Chart templates:</strong> Standardized formats for common visualization types</li>
+                                            <li><strong>Annotation approach:</strong> Consistent callout style for insights</li>
+                                            <li><strong>Simplification rule:</strong> No chart should take more than 5 seconds to interpret</li>
+                                            <li><strong>Mobile optimization:</strong> All charts must be legible on tablet screens</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Data Integrity Standards</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Source citation:</strong> Small attribution for data source on all charts</li>
+                                            <li><strong>Timestamp:</strong> Date of data collection/analysis included</li>
+                                            <li><strong>Methodology note:</strong> Brief explanation of calculation approach when needed</li>
+                                            <li><strong>Consistent metrics:</strong> Standardized KPI definitions across presentations</li>
+                                            <li><strong>Quality control:</strong> All charts reviewed for accuracy before executive presentation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Dell Case Study: Executive Communication Transformation</h5>
+                        <p class="text-sm mb-3">This case study examines how Dell Technologies transformed its executive communication approach to support strategic decision-making during a major business model shift from transactional hardware sales to subscription-based services and solutions.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Challenge</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Dell's executive leadership team was facing several communication challenges as the company pivoted to an as-a-service business model:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li>Information overload from multiple business units reporting different metrics</li>
+                                        <li>Inconsistent presentation formats making cross-business comparison difficult</li>
+                                        <li>Too much focus on historical performance rather than forward-looking insights</li>
+                                        <li>Data presented without clear business implications or recommendations</li>
+                                        <li>Excessive detailed presentations consuming limited executive meeting time</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Decision-Making Impact:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Strategic decisions delayed due to information fragmentation</li>
+                                        <li>Difficulty comparing investment opportunities across business units</li>
+                                        <li>Executives spending too much time interpreting data vs. making decisions</li>
+                                        <li>Inconsistent metrics leading to competing narratives and priorities</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Solution</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Executive Communication Framework</h6>
+                                        <p class="text-xs mb-0">Dell developed a comprehensive framework to standardize and elevate executive communication:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Standardized executive summary template:</strong> Consistent one-page format for all major proposals</li>
+                                            <li><strong>Decision-focused presentation structure:</strong> Common format emphasizing recommendations first</li>
+                                            <li><strong>Unified data visualization approach:</strong> Consistent chart formats and design standards</li>
+                                            <li><strong>Business impact scorecards:</strong> Standard metrics for comparing opportunities</li>
+                                            <li><strong>Pre-read materials:</strong> Distribution of key information in advance of meetings</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Implementation Approach</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Executive alignment:</strong> Leadership team alignment on new communication standards</li>
+                                            <li><strong>Communication playbook:</strong> Detailed guidelines and templates for all business units</li>
+                                            <li><strong>Training program:</strong> Workshops for directors and senior managers</li>
+                                            <li><strong>Preview process:</strong> Communication review checkpoints before executive meetings</li>
+                                            <li><strong>Coaching support:</strong> Dedicated resources to help teams adapt to new standards</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Key Elements of the Transformation</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Executive Summary Redesign</h6>
+                                    <p class="text-xs mb-2">Dell created a standardized "Decision Request" template:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Single-page format with consistent sections</li>
+                                        <li>Clear headline stating requested decision</li>
+                                        <li>Strategic context linking to corporate priorities</li>
+                                        <li>Key metrics presented in standardized dashboard</li>
+                                        <li>Risk assessment using common evaluation framework</li>
+                                        <li>Required next steps with clear owners and timeline</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Data Visualization Standardization</h6>
+                                    <p class="text-xs mb-2">Dell implemented consistent data visualization standards:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Chart library with pre-approved visualization types</li>
+                                        <li>Common color system for financial and operational metrics</li>
+                                        <li>Consistent annotation format for highlighting insights</li>
+                                        <li>Standard approach for showing targets and benchmarks</li>
+                                        <li>Guidelines for mobile-friendly visualization</li>
+                                        <li>Data integrity requirements for all charts</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Presentation Structure Reform</h6>
+                                    <p class="text-xs mb-2">Dell redesigned executive presentation structure:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Executive summary slide clearly stating decision needed</li>
+                                        <li>"So what" approach with business implications on every slide</li>
+                                        <li>Standardized format for presenting investment options</li>
+                                        <li>Backup slide organization based on anticipated questions</li>
+                                        <li>Consistent presentation of financial metrics and assumptions</li>
+                                        <li>Improved transition slides for narrative flow</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Implementation Challenges</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Resistance to standardization:</strong> Business units preferred their existing formats</li>
+                                    <li class="mb-1"><strong>Data availability:</strong> Consistent metrics required new data collection processes</li>
+                                    <li class="mb-1"><strong>Skills gaps:</strong> Many managers lacked data visualization expertise</li>
+                                    <li class="mb-1"><strong>Cultural shift:</strong> Moving from detail-oriented to insight-focused presentations</li>
+                                    <li class="mb-0"><strong>Time pressure:</strong> Transformation occurred during busy business period</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Solutions Implemented</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Executive sponsorship:</strong> Leadership publicly endorsed new standards</li>
+                                    <li class="mb-1"><strong>Template gallery:</strong> Created library of best practice examples</li>
+                                    <li class="mb-1"><strong>Training program:</strong> Developed workshop series and e-learning modules</li>
+                                    <li class="mb-1"><strong>Communication coaches:</strong> Assigned experts to support high-profile presentations</li>
+                                    <li class="mb-0"><strong>Phased implementation:</strong> Prioritized critical decision meetings first</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Results &amp; Outcomes</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>60% reduction</strong> in executive meeting time spent on status updates</li>
+                                    <li class="mb-1"><strong>Faster decisions:</strong> Average decision cycle shortened by 2 weeks</li>
+                                    <li class="mb-1"><strong>Improved comparability:</strong> Consistent metrics across business units</li>
+                                    <li class="mb-1"><strong>Better preparation:</strong> Pre-read compliance increased to 85%</li>
+                                    <li class="mb-0"><strong>Higher quality discussions</strong> focused on implications vs. data interpretation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Key Lessons and Best Practices</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Strategic Lessons</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Executive alignment is critical</strong> before standardizing communication approaches</li>
+                                        <li><strong>Consistent metrics matter more</strong> than presentation style for effective decision-making</li>
+                                        <li><strong>Templates balance standardization</strong> with flexibility for different business needs</li>
+                                        <li><strong>Communication skills</strong> are as important as analytical skills for senior leaders</li>
+                                        <li><strong>Cultural change requires modeling</strong> from the top and consistent reinforcement</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Practical Implementation Tips</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Start with high-visibility presentations</strong> to demonstrate value quickly</li>
+                                        <li><strong>Create a gallery of best examples</strong> to inspire and guide teams</li>
+                                        <li><strong>Offer intensive support</strong> for critical executive communications</li>
+                                        <li><strong>Build data visualization skills</strong> through targeted training</li>
+                                        <li><strong>Establish clear governance</strong> for maintaining communication standards</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="text-xs italic mt-3 mb-0">This case study demonstrates how structured executive communication standards can significantly improve organizational decision-making and strategic alignment during business transformation.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Best Practices for Executive Communication</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Keys to Effective Executive Communication</h5>
+                        <p class="text-sm mb-3">Based on Dell's experience and industry best practices, these guidelines will help you create more effective executive summaries and presentations across different business contexts.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-focus-2-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Know Your Audience</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Understand your executives' priorities and concerns</li>
+                                    <li>Research their communication preferences and style</li>
+                                    <li>Consider their technical background and expertise</li>
+                                    <li>Anticipate questions they're likely to ask</li>
+                                    <li>Align with their decision-making approach</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-arrow-right-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Start with the End in Mind</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Begin with your recommendation or conclusion</li>
+                                    <li>Clearly state what decision you're requesting</li>
+                                    <li>Provide context only after the main message</li>
+                                    <li>Structure content to support your recommendation</li>
+                                    <li>Close by reiterating the requested action</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-focus-3-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Focus on Business Impact</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Connect all points to strategic priorities</li>
+                                    <li>Quantify outcomes in business terms</li>
+                                    <li>Address risks and mitigation strategies</li>
+                                    <li>Include competitive implications</li>
+                                    <li>Highlight customer and market impact</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-scissors-cut-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Be Concise and Precise</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Eliminate unnecessary content and details</li>
+                                    <li>Use clear, specific language</li>
+                                    <li>Provide exact figures rather than generalizations</li>
+                                    <li>Limit executive summaries to one page</li>
+                                    <li>Structure presentations for flexible navigation</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-bar-chart-grouped-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Visualize Data Effectively</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Choose appropriate chart types for your message</li>
+                                    <li>Highlight insights, not just data points</li>
+                                    <li>Use consistent formatting across visualizations</li>
+                                    <li>Ensure charts are self-explanatory</li>
+                                    <li>Design for the medium (presentation, print, or mobile)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-layout-masonry-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Structure for Clarity</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Use consistent templates and formatting</li>
+                                    <li>Create meaningful section headings</li>
+                                    <li>Apply visual hierarchy to emphasize key points</li>
+                                    <li>Include navigation aids in longer documents</li>
+                                    <li>Ensure logical flow from point to point</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-white dark:bg-gray-800 p-3 rounded-lg">
+                            <h6 class="text-sm font-medium mb-2">Executive Communication Quick Assessment</h6>
+                            <p class="text-xs mb-2">Review your executive communication against these key criteria:</p>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Quality Dimension</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Needs Improvement</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Effective</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Outstanding</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">
+                                                Executive Focus
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Operational details dominate; limited strategic connection
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Clear link to business priorities; some strategic context
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Perfect alignment with executive priorities; compelling strategic relevance
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">
+                                                Clarity &amp; Conciseness
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Too lengthy; key points buried in details
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Focused content; reasonable length with main points visible
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Exceptionally clear and concise; every word serves a purpose
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">
+                                                Data Presentation
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Raw data without context; poor visualization choices
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Clear visualizations with insights highlighted
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Masterful visualizations that instantly convey key messages
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">
+                                                Business Impact Focus
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Minimal quantification; outcomes unclear
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Clear business metrics with some quantified outcomes
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Comprehensive impact analysis with robust financial metrics
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">
+                                                Decision Orientation
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                No clear recommendation or action request
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Specific recommendation with some supporting rationale
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Compelling recommendation with clear options and trade-offs
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">
+                                                Risk Assessment
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Risks overlooked or minimized
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Key risks identified with some mitigation strategies
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Comprehensive risk analysis with robust mitigation plans
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">
+                                                Structure &amp; Flow
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Disorganized; requires effort to follow logic
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Logical organization with clear progression
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Perfect structure that enhances message and anticipates needs
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2011/06/the-art-of-writing-a-bazillion" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-file-text-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Art of the Executive Summary</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Best Practices for Concise Business Writing</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.amazon.com/Say-Presentations-Design-Deliver-Presentations/dp/0735619794" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-slideshow-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Presentation Zen: Simple Ideas on Presentation Design</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Garr Reynolds • Visual Design Principles for Presentations</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.storytellingwithdata.com/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-bar-chart-box-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Storytelling with Data</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Cole Nussbaumer Knaflic • Data Visualization Techniques</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Executive Summary Creation Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll practice creating an executive summary based on a business scenario. This will help you apply the principles and best practices covered in this module.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Scenario: Product Portfolio Expansion</h6>
+                            <p class="text-xs mb-2">You are a product manager at Dell Technologies. Your team has completed an analysis of potential new product opportunities in the enterprise storage market. The analysis identified three potential new product lines, each with different market potential, development costs, and strategic alignment. You need to prepare an executive summary for the senior leadership team recommending which opportunity to pursue.</p>
+                            
+                            <p class="text-xs font-medium mb-1">Key information from the analysis:</p>
+                            <ul class="pl-4 text-xs mb-2">
+                                <li><strong>Option A: High-Performance Flash Storage</strong> - $120M market opportunity, 24-month development timeline, $15M development cost, highest margin potential (65% gross margin), moderate competitive differentiation</li>
+                                <li><strong>Option B: Hybrid Cloud Storage Solution</strong> - $200M market opportunity, 18-month development timeline, $12M development cost, good margin potential (55% gross margin), strong competitive differentiation, high strategic alignment with Dell's cloud strategy</li>
+                                <li><strong>Option C: Midmarket Storage Array</strong> - $150M market opportunity, 12-month development timeline, $8M development cost, lower margin potential (40% gross margin), limited competitive differentiation, fastest time to market</li>
+                                <li>Current storage portfolio revenue is growing at 5% annually, below market growth rate of 8%</li>
+                                <li>Customer research indicates increasing demand for hybrid cloud capabilities among enterprise customers</li>
+                                <li>Dell's strategic priorities include expanding subscription-based offerings and strengthening hybrid cloud portfolio</li>
+                                <li>Engineering resources are limited, so only one option can be pursued immediately</li>
+                            </ul>
+                            
+                            <p class="text-xs font-medium mb-1">Your task:</p>
+                            <p class="text-xs mb-0">Develop a one-page executive summary recommending which option to pursue, including key rationale, business impact, risks, and next steps. Apply the principles covered in this module to create a clear, concise, and compelling summary for executive decision-making.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Executive Summary</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="12" placeholder="Create your executive summary here. Consider including a clear recommendation, key rationale, business impact (quantified), risks and mitigation, and next steps. Remember to use concise language, focus on business impact, and structure the summary for quick executive comprehension."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Summary</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" disabled="">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-business-storytelling">
+                        <span>Next: Storytelling in Business</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

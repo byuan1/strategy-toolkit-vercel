@@ -1,0 +1,1928 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Financial Acumen</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-statements">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Financial Statements</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-common-size">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Common-Size Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-modeling">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Financial Modeling</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-dell-financials">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Dell's Financial Reports</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-ratios">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Key Financial Ratios</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-cost-benefit">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Cost-Benefit Analysis</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Strategic Frameworks</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-swot">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>SWOT Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-porters-five">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Porter's Five Forces</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">23%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 23%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Problem Solving</span>
+                                <span>2/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>1/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>1/6 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Cost-Benefit Analysis Topic -->
+            <section id="topic-cost-benefit" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-scales-3-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Cost-Benefit Analysis</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Financial Acumen</span>
+                                <span>•</span>
+                                <span>60 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">Not Started</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the principles and methodology of cost-benefit analysis</li>
+                            <li>Learn to quantify both tangible and intangible costs and benefits</li>
+                            <li>Apply financial metrics to evaluate investment decisions</li>
+                            <li>Develop cost-benefit frameworks for Dell's strategic initiatives</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Cost-Benefit Analysis</h4>
+                    <p>Cost-benefit analysis (CBA) is a systematic approach to estimating the strengths and weaknesses of alternatives by determining the costs and benefits of decisions, policies, or projects. It provides a basis for comparing projects or investments that involve different costs, timeframes, and outcomes.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Key Elements of Cost-Benefit Analysis</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Comprehensive scope:</strong> Accounts for all costs and benefits, both direct and indirect</li>
+                            <li><strong>Monetary valuation:</strong> Converts impacts into financial terms whenever possible</li>
+                            <li><strong>Time value of money:</strong> Recognizes that benefits and costs occur over time and must be discounted</li>
+                            <li><strong>Objective comparison:</strong> Provides standardized metrics to evaluate and rank alternatives</li>
+                            <li><strong>Decision support:</strong> Helps determine if an investment or project is financially justified</li>
+                        </ul>
+                    </div>
+                    
+                    <p>Cost-benefit analysis is widely used for:</p>
+                    <ul>
+                        <li>Evaluating new product investments</li>
+                        <li>Assessing process improvement initiatives</li>
+                        <li>Comparing alternative technologies</li>
+                        <li>Making go/no-go decisions on major projects</li>
+                        <li>Prioritizing initiatives when resources are constrained</li>
+                        <li>Justifying investments to leadership</li>
+                    </ul>
+                    
+                    <h4>The Cost-Benefit Analysis Process</h4>
+                    <p>Follow these steps to conduct a thorough cost-benefit analysis:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">1. Define the Project and Objectives</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Clearly articulate the project scope</li>
+                                <li>Define specific objectives and success criteria</li>
+                                <li>Identify key stakeholders and their needs</li>
+                                <li>Establish the timeframe for analysis</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">2. Identify All Costs</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Direct costs (equipment, software, labor)</li>
+                                <li>Indirect costs (overhead, training)</li>
+                                <li>Opportunity costs</li>
+                                <li>Recurring and one-time costs</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">3. Identify All Benefits</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Direct benefits (revenue increase, cost savings)</li>
+                                <li>Indirect benefits (productivity gains, quality improvements)</li>
+                                <li>Intangible benefits (employee satisfaction, brand enhancement)</li>
+                                <li>Risk reduction benefits</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">4. Quantify and Monetize</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Assign dollar values to all costs and benefits</li>
+                                <li>Use market prices when available</li>
+                                <li>Apply valuation techniques for intangibles</li>
+                                <li>Document all assumptions</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">5. Apply Time Value of Money</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Establish appropriate discount rate</li>
+                                <li>Create cash flow projections for the analysis period</li>
+                                <li>Discount future cash flows to present value</li>
+                                <li>Account for inflation if necessary</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">6. Calculate Decision Metrics</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Compute Net Present Value (NPV)</li>
+                                <li>Calculate Internal Rate of Return (IRR)</li>
+                                <li>Determine Payback Period</li>
+                                <li>Assess Benefit-Cost Ratio</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">7. Perform Sensitivity Analysis</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Identify key variables with uncertainty</li>
+                                <li>Test different scenarios (best-case, worst-case)</li>
+                                <li>Evaluate how changes affect decision metrics</li>
+                                <li>Determine threshold values for critical factors</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">8. Make Recommendations</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Interpret results against decision criteria</li>
+                                <li>Consider non-quantifiable factors</li>
+                                <li>Present findings with supporting evidence</li>
+                                <li>Identify risk mitigation strategies</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Identifying and Quantifying Costs</h4>
+                    <p>A comprehensive cost-benefit analysis should include all relevant costs, even those that might be difficult to quantify. Here are common types of costs to consider in business projects:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Cost Category</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Examples</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Quantification Method</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Capital Expenditures</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Hardware/equipment purchase</li>
+                                            <li>Facilities construction/modification</li>
+                                            <li>Software licenses</li>
+                                            <li>Initial technology setup</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Vendor quotes, historical cost data, market prices
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Implementation Costs</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Project management</li>
+                                            <li>Installation labor</li>
+                                            <li>Integration services</li>
+                                            <li>Testing and quality assurance</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Labor hours × hourly rates, contractor estimates, prior project data
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Operational Costs</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Maintenance and support</li>
+                                            <li>Utility expenses</li>
+                                            <li>Cloud/hosting services</li>
+                                            <li>Consumable supplies</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Service contracts, historical usage patterns, industry benchmarks
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Human Resource Costs</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Training and onboarding</li>
+                                            <li>Additional staffing needs</li>
+                                            <li>Productivity loss during transition</li>
+                                            <li>Change management</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Training hours × labor rates, recruitment costs, productivity metrics
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Opportunity Costs</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Alternative investments foregone</li>
+                                            <li>Resource allocation trade-offs</li>
+                                            <li>Delayed market entry</li>
+                                            <li>Time value of capital</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Expected returns of alternative options, weighted cost of capital
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Risk-Related Costs</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Potential security breaches</li>
+                                            <li>Compliance violations</li>
+                                            <li>Project delays/failures</li>
+                                            <li>Technology obsolescence</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Probability × impact calculations, industry risk data, insurance premiums
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell Case Example: Server Refresh Project Costs</h5>
+                        <p class="text-sm mb-3">Below is a simplified cost breakdown for a server infrastructure refresh project:</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse mb-2">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Cost Item</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Year 0 ($K)</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Year 1 ($K)</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Year 2 ($K)</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Year 3 ($K)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">New Server Hardware</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">1,200</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Software Licenses</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">300</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">50</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">50</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">50</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Implementation Services</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">250</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">IT Staff Training</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">75</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">25</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Maintenance & Support</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">120</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">130</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">140</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Power & Cooling</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">80</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">82</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">85</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Migration Downtime</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">100</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                    </tr>
+                                    <tr class="font-medium">
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Total Costs</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">1,925</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">275</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">262</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">275</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-xs mt-2 mb-0">Notice how costs are spread over time, with larger upfront investments (capital expenditures) and ongoing operational expenses in subsequent years.</p>
+                    </div>
+                    
+                    <h4>Identifying and Quantifying Benefits</h4>
+                    <p>Benefits in cost-benefit analysis include all positive outcomes that can be attributed to the project or investment. Benefits can often be more challenging to quantify than costs, particularly when they involve intangible impacts.</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Benefit Category</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Examples</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Quantification Method</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Cost Reduction</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Lower maintenance costs</li>
+                                            <li>Reduced labor requirements</li>
+                                            <li>Energy/resource savings</li>
+                                            <li>Decreased error/waste rates</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Before vs. after cost comparisons, industry benchmarks, efficiency metrics
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Revenue Enhancement</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Increased sales volume</li>
+                                            <li>Higher price points</li>
+                                            <li>New product categories</li>
+                                            <li>Market share gains</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Revenue forecasts, pricing studies, market analysis, comparable product data
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Productivity Improvements</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Faster process completion</li>
+                                            <li>Reduced manual effort</li>
+                                            <li>Lower error rates</li>
+                                            <li>Improved throughput</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Time savings × labor rates, output increases × unit value, automation metrics
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Risk Reduction</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Lower probability of failures</li>
+                                            <li>Reduced security incidents</li>
+                                            <li>Compliance improvement</li>
+                                            <li>Business continuity enhancement</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Probability reduction × potential impact, insurance premium differences, incident costs
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Strategic Benefits</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Competitive advantage</li>
+                                            <li>Market positioning</li>
+                                            <li>Business flexibility</li>
+                                            <li>Future growth enablement</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Market value premiums, customer willingness to pay, strategic option valuation
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Intangible Benefits</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Employee satisfaction</li>
+                                            <li>Customer experience improvement</li>
+                                            <li>Brand/reputation enhancement</li>
+                                            <li>Environmental impact reduction</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Contingent valuation, proxy metrics, willingness to pay, employee turnover cost reduction
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <p>Techniques for quantifying hard-to-measure benefits:</p>
+                    <ul>
+                        <li><strong>Proxy Measures:</strong> Use related, measurable outcomes as proxies (e.g., customer satisfaction scores as a proxy for loyalty)</li>
+                        <li><strong>Benchmarking:</strong> Draw on industry studies showing relationships between improvements and outcomes</li>
+                        <li><strong>Expert Judgment:</strong> Rely on informed estimates from subject matter experts</li>
+                        <li><strong>Willingness to Pay:</strong> Determine what stakeholders would pay for a benefit</li>
+                        <li><strong>Historical Data:</strong> Use past experiences and outcomes from similar initiatives</li>
+                    </ul>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell Case Example: Server Refresh Project Benefits</h5>
+                        <p class="text-sm mb-3">Continuing the server infrastructure refresh example, here are the projected benefits:</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse mb-2">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Benefit Item</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Year 0 ($K)</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Year 1 ($K)</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Year 2 ($K)</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Year 3 ($K)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Legacy Maintenance Savings</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">350</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">375</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">400</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Energy Efficiency Improvements</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">120</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">125</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">130</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Productivity Improvement (IT Staff)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">200</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">220</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">240</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Downtime Reduction</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">180</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">185</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">190</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Increased Performance (Business Users)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">300</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">320</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">340</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Risk Reduction (Security/Compliance)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">150</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">150</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">150</td>
+                                    </tr>
+                                    <tr class="font-medium">
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Total Benefits</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">1,300</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">1,375</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">1,450</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-xs mt-2 mb-0">Notice how benefits typically start after implementation (Year 0) and often increase over time as the solution matures and adoption improves.</p>
+                    </div>
+                    
+                    <h4>Financial Decision Metrics</h4>
+                    <p>After identifying and quantifying costs and benefits, the next step is to calculate the key financial metrics that will help you evaluate the investment. These metrics incorporate the time value of money and provide standardized measures for comparison.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Net Present Value (NPV)</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">NPV = Σ (Benefits<sub>t</sub> - Costs<sub>t</sub>) / (1 + r)<sup>t</sup></p>
+                            </div>
+                            <p class="text-sm mb-2">The difference between the present value of cash inflows and outflows over the project's lifetime.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Decision Rule:</strong> Accept if NPV > 0</p>
+                                <p class="mb-0"><strong>Advantage:</strong> Accounts for time value of money and project scale</p>
+                                <p class="mb-0"><strong>Limitation:</strong> Sensitive to discount rate assumptions</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Internal Rate of Return (IRR)</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Σ (Benefits<sub>t</sub> - Costs<sub>t</sub>) / (1 + IRR)<sup>t</sup> = 0</p>
+                            </div>
+                            <p class="text-sm mb-2">The discount rate at which the NPV equals zero; represents the projected rate of return.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Decision Rule:</strong> Accept if IRR > required rate of return</p>
+                                <p class="mb-0"><strong>Advantage:</strong> Easy to interpret as a percentage return</p>
+                                <p class="mb-0"><strong>Limitation:</strong> May give misleading results with non-conventional cash flows</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Payback Period</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Time until Σ (Benefits<sub>t</sub> - Costs<sub>t</sub>) ≥ Initial Investment</p>
+                            </div>
+                            <p class="text-sm mb-2">The time required to recover the initial investment.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Decision Rule:</strong> Accept if payback period < threshold</p>
+                                <p class="mb-0"><strong>Advantage:</strong> Simple to calculate and communicate</p>
+                                <p class="mb-0"><strong>Limitation:</strong> Ignores time value of money and cash flows after payback</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Discounted Payback Period</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">Time until Σ (Benefits<sub>t</sub> - Costs<sub>t</sub>) / (1 + r)<sup>t</sup> ≥ Initial Investment</p>
+                            </div>
+                            <p class="text-sm mb-2">Similar to regular payback but accounts for the time value of money.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Decision Rule:</strong> Accept if discounted payback < threshold</p>
+                                <p class="mb-0"><strong>Advantage:</strong> Incorporates time value while remaining intuitive</p>
+                                <p class="mb-0"><strong>Limitation:</strong> Still ignores cash flows after payback period</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Benefit-Cost Ratio (BCR)</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">BCR = PV of Benefits / PV of Costs</p>
+                            </div>
+                            <p class="text-sm mb-2">The ratio of the present value of benefits to the present value of costs.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Decision Rule:</strong> Accept if BCR > 1</p>
+                                <p class="mb-0"><strong>Advantage:</strong> Useful for comparing projects of different scales</p>
+                                <p class="mb-0"><strong>Limitation:</strong> Sensitive to how costs and benefits are categorized</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Return on Investment (ROI)</h5>
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded border border-gray-200 dark:border-gray-700 mb-2 text-center">
+                                <p class="mb-0 font-medium">ROI = (Net Benefits / Investment Cost) × 100%</p>
+                            </div>
+                            <p class="text-sm mb-2">The percentage return relative to the investment cost.</p>
+                            <div class="text-xs space-y-1">
+                                <p class="mb-0"><strong>Decision Rule:</strong> Accept if ROI > required return</p>
+                                <p class="mb-0"><strong>Advantage:</strong> Easily understood by non-financial stakeholders</p>
+                                <p class="mb-0"><strong>Limitation:</strong> Simple versions don't account for time value of money</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell Case Example: Server Refresh Financial Analysis</h5>
+                        <p class="text-sm mb-3">Using the cost and benefit data from our server infrastructure refresh example:</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse mb-2">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Cash Flow Summary ($K)</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Year 0</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Year 1</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Year 2</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Year 3</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Total Benefits</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">0</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">1,300</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">1,375</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">1,450</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Total Costs</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">1,925</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">275</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">262</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">275</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Net Cash Flow</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-1,925</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">1,025</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">1,113</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">1,175</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Cumulative Cash Flow</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-1,925</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-900</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">213</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">1,388</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Discounted Cash Flow (10%)</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-1,925</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">932</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">919</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">882</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-3">
+                            <div class="bg-white dark:bg-gray-700 p-2 rounded-lg">
+                                <p class="text-xs font-medium mb-1">Net Present Value (NPV)</p>
+                                <p class="font-medium mb-0">$808,000</p>
+                            </div>
+                            <div class="bg-white dark:bg-gray-700 p-2 rounded-lg">
+                                <p class="text-xs font-medium mb-1">Internal Rate of Return (IRR)</p>
+                                <p class="font-medium mb-0">37.2%</p>
+                            </div>
+                            <div class="bg-white dark:bg-gray-700 p-2 rounded-lg">
+                                <p class="text-xs font-medium mb-1">Payback Period</p>
+                                <p class="font-medium mb-0">1.9 years</p>
+                            </div>
+                            <div class="bg-white dark:bg-gray-700 p-2 rounded-lg">
+                                <p class="text-xs font-medium mb-1">Discounted Payback</p>
+                                <p class="font-medium mb-0">2.1 years</p>
+                            </div>
+                            <div class="bg-white dark:bg-gray-700 p-2 rounded-lg">
+                                <p class="text-xs font-medium mb-1">Benefit-Cost Ratio</p>
+                                <p class="font-medium mb-0">1.32</p>
+                            </div>
+                            <div class="bg-white dark:bg-gray-700 p-2 rounded-lg">
+                                <p class="text-xs font-medium mb-1">ROI (3-year)</p>
+                                <p class="font-medium mb-0">51%</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-xs mt-3 mb-0">With an NPV of $808,000, IRR of 37.2%, and payback period under 2 years, this project represents a strong investment opportunity that exceeds typical corporate hurdle rates.</p>
+                    </div>
+                    
+                    <h4>Sensitivity Analysis and Risk Assessment</h4>
+                    <p>Sensitivity analysis examines how changes in key variables affect the outcome of a cost-benefit analysis. This is crucial for understanding the robustness of your results and identifying which factors pose the greatest risks.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">One-Way Sensitivity Analysis</h5>
+                            <p class="text-sm mb-2">Varies one variable at a time to observe its impact on key metrics (NPV, IRR, etc.)</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>Identifies critical variables with the most significant impact</li>
+                                <li>Determines threshold values where decisions would change</li>
+                                <li>Relatively simple to perform and communicate</li>
+                                <li>Doesn't account for variable interactions</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Scenario Analysis</h5>
+                            <p class="text-sm mb-2">Creates coherent alternative scenarios (best case, worst case, etc.) by changing multiple variables simultaneously</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>Accounts for variable interactions and correlations</li>
+                                <li>Provides realistic alternative views of possible outcomes</li>
+                                <li>Helps with contingency planning and risk mitigation</li>
+                                <li>Limited to a few discrete scenarios</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Monte Carlo Simulation</h5>
+                            <p class="text-sm mb-2">Uses probability distributions for key variables and runs thousands of simulations to generate a probability distribution of outcomes</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>Provides comprehensive view of possible outcomes and their likelihood</li>
+                                <li>Accounts for complex variable interactions and correlations</li>
+                                <li>Quantifies probability of various outcomes</li>
+                                <li>Requires specialized software and statistical expertise</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Break-Even Analysis</h5>
+                            <p class="text-sm mb-2">Determines the threshold values of key variables where benefits equal costs</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>Identifies minimum performance required for project viability</li>
+                                <li>Useful for setting performance targets and monitoring</li>
+                                <li>Easily understood by stakeholders</li>
+                                <li>Limited to analyzing one variable at a time</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell Case Example: Server Refresh Sensitivity Analysis</h5>
+                        <p class="text-sm mb-3">One-way sensitivity analysis showing NPV impact from key variables:</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse mb-2">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Variable</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-20% Value</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">-20% NPV</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">Base NPV</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">+20% NPV</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">+20% Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Initial Hardware Cost</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$960K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$1,048K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$808K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$568K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$1,440K</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Productivity Benefits</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$240K/yr</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$500K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$808K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$1,116K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$360K/yr</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Legacy Maintenance Savings</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$280K/yr</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$566K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$808K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$1,050K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$420K/yr</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Discount Rate</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">8%</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$908K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$808K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$715K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">12%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">Project Timeline</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">2.4 years</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$598K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$808K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">$985K</td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-right">3.6 years</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-xs mt-2 mb-0">The analysis shows that the project's viability (positive NPV) is maintained even with 20% adverse changes in key variables, indicating robustness. Initial hardware cost and productivity benefits have the most significant impact on NPV and should be closely managed.</p>
+                    </div>
+                    
+                    <h4>Presenting Cost-Benefit Analysis Results</h4>
+                    <p>Effectively communicating the results of your cost-benefit analysis is crucial for gaining support and approval for your recommendations. Here are best practices for presenting your findings:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Executive Summary</h5>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li>Lead with clear recommendation and key findings</li>
+                                <li>Highlight key metrics (NPV, IRR, payback period)</li>
+                                <li>Summarize major benefits and costs</li>
+                                <li>Address critical risks and mitigation strategies</li>
+                                <li>Keep to one page if possible</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Visual Representations</h5>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li>Use bar charts to compare benefits vs. costs</li>
+                                <li>Create waterfall charts showing NPV components</li>
+                                <li>Show cumulative cash flow graphs with payback points</li>
+                                <li>Utilize sensitivity analysis tornado charts</li>
+                                <li>Include scenario comparison tables</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Transparency About Assumptions</h5>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li>Clearly document all key assumptions</li>
+                                <li>Provide rationale for discount rates</li>
+                                <li>Explain data sources and calculation methods</li>
+                                <li>Acknowledge limitations and uncertainties</li>
+                                <li>Detail validation methods for estimates</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Beyond the Numbers</h5>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li>Address qualitative benefits and strategic alignment</li>
+                                <li>Include implementation considerations</li>
+                                <li>Discuss non-financial impacts (customer experience, employee satisfaction)</li>
+                                <li>Relate to corporate objectives and strategies</li>
+                                <li>Propose next steps and timelines</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Cost-Benefit Analysis at Dell</h4>
+                    <p>At Dell, cost-benefit analysis is applied across various business functions and decision contexts:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Business Area</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Application Examples</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Key Considerations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Product Development</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>New product line investments</li>
+                                            <li>Feature prioritization decisions</li>
+                                            <li>Make vs. buy component analysis</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Market size estimation, development costs, competitive positioning, product lifecycle projections
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Manufacturing & Supply Chain</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Facility location decisions</li>
+                                            <li>Automation investments</li>
+                                            <li>Supply chain optimization</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Labor costs, transportation expenses, production efficiencies, delivery time improvements, inventory optimization
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Information Technology</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Enterprise system implementations</li>
+                                            <li>Infrastructure modernization</li>
+                                            <li>Cloud migration decisions</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Total cost of ownership, productivity gains, maintenance cost reduction, scalability benefits, security improvements
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Marketing & Sales</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Campaign investment decisions</li>
+                                            <li>Channel expansion opportunities</li>
+                                            <li>Pricing strategy evaluations</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Customer acquisition costs, lifetime value estimates, conversion rate improvements, revenue uplift potentials
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Strategic Initiatives</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Acquisition evaluations</li>
+                                            <li>Business model transformations</li>
+                                            <li>Market entry decisions</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Synergy estimations, integration costs, strategic positioning value, competitive response scenarios, long-term growth prospects
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Common Challenges and Best Practices</h4>
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Challenge</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Best Practice</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Quantifying Intangible Benefits</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Use proxy metrics where direct measurement isn't possible</li>
+                                            <li>Apply conservative estimates with clear rationale</li>
+                                            <li>Leverage industry benchmarks and research studies</li>
+                                            <li>Consider presenting ranges rather than point estimates</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Avoiding Optimism Bias</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Use reference class forecasting (historical data from similar projects)</li>
+                                            <li>Apply different confidence levels to different benefit types</li>
+                                            <li>Have independent reviewers challenge assumptions</li>
+                                            <li>Build in contingency factors for costs and timelines</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Managing Scope and Boundaries</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Clearly define what's included and excluded from analysis</li>
+                                            <li>Be consistent in the treatment of indirect effects</li>
+                                            <li>Document the analytical horizon and explain its rationale</li>
+                                            <li>Consider second-order effects for major initiatives</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Selecting Appropriate Discount Rates</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Align with corporate finance guidelines and practices</li>
+                                            <li>Adjust for project-specific risk when appropriate</li>
+                                            <li>Test sensitivity to different discount rate assumptions</li>
+                                            <li>Document the rationale for selected rates</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Addressing Competing Objectives</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Consider multi-criteria analysis for complex decisions</li>
+                                            <li>Acknowledge trade-offs explicitly in recommendations</li>
+                                            <li>Present alternatives that optimize different objectives</li>
+                                            <li>Include qualitative factors alongside quantitative analysis</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.youtube.com/watch?v=7FWRkFe9qKM" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-video-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Cost-Benefit Analysis Fundamentals</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">YouTube • 18:24</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://corporatefinanceinstitute.com/resources/valuation/cost-benefit-analysis/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Cost-Benefit Analysis Complete Guide</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">CFI • 15 min read</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://hbr.org/2020/01/the-right-way-to-present-your-business-case" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Right Way to Present Your Business Case</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • 12 min read</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell Workstation Upgrade Analysis</h5>
+                        <p class="mb-3">You're evaluating a proposal to upgrade the workstations for Dell's engineering team. The initial investment is $1.2 million for new hardware, with implementation costs of $300,000. The upgrade is expected to deliver productivity improvements worth $700,000 annually, reduce maintenance costs by $200,000 annually, and lower energy costs by $50,000 annually. The workstations will have a 4-year useful life with a salvage value of $100,000. Dell's discount rate is 12%.</p>
+                        
+                        <p class="mb-2 text-sm">Tasks:</p>
+                        <ol class="pl-5 mb-4 text-sm">
+                            <li>Create a cash flow table for the 4-year period</li>
+                            <li>Calculate NPV, IRR, and payback period</li>
+                            <li>Perform a simple sensitivity analysis on the productivity improvement estimate (±20%)</li>
+                            <li>Make a recommendation with supporting rationale</li>
+                        </ol>
+                        
+                        <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="10" placeholder="Enter your analysis here..."></textarea>
+                        <button class="mt-3 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-financial-ratios">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Key Financial Ratios</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" id="back-to-modules-from-cba">
+                        <span>Back to Modules</span>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Porter's Five Forces Topic -->
+            <section id="topic-porters-five" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-flow-chart"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Porter's Five Forces</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Strategic Frameworks</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">Not Started</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand Porter's Five Forces framework and how it assesses industry attractiveness</li>
+                            <li>Learn to analyze each of the five competitive forces in detail</li>
+                            <li>Apply the framework to Dell's key markets and competitive landscape</li>
+                            <li>Develop strategic responses to competitive forces in technology markets</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Porter's Five Forces</h4>
+                    <p>Porter's Five Forces is a framework developed by Harvard Business School professor Michael Porter in 1979. It analyzes five competitive forces that shape every industry and helps determine an industry's weaknesses and strengths. This tool is widely used for industry analysis and business strategy development.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Key Benefits of Porter's Five Forces Analysis</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Industry profitability insights:</strong> Helps understand what drives profitability in an industry</li>
+                            <li><strong>Competitive positioning:</strong> Identifies advantageous positions within an industry</li>
+                            <li><strong>Strategic opportunities:</strong> Highlights areas where strategic changes can yield the greatest return</li>
+                            <li><strong>Market entry assessment:</strong> Evaluates attractiveness for potential new entrants</li>
+                            <li><strong>Anticipation of changes:</strong> Helps predict how industry changes will affect competitive dynamics</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 max-w-full overflow-hidden">
+                            <div class="flex flex-col items-center">
+                                <div class="w-full max-w-md relative mb-8">
+                                    <!-- Central box -->
+                                    <div class="bg-secondary/10 dark:bg-secondary/20 border border-secondary/30 p-3 rounded-lg text-center absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 flex items-center justify-center">
+                                        <p class="text-sm font-medium mb-0">Industry Rivalry & Competition</p>
+                                    </div>
+                                    
+                                    <!-- Top box -->
+                                    <div class="bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-3 rounded-lg text-center absolute left-1/2 transform -translate-x-1/2 -top-2 w-56">
+                                        <p class="text-sm font-medium mb-0">Threat of New Entrants</p>
+                                    </div>
+                                    
+                                    <!-- Bottom box -->
+                                    <div class="bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-3 rounded-lg text-center absolute left-1/2 transform -translate-x-1/2 top-48 w-56">
+                                        <p class="text-sm font-medium mb-0">Threat of Substitutes</p>
+                                    </div>
+                                    
+                                    <!-- Left box -->
+                                    <div class="bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-3 rounded-lg text-center absolute top-1/2 transform -translate-y-1/2 -left-24 w-56">
+                                        <p class="text-sm font-medium mb-0">Bargaining Power of Suppliers</p>
+                                    </div>
+                                    
+                                    <!-- Right box -->
+                                    <div class="bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-3 rounded-lg text-center absolute top-1/2 transform -translate-y-1/2 -right-24 w-56">
+                                        <p class="text-sm font-medium mb-0">Bargaining Power of Buyers</p>
+                                    </div>
+                                    
+                                    <!-- Arrows -->
+                                    <div class="absolute w-full h-full">
+                                        <!-- Top arrow -->
+                                        <div class="absolute left-1/2 transform -translate-x-1/2 top-6 w-0.5 h-10 bg-gray-400"></div>
+                                        <div class="absolute left-1/2 transform -translate-x-1/2 top-16 border-l-4 border-r-4 border-t-4 border-transparent border-l-transparent border-r-transparent border-t-gray-400"></div>
+                                        
+                                        <!-- Bottom arrow -->
+                                        <div class="absolute left-1/2 transform -translate-x-1/2 top-32 w-0.5 h-10 bg-gray-400"></div>
+                                        <div class="absolute left-1/2 transform -translate-x-1/2 top-32 border-l-4 border-r-4 border-b-4 border-transparent border-l-transparent border-r-transparent border-b-gray-400"></div>
+                                        
+                                        <!-- Left arrow -->
+                                        <div class="absolute left-9 top-1/2 transform -translate-y-1/2 w-10 h-0.5 bg-gray-400"></div>
+                                        <div class="absolute left-19 top-1/2 transform -translate-y-1/2 border-t-4 border-b-4 border-l-4 border-transparent border-t-transparent border-b-transparent border-l-gray-400"></div>
+                                        
+                                        <!-- Right arrow -->
+                                        <div class="absolute right-9 top-1/2 transform -translate-y-1/2 w-10 h-0.5 bg-gray-400"></div>
+                                        <div class="absolute right-19 top-1/2 transform -translate-y-1/2 border-t-4 border-b-4 border-r-4 border-transparent border-t-transparent border-b-transparent border-r-gray-400"></div>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 text-center mb-0">Porter's Five Forces Framework</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>The Five Forces In Detail</h4>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-3">1. Industry Rivalry and Competition</h5>
+                        <p class="text-sm mb-3">This force examines the intensity of competition among existing companies in an industry. High competitive rivalry can limit profitability and requires greater investment in competitive activities like price discounts, new product development, advertising, and service improvements.</p>
+                        
+                        <p class="text-sm font-medium mb-1">Key Factors Affecting Rivalry:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Concentration and balance:</strong> Number and relative size of competitors</li>
+                            <li><strong>Industry growth:</strong> Slow growth leads to fights for market share</li>
+                            <li><strong>Product differentiation:</strong> Commoditized products intensify price competition</li>
+                            <li><strong>Switching costs:</strong> Low switching costs increase competitive intensity</li>
+                            <li><strong>Exit barriers:</strong> High exit costs force struggling firms to stay and compete</li>
+                            <li><strong>Diversity of competitors:</strong> Varied competitors with different goals and strategies increase unpredictability</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell's Industry Rivalry Analysis: PC Market</h5>
+                        <p class="text-sm mb-3">The PC industry has historically been characterized by intense competitive rivalry:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Major competitors:</strong> HP, Lenovo, Apple, Acer, ASUS</li>
+                            <li><strong>Market concentration:</strong> Moderate, with the top 5 vendors controlling ~75% of the market</li>
+                            <li><strong>Growth rate:</strong> Mature industry with cyclical growth, intensifying competition for market share</li>
+                            <li><strong>Differentiation levels:</strong> Increasing commoditization in consumer segments, more differentiation in premium and commercial segments</li>
+                            <li><strong>Strategic diversity:</strong> Varied approaches – Apple (premium, ecosystem), Lenovo (scale, commercial focus), HP (breadth of portfolio)</li>
+                            <li><strong>Impact on Dell:</strong> High rivalry drives Dell's focus on commercial segments, services, and solutions where differentiation is more sustainable</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-3">2. Threat of New Entrants</h5>
+                        <p class="text-sm mb-3">This force assesses how easily new competitors can enter the market. High entry barriers protect industry incumbents and allow them to maintain higher profitability, while low barriers increase competitive pressure.</p>
+                        
+                        <p class="text-sm font-medium mb-1">Key Entry Barriers:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Economies of scale:</strong> Cost advantages from large production volume</li>
+                            <li><strong>Capital requirements:</strong> Investment needed to compete effectively</li>
+                            <li><strong>Switching costs:</strong> Customer costs to change suppliers</li>
+                            <li><strong>Access to distribution channels:</strong> Ability to reach customers</li>
+                            <li><strong>Proprietary technology/IP:</strong> Patents, expertise, or technology</li>
+                            <li><strong>Brand identity:</strong> Customer loyalty and recognition</li>
+                            <li><strong>Regulatory barriers:</strong> Government policies and regulations</li>
+                            <li><strong>Expected retaliation:</strong> Incumbent response to new entrants</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell's New Entrants Analysis: Enterprise Server Market</h5>
+                        <p class="text-sm mb-3">The enterprise server market presents significant barriers to new entrants:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Capital intensity:</strong> High R&D and manufacturing setup costs</li>
+                            <li><strong>Economies of scale:</strong> Significant cost advantages from large-scale component purchasing and manufacturing</li>
+                            <li><strong>Enterprise requirements:</strong> Need for proven reliability, established support infrastructure, and comprehensive service offerings</li>
+                            <li><strong>Sales complexity:</strong> Long enterprise sales cycles and relationship-based selling</li>
+                            <li><strong>Customer switching costs:</strong> High costs associated with changing server platforms (compatibility, training, migration)</li>
+                            <li><strong>New entrant threats:</strong> ODMs (Original Design Manufacturers) selling directly to hyperscale customers, bypassing traditional OEMs</li>
+                            <li><strong>Impact on Dell:</strong> Relatively protected position in traditional enterprise segments, but facing disruption in hyperscale/cloud segments</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-3">3. Bargaining Power of Suppliers</h5>
+                        <p class="text-sm mb-3">This force examines how much pressure and leverage suppliers can exert on a business. Powerful suppliers can capture more value by charging higher prices, limiting quality or services, or shifting costs to industry participants.</p>
+                        
+                        <p class="text-sm font-medium mb-1">Factors Affecting Supplier Power:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Supplier concentration:</strong> Few suppliers mean more power for each</li>
+                            <li><strong>Switching costs:</strong> Difficulty/expense of changing suppliers</li>
+                            <li><strong>Uniqueness of product/service:</strong> Differentiated or specialized inputs increase supplier power</li>
+                            <li><strong>Substitutes availability:</strong> Fewer alternatives strengthen suppliers</li>
+                            <li><strong>Forward integration threat:</strong> Suppliers' ability to enter your industry</li>
+                            <li><strong>Importance to supplier:</strong> How significant your industry is to the supplier's revenue</li>
+                            <li><strong>Input importance:</strong> How critical the supplier's component is to your product</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell's Supplier Power Analysis: Component Supply Chain</h5>
+                        <p class="text-sm mb-3">Dell faces varying levels of supplier power across its supply chain:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Key suppliers:</strong> Intel, AMD, Microsoft, Samsung, SK Hynix, Western Digital, Seagate</li>
+                            <li><strong>Processor suppliers:</strong> Very high power (Intel, AMD duopoly), critical components with few substitutes</li>
+                            <li><strong>Memory/storage:</strong> Moderate power, oligopolistic market structure but more players than processors</li>
+                            <li><strong>Operating systems:</strong> High power for Microsoft in commercial segment, lower in consumer with Chrome OS alternative</li>
+                            <li><strong>Commodity components:</strong> Lower power for suppliers of less differentiated parts</li>
+                            <li><strong>Mitigating strategies:</strong> Dell leverages scale purchasing, multi-sourcing when possible, long-term agreements, vertical integration in some areas</li>
+                            <li><strong>Impact:</strong> High supplier power in critical components contributes to margin pressure and supply risk, especially during shortages</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-3">4. Bargaining Power of Buyers</h5>
+                        <p class="text-sm mb-3">This force assesses how much pressure customers can place on a business. Powerful customers can force down prices, demand better quality or more service, and play competitors against each other, all at the expense of industry profitability.</p>
+                        
+                        <p class="text-sm font-medium mb-1">Factors Affecting Buyer Power:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Buyer concentration:</strong> Few large buyers relative to sellers increases power</li>
+                            <li><strong>Purchase volume:</strong> Larger purchases mean more leverage</li>
+                            <li><strong>Product differentiation:</strong> Standardized products increase buyer power</li>
+                            <li><strong>Switching costs:</strong> Low costs to change suppliers increases power</li>
+                            <li><strong>Price sensitivity:</strong> How significant the purchase is to buyer's costs</li>
+                            <li><strong>Backward integration:</strong> Buyer's ability to produce the product themselves</li>
+                            <li><strong>Full information:</strong> Buyer's knowledge about costs, prices, and alternatives</li>
+                            <li><strong>Substitute availability:</strong> Accessible alternatives strengthen buyers</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell's Buyer Power Analysis: Customer Segments</h5>
+                        <p class="text-sm mb-3">Dell's diverse customer base shows varying degrees of buyer power:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Large enterprise customers:</strong> High buyer power due to volume purchases, sophisticated procurement teams, and multiple vendor options</li>
+                            <li><strong>Small/medium businesses:</strong> Moderate power, less volume leverage but numerous alternatives</li>
+                            <li><strong>Public sector:</strong> High power through centralized purchasing and formal bid processes</li>
+                            <li><strong>Consumers:</strong> Low individual power but high collective power through price sensitivity and low switching costs</li>
+                            <li><strong>Hyperscale cloud providers:</strong> Extremely high buyer power with massive volumes, technical sophistication, and ability to backward integrate</li>
+                            <li><strong>Mitigating strategies:</strong> Dell focuses on value-added services, solutions selling, customization, and relationship-based approaches to reduce pure price competition</li>
+                            <li><strong>Segmentation impact:</strong> Dell's strategic focus on commercial segments partly reflects the lower buyer power and higher margins compared to consumer segments</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-3">5. Threat of Substitute Products or Services</h5>
+                        <p class="text-sm mb-3">This force examines how easily customers can find a different way of obtaining the value your product or service provides. Substitutes place a ceiling on prices and profitability.</p>
+                        
+                        <p class="text-sm font-medium mb-1">Factors Affecting Substitute Threat:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>Price-performance trade-off:</strong> How the substitute compares on value</li>
+                            <li><strong>Switching costs:</strong> Ease of changing to the substitute</li>
+                            <li><strong>Buyer propensity to substitute:</strong> Willingness to consider alternatives</li>
+                            <li><strong>Relative price:</strong> Cost of substitute compared to industry product</li>
+                            <li><strong>Secondary benefits:</strong> Additional advantages of the substitute</li>
+                            <li><strong>Substitute quality:</strong> How well the substitute meets needs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell's Substitutes Analysis: Technology Evolution</h5>
+                        <p class="text-sm mb-3">Dell faces various substitute threats across its product portfolio:</p>
+                        <ul class="pl-5 mb-0 text-sm">
+                            <li><strong>PC substitutes:</strong> Smartphones and tablets for basic computing, cloud computing reducing local processing needs</li>
+                            <li><strong>Server substitutes:</strong> Cloud computing services (AWS, Azure, GCP) replacing on-premises infrastructure, specialized AI accelerators replacing general-purpose servers</li>
+                            <li><strong>Storage substitutes:</strong> Cloud storage solutions, software-defined storage on commodity hardware</li>
+                            <li><strong>Service substitutes:</strong> Self-service IT management, automated support systems, as-a-service consumption models</li>
+                            <li><strong>Mitigating strategies:</strong> Dell is adapting by developing multi-cloud solutions, as-a-service offerings, edge computing products, and specialized hardware for emerging workloads</li>
+                            <li><strong>Strategic impact:</strong> Substitution threats are driving Dell's transformation toward services, solutions, and recurring revenue models rather than pure hardware sales</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Applying Porter's Five Forces to Industry Analysis</h4>
+                    <p>When conducting a Porter's Five Forces analysis, follow these steps to ensure a comprehensive and actionable assessment:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">1. Define the Industry Scope</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Clearly specify the industry boundaries</li>
+                                <li>Consider geographic scope (global, regional, local)</li>
+                                <li>Define relevant product/service categories</li>
+                                <li>Identify the value chain position</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">2. Gather Data on Each Force</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Collect industry reports and market research</li>
+                                <li>Review competitor financial reports</li>
+                                <li>Interview industry experts and customers</li>
+                                <li>Analyze historical industry trends</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">3. Evaluate Each Force Systematically</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Rate each force (high, medium, low)</li>
+                                <li>Assess individual factors within each force</li>
+                                <li>Consider both current state and trends</li>
+                                <li>Use quantitative metrics when possible</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">4. Analyze Force Interactions</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Identify how forces influence each other</li>
+                                <li>Determine which forces have the greatest impact</li>
+                                <li>Understand the cumulative effect on profitability</li>
+                                <li>Consider how industry changes affect force dynamics</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">5. Identify Strategic Implications</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Determine how to mitigate negative forces</li>
+                                <li>Leverage favorable forces for advantage</li>
+                                <li>Identify the most attractive market positions</li>
+                                <li>Develop strategies to alter industry structure</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">6. Monitor and Update</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Track changes in industry dynamics</li>
+                                <li>Update analysis periodically</li>
+                                <li>Watch for disruptive trends</li>
+                                <li>Adjust strategies as forces evolve</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Potential Strategic Responses to Competitive Forces</h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr>
+                                        <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Competitive Force</th>
+                                        <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Example Strategic Responses</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">
+                                            Industry Rivalry
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Differentiate products/services to avoid direct price competition</li>
+                                                <li>Focus on underserved market segments</li>
+                                                <li>Emphasize unique value proposition</li>
+                                                <li>Build switching costs through integrated solutions</li>
+                                                <li>Consider strategic acquisitions to reduce competitors</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">
+                                            Threat of New Entrants
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Increase scale economies through automation or consolidation</li>
+                                                <li>Invest in proprietary technology and patents</li>
+                                                <li>Strengthen brand identity and loyalty programs</li>
+                                                <li>Establish exclusive distribution relationships</li>
+                                                <li>Create customer switching costs through ecosystem integration</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">
+                                            Supplier Power
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Diversify supplier base to reduce dependence</li>
+                                                <li>Develop alternative components or technologies</li>
+                                                <li>Consider backward integration for critical inputs</li>
+                                                <li>Build strategic partnerships with key suppliers</li>
+                                                <li>Standardize inputs to increase substitutability</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">
+                                            Buyer Power
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Increase differentiation to reduce price sensitivity</li>
+                                                <li>Implement value-based pricing models</li>
+                                                <li>Develop unique offerings for specific customer segments</li>
+                                                <li>Create switching costs through integration and training</li>
+                                                <li>Expand direct channels to reduce intermediary power</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">
+                                            Threat of Substitutes
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Improve price-performance ratio relative to substitutes</li>
+                                                <li>Add features that substitutes cannot easily replicate</li>
+                                                <li>Increase switching costs to your solution</li>
+                                                <li>Consider incorporating substitute technologies</li>
+                                                <li>Emphasize unique benefits beyond the substitute's capabilities</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <h4>Dell's Strategic Responses to Five Forces</h4>
+                    <p>Dell has adapted its strategy over time to respond to changing competitive forces in its core markets. These strategic shifts illustrate how Five Forces analysis can inform effective business strategy:</p>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell's Evolution in Response to Competitive Forces</h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Time Period</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Key Competitive Force Changes</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Dell's Strategic Response</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            1990s - Early 2000s
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>High supplier power (Intel, Microsoft)</li>
+                                                <li>Moderate industry rivalry</li>
+                                                <li>Low substitute threat</li>
+                                                <li>Fragmented buyer landscape</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <p class="mb-0">Direct-to-customer model with build-to-order manufacturing, bypassing distributors and creating supply chain efficiencies to offset supplier power</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            Mid-2000s - 2010s
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Increased rivalry (HP, Lenovo growth)</li>
+                                                <li>Rising substitute threat (smartphones, tablets)</li>
+                                                <li>Growing buyer power (price comparison)</li>
+                                                <li>Retail channel importance increasing</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <p class="mb-0">Expanded to retail channels, diversified beyond PCs into enterprise solutions, acquired services capabilities, shifted focus toward commercial segments with lower substitute threat</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            2016 - Present
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Major substitute threat (cloud computing)</li>
+                                                <li>Extreme buyer power (hyperscalers)</li>
+                                                <li>New entrants in server space (ODMs)</li>
+                                                <li>Intense rivalry in consolidated PC market</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <p class="mb-0">EMC acquisition to build end-to-end portfolio, focus on hybrid cloud infrastructure, shift toward as-a-service offerings, emphasis on solutions selling rather than hardware transactions</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            Future Strategy
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>AI accelerating industry transformation</li>
+                                                <li>Edge computing creating new segments</li>
+                                                <li>As-a-service models disrupting ownership</li>
+                                                <li>Sustainability requirements changing buying criteria</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <p class="mb-0">Project APEX (everything-as-a-service), AI-optimized infrastructure, multi-cloud management solutions, sustainability initiatives, edge computing focus</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <h4>Limitations of Porter's Five Forces</h4>
+                    <p>While Porter's Five Forces is a powerful framework, it has certain limitations to be aware of:</p>
+                    
+                    <ul>
+                        <li><strong>Static analysis:</strong> Provides a snapshot of current conditions but doesn't fully capture industry dynamics and evolution over time</li>
+                        <li><strong>Limited consideration of complementors:</strong> The framework doesn't formally account for the role of complementary products and services (though Porter later addressed this)</li>
+                        <li><strong>Assumes perfect competition:</strong> Some industries may have regulatory protections, network effects, or other factors that alter competitive dynamics</li>
+                        <li><strong>Underemphasizes internal capabilities:</strong> Focuses more on external forces than on a company's unique resources and capabilities</li>
+                        <li><strong>Industry definition challenges:</strong> In today's converging industries, defining clear boundaries can be difficult</li>
+                        <li><strong>Digital transformation impact:</strong> New digital business models may not fit neatly into traditional industry analysis</li>
+                        <li><strong>Ecosystem complexity:</strong> Modern platform businesses and ecosystems add complexity beyond the five forces</li>
+                    </ul>
+                    
+                    <p>To address these limitations, consider complementing Five Forces analysis with other frameworks like:</p>
+                    <ul>
+                        <li>Resource-Based View (RBV) for internal capability assessment</li>
+                        <li>Value Net model to include complementors</li>
+                        <li>Blue Ocean Strategy for market creation approaches</li>
+                        <li>Business Model Canvas for broader business model analysis</li>
+                    </ul>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.youtube.com/watch?v=mYF2_FBCvXw" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-video-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Porter's Five Forces Explained</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">YouTube • 11:56</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://hbr.org/2008/01/the-five-competitive-forces-that-shape-strategy" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Five Competitive Forces That Shape Strategy</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">HBR • By Michael Porter</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://corporatefinanceinstitute.com/resources/strategic-planning/porters-5-forces/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Porter's Five Forces: Complete Guide</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Corporate Finance Institute</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Five Forces Analysis: Dell's AI Infrastructure Market</h5>
+                        <p class="mb-3">Dell is expanding its focus on AI-optimized infrastructure solutions. Conduct a Porter's Five Forces analysis of this emerging market to assess its attractiveness and identify potential strategic responses for Dell.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Industry Context:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Growing demand for specialized AI hardware (GPUs, specialized processors)</li>
+                                    <li>Cloud providers offering AI infrastructure as a service</li>
+                                    <li>Enterprises increasingly deploying AI workloads on-premises and at the edge</li>
+                                    <li>Key players include NVIDIA, AMD, cloud providers, OEMs, and startups</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Your Task:</p>
+                                <ol class="pl-4 text-sm mb-0">
+                                    <li>Analyze each of the five forces for this market</li>
+                                    <li>Rate each force as high, medium, or low with explanation</li>
+                                    <li>Identify the most significant competitive forces</li>
+                                    <li>Recommend strategic responses for Dell</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="12" placeholder="Enter your Five Forces analysis here..."></textarea>
+                        <button class="mt-3 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-swot">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: SWOT Analysis</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" id="back-to-modules-from-porters">
+                        <span>Back to Modules</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show modules dashboard, hide all topic content
+            function showModulesDashboard() {
+                document.getElementById('modules-dashboard').classList.remove('hidden');
+                document.getElementById('recommendations-section').classList.remove('hidden');
+                
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+            }
+            
+            // Show specific topic, hide modules dashboard
+            function showTopic(topicId) {
+                // Hide modules dashboard
+                document.getElementById('modules-dashboard').classList.add('hidden');
+                document.getElementById('recommendations-section').classList.add('hidden');
+                
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Back to modules buttons
+            document.querySelectorAll('#back-to-modules-from-cba, #back-to-modules-from-porters').forEach(button => {
+                button.addEventListener('click', function() {
+                    showModulesDashboard();
+                });
+            });
+            
+            // Initialize with topic content visible (for preview)
+            // In production, this would start with modules dashboard
+            document.getElementById('topic-cost-benefit').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

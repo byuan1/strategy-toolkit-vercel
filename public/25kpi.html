@@ -1,0 +1,2307 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+      <div class="mb-6">
+        <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <i class="ri-arrow-left-line"></i>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    
+            <!-- KPI Analysis Topic -->
+            <section id="topic-kpi-metrics" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-dashboard-3-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">KPI Analysis &amp; Metrics</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Financial Acumen</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the role of KPIs in measuring business performance</li>
+                            <li>Learn to develop and select appropriate KPIs for different business areas</li>
+                            <li>Develop skills to analyze KPI data for insight and decision-making</li>
+                            <li>Apply KPI frameworks to Dell's business context</li>
+                            <li>Create effective KPI dashboards and monitoring systems</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Key Performance Indicators</h4>
+                    <p>Key Performance Indicators (KPIs) are quantifiable measurements used to evaluate the success of an organization, team, or individual in meeting objectives for performance. They provide actionable insights that enable leaders to make informed decisions, track progress toward goals, and identify areas for improvement. Effective KPIs translate strategic objectives into measurable outcomes that align activities with business priorities.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why KPIs Matter</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Strategic alignment:</strong> Connect day-to-day activities to strategic objectives</li>
+                            <li><strong>Performance visibility:</strong> Provide clear signals of business health and progress</li>
+                            <li><strong>Decision support:</strong> Enable data-driven decisions based on objective measures</li>
+                            <li><strong>Early warning:</strong> Highlight potential issues before they become significant problems</li>
+                            <li><strong>Behavior influence:</strong> Focus attention on what matters most to drive desired outcomes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">The KPI Pyramid: Connecting Strategy to Metrics</h5>
+                                <div class="flex justify-center">
+                                    <div class="relative w-full max-w-[500px] h-[400px]">
+                                        <!-- Strategic Level -->
+                                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-64 h-20 bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center border-2 border-blue-300 dark:border-blue-700 rounded-lg z-10">
+                                            <div class="text-center">
+                                                <p class="font-medium text-sm mb-1">Strategic Objectives</p>
+                                                <p class="text-xs">Vision, Mission &amp; Long-term Goals</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Connecting lines -->
+                                        <div class="absolute top-[80px] left-[150px] w-1 h-20 bg-blue-300 dark:bg-blue-700"></div>
+                                        <div class="absolute top-[80px] right-[150px] w-1 h-20 bg-blue-300 dark:bg-blue-700"></div>
+                                        
+                                        <!-- Tactical Level -->
+                                        <div class="absolute top-[100px] left-[50px] w-64 h-20 bg-green-100 dark:bg-green-900/30 flex items-center justify-center border-2 border-green-300 dark:border-green-700 rounded-lg z-10">
+                                            <div class="text-center">
+                                                <p class="font-medium text-sm mb-1">Critical Success Factors</p>
+                                                <p class="text-xs">What must go right to achieve objectives</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="absolute top-[100px] right-[50px] w-64 h-20 bg-green-100 dark:bg-green-900/30 flex items-center justify-center border-2 border-green-300 dark:border-green-700 rounded-lg z-10">
+                                            <div class="text-center">
+                                                <p class="font-medium text-sm mb-1">Business Outcomes</p>
+                                                <p class="text-xs">Measurable results that indicate success</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- More connecting lines -->
+                                        <div class="absolute top-[180px] left-[82px] w-1 h-20 bg-green-300 dark:bg-green-700"></div>
+                                        <div class="absolute top-[180px] left-[184px] w-1 h-20 bg-green-300 dark:bg-green-700"></div>
+                                        <div class="absolute top-[180px] right-[184px] w-1 h-20 bg-green-300 dark:bg-green-700"></div>
+                                        <div class="absolute top-[180px] right-[82px] w-1 h-20 bg-green-300 dark:bg-green-700"></div>
+                                        
+                                        <!-- Operational Level -->
+                                        <div class="absolute top-[200px] left-[0px] w-42 h-20 bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center border-2 border-purple-300 dark:border-purple-700 rounded-lg z-10">
+                                            <div class="text-center px-2">
+                                                <p class="font-medium text-sm mb-1">KPIs</p>
+                                                <p class="text-xs">Strategic Performance Metrics</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="absolute top-[200px] left-[140px] w-42 h-20 bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center border-2 border-purple-300 dark:border-purple-700 rounded-lg z-10">
+                                            <div class="text-center px-2">
+                                                <p class="font-medium text-sm mb-1">KPIs</p>
+                                                <p class="text-xs">Strategic Performance Metrics</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="absolute top-[200px] right-[140px] w-42 h-20 bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center border-2 border-purple-300 dark:border-purple-700 rounded-lg z-10">
+                                            <div class="text-center px-2">
+                                                <p class="font-medium text-sm mb-1">KPIs</p>
+                                                <p class="text-xs">Strategic Performance Metrics</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="absolute top-[200px] right-[0px] w-42 h-20 bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center border-2 border-purple-300 dark:border-purple-700 rounded-lg z-10">
+                                            <div class="text-center px-2">
+                                                <p class="font-medium text-sm mb-1">KPIs</p>
+                                                <p class="text-xs">Strategic Performance Metrics</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Final connecting lines -->
+                                        <div class="absolute top-[280px] left-[28px] w-1 h-20 bg-purple-300 dark:bg-purple-700"></div>
+                                        <div class="absolute top-[280px] left-[165px] w-1 h-20 bg-purple-300 dark:bg-purple-700"></div>
+                                        <div class="absolute top-[280px] right-[165px] w-1 h-20 bg-purple-300 dark:bg-purple-700"></div>
+                                        <div class="absolute top-[280px] right-[28px] w-1 h-20 bg-purple-300 dark:bg-purple-700"></div>
+                                        
+                                        <!-- Metrics Level -->
+                                        <div class="absolute top-[300px] w-full flex justify-between px-4">
+                                            <div class="w-20 h-16 bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center border-2 border-amber-300 dark:border-amber-700 rounded-lg">
+                                                <p class="text-xs text-center">Operational Metrics</p>
+                                            </div>
+                                            
+                                            <div class="w-20 h-16 bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center border-2 border-amber-300 dark:border-amber-700 rounded-lg">
+                                                <p class="text-xs text-center">Operational Metrics</p>
+                                            </div>
+                                            
+                                            <div class="w-20 h-16 bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center border-2 border-amber-300 dark:border-amber-700 rounded-lg">
+                                                <p class="text-xs text-center">Operational Metrics</p>
+                                            </div>
+                                            
+                                            <div class="w-20 h-16 bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center border-2 border-amber-300 dark:border-amber-700 rounded-lg">
+                                                <p class="text-xs text-center">Operational Metrics</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Annotations -->
+                                        <div class="absolute top-[10px] right-[10px] text-xs text-gray-500 dark:text-gray-400">
+                                            <p>Strategic</p>
+                                        </div>
+                                        
+                                        <div class="absolute top-[130px] right-[10px] text-xs text-gray-500 dark:text-gray-400">
+                                            <p>Tactical</p>
+                                        </div>
+                                        
+                                        <div class="absolute top-[230px] right-[10px] text-xs text-gray-500 dark:text-gray-400">
+                                            <p>Operational</p>
+                                        </div>
+                                        
+                                        <div class="absolute top-[320px] right-[10px] text-xs text-gray-500 dark:text-gray-400">
+                                            <p>Execution</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-center mt-3 text-gray-500 dark:text-gray-400">KPIs bridge strategic objectives and day-to-day activities, providing measurable indicators of progress</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>KPI Categories and Types</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Core KPI Categories</h5>
+                        <p class="text-sm mb-3">KPIs can be organized into several key categories based on the aspect of business performance they measure. Each category provides unique insights that, when combined, offer a comprehensive view of organizational health.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-start gap-3 mb-2">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex-shrink-0 flex items-center justify-center text-green-700 dark:text-green-400">
+                                        <i class="ri-money-dollar-circle-line text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium text-green-700 dark:text-green-400">Financial KPIs</h6>
+                                        <p class="text-xs">Measure business performance in monetary terms</p>
+                                    </div>
+                                </div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li>Revenue growth rate</li>
+                                    <li>Gross/operating margin</li>
+                                    <li>Cash flow</li>
+                                    <li>Return on investment (ROI)</li>
+                                    <li>Cost per acquisition (CPA)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-start gap-3 mb-2">
+                                    <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex-shrink-0 flex items-center justify-center text-purple-700 dark:text-purple-400">
+                                        <i class="ri-customer-service-2-line text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium text-purple-700 dark:text-purple-400">Customer KPIs</h6>
+                                        <p class="text-xs">Evaluate customer satisfaction and relationships</p>
+                                    </div>
+                                </div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li>Net Promoter Score (NPS)</li>
+                                    <li>Customer satisfaction (CSAT)</li>
+                                    <li>Customer retention rate</li>
+                                    <li>Customer lifetime value (CLV)</li>
+                                    <li>Customer acquisition rate</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-start gap-3 mb-2">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex-shrink-0 flex items-center justify-center text-blue-700 dark:text-blue-400">
+                                        <i class="ri-settings-line text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium text-blue-700 dark:text-blue-400">Operational KPIs</h6>
+                                        <p class="text-xs">Track efficiency and effectiveness of business processes</p>
+                                    </div>
+                                </div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li>Cycle time</li>
+                                    <li>Defect/error rate</li>
+                                    <li>On-time delivery</li>
+                                    <li>Capacity utilization</li>
+                                    <li>Inventory turnover</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-start gap-3 mb-2">
+                                    <div class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30 flex-shrink-0 flex items-center justify-center text-amber-700 dark:text-amber-400">
+                                        <i class="ri-team-line text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium text-amber-700 dark:text-amber-400">People KPIs</h6>
+                                        <p class="text-xs">Assess workforce engagement and performance</p>
+                                    </div>
+                                </div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li>Employee engagement score</li>
+                                    <li>Turnover rate</li>
+                                    <li>Revenue per employee</li>
+                                    <li>Training completion rate</li>
+                                    <li>Time to fill open positions</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-start gap-3 mb-2">
+                                    <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex-shrink-0 flex items-center justify-center text-red-700 dark:text-red-400">
+                                        <i class="ri-product-hunt-line text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium text-red-700 dark:text-red-400">Product/Service KPIs</h6>
+                                        <p class="text-xs">Measure quality and performance of offerings</p>
+                                    </div>
+                                </div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li>Usage statistics</li>
+                                    <li>Feature adoption rate</li>
+                                    <li>Support ticket volume</li>
+                                    <li>Quality scores</li>
+                                    <li>Time to market</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <div class="flex items-start gap-3 mb-2">
+                                    <div class="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex-shrink-0 flex items-center justify-center text-indigo-700 dark:text-indigo-400">
+                                        <i class="ri-growth-line text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium text-indigo-700 dark:text-indigo-400">Growth &amp; Innovation KPIs</h6>
+                                        <p class="text-xs">Evaluate future-focused initiatives and capabilities</p>
+                                    </div>
+                                </div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li>New product revenue percentage</li>
+                                    <li>R&amp;D investment ratio</li>
+                                    <li>Innovation pipeline strength</li>
+                                    <li>Market share trends</li>
+                                    <li>New market penetration</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">KPI Types and Characteristics</h5>
+                        <p class="text-sm mb-3">KPIs can be classified by their measurement characteristics and their role in performance monitoring. Understanding these distinctions helps in selecting the right metrics for different purposes.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">By Measurement Approach</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <table class="w-full text-sm">
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium">Quantitative</td>
+                                                <td class="py-2 text-xs">
+                                                    Measured in numbers (e.g., revenue, units sold)
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium">Qualitative</td>
+                                                <td class="py-2 text-xs">
+                                                    Measured through assessments or ratings (e.g., customer satisfaction)
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium">Leading</td>
+                                                <td class="py-2 text-xs">
+                                                    Predict future performance (e.g., sales pipeline)
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium">Lagging</td>
+                                                <td class="py-2 text-xs">
+                                                    Measure historical performance (e.g., quarterly revenue)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 pr-2 font-medium">Input vs. Output</td>
+                                                <td class="py-2 text-xs">
+                                                    Measure resources used vs. results achieved
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">By Strategic Role</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <table class="w-full text-sm">
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium">Strategic KPIs</td>
+                                                <td class="py-2 text-xs">
+                                                    Aligned with long-term objectives and monitored by executives
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium">Tactical KPIs</td>
+                                                <td class="py-2 text-xs">
+                                                    Measure progress of mid-term initiatives and projects
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium">Operational KPIs</td>
+                                                <td class="py-2 text-xs">
+                                                    Track day-to-day activities and processes
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium">External KPIs</td>
+                                                <td class="py-2 text-xs">
+                                                    Focus on market-facing performance and competitive position
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 pr-2 font-medium">Internal KPIs</td>
+                                                <td class="py-2 text-xs">
+                                                    Measure organizational efficiency and effectiveness
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">The Important Balance: Leading vs. Lagging Indicators</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Leading Indicators</h6>
+                                    <p class="text-xs mb-2">Predictive measures that change before the business sees results</p>
+                                    <ul class="pl-4 text-xs mb-2">
+                                        <li>Sales pipeline value</li>
+                                        <li>Website traffic</li>
+                                        <li>New product development milestones</li>
+                                        <li>Employee engagement scores</li>
+                                        <li>Marketing qualified leads</li>
+                                    </ul>
+                                    <p class="text-xs italic mb-0">Used for: Forecasting, early intervention, proactive management</p>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-2">Lagging Indicators</h6>
+                                    <p class="text-xs mb-2">Output measures that change after the business sees results</p>
+                                    <ul class="pl-4 text-xs mb-2">
+                                        <li>Revenue</li>
+                                        <li>Customer churn rate</li>
+                                        <li>Market share</li>
+                                        <li>Employee turnover</li>
+                                        <li>Customer satisfaction</li>
+                                    </ul>
+                                    <p class="text-xs italic mb-0">Used for: Performance evaluation, historical analysis, results verification</p>
+                                </div>
+                            </div>
+                            <p class="text-xs mt-2 mb-0 text-center text-gray-600 dark:text-gray-400">Effective KPI frameworks balance both leading and lagging indicators to provide both predictive power and results confirmation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Example: Dell KPI Framework by Business Function</h5>
+                        <p class="text-sm mb-3">This example shows how Dell might structure KPIs across various business functions, highlighting both financial and non-financial metrics that align with strategic objectives.</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-900">
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Business Function</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Financial KPIs</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Customer KPIs</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Operational KPIs</th>
+                                        <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Leading Indicators</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">PC Business Unit</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Revenue growth rate</li>
+                                                <li>Gross margin</li>
+                                                <li>Average selling price</li>
+                                                <li>R&amp;D spend as % of revenue</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Net Promoter Score</li>
+                                                <li>Customer satisfaction</li>
+                                                <li>First-year repeat purchase rate</li>
+                                                <li>Support call resolution time</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Manufacturing defect rate</li>
+                                                <li>Inventory turnover</li>
+                                                <li>On-time delivery %</li>
+                                                <li>Build-to-order cycle time</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Order pipeline trend</li>
+                                                <li>Web traffic to product pages</li>
+                                                <li>Sales team activity metrics</li>
+                                                <li>Component price forecasts</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Server &amp; Networking</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Services attach rate</li>
+                                                <li>Solutions revenue growth</li>
+                                                <li>Recurring revenue %</li>
+                                                <li>Deal win rate</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Enterprise NPS</li>
+                                                <li>Customer retention rate</li>
+                                                <li>Solution deployment success</li>
+                                                <li>Time to value</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Order accuracy</li>
+                                                <li>Configuration error rate</li>
+                                                <li>System uptime %</li>
+                                                <li>Mean time between failures</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Qualified opportunity pipeline</li>
+                                                <li>POC conversion rate</li>
+                                                <li>Partner certification levels</li>
+                                                <li>Technology adoption indicators</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">As-a-Service Offerings (APEX)</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Annual recurring revenue (ARR)</li>
+                                                <li>Customer acquisition cost</li>
+                                                <li>Customer lifetime value</li>
+                                                <li>Expansion revenue %</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Subscription renewal rate</li>
+                                                <li>Feature adoption %</li>
+                                                <li>Service utilization</li>
+                                                <li>Time to onboard</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Service availability %</li>
+                                                <li>Support ticket resolution</li>
+                                                <li>Deployment time</li>
+                                                <li>Infrastructure utilization</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Free trial conversion rate</li>
+                                                <li>Feature engagement metrics</li>
+                                                <li>Upsell opportunity indicators</li>
+                                                <li>Customer health score</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Supply Chain</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Cost of goods sold</li>
+                                                <li>Inventory carrying cost</li>
+                                                <li>Cash-to-cash cycle time</li>
+                                                <li>Supply chain cost % of revenue</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Perfect order fulfillment</li>
+                                                <li>On-time shipping %</li>
+                                                <li>Order status accuracy</li>
+                                                <li>Customer complaints</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Inventory turnover</li>
+                                                <li>Forecast accuracy</li>
+                                                <li>Supplier defect rate</li>
+                                                <li>Manufacturing cycle time</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Component lead time trends</li>
+                                                <li>Supplier health metrics</li>
+                                                <li>Logistics capacity indicators</li>
+                                                <li>Material price forecasts</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-xs mt-2 mb-0 text-gray-500 dark:text-gray-400 text-center">This framework illustrates how Dell might align KPIs across business functions to support strategic goals while tracking both financial and operational performance.</p>
+                    </div>
+                    
+                    <h4>Developing Effective KPIs</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">The SMART Framework for KPI Development</h5>
+                        <p class="text-sm mb-3">Effective KPIs should follow the SMART criteria to ensure they are well-defined, measurable, and aligned with business objectives.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <table class="w-full text-sm">
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium text-green-700 dark:text-green-400">S - Specific</td>
+                                                <td class="py-2">
+                                                    <p class="text-xs mb-1">Clearly define what the KPI measures and why it matters</p>
+                                                    <p class="text-xs italic mb-0 text-gray-600 dark:text-gray-400">Not: "Improve customer satisfaction"<br>But: "Increase Net Promoter Score for enterprise customers"</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium text-green-700 dark:text-green-400">M - Measurable</td>
+                                                <td class="py-2">
+                                                    <p class="text-xs mb-1">Ensure the KPI can be quantified and tracked consistently</p>
+                                                    <p class="text-xs italic mb-0 text-gray-600 dark:text-gray-400">Not: "Better quality service"<br>But: "Reduce support ticket resolution time from 24 to 8 hours"</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 pr-2 font-medium text-green-700 dark:text-green-400">A - Attainable</td>
+                                                <td class="py-2">
+                                                    <p class="text-xs mb-1">Set targets that are challenging but achievable</p>
+                                                    <p class="text-xs italic mb-0 text-gray-600 dark:text-gray-400">Not: "100% customer retention"<br>But: "Improve customer retention from 85% to 90%"</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <table class="w-full text-sm">
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium text-green-700 dark:text-green-400">R - Relevant</td>
+                                                <td class="py-2">
+                                                    <p class="text-xs mb-1">Align with strategic objectives and focus on what matters</p>
+                                                    <p class="text-xs italic mb-0 text-gray-600 dark:text-gray-400">Not: Tracking metrics because they're easy to measure<br>But: Tracking metrics that drive strategic outcomes</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-2 pr-2 font-medium text-green-700 dark:text-green-400">T - Time-bound</td>
+                                                <td class="py-2">
+                                                    <p class="text-xs mb-1">Specify the timeframe for achievement and measurement</p>
+                                                    <p class="text-xs italic mb-0 text-gray-600 dark:text-gray-400">Not: "Increase revenue"<br>But: "Increase recurring revenue by 20% by end of FY2024"</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 pr-2 font-medium text-green-700 dark:text-green-400">+ Actionable</td>
+                                                <td class="py-2">
+                                                    <p class="text-xs mb-1">Ensure the KPI drives decisions and actions</p>
+                                                    <p class="text-xs italic mb-0 text-gray-600 dark:text-gray-400">Not: Metrics that are interesting but don't drive action<br>But: Metrics that trigger specific interventions when off-target</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: Transforming a Vague Objective into SMART KPIs</h6>
+                            
+                            <div class="mb-3">
+                                <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg mb-2">
+                                    <p class="text-sm font-medium text-red-700 dark:text-red-400 mb-1">Vague Business Objective:</p>
+                                    <p class="text-sm mb-0">"Improve customer experience for Dell APEX offerings"</p>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <p class="text-sm font-medium text-green-700 dark:text-green-400 mb-1">Transformed into SMART KPIs:</p>
+                                    <ul class="pl-4 text-sm mb-0">
+                                        <li><strong>Specific:</strong> "Increase APEX Customer Net Promoter Score from 35 to 50"</li>
+                                        <li><strong>Measurable:</strong> "Reduce APEX customer onboarding time from 14 days to 5 days"</li>
+                                        <li><strong>Attainable:</strong> "Increase APEX service feature adoption from 60% to 75%"</li>
+                                        <li><strong>Relevant:</strong> "Improve APEX subscription renewal rate from 82% to 90%"</li>
+                                        <li><strong>Time-bound:</strong> "Achieve all targets by end of FY2024 with quarterly checkpoints"</li>
+                                        <li><strong>Actionable:</strong> "Define intervention processes for any KPI that falls below 90% of target"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Supporting Metrics (Leading Indicators):</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Percentage of users completing training</li>
+                                        <li>Support ticket resolution time</li>
+                                        <li>Customer engagement with service dashboard</li>
+                                        <li>Service uptime percentage</li>
+                                        <li>Customer feedback response rate</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Actionable Insights:</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Target additional training for features with low adoption</li>
+                                        <li>Simplify onboarding steps that cause most delays</li>
+                                        <li>Identify features most correlated with renewal rates</li>
+                                        <li>Segment NPS feedback to pinpoint improvement areas</li>
+                                        <li>Create automated alerts for service performance issues</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">KPI Selection Process</h5>
+                        <p class="text-sm mb-3">Developing effective KPIs involves a structured process that ensures alignment with strategic objectives while maintaining focus on actionable, meaningful metrics.</p>
+                        
+                        <div class="overflow-x-auto mb-3">
+                            <div class="min-w-[700px]">
+                                <div class="flex mb-4">
+                                    <!-- Step 1 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-purple-300 dark:border-purple-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 1</div>
+                                            <p class="text-xs font-medium text-center">Clarify Strategic Objectives</p>
+                                        </div>
+                                    </div>
+                                    <!-- Arrow -->
+                                    <div class="w-[5%] flex items-center justify-center">
+                                        <i class="ri-arrow-right-line text-gray-400"></i>
+                                    </div>
+                                    <!-- Step 2 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-purple-300 dark:border-purple-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 2</div>
+                                            <p class="text-xs font-medium text-center">Identify Critical Success Factors</p>
+                                        </div>
+                                    </div>
+                                    <!-- Arrow -->
+                                    <div class="w-[5%] flex items-center justify-center">
+                                        <i class="ri-arrow-right-line text-gray-400"></i>
+                                    </div>
+                                    <!-- Step 3 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-purple-300 dark:border-purple-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 3</div>
+                                            <p class="text-xs font-medium text-center">Define Potential KPIs</p>
+                                        </div>
+                                    </div>
+                                    <!-- Arrow -->
+                                    <div class="w-[5%] flex items-center justify-center">
+                                        <i class="ri-arrow-right-line text-gray-400"></i>
+                                    </div>
+                                    <!-- Step 4 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-purple-300 dark:border-purple-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 4</div>
+                                            <p class="text-xs font-medium text-center">Evaluate and Select KPIs</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- KPI Definition Details -->
+                                <div class="grid grid-cols-4 gap-4 mb-3">
+                                    <div>
+                                        <div class="bg-white dark:bg-gray-800 p-2 rounded-lg h-full">
+                                            <p class="text-xs font-medium mb-1">What to do:</p>
+                                            <ul class="pl-3 text-xs mb-0">
+                                                <li>Review strategic plan</li>
+                                                <li>Identify key business goals</li>
+                                                <li>Clarify expected outcomes</li>
+                                                <li>Understand stakeholder needs</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="bg-white dark:bg-gray-800 p-2 rounded-lg h-full">
+                                            <p class="text-xs font-medium mb-1">What to do:</p>
+                                            <ul class="pl-3 text-xs mb-0">
+                                                <li>Determine what must go right</li>
+                                                <li>Identify value drivers</li>
+                                                <li>Map processes to outcomes</li>
+                                                <li>Focus on key leverage points</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="bg-white dark:bg-gray-800 p-2 rounded-lg h-full">
+                                            <p class="text-xs font-medium mb-1">What to do:</p>
+                                            <ul class="pl-3 text-xs mb-0">
+                                                <li>Brainstorm potential metrics</li>
+                                                <li>Consider both leading/lagging</li>
+                                                <li>Include financial/non-financial</li>
+                                                <li>Document measurement methods</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="bg-white dark:bg-gray-800 p-2 rounded-lg h-full">
+                                            <p class="text-xs font-medium mb-1">What to do:</p>
+                                            <ul class="pl-3 text-xs mb-0">
+                                                <li>Apply SMART criteria</li>
+                                                <li>Check for data availability</li>
+                                                <li>Assess implementation effort</li>
+                                                <li>Prioritize for maximum impact</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex mb-4">
+                                    <!-- Step 5 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-purple-300 dark:border-purple-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 5</div>
+                                            <p class="text-xs font-medium text-center">Define Targets &amp; Thresholds</p>
+                                        </div>
+                                    </div>
+                                    <!-- Arrow -->
+                                    <div class="w-[5%] flex items-center justify-center">
+                                        <i class="ri-arrow-right-line text-gray-400"></i>
+                                    </div>
+                                    <!-- Step 6 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-purple-300 dark:border-purple-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 6</div>
+                                            <p class="text-xs font-medium text-center">Implement Tracking Systems</p>
+                                        </div>
+                                    </div>
+                                    <!-- Arrow -->
+                                    <div class="w-[5%] flex items-center justify-center">
+                                        <i class="ri-arrow-right-line text-gray-400"></i>
+                                    </div>
+                                    <!-- Step 7 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-purple-300 dark:border-purple-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 7</div>
+                                            <p class="text-xs font-medium text-center">Create Review Process</p>
+                                        </div>
+                                    </div>
+                                    <!-- Arrow -->
+                                    <div class="w-[5%] flex items-center justify-center">
+                                        <i class="ri-arrow-right-line text-gray-400"></i>
+                                    </div>
+                                    <!-- Step 8 -->
+                                    <div class="w-1/5 px-2">
+                                        <div class="h-16 rounded-lg bg-white dark:bg-gray-800 flex items-center justify-center border-2 border-purple-300 dark:border-purple-700 relative">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-medium px-2 py-0.5 rounded-full">Step 8</div>
+                                            <p class="text-xs font-medium text-center">Refine and Evolve KPIs</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- KPI Implementation Details -->
+                                <div class="grid grid-cols-4 gap-4">
+                                    <div>
+                                        <div class="bg-white dark:bg-gray-800 p-2 rounded-lg h-full">
+                                            <p class="text-xs font-medium mb-1">What to do:</p>
+                                            <ul class="pl-3 text-xs mb-0">
+                                                <li>Set baseline performance</li>
+                                                <li>Define target performance</li>
+                                                <li>Establish alert thresholds</li>
+                                                <li>Align with industry benchmarks</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="bg-white dark:bg-gray-800 p-2 rounded-lg h-full">
+                                            <p class="text-xs font-medium mb-1">What to do:</p>
+                                            <ul class="pl-3 text-xs mb-0">
+                                                <li>Set up data collection</li>
+                                                <li>Implement visualization tools</li>
+                                                <li>Automate where possible</li>
+                                                <li>Establish data governance</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="bg-white dark:bg-gray-800 p-2 rounded-lg h-full">
+                                            <p class="text-xs font-medium mb-1">What to do:</p>
+                                            <ul class="pl-3 text-xs mb-0">
+                                                <li>Define review frequency</li>
+                                                <li>Establish accountability</li>
+                                                <li>Create action protocols</li>
+                                                <li>Document decision processes</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="bg-white dark:bg-gray-800 p-2 rounded-lg h-full">
+                                            <p class="text-xs font-medium mb-1">What to do:</p>
+                                            <ul class="pl-3 text-xs mb-0">
+                                                <li>Regularly assess relevance</li>
+                                                <li>Update as strategies change</li>
+                                                <li>Remove obsolete metrics</li>
+                                                <li>Incorporate new data sources</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Avoiding KPI Overload: The "Less is More" Principle</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-red-700 dark:text-red-400 mb-2">Signs of KPI Overload</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Tracking 20+ KPIs per business area</li>
+                                        <li>Similar metrics measuring the same outcome</li>
+                                        <li>Limited action taken on most metrics</li>
+                                        <li>Excessive time spent on data collection</li>
+                                        <li>Conflicting or competing metrics</li>
+                                        <li>Unclear ownership and accountability</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Effective KPI Management</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Limit to 5-9 primary KPIs per function</li>
+                                        <li>Ensure each KPI drives specific decisions</li>
+                                        <li>Focus on metrics with clear ownership</li>
+                                        <li>Prioritize metrics with available data</li>
+                                        <li>Balance leading and lagging indicators</li>
+                                        <li>Regularly retire outdated metrics</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-2 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                                <p class="text-xs mb-0 text-center font-medium"><i class="ri-lightbulb-line"></i> Remember: The goal is not to create a comprehensive measurement system, but to drive focus and action on what matters most.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Example: Dell APEX As-a-Service KPI Development Process</h5>
+                        <p class="text-sm mb-3">This example illustrates how Dell might develop KPIs for its APEX as-a-service offerings, following the structured KPI selection process.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Strategic Objective &amp; Critical Success Factors</h6>
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg mb-3">
+                                    <p class="text-sm font-medium mb-1">Strategic Objective:</p>
+                                    <p class="text-sm mb-0">"Grow Dell APEX revenue to 30% of total Dell revenue by FY2026 while maintaining 25%+ operating margins"</p>
+                                </div>
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+                                    <p class="text-sm font-medium mb-1">Critical Success Factors:</p>
+                                    <ol class="pl-5 text-xs mb-0">
+                                        <li>High customer adoption and retention rates</li>
+                                        <li>Efficient customer onboarding and service delivery</li>
+                                        <li>Predictable, recurring revenue streams</li>
+                                        <li>Controlled service delivery costs</li>
+                                        <li>Cross-selling success within existing customers</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Potential KPIs Identified (Initial List)</h6>
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg h-full">
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div>
+                                            <p class="text-xs font-medium mb-1">Financial KPIs:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Annual recurring revenue (ARR)</li>
+                                                <li>ARR growth rate</li>
+                                                <li>Average revenue per customer</li>
+                                                <li>Gross margin percentage</li>
+                                                <li>Customer acquisition cost</li>
+                                                <li>Lifetime value (LTV)</li>
+                                                <li>LTV to CAC ratio</li>
+                                                <li>Payback period</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-medium mb-1">Operational KPIs:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Customer retention rate</li>
+                                                <li>Net revenue retention</li>
+                                                <li>Service availability percentage</li>
+                                                <li>Deployment time (days)</li>
+                                                <li>Incident resolution time</li>
+                                                <li>Feature adoption rate</li>
+                                                <li>NPS/CSAT scores</li>
+                                                <li>Expansion revenue percentage</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg mb-4">
+                            <h6 class="text-sm font-medium mb-2">Selected KPIs and Their Definitions</h6>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm border-collapse">
+                                    <thead>
+                                        <tr class="bg-white dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">KPI</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Definition</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Target</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Type</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Frequency</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Annual Recurring Revenue (ARR)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Total value of all active subscription contracts, normalized to annual value
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                $5B by end of FY24<br>(40% YoY growth)
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Lagging<br>Financial
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Monthly
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Net Revenue Retention</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Revenue from existing customers this period compared to their revenue in previous period (includes expansion, contraction, &amp; churn)
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                &gt;115%
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Lagging<br>Financial
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Quarterly
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Gross Margin Percentage</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                (APEX revenue - direct service delivery costs) ÷ APEX revenue
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                &gt;65%
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Lagging<br>Financial
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Monthly
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Customer Retention Rate</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Percentage of customers who renew their subscriptions when eligible
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                &gt;90%
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Lagging<br>Customer
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Monthly
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Feature Adoption Rate</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Percentage of available service features actively used by customers
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                &gt;75%
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Leading<br>Product
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Weekly
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Net Promoter Score</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Customer likelihood to recommend APEX services (Promoters % - Detractors %)
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                &gt;50
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Lagging<br>Customer
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Quarterly
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Service Availability</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Percentage of time APEX services are operational and accessible to customers
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                &gt;99.95%
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Leading<br>Operational
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Daily
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Time to Value</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Average days from contract signing to production deployment
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                &lt;5 days
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Leading<br>Operational
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                Weekly
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Implementation Plan</h6>
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                    <ol class="pl-5 text-xs mb-0">
+                                        <li class="mb-1"><strong>Data Sources:</strong> Integrate data from CRM, service monitoring, billing, and customer success platforms</li>
+                                        <li class="mb-1"><strong>Dashboard Creation:</strong> Develop executive, management, and operational level dashboards</li>
+                                        <li class="mb-1"><strong>Automated Alerts:</strong> Set up notification system for when KPIs fall below threshold values</li>
+                                        <li class="mb-1"><strong>Review Cadence:</strong> Weekly operational reviews, monthly management reviews, quarterly executive reviews</li>
+                                        <li class="mb-0"><strong>Action Planning:</strong> Standard process for developing corrective actions when KPIs miss targets</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">KPI Governance Model</h6>
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                    <ul class="pl-5 text-xs mb-0">
+                                        <li class="mb-1"><strong>KPI Owners:</strong> Individual leader assigned to each KPI, responsible for hitting targets</li>
+                                        <li class="mb-1"><strong>Data Stewards:</strong> Personnel responsible for data accuracy and integrity for each KPI</li>
+                                        <li class="mb-1"><strong>Quarterly Review:</strong> Formal review of KPI effectiveness and target appropriateness</li>
+                                        <li class="mb-1"><strong>Annual Refresh:</strong> Complete review of all KPIs to ensure continued alignment with strategy</li>
+                                        <li class="mb-0"><strong>Executive Sponsorship:</strong> Senior leader oversight to enforce accountability and remove barriers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>KPI Analysis and Visualization</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">KPI Analysis Techniques</h5>
+                        <p class="text-sm mb-3">Collecting KPI data is only the first step; extracting meaningful insights requires effective analysis techniques. These approaches help transform raw metrics into actionable intelligence.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Trend Analysis</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Evaluating KPI performance over time to identify patterns, seasonality, and directional movement.</p>
+                                    <div class="flex items-center justify-center mb-2">
+                                        <div class="w-full max-w-[300px] h-36 bg-gray-50 dark:bg-gray-900 rounded-lg p-2 relative">
+                                            <!-- X-axis -->
+                                            <div class="absolute bottom-2 left-10 right-4 h-px bg-gray-300 dark:bg-gray-600"></div>
+                                            <!-- Y-axis -->
+                                            <div class="absolute bottom-2 left-10 w-px h-28 bg-gray-300 dark:bg-gray-600"></div>
+                                            
+                                            <!-- Trend line (positive) -->
+                                            <svg viewBox="0 0 270 120" class="absolute bottom-2 left-10 right-4 h-28">
+                                                <polyline points="0,100 30,85 60,90 90,75 120,65 150,60 180,40 210,45 240,30" fill="none" stroke="#4ade80" stroke-width="2" class="dark:stroke-green-400"></polyline>
+                                            </svg>
+                                            
+                                            <!-- Axis labels -->
+                                            <div class="absolute bottom-0 left-0 text-[8px] text-gray-500 dark:text-gray-400">Time</div>
+                                            <div class="absolute top-1/2 left-1 transform -translate-y-1/2 -rotate-90 text-[8px] text-gray-500 dark:text-gray-400">Value</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs mb-0"><strong>Key question:</strong> "How is our performance changing over time, and what factors are driving these changes?"</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Comparative Analysis</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Comparing KPI performance against benchmarks, targets, competitors, or between different business units.</p>
+                                    <div class="flex items-center justify-center mb-2">
+                                        <div class="w-full max-w-[300px] h-36 bg-gray-50 dark:bg-gray-900 rounded-lg p-2 relative">
+                                            <!-- Chart bars -->
+                                            <div class="absolute bottom-8 left-[40px] w-16 h-16 bg-blue-500/70 dark:bg-blue-500/50"></div>
+                                            <div class="absolute bottom-8 left-[110px] w-16 h-28 bg-green-500/70 dark:bg-green-500/50"></div>
+                                            <div class="absolute bottom-8 left-[180px] w-16 h-10 bg-red-500/70 dark:bg-red-500/50"></div>
+                                            
+                                            <!-- Labels -->
+                                            <div class="absolute bottom-2 left-[48px] text-[8px] text-center text-gray-500 dark:text-gray-400">Us</div>
+                                            <div class="absolute bottom-2 left-[118px] text-[8px] text-center text-gray-500 dark:text-gray-400">Target</div>
+                                            <div class="absolute bottom-2 left-[188px] text-[8px] text-center text-gray-500 dark:text-gray-400">Competitor</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs mb-0"><strong>Key question:</strong> "How does our performance compare to relevant benchmarks, and where do we stand relative to competitors?"</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Correlation Analysis</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Examining relationships between different KPIs to understand interdependencies and cause-effect connections.</p>
+                                    <div class="flex items-center justify-center mb-2">
+                                        <div class="w-full max-w-[300px] h-36 bg-gray-50 dark:bg-gray-900 rounded-lg p-2 relative">
+                                            <!-- X-axis -->
+                                            <div class="absolute bottom-2 left-10 right-4 h-px bg-gray-300 dark:bg-gray-600"></div>
+                                            <!-- Y-axis -->
+                                            <div class="absolute bottom-2 left-10 w-px h-28 bg-gray-300 dark:bg-gray-600"></div>
+                                            
+                                            <!-- Scatter plot points -->
+                                            <div class="absolute bottom-8 left-[60px] w-2 h-2 rounded-full bg-purple-500"></div>
+                                            <div class="absolute bottom-12 left-[80px] w-2 h-2 rounded-full bg-purple-500"></div>
+                                            <div class="absolute bottom-16 left-[100px] w-2 h-2 rounded-full bg-purple-500"></div>
+                                            <div class="absolute bottom-14 left-[120px] w-2 h-2 rounded-full bg-purple-500"></div>
+                                            <div class="absolute bottom-18 left-[140px] w-2 h-2 rounded-full bg-purple-500"></div>
+                                            <div class="absolute bottom-22 left-[160px] w-2 h-2 rounded-full bg-purple-500"></div>
+                                            <div class="absolute bottom-20 left-[180px] w-2 h-2 rounded-full bg-purple-500"></div>
+                                            <div class="absolute bottom-24 left-[200px] w-2 h-2 rounded-full bg-purple-500"></div>
+                                            
+                                            <!-- Trend line -->
+                                            <svg viewBox="0 0 250 120" class="absolute bottom-2 left-10 right-4 h-28">
+                                                <line x1="0" y1="90" x2="240" y2="10" stroke="#a855f7" stroke-width="1" stroke-dasharray="3,3" class="dark:stroke-purple-400"></line>
+                                            </svg>
+                                            
+                                            <!-- Axis labels -->
+                                            <div class="absolute bottom-0 left-0 text-[8px] text-gray-500 dark:text-gray-400">KPI 1</div>
+                                            <div class="absolute top-1/2 left-1 transform -translate-y-1/2 -rotate-90 text-[8px] text-gray-500 dark:text-gray-400">KPI 2</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs mb-0"><strong>Key question:</strong> "Which metrics influence each other, and how can we leverage these relationships to improve performance?"</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Variance Analysis</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Analyzing the difference between expected and actual performance to identify areas requiring attention.</p>
+                                    <div class="flex items-center justify-center mb-2">
+                                        <div class="w-full max-w-[300px] h-36 bg-gray-50 dark:bg-gray-900 rounded-lg p-2 relative">
+                                            <!-- Base axis -->
+                                            <div class="absolute top-1/2 left-4 right-4 h-px bg-gray-300 dark:bg-gray-600"></div>
+                                            
+                                            <!-- Variance bars -->
+                                            <div class="absolute top-[30px] left-[40px] w-12 h-4 bg-green-500"></div>
+                                            <div class="absolute top-[50px] left-[40px] w-12 h-px bg-gray-400"></div>
+                                            
+                                            <div class="absolute top-[50px] left-[100px] w-12 h-px bg-gray-400"></div>
+                                            <div class="absolute top-[50px] left-[100px] w-12 h-8 bg-red-500"></div>
+                                            
+                                            <div class="absolute top-[30px] left-[160px] w-12 h-12 bg-green-500"></div>
+                                            <div class="absolute top-[50px] left-[160px] w-12 h-px bg-gray-400"></div>
+                                            
+                                            <div class="absolute top-[50px] left-[220px] w-12 h-px bg-gray-400"></div>
+                                            <div class="absolute top-[50px] left-[220px] w-12 h-6 bg-red-500"></div>
+                                            
+                                            <!-- Labels -->
+                                            <div class="absolute bottom-2 left-[46px] text-[8px] text-center text-gray-500 dark:text-gray-400">Q1</div>
+                                            <div class="absolute bottom-2 left-[106px] text-[8px] text-center text-gray-500 dark:text-gray-400">Q2</div>
+                                            <div class="absolute bottom-2 left-[166px] text-[8px] text-center text-gray-500 dark:text-gray-400">Q3</div>
+                                            <div class="absolute bottom-2 left-[226px] text-[8px] text-center text-gray-500 dark:text-gray-400">Q4</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs mb-0"><strong>Key question:</strong> "Where are we performing above or below expectations, and what actions should we take in response?"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">KPI Visualization Best Practices</h5>
+                        <p class="text-sm mb-3">Effective visualization transforms complex KPI data into intuitive displays that facilitate understanding and decision-making. These best practices help create dashboards and reports that drive action.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <h6 class="text-sm font-medium mb-2">Choose the Right Visualization</h6>
+                                <table class="w-full text-xs">
+                                    <tbody>
+                                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                                            <td class="py-1">Trend over time</td>
+                                            <td class="py-1 font-medium">Line chart</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                                            <td class="py-1">Part-to-whole</td>
+                                            <td class="py-1 font-medium">Pie/Donut chart</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                                            <td class="py-1">Comparison</td>
+                                            <td class="py-1 font-medium">Bar/Column chart</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                                            <td class="py-1">Distribution</td>
+                                            <td class="py-1 font-medium">Histogram</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                                            <td class="py-1">Correlation</td>
+                                            <td class="py-1 font-medium">Scatter plot</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-1">Current vs Target</td>
+                                            <td class="py-1 font-medium">Gauge/Bullet chart</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <h6 class="text-sm font-medium mb-2">Design Principles</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Simplicity:</strong> Avoid chart junk and unnecessary elements</li>
+                                    <li class="mb-1"><strong>Context:</strong> Include targets, benchmarks, and historical data</li>
+                                    <li class="mb-1"><strong>Consistency:</strong> Use standard formats and colors for similar metrics</li>
+                                    <li class="mb-1"><strong>Focus:</strong> Highlight the most important information</li>
+                                    <li class="mb-1"><strong>Organization:</strong> Group related metrics together</li>
+                                    <li class="mb-0"><strong>Color coding:</strong> Use intuitive color schemes (green=good, red=alert)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                <h6 class="text-sm font-medium mb-2">Dashboard Structure</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Hierarchy:</strong> Most important KPIs most prominent</li>
+                                    <li class="mb-1"><strong>Layers:</strong> Start with high-level overview, drill down for details</li>
+                                    <li class="mb-1"><strong>Audience-specific:</strong> Tailor to user needs and roles</li>
+                                    <li class="mb-1"><strong>Actionable:</strong> Include context for decision-making</li>
+                                    <li class="mb-1"><strong>Interactive:</strong> Allow filtering and exploration</li>
+                                    <li class="mb-0"><strong>Efficient:</strong> Present maximum insight in minimum space</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: KPI Dashboard Organization by Purpose</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Strategic Dashboard</h6>
+                                    <p class="text-xs mb-1"><strong>For:</strong> Executives, Board Members</p>
+                                    <p class="text-xs mb-1"><strong>Purpose:</strong> High-level business performance</p>
+                                    <p class="text-xs mb-1"><strong>Time Focus:</strong> Quarterly results with annual trends</p>
+                                    <p class="text-xs mb-0"><strong>Content:</strong> 5-7 key strategic KPIs with benchmarks</p>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Tactical Dashboard</h6>
+                                    <p class="text-xs mb-1"><strong>For:</strong> Department Managers, Directors</p>
+                                    <p class="text-xs mb-1"><strong>Purpose:</strong> Functional area performance tracking</p>
+                                    <p class="text-xs mb-1"><strong>Time Focus:</strong> Monthly/weekly metrics with trends</p>
+                                    <p class="text-xs mb-0"><strong>Content:</strong> 8-12 functional KPIs with targets</p>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Operational Dashboard</h6>
+                                    <p class="text-xs mb-1"><strong>For:</strong> Team Leaders, Frontline Managers</p>
+                                    <p class="text-xs mb-1"><strong>Purpose:</strong> Day-to-day activity monitoring</p>
+                                    <p class="text-xs mb-1"><strong>Time Focus:</strong> Real-time/daily metrics</p>
+                                    <p class="text-xs mb-0"><strong>Content:</strong> Process metrics with alert thresholds</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Example: Dell PC Business Executive KPI Dashboard</h5>
+                        <p class="text-sm mb-4">This example illustrates how Dell might visualize key KPIs for its PC business in an executive dashboard format, focusing on the most critical performance indicators.</p>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 mb-3">
+                            <div class="flex items-center justify-between mb-4">
+                                <h6 class="font-medium">Dell PC Business - Executive Dashboard</h6>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Q2 FY2023</div>
+                            </div>
+                            
+                            <!-- Top row KPIs -->
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Revenue ($ Billions)</p>
+                                        <span class="text-xs px-1.5 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded">+3.2% YoY</span>
+                                    </div>
+                                    <p class="text-2xl font-bold mb-0">$14.2</p>
+                                    <div class="mt-2 h-1 w-full bg-gray-100 dark:bg-gray-700 rounded">
+                                        <div class="h-1 bg-green-500 rounded" style="width: 95%"></div>
+                                    </div>
+                                    <div class="flex justify-between mt-1">
+                                        <span class="text-[10px] text-gray-500 dark:text-gray-400">Target: $15.0B</span>
+                                        <span class="text-[10px] text-gray-500 dark:text-gray-400">95%</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Operating Margin</p>
+                                        <span class="text-xs px-1.5 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded">+2.1 pts YoY</span>
+                                    </div>
+                                    <p class="text-2xl font-bold mb-0">9.8%</p>
+                                    <div class="mt-2 h-1 w-full bg-gray-100 dark:bg-gray-700 rounded">
+                                        <div class="h-1 bg-green-500 rounded" style="width: 108%"></div>
+                                    </div>
+                                    <div class="flex justify-between mt-1">
+                                        <span class="text-[10px] text-gray-500 dark:text-gray-400">Target: 9.0%</span>
+                                        <span class="text-[10px] text-gray-500 dark:text-gray-400">108%</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Market Share</p>
+                                        <span class="text-xs px-1.5 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded">+0.8 pts YoY</span>
+                                    </div>
+                                    <p class="text-2xl font-bold mb-0">18.4%</p>
+                                    <div class="mt-2 h-1 w-full bg-gray-100 dark:bg-gray-700 rounded">
+                                        <div class="h-1 bg-green-500 rounded" style="width: 102%"></div>
+                                    </div>
+                                    <div class="flex justify-between mt-1">
+                                        <span class="text-[10px] text-gray-500 dark:text-gray-400">Target: 18.0%</span>
+                                        <span class="text-[10px] text-gray-500 dark:text-gray-400">102%</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">Net Promoter Score</p>
+                                        <span class="text-xs px-1.5 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 rounded">-2 pts YoY</span>
+                                    </div>
+                                    <p class="text-2xl font-bold mb-0">42</p>
+                                    <div class="mt-2 h-1 w-full bg-gray-100 dark:bg-gray-700 rounded">
+                                        <div class="h-1 bg-amber-500 rounded" style="width: 84%"></div>
+                                    </div>
+                                    <div class="flex justify-between mt-1">
+                                        <span class="text-[10px] text-gray-500 dark:text-gray-400">Target: 50</span>
+                                        <span class="text-[10px] text-gray-500 dark:text-gray-400">84%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Middle row charts -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <p class="text-xs font-medium">Revenue by Product Segment</p>
+                                        <div class="text-xs text-gray-500 dark:text-gray-400">
+                                            <span class="inline-block w-2 h-2 bg-blue-500 rounded-full mr-1"></span>Commercial
+                                            <span class="inline-block w-2 h-2 bg-purple-500 rounded-full mr-1 ml-2"></span>Consumer
+                                            <span class="inline-block w-2 h-2 bg-green-500 rounded-full mr-1 ml-2"></span>Education
+                                        </div>
+                                    </div>
+                                    <div class="h-40 relative">
+                                        <!-- Simplified column chart -->
+                                        <div class="absolute inset-0 flex items-end">
+                                            <div class="flex-1 flex justify-center items-end space-x-6">
+                                                <!-- Q1 -->
+                                                <div class="flex space-x-1">
+                                                    <div class="w-6 bg-blue-500 rounded-t" style="height: 60px"></div>
+                                                    <div class="w-6 bg-purple-500 rounded-t" style="height: 30px"></div>
+                                                    <div class="w-6 bg-green-500 rounded-t" style="height: 20px"></div>
+                                                </div>
+                                                
+                                                <!-- Q2 -->
+                                                <div class="flex space-x-1">
+                                                    <div class="w-6 bg-blue-500 rounded-t" style="height: 70px"></div>
+                                                    <div class="w-6 bg-purple-500 rounded-t" style="height: 28px"></div>
+                                                    <div class="w-6 bg-green-500 rounded-t" style="height: 25px"></div>
+                                                </div>
+                                                
+                                                <!-- Q3 -->
+                                                <div class="flex space-x-1">
+                                                    <div class="w-6 bg-blue-500 rounded-t" style="height: 65px"></div>
+                                                    <div class="w-6 bg-purple-500 rounded-t" style="height: 35px"></div>
+                                                    <div class="w-6 bg-green-500 rounded-t" style="height: 30px"></div>
+                                                </div>
+                                                
+                                                <!-- Q4 -->
+                                                <div class="flex space-x-1">
+                                                    <div class="w-6 bg-blue-500 rounded-t" style="height: 75px"></div>
+                                                    <div class="w-6 bg-purple-500 rounded-t" style="height: 32px"></div>
+                                                    <div class="w-6 bg-green-500 rounded-t" style="height: 35px"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- X axis -->
+                                        <div class="absolute bottom-0 left-0 right-0 flex justify-around">
+                                            <span class="text-[10px] text-gray-500 dark:text-gray-400">Q3-FY22</span>
+                                            <span class="text-[10px] text-gray-500 dark:text-gray-400">Q4-FY22</span>
+                                            <span class="text-[10px] text-gray-500 dark:text-gray-400">Q1-FY23</span>
+                                            <span class="text-[10px] text-gray-500 dark:text-gray-400">Q2-FY23</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <p class="text-xs font-medium">Revenue &amp; Margin Trends</p>
+                                        <div class="text-xs text-gray-500 dark:text-gray-400">
+                                            <span class="inline-block w-4 h-1 bg-blue-500 mr-1 align-middle"></span>Revenue
+                                            <span class="inline-block w-2 h-2 rounded-full bg-green-500 mr-1 ml-2 align-middle"></span>Margin
+                                        </div>
+                                    </div>
+                                    <div class="h-40 relative">
+                                        <!-- Simplified line and bar chart -->
+                                        <div class="absolute inset-0">
+                                            <!-- Revenue bars (background) -->
+                                            <div class="absolute inset-0 flex items-end justify-around">
+                                                <div class="w-10 bg-blue-200 dark:bg-blue-900/30 rounded-t" style="height: 50%"></div>
+                                                <div class="w-10 bg-blue-200 dark:bg-blue-900/30 rounded-t" style="height: 55%"></div>
+                                                <div class="w-10 bg-blue-200 dark:bg-blue-900/30 rounded-t" style="height: 60%"></div>
+                                                <div class="w-10 bg-blue-200 dark:bg-blue-900/30 rounded-t" style="height: 65%"></div>
+                                                <div class="w-10 bg-blue-200 dark:bg-blue-900/30 rounded-t" style="height: 63%"></div>
+                                                <div class="w-10 bg-blue-200 dark:bg-blue-900/30 rounded-t" style="height: 68%"></div>
+                                            </div>
+                                            
+                                            <!-- Margin line (foreground) -->
+                                            <svg viewBox="0 0 400 150" class="absolute inset-0 w-full h-full">
+                                                <polyline points="33,110 100,95 166,90 233,75 300,70 366,60" fill="none" stroke="#22c55e" stroke-width="3" class="dark:stroke-green-400"></polyline>
+                                                <!-- Data points -->
+                                                <circle cx="33" cy="110" r="4" fill="#22c55e" class="dark:fill-green-400"></circle>
+                                                <circle cx="100" cy="95" r="4" fill="#22c55e" class="dark:fill-green-400"></circle>
+                                                <circle cx="166" cy="90" r="4" fill="#22c55e" class="dark:fill-green-400"></circle>
+                                                <circle cx="233" cy="75" r="4" fill="#22c55e" class="dark:fill-green-400"></circle>
+                                                <circle cx="300" cy="70" r="4" fill="#22c55e" class="dark:fill-green-400"></circle>
+                                                <circle cx="366" cy="60" r="4" fill="#22c55e" class="dark:fill-green-400"></circle>
+                                            </svg>
+                                        </div>
+                                        
+                                        <!-- X axis -->
+                                        <div class="absolute bottom-0 left-0 right-0 flex justify-around">
+                                            <span class="text-[10px] text-gray-500 dark:text-gray-400">Q1-FY22</span>
+                                            <span class="text-[10px] text-gray-500 dark:text-gray-400">Q2-FY22</span>
+                                            <span class="text-[10px] text-gray-500 dark:text-gray-400">Q3-FY22</span>
+                                            <span class="text-[10px] text-gray-500 dark:text-gray-400">Q4-FY22</span>
+                                            <span class="text-[10px] text-gray-500 dark:text-gray-400">Q1-FY23</span>
+                                            <span class="text-[10px] text-gray-500 dark:text-gray-400">Q2-FY23</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Bottom row charts -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <p class="text-xs font-medium">Regional Performance vs Target</p>
+                                    </div>
+                                    <div class="h-40 relative">
+                                        <!-- Simplified horizontal bar chart -->
+                                        <div class="absolute inset-0 flex flex-col justify-around p-2">
+                                            <!-- NA -->
+                                            <div class="flex items-center h-6">
+                                                <span class="text-[10px] w-8">NA</span>
+                                                <div class="flex-1 h-4 bg-gray-100 dark:bg-gray-700 rounded relative">
+                                                    <div class="absolute h-4 bg-green-500 rounded" style="width: 110%"></div>
+                                                    <div class="absolute h-4 w-px bg-gray-400 left-[100%]"></div>
+                                                </div>
+                                                <span class="text-[10px] w-8 text-right">110%</span>
+                                            </div>
+                                            
+                                            <!-- EMEA -->
+                                            <div class="flex items-center h-6">
+                                                <span class="text-[10px] w-8">EMEA</span>
+                                                <div class="flex-1 h-4 bg-gray-100 dark:bg-gray-700 rounded relative">
+                                                    <div class="absolute h-4 bg-green-500 rounded" style="width: 95%"></div>
+                                                    <div class="absolute h-4 w-px bg-gray-400 left-[100%]"></div>
+                                                </div>
+                                                <span class="text-[10px] w-8 text-right">95%</span>
+                                            </div>
+                                            
+                                            <!-- APJ -->
+                                            <div class="flex items-center h-6">
+                                                <span class="text-[10px] w-8">APJ</span>
+                                                <div class="flex-1 h-4 bg-gray-100 dark:bg-gray-700 rounded relative">
+                                                    <div class="absolute h-4 bg-red-500 rounded" style="width: 85%"></div>
+                                                    <div class="absolute h-4 w-px bg-gray-400 left-[100%]"></div>
+                                                </div>
+                                                <span class="text-[10px] w-8 text-right">85%</span>
+                                            </div>
+                                            
+                                            <!-- LATAM -->
+                                            <div class="flex items-center h-6">
+                                                <span class="text-[10px] w-8">LATAM</span>
+                                                <div class="flex-1 h-4 bg-gray-100 dark:bg-gray-700 rounded relative">
+                                                    <div class="absolute h-4 bg-amber-500 rounded" style="width: 92%"></div>
+                                                    <div class="absolute h-4 w-px bg-gray-400 left-[100%]"></div>
+                                                </div>
+                                                <span class="text-[10px] w-8 text-right">92%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <p class="text-xs font-medium">Product Mix</p>
+                                    </div>
+                                    <div class="h-40 flex items-center justify-center">
+                                        <!-- Simplified donut chart -->
+                                        <div class="relative w-32 h-32">
+                                            <svg viewBox="0 0 36 36" class="w-32 h-32">
+                                                <!-- Laptops - 45% -->
+                                                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="45, 100" stroke-dashoffset="25" class="dark:stroke-blue-400"></path>
+                                                
+                                                <!-- Desktops - 30% -->
+                                                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#a855f7" stroke-width="2" stroke-dasharray="30, 100" stroke-dashoffset="70" class="dark:stroke-purple-400"></path>
+                                                
+                                                <!-- Workstations - 15% -->
+                                                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="15, 100" stroke-dashoffset="0" class="dark:stroke-green-400"></path>
+                                                
+                                                <!-- Accessories - 10% -->
+                                                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#eab308" stroke-width="2" stroke-dasharray="10, 100" stroke-dashoffset="15" class="dark:stroke-yellow-400"></path>
+                                            </svg>
+                                            <div class="absolute inset-0 flex items-center justify-center">
+                                                <span class="text-xs font-medium">$14.2B</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="ml-2">
+                                            <div class="flex items-center mb-1">
+                                                <span class="inline-block w-3 h-3 bg-blue-500 dark:bg-blue-400 rounded-full mr-1"></span>
+                                                <span class="text-[10px]">Laptops: 45%</span>
+                                            </div>
+                                            <div class="flex items-center mb-1">
+                                                <span class="inline-block w-3 h-3 bg-purple-500 dark:bg-purple-400 rounded-full mr-1"></span>
+                                                <span class="text-[10px]">Desktops: 30%</span>
+                                            </div>
+                                            <div class="flex items-center mb-1">
+                                                <span class="inline-block w-3 h-3 bg-green-500 dark:bg-green-400 rounded-full mr-1"></span>
+                                                <span class="text-[10px]">Workstations: 15%</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <span class="inline-block w-3 h-3 bg-yellow-500 dark:bg-yellow-400 rounded-full mr-1"></span>
+                                                <span class="text-[10px]">Accessories: 10%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <p class="text-xs font-medium">Key Highlights &amp; Risks</p>
+                                    </div>
+                                    <div class="h-40 overflow-y-auto pr-1">
+                                        <div class="border-l-2 border-green-500 pl-2 mb-2">
+                                            <p class="text-xs font-medium text-green-700 dark:text-green-400 mb-0.5">Commercial revenue above plan</p>
+                                            <p class="text-[10px] text-gray-600 dark:text-gray-400 mb-0">+12% YoY growth in commercial segment driven by strong demand from financial services and healthcare verticals.</p>
+                                        </div>
+                                        
+                                        <div class="border-l-2 border-green-500 pl-2 mb-2">
+                                            <p class="text-xs font-medium text-green-700 dark:text-green-400 mb-0.5">Operating margin expansion</p>
+                                            <p class="text-[10px] text-gray-600 dark:text-gray-400 mb-0">Favorable component costs and improved product mix driving better than expected margins.</p>
+                                        </div>
+                                        
+                                        <div class="border-l-2 border-red-500 pl-2 mb-2">
+                                            <p class="text-xs font-medium text-red-700 dark:text-red-400 mb-0.5">Consumer segment shortfall</p>
+                                            <p class="text-[10px] text-gray-600 dark:text-gray-400 mb-0">Consumer revenue 8% below plan due to increased competitive pressure in entry-level products.</p>
+                                        </div>
+                                        
+                                        <div class="border-l-2 border-amber-500 pl-2">
+                                            <p class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-0.5">Asia Pacific supply constraints</p>
+                                            <p class="text-[10px] text-gray-600 dark:text-gray-400 mb-0">APJ region performance impacted by ongoing component shortages affecting premium products.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-xs text-gray-500 dark:text-gray-400 text-center">This executive dashboard provides a comprehensive yet focused view of Dell's PC business performance, enabling quick identification of key trends, achievements, and areas requiring attention.</p>
+                    </div>
+                    
+                    <h4>Leveraging KPIs for Decision-Making</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">From Measurement to Action</h5>
+                        <p class="text-sm mb-3">The real value of KPIs comes from their ability to drive informed decisions and actions. Establishing a structured process for translating KPI insights into business actions helps ensure measurement leads to improvement.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Creating Action Triggers</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Predefined thresholds that automatically prompt specific actions when crossed.</p>
+                                    <table class="w-full text-xs">
+                                        <tbody>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-1">
+                                                    <span class="inline-block w-2 h-2 rounded-full bg-green-500 mr-1"></span>Target Zone
+                                                </td>
+                                                <td class="py-1">
+                                                    Standard operations
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-1">
+                                                    <span class="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1"></span>Watch Zone
+                                                </td>
+                                                <td class="py-1">
+                                                    Increased monitoring
+                                                </td>
+                                            </tr>
+                                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                <td class="py-1">
+                                                    <span class="inline-block w-2 h-2 rounded-full bg-red-500 mr-1"></span>Action Zone
+                                                </td>
+                                                <td class="py-1">
+                                                    Corrective action required
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-1">
+                                                    <span class="inline-block w-2 h-2 rounded-full bg-purple-500 mr-1"></span>Excellence Zone
+                                                </td>
+                                                <td class="py-1">
+                                                    Document and share practices
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Decision Framework</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Structured approach for making decisions based on KPI insights.</p>
+                                    <ol class="pl-5 text-xs mb-0">
+                                        <li class="mb-1"><strong>Analyze:</strong> Identify the performance gap or opportunity</li>
+                                        <li class="mb-1"><strong>Understand:</strong> Determine root causes and contributing factors</li>
+                                        <li class="mb-1"><strong>Generate:</strong> Develop potential solutions or actions</li>
+                                        <li class="mb-1"><strong>Evaluate:</strong> Assess each option's potential impact</li>
+                                        <li class="mb-0"><strong>Implement:</strong> Execute selected action with clear ownership</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Performance Dialogues</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Structured discussions focused on KPI performance and actions.</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li class="mb-1"><strong>Daily huddles:</strong> Operational metrics review</li>
+                                        <li class="mb-1"><strong>Weekly reviews:</strong> Tactical performance and actions</li>
+                                        <li class="mb-1"><strong>Monthly business reviews:</strong> Strategic KPI assessment</li>
+                                        <li class="mb-1"><strong>Quarterly deep dives:</strong> Comprehensive analysis</li>
+                                        <li class="mb-0"><strong>Annual strategy sessions:</strong> KPI framework evaluation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: KPI-Based Decision Protocol</h6>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">KPI</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Watch Threshold</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Action Threshold</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Response Protocol</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Order Win Rate</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                <span class="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1"></span>
+                                                &lt;90% of target
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                <span class="inline-block w-2 h-2 rounded-full bg-red-500 mr-1"></span>
+                                                &lt;80% of target
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                <ul class="pl-3 mb-0">
+                                                    <li><strong>Watch:</strong> Increase competitive analysis, review recent losses</li>
+                                                    <li><strong>Action:</strong> Sales enablement taskforce, pricing review, executive sponsor intervention</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Manufacturing Defect Rate</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                <span class="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1"></span>
+                                                &gt;110% of target
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                <span class="inline-block w-2 h-2 rounded-full bg-red-500 mr-1"></span>
+                                                &gt;130% of target
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                <ul class="pl-3 mb-0">
+                                                    <li><strong>Watch:</strong> Daily quality review, increase sampling inspection</li>
+                                                    <li><strong>Action:</strong> Stop production line, root cause analysis team deployment, supplier quality audit</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Customer Satisfaction</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                <span class="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1"></span>
+                                                &lt;90% of target
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                <span class="inline-block w-2 h-2 rounded-full bg-red-500 mr-1"></span>
+                                                Decline of &gt;5 points
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                <ul class="pl-3 mb-0">
+                                                    <li><strong>Watch:</strong> Increase customer feedback collection, analyze comment themes</li>
+                                                    <li><strong>Action:</strong> Executive customer calls, rapid response team deployment, process review</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">On-Time Delivery</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                <span class="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1"></span>
+                                                &lt;95% of target
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                <span class="inline-block w-2 h-2 rounded-full bg-red-500 mr-1"></span>
+                                                &lt;90% of target
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 text-xs">
+                                                <ul class="pl-3 mb-0">
+                                                    <li><strong>Watch:</strong> Daily logistics review, proactive customer communication</li>
+                                                    <li><strong>Action:</strong> Expedited shipping authorization, supply chain war room, delivery recovery plan</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Common KPI Implementation Challenges</h5>
+                        <p class="text-sm mb-3">Implementing an effective KPI system often faces several common challenges. Understanding these obstacles and having strategies to address them increases the chances of successful implementation.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2"><strong>Data availability and quality:</strong> Difficulties in accessing reliable, timely data<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Start with available data while building better data infrastructure; focus on data governance</span></li>
+                                    <li class="mb-2"><strong>Measurement fixation:</strong> Over-emphasizing metrics at the expense of actual objectives<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Focus on outcomes, not metrics; regularly validate KPIs against strategic goals</span></li>
+                                    <li class="mb-0"><strong>Resistance to measurement:</strong> Organizational reluctance to implement performance metrics<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Focus on improvement rather than evaluation; involve teams in KPI development</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2"><strong>Analysis paralysis:</strong> Collecting data without meaningful analysis or action<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Build clear decision protocols; ensure every KPI has an owner responsible for action</span></li>
+                                    <li class="mb-2"><strong>Maintaining relevance:</strong> KPIs becoming outdated as business evolves<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Schedule regular KPI reviews; align with strategic planning cycles</span></li>
+                                    <li class="mb-0"><strong>Gaming the system:</strong> Manipulation of activities to improve metrics at the expense of real performance<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Use balanced KPI sets; focus on outcome metrics, not just activities</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Integrating KPIs with Other Financial Analysis Tools</h4>
+                    <p>KPI analysis is most powerful when integrated with other analytical approaches:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Financial Analysis Tool</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Integration with KPI Analysis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Financial Statement Analysis</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Use financial ratios as high-level KPIs for overall business health</li>
+                                            <li>Connect operational KPIs to financial statement impacts</li>
+                                            <li>Develop driver trees showing how operational KPIs influence financial outcomes</li>
+                                            <li>Align KPI targets with financial performance goals</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Valuation Techniques</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Identify and track value-driver KPIs that influence company valuation</li>
+                                            <li>Use KPI trends to inform forecasting assumptions for DCF models</li>
+                                            <li>Develop KPIs for key valuation inputs (e.g., growth rate, margin, ROIC)</li>
+                                            <li>Benchmark KPIs against comparable companies for relative valuation</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Business Case Development</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Define KPIs to measure success of proposed initiatives</li>
+                                            <li>Use historical KPI relationships to calibrate business case projections</li>
+                                            <li>Create KPI monitoring framework for tracking business case implementation</li>
+                                            <li>Establish KPI targets as milestones for business case success</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Cost Analysis &amp; Optimization</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Develop efficiency KPIs to track cost optimization efforts</li>
+                                            <li>Connect unit cost KPIs to overall cost structure</li>
+                                            <li>Create cost driver KPIs to monitor factors influencing costs</li>
+                                            <li>Use benchmarking KPIs to identify cost optimization opportunities</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://kpi.org/KPI-Basics" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">KPI Basics</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">KPI.org • Core Concepts</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://hbr.org/2019/05/the-key-metric-of-any-transformation-program-isnt-roi" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Effective Transformation Metrics</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Strategy Perspective</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.tableau.com/learn/articles/kpi-examples-and-templates" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-dashboard-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">KPI Dashboards &amp; Templates</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Tableau • Visualization Guide</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell APEX As-a-Service KPI Dashboard Design</h5>
+                        <p class="mb-3">In this exercise, you'll design a KPI dashboard for Dell's APEX as-a-service offerings, focusing on the most important metrics for monitoring business performance and supporting strategic decision-making.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Business Context:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Dell is transitioning to an as-a-service model with APEX offerings</li>
+                                    <li>Success depends on customer adoption, retention, and expansion</li>
+                                    <li>Leadership needs visibility into both financial and operational metrics</li>
+                                    <li>The dashboard will be used for monthly business reviews</li>
+                                    <li>Users include the APEX executive team and business unit leaders</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Your Task:</p>
+                                <ol class="pl-4 text-sm mb-0">
+                                    <li>Select 6-8 key metrics that provide a comprehensive view of the business</li>
+                                    <li>Determine the most appropriate visualization type for each metric</li>
+                                    <li>Design a dashboard layout with logical grouping of related metrics</li>
+                                    <li>Define thresholds and targets for each metric to guide decision-making</li>
+                                    <li>Identify 2-3 potential actions that would be taken based on metric performance</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Selected KPIs</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="List the 6-8 key metrics you've selected, explaining why each is important for monitoring APEX business performance..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Dashboard Design</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Describe your dashboard layout, visualization choices, and how the information is organized to support decision-making..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Action Framework</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Explain what actions would be triggered if specific KPIs fall below target or exceed expectations..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Implementation Considerations</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="2" placeholder="Describe any data sources, refresh frequencies, or technical considerations for implementing this dashboard..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-financial-statements">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Financial Statement Analysis</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-valuation">
+                        <span>Next: Valuation Fundamentals</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

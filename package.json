@@ -1,0 +1,11 @@
+{
+  "name": "strategy-toolkit",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "node embed-content.js"
+  },
+  "devDependencies": {
+    "cheerio": "latest"
+  }
+}

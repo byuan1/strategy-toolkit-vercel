@@ -1,0 +1,1285 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="ri-arrow-left-line"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      
+            <!-- SWOT Analysis Topic -->
+            <section id="topic-swot" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-layout-grid-fill"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">SWOT Analysis</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Strategic Frameworks</span>
+                                <span>•</span>
+                                <span>40 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 rounded-full">Completed</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the purpose and components of SWOT analysis</li>
+                            <li>Learn how to identify strengths, weaknesses, opportunities, and threats</li>
+                            <li>Develop skills to conduct a comprehensive SWOT analysis for Dell's business units</li>
+                            <li>Apply SWOT insights to formulate actionable strategies</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to SWOT Analysis</h4>
+                    <p>SWOT analysis is a strategic planning framework used to evaluate the Strengths, Weaknesses, Opportunities, and Threats of an organization, project, or business venture. This straightforward but powerful tool provides a structured approach to assess internal capabilities and external factors affecting strategic decisions.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why SWOT Analysis Matters</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Comprehensive evaluation:</strong> Examines both internal and external factors in one framework</li>
+                            <li><strong>Strategic alignment:</strong> Helps ensure that strategies leverage strengths and address weaknesses</li>
+                            <li><strong>Opportunity identification:</strong> Reveals untapped market potential and growth avenues</li>
+                            <li><strong>Risk management:</strong> Highlights potential threats requiring mitigation strategies</li>
+                            <li><strong>Decision support:</strong> Provides structured input for strategic decision-making</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg overflow-hidden mb-6">
+                        <div class="grid grid-cols-2 gap-1">
+                            <div class="bg-green-50 dark:bg-green-900/20 p-4">
+                                <h5 class="font-medium text-green-700 dark:text-green-400 mb-2">Strengths (S)</h5>
+                                <p class="text-sm mb-0">Internal positive attributes and resources that support achieving objectives</p>
+                            </div>
+                            <div class="bg-red-50 dark:bg-red-900/20 p-4">
+                                <h5 class="font-medium text-red-700 dark:text-red-400 mb-2">Weaknesses (W)</h5>
+                                <p class="text-sm mb-0">Internal negative factors that hinder achieving objectives or create disadvantages</p>
+                            </div>
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-4">
+                                <h5 class="font-medium text-blue-700 dark:text-blue-400 mb-2">Opportunities (O)</h5>
+                                <p class="text-sm mb-0">External positive factors that provide advantages or favorable conditions</p>
+                            </div>
+                            <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4">
+                                <h5 class="font-medium text-yellow-700 dark:text-yellow-400 mb-2">Threats (T)</h5>
+                                <p class="text-sm mb-0">External negative factors that could cause trouble or unfavorable conditions</p>
+                            </div>
+                        </div>
+                        <div class="p-3 text-center border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mb-0">SWOT Framework: Internal factors (strengths, weaknesses) vs. External factors (opportunities, threats)</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Conducting a SWOT Analysis</h4>
+                    <p>A thorough SWOT analysis follows a structured process to ensure comprehensive coverage of all relevant factors:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">1. Define the Subject and Objectives</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Clearly define what you're analyzing (organization, product, project)</li>
+                                <li>Establish the purpose and scope of the analysis</li>
+                                <li>Determine what decisions the SWOT will inform</li>
+                                <li>Set timeframe relevant to strategic planning horizon</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">2. Gather the Right Team</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Include stakeholders with diverse perspectives</li>
+                                <li>Involve people with relevant expertise and knowledge</li>
+                                <li>Consider cross-functional representation</li>
+                                <li>Appoint a facilitator to guide the process</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">3. Collect Data and Information</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Review internal performance data and metrics</li>
+                                <li>Gather customer and market research</li>
+                                <li>Analyze competitor information</li>
+                                <li>Consider trends in the broader environment</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">4. Identify Strengths</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Focus on internal advantages and competencies</li>
+                                <li>Consider both tangible and intangible assets</li>
+                                <li>Evaluate against competitors when relevant</li>
+                                <li>Be specific and evidence-based</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">5. Assess Weaknesses</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Identify internal limitations and challenges</li>
+                                <li>Be honest about areas needing improvement</li>
+                                <li>Consider resource gaps and constraints</li>
+                                <li>Evaluate relative to competitors</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">6. Explore Opportunities</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Identify favorable external conditions</li>
+                                <li>Look for market gaps and unmet needs</li>
+                                <li>Consider emerging trends and technologies</li>
+                                <li>Evaluate changes in the competitive landscape</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">7. Recognize Threats</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Identify unfavorable external conditions</li>
+                                <li>Consider competitive pressures and potential actions</li>
+                                <li>Analyze market challenges and disruptive forces</li>
+                                <li>Evaluate regulatory, economic, and technological risks</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">8. Prioritize and Analyze</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Rank factors by importance and impact</li>
+                                <li>Look for connections between different elements</li>
+                                <li>Identify the most critical items in each category</li>
+                                <li>Consider how factors might change over time</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Analyzing SWOT Quadrants in Detail</h4>
+                    <p>Each element of SWOT analysis requires specific considerations to ensure thorough evaluation:</p>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Strengths: Key Considerations</h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-green-200 dark:border-green-900 px-3 py-2 text-left">Category</th>
+                                        <th class="border border-green-200 dark:border-green-900 px-3 py-2 text-left">Examples</th>
+                                        <th class="border border-green-200 dark:border-green-900 px-3 py-2 text-left">Guiding Questions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 font-medium">Capabilities &amp; Competencies</td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Technical expertise</li>
+                                                <li>Customer service excellence</li>
+                                                <li>Innovation capabilities</li>
+                                                <li>Market knowledge</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>What do we do exceptionally well?</li>
+                                                <li>What expertise sets us apart?</li>
+                                                <li>What capabilities are difficult for others to replicate?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 font-medium">Tangible Assets</td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Financial resources</li>
+                                                <li>Proprietary technology</li>
+                                                <li>Manufacturing facilities</li>
+                                                <li>Distribution network</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>What physical assets provide advantages?</li>
+                                                <li>What financial resources can we leverage?</li>
+                                                <li>What technologies do we own or control?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 font-medium">Intangible Assets</td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Brand equity</li>
+                                                <li>Organizational culture</li>
+                                                <li>Intellectual property</li>
+                                                <li>Customer relationships</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>How strong is our brand reputation?</li>
+                                                <li>What intangible advantages do we possess?</li>
+                                                <li>What is unique about our culture?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 font-medium">Market Position</td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Market share</li>
+                                                <li>Customer loyalty</li>
+                                                <li>Pricing power</li>
+                                                <li>Cost advantages</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-green-200 dark:border-green-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Where are we market leaders?</li>
+                                                <li>What unique value do we provide?</li>
+                                                <li>What competitive advantages do we hold?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-red-700 dark:text-red-400 font-medium mb-2">Weaknesses: Key Considerations</h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-red-200 dark:border-red-900 px-3 py-2 text-left">Category</th>
+                                        <th class="border border-red-200 dark:border-red-900 px-3 py-2 text-left">Examples</th>
+                                        <th class="border border-red-200 dark:border-red-900 px-3 py-2 text-left">Guiding Questions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-red-200 dark:border-red-900 px-3 py-2 font-medium">Capability Gaps</td>
+                                        <td class="border border-red-200 dark:border-red-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Skill shortages</li>
+                                                <li>Outdated technology</li>
+                                                <li>Process inefficiencies</li>
+                                                <li>Quality issues</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-red-200 dark:border-red-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>What processes need improvement?</li>
+                                                <li>Where are we falling short on expertise?</li>
+                                                <li>What capabilities do competitors have that we lack?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-red-200 dark:border-red-900 px-3 py-2 font-medium">Resource Limitations</td>
+                                        <td class="border border-red-200 dark:border-red-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Budget constraints</li>
+                                                <li>Limited production capacity</li>
+                                                <li>Geographic limitations</li>
+                                                <li>Talent shortages</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-red-200 dark:border-red-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>What resources are we lacking?</li>
+                                                <li>Where are we capacity-constrained?</li>
+                                                <li>What financial limitations impact us?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-red-200 dark:border-red-900 px-3 py-2 font-medium">Market Disadvantages</td>
+                                        <td class="border border-red-200 dark:border-red-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Weak brand awareness</li>
+                                                <li>Limited market access</li>
+                                                <li>Poor reputation in segments</li>
+                                                <li>Pricing disadvantages</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-red-200 dark:border-red-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Where are competitors outperforming us?</li>
+                                                <li>What market segments are challenging for us?</li>
+                                                <li>What customer perceptions work against us?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-red-200 dark:border-red-900 px-3 py-2 font-medium">Organizational Issues</td>
+                                        <td class="border border-red-200 dark:border-red-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Unclear strategy</li>
+                                                <li>Bureaucratic structures</li>
+                                                <li>Poor internal communication</li>
+                                                <li>Resistance to change</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-red-200 dark:border-red-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>What organizational barriers exist?</li>
+                                                <li>Where do we struggle with execution?</li>
+                                                <li>What cultural factors limit our performance?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Opportunities: Key Considerations</h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-left">Category</th>
+                                        <th class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-left">Examples</th>
+                                        <th class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-left">Guiding Questions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 font-medium">Market Trends</td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Emerging customer needs</li>
+                                                <li>Shifting demographics</li>
+                                                <li>Changing consumer behaviors</li>
+                                                <li>Regional market growth</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>What market trends can we capitalize on?</li>
+                                                <li>What emerging needs can we address?</li>
+                                                <li>Where is market demand growing?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 font-medium">Technological Advances</td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>New technologies</li>
+                                                <li>Digital transformation</li>
+                                                <li>Process innovations</li>
+                                                <li>Automation potential</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>What technologies can we leverage?</li>
+                                                <li>How can innovation create new opportunities?</li>
+                                                <li>What digital trends align with our capabilities?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 font-medium">Competitive Landscape</td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Competitor weaknesses</li>
+                                                <li>Industry consolidation</li>
+                                                <li>Unserved market segments</li>
+                                                <li>Partnership possibilities</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>What competitor gaps can we fill?</li>
+                                                <li>Where are there underserved segments?</li>
+                                                <li>What alliance opportunities exist?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 font-medium">Macro Environment</td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Regulatory changes</li>
+                                                <li>Economic transitions</li>
+                                                <li>Social/cultural shifts</li>
+                                                <li>Global market access</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-blue-200 dark:border-blue-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>What external changes create opportunities?</li>
+                                                <li>How can regulatory changes benefit us?</li>
+                                                <li>What societal shifts can we leverage?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-yellow-700 dark:text-yellow-400 font-medium mb-2">Threats: Key Considerations</h5>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-yellow-200 dark:border-yellow-900 px-3 py-2 text-left">Category</th>
+                                        <th class="border border-yellow-200 dark:border-yellow-900 px-3 py-2 text-left">Examples</th>
+                                        <th class="border border-yellow-200 dark:border-yellow-900 px-3 py-2 text-left">Guiding Questions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-yellow-200 dark:border-yellow-900 px-3 py-2 font-medium">Competitive Threats</td>
+                                        <td class="border border-yellow-200 dark:border-yellow-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>New entrants</li>
+                                                <li>Aggressive competitor strategies</li>
+                                                <li>Price wars</li>
+                                                <li>Competing innovations</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-yellow-200 dark:border-yellow-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>What competitive actions threaten us?</li>
+                                                <li>Who might enter our market?</li>
+                                                <li>Where are competitors gaining ground?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-yellow-200 dark:border-yellow-900 px-3 py-2 font-medium">Market Changes</td>
+                                        <td class="border border-yellow-200 dark:border-yellow-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Declining demand</li>
+                                                <li>Shifting customer preferences</li>
+                                                <li>Market saturation</li>
+                                                <li>Channel disruption</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-yellow-200 dark:border-yellow-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>How are customer needs changing?</li>
+                                                <li>Where is demand potentially declining?</li>
+                                                <li>What disruptive market shifts are occurring?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-yellow-200 dark:border-yellow-900 px-3 py-2 font-medium">Disruptive Forces</td>
+                                        <td class="border border-yellow-200 dark:border-yellow-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Technological disruption</li>
+                                                <li>Business model innovation</li>
+                                                <li>Substitute products/services</li>
+                                                <li>New technologies</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-yellow-200 dark:border-yellow-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>What technologies might disrupt our business?</li>
+                                                <li>What substitutes threaten our offerings?</li>
+                                                <li>What new business models could emerge?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-yellow-200 dark:border-yellow-900 px-3 py-2 font-medium">External Risks</td>
+                                        <td class="border border-yellow-200 dark:border-yellow-900 px-3 py-2">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>Regulatory challenges</li>
+                                                <li>Economic downturns</li>
+                                                <li>Supply chain vulnerabilities</li>
+                                                <li>Geopolitical issues</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-yellow-200 dark:border-yellow-900 px-3 py-2 text-sm">
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li>What regulatory changes might impact us?</li>
+                                                <li>What economic factors pose risks?</li>
+                                                <li>What external dependencies create vulnerability?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell's Client Solutions Group (CSG) SWOT Analysis Example</h5>
+                        <p class="text-sm mb-3">Below is a sample SWOT analysis for Dell's Client Solutions Group, focusing on its commercial PC business:</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded border border-green-200 dark:border-green-800">
+                                <h6 class="text-green-700 dark:text-green-400 font-medium mb-2 text-sm">Strengths</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Strong enterprise relationships</strong> with established commercial customer base</li>
+                                    <li><strong>Configurable product portfolio</strong> offering customization for business needs</li>
+                                    <li><strong>Direct sales model</strong> enabling closer customer relationships</li>
+                                    <li><strong>Supply chain efficiency</strong> from build-to-order manufacturing</li>
+                                    <li><strong>ProSupport and service offerings</strong> with high customer satisfaction</li>
+                                    <li><strong>Commercial PC design expertise</strong> with focus on reliability and manageability</li>
+                                </ul>
+                            </div>
+                            <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded border border-red-200 dark:border-red-800">
+                                <h6 class="text-red-700 dark:text-red-400 font-medium mb-2 text-sm">Weaknesses</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Lower brand prestige</strong> in premium consumer segments</li>
+                                    <li><strong>Limited retail presence</strong> compared to some competitors</li>
+                                    <li><strong>Component supply dependencies</strong> creating potential bottlenecks</li>
+                                    <li><strong>Less vertical integration</strong> than some competitors</li>
+                                    <li><strong>High exposure to Windows ecosystem</strong> with limited OS diversification</li>
+                                    <li><strong>PC-centric image</strong> despite broader transformation efforts</li>
+                                </ul>
+                            </div>
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded border border-blue-200 dark:border-blue-800">
+                                <h6 class="text-blue-700 dark:text-blue-400 font-medium mb-2 text-sm">Opportunities</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Hybrid work transformation</strong> driving PC refresh cycles</li>
+                                    <li><strong>PC-as-a-Service (PCaaS)</strong> adoption increasing</li>
+                                    <li><strong>Growing AI-enabled PC segment</strong> with new use cases</li>
+                                    <li><strong>Sustainability focus</strong> creating differentiation opportunities</li>
+                                    <li><strong>End-to-end solution bundling</strong> with infrastructure and services</li>
+                                    <li><strong>Security concerns</strong> driving demand for trusted vendors</li>
+                                </ul>
+                            </div>
+                            <div class="bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded border border-yellow-200 dark:border-yellow-800">
+                                <h6 class="text-yellow-700 dark:text-yellow-400 font-medium mb-2 text-sm">Threats</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Prolonged economic uncertainty</strong> delaying commercial purchases</li>
+                                    <li><strong>Aggressive competition</strong> from Lenovo, HP, and Apple</li>
+                                    <li><strong>PC market maturity</strong> with slowing growth rates</li>
+                                    <li><strong>Component shortages</strong> and supply chain disruptions</li>
+                                    <li><strong>Cloud computing shift</strong> potentially reducing local computing needs</li>
+                                    <li><strong>ARM architecture transition</strong> disrupting x86 dominance</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="text-xs mt-3 mb-0">This SWOT analysis can be used to inform strategic decisions for Dell's commercial PC business, such as expanding PCaaS offerings, leveraging AI capabilities, and enhancing end-to-end solution positioning.</p>
+                    </div>
+                    
+                    <h4>From SWOT to Strategy: TOWS Matrix</h4>
+                    <p>The TOWS Matrix is a strategic planning tool that extends SWOT analysis by systematically identifying strategic options based on the relationships between internal and external factors. It helps convert the SWOT findings into actionable strategies.</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left"></th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400">
+                                        Strengths (S)
+                                    </th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400">
+                                        Weaknesses (W)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400">
+                                        Opportunities (O)
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 bg-gray-50 dark:bg-gray-800">
+                                        <p class="font-medium mb-1">SO Strategies (Strengths-Opportunities)</p>
+                                        <p class="text-xs mb-2">Use strengths to take advantage of opportunities</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>"Maxi-Maxi" approach</li>
+                                            <li>Offensive strategies</li>
+                                            <li>Leveraging core competencies</li>
+                                            <li>Growth-oriented</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 bg-gray-50 dark:bg-gray-800">
+                                        <p class="font-medium mb-1">WO Strategies (Weaknesses-Opportunities)</p>
+                                        <p class="text-xs mb-2">Overcome weaknesses by taking advantage of opportunities</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>"Mini-Maxi" approach</li>
+                                            <li>Development strategies</li>
+                                            <li>Capability building</li>
+                                            <li>Strategic investments</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400">
+                                        Threats (T)
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 bg-gray-50 dark:bg-gray-800">
+                                        <p class="font-medium mb-1">ST Strategies (Strengths-Threats)</p>
+                                        <p class="text-xs mb-2">Use strengths to avoid or reduce threats</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>"Maxi-Mini" approach</li>
+                                            <li>Defensive strategies leveraging strengths</li>
+                                            <li>Competitive positioning</li>
+                                            <li>Market protection</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 bg-gray-50 dark:bg-gray-800">
+                                        <p class="font-medium mb-1">WT Strategies (Weaknesses-Threats)</p>
+                                        <p class="text-xs mb-2">Minimize weaknesses and avoid threats</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>"Mini-Mini" approach</li>
+                                            <li>Defensive strategies</li>
+                                            <li>Risk mitigation</li>
+                                            <li>May involve retrenchment or exit</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell CSG TOWS Matrix: Strategy Development Example</h5>
+                        <p class="text-sm mb-3">Building on the previous SWOT analysis for Dell's Client Solutions Group, here's how the TOWS matrix can be used to develop specific strategies:</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <tbody><tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 bg-gray-50 dark:bg-gray-800">
+                                        <p class="font-medium mb-1">SO Strategies (Strengths-Opportunities)</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Leverage enterprise relationships to accelerate PCaaS adoption (S1+O2)</li>
+                                            <li>Develop premium AI-enabled commercial devices utilizing design expertise (S6+O3)</li>
+                                            <li>Create bundled end-to-end solutions combining PCs, infrastructure, and services (S5+O5)</li>
+                                            <li>Position supply chain efficiency as sustainability advantage (S4+O4)</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 bg-gray-50 dark:bg-gray-800">
+                                        <p class="font-medium mb-1">WO Strategies (Weaknesses-Opportunities)</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Develop hybrid work solutions to overcome retail presence limitations (W2+O1)</li>
+                                            <li>Utilize AI-enabled PCs to enhance premium brand perception (W1+O3)</li>
+                                            <li>Build strategic partnerships to reduce component dependencies (W3+O5)</li>
+                                            <li>Create sustainability-focused closed-loop supply chain (W4+O4)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 bg-gray-50 dark:bg-gray-800">
+                                        <p class="font-medium mb-1">ST Strategies (Strengths-Threats)</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Emphasize PCaaS to counter economic uncertainty's impact on purchases (S3+T1)</li>
+                                            <li>Leverage customization capabilities to differentiate from competitors (S2+T2)</li>
+                                            <li>Develop supply chain resilience programs leveraging direct model (S4+T4)</li>
+                                            <li>Create device + cloud management solutions addressing computing shifts (S5+T5)</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 bg-gray-50 dark:bg-gray-800">
+                                        <p class="font-medium mb-1">WT Strategies (Weaknesses-Threats)</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Diversify OS offerings to mitigate Windows dependency and ARM transition (W5+T6)</li>
+                                            <li>Develop alternative component sourcing to reduce supply vulnerabilities (W3+T4)</li>
+                                            <li>Enhance value-focused offerings for budget-constrained customers (W1+T1)</li>
+                                            <li>Expand solutions beyond PC-centric image to counter market maturity (W6+T3)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                        <p class="text-xs mt-3 mb-0">This TOWS matrix takes Dell's SWOT elements and systematically combines them to create strategic options that address key opportunities and challenges in a structured way.</p>
+                    </div>
+                    
+                    <h4>SWOT Analysis Best Practices</h4>
+                    <p>To maximize the effectiveness of your SWOT analysis, follow these best practices:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Be Specific and Concrete</h5>
+                            <div class="flex mb-2">
+                                <div class="flex-shrink-0 text-red-500 dark:text-red-400 mr-2">
+                                    <i class="ri-close-circle-line"></i>
+                                </div>
+                                <p class="text-sm text-red-700 dark:text-red-400 mb-0">
+                                    <strong>Weak:</strong> "Good customer service"
+                                </p>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 text-green-500 dark:text-green-400 mr-2">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                                <p class="text-sm text-green-700 dark:text-green-400 mb-0">
+                                    <strong>Strong:</strong> "Industry-leading Net Promoter Score of 72, exceeding competitor average by 25 points"
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Use Evidence and Data</h5>
+                            <div class="flex mb-2">
+                                <div class="flex-shrink-0 text-red-500 dark:text-red-400 mr-2">
+                                    <i class="ri-close-circle-line"></i>
+                                </div>
+                                <p class="text-sm text-red-700 dark:text-red-400 mb-0">
+                                    <strong>Weak:</strong> "Growing market opportunity"
+                                </p>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 text-green-500 dark:text-green-400 mr-2">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                                <p class="text-sm text-green-700 dark:text-green-400 mb-0">
+                                    <strong>Strong:</strong> "15% CAGR in enterprise AI infrastructure spending projected through 2027 per IDC research"
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Prioritize and Focus</h5>
+                            <div class="flex mb-2">
+                                <div class="flex-shrink-0 text-red-500 dark:text-red-400 mr-2">
+                                    <i class="ri-close-circle-line"></i>
+                                </div>
+                                <p class="text-sm text-red-700 dark:text-red-400 mb-0">
+                                    <strong>Weak:</strong> List of 25+ items with no differentiation
+                                </p>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 text-green-500 dark:text-green-400 mr-2">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                                <p class="text-sm text-green-700 dark:text-green-400 mb-0">
+                                    <strong>Strong:</strong> 5-7 prioritized items per category with clear impact ratings
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Ensure Proper Categorization</h5>
+                            <div class="flex mb-2">
+                                <div class="flex-shrink-0 text-red-500 dark:text-red-400 mr-2">
+                                    <i class="ri-close-circle-line"></i>
+                                </div>
+                                <p class="text-sm text-red-700 dark:text-red-400 mb-0">
+                                    <strong>Weak:</strong> "Competitor launching new product" as a Weakness
+                                </p>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 text-green-500 dark:text-green-400 mr-2">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                                <p class="text-sm text-green-700 dark:text-green-400 mb-0">
+                                    <strong>Strong:</strong> "Competitor launching new product" correctly as a Threat
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Be Brutally Honest</h5>
+                            <div class="flex mb-2">
+                                <div class="flex-shrink-0 text-red-500 dark:text-red-400 mr-2">
+                                    <i class="ri-close-circle-line"></i>
+                                </div>
+                                <p class="text-sm text-red-700 dark:text-red-400 mb-0">
+                                    <strong>Weak:</strong> Avoiding mentioning true weaknesses to "stay positive"
+                                </p>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 text-green-500 dark:text-green-400 mr-2">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                                <p class="text-sm text-green-700 dark:text-green-400 mb-0">
+                                    <strong>Strong:</strong> Candid assessment of genuine weaknesses with supporting evidence
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">Link to Actionable Steps</h5>
+                            <div class="flex mb-2">
+                                <div class="flex-shrink-0 text-red-500 dark:text-red-400 mr-2">
+                                    <i class="ri-close-circle-line"></i>
+                                </div>
+                                <p class="text-sm text-red-700 dark:text-red-400 mb-0">
+                                    <strong>Weak:</strong> Ending analysis with the SWOT matrix only
+                                </p>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0 text-green-500 dark:text-green-400 mr-2">
+                                    <i class="ri-check-line"></i>
+                                </div>
+                                <p class="text-sm text-green-700 dark:text-green-400 mb-0">
+                                    <strong>Strong:</strong> Converting SWOT into strategic options with TOWS matrix and specific action items
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Common SWOT Analysis Pitfalls</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Over-generalization:</strong> Using vague statements instead of specific, actionable insights</li>
+                            <li><strong>Confirmation bias:</strong> Focusing only on information that confirms existing beliefs</li>
+                            <li><strong>Lack of prioritization:</strong> Creating exhaustive lists without identifying what's most important</li>
+                            <li><strong>Missing market context:</strong> Failing to ground analysis in competitive realities</li>
+                            <li><strong>Static analysis:</strong> Not considering how factors may change over time</li>
+                            <li><strong>Stopping at analysis:</strong> Identifying factors without developing strategic responses</li>
+                            <li><strong>Internal myopia:</strong> Overemphasizing internal factors while undervaluing external influences</li>
+                            <li><strong>False strengths:</strong> Listing table stakes or minimum requirements as strengths</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>SWOT Analysis in Different Contexts</h4>
+                    <p>While originally developed for business strategy, SWOT analysis can be adapted for various strategic contexts:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Context</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Key Adaptations</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Example Applications at Dell</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Product Development</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Focus on product features and capabilities</li>
+                                            <li>Consider customer needs and pain points</li>
+                                            <li>Analyze competitive product landscape</li>
+                                            <li>Evaluate technical feasibility and constraints</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <p class="mb-0">SWOT analysis for new AI-optimized server line, evaluating Dell's capabilities against emerging customer requirements and competitive offerings</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Market Entry</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Emphasize geographic or segment-specific factors</li>
+                                            <li>Analyze local competitive dynamics</li>
+                                            <li>Consider market entry barriers and enablers</li>
+                                            <li>Assess go-to-market capabilities</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <p class="mb-0">SWOT analysis for expanding Dell's as-a-service offerings into emerging markets, considering local infrastructure challenges and partnership opportunities</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Business Unit</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Focus on unit-specific capabilities and challenges</li>
+                                            <li>Consider position within overall company</li>
+                                            <li>Analyze business unit's competitive landscape</li>
+                                            <li>Evaluate resource allocation priorities</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <p class="mb-0">SWOT analysis of Dell's Storage business unit, examining its position relative to competitors and opportunities to leverage broader Dell portfolio</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Competitive Analysis</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Apply SWOT to specific competitors</li>
+                                            <li>Identify relative strengths and weaknesses</li>
+                                            <li>Look for competitive blind spots</li>
+                                            <li>Analyze potential competitive responses</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <p class="mb-0">Comparative SWOT analysis of Dell vs. HP in the commercial PC space, highlighting differentiation opportunities and potential competitive vulnerabilities</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Strategic Partnerships</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Focus on complementary capabilities</li>
+                                            <li>Identify potential synergies</li>
+                                            <li>Evaluate partnership risks and challenges</li>
+                                            <li>Consider cultural and operational fit</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        <p class="mb-0">SWOT analysis for potential strategic alliance between Dell and a leading AI software company, evaluating complementary strengths and mutual benefit opportunities</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.youtube.com/watch?v=EJ4qVnR68HQ" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-video-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">SWOT Analysis Explained with Examples</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">YouTube • 10:23</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://hbr.org/2021/05/a-refresh-on-the-classic-swot-analysis" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">A Refresh on the Classic SWOT Analysis</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • 8 min read</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mindtools.com/amtbtlm/swot-analysis" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-file-list-3-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">SWOT Analysis: How to Develop a Strategy For Success</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">MindTools • Interactive Template</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell's Edge Computing Initiative SWOT Analysis</h5>
+                        <p class="mb-3">Dell is expanding its focus on edge computing solutions, which bring computation and data storage closer to where data is generated. Conduct a SWOT analysis for Dell's edge computing initiative.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Context Information:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Edge computing market is growing at 20%+ CAGR</li>
+                                    <li>Dell has existing server, storage, and networking portfolio</li>
+                                    <li>Key competitors include HPE, Cisco, and specialized edge providers</li>
+                                    <li>Telco and industrial verticals are key edge adopters</li>
+                                    <li>Dell has partnerships with VMware (post spin-off) for edge software</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Your Task:</p>
+                                <ol class="pl-4 text-sm mb-0">
+                                    <li>Identify at least 5 key elements for each SWOT quadrant</li>
+                                    <li>Be specific and include supporting reasoning</li>
+                                    <li>Prioritize the most significant factors</li>
+                                    <li>Use the TOWS approach to suggest 2 strategic initiatives</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Strengths</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="5" placeholder="Enter strengths here..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Weaknesses</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="5" placeholder="Enter weaknesses here..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Opportunities</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="5" placeholder="Enter opportunities here..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Threats</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="5" placeholder="Enter threats here..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Strategic Initiatives (TOWS)</label>
+                            <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Suggest strategic initiatives based on TOWS analysis..."></textarea>
+                        </div>
+                        
+                        <button class="mt-3 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" id="back-to-modules-from-swot">
+                        <span>Back to Modules</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-porters-five">
+                        <span>Next: Porter's Five Forces</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

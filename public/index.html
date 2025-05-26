@@ -1,0 +1,526 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Introduction Section -->
+        <section class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-8 border border-gray-100 dark:border-gray-800 mb-8 fade-in">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-6">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='80' height='80'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-16 h-16 mx-auto mb-4">
+                    <h2 class="text-3xl font-bold text-secondary dark:text-white mb-2">Dell Strategy Toolkit</h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 mb-4">Learning Platform</p>
+                    <div class="w-16 h-1 bg-primary mx-auto"></div>
+                </div>
+                
+                <div class="prose prose-lg dark:prose-invert max-w-none">
+                    <p>Welcome to Dell's comprehensive strategy reference library. This toolkit equips you with proven frameworks, methodologies, and tools to excel in business analysis and decision-making. Use these resources to analyze complex situations, develop strategic recommendations, and drive successful implementations within Dell.</p>
+                </div>
+                
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                        <h3 class="font-medium mb-2 flex items-center text-primary">
+                            <i class="ri-tools-line mr-2"></i>
+                            Business Excellence
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">A curated collection of frameworks and tools used by leading organizations, tailored to Dell's business context.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                        <h3 class="font-medium mb-2 flex items-center text-primary">
+                            <i class="ri-book-open-line mr-2"></i>
+                            Practical Application
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Each framework includes practical examples, templates, and implementation guidance for immediate application to business challenges.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                        <h3 class="font-medium mb-2 flex items-center text-primary">
+                            <i class="ri-presentation-line mr-2"></i>
+                            Ready-to-Use Resources
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Professionally designed frameworks and visualizations ready to be incorporated into presentations and strategic planning.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Learning Modules -->
+        <h2 class="text-2xl font-bold mb-6">Learning Modules</h2>
+        
+        <!-- Structured Problem-Solving Module -->
+        <section id="structured-problem-solving" class="mb-10">
+            <div class="module-card module-problem-solving bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                        <i class="ri-mind-map text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-indigo-600 dark:text-indigo-400">Structured Problem-Solving</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Methodical approaches to analyzing and solving business challenges</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 dark:text-gray-400 mb-4">Systematic methodologies for breaking down complex business problems into manageable components, ensuring comprehensive analysis and defensible recommendations.</p>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">MECE</span>
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Issue Trees</span>
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Root Cause</span>
+                </div>
+            </div>
+            
+            <div class="pl-4 ml-4 border-l-2 border-indigo-200 dark:border-indigo-900 space-y-2">
+                <a href="20hypothesisdriven.html" class="block text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Hypothesis-driven problem-solving</a>
+                <a href="56storylining.html" class="block text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Story-lining</a>
+                <a href="21mece.html" class="block text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">MECE Framework</a>
+                <a href="57issuetrees.html" class="block text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Issue Trees</a>
+                <a href="22decisiontrees.html" class="block text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Decision Trees</a>
+                <a href="58rootcauseanalysis.html" class="block text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Root Cause Analysis</a>
+                <a href="23scenarioanalysis.html" class="block text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Scenario Analysis</a>
+            </div>
+        </section>
+        
+        <!-- Financial Acumen Module -->
+        <section id="financial-acumen" class="mb-10">
+            <div class="module-card module-financial bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400">
+                        <i class="ri-line-chart-line text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400">Financial Acumen</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Understanding business performance and financial decision-making</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 dark:text-gray-400 mb-4">Essential tools for analyzing financial performance, quantifying business impact, and building credible business cases with clear financial implications.</p>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Financial Statements</span>
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Ratios</span>
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">ROI</span>
+                </div>
+            </div>
+            
+            <div class="pl-4 ml-4 border-l-2 border-amber-200 dark:border-amber-900 space-y-2">
+                <a href="11financialreports.html" class="block text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400">Understanding Financial Statements</a>
+                <a href="59commonsize.html" class="block text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400">Common-Size Analysis</a>
+                <a href="60sharegainpnlmodeling.html" class="block text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400">Modeling: Share Gain, P&amp;L</a>
+                <a href="61appliedfinancialstatements.html" class="block text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400">Applied Financial Statements</a>
+                <a href="12keyfinancialratios.html" class="block text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400">Key Financial Ratios</a>
+                <a href="13costbenefit.html" class="block text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400">Cost Benefit Analysis, ROI</a>
+            </div>
+        </section>
+        
+        <!-- Strategic Frameworks Module -->
+        <section id="strategic-frameworks" class="mb-10">
+            <div class="module-card module-strategic bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                        <i class="ri-layout-grid-line text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-emerald-600 dark:text-emerald-400">Strategic Frameworks</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Essential analytical tools for strategic planning and competitive analysis</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 dark:text-gray-400 mb-4">Proven frameworks to analyze competitive dynamics, identify strategic opportunities, and develop sustainable advantages for Dell's business units.</p>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Porter's Five Forces</span>
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Value Chain</span>
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">SWOT</span>
+                </div>
+            </div>
+            
+            <div class="pl-4 ml-4 border-l-2 border-emerald-200 dark:border-emerald-900 space-y-2">
+                <a href="184ps.html" class="block text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400">4Ps GTM Strategy</a>
+                <a href="14swot.html" class="block text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400">SWOT Analysis</a>
+                <a href="porters-five-forces.html" class="block text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400">Porter's Five Forces</a>
+                <a href="value-chain-analysis.html" class="block text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400">Value Chain Analysis</a>
+                <a href="17bcgmatrix.html" class="block text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400">BCG Matrix; GE-McKinsey Matrix</a>
+                <a href="19okrs.html" class="block text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400">OKRs</a>
+                <a href="#ansoff-matrix" class="block text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400">Ansoff Matrix</a>
+            </div>
+        </section>
+        
+        <!-- Organizational Behavior Module -->
+        <section id="organizational-behavior" class="mb-10">
+            <div class="module-card module-organizational bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center text-pink-600 dark:text-pink-400">
+                        <i class="ri-team-line text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-pink-600 dark:text-pink-400">Organizational Behavior</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Understanding human dynamics and leading effective change</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 dark:text-gray-400 mb-4">Frameworks to address governance, decision-making, process optimization, and change management—critical factors in successful implementation.</p>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">RACI</span>
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Process Maps</span>
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Change Mgmt</span>
+                </div>
+            </div>
+            
+            <div class="pl-4 ml-4 border-l-2 border-pink-200 dark:border-pink-900 space-y-2">
+                <a href="31raci.html" class="block text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400">RACI</a>
+                <a href="32rapids.html" class="block text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400">RAPIDs</a>
+                <a href="33processmaps.html" class="block text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400">Process Maps</a>
+                <a href="34processengineering.html" class="block text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400">Process Reengineering</a>
+                <a href="35kotter.html" class="block text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400">Kotter's 8-Step Change Management</a>
+            </div>
+        </section>
+        
+        <!-- Product & Ops Module -->
+        <section id="product-ops" class="mb-10">
+            <div class="module-card module-product bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                        <i class="ri-settings-line text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-600 dark:text-blue-400">Product &amp; Ops Foundations</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Building blocks of product strategy and operational excellence</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 dark:text-gray-400 mb-4">Essential tools to analyze and optimize core business functions across supply chain, product lifecycle, marketing, pricing, and operations.</p>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Supply Chain</span>
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Lifecycle</span>
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Pricing</span>
+                </div>
+            </div>
+            
+            <div class="pl-4 ml-4 border-l-2 border-blue-200 dark:border-blue-900 space-y-2">
+                <a href="44fundamentalssupplychainmanag.html" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Supply Chain Management</a>
+                <a href="45forecastingplanning.html" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Forecasting &amp; Planning</a>
+                <a href="46lifecyclemanagement.html" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Lifecycle Management</a>
+                <a href="47transitions.html" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Transitions</a>
+                <a href="48marketing.html" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Marketing</a>
+                <a href="49pricing.html" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Pricing</a>
+                <a href="50inventorymanagement.html" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Inventory Management</a>
+                <a href="51demandshaping.html" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Demand Shaping</a>
+                <a href="52ethics.html" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Ethics</a>
+            </div>
+        </section>
+        
+        <!-- Project Management Module -->
+        <section id="project-management" class="mb-10">
+            <div class="module-card module-project bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
+                        <i class="ri-task-line text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-purple-600 dark:text-purple-400">Project Management</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Methodologies for effective planning and execution</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 dark:text-gray-400 mb-4">Practical tools to plan, execute, and monitor complex initiatives, ensuring clear scope definition and successful delivery of business projects.</p>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Workplans</span>
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Stakeholders</span>
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Tools</span>
+                </div>
+            </div>
+            
+            <div class="pl-4 ml-4 border-l-2 border-purple-200 dark:border-purple-900 space-y-2">
+                <a href="38workplan.html" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Workplan Development</a>
+                <a href="39stakeholder.html" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Stakeholder Engagement &amp; Influence</a>
+                <a href="40toolsganttsraci.html" class="block text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Tools: Gantts, RACI, Agile</a>
+            </div>
+        </section>
+        
+        <!-- Effective Communication Module -->
+        <section id="effective-communication" class="mb-10">
+            <div class="module-card module-communication bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400">
+                        <i class="ri-chat-4-line text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-red-600 dark:text-red-400">Effective Communication</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Crafting compelling messages that drive action</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 dark:text-gray-400 mb-4">Essential frameworks for crafting persuasive narratives, developing executive-level presentations, and delivering feedback effectively to teams and stakeholders.</p>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Executive Summaries</span>
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-xs">Storytelling</span>
+                </div>
+            </div>
+            
+            <div class="pl-4 ml-4 border-l-2 border-red-200 dark:border-red-900 space-y-2">
+                <a href="41buildingcompelling.html" class="block text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400">Building Executive Summaries</a>
+                <a href="42storytellingbusiness.html" class="block text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400">Storytelling in Business</a>
+                <a href="43deliveringfeedback.html" class="block text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400">Delivering Feedback &amp; Managing Up</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

@@ -1,0 +1,1715 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="ri-arrow-left-line"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      
+            <!-- Scenario Analysis Topic -->
+            <section id="topic-scenario-analysis" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-road-map-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Scenario Analysis</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Structured Problem Solving</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the purpose and application of scenario analysis in strategic planning</li>
+                            <li>Learn to develop diverse, plausible future scenarios for business planning</li>
+                            <li>Develop skills to identify key uncertainties and driving forces shaping the future</li>
+                            <li>Apply scenario thinking to Dell business challenges and opportunities</li>
+                            <li>Create robust strategies that perform well across multiple possible futures</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Scenario Analysis</h4>
+                    <p>Scenario analysis is a strategic planning method used to explore and prepare for a range of possible futures. Rather than attempting to predict a single most likely outcome, scenario analysis acknowledges uncertainty by developing multiple plausible futures. This approach helps organizations identify potential risks and opportunities, test the robustness of strategies, and develop contingency plans for different circumstances. By expanding thinking beyond linear forecasts, scenario analysis builds organizational adaptability and resilience.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Scenario Analysis Matters</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Navigates uncertainty:</strong> Provides structured approach to dealing with unpredictable futures</li>
+                            <li><strong>Challenges assumptions:</strong> Surfaces and tests implicit beliefs about how the world works</li>
+                            <li><strong>Expands thinking:</strong> Moves beyond extrapolating past trends to consider discontinuities</li>
+                            <li><strong>Improves decision-making:</strong> Creates more robust strategies that work across multiple futures</li>
+                            <li><strong>Builds organizational agility:</strong> Develops capability to spot early signals and adapt quickly</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-3 text-center">Forecasting vs. Scenario Analysis</h5>
+                                <div class="overflow-auto">
+                                    <div class="min-w-[800px]">
+                                        <div class="grid grid-cols-2 gap-8">
+                                            <div>
+                                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg mb-3">
+                                                    <h6 class="text-blue-700 dark:text-blue-400 font-medium mb-2 text-center">Traditional Forecasting</h6>
+                                                    <p class="text-sm mb-0">Predicting the most likely future based on historical trends</p>
+                                                </div>
+                                                
+                                                <div class="relative">
+                                                    <!-- Forecast chart -->
+                                                    <div class="h-[300px] border-b-2 border-l-2 border-gray-400 dark:border-gray-600 relative">
+                                                        <!-- Origin point -->
+                                                        <div class="absolute left-0 bottom-0 w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full"></div>
+                                                        
+                                                        <!-- Historical data -->
+                                                        <div class="absolute left-0 bottom-0 w-[40%] h-[40%] border-t-2 border-gray-500 dark:border-gray-400"></div>
+                                                        
+                                                        <!-- Single forecast line -->
+                                                        <div class="absolute left-[40%] bottom-[40%] w-[60%] h-[120px] overflow-hidden">
+                                                            <div class="absolute left-0 top-0 w-full h-full border-t-2 border-blue-500 dark:border-blue-600"></div>
+                                                        </div>
+                                                        
+                                                        <!-- Confidence interval -->
+                                                        <div class="absolute left-[40%] bottom-0 w-[60%] h-[300px] overflow-hidden">
+                                                            <div class="absolute left-0 top-[25%] right-0 bottom-[40%] bg-blue-100 dark:bg-blue-900/20 opacity-50"></div>
+                                                        </div>
+                                                        
+                                                        <!-- Timeline labels -->
+                                                        <div class="absolute bottom-[-20px] left-[40%] text-xs">Present</div>
+                                                        <div class="absolute bottom-[-20px] right-0 text-xs">Future</div>
+                                                        <div class="absolute bottom-[-20px] left-0 text-xs">Past</div>
+                                                        
+                                                        <!-- Y-axis label -->
+                                                        <div class="absolute left-[-70px] top-1/2 transform -rotate-90 text-xs whitespace-nowrap">Performance</div>
+                                                        
+                                                        <!-- Most likely future label -->
+                                                        <div class="absolute right-[10%] top-[20%] text-xs bg-blue-100 dark:bg-blue-900/20 px-2 py-1 rounded">
+                                                            Most likely future
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Characteristics -->
+                                                    <div class="mt-4">
+                                                        <ul class="text-xs pl-4">
+                                                            <li class="mb-1">Single projected trajectory</li>
+                                                            <li class="mb-1">Based on historical patterns</li>
+                                                            <li class="mb-1">Limited range of uncertainty</li>
+                                                            <li class="mb-0">Assumes continuity and predictability</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div>
+                                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg mb-3">
+                                                    <h6 class="text-green-700 dark:text-green-400 font-medium mb-2 text-center">Scenario Analysis</h6>
+                                                    <p class="text-sm mb-0">Exploring multiple plausible futures to prepare for uncertainty</p>
+                                                </div>
+                                                
+                                                <div class="relative">
+                                                    <!-- Scenario chart -->
+                                                    <div class="h-[300px] border-b-2 border-l-2 border-gray-400 dark:border-gray-600 relative">
+                                                        <!-- Origin point -->
+                                                        <div class="absolute left-0 bottom-0 w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full"></div>
+                                                        
+                                                        <!-- Historical data -->
+                                                        <div class="absolute left-0 bottom-0 w-[40%] h-[40%] border-t-2 border-gray-500 dark:border-gray-400"></div>
+                                                        
+                                                        <!-- Multiple scenario paths -->
+                                                        <div class="absolute left-[40%] bottom-[40%] w-[60%] h-[150px] overflow-hidden">
+                                                            <!-- Upside scenario -->
+                                                            <div class="absolute left-0 top-[-80px] w-full h-full border-t-2 border-green-500 dark:border-green-600"></div>
+                                                            
+                                                            <!-- Base scenario -->
+                                                            <div class="absolute left-0 top-0 w-full h-full border-t-2 border-amber-500 dark:border-amber-600"></div>
+                                                            
+                                                            <!-- Downside scenario -->
+                                                            <div class="absolute left-0 top-[80px] w-full h-full border-t-2 border-red-500 dark:border-red-600"></div>
+                                                            
+                                                            <!-- Disruptive scenario -->
+                                                            <div class="absolute left-[30%] top-[-30px] w-[30%] h-[100px] overflow-hidden">
+                                                                <div class="absolute left-0 top-0 w-full h-full border-t-2 border-purple-500 dark:border-purple-600"></div>
+                                                            </div>
+                                                            <div class="absolute left-[60%] top-[70px] w-[40%] h-full overflow-hidden">
+                                                                <div class="absolute left-0 top-0 w-full h-full border-t-2 border-purple-500 dark:border-purple-600"></div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <!-- Timeline labels -->
+                                                        <div class="absolute bottom-[-20px] left-[40%] text-xs">Present</div>
+                                                        <div class="absolute bottom-[-20px] right-0 text-xs">Future</div>
+                                                        <div class="absolute bottom-[-20px] left-0 text-xs">Past</div>
+                                                        
+                                                        <!-- Y-axis label -->
+                                                        <div class="absolute left-[-70px] top-1/2 transform -rotate-90 text-xs whitespace-nowrap">Performance</div>
+                                                        
+                                                        <!-- Scenario labels -->
+                                                        <div class="absolute right-[5%] top-[5%] text-xs bg-green-100 dark:bg-green-900/20 px-2 py-1 rounded text-green-800 dark:text-green-300">
+                                                            Upside scenario
+                                                        </div>
+                                                        <div class="absolute right-[5%] top-[35%] text-xs bg-amber-100 dark:bg-amber-900/20 px-2 py-1 rounded text-amber-800 dark:text-amber-300">
+                                                            Base scenario
+                                                        </div>
+                                                        <div class="absolute right-[5%] top-[65%] text-xs bg-red-100 dark:bg-red-900/20 px-2 py-1 rounded text-red-800 dark:text-red-300">
+                                                            Downside scenario
+                                                        </div>
+                                                        <div class="absolute right-[40%] top-[80%] text-xs bg-purple-100 dark:bg-purple-900/20 px-2 py-1 rounded text-purple-800 dark:text-purple-300">
+                                                            Disruptive scenario
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Characteristics -->
+                                                    <div class="mt-4">
+                                                        <ul class="text-xs pl-4">
+                                                            <li class="mb-1">Multiple distinct future pathways</li>
+                                                            <li class="mb-1">Incorporates potential discontinuities</li>
+                                                            <li class="mb-1">Embraces broader range of possibilities</li>
+                                                            <li class="mb-0">Prepares for fundamental shifts</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-center mt-3 text-gray-500 dark:text-gray-400">Forecasting attempts to predict the most likely future, while scenario analysis explores multiple plausible futures to build resilience</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Scenario Analysis Approaches</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Classic Scenario Planning</h5>
+                        <p class="text-sm mb-3">The traditional approach to scenario planning, pioneered by Royal Dutch Shell in the 1970s, focuses on developing a small set of distinct, plausible futures based on critical uncertainties. These scenarios are typically presented as narrative stories that describe how different futures might unfold.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Characteristics</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Typically develops 3-5 distinct scenarios</li>
+                                    <li>Based on identifying key uncertainties</li>
+                                    <li>Creates detailed narrative descriptions</li>
+                                    <li>Emphasizes plausibility over probability</li>
+                                    <li>Focuses on long-term strategic thinking</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">When to Use</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Long-term strategic planning (3-10+ years)</li>
+                                    <li>Highly uncertain business environments</li>
+                                    <li>When facing potential disruptions</li>
+                                    <li>For challenging organizational assumptions</li>
+                                    <li>To develop strategic vision and direction</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: Dell's PC Market Evolution Scenarios</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <div class="flex items-start mb-2">
+                                        <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-700 dark:text-blue-300 mr-2 flex-shrink-0">
+                                            <i class="ri-global-line"></i>
+                                        </div>
+                                        <h6 class="text-sm font-medium text-blue-700 dark:text-blue-300 mb-0">Scenario 1: Digital Workspace Evolution</h6>
+                                    </div>
+                                    <p class="text-xs mb-2">Traditional PCs remain central but evolve into more specialized digital workspace tools with advanced features for productivity and collaboration.</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Traditional form factors with enhanced capabilities</li>
+                                        <li>Enterprise customers drive market growth</li>
+                                        <li>Moderate innovation pace with focus on productivity</li>
+                                        <li>Premium device segments expand</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <div class="flex items-start mb-2">
+                                        <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-700 dark:text-green-300 mr-2 flex-shrink-0">
+                                            <i class="ri-ai-generate"></i>
+                                        </div>
+                                        <h6 class="text-sm font-medium text-green-700 dark:text-green-300 mb-0">Scenario 2: AI-First Computing</h6>
+                                    </div>
+                                    <p class="text-xs mb-2">AI becomes the primary interface for computing, with PC hardware evolving to support specialized AI workloads and human-AI collaboration.</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Rapid hardware innovation for AI acceleration</li>
+                                        <li>New form factors optimized for AI interaction</li>
+                                        <li>Premium segment growth driven by AI capabilities</li>
+                                        <li>Edge AI processing becomes critical differentiator</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <div class="flex items-start mb-2">
+                                        <div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-700 dark:text-purple-300 mr-2 flex-shrink-0">
+                                            <i class="ri-vr-ar-line"></i>
+                                        </div>
+                                        <h6 class="text-sm font-medium text-purple-700 dark:text-purple-300 mb-0">Scenario 3: Immersive Computing Takeover</h6>
+                                    </div>
+                                    <p class="text-xs mb-2">Traditional PCs decline as AR/VR and immersive technologies become the primary computing interfaces, changing how we interact with digital content.</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Traditional PC market contracts significantly</li>
+                                        <li>New wearable and spatial computing devices emerge</li>
+                                        <li>High-end PCs remain for content creation only</li>
+                                        <li>Computing interactions completely reimagined</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+                                    <div class="flex items-start mb-2">
+                                        <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-300 mr-2 flex-shrink-0">
+                                            <i class="ri-cloud-line"></i>
+                                        </div>
+                                        <h6 class="text-sm font-medium text-amber-700 dark:text-amber-300 mb-0">Scenario 4: Device-as-Terminal</h6>
+                                    </div>
+                                    <p class="text-xs mb-2">Cloud computing becomes dominant with local devices serving primarily as access terminals, shifting value from hardware to services and platforms.</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Simple, low-cost devices become mainstream</li>
+                                        <li>Hardware commoditization accelerates</li>
+                                        <li>Value shifts to services and subscriptions</li>
+                                        <li>Significant hardware market consolidation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-2 bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium mb-1">Strategic Implications:</h6>
+                                <p class="text-xs mb-0">These scenarios would help Dell explore how to adapt its PC business strategy, including product development priorities, R&amp;D investments, go-to-market strategies, and potential acquisition targets. Rather than betting on a single future, Dell can develop robust strategies that work across multiple scenarios or create contingency plans for different potential outcomes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">2×2 Matrix Scenario Development</h5>
+                        <p class="text-sm mb-3">The 2×2 matrix approach is a simplified scenario planning technique that focuses on the two most critical uncertainties affecting a business or industry. These uncertainties create four distinct quadrants, each representing a different scenario.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Characteristics</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Identifies two critical uncertainties as axes</li>
+                                    <li>Creates four distinct scenario quadrants</li>
+                                    <li>Simpler and faster than traditional approaches</li>
+                                    <li>Provides clear visualization of scenario space</li>
+                                    <li>More accessible for teams new to scenario planning</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">When to Use</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>When time or resources are limited</li>
+                                    <li>For focused strategic questions</li>
+                                    <li>To introduce scenario thinking to organizations</li>
+                                    <li>When two uncertainties dominate the landscape</li>
+                                    <li>For communicating scenarios to broader audience</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: Dell's Enterprise Storage Strategy 2×2 Scenarios</h6>
+                            <div class="overflow-x-auto">
+                                <div class="min-w-[700px] max-w-4xl mx-auto">
+                                    <div class="relative h-[500px]">
+                                        <!-- Matrix container -->
+                                        <div class="absolute inset-8 border-2 border-indigo-300 dark:border-indigo-700 rounded-lg overflow-hidden">
+                                            <!-- Vertical divider -->
+                                            <div class="absolute top-0 bottom-0 left-1/2 w-0.5 bg-indigo-300 dark:bg-indigo-700"></div>
+                                            
+                                            <!-- Horizontal divider -->
+                                            <div class="absolute left-0 right-0 top-1/2 h-0.5 bg-indigo-300 dark:bg-indigo-700"></div>
+                                            
+                                            <!-- Quadrant 1: Top Left -->
+                                            <div class="absolute top-0 left-0 w-1/2 h-1/2 p-4">
+                                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg h-full">
+                                                    <h6 class="text-sm font-medium text-blue-700 dark:text-blue-300 mb-2">Specialized Storage Renaissance</h6>
+                                                    <p class="text-xs mb-2"><strong>Characteristics:</strong> On-premises prioritized + Storage specialization</p>
+                                                    <ul class="pl-3 text-xs mb-0">
+                                                        <li>Enterprises heavily invest in specialized storage systems</li>
+                                                        <li>Data governance and sovereignty drive on-prem growth</li>
+                                                        <li>Storage optimization technologies create new value</li>
+                                                        <li>Storage hardware differentiation matters significantly</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Quadrant 2: Top Right -->
+                                            <div class="absolute top-0 right-0 w-1/2 h-1/2 p-4">
+                                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg h-full">
+                                                    <h6 class="text-sm font-medium text-green-700 dark:text-green-300 mb-2">Private Cloud Dominance</h6>
+                                                    <p class="text-xs mb-2"><strong>Characteristics:</strong> On-premises prioritized + Storage convergence</p>
+                                                    <ul class="pl-3 text-xs mb-0">
+                                                        <li>Enterprises build private clouds with integrated storage</li>
+                                                        <li>Storage embedded in broader infrastructure platforms</li>
+                                                        <li>Single-vendor solutions win with simplicity</li>
+                                                        <li>Storage value moves to management software</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Quadrant 3: Bottom Left -->
+                                            <div class="absolute bottom-0 left-0 w-1/2 h-1/2 p-4">
+                                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg h-full">
+                                                    <h6 class="text-sm font-medium text-purple-700 dark:text-purple-300 mb-2">Specialized Hybrid Operations</h6>
+                                                    <p class="text-xs mb-2"><strong>Characteristics:</strong> Cloud prioritized + Storage specialization</p>
+                                                    <ul class="pl-3 text-xs mb-0">
+                                                        <li>Hybrid cloud with specialized storage tiers </li>
+                                                        <li>Data-specific optimization drives storage choices</li>
+                                                        <li>Storage services span on-prem and cloud</li>
+                                                        <li>Complex data orchestration across environments</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Quadrant 4: Bottom Right -->
+                                            <div class="absolute bottom-0 right-0 w-1/2 h-1/2 p-4">
+                                                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg h-full">
+                                                    <h6 class="text-sm font-medium text-amber-700 dark:text-amber-300 mb-2">Public Cloud Takeover</h6>
+                                                    <p class="text-xs mb-2"><strong>Characteristics:</strong> Cloud prioritized + Storage convergence</p>
+                                                    <ul class="pl-3 text-xs mb-0">
+                                                        <li>Enterprise data primarily migrates to public cloud</li>
+                                                        <li>Storage becomes undifferentiated infrastructure</li>
+                                                        <li>Value shifts to data services and AI capabilities</li>
+                                                        <li>On-prem footprint dramatically reduced</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- X-axis labels -->
+                                        <div class="absolute bottom-0 left-0 w-full text-center text-xs font-medium">
+                                            <span class="absolute left-1/4 transform -translate-x-1/2">Storage Specialization</span>
+                                            <span class="absolute right-1/4 transform translate-x-1/2">Storage Convergence</span>
+                                            <span class="absolute left-1/2 transform -translate-x-1/2 -translate-y-4">Market Evolution</span>
+                                        </div>
+                                        
+                                        <!-- Y-axis labels -->
+                                        <div class="absolute top-0 left-0 h-full text-xs font-medium">
+                                            <span class="absolute top-1/4 left-0 transform -translate-y-1/2 -rotate-90">On-premises Prioritized</span>
+                                            <span class="absolute bottom-1/4 left-0 transform translate-y-1/2 -rotate-90">Cloud Prioritized</span>
+                                            <span class="absolute top-1/2 left-[-2rem] transform -translate-y-1/2 -rotate-90">Deployment Model</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="text-xs mt-3 mb-0 text-gray-600 dark:text-gray-400">This 2×2 matrix explores how Dell's enterprise storage strategy might need to evolve based on two critical uncertainties: (1) whether enterprises prioritize on-premises infrastructure or cloud deployments, and (2) whether storage remains a specialized technology area or converges with broader infrastructure. Each quadrant represents a distinct future that would require different product, partnership, and go-to-market strategies.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Agile Scenario Planning</h5>
+                        <p class="text-sm mb-3">Agile scenario planning is a more recent approach that emphasizes shorter time horizons, faster iteration, and more frequent updating of scenarios. It combines elements of traditional scenario planning with agile methodologies to create a more responsive and adaptable process.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Characteristics</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Shorter time horizons (1-3 years)</li>
+                                    <li>More frequent updates and revisions</li>
+                                    <li>Integration with current strategic planning</li>
+                                    <li>Focus on near-term decision-making</li>
+                                    <li>Emphasis on early warning signals</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">When to Use</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Rapidly changing business environments</li>
+                                    <li>When connecting long-term vision to near-term action</li>
+                                    <li>For integrating with annual planning cycles</li>
+                                    <li>To build organizational scenario capabilities</li>
+                                    <li>When needing to make decisions amid uncertainty</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Example: Dell's Supply Chain Resilience Agile Scenarios</h6>
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse">
+                                    <thead>
+                                        <tr class="bg-green-50 dark:bg-green-900/20">
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-left">Scenario Element</th>
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-left">Baseline</th>
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-left">Moderate Disruption</th>
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-left">Severe Disruption</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">Timeframe</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">Next 18 months</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">Next 18 months</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">Next 18 months</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">Semiconductor Availability</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">Moderate constraints, 4-8 week lead times</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">Significant constraints, 8-12 week lead times</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">Severe shortages, 12-24 week lead times</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">Logistics Disruptions</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">Occasional port congestion, 15% higher shipping costs</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">Regional shipping constraints, 30-50% higher costs</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">Global shipping disruptions, 50-100% higher costs</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">Manufacturing Capacity</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">90-95% of normal capacity</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">70-85% of normal capacity</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">50-70% of normal capacity</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">Market Demand</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">Strong demand with normal seasonal patterns</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">Uneven demand with pockets of strong growth</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">Volatile demand with significant regional variations</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">Early Warning Signals</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Supplier order backlog growth</li>
+                                                    <li>Port utilization metrics</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Supplier allocations beginning</li>
+                                                    <li>Shipping container price spikes</li>
+                                                    <li>Manufacturing facility closures</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Force majeure declarations</li>
+                                                    <li>Regional shipping suspensions</li>
+                                                    <li>Widespread production stoppages</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">Response Strategies</td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Targeted inventory increases</li>
+                                                    <li>Enhanced visibility systems</li>
+                                                    <li>Normal planning horizons</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Activate alternate suppliers</li>
+                                                    <li>Implement allocation systems</li>
+                                                    <li>Extend planning horizons</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Product redesign for component flexibility</li>
+                                                    <li>Charter dedicated logistics</li>
+                                                    <li>Customer allocation programs</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-1">Monthly Monitoring</h6>
+                                    <ul class="pl-3 text-xs mb-0">
+                                        <li>Component lead time tracking</li>
+                                        <li>Supplier capacity utilization</li>
+                                        <li>Transportation costs and delays</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-1">Quarterly Updates</h6>
+                                    <ul class="pl-3 text-xs mb-0">
+                                        <li>Review current scenario status</li>
+                                        <li>Adjust scenario parameters</li>
+                                        <li>Realign response strategies</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-1">Decision Triggers</h6>
+                                    <ul class="pl-3 text-xs mb-0">
+                                        <li>Specific thresholds for scenario shifts</li>
+                                        <li>Pre-authorized response actions</li>
+                                        <li>Escalation pathways defined</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <p class="text-xs mt-3 mb-0 text-gray-600 dark:text-gray-400">This agile scenario planning approach for Dell's supply chain focuses on a shorter 18-month horizon with regular updates and clearly defined monitoring metrics. Rather than developing detailed narrative scenarios, it emphasizes specific supply chain variables, early warning signals, and pre-defined response strategies that can be activated as conditions change.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>The Scenario Development Process</h4>
+                    <p>Developing effective scenarios involves a structured process that can be adapted based on your specific approach and needs:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h5 class="font-medium mb-2">Step-by-Step Process</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <ol class="pl-5 text-sm mb-0">
+                                    <li class="mb-2">
+                                        <strong>Define scope and time horizon</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Clarify the strategic question and timeframe for scenarios.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Identify driving forces</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Map political, economic, social, technological, environmental, and legal factors that could shape the future.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Determine critical uncertainties</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Identify high-impact, high-uncertainty factors that could significantly change outcomes.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Develop scenario frameworks</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Combine critical uncertainties to create distinct future scenarios.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Flesh out scenario details</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Develop narrative descriptions with specific implications.</p>
+                                    </li>
+                                    <li>
+                                        <strong>Apply to strategic decisions</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Use scenarios to test strategies and develop contingency plans.</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h5 class="font-medium mb-2">Identifying Critical Uncertainties</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <p class="text-sm mb-2">Critical uncertainties are the foundation of scenario development. They are factors that:</p>
+                                <ul class="pl-5 text-sm mb-3">
+                                    <li class="mb-1">Have high potential impact on your strategic question</li>
+                                    <li class="mb-1">Have significant uncertainty about how they will evolve</li>
+                                    <li class="mb-1">Are largely outside your direct control</li>
+                                    <li class="mb-0">Could plausibly evolve in different directions</li>
+                                </ul>
+                                
+                                <p class="text-sm font-medium mb-1">Common areas to explore:</p>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                        <p class="text-xs font-medium mb-1">Market Dynamics</p>
+                                        <ul class="pl-3 text-xs mb-0">
+                                            <li>Customer preferences</li>
+                                            <li>Demand patterns</li>
+                                            <li>Competitive landscape</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                        <p class="text-xs font-medium mb-1">Technology Evolution</p>
+                                        <ul class="pl-3 text-xs mb-0">
+                                            <li>Disruptive innovations</li>
+                                            <li>Adoption rates</li>
+                                            <li>Technical standards</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                        <p class="text-xs font-medium mb-1">Regulatory Environment</p>
+                                        <ul class="pl-3 text-xs mb-0">
+                                            <li>Policy changes</li>
+                                            <li>Compliance requirements</li>
+                                            <li>Industry regulation</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                        <p class="text-xs font-medium mb-1">Economic Factors</p>
+                                        <ul class="pl-3 text-xs mb-0">
+                                            <li>Growth trajectories</li>
+                                            <li>Resource availability</li>
+                                            <li>Financial conditions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Scenario Development Workshop Approach</h5>
+                        <p class="text-sm mb-3">Scenario development often works best as a collaborative process involving diverse perspectives. Here's a practical workshop approach for developing scenarios with a team:</p>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Edge Computing Strategy Scenario Workshop</h6>
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse">
+                                    <thead>
+                                        <tr class="bg-purple-50 dark:bg-purple-900/20">
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-left" width="20%">Workshop Stage</th>
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-left" width="40%">Activities</th>
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-left" width="40%">Dell Example</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                1. Preparation<br>(1-2 weeks before)
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <ul class="pl-4 text-sm mb-0">
+                                                    <li>Define strategic focus question</li>
+                                                    <li>Select diverse participants</li>
+                                                    <li>Gather relevant research and trends</li>
+                                                    <li>Prepare pre-reading materials</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <p class="text-sm mb-1"><strong>Focus Question:</strong> "How might the edge computing market evolve over the next 5 years, and what role should Dell play in it?"</p>
+                                                <p class="text-sm mb-0"><strong>Participants:</strong> Product strategy, sales, R&amp;D, industry analysts, key customers, partner representatives</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                2. Driving Forces<br>(Workshop Day 1 - AM)
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <ul class="pl-4 text-sm mb-0">
+                                                    <li>Brainstorm forces shaping the future</li>
+                                                    <li>Use PESTEL framework for structure</li>
+                                                    <li>Discuss importance and certainty</li>
+                                                    <li>Group and consolidate forces</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <p class="text-sm mb-1"><strong>Key Forces Identified:</strong></p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>5G/6G deployment pace and coverage</li>
+                                                    <li>Cloud provider edge strategies</li>
+                                                    <li>AI workload requirements at the edge</li>
+                                                    <li>Edge data sovereignty regulations</li>
+                                                    <li>IoT device proliferation and standardization</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                3. Critical Uncertainties<br>(Workshop Day 1 - PM)
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <ul class="pl-4 text-sm mb-0">
+                                                    <li>Plot forces on impact/uncertainty matrix</li>
+                                                    <li>Identify high-impact, high-uncertainty forces</li>
+                                                    <li>Discuss potential future states for each</li>
+                                                    <li>Select 2-3 most critical uncertainties</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <p class="text-sm mb-1"><strong>Critical Uncertainties Selected:</strong></p>
+                                                <ol class="pl-4 text-xs mb-0">
+                                                    <li><strong>Edge Control Model:</strong> Cloud provider dominated vs. On-premises enterprise controlled</li>
+                                                    <li><strong>Edge Computing Architecture:</strong> Standardized/homogeneous vs. Specialized by industry/application</li>
+                                                </ol>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                4. Scenario Frameworks<br>(Workshop Day 2 - AM)
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <ul class="pl-4 text-sm mb-0">
+                                                    <li>Create 2x2 matrix with critical uncertainties</li>
+                                                    <li>Develop initial descriptions of each quadrant</li>
+                                                    <li>Name scenarios distinctively</li>
+                                                    <li>Check for plausibility and distinctiveness</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <p class="text-sm mb-1"><strong>Scenario Names:</strong></p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>"Cloud Extension" (Cloud dominated/Standardized)</li>
+                                                    <li>"Enterprise Edge Platforms" (Enterprise controlled/Standardized)</li>
+                                                    <li>"Specialized Cloud Services" (Cloud dominated/Specialized)</li>
+                                                    <li>"Industry Edge Ecosystems" (Enterprise controlled/Specialized)</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                5. Scenario Development<br>(Workshop Day 2 - PM)
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <ul class="pl-4 text-sm mb-0">
+                                                    <li>Divide into groups, one per scenario</li>
+                                                    <li>Develop detailed narratives for each</li>
+                                                    <li>Consider implications for stakeholders</li>
+                                                    <li>Identify key signposts and leading indicators</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <p class="text-sm mb-1"><strong>Elements Developed:</strong></p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Narrative describing how each future evolves</li>
+                                                    <li>Market size and structure in each scenario</li>
+                                                    <li>Key technology standards and interfaces</li>
+                                                    <li>Competitive positioning of major players</li>
+                                                    <li>Customer solution expectations</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                6. Strategic Implications<br>(Workshop Day 3)
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <ul class="pl-4 text-sm mb-0">
+                                                    <li>Analyze implications for current strategy</li>
+                                                    <li>Identify opportunities and threats in each scenario</li>
+                                                    <li>Develop scenario-specific strategic options</li>
+                                                    <li>Find robust strategies that work across scenarios</li>
+                                                    <li>Define early warning monitoring system</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
+                                                <p class="text-sm mb-1"><strong>Strategic Outcomes:</strong></p>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Robust investment in modular edge hardware platforms</li>
+                                                    <li>Development of industry-specific edge reference architectures</li>
+                                                    <li>Enhanced cloud provider partnership strategy</li>
+                                                    <li>Edge management software capabilities investment</li>
+                                                    <li>Quarterly monitoring of key scenario indicators</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <p class="text-xs mt-3 mb-0 text-gray-600 dark:text-gray-400">This workshop approach enables Dell to develop comprehensive scenarios for edge computing evolution in a collaborative, structured manner. By bringing together diverse perspectives and following a clear process, the team can create meaningful scenarios that directly inform strategic decisions about product development, partnerships, and go-to-market approaches.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-yellow-700 dark:text-yellow-400 font-medium mb-2">Common Scenario Analysis Pitfalls and How to Avoid Them</h5>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2"><strong>Probability fixation:</strong> Focusing too much on which scenario is "most likely"<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Emphasize that all scenarios are plausible; focus on preparedness, not prediction</span></li>
+                                    <li class="mb-2"><strong>Insufficient contrast:</strong> Creating scenarios that aren't different enough<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Ensure scenarios challenge different assumptions and represent genuinely distinct futures</span></li>
+                                    <li class="mb-0"><strong>Present bias:</strong> Projecting current trends without considering potential disruptions<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Deliberately include discontinuities and challenge status quo thinking</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="pl-5 text-sm mb-0">
+                                    <li class="mb-2"><strong>Scenario-strategy disconnect:</strong> Developing scenarios that don't inform strategic decisions<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Start with key strategic questions and ensure scenarios address important uncertainties</span></li>
+                                    <li class="mb-2"><strong>Missing implementation:</strong> Creating scenarios but not using them for decision-making<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Develop explicit action plans for each scenario and integrate with strategic planning</span></li>
+                                    <li class="mb-0"><strong>One-time exercise:</strong> Treating scenario planning as a one-off project<br>
+                                    <span class="text-xs text-gray-600 dark:text-gray-400">Solution: Establish regular review process and update scenarios as conditions change</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Scenario Analysis in Dell Business Context</h4>
+                    <p>Scenario analysis can be applied across different Dell business areas to navigate uncertainty and develop more robust strategies:</p>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell Business Applications</h5>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Business Area</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Scenario Focus</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Key Uncertainties</th>
+                                        <th class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left">Strategic Benefits</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            Product Strategy
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <p class="mb-1">Future of enterprise infrastructure</p>
+                                            <p class="text-xs mb-0 text-gray-600 dark:text-gray-400">How will enterprise computing environments evolve over the next 5-7 years?</p>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>On-premises vs. cloud infrastructure balance</li>
+                                                <li>AI-driven infrastructure automation</li>
+                                                <li>Industry-specific vs. general-purpose solutions</li>
+                                                <li>Infrastructure ownership vs. as-a-service models</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Informs R&amp;D investment priorities</li>
+                                                <li>Guides product roadmap development</li>
+                                                <li>Shapes intellectual property strategy</li>
+                                                <li>Directs acquisition and partnership decisions</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            Market Strategy
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <p class="mb-1">Evolution of customer purchasing behaviors</p>
+                                            <p class="text-xs mb-0 text-gray-600 dark:text-gray-400">How will B2B technology purchasing change in the next 3-5 years?</p>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>Decision-maker roles and influences</li>
+                                                <li>Digital vs. relationship-based purchasing</li>
+                                                <li>Solution bundling preferences</li>
+                                                <li>Consumption-based vs. capital purchasing models</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Optimizes go-to-market strategies</li>
+                                                <li>Guides sales organization structure</li>
+                                                <li>Informs pricing model development</li>
+                                                <li>Shapes channel partner strategy</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            Supply Chain
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <p class="mb-1">Global supply chain resilience</p>
+                                            <p class="text-xs mb-0 text-gray-600 dark:text-gray-400">How might global supply chains transform in the next 2-4 years?</p>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>Geopolitical trade restrictions</li>
+                                                <li>Regional manufacturing capabilities</li>
+                                                <li>Transportation infrastructure reliability</li>
+                                                <li>Component availability and alternatives</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Informs supplier diversification strategy</li>
+                                                <li>Guides manufacturing footprint decisions</li>
+                                                <li>Shapes inventory management policies</li>
+                                                <li>Drives product design for supply flexibility</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 font-medium">
+                                            Talent Strategy
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <p class="mb-1">Future of work and workforce</p>
+                                            <p class="text-xs mb-0 text-gray-600 dark:text-gray-400">How will workforce needs and expectations evolve in the next 3-5 years?</p>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2">
+                                            <ul class="pl-4 text-sm mb-0">
+                                                <li>Remote vs. office-based work models</li>
+                                                <li>AI impact on job roles and skills</li>
+                                                <li>Global vs. regional talent sourcing</li>
+                                                <li>Traditional vs. gig/project-based employment</li>
+                                            </ul>
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
+                                            <ul class="pl-4 mb-0">
+                                                <li>Shapes workforce planning approaches</li>
+                                                <li>Guides facilities and workplace strategy</li>
+                                                <li>Informs training and development priorities</li>
+                                                <li>Directs compensation and benefits evolution</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <h4>Applying Scenario Analysis to Strategy Development</h4>
+                    <p>The ultimate goal of scenario analysis is to improve strategic decision-making. Here's how to effectively apply scenarios to strategy development:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h5 class="font-medium mb-2">Strategy Testing and Development</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <ol class="pl-5 text-sm mb-0">
+                                    <li class="mb-2">
+                                        <strong>Wind-tunneling existing strategies</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Test how well current strategies perform across different scenarios to identify vulnerabilities.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Developing scenario-specific strategies</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Create optimal strategies for each individual scenario to understand range of potential approaches.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Identifying robust strategies</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Develop core strategies that work reasonably well across multiple scenarios.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Creating adaptive strategies</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Design flexible approaches that can evolve as the future unfolds and becomes clearer.</p>
+                                    </li>
+                                    <li>
+                                        <strong>Defining trigger points and signposts</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Identify indicators that signal which scenario is emerging to guide timely strategy adjustments.</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h5 class="font-medium mb-2">Strategy Types Across Scenarios</h5>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                <ul class="pl-5 text-sm mb-3">
+                                    <li class="mb-2">
+                                        <strong>Core (No-regrets) Strategies</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Actions that make sense in all scenarios and should be pursued regardless of which future emerges.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Hedging Strategies</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Investments that protect against negative outcomes in specific scenarios while accepting sub-optimal results in others.</p>
+                                    </li>
+                                    <li class="mb-2">
+                                        <strong>Option-Creating Strategies</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Small investments that preserve the ability to scale up quickly if certain scenarios materialize.</p>
+                                    </li>
+                                    <li>
+                                        <strong>Shaping Strategies</strong>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">Actions that actively influence external factors to increase the likelihood of preferred scenarios.</p>
+                                    </li>
+                                </ul>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg text-center">
+                                    <p class="text-xs italic mb-0">"The goal is not to pick the right scenario, but to make the right decision regardless of which scenario occurs."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Example: Dell's As-a-Service Strategy Scenario Analysis</h5>
+                        <p class="text-sm mb-3">This example shows how Dell might use scenario analysis to shape its as-a-service strategy:</p>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Strategic Question</h6>
+                            <p class="text-sm italic mb-3">"How should Dell evolve its as-a-service offerings (like APEX) over the next 3-5 years to maximize growth and profitability?"</p>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse">
+                                    <thead>
+                                        <tr class="bg-green-50 dark:bg-green-900/20">
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-left"></th>
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center" colspan="4">Scenarios</th>
+                                        </tr>
+                                        <tr class="bg-green-50 dark:bg-green-900/20">
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-left">Strategy Elements</th>
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-left">
+                                                <span class="text-blue-600 dark:text-blue-400">Scenario 1:</span><br>Rapid Shift to Services
+                                            </th>
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-left">
+                                                <span class="text-green-600 dark:text-green-400">Scenario 2:</span><br>Hybrid Consumption
+                                            </th>
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-left">
+                                                <span class="text-purple-600 dark:text-purple-400">Scenario 3:</span><br>Multi-cloud Integration
+                                            </th>
+                                            <th class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-left">
+                                                <span class="text-amber-600 dark:text-amber-400">Scenario 4:</span><br>Traditional Resilience
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="bg-gray-50 dark:bg-gray-800/50">
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium" colspan="5">
+                                                Core (No-regrets) Strategies
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                Flexible architecture platform
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                Enhanced monitoring capabilities
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                Customer success investment
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-50 dark:bg-gray-800/50">
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium" colspan="5">
+                                                Option-Creating Strategies
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                Cloud provider partnerships
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-amber-600 dark:text-amber-400">
+                                                ◑
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-red-600 dark:text-red-400">
+                                                ✗
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                Industry-specific solutions
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-amber-600 dark:text-amber-400">
+                                                ◑
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                API and integration platform
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-amber-600 dark:text-amber-400">
+                                                ◑
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-amber-600 dark:text-amber-400">
+                                                ◑
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-red-600 dark:text-red-400">
+                                                ✗
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-50 dark:bg-gray-800/50">
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium" colspan="5">
+                                                Scenario-Dependent Strategies
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                Full-stack solutions expansion
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-amber-600 dark:text-amber-400">
+                                                ◑
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-red-600 dark:text-red-400">
+                                                ✗
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                Multi-cloud management platform
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-red-600 dark:text-red-400">
+                                                ✗
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-amber-600 dark:text-amber-400">
+                                                ◑
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-red-600 dark:text-red-400">
+                                                ✗
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                Traditional infrastructure focus
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-red-600 dark:text-red-400">
+                                                ✗
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-amber-600 dark:text-amber-400">
+                                                ◑
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-red-600 dark:text-red-400">
+                                                ✗
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-center text-green-600 dark:text-green-400">
+                                                ✓
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-50 dark:bg-gray-800/50">
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium" colspan="5">
+                                                Key Signposts to Monitor
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 font-medium">
+                                                Early indicators
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-sm">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Traditional hardware revenue decline &gt; 15%</li>
+                                                    <li>Services attach rates &gt; 60%</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-sm">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Hybrid deployments &gt; 50% of enterprise workloads</li>
+                                                    <li>Flexible consumption models &gt; 40% of deals</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-sm">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>3+ cloud environments per customer</li>
+                                                    <li>Integration capabilities prioritized in &gt; 60% of RFPs</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-sm">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Traditional hardware growth &gt; 5%</li>
+                                                    <li>Security/sovereignty cited in &gt; 50% of decisions</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-3 bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="text-sm font-medium mb-2">Strategic Recommendations:</h6>
+                                <ol class="pl-4 text-sm mb-0">
+                                    <li class="mb-1"><strong>Immediate Investments:</strong> Implement all core strategies as these create value in any scenario.</li>
+                                    <li class="mb-1"><strong>Strategic Options:</strong> Make limited investments in cloud partnerships and industry solutions to create future flexibility.</li>
+                                    <li class="mb-1"><strong>Contingent Plans:</strong> Develop detailed implementation plans for scenario-dependent strategies but defer major investments.</li>
+                                    <li class="mb-1"><strong>Ongoing Monitoring:</strong> Establish quarterly review of signposts to track which scenario is emerging.</li>
+                                    <li class="mb-0"><strong>Decision Triggers:</strong> Define specific metrics that would trigger scaling up scenario-specific strategies.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Integrating Scenario Analysis with Other Problem-Solving Tools</h4>
+                    <p>Scenario analysis can be effectively combined with other methodologies to enhance your strategic planning approach:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Framework</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Integration with Scenario Analysis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Hypothesis-Driven Problem Solving</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Use scenarios to develop diverse hypotheses about future outcomes</li>
+                                            <li>Test hypotheses about what drives success in different future contexts</li>
+                                            <li>Apply hypothesis testing to validate scenario assumptions</li>
+                                            <li>Create scenario-specific hypotheses to refine strategic options</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">MECE Framework</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Ensure scenario sets are mutually exclusive and collectively exhaustive</li>
+                                            <li>Apply MECE thinking to driving forces and uncertainties</li>
+                                            <li>Create MECE categories of strategic responses to scenarios</li>
+                                            <li>Use MECE structure to organize scenario implications</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Issue Trees</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Use issue trees to identify key uncertainties for scenarios</li>
+                                            <li>Create scenario-specific issue trees to analyze implications</li>
+                                            <li>Apply issue tree structure to develop strategic responses</li>
+                                            <li>Use issue trees to map dependencies between scenario elements</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Decision Trees</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Quantify scenario probabilities and outcomes in decision tree format</li>
+                                            <li>Create decision trees for strategic options across scenarios</li>
+                                            <li>Analyze the expected value of different strategies across scenarios</li>
+                                            <li>Model scenario-contingent decision sequences</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Root Cause Analysis</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-sm mb-0">
+                                            <li>Use root cause analysis to understand drivers of scenario emergence</li>
+                                            <li>Apply causal analysis to relationships between scenario elements</li>
+                                            <li>Identify root causes of success or failure in each scenario</li>
+                                            <li>Develop early warning indicators based on causal chains</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/2013/05/living-in-the-futures" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Living in the Futures</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Shell's Scenario Planning</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/overcoming-obstacles-to-effective-scenario-planning" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Effective Scenario Planning</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey &amp; Company • Practical Guide</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://sloanreview.mit.edu/article/planning-for-the-future-in-times-of-extreme-uncertainty/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-book-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Planning in Uncertainty</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">MIT Sloan Management Review • Modern Approaches</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell's PC Business Evolution Scenarios</h5>
+                        <p class="mb-3">Dell's PC business faces significant uncertainty due to changing work patterns, evolving form factors, and shifting customer preferences. Develop a set of scenarios to help Dell's PC business leadership team prepare for different possible futures over the next 3-5 years.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Context Information:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Hybrid and remote work models are changing device requirements</li>
+                                    <li>AI integration is creating new device capabilities and use cases</li>
+                                    <li>Virtual/augmented reality and spatial computing are emerging</li>
+                                    <li>Sustainability requirements are influencing design and lifecycle</li>
+                                    <li>Purchase models are shifting from ownership to "device-as-a-service"</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Your Task:</p>
+                                <ol class="pl-4 text-sm mb-0">
+                                    <li>Identify the two most critical uncertainties facing Dell's PC business</li>
+                                    <li>Create a 2×2 matrix with four distinct, plausible scenarios</li>
+                                    <li>Develop brief descriptions of each scenario</li>
+                                    <li>Identify strategic implications for Dell in each scenario</li>
+                                    <li>Recommend core strategies that work across all scenarios</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Critical Uncertainties</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Identify and describe the two most critical uncertainties that will shape the future of Dell's PC business..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Scenario Descriptions</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="5" placeholder="Briefly describe each of your four scenarios, including distinctive characteristics and potential names..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Strategic Implications</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="5" placeholder="Identify the key strategic implications for Dell in each scenario..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Core Strategies</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Recommend 3-5 core strategies that would be valuable across all scenarios..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                    
+                    <div class="mt-8 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                        <h5 class="font-medium mb-2 text-green-700 dark:text-green-400">Structured Problem Solving Module Complete</h5>
+                        <p class="text-sm mb-2">Congratulations on completing the Structured Problem Solving module! You've learned seven essential frameworks that will help you approach business challenges systematically and effectively.</p>
+                        <p class="text-sm mb-2">With these tools in your strategy toolkit, you're equipped to:</p>
+                        <ul class="pl-5 text-sm mb-2">
+                            <li>Break down complex problems into manageable components</li>
+                            <li>Test hypotheses systematically with data and analysis</li>
+                            <li>Structure your thinking and communication for maximum impact</li>
+                            <li>Make better decisions in the face of uncertainty</li>
+                            <li>Identify true root causes rather than symptoms</li>
+                            <li>Prepare for multiple future scenarios in a rapidly changing environment</li>
+                        </ul>
+                        <p class="text-sm mb-0">Continue to practice these frameworks in your daily work to build your problem-solving skills and drive better business outcomes at Dell.</p>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-root-cause">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Root Cause Analysis</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80" id="back-to-modules">
+                        <span>Back to Modules</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>

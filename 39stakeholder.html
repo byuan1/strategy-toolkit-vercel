@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management Essentials</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Project Management Essentials</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-workplan-development">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Workplan Development</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-stakeholder-engagement">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Stakeholder Engagement & Influence</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-project-tools">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Tools: Gantts, RACI, Agile</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">68%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 68%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>6/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Organizational Behavior</span>
+                                <span>5/5 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Project Management</span>
+                                <span>1/3 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Stakeholder Engagement & Influence Topic -->
+            <section id="topic-stakeholder-engagement" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-user-star-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Stakeholder Engagement & Influence</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Project Management Essentials</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the critical role stakeholders play in project success and organizational change</li>
+                            <li>Learn techniques for identifying, analyzing, and mapping stakeholders based on influence and interest</li>
+                            <li>Develop targeted communication strategies to effectively engage different stakeholder groups</li>
+                            <li>Master approaches for building consensus and managing resistance among stakeholders</li>
+                            <li>Apply stakeholder engagement principles to real-world business scenarios at Dell</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to Stakeholder Engagement</h4>
+                    <p>Stakeholder engagement is the process of identifying, analyzing, planning, and implementing actions designed to influence stakeholders. In business, stakeholders are individuals, groups, or organizations that have an interest in, are affected by, or can influence the outcomes of a project, initiative, or organizational change. Effective stakeholder engagement is consistently cited as one of the most critical success factors in project management and organizational change efforts.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why Stakeholder Engagement Matters</h5>
+                        <p class="mb-3">Stakeholder engagement is fundamental to business success for several key reasons:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Business Benefits</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Improved decision-making:</strong> Incorporating diverse perspectives leads to better solutions</li>
+                                    <li><strong>Risk reduction:</strong> Early identification of concerns helps mitigate potential issues</li>
+                                    <li><strong>Resource optimization:</strong> Appropriate stakeholder involvement ensures efficient use of resources</li>
+                                    <li><strong>Accelerated implementation:</strong> Buy-in reduces resistance and speeds adoption</li>
+                                    <li><strong>Sustained outcomes:</strong> Engaged stakeholders support long-term success</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-red-500 dark:text-red-400">Consequences of Poor Engagement</h6>
+                                <ul class="pl-5 mb-0">
+                                    <li><strong>Project delays or failure:</strong> Resistance can derail timelines and objectives</li>
+                                    <li><strong>Resource waste:</strong> Rework and changes due to missed requirements</li>
+                                    <li><strong>Damaged relationships:</strong> Eroded trust and credibility with key groups</li>
+                                    <li><strong>Missed opportunities:</strong> Valuable input and innovations not captured</li>
+                                    <li><strong>Change resistance:</strong> Solutions rejected despite technical merit</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">At Dell Technologies</h6>
+                            <p class="mb-2">Stakeholder engagement is deeply embedded in Dell's business practices due to the complex, multi-faceted nature of our technology solutions and organizational initiatives:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Product Development</p>
+                                    <p class="text-sm mb-0">Dell's product development process involves extensive engagement with customers, supply chain partners, engineering teams, marketing, sales, and service. This collaborative approach ensures products meet real needs and can be effectively manufactured, sold, and supported throughout their lifecycle.</p>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-green-700 dark:text-green-400 mb-1">Business Transformation</p>
+                                    <p class="text-sm mb-0">When implementing major organizational changes like the EMC merger or shifting to as-a-service business models, Dell employs structured stakeholder engagement to align leadership, address employee concerns, maintain customer confidence, and manage investor expectations.</p>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-purple-700 dark:text-purple-400 mb-1">Enterprise Solutions</p>
+                                    <p class="text-sm mb-0">For complex enterprise implementations, Dell's success depends on understanding and engaging with multiple stakeholders within customer organizations—from C-level executives and IT leaders to end users and technical administrators—each with different priorities and concerns.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Categories of Stakeholders</h5>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm border-collapse">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-800">
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Category</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Description</th>
+                                                <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Examples at Dell</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm">
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Internal Stakeholders</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Individuals and groups within the organization with an interest in the project or initiative</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Executives, functional managers, project team members, operations staff, business unit leaders</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">External Stakeholders</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Individuals and groups outside the organization who are affected by or can influence the outcome</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Customers, suppliers, partners, regulators, investors, industry analysts, competitors</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Primary Stakeholders</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Those directly affected by and with a significant stake in the outcome</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Project sponsors, key users, direct beneficiaries, team members whose work is directly impacted</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Secondary Stakeholders</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Those indirectly affected or with peripheral interest in the outcome</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Shared service functions, adjacent teams, future users, governance bodies</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Supporters</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Stakeholders who actively advocate for the initiative and its success</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Project sponsors, champions, early adopters, those who benefit from the change</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Opponents</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Stakeholders who resist, oppose, or are skeptical about the initiative</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Those who perceive threats to their roles, teams with competing priorities, status quo defenders</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Decision Makers</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Those with authority to approve, modify, or terminate the initiative</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Executive sponsors, steering committee members, budget holders, governance bodies</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Influencers</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Those who can significantly impact how others perceive the initiative</td>
+                                                <td class="border border-gray-200 dark:border-gray-700 p-2">Respected leaders, subject matter experts, team representatives, informal opinion leaders</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Stakeholder Identification and Analysis</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Understanding Who Matters and Why</h5>
+                        <p class="text-sm mb-3">The first step in effective stakeholder engagement is identifying who your stakeholders are and understanding their perspectives, needs, and levels of influence. This process helps prioritize engagement efforts and develop targeted strategies for different stakeholder groups.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">The Stakeholder Identification Process</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-4">
+                                        <div class="flex justify-center mb-4">
+                                            <div class="overflow-x-auto">
+                                                <div class="min-w-[700px]">
+                                                    <div class="relative h-[160px]">
+                                                        <!-- Stakeholder Identification Process Flow -->
+                                                        <svg class="absolute inset-0 h-full w-full" viewBox="0 0 700 160">
+                                                            <!-- Process boxes -->
+                                                            <rect x="10" y="60" width="130" height="60" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+                                                            <text x="75" y="90" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="bold">1. Identify Stakeholders</text>
+                                                            
+                                                            <rect x="160" y="60" width="130" height="60" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                                                            <text x="225" y="90" text-anchor="middle" font-size="11" fill="#3730a3" font-weight="bold">2. Analyze Stakeholders</text>
+                                                            
+                                                            <rect x="310" y="60" width="130" height="60" rx="5" fill="#ede9fe" stroke="#8b5cf6" stroke-width="2"/>
+                                                            <text x="375" y="90" text-anchor="middle" font-size="11" fill="#5b21b6" font-weight="bold">3. Map Stakeholders</text>
+                                                            
+                                                            <rect x="460" y="60" width="130" height="60" rx="5" fill="#f3e8ff" stroke="#a855f7" stroke-width="2"/>
+                                                            <text x="525" y="90" text-anchor="middle" font-size="11" fill="#6b21a8" font-weight="bold">4. Prioritize Engagement</text>
+                                                            
+                                                            <rect x="610" y="60" width="80" height="60" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"/>
+                                                            <text x="650" y="90" text-anchor="middle" font-size="11" fill="#86198f" font-weight="bold">5. Develop Strategies</text>
+                                                            
+                                                            <!-- Arrows connecting processes -->
+                                                            <line x1="140" y1="90" x2="155" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                            <line x1="290" y1="90" x2="305" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                            <line x1="440" y1="90" x2="455" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                            <line x1="590" y1="90" x2="605" y2="90" stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                                            
+                                                            <!-- Feedback loop -->
+                                                            <path d="M 650,130 C 650,150 300,150 300,130" stroke="#d946ef" stroke-width="1.5" stroke-dasharray="4" fill="none" marker-end="url(#arrowhead-feedback)"/>
+                                                            <text x="475" y="145" text-anchor="middle" font-size="10" fill="#d946ef" font-style="italic">Ongoing Reassessment</text>
+                                                            
+                                                            <!-- Arrowhead markers -->
+                                                            <defs>
+                                                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+                                                                </marker>
+                                                                <marker id="arrowhead-feedback" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#d946ef"/>
+                                                                </marker>
+                                                            </defs>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">1. Identify Stakeholders</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg md:col-span-2">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Process Description</h6>
+                                    <p class="text-xs mb-1">The first step is to systematically identify all individuals, groups, and organizations that may be affected by, have influence over, or have an interest in your project or initiative. Cast a wide net initially to ensure no critical stakeholders are missed.</p>
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mt-2 mb-1">Key Activities</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Review project documentation, including charter, scope, and objectives</li>
+                                        <li>Conduct brainstorming sessions with the project team</li>
+                                        <li>Consult organizational charts and governance structures</li>
+                                        <li>Map process flows to identify functional areas impacted</li>
+                                        <li>Consider the full ecosystem: users, approvers, implementers, influencers</li>
+                                        <li>Ask identified stakeholders who else should be included</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                    <h6 class="text-xs font-medium mb-1">Dell Application</h6>
+                                    <p class="text-xs mb-2">At Dell, stakeholder identification includes:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Using standardized stakeholder checklists by project type</li>
+                                        <li>Reviewing RACI matrices from similar past projects</li>
+                                        <li>Consulting with relationship managers who understand customer organizations</li>
+                                        <li>Identifying cross-functional dependencies through business process maps</li>
+                                        <li>Engaging governance bodies to ensure alignment with enterprise initiatives</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h6 class="text-sm font-medium mb-2">2. Analyze Stakeholders</h6>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg md:col-span-2">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Process Description</h6>
+                                <p class="text-xs mb-1">Once stakeholders are identified, analyze their characteristics, interests, motivations, and potential impact on the project. This deeper understanding enables more effective engagement strategies and helps anticipate potential support or resistance.</p>
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mt-2 mb-1">Key Analysis Dimensions</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Power/Influence:</strong> Ability to impact decisions or project outcomes</li>
+                                    <li><strong>Interest/Concern:</strong> Level of interest in the project and its outcomes</li>
+                                    <li><strong>Position:</strong> Supportive, neutral, or opposed to the initiative</li>
+                                    <li><strong>Impact:</strong> How the project will affect the stakeholder</li>
+                                    <li><strong>Needs:</strong> What the stakeholder requires from the project</li>
+                                    <li><strong>Knowledge:</strong> Technical or subject matter expertise relevant to the project</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                                <h6 class="text-xs font-medium mb-1">Dell Application</h6>
+                                <p class="text-xs mb-2">Dell uses several approaches to analyze stakeholders:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Structured stakeholder assessment workshops with project teams</li>
+                                    <li>Stakeholder interview templates that cover key dimensions</li>
+                                    <li>Historical data analysis of stakeholder reactions to similar initiatives</li>
+                                    <li>Input from relationship managers who understand stakeholder motivations</li>
+                                    <li>Assessment tools integrated with project management systems</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3 bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-xs font-medium mb-1">Stakeholder Analysis Technique: Five Key Questions</h6>
+                            <p class="text-xs mb-2">For each stakeholder, Dell project managers answer these five critical questions:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">What's their role?</h6>
+                                    <p class="text-xs mb-0">Formal position, responsibilities, and relationship to the project. Understanding organizational context and authority.</p>
+                                </div>
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">What's their stake?</h6>
+                                    <p class="text-xs mb-0">How they're affected by the project. What they stand to gain or lose. Their vested interests in specific outcomes.</p>
+                                </div>
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">What do they need?</h6>
+                                    <p class="text-xs mb-0">Information, assurances, resources, or benefits they require. Concerns that need to be addressed for their support.</p>
+                                </div>
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">What's their influence?</h6>
+                                    <p class="text-xs mb-0">Power to affect decisions, resource allocation, or other stakeholders' opinions. Formal and informal influence channels.</p>
+                                </div>
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">What's their attitude?</h6>
+                                    <p class="text-xs mb-0">Current level of support or resistance. History with similar initiatives. Potential to become an advocate or opponent.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Stakeholder Mapping and Prioritization</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">3. Map Stakeholders</h5>
+                        <p class="text-sm mb-3">Stakeholder mapping provides visual representations of stakeholder analysis, making it easier to see relationships and prioritize engagement efforts. Several mapping techniques help organize stakeholders based on different dimensions.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Power-Interest Grid</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3 h-full">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Description</h6>
+                                        <p class="text-xs mb-1">The Power-Interest Grid plots stakeholders on two dimensions: their power or influence over the project and their interest in its outcome. This creates four quadrants, each suggesting a different engagement approach.</p>
+                                    </div>
+                                    
+                                    <div class="flex justify-center mb-3">
+                                        <div class="relative w-[300px] h-[300px] border border-gray-300 dark:border-gray-700">
+                                            <!-- Quadrant labels -->
+                                            <div class="absolute top-1 left-1 text-xs text-gray-500 dark:text-gray-400">High</div>
+                                            <div class="absolute bottom-1 left-1 text-xs text-gray-500 dark:text-gray-400">Low</div>
+                                            <div class="absolute top-1 right-1 text-xs text-gray-500 dark:text-gray-400">High</div>
+                                            <div class="absolute bottom-1 right-1 text-xs text-gray-500 dark:text-gray-400">Low</div>
+                                            
+                                            <!-- Axis labels -->
+                                            <div class="absolute top-[-15px] left-[140px] text-xs font-medium">Power</div>
+                                            <div class="absolute top-[140px] left-[-40px] text-xs font-medium transform rotate-[-90deg]">Interest</div>
+                                            
+                                            <!-- Quadrant dividing lines -->
+                                            <div class="absolute top-[150px] left-0 w-full border-t border-gray-300 dark:border-gray-700"></div>
+                                            <div class="absolute top-0 left-[150px] h-full border-l border-gray-300 dark:border-gray-700"></div>
+                                            
+                                            <!-- Quadrant strategy labels -->
+                                            <div class="absolute top-[70px] left-[30px] text-xs text-center w-[90px]">Keep Satisfied</div>
+                                            <div class="absolute top-[70px] right-[30px] text-xs text-center w-[90px]">Manage Closely</div>
+                                            <div class="absolute bottom-[70px] left-[30px] text-xs text-center w-[90px]">Monitor</div>
+                                            <div class="absolute bottom-[70px] right-[30px] text-xs text-center w-[90px]">Keep Informed</div>
+                                            
+                                            <!-- Example stakeholders -->
+                                            <div class="absolute top-[40px] left-[60px] w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs" title="Regulatory Compliance">RC</div>
+                                            <div class="absolute top-[60px] right-[70px] w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs" title="Executive Sponsor">ES</div>
+                                            <div class="absolute top-[80px] right-[40px] w-5 h-5 rounded-full bg-purple-500 flex items-center justify-center text-white text-xs" title="IT Director">IT</div>
+                                            <div class="absolute bottom-[60px] left-[80px] w-5 h-5 rounded-full bg-gray-500 flex items-center justify-center text-white text-xs" title="Support Staff">SS</div>
+                                            <div class="absolute bottom-[40px] right-[60px] w-5 h-5 rounded-full bg-yellow-500 flex items-center justify-center text-white text-xs" title="End Users">EU</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Engagement Strategies by Quadrant</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>High Power, High Interest (Manage Closely):</strong> Key players requiring the most attention and engagement</li>
+                                            <li><strong>High Power, Low Interest (Keep Satisfied):</strong> Provide enough information to ensure they remain satisfied but not overwhelmed</li>
+                                            <li><strong>Low Power, High Interest (Keep Informed):</strong> Keep adequately informed and ensure no major issues arise</li>
+                                            <li><strong>Low Power, Low Interest (Monitor):</strong> Monitor but avoid excessive communication</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Salience Model</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3 h-full">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Description</h6>
+                                        <p class="text-xs mb-1">The Salience Model evaluates stakeholders based on three attributes: power, legitimacy, and urgency. Stakeholders possessing more attributes require more attention and have greater "salience" to the project.</p>
+                                    </div>
+                                    
+                                    <div class="flex justify-center mb-3">
+                                        <div class="relative w-[250px] h-[250px]">
+                                            <!-- Venn diagram circles -->
+                                            <div class="absolute top-0 left-[25px] w-[150px] h-[150px] rounded-full border-2 border-blue-400 dark:border-blue-600 bg-blue-100/30 dark:bg-blue-900/20 flex items-center justify-center">
+                                                <span class="text-xs font-medium text-blue-600 dark:text-blue-400">Power</span>
+                                            </div>
+                                            <div class="absolute top-0 right-[25px] w-[150px] h-[150px] rounded-full border-2 border-green-400 dark:border-green-600 bg-green-100/30 dark:bg-green-900/20 flex items-center justify-center">
+                                                <span class="text-xs font-medium text-green-600 dark:text-green-400">Legitimacy</span>
+                                            </div>
+                                            <div class="absolute bottom-0 left-[50px] w-[150px] h-[150px] rounded-full border-2 border-amber-400 dark:border-amber-600 bg-amber-100/30 dark:bg-amber-900/20 flex items-center justify-center">
+                                                <span class="text-xs font-medium text-amber-600 dark:text-amber-400">Urgency</span>
+                                            </div>
+                                            
+                                            <!-- Intersection labels -->
+                                            <div class="absolute top-[50px] left-[125px] text-[10px] text-center">
+                                                <span class="font-medium text-purple-600 dark:text-purple-400">Dominant</span>
+                                            </div>
+                                            <div class="absolute top-[160px] left-[70px] text-[10px] text-center">
+                                                <span class="font-medium text-pink-600 dark:text-pink-400">Dangerous</span>
+                                            </div>
+                                            <div class="absolute top-[160px] left-[160px] text-[10px] text-center">
+                                                <span class="font-medium text-cyan-600 dark:text-cyan-400">Dependent</span>
+                                            </div>
+                                            <div class="absolute top-[100px] left-[125px] text-[10px] text-center font-bold">
+                                                <span class="text-red-600 dark:text-red-400">Definitive</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Stakeholder Types by Attributes</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Definitive (Power + Legitimacy + Urgency):</strong> Highest priority requiring immediate attention</li>
+                                            <li><strong>Dominant (Power + Legitimacy):</strong> Significant influence and valid claim on project</li>
+                                            <li><strong>Dangerous (Power + Urgency):</strong> May take disruptive action if needs not addressed</li>
+                                            <li><strong>Dependent (Legitimacy + Urgency):</strong> Rely on others to influence project outcomes</li>
+                                            <li><strong>Single attribute:</strong> Lower priority but still need appropriate engagement</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Additional Mapping Techniques</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Support-Influence Matrix</h6>
+                                    <p class="text-xs mb-1">Maps stakeholders based on their level of support for the initiative and their influence on its outcome.</p>
+                                    <p class="text-xs font-medium mb-0.5">Strategy Focus:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Convert high-influence opponents</li>
+                                        <li>Leverage high-influence supporters</li>
+                                        <li>Address concerns of neutral influencers</li>
+                                        <li>Monitor changes in position over time</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Impact-Probability Matrix</h6>
+                                    <p class="text-xs mb-1">Evaluates stakeholders based on the potential impact they could have on the project and the probability they'll exert that influence.</p>
+                                    <p class="text-xs font-medium mb-0.5">Strategy Focus:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Prioritize stakeholders with high impact potential and high probability</li>
+                                        <li>Develop contingency plans for high impact, lower probability stakeholders</li>
+                                        <li>Monitor for changing probabilities</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Stakeholder Circle</h6>
+                                    <p class="text-xs mb-1">Visualizes stakeholders in a concentric circle diagram, with those closest to the center having the most importance to the project.</p>
+                                    <p class="text-xs font-medium mb-0.5">Strategy Focus:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Shows stakeholder proximity to project</li>
+                                        <li>Incorporates multiple dimensions (power, influence, impact)</li>
+                                        <li>Provides visual representation of stakeholder relationships</li>
+                                        <li>Illustrates relative importance at different project phases</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">4. Prioritize Engagement</h6>
+                                <p class="text-xs mb-2">At Dell, stakeholder prioritization follows these principles:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Prioritization Factors</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Current phase impact:</strong> Prioritize stakeholders most relevant to current project phase</li>
+                                            <li><strong>Decision authority:</strong> Those with approval power receive higher priority</li>
+                                            <li><strong>Risk potential:</strong> Stakeholders who could significantly impact risks</li>
+                                            <li><strong>Resource control:</strong> Those controlling critical resources</li>
+                                            <li><strong>Influence network:</strong> Stakeholders who influence multiple other stakeholders</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Prioritization Process</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Create a stakeholder register with assessment scores (1-5) for key dimensions</li>
+                                            <li>Calculate weighted prioritization scores based on project context</li>
+                                            <li>Categorize into primary, secondary, and tertiary stakeholders</li>
+                                            <li>Define engagement level (manage, monitor, inform, consult)</li>
+                                            <li>Allocate engagement resources accordingly</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="text-xs italic mb-0">Dell Insight: "Stakeholder analysis isn't a one-time activity—priority changes as the project progresses through different phases. Regular reassessment is essential, especially at major milestones and when project scope changes."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Stakeholder Communication Strategies</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">5. Develop Communication Strategies</h5>
+                        <p class="text-sm mb-3">Effective stakeholder engagement requires tailored communication strategies that address the specific needs, interests, and preferences of different stakeholder groups. A strategic approach to stakeholder communication increases understanding, builds buy-in, and reduces resistance.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Communication Planning</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Key Elements of Communication Planning</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Stakeholder information needs:</strong> What each stakeholder needs to know</li>
+                                            <li><strong>Message content:</strong> Key points and information to convey</li>
+                                            <li><strong>Timing and frequency:</strong> When and how often to communicate</li>
+                                            <li><strong>Communication methods:</strong> Channels and formats to use</li>
+                                            <li><strong>Feedback mechanisms:</strong> How to collect and respond to stakeholder input</li>
+                                            <li><strong>Roles and responsibilities:</strong> Who will communicate with each stakeholder</li>
+                                            <li><strong>Success metrics:</strong> How to measure communication effectiveness</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Communication Plan Components</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Stakeholder register:</strong> List of all stakeholders and their key attributes</li>
+                                            <li><strong>Communication matrix:</strong> Who receives what information when and how</li>
+                                            <li><strong>Message templates:</strong> Standardized formats for consistent communication</li>
+                                            <li><strong>Communication schedule:</strong> Timeline of planned communications</li>
+                                            <li><strong>Escalation procedures:</strong> Process for handling issues and concerns</li>
+                                            <li><strong>Monitoring mechanisms:</strong> Tracking communication effectiveness</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Communication Plan Best Practices</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Align communication frequency with stakeholder priority and needs</li>
+                                            <li>Vary communication methods based on message complexity</li>
+                                            <li>Use consistent messaging across different channels</li>
+                                            <li>Balance push communications with pull mechanisms</li>
+                                            <li>Create two-way channels for feedback and dialogue</li>
+                                            <li>Update the plan as stakeholder needs and project phases change</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Targeted Communication Approaches</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="overflow-y-auto max-h-[350px] pr-1">
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">For Executive Stakeholders</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Content focus:</strong> Strategic alignment, business outcomes, ROI, risk management</li>
+                                                <li><strong>Communication style:</strong> Concise, business-focused, data-driven</li>
+                                                <li><strong>Preferred formats:</strong> Executive summaries, dashboards, briefings</li>
+                                                <li><strong>Frequency:</strong> Regular but not excessive (typically monthly or at key milestones)</li>
+                                                <li><strong>Delivery channels:</strong> Steering committee meetings, executive updates, 1:1 briefings</li>
+                                                <li><strong>Engagement approach:</strong> Focus on strategic decision points and escalations</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">For Technical Stakeholders</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Content focus:</strong> Technical specifications, implementation details, integration points</li>
+                                                <li><strong>Communication style:</strong> Detailed, precise, solution-oriented</li>
+                                                <li><strong>Preferred formats:</strong> Technical documentation, design reviews, demos</li>
+                                                <li><strong>Frequency:</strong> Regular throughout development phases</li>
+                                                <li><strong>Delivery channels:</strong> Technical forums, collaborative tools, working sessions</li>
+                                                <li><strong>Engagement approach:</strong> Involve in technical decision-making and problem-solving</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h6 class="text-xs font-medium mb-1">For End Users</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Content focus:</strong> Changes to current processes, benefits, support resources</li>
+                                                <li><strong>Communication style:</strong> Practical, benefit-oriented, empathetic</li>
+                                                <li><strong>Preferred formats:</strong> FAQs, training materials, demonstrations, newsletters</li>
+                                                <li><strong>Frequency:</strong> Increasing as implementation approaches</li>
+                                                <li><strong>Delivery channels:</strong> Town halls, team meetings, intranet, email updates</li>
+                                                <li><strong>Engagement approach:</strong> Focus on addressing concerns and providing support</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">For External Stakeholders</h6>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Content focus:</strong> Relevant impacts, timeline, mutual benefits</li>
+                                                <li><strong>Communication style:</strong> Professional, transparent, relationship-focused</li>
+                                                <li><strong>Preferred formats:</strong> Official communications, partnership meetings</li>
+                                                <li><strong>Frequency:</strong> Driven by contractual and relationship needs</li>
+                                                <li><strong>Delivery channels:</strong> Formal correspondence, relationship manager meetings</li>
+                                                <li><strong>Engagement approach:</strong> Respect organizational boundaries while maintaining transparency</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Communication Methods Matrix</h6>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Communication Method</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Best For</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Advantages</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Limitations</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Dell Example</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Face-to-Face Meetings</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                High-priority stakeholders; sensitive topics; complex issues requiring discussion
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Builds relationships; allows for immediate feedback; conveys commitment
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Time-intensive; scheduling challenges; not scalable for large groups
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Executive briefings; key customer partnership reviews
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Video Conferences</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Distributed teams; regular updates; collaborative sessions
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Visual cues; screen sharing; convenient for distributed teams
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Technology dependencies; time zone challenges; participation barriers
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Global team standups; cross-site design reviews
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Workshops</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Collaborative problem-solving; requirements gathering; design sessions
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Interactive; builds consensus; leverages collective expertise
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Requires facilitation skills; time commitment; scheduling complexities
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Requirements definition workshops; process design sessions
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Status Reports</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Regular progress updates; management reporting; documentation
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Consistent format; historical record; scalable distribution
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                One-way communication; limited context; may not be read thoroughly
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Weekly project dashboards; monthly executive summaries
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Email Updates</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Announcements; routine updates; document distribution
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Reach large audiences; easy distribution; searchable record
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Information overload; may be overlooked; limited engagement
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Project newsletters; milestone announcements
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Collaborative Platforms</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Team collaboration; document sharing; ongoing discussions
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Centralized information; asynchronous participation; integration with tools
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Requires adoption; information fragmentation; notification fatigue
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                SharePoint sites; Teams channels; project management tools
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Surveys & Feedback Forms</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Gathering input; measuring sentiment; collecting structured feedback
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Quantifiable data; scalable; anonymous options
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Response rates vary; question design crucial; limited dialogue
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Change readiness assessments; user experience surveys
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Dell's Communication Strategy Approach</h6>
+                                <p class="text-xs mb-2">Dell employs a structured approach to stakeholder communication planning:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Communication Strategy Framework</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Audience segmentation:</strong> Group similar stakeholders for consistent messaging</li>
+                                            <li><strong>Message architecture:</strong> Core messages with customized delivery by segment</li>
+                                            <li><strong>Multi-channel approach:</strong> Primary and backup channels for each stakeholder group</li>
+                                            <li><strong>Phased communication:</strong> Different emphasis at each project phase</li>
+                                            <li><strong>Consistent branding:</strong> Visual identity and terminology across communications</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Communication Effectiveness Measurement</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Reach metrics:</strong> Tracking who received and accessed communications</li>
+                                            <li><strong>Comprehension checks:</strong> Verifying understanding of key messages</li>
+                                            <li><strong>Sentiment analysis:</strong> Measuring stakeholder attitudes and concerns</li>
+                                            <li><strong>Behavior indicators:</strong> Observing changes in stakeholder actions</li>
+                                            <li><strong>Feedback loops:</strong> Soliciting and incorporating stakeholder input</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Building Consensus and Managing Resistance</h4>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Influencing Stakeholder Attitudes and Behaviors</h5>
+                        <p class="text-sm mb-3">A core objective of stakeholder engagement is to build consensus for your initiative and effectively manage resistance. This requires understanding stakeholder perspectives, addressing concerns, and creating pathways for meaningful involvement.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Building Consensus</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Consensus-Building Strategies</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Shared vision development:</strong> Collaboratively define desired outcomes</li>
+                                            <li><strong>Stakeholder involvement:</strong> Engage stakeholders in planning and decision-making</li>
+                                            <li><strong>Interest-based negotiation:</strong> Focus on underlying needs rather than positions</li>
+                                            <li><strong>Collaborative problem-solving:</strong> Work together to address concerns</li>
+                                            <li><strong>Benefit articulation:</strong> Clearly communicate value for each stakeholder</li>
+                                            <li><strong>Compromise facilitation:</strong> Help stakeholders find middle ground</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Effective Influence Techniques</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Rational persuasion:</strong> Using logical arguments and evidence</li>
+                                            <li><strong>Inspirational appeals:</strong> Connecting to values and aspirations</li>
+                                            <li><strong>Consultation:</strong> Seeking input and involvement</li>
+                                            <li><strong>Coalition building:</strong> Leveraging support from other stakeholders</li>
+                                            <li><strong>Social proof:</strong> Demonstrating support from respected peers</li>
+                                            <li><strong>Reciprocity:</strong> Offering value in exchange for support</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Consensus Warning Signs</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>False consensus:</strong> Apparent agreement without genuine buy-in</li>
+                                            <li><strong>Artificial harmony:</strong> Conflict avoidance that masks real concerns</li>
+                                            <li><strong>Groupthink:</strong> Pressure for conformity that limits critical thinking</li>
+                                            <li><strong>Passive resistance:</strong> Verbal agreement without follow-through</li>
+                                            <li><strong>Decision paralysis:</strong> Inability to move forward despite discussions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Managing Resistance</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Understanding Resistance</h6>
+                                        <p class="text-xs mb-1">Common reasons stakeholders resist change or initiatives:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Loss concerns:</strong> Perceived threats to authority, status, or competence</li>
+                                            <li><strong>Uncertainty:</strong> Unclear consequences or outcomes</li>
+                                            <li><strong>Past experiences:</strong> Negative history with similar initiatives</li>
+                                            <li><strong>Misalignment:</strong> Conflicts with personal or departmental goals</li>
+                                            <li><strong>Process concerns:</strong> Disagreement with how the initiative is managed</li>
+                                            <li><strong>Implementation worries:</strong> Doubts about execution capabilities</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Resistance Management Approaches</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Education and communication:</strong> Provide information to address misunderstandings</li>
+                                            <li><strong>Participation and involvement:</strong> Include resistors in planning and implementation</li>
+                                            <li><strong>Facilitation and support:</strong> Provide resources and assistance for transition</li>
+                                            <li><strong>Negotiation and agreement:</strong> Offer incentives or compromises</li>
+                                            <li><strong>Addressing specific concerns:</strong> Develop targeted solutions for identified issues</li>
+                                            <li><strong>Finding common ground:</strong> Identify shared interests and build from there</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Turning Opponents Into Supporters</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Active listening:</strong> Demonstrate that concerns are heard and respected</li>
+                                            <li><strong>Meaningful involvement:</strong> Give opponents a role in shaping solutions</li>
+                                            <li><strong>Transparent communication:</strong> Share information openly, including challenges</li>
+                                            <li><strong>Focus on interests:</strong> Look beyond positions to understand underlying needs</li>
+                                            <li><strong>Pilot approaches:</strong> Allow testing and refinement to build confidence</li>
+                                            <li><strong>Recognition:</strong> Acknowledge contributions and perspective shifts</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Stakeholder Engagement Spectrum</h6>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Engagement Level</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Description</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">When To Use</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Dell Examples</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Inform</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                One-way communication; providing information to stakeholders
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                For stakeholders who need to be aware but aren't directly impacted; when decisions are already made
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Company-wide announcements; status updates to peripheral stakeholders
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Consult</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Two-way communication; gathering input and feedback
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                When stakeholder expertise is valuable; when multiple options are being considered
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Requirements gathering; user experience testing; solution reviews
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Involve</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Participatory process; working directly with stakeholders throughout
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                For stakeholders significantly impacted; when ongoing input is needed; complex issues
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Process redesign workshops; feature prioritization sessions; pilot programs
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Collaborate</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Partnership approach; joint decision-making and solution development
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                When stakeholder buy-in is critical; shared ownership needed; complex interdependencies
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Cross-functional steering committees; joint development initiatives; strategic partnerships
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Empower</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Final decision-making authority delegated to stakeholders
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                When stakeholders have the expertise and context for decisions; building ownership
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Self-managed implementation teams; customer solution co-creation; employee-led initiatives
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Dell's Approach to Consensus and Resistance</h6>
+                                <p class="text-xs mb-2">Dell has developed several effective practices for building consensus and managing resistance:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Consensus-Building Techniques</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>"Voice of the Customer" integration:</strong> Using customer insights to align stakeholders around shared purpose</li>
+                                            <li><strong>Pilot-based evidence:</strong> Building consensus through tangible demonstration of benefits</li>
+                                            <li><strong>Cross-functional design thinking:</strong> Collaborative workshops that bring diverse perspectives together</li>
+                                            <li><strong>Tiered decision frameworks:</strong> Clear processes for resolving conflicts at appropriate levels</li>
+                                            <li><strong>Success storytelling:</strong> Sharing positive outcomes to build momentum and support</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Resistance Management Techniques</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Concern harvesting:</strong> Proactively collecting and addressing concerns</li>
+                                            <li><strong>Change ambassador networks:</strong> Identifying influential supporters to help manage resistance</li>
+                                            <li><strong>Impact assessment workshops:</strong> Helping stakeholders understand and prepare for changes</li>
+                                            <li><strong>Transition support resources:</strong> Providing tools and assistance during implementation</li>
+                                            <li><strong>Recognition programs:</strong> Acknowledging stakeholders who embrace change and help others</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Dell Case Study: Cloud Solutions Platform Transformation</h5>
+                        <p class="text-sm mb-3">This case study examines how Dell Technologies applied stakeholder engagement principles during the development and launch of a major cloud services platform, highlighting the challenges faced and strategies employed to build consensus across diverse stakeholder groups.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Project Context</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Dell launched Project APEX to transform its business model from traditional hardware sales to an as-a-service cloud platform. This major transformation involved:</p>
+                                    <ul class="pl-4 text-xs mb-3">
+                                        <li>Developing a unified cloud console for customers</li>
+                                        <li>Creating consumption-based pricing models</li>
+                                        <li>Integrating multiple product lines into one platform</li>
+                                        <li>Shifting from transactional to subscription revenue</li>
+                                        <li>Transforming sales, marketing, and support models</li>
+                                        <li>Establishing new partnerships and delivery mechanisms</li>
+                                    </ul>
+                                    
+                                    <p class="text-xs font-medium mb-1">Stakeholder Complexity:</p>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li>Diverse internal stakeholders across business units, some with competing priorities</li>
+                                        <li>Channel partners concerned about potential disintermediation</li>
+                                        <li>Customers with varying cloud strategy maturity levels</li>
+                                        <li>Sales teams with established transaction-based compensation models</li>
+                                        <li>Traditional product teams transitioning to service-oriented development</li>
+                                        <li>Investors concerned about short-term revenue impact during transition</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Stakeholder Engagement Approach</h6>
+                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">1. Stakeholder Identification & Analysis</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Conducted systematic stakeholder mapping across the organization</li>
+                                            <li>Created detailed stakeholder profiles for key groups</li>
+                                            <li>Assessed current state of alignment and potential resistance</li>
+                                            <li>Identified potential champions in each stakeholder group</li>
+                                            <li>Used Power-Interest matrix to prioritize engagement efforts</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">2. Engagement Strategy Development</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Created a multi-level communication and engagement plan</li>
+                                            <li>Established governance structure for stakeholder management</li>
+                                            <li>Developed specific strategies for high-influence stakeholders</li>
+                                            <li>Planned phased engagement approach aligned to program milestones</li>
+                                            <li>Identified key decision points requiring stakeholder alignment</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">3. Implementation & Adaptation</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Deployed comprehensive communication program across channels</li>
+                                            <li>Established feedback mechanisms to monitor stakeholder sentiment</li>
+                                            <li>Created forums for collaborative problem-solving</li>
+                                            <li>Adjusted approach based on stakeholder responses</li>
+                                            <li>Measured engagement effectiveness throughout the program</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Key Stakeholder Engagement Strategies</h6>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-100 dark:bg-gray-800">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Stakeholder Group</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Initial Position</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Key Concerns</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Engagement Approach</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Results</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Sales Leadership</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Resistant due to concerns about compensation model changes and revenue recognition timing
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Impact on sales quotas and targets</li>
+                                                    <li>Compensation plan changes</li>
+                                                    <li>New skills required for solution selling</li>
+                                                    <li>Longer sales cycles</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Early involvement in designing new compensation models</li>
+                                                    <li>Executive sponsorship and alignment</li>
+                                                    <li>Phased transition with dual models during transition</li>
+                                                    <li>Competitor analysis showing market trends</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Shifted from resistance to cautious support after participating in compensation model design and seeing early customer interest
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Channel Partners</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Highly resistant due to perceived threat of disintermediation
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Direct customer relationships bypassing channel</li>
+                                                    <li>Reduced margins in service model</li>
+                                                    <li>Unclear partner role in new ecosystem</li>
+                                                    <li>Investment requirements for transformation</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Partner advisory council established</li>
+                                                    <li>Co-creation of partner-led service offerings</li>
+                                                    <li>Revenue sharing model development</li>
+                                                    <li>Early access program with key partners</li>
+                                                    <li>Comprehensive enablement resources</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Most partners shifted to supportive after seeing partner-specific value proposition and new service revenue opportunities
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Product Engineering Teams</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Mixed - supportive of vision but concerned about implementation details
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Integration complexity across product lines</li>
+                                                    <li>Technical debt in legacy systems</li>
+                                                    <li>New skills required for as-a-service model</li>
+                                                    <li>Resource constraints for parallel development</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Cross-functional architecture workshops</li>
+                                                    <li>Technical decision-making authority delegation</li>
+                                                    <li>Phased integration approach with clear milestones</li>
+                                                    <li>Skills development and training programs</li>
+                                                    <li>Resource prioritization framework</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Became active supporters after participating in technical architecture decisions and seeing integration approach
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Enterprise Customers</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Interested but cautious due to existing infrastructure investments
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Integration with existing Dell products</li>
+                                                    <li>Migration path for current investments</li>
+                                                    <li>Cost predictability of consumption model</li>
+                                                    <li>Security and compliance capabilities</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                <ul class="pl-3 mb-0">
+                                                    <li>Customer advisory board formation</li>
+                                                    <li>Early access program with design partners</li>
+                                                    <li>Proof of concept implementations</li>
+                                                    <li>TCO modeling tools development</li>
+                                                    <li>Executive briefing program</li>
+                                                </ul>
+                                            </td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">
+                                                Key customers became advocates after participating in early access program and seeing tangible benefits
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-2">Communication Strategies</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Executive alignment first:</strong> Secured consistent messaging across leadership team</li>
+                                    <li class="mb-1"><strong>Narrative development:</strong> Created compelling story around market drivers and opportunities</li>
+                                    <li class="mb-1"><strong>Tailored messaging:</strong> Customized value proposition for each stakeholder group</li>
+                                    <li class="mb-1"><strong>Multi-channel approach:</strong> Used diverse formats from executive briefings to interactive demos</li>
+                                    <li class="mb-0"><strong>Transparent communication:</strong> Openly discussed challenges and transition impacts</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-2">Consensus-Building Techniques</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Shared vision workshops:</strong> Collaborative sessions to align on target state</li>
+                                    <li class="mb-1"><strong>Co-creation approach:</strong> Involving stakeholders in designing solutions</li>
+                                    <li class="mb-1"><strong>Quick win identification:</strong> Early benefits to build momentum</li>
+                                    <li class="mb-1"><strong>Stakeholder councils:</strong> Formal forums for ongoing input and feedback</li>
+                                    <li class="mb-0"><strong>Change champions:</strong> Identified and supported advocates in each stakeholder group</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Resistance Management</h6>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li class="mb-1"><strong>Concern cataloging:</strong> Systematic documentation and addressing of issues</li>
+                                    <li class="mb-1"><strong>Transition support:</strong> Resources and training for affected groups</li>
+                                    <li class="mb-1"><strong>Phased implementation:</strong> Gradual approach to allow adaptation</li>
+                                    <li class="mb-1"><strong>Pilot programs:</strong> Demonstrating success at smaller scale first</li>
+                                    <li class="mb-0"><strong>Incentive alignment:</strong> Rewards and recognition for supporting change</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Results and Lessons Learned</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Project Outcomes</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Successful platform launch</strong> with initial offerings across storage, compute, and data protection</li>
+                                        <li><strong>Channel partner adoption</strong> exceeded targets with 80% of key partners offering APEX services</li>
+                                        <li><strong>Sales transformation</strong> achieved with new compensation models implemented globally</li>
+                                        <li><strong>Customer adoption</strong> meeting growth targets with strong pipeline development</li>
+                                        <li><strong>Internal alignment</strong> across business units around as-a-service strategy</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="text-xs font-medium mb-1">Key Lessons</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Early involvement</strong> of key stakeholders was critical for designing viable solutions</li>
+                                        <li><strong>Partner concerns</strong> required more attention than initially anticipated</li>
+                                        <li><strong>Tangible demonstrations</strong> were more effective than conceptual discussions</li>
+                                        <li><strong>Transition support</strong> resources were essential for maintaining momentum</li>
+                                        <li><strong>Regular reassessment</strong> of stakeholder positions allowed for strategy adjustments</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Stakeholder Engagement Best Practices</h4>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Keys to Effective Stakeholder Engagement</h5>
+                        <p class="text-sm mb-3">Based on Dell's experience across thousands of projects and initiatives, these best practices can help you effectively engage stakeholders regardless of project type or complexity.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-eye-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Start Early, Be Proactive</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Begin stakeholder engagement at project initiation</li>
+                                    <li>Identify and address concerns before they become issues</li>
+                                    <li>Build relationships before you need stakeholder support</li>
+                                    <li>Establish engagement rhythms from the start</li>
+                                    <li>Set expectations about involvement early</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-user-voice-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Listen Actively</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Focus on understanding before being understood</li>
+                                    <li>Create safe spaces for stakeholders to express concerns</li>
+                                    <li>Use multiple feedback channels for diverse perspectives</li>
+                                    <li>Demonstrate that input is valued by acting on it</li>
+                                    <li>Look for underlying needs behind stated positions</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-focus-3-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Prioritize Thoughtfully</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Be strategic about where to invest engagement efforts</li>
+                                    <li>Focus on stakeholders with high influence and high impact</li>
+                                    <li>Don't ignore resistors with significant influence</li>
+                                    <li>Adjust priorities as the project evolves</li>
+                                    <li>Balance short-term needs with long-term relationships</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-message-3-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Communicate Strategically</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Tailor messages to stakeholder interests and needs</li>
+                                    <li>Use varied channels appropriate to the audience</li>
+                                    <li>Balance formal communication with informal touchpoints</li>
+                                    <li>Be transparent about challenges and constraints</li>
+                                    <li>Create two-way dialogue rather than one-way broadcasts</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-hand-heart-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Build Genuine Relationships</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Focus on authentic connections, not just transactions</li>
+                                    <li>Understand stakeholders' broader context and pressures</li>
+                                    <li>Demonstrate respect for different perspectives</li>
+                                    <li>Acknowledge and appreciate stakeholder contributions</li>
+                                    <li>Invest in relationship-building activities</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-400 mr-2">
+                                        <i class="ri-refresh-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium text-amber-700 dark:text-amber-400">Adapt and Iterate</h6>
+                                </div>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li>Regularly reassess stakeholder positions and needs</li>
+                                    <li>Adjust engagement strategies based on feedback</li>
+                                    <li>Be flexible as project circumstances change</li>
+                                    <li>Try different approaches if initial efforts aren't effective</li>
+                                    <li>Document and apply lessons learned</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-white dark:bg-gray-800 p-3 rounded-lg">
+                            <h6 class="text-sm font-medium mb-2">Stakeholder Engagement Planning Template</h6>
+                            <p class="text-xs mb-2">Dell project managers use this simplified planning template to structure stakeholder engagement efforts:</p>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-50 dark:bg-gray-900">
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Stakeholder</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Role/Impact</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Analysis (Power/Interest)</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Current Position</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Desired Position</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Key Messages</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Engagement Strategy</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Owner</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Timing</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">IT Director</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Decision maker for technical implementation</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">High Power/High Interest</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Neutral</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Advocate</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Technical benefits, resource optimization, integration with existing systems</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">1:1 meetings, technical deep dives, peer case studies, steering committee participation</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Technical Lead</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Weekly touchpoints, key milestone reviews</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">End Users</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Daily system users impacted by changes</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Low Power/High Interest</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Unaware</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Supportive</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Productivity benefits, improved experience, available support</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Department demos, training sessions, FAQ documents, user testing involvement</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Change Manager</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Monthly awareness updates, increased frequency near go-live</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.pmi.org/learning/library/stakeholder-analysis-pivotal-practice-projects-8905" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Stakeholder Analysis: Pivotal Practice for Projects</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Project Management Institute • Research & Best Practices</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.apm.org.uk/resources/find-a-resource/stakeholder-engagement/" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-book-open-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Stakeholder Engagement Resources</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Association for Project Management • Tools & Templates</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.prosci.com/methodology/adkar" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-mind-map"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">ADKAR Change Model</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Prosci • Individual Change Management Framework</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Stakeholder Analysis and Engagement Planning Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll practice stakeholder analysis and develop an engagement strategy for a Dell digital transformation initiative. This will help you apply the stakeholder engagement concepts learned in this module to a realistic scenario.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Project Scenario: CRM Implementation</h6>
+                            <p class="text-xs mb-2">Dell is implementing a new customer relationship management (CRM) system that will replace several legacy systems and introduce new capabilities for sales, marketing, and customer service teams. The implementation will change how customer data is managed and accessed, modify existing workflows, and introduce new reporting capabilities.</p>
+                            
+                            <p class="text-xs font-medium mb-1">Key stakeholder groups include:</p>
+                            <ul class="pl-4 text-xs mb-2">
+                                <li>Sales teams who use the CRM daily to manage customer relationships and opportunities</li>
+                                <li>Marketing teams who rely on customer data for campaign targeting and analytics</li>
+                                <li>Customer service representatives who need comprehensive customer information</li>
+                                <li>IT department responsible for system integration and technical support</li>
+                                <li>Data security and compliance teams concerned with customer data protection</li>
+                                <li>Executive leadership interested in improved business intelligence and ROI</li>
+                                <li>Channel partners who need access to certain customer information</li>
+                            </ul>
+                            
+                            <p class="text-xs font-medium mb-1">Project constraints and context:</p>
+                            <ul class="pl-4 text-xs mb-0">
+                                <li>6-month implementation timeline</li>
+                                <li>Previous CRM implementation attempt two years ago was unsuccessful</li>
+                                <li>Sales teams are measured on productivity and are concerned about learning curve</li>
+                                <li>The organization recently experienced a restructuring</li>
+                                <li>Regulatory requirements for customer data handling have increased</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Step 1: Stakeholder Analysis</label>
+                                <p class="text-xs mb-2">Select two stakeholder groups from the list above and analyze them using the Power-Interest framework.</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="For each stakeholder group, indicate their power/influence level, interest level, current position (supporter, neutral, resistant), key concerns, and what they need from the project."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Step 2: Communication Strategy</label>
+                                <p class="text-xs mb-2">Develop a communication approach for each stakeholder group you analyzed.</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="For each stakeholder group, describe: key messages that would resonate with them, preferred communication channels, optimal frequency, and specific content they would find valuable."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Step 3: Resistance Management</label>
+                                <p class="text-xs mb-2">For the stakeholder group most likely to be resistant, develop a resistance management plan.</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Identify potential sources of resistance, strategies to address concerns, opportunities for involvement in the project, and how you would measure changes in their position over time."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-workplan-development">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Workplan Development</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-project-tools">
+                        <span>Next: Tools: Gantts, RACI, Agile</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-stakeholder-engagement');
+        });
+    </script>
+</body>
+</html>

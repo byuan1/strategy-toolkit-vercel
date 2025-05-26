@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Financial Acumen</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-statements">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Financial Statements</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-common-size">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Common-Size Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-modeling">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Financial Modeling</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-dell-financials">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Dell's Financial Reports</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-ratios">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Key Financial Ratios</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-cost-benefit">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Cost-Benefit Analysis</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Strategic Frameworks</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-swot">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>SWOT Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-porters-five">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Porter's Five Forces</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-pestel">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>PESTEL Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-bcg-matrix">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>BCG Matrix</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-business-model-canvas">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Business Model Canvas</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">57%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 57%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Problem Solving</span>
+                                <span>2/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>6/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>4/5 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Business Model Canvas Topic -->
+            <section id="topic-business-model-canvas" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-layout-masonry-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Business Model Canvas</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Strategic Frameworks</span>
+                                <span>•</span>
+                                <span>50 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the Business Model Canvas framework and its nine building blocks</li>
+                            <li>Learn to analyze and visualize business models in a structured way</li>
+                            <li>Develop skills to apply the canvas to Dell's evolving business model</li>
+                            <li>Explore how to use the canvas for strategic innovation and transformation</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Introduction to the Business Model Canvas</h4>
+                    <p>The Business Model Canvas is a strategic management tool created by Alexander Osterwalder and Yves Pigneur that allows you to visualize, analyze, and innovate business models. It provides a shared language for describing, visualizing, assessing, and changing business models, making complex concepts more accessible and actionable.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Why the Business Model Canvas Matters</h5>
+                        <ul class="pl-5 mb-0">
+                            <li><strong>Holistic perspective:</strong> Provides a complete view of how a business creates, delivers, and captures value</li>
+                            <li><strong>Visual approach:</strong> Maps complex business elements in a simple, intuitive format</li>
+                            <li><strong>Strategic alignment:</strong> Ensures all business components work together coherently</li>
+                            <li><strong>Innovation tool:</strong> Facilitates exploration of new business model options</li>
+                            <li><strong>Communication aid:</strong> Creates a shared language across teams and functions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                            <div class="grid grid-cols-4 gap-2">
+                                <!-- Row 1 -->
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg col-span-1 row-span-2 flex flex-col">
+                                    <h6 class="text-blue-700 dark:text-blue-400 font-medium mb-1 text-sm">Key Partners</h6>
+                                    <p class="text-xs mb-1">Who are our key partners and suppliers?</p>
+                                    <p class="text-xs mb-0">What key resources do we acquire from them?</p>
+                                </div>
+                                
+                                <div class="bg-teal-50 dark:bg-teal-900/20 p-3 rounded-lg flex flex-col">
+                                    <h6 class="text-teal-700 dark:text-teal-400 font-medium mb-1 text-sm">Key Activities</h6>
+                                    <p class="text-xs mb-0">What key activities do our value propositions require?</p>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg col-span-1 row-span-2 flex flex-col">
+                                    <h6 class="text-green-700 dark:text-green-400 font-medium mb-1 text-sm">Value Propositions</h6>
+                                    <p class="text-xs mb-1">What value do we deliver to customers?</p>
+                                    <p class="text-xs mb-0">Which problems are we solving?</p>
+                                </div>
+                                
+                                <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg flex flex-col">
+                                    <h6 class="text-amber-700 dark:text-amber-400 font-medium mb-1 text-sm">Customer Relationships</h6>
+                                    <p class="text-xs mb-0">What relationships do we establish with customers?</p>
+                                </div>
+                                
+                                <!-- Row 2 -->
+                                <div class="bg-cyan-50 dark:bg-cyan-900/20 p-3 rounded-lg flex flex-col">
+                                    <h6 class="text-cyan-700 dark:text-cyan-400 font-medium mb-1 text-sm">Key Resources</h6>
+                                    <p class="text-xs mb-0">What key resources do our value propositions require?</p>
+                                </div>
+                                
+                                <div class="bg-orange-50 dark:bg-orange-900/20 p-3 rounded-lg flex flex-col">
+                                    <h6 class="text-orange-700 dark:text-orange-400 font-medium mb-1 text-sm">Channels</h6>
+                                    <p class="text-xs mb-0">How do we reach our customers?</p>
+                                </div>
+                                
+                                <!-- Row 3 -->
+                                <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg col-span-2 flex flex-col">
+                                    <h6 class="text-red-700 dark:text-red-400 font-medium mb-1 text-sm">Cost Structure</h6>
+                                    <p class="text-xs mb-0">What are the most important costs in our business model?</p>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg col-span-1 row-span-2 flex flex-col">
+                                    <h6 class="text-purple-700 dark:text-purple-400 font-medium mb-1 text-sm">Customer Segments</h6>
+                                    <p class="text-xs mb-1">Who are we creating value for?</p>
+                                    <p class="text-xs mb-0">Who are our most important customers?</p>
+                                </div>
+                                
+                                <!-- Row 4 -->
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg col-span-2 flex flex-col">
+                                    <h6 class="text-indigo-700 dark:text-indigo-400 font-medium mb-1 text-sm">Revenue Streams</h6>
+                                    <p class="text-xs mb-0">For what value are our customers willing to pay? How do they pay?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-center mt-2 text-gray-500 dark:text-gray-400">The Business Model Canvas: nine building blocks to visualize a business model</p>
+                    </div>
+                    
+                    <h4>The Nine Building Blocks of the Business Model Canvas</h4>
+                    <p>Let's explore each of the nine components in detail:</p>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Value Propositions</h5>
+                        <p class="text-sm mb-3">Value propositions describe the products and services that create value for specific customer segments. They represent the reason why customers turn to one company over another by solving problems or satisfying needs.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Elements</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Problem-solution fit</li>
+                                    <li>Pain relievers and gain creators</li>
+                                    <li>Product and service bundle</li>
+                                    <li>Differentiation factors</li>
+                                    <li>Unique selling propositions</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Guiding Questions</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>What value do we deliver to customers?</li>
+                                    <li>Which customer problems are we helping to solve?</li>
+                                    <li>What bundles of products/services are we offering?</li>
+                                    <li>Which customer needs are we satisfying?</li>
+                                    <li>What makes our offer distinct from competitors?</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Value Propositions</h6>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li><strong>Enterprise Solutions:</strong> End-to-end IT infrastructure with integrated hardware, software, and services</li>
+                                <li><strong>Commercial PCs:</strong> Reliable, secure, and manageable devices with comprehensive support options</li>
+                                <li><strong>As-a-Service Offerings:</strong> Flexible consumption models that align costs with usage</li>
+                                <li><strong>Direct Relationship Model:</strong> Personalized account management and customized solutions</li>
+                                <li><strong>Multi-Cloud Ecosystem:</strong> Solutions that enable consistent operations across private, public, and edge environments</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Customer Segments</h5>
+                        <p class="text-sm mb-3">Customer segments define the different groups of people or organizations an enterprise aims to reach and serve. Segments may represent separate markets with distinct needs requiring different offers, channels, or relationship types.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Elements</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Market segmentation approach</li>
+                                    <li>Target customer profiles</li>
+                                    <li>Segment prioritization</li>
+                                    <li>Niche vs. mass market focus</li>
+                                    <li>B2B, B2C, or multi-sided markets</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Guiding Questions</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>For whom are we creating value?</li>
+                                    <li>Who are our most important customers?</li>
+                                    <li>How do segments differ in needs and behaviors?</li>
+                                    <li>Which segments represent the greatest opportunity?</li>
+                                    <li>How might segment priorities change over time?</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Customer Segments</h6>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li><strong>Large Enterprises:</strong> Global corporations with complex IT needs and substantial budgets</li>
+                                <li><strong>Small & Medium Businesses:</strong> Growing companies needing scalable solutions with limited IT resources</li>
+                                <li><strong>Public Sector:</strong> Government agencies, education institutions, and healthcare organizations</li>
+                                <li><strong>Service Providers:</strong> Cloud, telecom, and managed service providers building infrastructure for others</li>
+                                <li><strong>Consumers:</strong> Individual home and personal technology users, primarily for PCs and peripherals</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-amber-700 dark:text-amber-400 font-medium mb-2">Customer Relationships</h5>
+                        <p class="text-sm mb-3">Customer relationships describe the types of relationships a company establishes with specific customer segments. These range from personal to automated and influence the overall customer experience.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Elements</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Relationship categories (personal, dedicated, self-service)</li>
+                                    <li>Acquisition and retention strategies</li>
+                                    <li>Customer support models</li>
+                                    <li>Upselling and cross-selling approaches</li>
+                                    <li>Community building and co-creation</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Guiding Questions</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>What type of relationship does each segment expect?</li>
+                                    <li>How costly are different relationship models?</li>
+                                    <li>How do relationships integrate with the rest of our model?</li>
+                                    <li>What is the right balance between human and automated interaction?</li>
+                                    <li>How do we build long-term engagement?</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Customer Relationships</h6>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li><strong>Enterprise Account Teams:</strong> Dedicated relationship managers for large customers with regular engagement</li>
+                                <li><strong>Inside Sales Teams:</strong> Remote sales support for mid-market customers via phone and digital channels</li>
+                                <li><strong>Partner-Managed Relationships:</strong> Channel partners that sell and support Dell products</li>
+                                <li><strong>ProSupport Services:</strong> Premium technical support with priority access and advanced expertise</li>
+                                <li><strong>Digital Self-Service:</strong> Online portals for ordering, support, and account management</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-orange-700 dark:text-orange-400 font-medium mb-2">Channels</h5>
+                        <p class="text-sm mb-3">Channels describe how a company communicates with and reaches its customer segments to deliver a value proposition. These include communication, distribution, and sales channels that form the company's interface with customers.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Elements</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Channel types (direct, indirect, partner)</li>
+                                    <li>Channel phases (awareness, evaluation, purchase, delivery, after-sales)</li>
+                                    <li>Channel integration and experience consistency</li>
+                                    <li>Digital and physical channel mix</li>
+                                    <li>Channel economics and efficiency</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Guiding Questions</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Through which channels do customers want to be reached?</li>
+                                    <li>How are our channels integrated and cost-effective?</li>
+                                    <li>Which channels work best for each segment?</li>
+                                    <li>How do we balance direct and indirect channels?</li>
+                                    <li>How do channels support the complete customer journey?</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Channels</h6>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li><strong>Direct Online Sales:</strong> Dell.com e-commerce platform for configuration and purchasing</li>
+                                <li><strong>Direct Sales Force:</strong> Field sales teams for enterprise and public sector customers</li>
+                                <li><strong>Channel Partners:</strong> Resellers, systems integrators, and distributors extending market reach</li>
+                                <li><strong>Retail Partnerships:</strong> Physical stores carrying Dell products for consumer and SMB segments</li>
+                                <li><strong>Dell Digital:</strong> Mobile apps and digital tools for engagement and self-service support</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Revenue Streams</h5>
+                        <p class="text-sm mb-3">Revenue streams represent the cash a company generates from each customer segment. They reflect how and what customers are willing to pay for the value created, with each stream potentially having different pricing mechanisms.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Elements</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Revenue types (transactional, recurring)</li>
+                                    <li>Pricing models (fixed, dynamic, subscription)</li>
+                                    <li>Revenue diversification and resilience</li>
+                                    <li>Monetization strategies</li>
+                                    <li>Value-based pricing approaches</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Guiding Questions</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>For what value are customers willing to pay?</li>
+                                    <li>How do they currently pay and prefer to pay?</li>
+                                    <li>How much does each revenue stream contribute?</li>
+                                    <li>What pricing mechanisms would work best?</li>
+                                    <li>How can we shift toward more predictable revenue?</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Revenue Streams</h6>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li><strong>Hardware Sales:</strong> One-time revenue from devices, servers, networking, and storage products</li>
+                                <li><strong>APEX as-a-Service:</strong> Subscription-based consumption of infrastructure and PC resources</li>
+                                <li><strong>Software Licenses:</strong> Both perpetual and subscription software sales</li>
+                                <li><strong>Services Contracts:</strong> Implementation, support, managed services, and consulting</li>
+                                <li><strong>Financing Income:</strong> Dell Financial Services revenue from leasing and financing arrangements</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-teal-50 dark:bg-teal-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-teal-700 dark:text-teal-400 font-medium mb-2">Key Activities</h5>
+                        <p class="text-sm mb-3">Key activities are the most important actions a company must perform to make its business model work successfully. Like key resources, they are required to create and offer the value proposition, reach markets, maintain customer relationships, and earn revenue.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Elements</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Production activities</li>
+                                    <li>Problem-solving capabilities</li>
+                                    <li>Platform/network development</li>
+                                    <li>Supply chain management</li>
+                                    <li>Innovation and R&D processes</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Guiding Questions</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>What key activities do our value propositions require?</li>
+                                    <li>What activities are most critical for our channels?</li>
+                                    <li>What activities do our customer relationships need?</li>
+                                    <li>What activities directly support revenue generation?</li>
+                                    <li>Which activities should we own vs. outsource?</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Key Activities</h6>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li><strong>Product Design & Engineering:</strong> Developing hardware and solutions that meet customer needs</li>
+                                <li><strong>Supply Chain Management:</strong> Coordinating global procurement, manufacturing, and logistics</li>
+                                <li><strong>Sales & Channel Management:</strong> Direct and partner go-to-market activities</li>
+                                <li><strong>Customer Support:</strong> Technical support, issue resolution, and proactive services</li>
+                                <li><strong>Digital Transformation:</strong> Building and enhancing digital platforms and experiences</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-cyan-50 dark:bg-cyan-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-cyan-700 dark:text-cyan-400 font-medium mb-2">Key Resources</h5>
+                        <p class="text-sm mb-3">Key resources describe the most important assets required to make a business model work. These resources allow a company to create and deliver its value proposition, reach markets, maintain relationships, and generate revenue.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Elements</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Physical assets and infrastructure</li>
+                                    <li>Intellectual property</li>
+                                    <li>Human resources and capabilities</li>
+                                    <li>Financial resources</li>
+                                    <li>Brand and reputation assets</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Guiding Questions</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>What key resources do our value propositions require?</li>
+                                    <li>Which resources are most important for channels?</li>
+                                    <li>What resources do customer relationships need?</li>
+                                    <li>What resources directly support revenue streams?</li>
+                                    <li>How can we optimize resource allocation?</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Key Resources</h6>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li><strong>Global Manufacturing Facilities:</strong> Production capabilities across multiple regions</li>
+                                <li><strong>Technology IP Portfolio:</strong> Patents, product designs, and technical expertise</li>
+                                <li><strong>Dell Brand:</strong> Trusted reputation in enterprise and commercial markets</li>
+                                <li><strong>Direct Customer Relationships:</strong> Established customer base and direct engagement model</li>
+                                <li><strong>Technical Talent:</strong> Engineering, services, and sales expertise across the organization</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-blue-700 dark:text-blue-400 font-medium mb-2">Key Partnerships</h5>
+                        <p class="text-sm mb-3">Key partnerships describe the network of suppliers and partners that make the business model work. Companies create partnerships to optimize their business models, reduce risk, or acquire resources and capabilities.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Elements</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Strategic alliances (non-competitors)</li>
+                                    <li>Coopetition (strategic partnerships with competitors)</li>
+                                    <li>Joint ventures for new business development</li>
+                                    <li>Buyer-supplier relationships</li>
+                                    <li>Ecosystem collaborations</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Guiding Questions</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Who are our key partners and suppliers?</li>
+                                    <li>What key resources do we acquire from partners?</li>
+                                    <li>What key activities do partners perform?</li>
+                                    <li>How can partnerships create additional value?</li>
+                                    <li>What determines make vs. partner decisions?</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Key Partnerships</h6>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li><strong>Technology Partners:</strong> Microsoft, Intel, AMD, NVIDIA, and other component/software suppliers</li>
+                                <li><strong>Channel Partners:</strong> Distributors, resellers, and systems integrators extending market reach</li>
+                                <li><strong>Service Delivery Partners:</strong> Implementation and support partners augmenting Dell capabilities</li>
+                                <li><strong>Cloud Provider Relationships:</strong> AWS, Microsoft Azure, Google Cloud Platform integrations</li>
+                                <li><strong>Contract Manufacturers:</strong> Production partners supporting global manufacturing capacity</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-red-700 dark:text-red-400 font-medium mb-2">Cost Structure</h5>
+                        <p class="text-sm mb-3">Cost structure describes all costs incurred to operate a business model. Creating and delivering value, maintaining customer relationships, and generating revenue all incur costs that can be calculated relatively easily after defining key resources, activities, and partnerships.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Key Elements</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Fixed vs. variable costs</li>
+                                    <li>Economies of scale and scope</li>
+                                    <li>Cost-driven vs. value-driven approaches</li>
+                                    <li>Operating leverage factors</li>
+                                    <li>Cost allocation and efficiency</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Guiding Questions</h6>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>What are the most important costs in our business model?</li>
+                                    <li>Which key resources and activities are most expensive?</li>
+                                    <li>How does scale affect our cost structure?</li>
+                                    <li>Where can we optimize costs without compromising value?</li>
+                                    <li>What cost trade-offs should we consider?</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Dell Example: Cost Structure</h6>
+                            <ul class="pl-4 text-sm mb-0">
+                                <li><strong>Component Procurement:</strong> Costs of processors, memory, storage, and other hardware components</li>
+                                <li><strong>Manufacturing & Assembly:</strong> Production costs across global facilities</li>
+                                <li><strong>R&D Investment:</strong> Product development and innovation expenses</li>
+                                <li><strong>Sales & Marketing:</strong> Sales force, channel programs, and marketing initiatives</li>
+                                <li><strong>Services Delivery:</strong> Support infrastructure and technical staff costs</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Dell's Business Model Canvas: A Visual Summary</h4>
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell's Traditional Direct Model (1990s-2000s)</h5>
+                        <p class="text-sm mb-3">This canvas shows Dell's original direct-to-customer business model that disrupted the PC industry:</p>
+                        
+                        <div class="overflow-x-auto mb-3">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg">
+                                <div class="grid grid-cols-4 gap-px bg-gray-200 dark:bg-gray-700">
+                                    <!-- Row 1 -->
+                                    <div class="bg-white dark:bg-gray-800 p-3 col-span-1 row-span-2">
+                                        <h6 class="font-medium mb-2 text-sm text-blue-700 dark:text-blue-400">Key Partners</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Component suppliers (Intel, Microsoft)</li>
+                                            <li>Logistics providers</li>
+                                            <li>ODM partners</li>
+                                            <li>Basic service contractors</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3">
+                                        <h6 class="font-medium mb-2 text-sm text-teal-700 dark:text-teal-400">Key Activities</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Product assembly & configuration</li>
+                                            <li>Supply chain optimization</li>
+                                            <li>Demand forecasting</li>
+                                            <li>Direct marketing</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3 col-span-1 row-span-2">
+                                        <h6 class="font-medium mb-2 text-sm text-green-700 dark:text-green-400">Value Propositions</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Build-to-order customization</li>
+                                            <li>Direct relationship</li>
+                                            <li>Competitive pricing</li>
+                                            <li>Latest technology</li>
+                                            <li>Elimination of reseller markup</li>
+                                            <li>Simplified buying process</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3">
+                                        <h6 class="font-medium mb-2 text-sm text-amber-700 dark:text-amber-400">Customer Relationships</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Phone-based sales advisors</li>
+                                            <li>Basic technical support</li>
+                                            <li>Direct customer data access</li>
+                                            <li>Self-service ordering</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Row 2 -->
+                                    <div class="bg-white dark:bg-gray-800 p-3">
+                                        <h6 class="font-medium mb-2 text-sm text-cyan-700 dark:text-cyan-400">Key Resources</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Low-inventory manufacturing</li>
+                                            <li>Direct sales platform</li>
+                                            <li>Customer data</li>
+                                            <li>Dell brand</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3">
+                                        <h6 class="font-medium mb-2 text-sm text-orange-700 dark:text-orange-400">Channels</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Telephone sales</li>
+                                            <li>Dell.com website</li>
+                                            <li>Direct shipping</li>
+                                            <li>Catalog marketing</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Row 3 -->
+                                    <div class="bg-white dark:bg-gray-800 p-3 col-span-2">
+                                        <h6 class="font-medium mb-2 text-sm text-red-700 dark:text-red-400">Cost Structure</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Component purchasing (largest cost)</li>
+                                            <li>Assembly operations</li>
+                                            <li>Direct sales force</li>
+                                            <li>Logistics and shipping</li>
+                                            <li>Marketing and customer acquisition</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3 col-span-1 row-span-2">
+                                        <h6 class="font-medium mb-2 text-sm text-purple-700 dark:text-purple-400">Customer Segments</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Business purchasing managers</li>
+                                            <li>IT departments</li>
+                                            <li>Small businesses</li>
+                                            <li>Tech-savvy consumers</li>
+                                            <li>Government procurement</li>
+                                            <li>Education institutions</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Row 4 -->
+                                    <div class="bg-white dark:bg-gray-800 p-3 col-span-2">
+                                        <h6 class="font-medium mb-2 text-sm text-indigo-700 dark:text-indigo-400">Revenue Streams</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Hardware sales (one-time purchases)</li>
+                                            <li>Extended warranty sales</li>
+                                            <li>Basic service contracts</li>
+                                            <li>Corporate volume licensing</li>
+                                            <li>Minimal financing services</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs mb-0">Dell's original business model prioritized direct relationships, build-to-order customization, and an efficient supply chain to create a competitive advantage in an industry previously dominated by retail distribution models.</p>
+                    </div>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-300 font-medium mb-2">Dell's Current Transformation Model (2020s)</h5>
+                        <p class="text-sm mb-3">This canvas illustrates Dell's evolving business model with APEX and as-a-service offerings:</p>
+                        
+                        <div class="overflow-x-auto mb-3">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg">
+                                <div class="grid grid-cols-4 gap-px bg-gray-200 dark:bg-gray-700">
+                                    <!-- Row 1 -->
+                                    <div class="bg-white dark:bg-gray-800 p-3 col-span-1 row-span-2">
+                                        <h6 class="font-medium mb-2 text-sm text-blue-700 dark:text-blue-400">Key Partners</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Cloud hyperscalers (AWS, Azure)</li>
+                                            <li>Solution providers & integrators</li>
+                                            <li>Software ecosystem partners</li>
+                                            <li>Global distributors & resellers</li>
+                                            <li>Semiconductor & component suppliers</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3">
+                                        <h6 class="font-medium mb-2 text-sm text-teal-700 dark:text-teal-400">Key Activities</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Multi-cloud solution development</li>
+                                            <li>As-a-service platform building</li>
+                                            <li>Integrated hardware/software design</li>
+                                            <li>Service delivery & operations</li>
+                                            <li>Customer success management</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3 col-span-1 row-span-2">
+                                        <h6 class="font-medium mb-2 text-sm text-green-700 dark:text-green-400">Value Propositions</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Consistent multi-cloud operations</li>
+                                            <li>Consumption-based IT models</li>
+                                            <li>End-to-end solutions (not just products)</li>
+                                            <li>Reduced IT complexity</li>
+                                            <li>Flexible scaling & consumption</li>
+                                            <li>Security & data protection</li>
+                                            <li>Technology lifecycle management</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3">
+                                        <h6 class="font-medium mb-2 text-sm text-amber-700 dark:text-amber-400">Customer Relationships</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Strategic advisory services</li>
+                                            <li>Customer success managers</li>
+                                            <li>Continuous service relationships</li>
+                                            <li>Digital engagement platforms</li>
+                                            <li>Consumption monitoring</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Row 2 -->
+                                    <div class="bg-white dark:bg-gray-800 p-3">
+                                        <h6 class="font-medium mb-2 text-sm text-cyan-700 dark:text-cyan-400">Key Resources</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>APEX cloud platform</li>
+                                            <li>Service delivery capabilities</li>
+                                            <li>Global data centers</li>
+                                            <li>Solution engineering talent</li>
+                                            <li>Software development expertise</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3">
+                                        <h6 class="font-medium mb-2 text-sm text-orange-700 dark:text-orange-400">Channels</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Direct enterprise teams</li>
+                                            <li>Cloud marketplace integrations</li>
+                                            <li>Partner solution network</li>
+                                            <li>APEX Console</li>
+                                            <li>Digital self-service platforms</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Row 3 -->
+                                    <div class="bg-white dark:bg-gray-800 p-3 col-span-2">
+                                        <h6 class="font-medium mb-2 text-sm text-red-700 dark:text-red-400">Cost Structure</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Service delivery infrastructure</li>
+                                            <li>Platform development & maintenance</li>
+                                            <li>Capital equipment for as-a-service offerings</li>
+                                            <li>Technical expertise & talent</li>
+                                            <li>Ecosystem integration investments</li>
+                                            <li>Cloud operations & monitoring</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3 col-span-1 row-span-2">
+                                        <h6 class="font-medium mb-2 text-sm text-purple-700 dark:text-purple-400">Customer Segments</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Digital transformation leaders</li>
+                                            <li>Multi-cloud enterprises</li>
+                                            <li>CIOs and IT leadership</li>
+                                            <li>Line of business decision-makers</li>
+                                            <li>Modern application developers</li>
+                                            <li>Data-centric organizations</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Row 4 -->
+                                    <div class="bg-white dark:bg-gray-800 p-3 col-span-2">
+                                        <h6 class="font-medium mb-2 text-sm text-indigo-700 dark:text-indigo-400">Revenue Streams</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>APEX subscription services</li>
+                                            <li>Consumption-based billing models</li>
+                                            <li>Traditional hardware (decreasing percentage)</li>
+                                            <li>Professional & managed services</li>
+                                            <li>Software licensing & subscriptions</li>
+                                            <li>Multi-year service agreements</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs mb-0">Dell's evolving business model shows a significant shift toward recurring revenue, software integration, and service-based value propositions, moving beyond the traditional hardware-centric approach while maintaining key strengths in direct customer relationships.</p>
+                    </div>
+                    
+                    <h4>Applying the Business Model Canvas</h4>
+                    <p>Follow these steps to create and analyze a business model canvas effectively:</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">1. Canvas Creation</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Start with customer segments and value propositions</li>
+                                <li>Work outward to other components</li>
+                                <li>Use sticky notes or digital tools for flexibility</li>
+                                <li>Include team members from different functions</li>
+                                <li>Focus on current reality, not aspirations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">2. Assessment & Analysis</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Evaluate alignment across components</li>
+                                <li>Identify critical dependencies</li>
+                                <li>Test assumptions with data</li>
+                                <li>Compare with competitor canvases</li>
+                                <li>Assess financial sustainability</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">3. Innovation & Transformation</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Create "what if" scenario canvases</li>
+                                <li>Test changes to individual components</li>
+                                <li>Consider business model patterns</li>
+                                <li>Design disruptive alternatives</li>
+                                <li>Assess pivot opportunities</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                            <h5 class="font-medium mb-2">4. Implementation Planning</h5>
+                            <ul class="pl-4 mb-0 text-sm">
+                                <li>Prioritize changes with highest impact</li>
+                                <li>Develop transition roadmap</li>
+                                <li>Address organizational implications</li>
+                                <li>Create key performance indicators</li>
+                                <li>Plan for testing and iteration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Business Model Innovation Patterns</h5>
+                        <p class="text-sm mb-3">The Business Model Canvas can help identify common patterns for innovation and transformation:</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr>
+                                        <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Pattern</th>
+                                        <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Description</th>
+                                        <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Dell Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Unbundling</td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                            Separating three fundamentally different business types: customer relationships, product innovation, and infrastructure management
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                            Dell Financial Services operating as a distinct business with different economics from hardware business
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Long Tail</td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                            Focusing on a large number of niche products, each selling relatively small volumes
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                            Dell's configure-to-order approach enabling thousands of potential configurations
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Multi-Sided Platform</td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                            Bringing together two or more distinct but interdependent customer groups
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                            Dell's cloud marketplace connecting customers with software vendors and cloud service providers
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">FREE as a Business Model</td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                            At least one substantial customer segment can continuously benefit from a free-of-charge offer
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                            Dell offering free tools and basic services that drive hardware purchases and premium service adoption
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Open Business Models</td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                            Creating and capturing value by collaborating with outside partners, either by leveraging external ideas or sharing internal assets
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                            Dell's open ecosystem approach allowing integration with various cloud platforms and technology providers
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Subscription Model</td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                            Charging a recurring fee for access to a product or service rather than a one-time purchase
+                                        </td>
+                                        <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                            Dell APEX as-a-service offerings converting traditional hardware purchases to subscription-based consumption
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <h4>Business Model Canvas in Strategic Planning</h4>
+                    <p>The Business Model Canvas serves multiple strategic purposes and can be integrated into broader planning processes:</p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Strategic Use Case</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Application Approach</th>
+                                    <th class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-left">Integration with Other Tools</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Current State Assessment</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Document existing business model</li>
+                                            <li>Identify internal inconsistencies</li>
+                                            <li>Evaluate effectiveness of model components</li>
+                                            <li>Highlight areas of strength and concern</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Use SWOT analysis to evaluate strengths and weaknesses of current business model components
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Competitive Analysis</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Create separate canvases for competitors</li>
+                                            <li>Compare model differences</li>
+                                            <li>Identify unique approaches</li>
+                                            <li>Spot potential disruption risks</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Combine with Porter's Five Forces to understand how business models create competitive advantage
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Strategic Transformation</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Create future-state canvas</li>
+                                            <li>Identify required changes</li>
+                                            <li>Develop transition journey</li>
+                                            <li>Test potential business model pivots</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Use PESTEL analysis to identify external factors driving business model evolution needs
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Innovation Development</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Create alternative model canvases</li>
+                                            <li>Systematically vary elements</li>
+                                            <li>Prototype disruptive approaches</li>
+                                            <li>Test assumptions with limited experiments</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Incorporate lean startup methodology for testing business model hypotheses with minimum viable products
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Portfolio Strategy</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li>Create canvases for different business units</li>
+                                            <li>Identify synergies and conflicts</li>
+                                            <li>Manage portfolio of business models</li>
+                                            <li>Evaluate resource allocation across models</li>
+                                        </ul>
+                                    </td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm">
+                                        Use BCG Matrix to evaluate different business models based on growth and market position
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://www.youtube.com/watch?v=QoAOzMTLP5s" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <i class="ri-video-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Business Model Canvas Explained</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">YouTube • 12:14</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.strategyzer.com/library/the-business-model-canvas" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">The Business Model Canvas</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Strategyzer • Official Resource</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://hbr.org/2015/01/the-most-common-mistake-people-make-in-calculating-roi" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-book-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Business Model Generation</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Book by Alexander Osterwalder & Yves Pigneur</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Dell's Edge Computing Business Model</h5>
+                        <p class="mb-3">Dell is developing its edge computing business to address the growing market for distributed computing at the edge of networks. Create a Business Model Canvas for Dell's edge computing strategy, considering both hardware and services components.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-medium mb-1">Context Information:</p>
+                                <ul class="pl-4 text-sm mb-0">
+                                    <li>Edge computing market is growing at 25%+ annually</li>
+                                    <li>Dell has existing hardware, software, and services capabilities</li>
+                                    <li>Key customer segments include retail, manufacturing, telecommunications, and healthcare</li>
+                                    <li>Edge solutions typically combine ruggedized hardware, management software, analytics, and services</li>
+                                    <li>Both on-premises and managed service models are emerging</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium mb-1">Your Task:</p>
+                                <ol class="pl-4 text-sm mb-0">
+                                    <li>Complete all nine sections of the Business Model Canvas</li>
+                                    <li>Include at least 4-5 elements in each section</li>
+                                    <li>Ensure logical consistency across all canvas components</li>
+                                    <li>Consider both traditional and innovative approaches Dell could take</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="overflow-x-auto mb-4">
+                            <div class="bg-white dark:bg-gray-900 p-4 rounded-lg border border-gray-300 dark:border-gray-700">
+                                <div class="grid grid-cols-4 gap-2">
+                                    <!-- Row 1 -->
+                                    <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg col-span-1 row-span-2 border border-blue-200 dark:border-blue-900">
+                                        <h6 class="text-blue-700 dark:text-blue-400 font-medium mb-2 text-sm">Key Partners</h6>
+                                        <textarea class="w-full px-2 py-1 text-xs border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900" rows="6" placeholder="List Dell's key edge computing partners..."></textarea>
+                                    </div>
+                                    
+                                    <div class="bg-teal-50 dark:bg-teal-900/20 p-3 rounded-lg border border-teal-200 dark:border-teal-900">
+                                        <h6 class="text-teal-700 dark:text-teal-400 font-medium mb-2 text-sm">Key Activities</h6>
+                                        <textarea class="w-full px-2 py-1 text-xs border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900" rows="4" placeholder="What key activities are required?"></textarea>
+                                    </div>
+                                    
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg col-span-1 row-span-2 border border-green-200 dark:border-green-900">
+                                        <h6 class="text-green-700 dark:text-green-400 font-medium mb-2 text-sm">Value Propositions</h6>
+                                        <textarea class="w-full px-2 py-1 text-xs border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900" rows="6" placeholder="What value will Dell deliver with edge computing?"></textarea>
+                                    </div>
+                                    
+                                    <div class="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg border border-amber-200 dark:border-amber-900">
+                                        <h6 class="text-amber-700 dark:text-amber-400 font-medium mb-2 text-sm">Customer Relationships</h6>
+                                        <textarea class="w-full px-2 py-1 text-xs border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900" rows="4" placeholder="What relationships will Dell establish?"></textarea>
+                                    </div>
+                                    
+                                    <!-- Row 2 -->
+                                    <div class="bg-cyan-50 dark:bg-cyan-900/20 p-3 rounded-lg border border-cyan-200 dark:border-cyan-900">
+                                        <h6 class="text-cyan-700 dark:text-cyan-400 font-medium mb-2 text-sm">Key Resources</h6>
+                                        <textarea class="w-full px-2 py-1 text-xs border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900" rows="4" placeholder="What resources will Dell need?"></textarea>
+                                    </div>
+                                    
+                                    <div class="bg-orange-50 dark:bg-orange-900/20 p-3 rounded-lg border border-orange-200 dark:border-orange-900">
+                                        <h6 class="text-orange-700 dark:text-orange-400 font-medium mb-2 text-sm">Channels</h6>
+                                        <textarea class="w-full px-2 py-1 text-xs border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900" rows="4" placeholder="How will Dell reach customers?"></textarea>
+                                    </div>
+                                    
+                                    <!-- Row 3 -->
+                                    <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg col-span-2 border border-red-200 dark:border-red-900">
+                                        <h6 class="text-red-700 dark:text-red-400 font-medium mb-2 text-sm">Cost Structure</h6>
+                                        <textarea class="w-full px-2 py-1 text-xs border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900" rows="4" placeholder="What are the major costs in this business model?"></textarea>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg col-span-1 row-span-2 border border-purple-200 dark:border-purple-900">
+                                        <h6 class="text-purple-700 dark:text-purple-400 font-medium mb-2 text-sm">Customer Segments</h6>
+                                        <textarea class="w-full px-2 py-1 text-xs border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900" rows="6" placeholder="Which customer segments will Dell target?"></textarea>
+                                    </div>
+                                    
+                                    <!-- Row 4 -->
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg col-span-2 border border-indigo-200 dark:border-indigo-900">
+                                        <h6 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2 text-sm">Revenue Streams</h6>
+                                        <textarea class="w-full px-2 py-1 text-xs border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-900" rows="4" placeholder="How will Dell generate revenue from edge computing?"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Business Model Canvas</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-bcg-matrix">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: BCG Matrix</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" id="back-to-modules">
+                        <span>Back to Modules</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with Business Model Canvas visible
+            // In a real implementation, you would determine which topic to show based on navigation or URL
+            document.getElementById('topic-business-model-canvas')?.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

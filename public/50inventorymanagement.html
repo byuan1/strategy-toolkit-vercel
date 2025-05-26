@@ -1,0 +1,1913 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on header height */
+        }
+        
+        /* Module color classes */
+        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
+        .module-financial { --module-color: 245, 158, 11; } /* Amber */
+        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
+        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
+        .module-product { --module-color: 59, 130, 246; } /* Blue */
+        .module-project { --module-color: 139, 92, 246; } /* Purple */
+        .module-communication { --module-color: 239, 68, 68; } /* Red */
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Topic headings */
+        .topic-heading {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .topic-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 2px;
+            background-color: currentColor;
+        }
+
+        /* Module card hover effect */
+        .module-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .module-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+<style>
+  /* Smooth transitions */
+  .transition-colors {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:bg-gray-200:hover {
+    background-color: rgba(229, 231, 235, 1);
+  }
+  
+  .dark .dark\:hover\:bg-gray-700:hover {
+    background-color: rgba(55, 65, 81, 1);
+  }
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <span>Navigate to Module</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
+                        <div class="p-2 space-y-1">
+                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
+                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
+                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
+                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
+                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
+                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
+                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="ri-arrow-left-line"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      
+            <!-- Inventory Management Topic -->
+            <section id="topic-inventory" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-stack-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Inventory Management</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Product &amp; Ops Foundations</span>
+                                <span>•</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the strategic importance of inventory management in business performance</li>
+                            <li>Learn key inventory management concepts, classifications, and cost structures</li>
+                            <li>Master inventory optimization techniques and decision frameworks</li>
+                            <li>Develop skills to balance service levels with inventory investments</li>
+                            <li>Explore modern approaches to inventory management in technology industries</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Strategic Inventory Management Foundations</h4>
+                    <p>Inventory management is a critical strategic function that directly impacts both customer satisfaction and operational efficiency. While sometimes viewed as a purely operational concern, inventory decisions have significant financial implications and create strategic trade-offs that affect competitive positioning. For technology companies, effective inventory management is particularly challenging due to short product lifecycles, complex global supply chains, and high product obsolescence risks. Understanding inventory fundamentals is essential for strategy professionals to make informed decisions about resource allocation, new product introductions, and market expansion.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">The Strategic Role of Inventory</h5>
+                        <p class="mb-3">Inventory serves multiple critical functions that directly impact business performance and strategic positioning:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Customer Service</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Enables immediate product availability</li>
+                                    <li>Supports service level agreements</li>
+                                    <li>Buffers against supply disruptions</li>
+                                    <li>Facilitates customization options</li>
+                                    <li>Enables rapid response to demand changes</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Operational Efficiency</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Enables economic production batches</li>
+                                    <li>Smooths workflow and resource utilization</li>
+                                    <li>Reduces transportation and procurement costs</li>
+                                    <li>Manages supply chain variability</li>
+                                    <li>Supports seasonal production planning</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
+                                <h6 class="font-medium mb-2 text-primary">Financial Performance</h6>
+                                <ul class="pl-5 mb-0 text-sm">
+                                    <li>Represents significant capital investment</li>
+                                    <li>Affects working capital requirements</li>
+                                    <li>Impacts gross margin through write-offs</li>
+                                    <li>Directly affects cash flow cycles</li>
+                                    <li>Creates tax and accounting implications</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6 class="font-medium mb-2">Strategic Inventory Trade-offs</h6>
+                            <p class="mb-2">Inventory decisions involve fundamental trade-offs that must be carefully balanced:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Service vs. Cost</p>
+                                    <p class="text-sm mb-0">Higher inventory levels generally improve product availability and customer service but increase holding costs and obsolescence risks. This fundamental trade-off requires sophisticated analysis to determine the optimal balance. In technology industries with premium positioning, service levels often take precedence, but this comes at significant financial cost. Strategy teams must quantify the value of incremental service level improvements against their costs to make rational decisions.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Centralization vs. Distribution</p>
+                                    <p class="text-sm mb-0">Centralized inventory offers pooling benefits that reduce total requirements but may increase transportation costs and delivery times. Distributed inventory provides faster response times but requires higher total inventory investment. This geographic trade-off affects not only costs but also competitive positioning based on delivery speed. For global technology companies, regional strategies often vary based on market maturity, competition, and infrastructure capabilities.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Breadth vs. Depth</p>
+                                    <p class="text-sm mb-0">Offering a wide product variety (breadth) versus deeper stocks of fewer products creates another strategic trade-off. Broader assortments appeal to diverse customer needs but increase complexity and reduce inventory turns. Deeper stocks of fewer products improve efficiency but may limit market appeal. In technology markets, this manifests in platform strategies versus specialized product approaches, with significant implications for operations and market positioning.</p>
+                                </div>
+                                
+                                <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+                                    <p class="font-medium text-blue-700 dark:text-blue-400 mb-1">Responsiveness vs. Efficiency</p>
+                                    <p class="text-sm mb-0">Responsive supply chains prioritize flexibility and speed, often requiring inventory buffers, while efficient supply chains minimize waste and cost, typically through leaner inventory models. This trade-off is particularly acute in technology industries where demand volatility and short product lifecycles create tension between efficiency and responsiveness. Companies must determine where on this spectrum to position based on their competitive strategy and customer value proposition.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div class="w-full max-w-3xl">
+                            <div class="bg-white dark:bg-gray-900 shadow dark:shadow-gray-800 rounded-lg p-4">
+                                <h5 class="font-medium mb-4 text-center">Inventory Management Strategic Framework</h5>
+                                
+                                <div class="relative">
+                                    <svg class="w-full h-[280px]">
+                                        <!-- Outer box -->
+                                        <rect x="30" y="20" width="540" height="240" fill="none" stroke="#6B7280" stroke-width="1.5" rx="4"></rect>
+                                        
+                                        <!-- Top box: Inventory Strategy -->
+                                        <rect x="70" y="30" width="460" height="60" fill="#EDF2F7" stroke="#6B7280" stroke-width="1" rx="3" class="dark:fill-gray-800"></rect>
+                                        <text x="300" y="55" font-size="14" text-anchor="middle" fill="currentColor" font-weight="bold">Inventory Strategy</text>
+                                        <text x="300" y="75" font-size="10" text-anchor="middle" fill="currentColor">Service Levels • Competitive Positioning • Financial Constraints • Risk Tolerance</text>
+                                        
+                                        <!-- Middle sections -->
+                                        <g>
+                                            <!-- Left box: Inventory Planning -->
+                                            <rect x="70" y="100" width="220" height="100" fill="#EDF2F7" stroke="#6B7280" stroke-width="1" rx="3" class="dark:fill-gray-800"></rect>
+                                            <text x="180" y="125" font-size="12" text-anchor="middle" fill="currentColor" font-weight="bold">Inventory Planning</text>
+                                            <text x="180" y="145" font-size="10" text-anchor="middle" fill="currentColor">• Demand forecasting</text>
+                                            <text x="180" y="160" font-size="10" text-anchor="middle" fill="currentColor">• Inventory parameters</text>
+                                            <text x="180" y="175" font-size="10" text-anchor="middle" fill="currentColor">• Stocking policies</text>
+                                            <text x="180" y="190" font-size="10" text-anchor="middle" fill="currentColor">• Network design</text>
+                                            
+                                            <!-- Right box: Inventory Control -->
+                                            <rect x="310" y="100" width="220" height="100" fill="#EDF2F7" stroke="#6B7280" stroke-width="1" rx="3" class="dark:fill-gray-800"></rect>
+                                            <text x="420" y="125" font-size="12" text-anchor="middle" fill="currentColor" font-weight="bold">Inventory Control</text>
+                                            <text x="420" y="145" font-size="10" text-anchor="middle" fill="currentColor">• Ordering systems</text>
+                                            <text x="420" y="160" font-size="10" text-anchor="middle" fill="currentColor">• Visibility &amp; tracking</text>
+                                            <text x="420" y="175" font-size="10" text-anchor="middle" fill="currentColor">• Exception management</text>
+                                            <text x="420" y="190" font-size="10" text-anchor="middle" fill="currentColor">• Performance monitoring</text>
+                                        </g>
+                                        
+                                        <!-- Bottom box: Execution & Optimization -->
+                                        <rect x="70" y="210" width="460" height="40" fill="#EDF2F7" stroke="#6B7280" stroke-width="1" rx="3" class="dark:fill-gray-800"></rect>
+                                        <text x="300" y="230" font-size="12" text-anchor="middle" fill="currentColor" font-weight="bold">Execution &amp; Optimization</text>
+                                        <text x="300" y="245" font-size="10" text-anchor="middle" fill="currentColor">Inventory Flow • Warehousing • Replenishment • Analytics • Continuous Improvement</text>
+                                        
+                                        <!-- Arrows -->
+                                        <line x1="300" y1="90" x2="300" y2="100" stroke="#6B7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                        <line x1="180" y1="200" x2="180" y2="210" stroke="#6B7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                        <line x1="420" y1="200" x2="420" y2="210" stroke="#6B7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                        
+                                        <!-- Arrow marker definition -->
+                                        <defs>
+                                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                <polygon points="0 0, 10 3.5, 0 7" fill="#6B7280"></polygon>
+                                            </marker>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                
+                                <p class="text-xs text-center mt-2 text-gray-500 dark:text-gray-400">The strategic inventory management framework illustrates the flow from high-level inventory strategy to practical execution. It begins with defining strategic objectives, which inform both planning (forward-looking, parameter-setting) and control (operational governance) functions, ultimately driving execution and continuous optimization efforts. This approach ensures that operational inventory decisions align with and support broader business strategy.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Inventory Fundamentals and Classification</h4>
+                    
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-2">Inventory Types and Functions</h5>
+                        <p class="text-sm mb-3">Understanding different inventory types and their purposes helps in developing targeted management strategies and recognizing strategic implications of inventory decisions.</p>
+                        
+                        <div class="grid grid-cols-1 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Inventory Classifications by Form</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">1</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Raw Materials</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Components or inputs that will be transformed in the production process.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Technology Industry Examples</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Semiconductor chips and integrated circuits</li>
+                                                    <li>Display panels and components</li>
+                                                    <li>Memory modules (RAM, storage)</li>
+                                                    <li>Processors and controllers</li>
+                                                    <li>Connectors, cables, and wiring harnesses</li>
+                                                </ul>
+                                            </div>
+                                            <div class="mt-2 bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Strategic Considerations</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Supply risk and availability concerns</li>
+                                                    <li>Component standardization opportunities</li>
+                                                    <li>Long-lead time procurement planning</li>
+                                                    <li>Supplier relationship management</li>
+                                                    <li>Price volatility and contract strategies</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">2</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Work in Process (WIP)</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Partially completed products in various stages of production.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Technology Industry Examples</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Partially assembled circuit boards</li>
+                                                    <li>Chassis with partial component installation</li>
+                                                    <li>Devices awaiting final testing or software loading</li>
+                                                    <li>Customization-pending base configurations</li>
+                                                    <li>Product sub-assemblies awaiting integration</li>
+                                                </ul>
+                                            </div>
+                                            <div class="mt-2 bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Strategic Considerations</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Postponement strategies for customization</li>
+                                                    <li>Production flow optimization</li>
+                                                    <li>Manufacturing capacity utilization</li>
+                                                    <li>Balancing assembly line operations</li>
+                                                    <li>Configuration flexibility trade-offs</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="p-3 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-700 dark:text-indigo-400 font-medium text-sm">3</div>
+                                                <h6 class="text-indigo-700 dark:text-indigo-400 font-medium">Finished Goods</h6>
+                                            </div>
+                                            <p class="text-xs mb-2">Completed products ready for sale or distribution to customers.</p>
+                                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Technology Industry Examples</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Packaged computers, servers, and devices</li>
+                                                    <li>Accessories and peripherals</li>
+                                                    <li>Networking equipment</li>
+                                                    <li>Retail-ready consumer electronics</li>
+                                                    <li>Enterprise hardware solutions</li>
+                                                </ul>
+                                            </div>
+                                            <div class="mt-2 bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-1">Strategic Considerations</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li>Market response time requirements</li>
+                                                    <li>Channel fulfillment strategies</li>
+                                                    <li>Product obsolescence risk management</li>
+                                                    <li>Distribution network optimization</li>
+                                                    <li>Product lifecycle phase-appropriate stocking</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Inventory Classification by Function</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Inventory serves different strategic purposes, each with unique characteristics:</p>
+                                    
+                                    <div class="grid grid-cols-1 gap-3">
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Cycle Inventory</h6>
+                                            <p class="text-xs mb-1">Inventory that results from ordering or producing in batches rather than continuously.</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Purpose &amp; Drivers</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li>Balances ordering/setup costs against holding costs</li>
+                                                        <li>Enables economic order quantity (EOQ) optimization</li>
+                                                        <li>Allows efficient transportation and procurement</li>
+                                                        <li>Supports minimum order quantity requirements</li>
+                                                        <li>Facilitates efficient production scheduling</li>
+                                                    </ul>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Management Strategies</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li>Setup/ordering cost reduction to enable smaller batches</li>
+                                                        <li>Vendor-managed inventory (VMI) arrangements</li>
+                                                        <li>Just-in-time (JIT) delivery frameworks</li>
+                                                        <li>Advanced planning and scheduling systems</li>
+                                                        <li>Collaborative forecasting with suppliers</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Safety (Buffer) Inventory</h6>
+                                            <p class="text-xs mb-1">Stock held to protect against demand or supply uncertainty.</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Purpose &amp; Drivers</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li>Protects against forecast errors and demand spikes</li>
+                                                        <li>Buffers against supplier delivery variability</li>
+                                                        <li>Mitigates risks from quality issues or rejects</li>
+                                                        <li>Maintains service levels during disruptions</li>
+                                                        <li>Compensates for lead time uncertainty</li>
+                                                    </ul>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Management Strategies</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li>Statistical safety stock calculations based on variability</li>
+                                                        <li>Risk-based inventory segmentation</li>
+                                                        <li>Supply chain visibility improvements</li>
+                                                        <li>Lead time reduction initiatives</li>
+                                                        <li>Demand forecasting accuracy improvements</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Additional Functional Inventory Types</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <p class="text-xs mb-2">Specialized inventory categories serving specific business needs:</p>
+                                    
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Anticipation Inventory</h6>
+                                        <div class="overflow-x-auto">
+                                            <table class="w-full text-xs">
+                                                <tbody><tr>
+                                                    <td class="p-1 font-medium align-top">Purpose:</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Inventory built up in advance of predicted demand increases or supply constraints</li>
+                                                            <li>Helps manage predictable demand seasonality or supply limitations</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-1 font-medium align-top">Examples:</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Building inventory before product launches or promotional events</li>
+                                                            <li>Stocking ahead of seasonal education or business purchasing cycles</li>
+                                                            <li>Building buffer before factory shutdowns or supplier holidays</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-1 font-medium align-top">Challenges:</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Higher carrying costs during build-up period</li>
+                                                            <li>Risk of overstock if anticipated demand doesn't materialize</li>
+                                                            <li>Product obsolescence concerns if held too long</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-1 font-medium align-top">Tech Industry Relevance:</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Critical for new product launches and refreshes</li>
+                                                            <li>Essential for back-to-school and holiday seasons</li>
+                                                            <li>Important during component allocation periods</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded mb-3">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Pipeline (In-Transit) Inventory</h6>
+                                        <div class="overflow-x-auto">
+                                            <table class="w-full text-xs">
+                                                <tbody><tr>
+                                                    <td class="p-1 font-medium align-top">Purpose:</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Inventory moving between locations in the supply chain</li>
+                                                            <li>Necessary due to transportation time and distance</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-1 font-medium align-top">Examples:</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Products in transit from factories to distribution centers</li>
+                                                            <li>Components moving between manufacturing locations</li>
+                                                            <li>Goods being transported to retail locations or customers</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-1 font-medium align-top">Challenges:</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Limited visibility during transit</li>
+                                                            <li>Higher inventory requirements in global supply chains</li>
+                                                            <li>Managing ownership and financial responsibility during transit</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-1 font-medium align-top">Tech Industry Relevance:</td>
+                                                    <td class="p-1">
+                                                        <ul class="pl-4 mb-0">
+                                                            <li>Significant in global technology supply chains</li>
+                                                            <li>Critical factor in lead time calculations</li>
+                                                            <li>Growing importance with e-commerce fulfillment</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded">
+                                        <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Service Parts Inventory</h6>
+                                        <p class="text-xs mb-1">Critical inventory category for technology companies supporting installed base:</p>
+                                        <div class="grid grid-cols-1 gap-2">
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-0.5">Unique Characteristics</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Extremely high service level requirements:</strong> Often 95-99%+ for critical components</li>
+                                                    <li><strong>Sporadic, difficult-to-forecast demand:</strong> Lumpy patterns with high variability</li>
+                                                    <li><strong>Long lifecycle obligations:</strong> Need to support products long after manufacturing</li>
+                                                    <li><strong>Geographically dispersed deployment:</strong> Need for close proximity to customer sites</li>
+                                                    <li><strong>High obsolescence risk:</strong> Parts may become unsupported by suppliers</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                <h6 class="text-xs font-medium mb-0.5">Strategic Importance</h6>
+                                                <ul class="pl-4 text-xs mb-0">
+                                                    <li><strong>Service contract fulfillment:</strong> Critical for meeting SLAs and contractual obligations</li>
+                                                    <li><strong>Customer satisfaction driver:</strong> Directly impacts experience when issues occur</li>
+                                                    <li><strong>Revenue generation:</strong> Supports profitable service businesses and renewals</li>
+                                                    <li><strong>Competitive differentiation:</strong> Can be key factor in purchase decisions</li>
+                                                    <li><strong>Brand reputation:</strong> Poor parts availability damages overall brand perception</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Strategic Inventory Classification Methods</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">ABC Classification</h6>
+                                    <p class="text-xs mb-2">Categorizing items based on value or importance to enable focused management:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Classification Framework</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>"A" Items (70-80% of value, 10-20% of items):</strong> High value, critical components requiring rigorous management and close monitoring</li>
+                                            <li><strong>"B" Items (15-20% of value, 30% of items):</strong> Moderate value items needing regular but less intensive management</li>
+                                            <li><strong>"C" Items (5-10% of value, 50-60% of items):</strong> Low value items suitable for simplified management approaches</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Strategic Application</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Resource allocation:</strong> Focuses management attention and resources on highest-value items</li>
+                                            <li><strong>Control protocols:</strong> Enables tiered approaches to review, counting, and security</li>
+                                            <li><strong>Stocking strategies:</strong> Supports differentiated service level targets by category</li>
+                                            <li><strong>Supplier management:</strong> Prioritizes vendor relationships and negotiations</li>
+                                            <li><strong>Technology investment:</strong> Guides automation and tracking technology deployment</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">XYZ Classification</h6>
+                                    <p class="text-xs mb-2">Categorizing based on demand variability and predictability:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Classification Framework</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>"X" Items:</strong> Highly stable and predictable demand patterns with low forecast error</li>
+                                            <li><strong>"Y" Items:</strong> Moderate variability with some predictable patterns but higher forecast uncertainty</li>
+                                            <li><strong>"Z" Items:</strong> Highly variable or erratic demand patterns with limited predictability</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Strategic Application</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Forecasting approach:</strong> Matches analytical methods to demand patterns</li>
+                                            <li><strong>Buffering strategy:</strong> Guides safety stock and lead time buffer decisions</li>
+                                            <li><strong>Sourcing models:</strong> Informs make-to-stock vs. make-to-order decisions</li>
+                                            <li><strong>Planning horizons:</strong> Influences planning frequency and time fences</li>
+                                            <li><strong>Inventory positioning:</strong> Helps determine optimal stock locations in network</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Multi-Dimensional Classification for Technology Products</h6>
+                                <p class="text-xs mb-2">Advanced segmentation approaches combining multiple factors for technology industry inventory:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-1">Criticality-Based Classification</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Critical:</strong> Components with no substitutes that would cause production stoppage or customer impact</li>
+                                            <li><strong>Essential:</strong> Items with limited alternatives that would cause significant disruption</li>
+                                            <li><strong>Standard:</strong> Components with available alternatives or workarounds</li>
+                                            <li><strong>Application:</strong> Focuses risk mitigation strategies and supplier relationships on truly critical items</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-1">Lifecycle-Based Classification</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>New/Ramp:</strong> Products in introduction and early growth requiring high availability</li>
+                                            <li><strong>Mature/Steady:</strong> Established products with stable demand and optimized inventory</li>
+                                            <li><strong>End-of-Life/Decline:</strong> Products being phased out requiring inventory drawdown</li>
+                                            <li><strong>Application:</strong> Aligns inventory strategy with product lifecycle stage to maximize returns</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-1">Supply Risk Classification</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>High Risk:</strong> Limited suppliers, constrained capacity, or geopolitical concerns</li>
+                                            <li><strong>Medium Risk:</strong> Moderate supply base with some potential constraints</li>
+                                            <li><strong>Low Risk:</strong> Multiple reliable sources with adequate capacity</li>
+                                            <li><strong>Application:</strong> Guides strategic buffer levels and supplier development programs</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3 bg-white dark:bg-gray-900 p-2 rounded">
+                                    <h6 class="text-xs font-medium mb-1">Integrated Matrix Approach</h6>
+                                    <p class="text-xs mb-0">Technology companies often combine multiple classification dimensions to create comprehensive inventory segmentation:</p>
+                                    <div class="relative h-[180px] mt-2">
+                                        <svg class="w-full h-full">
+                                            <!-- Matrix framework -->
+                                            <rect x="80" y="40" width="480" height="120" fill="none" stroke="#6B7280" stroke-width="1"></rect>
+                                            
+                                            <!-- Vertical divisions -->
+                                            <line x1="240" y1="40" x2="240" y2="160" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,2"></line>
+                                            <line x1="400" y1="40" x2="400" y2="160" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,2"></line>
+                                            
+                                            <!-- Horizontal division -->
+                                            <line x1="80" y1="100" x2="560" y2="100" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,2"></line>
+                                            
+                                            <!-- X-axis labels -->
+                                            <text x="160" y="25" font-size="10" text-anchor="middle" fill="currentColor" font-weight="bold">High Value (A)</text>
+                                            <text x="320" y="25" font-size="10" text-anchor="middle" fill="currentColor" font-weight="bold">Medium Value (B)</text>
+                                            <text x="480" y="25" font-size="10" text-anchor="middle" fill="currentColor" font-weight="bold">Low Value (C)</text>
+                                            
+                                            <!-- Y-axis labels -->
+                                            <text x="65" y="70" font-size="10" text-anchor="end" fill="currentColor" font-weight="bold">High Risk</text>
+                                            <text x="65" y="130" font-size="10" text-anchor="end" fill="currentColor" font-weight="bold">Low Risk</text>
+                                            
+                                            <!-- Cell content -->
+                                            <rect x="85" y="45" width="150" height="50" fill="rgba(239, 68, 68, 0.1)" stroke="none" rx="3"></rect>
+                                            <text x="160" y="75" font-size="9" text-anchor="middle" fill="currentColor">Strategic Critical</text>
+                                            
+                                            <rect x="245" y="45" width="150" height="50" fill="rgba(245, 158, 11, 0.1)" stroke="none" rx="3"></rect>
+                                            <text x="320" y="75" font-size="9" text-anchor="middle" fill="currentColor">Managed Risk</text>
+                                            
+                                            <rect x="405" y="45" width="150" height="50" fill="rgba(16, 185, 129, 0.1)" stroke="none" rx="3"></rect>
+                                            <text x="480" y="75" font-size="9" text-anchor="middle" fill="currentColor">Monitor Only</text>
+                                            
+                                            <rect x="85" y="105" width="150" height="50" fill="rgba(245, 158, 11, 0.1)" stroke="none" rx="3"></rect>
+                                            <text x="160" y="135" font-size="9" text-anchor="middle" fill="currentColor">Performance Focus</text>
+                                            
+                                            <rect x="245" y="105" width="150" height="50" fill="rgba(16, 185, 129, 0.1)" stroke="none" rx="3"></rect>
+                                            <text x="320" y="135" font-size="9" text-anchor="middle" fill="currentColor">Standard Management</text>
+                                            
+                                            <rect x="405" y="105" width="150" height="50" fill="rgba(16, 185, 129, 0.1)" stroke="none" rx="3"></rect>
+                                            <text x="480" y="135" font-size="9" text-anchor="middle" fill="currentColor">Simplified Approach</text>
+                                        </svg>
+                                    </div>
+                                    <p class="text-xs italic text-center mt-1">Matrix example combining value (ABC) and supply risk dimensions to create a targeted management approach</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Inventory Economics and Cost Structures</h4>
+                    
+                    <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Understanding Inventory Costs</h5>
+                        <p class="text-sm mb-3">A comprehensive understanding of inventory costs is essential for making sound strategic decisions and optimizing inventory investments. For technology products, cost structures can be particularly complex due to rapid obsolescence, high value components, and global supply chains.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Inventory Carrying Costs</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Key Components of Carrying Costs</h6>
+                                        <p class="text-xs mb-2">The expenses associated with holding inventory over time:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Capital Costs</h6>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Components</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Cost of capital:</strong> The opportunity cost of funds tied up in inventory</li>
+                                                            <li><strong>Investment hurdle rate:</strong> Often a company's WACC or target return rate</li>
+                                                            <li><strong>Working capital impact:</strong> Effect on company's operating cash requirements</li>
+                                                            <li><strong>Financing costs:</strong> Interest expenses for inventory-based borrowing</li>
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Technology Industry Considerations</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li>High unit values magnify capital impact (e.g., server components vs. consumer goods)</li>
+                                                            <li>Industry growth rates create higher opportunity costs for tied-up capital</li>
+                                                            <li>Short product lifecycles reduce time to recover invested capital</li>
+                                                            <li>Competitive intensity increases importance of capital efficiency</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Storage Costs</h6>
+                                                <p class="text-xs mb-1">Expenses related to physically storing and handling inventory:</p>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Components</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Facility costs:</strong> Warehousing space, utilities, maintenance, and depreciation</li>
+                                                            <li><strong>Handling expenses:</strong> Labor, equipment, and systems for receiving, putaway, and picking</li>
+                                                            <li><strong>Insurance premiums:</strong> Coverage for inventory damage, theft, or destruction</li>
+                                                            <li><strong>Security expenses:</strong> Protection systems and personnel for high-value items</li>
+                                                            <li><strong>IT systems:</strong> Warehouse management and inventory tracking technology</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Risk-Related Inventory Costs</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Inventory Risks and Their Financial Impact</h6>
+                                        <p class="text-xs mb-2">Potential losses associated with holding inventory:</p>
+                                        
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg mb-3">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Obsolescence Risk</h6>
+                                            <div class="overflow-x-auto">
+                                                <table class="w-full text-xs">
+                                                    <thead>
+                                                        <tr class="bg-white dark:bg-gray-900">
+                                                            <th class="p-1 text-left">Risk Factor</th>
+                                                            <th class="p-1 text-left">Technology Industry Impact</th>
+                                                            <th class="p-1 text-left">Management Approaches</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Technological Innovation</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Rapid advances render existing components outdated</li>
+                                                                    <li>New standards can obsolete entire product lines</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Technology roadmap alignment</li>
+                                                                    <li>Component standardization</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Lifecycle Transitions</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Product refreshes create excess of previous models</li>
+                                                                    <li>Shrinking demand for legacy products</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Lifecycle-based safety stock policies</li>
+                                                                    <li>End-of-life inventory optimization</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Market Shifts</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Customer preference changes (e.g., form factors)</li>
+                                                                    <li>Competitor actions affect product desirability</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Market sensing capabilities</li>
+                                                                    <li>Postponement strategies</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Additional Risk Costs</h6>
+                                            <p class="text-xs mb-1">Other inventory-related financial exposures:</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Shrinkage and Damage</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Theft and loss:</strong> Particularly significant for high-value components</li>
+                                                        <li><strong>Handling damage:</strong> Physical damage during movement or storage</li>
+                                                        <li><strong>Environmental damage:</strong> Damage from inappropriate storage conditions</li>
+                                                        <li><strong>Tech industry impact:</strong> High unit values amplify financial impact of relatively small shrinkage rates</li>
+                                                    </ul>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Quality Degradation</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Shelf-life limitations:</strong> Some components have finite viability periods</li>
+                                                        <li><strong>Packaging deterioration:</strong> Affects customer experience and perceived value</li>
+                                                        <li><strong>Battery degradation:</strong> Critical for many technology products</li>
+                                                        <li><strong>Firmware/software currency:</strong> Products requiring updates before sale</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Total Cost of Inventory Ownership</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Inventory Carrying Cost Rate</h6>
+                                    <p class="text-xs mb-2">The annual percentage cost of holding inventory relative to its value:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Calculation Approach</h6>
+                                        <p class="text-xs mb-1">Typical components as percentage of inventory value:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Capital cost:</strong> 8-15% (based on WACC or hurdle rate)</li>
+                                            <li><strong>Storage space:</strong> 2-5% (facilities, handling, utilities)</li>
+                                            <li><strong>Inventory service:</strong> 1-3% (insurance, taxes)</li>
+                                            <li><strong>Inventory risk:</strong> 4-10% (obsolescence, shrinkage, damage)</li>
+                                            <li><strong>Total carrying cost:</strong> 15-30% annually</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Technology Industry Rates</h6>
+                                        <p class="text-xs mb-0">Technology companies often experience higher carrying cost rates:</p>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Consumer electronics:</strong> 25-35% annually</li>
+                                            <li><strong>Enterprise hardware:</strong> 20-30% annually</li>
+                                            <li><strong>Semiconductor components:</strong> 30-40% annually</li>
+                                            <li><strong>Key driver:</strong> Higher obsolescence and depreciation rates</li>
+                                            <li><strong>Strategic implication:</strong> Creates stronger incentive for inventory reduction</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Order/Setup Costs</h6>
+                                    <p class="text-xs mb-2">Costs associated with replenishing inventory:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">For Purchased Items</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Purchase requisition:</strong> Administrative costs of creating orders</li>
+                                            <li><strong>Supplier qualification:</strong> Vendor evaluation and selection</li>
+                                            <li><strong>Order processing:</strong> Creating and managing purchase orders</li>
+                                            <li><strong>Transportation setup:</strong> Freight arrangement and customs documentation</li>
+                                            <li><strong>Receiving and inspection:</strong> Labor and equipment for inbound processing</li>
+                                            <li><strong>Invoice processing:</strong> Accounts payable functions</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">For Manufactured Items</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Production scheduling:</strong> Planning and scheduling resources</li>
+                                            <li><strong>Machine setup:</strong> Changeover and calibration activities</li>
+                                            <li><strong>Material staging:</strong> Gathering and preparing components</li>
+                                            <li><strong>Quality verification:</strong> First article inspection and approval</li>
+                                            <li><strong>Process documentation:</strong> Maintaining work orders and production records</li>
+                                            <li><strong>Efficiency loss:</strong> Lost production during changeovers</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">Stockout Costs</h6>
+                                    <p class="text-xs mb-2">Costs associated with inadequate inventory availability:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Direct Costs</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Lost contribution margin:</strong> Profit lost from missed sales</li>
+                                            <li><strong>Expedited shipping:</strong> Premium freight for emergency replenishment</li>
+                                            <li><strong>Overtime production:</strong> Additional labor costs for urgent manufacturing</li>
+                                            <li><strong>Substitute sourcing:</strong> Higher costs from alternative suppliers</li>
+                                            <li><strong>Back-order processing:</strong> Administrative handling of delayed orders</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Indirect &amp; Strategic Costs</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Customer goodwill:</strong> Relationship damage and satisfaction impact</li>
+                                            <li><strong>Market share:</strong> Long-term business lost to competitors</li>
+                                            <li><strong>Reputation damage:</strong> Impact on brand perception and reliability</li>
+                                            <li><strong>Contract penalties:</strong> SLA violation costs and customer credits</li>
+                                            <li><strong>Note:</strong> Often much larger than direct costs but harder to quantify</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-green-700 dark:text-green-400 mb-1">The Inventory Cost Trade-off Model</h6>
+                                <p class="text-xs mb-2">The fundamental relationship between inventory levels and different cost components:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <div class="relative h-[200px] mb-2">
+                                            <svg class="w-full h-full">
+                                                <!-- Axes -->
+                                                <line x1="40" y1="180" x2="340" y2="180" stroke="#6B7280" stroke-width="1.5"></line>
+                                                <line x1="40" y1="20" x2="40" y2="180" stroke="#6B7280" stroke-width="1.5"></line>
+                                                
+                                                <!-- Axis labels -->
+                                                <text x="190" y="195" font-size="10" text-anchor="middle" fill="currentColor">Inventory Level</text>
+                                                <text x="20" y="100" font-size="10" text-anchor="middle" fill="currentColor" transform="rotate(-90, 20, 100)">Total Cost</text>
+                                                
+                                                <!-- Curves -->
+                                                <!-- Total cost curve -->
+                                                <path d="M 40,130 Q 70,90 100,70 Q 130,55 160,50 Q 190,48 220,55 Q 250,65 280,85 Q 310,115 340,155" fill="none" stroke="#6B7280" stroke-width="2"></path>
+                                                <text x="270" y="90" font-size="10" fill="currentColor">Total Cost</text>
+                                                
+                                                <!-- Carrying cost curve -->
+                                                <path d="M 40,180 Q 100,160 160,140 Q 220,120 280,90 Q 310,70 340,50" fill="none" stroke="rgba(16, 185, 129, 0.8)" stroke-width="1.5"></path>
+                                                <text x="310" y="60" font-size="9" fill="rgba(16, 185, 129, 0.8)">Carrying Cost</text>
+                                                
+                                                <!-- Ordering cost curve -->
+                                                <path d="M 40,40 Q 70,70 100,90 Q 130,110 160,125 Q 190,140 220,150 Q 250,160 280,165 Q 310,170 340,175" fill="none" stroke="rgba(59, 130, 246, 0.8)" stroke-width="1.5"></path>
+                                                <text x="70" y="60" font-size="9" fill="rgba(59, 130, 246, 0.8)">Ordering Cost</text>
+                                                
+                                                <!-- Stockout cost curve -->
+                                                <path d="M 40,20 Q 70,40 100,60 Q 130,80 160,115 Q 190,150 220,170 Q 250,175 340,180" fill="none" stroke="rgba(239, 68, 68, 0.8)" stroke-width="1.5"></path>
+                                                <text x="70" y="40" font-size="9" fill="rgba(239, 68, 68, 0.8)">Stockout Cost</text>
+                                                
+                                                <!-- Optimal point -->
+                                                <circle cx="160" cy="50" r="4" fill="#6B7280"></circle>
+                                                <text x="160" y="35" font-size="9" text-anchor="middle" fill="currentColor">Optimal Level</text>
+                                            </svg>
+                                        </div>
+                                        <p class="text-xs italic text-center">The total cost curve shows the optimal inventory level where combined costs are minimized</p>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Economic Order Quantity (EOQ) Model</h6>
+                                        <div class="bg-white dark:bg-gray-900 p-3 rounded">
+                                            <p class="text-xs mb-2">A foundational model for determining optimal order quantity that minimizes total inventory costs:</p>
+                                            
+                                            <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded mb-2">
+                                                <h6 class="text-xs font-medium text-center text-green-700 dark:text-green-400 mb-1">EOQ Formula</h6>
+                                                <div class="flex items-center justify-center">
+                                                    <div class="text-center">
+                                                        <div>
+                                                            <span class="text-lg font-medium">EOQ = √(2DS/H)</span>
+                                                        </div>
+                                                        <div class="grid grid-cols-4 gap-4 mt-2 text-xs text-center">
+                                                            <div>
+                                                                <span class="font-medium">D</span>
+                                                                <p>Annual demand</p>
+                                                            </div>
+                                                            <div>
+                                                                <span class="font-medium">S</span>
+                                                                <p>Setup/order cost</p>
+                                                            </div>
+                                                            <div>
+                                                                <span class="font-medium">H</span>
+                                                                <p>Annual holding cost per unit</p>
+                                                            </div>
+                                                            <div>
+                                                                <span class="font-medium">EOQ</span>
+                                                                <p>Optimal order quantity</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="text-xs mb-0">
+                                                <h6 class="font-medium mb-1">Application in Technology Products</h6>
+                                                <ul class="pl-4 mb-0">
+                                                    <li><strong>Stable components:</strong> Effective for standard components with consistent demand</li>
+                                                    <li><strong>Limitations:</strong> Less suitable for volatile demand or components with rapid obsolescence</li>
+                                                    <li><strong>Modified approaches:</strong> Extended models incorporating quantity discounts and constraints</li>
+                                                    <li><strong>Strategic use:</strong> Setting baseline quantities that can be adjusted for strategic factors</li>
+                                                    <li><strong>Technology adaptation:</strong> Algorithmic variations for complex technology supply chains</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Inventory Optimization Approaches</h4>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-2">Strategic Inventory Management Models</h5>
+                        <p class="text-sm mb-3">Modern inventory optimization approaches balance customer service requirements with cost efficiency. Technology companies face particular challenges due to product complexity, global supply chains, and rapid innovation cycles.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Service Level-Based Approaches</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Service Level Metrics</h6>
+                                        <p class="text-xs mb-2">Quantifying customer service performance for inventory planning:</p>
+                                        
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Type 1 Service Level (Cycle Service Level)</h6>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Definition &amp; Calculation</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Definition:</strong> The probability of not stocking out during a replenishment cycle</li>
+                                                            <li><strong>Formula:</strong> CSL = 1 - (Number of stockout cycles / Total number of cycles)</li>
+                                                            <li><strong>Example:</strong> A 95% CSL means there is a 5% chance of a stockout in any given replenishment cycle</li>
+                                                            <li><strong>Application:</strong> Directly used in safety stock calculations</li>
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Strategic Considerations</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Frequency focus:</strong> Emphasizes how often stockouts occur rather than their magnitude</li>
+                                                            <li><strong>Procurement alignment:</strong> Naturally aligns with purchasing and replenishment cycles</li>
+                                                            <li><strong>Implementation simplicity:</strong> Easier to calculate and implement in standard systems</li>
+                                                            <li><strong>Limitation:</strong> Doesn't consider the size of stockouts or their business impact</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Type 2 Service Level (Fill Rate)</h6>
+                                                <p class="text-xs mb-1">Proportion of demand that can be satisfied immediately from stock:</p>
+                                                <div class="grid grid-cols-1 gap-2">
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Definition &amp; Calculation</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Definition:</strong> The percentage of demand fulfilled directly from stock</li>
+                                                            <li><strong>Formula:</strong> Fill Rate = 1 - (Units short / Total demand units)</li>
+                                                            <li><strong>Example:</strong> A 98% fill rate means 98% of requested units were immediately available</li>
+                                                            <li><strong>Application:</strong> Used for customer-facing service measurements</li>
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                        <h6 class="text-xs font-medium mb-0.5">Strategic Considerations</h6>
+                                                        <ul class="pl-4 text-xs mb-0">
+                                                            <li><strong>Magnitude awareness:</strong> Accounts for the size of stockouts, not just their occurrence</li>
+                                                            <li><strong>Customer perspective:</strong> More directly reflects the customer experience</li>
+                                                            <li><strong>Business alignment:</strong> Better connected to revenue and customer satisfaction</li>
+                                                            <li><strong>Technology relevance:</strong> Particularly important for configurable products where partial fulfillment may not be useful</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Safety Stock Determination</h6>
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                            <p class="text-xs mb-1">Approaches for calculating inventory buffers against uncertainty:</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Statistical Safety Stock Model</h6>
+                                                    <div class="text-center my-2">
+                                                        <p class="text-xs font-medium">Safety Stock = Z × σ × √LT</p>
+                                                        <div class="grid grid-cols-3 gap-2 mt-1 text-xs">
+                                                            <div>
+                                                                <span class="font-medium">Z</span>
+                                                                <p class="text-xs">Service level factor</p>
+                                                            </div>
+                                                            <div>
+                                                                <span class="font-medium">σ</span>
+                                                                <p class="text-xs">Standard deviation of demand</p>
+                                                            </div>
+                                                            <div>
+                                                                <span class="font-medium">LT</span>
+                                                                <p class="text-xs">Replenishment lead time</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-xs mb-0">This model accounts for both demand variability and lead time to determine appropriate buffer levels. The Z-factor directly translates the desired service level into a specific inventory investment. For technology products, this approach can be extended to incorporate additional variables like component allocation risk or supply disruption potential.</p>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Service Level Optimization</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Differentiated service levels:</strong> Setting varying targets by product category or customer segment</li>
+                                                        <li><strong>Profit-optimal service levels:</strong> Balancing stockout costs against inventory investment</li>
+                                                        <li><strong>Critical ratio approach:</strong> Setting service levels based on margin and stockout cost ratio</li>
+                                                        <li><strong>Technology industry application:</strong> Higher service levels for new/strategic products, lower levels for end-of-life items</li>
+                                                        <li><strong>Dynamic adjustment:</strong> Varying service levels throughout product lifecycle phases</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="text-sm font-medium mb-2">Advanced Inventory Models</h6>
+                                <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                                    <div class="mb-3">
+                                        <h6 class="text-xs font-medium mb-1">Multi-Echelon Inventory Optimization</h6>
+                                        <p class="text-xs mb-2">Optimizing inventory across multiple levels of the supply chain:</p>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg mb-3">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Multi-Echelon Concepts</h6>
+                                            <div class="overflow-x-auto">
+                                                <table class="w-full text-xs">
+                                                    <thead>
+                                                        <tr class="bg-white dark:bg-gray-900">
+                                                            <th class="p-1 text-left">Concept</th>
+                                                            <th class="p-1 text-left">Description</th>
+                                                            <th class="p-1 text-left">Technology Industry Application</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Risk Pooling</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Centralizing inventory reduces total requirements</li>
+                                                                    <li>Variability is lower when demand is aggregated</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Regional distribution centers for high-value items</li>
+                                                                    <li>Component pooling across product families</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Strategic Positioning</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Placing inventory at optimal points in the network</li>
+                                                                    <li>Balancing responsiveness against efficiency</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Forward-positioning of high-demand configurations</li>
+                                                                    <li>Centralization of specialized or low-velocity items</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-1 font-medium">Echelon Base Stock</td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Coordinated inventory targets across levels</li>
+                                                                    <li>Considers total system inventory position</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td class="p-1">
+                                                                <ul class="pl-4 mb-0">
+                                                                    <li>Component-to-finished goods planning alignment</li>
+                                                                    <li>Global allocation system for constrained items</li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                            <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Postponement Strategy</h6>
+                                            <p class="text-xs mb-1">Delaying product differentiation to reduce inventory while maintaining service:</p>
+                                            <div class="grid grid-cols-1 gap-2">
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Core Concept</h6>
+                                                    <p class="text-xs mb-0">Postponement involves delaying the point of differentiation in the supply chain, maintaining products in a more generic state until customer requirements are confirmed. This reduces forecast dependency and allows pooling of component inventory while still enabling customization.</p>
+                                                    <div class="flex justify-center my-2">
+                                                        <div class="relative h-[80px] w-[300px]">
+                                                            <svg class="w-full h-full">
+                                                                <!-- Timeline arrow -->
+                                                                <line x1="20" y1="40" x2="280" y2="40" stroke="#6B7280" stroke-width="1.5" marker-end="url(#arrow-postpone)"></line>
+                                                                
+                                                                <!-- Traditional approach -->
+                                                                <line x1="60" y1="20" x2="60" y2="45" stroke="#EF4444" stroke-width="1.5"></line>
+                                                                <text x="60" y="15" font-size="8" text-anchor="middle" fill="#EF4444" font-weight="bold">Differentiation</text>
+                                                                
+                                                                <!-- Postponement approach -->
+                                                                <line x1="180" y1="20" x2="180" y2="45" stroke="#10B981" stroke-width="1.5"></line>
+                                                                <text x="180" y="15" font-size="8" text-anchor="middle" fill="#10B981" font-weight="bold">Differentiation</text>
+                                                                
+                                                                <!-- Labels -->
+                                                                <text x="20" y="65" font-size="8" text-anchor="start" fill="currentColor">Component</text>
+                                                                <text x="280" y="65" font-size="8" text-anchor="end" fill="currentColor">Customer</text>
+                                                                
+                                                                <!-- Marker definition -->
+                                                                <defs>
+                                                                    <marker id="arrow-postpone" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                                                        <polygon points="0 0, 10 3.5, 0 7" fill="#6B7280"></polygon>
+                                                                    </marker>
+                                                                </defs>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                                    <h6 class="text-xs font-medium mb-0.5">Technology Industry Applications</h6>
+                                                    <ul class="pl-4 text-xs mb-0">
+                                                        <li><strong>Configure-to-order computers:</strong> Base configurations with customer-specific memory, storage, and software</li>
+                                                        <li><strong>Localization postponement:</strong> Generic products with market-specific packaging and software added regionally</li>
+                                                        <li><strong>Server configuration:</strong> Standard platforms with customer-specific expansion cards and components</li>
+                                                        <li><strong>Strategic benefits:</strong> Reduces forecast dependency, enables faster response to configuration trends, decreases obsolescence risk</li>
+                                                        <li><strong>Implementation requirements:</strong> Modular product design, flexible manufacturing systems, responsive fulfillment capabilities</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
+                            <h6 class="text-sm font-medium mb-2">Modern Inventory Management Approaches</h6>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Just-in-Time (JIT) &amp; Lean</h6>
+                                    <p class="text-xs mb-2">Systems focused on minimizing inventory through process excellence:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Core Principles</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Pull-based systems:</strong> Producing in response to actual demand rather than forecasts</li>
+                                            <li><strong>Flow optimization:</strong> Creating smooth, continuous movement of materials</li>
+                                            <li><strong>Waste elimination:</strong> Removing non-value activities that drive inventory requirements</li>
+                                            <li><strong>Quality at source:</strong> Preventing defects rather than using inventory to buffer them</li>
+                                            <li><strong>Continuous improvement:</strong> Ongoing reduction of inventory requirements through process refinement</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Technology Industry Applications</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Supplier integration:</strong> Synchronized delivery schedules and vendor-managed inventory</li>
+                                            <li><strong>Visual management:</strong> Kanban systems to control component replenishment</li>
+                                            <li><strong>Balanced production:</strong> Leveled manufacturing to reduce WIP buffering</li>
+                                            <li><strong>Implementation challenges:</strong> Requires stable processes, reliable suppliers, and predictable demand</li>
+                                            <li><strong>Recent evolution:</strong> Shift from pure JIT to "just-in-case" hybrid models due to supply disruptions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Demand-Driven Material Requirements Planning (DDMRP)</h6>
+                                    <p class="text-xs mb-2">Modern approach combining MRP, Lean, and Theory of Constraints:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Core Components</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Strategic buffer positioning:</strong> Placing inventory at critical decoupling points</li>
+                                            <li><strong>Buffer profiles and levels:</strong> Dynamic sizing based on variability and lead time</li>
+                                            <li><strong>Demand-driven planning:</strong> Using actual demand to drive replenishment</li>
+                                            <li><strong>Visible and collaborative execution:</strong> Priority-driven rather than due-date driven</li>
+                                            <li><strong>Dynamic adjustments:</strong> Adapting buffers based on changing conditions</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Technology Industry Benefits</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Component planning:</strong> Better management of critical semiconductors and displays</li>
+                                            <li><strong>Volatility management:</strong> Reduced bullwhip effect in complex supply chains</li>
+                                            <li><strong>Inventory optimization:</strong> Typically 30-45% inventory reduction while improving service</li>
+                                            <li><strong>Planner productivity:</strong> More intuitive prioritization and exception management</li>
+                                            <li><strong>Implementation trend:</strong> Growing adoption among technology manufacturers since 2015</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                                    <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Digital Supply Chain &amp; Inventory Management</h6>
+                                    <p class="text-xs mb-2">Technology-enabled approaches to inventory optimization:</p>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded mb-2">
+                                        <h6 class="text-xs font-medium mb-0.5">Advanced Analytics Applications</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Machine learning forecasting:</strong> Improved prediction accuracy reducing safety stock needs</li>
+                                            <li><strong>Scenario planning:</strong> Proactive inventory positioning based on risk analysis</li>
+                                            <li><strong>Dynamic safety stock:</strong> Real-time adjustment of buffers based on conditions</li>
+                                            <li><strong>Automated replenishment:</strong> AI-driven ordering reducing manual intervention</li>
+                                            <li><strong>Predictive risk management:</strong> Early warning systems for potential disruptions</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                        <h6 class="text-xs font-medium mb-0.5">Digital Twin &amp; Visibility</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Supply chain digital twins:</strong> Simulation models for inventory optimization</li>
+                                            <li><strong>Real-time visibility:</strong> IoT and tracking technologies for inventory monitoring</li>
+                                            <li><strong>Extended ecosystem visibility:</strong> Multi-tier inventory transparency through platforms</li>
+                                            <li><strong>Control towers:</strong> Centralized management of global inventory positions</li>
+                                            <li><strong>Blockchain applications:</strong> Improved traceability and chain-of-custody verification</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Technology Industry Inventory Challenges</h6>
+                                <p class="text-xs mb-2">Unique inventory management challenges facing technology companies:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">Component Allocation Management</h6>
+                                        <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                            <p class="text-xs mb-2">Managing scarce components across competing products and priorities:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Allocation hierarchies:</strong> Rules-based frameworks for distributing constrained components</li>
+                                                <li><strong>Margin-based prioritization:</strong> Directing components to highest-value products</li>
+                                                <li><strong>Strategic customer prioritization:</strong> Ensuring key customers receive preferential allocation</li>
+                                                <li><strong>Lifecycle-based allocation:</strong> Balancing new product ramps against mature products</li>
+                                                <li><strong>Long-term relationship management:</strong> Using allocation decisions to strengthen supplier partnerships</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-xs font-medium mb-1">New Product Introduction (NPI) Inventory Strategy</h6>
+                                        <div class="bg-white dark:bg-gray-900 p-2 rounded">
+                                            <p class="text-xs mb-2">Balancing availability against obsolescence risk for new products:</p>
+                                            <ul class="pl-4 text-xs mb-0">
+                                                <li><strong>Staged inventory build:</strong> Phased approach to match demand ramp uncertainty</li>
+                                                <li><strong>Component pre-positioning:</strong> Early securing of long-lead items</li>
+                                                <li><strong>Risk-sharing agreements:</strong> Supplier commitments for new product components</li>
+                                                <li><strong>Platform component strategy:</strong> Leveraging common parts across product generations</li>
+                                                <li><strong>Buffer strategy evolution:</strong> Transitioning from availability focus to efficiency as product matures</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3 bg-white dark:bg-gray-900 p-2 rounded">
+                                    <h6 class="text-xs font-medium mb-1">Inventory Management Case Study: Technology Hardware Manufacturer</h6>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Business Challenge</h6>
+                                            <p class="text-xs mb-0">A global technology hardware manufacturer was struggling with excess inventory ($1.2B globally) while simultaneously experiencing customer service issues (87% on-time delivery vs. 95% target). The company needed to simultaneously reduce inventory investment while improving service levels across its diverse product portfolio.</p>
+                                            
+                                            <h6 class="text-xs font-medium mt-2 mb-1">Strategic Approach</h6>
+                                            <ol class="pl-4 text-xs mb-0">
+                                                <li><strong>Inventory Segmentation:</strong> Implemented multi-dimensional classification:
+                                                    <ul class="pl-4">
+                                                        <li>Product lifecycle stage (new, mature, end-of-life)</li>
+                                                        <li>Value density (high, medium, low)</li>
+                                                        <li>Demand predictability (stable, seasonal, volatile)</li>
+                                                    </ul>
+                                                </li>
+                                                <li><strong>Differentiated Service Levels:</strong> Established targeted service levels by segment:
+                                                    <ul class="pl-4">
+                                                        <li>Strategic new products: 98% service level</li>
+                                                        <li>Stable mature products: 95% service level</li>
+                                                        <li>End-of-life products: 90% service level with controlled drawdown</li>
+                                                    </ul>
+                                                </li>
+                                                <li><strong>Network Redesign:</strong> Implemented multi-echelon inventory optimization:
+                                                    <ul class="pl-4">
+                                                        <li>Centralized low-volume, high-value items</li>
+                                                        <li>Forward-positioned high-volume, predictable items</li>
+                                                        <li>Established regional configuration centers</li>
+                                                    </ul>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-xs font-medium mb-1">Implementation Strategy</h6>
+                                            <ol class="pl-4 text-xs mb-0">
+                                                <li><strong>Digital Transformation:</strong>
+                                                    <ul class="pl-4">
+                                                        <li>Implemented advanced inventory analytics platform</li>
+                                                        <li>Developed real-time visibility across global facilities</li>
+                                                        <li>Created AI-powered safety stock optimization engine</li>
+                                                    </ul>
+                                                </li>
+                                                <li><strong>Process Redesign:</strong>
+                                                    <ul class="pl-4">
+                                                        <li>Established S&amp;OP process with inventory targets</li>
+                                                        <li>Implemented DDMRP for key component management</li>
+                                                        <li>Developed component allocation framework based on strategic value</li>
+                                                    </ul>
+                                                </li>
+                                                <li><strong>Organizational Change:</strong>
+                                                    <ul class="pl-4">
+                                                        <li>Created global inventory management function</li>
+                                                        <li>Aligned metrics and incentives across functions</li>
+                                                        <li>Developed inventory management capabilities through training</li>
+                                                    </ul>
+                                                </li>
+                                                <li><strong>Results:</strong> Within 12 months, achieved 24% inventory reduction ($290M) while improving service levels to 96%, exceeding target by 1%. Operating margin improved by 0.8 percentage points due to reduced carrying costs and obsolescence.</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
+                        <h5 class="font-medium mb-3">Strategic Decision Framework for Inventory Management</h5>
+                        <p class="text-sm mb-3">Strategic inventory management requires a structured decision-making approach that balances multiple objectives and constraints. This framework provides a systematic process for developing effective inventory strategies aligned with business priorities.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="text-sm font-medium text-primary mb-2">1. Strategic Alignment</h6>
+                                <p class="text-xs mb-2">Defining inventory strategy based on business priorities:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Competitive strategy alignment:</strong> Determining how inventory supports differentiation (e.g., availability, cost, customization)</li>
+                                    <li><strong>Financial objectives integration:</strong> Balancing working capital constraints with service requirements</li>
+                                    <li><strong>Customer promise definition:</strong> Clarifying what service levels different segments should receive</li>
+                                    <li><strong>Risk tolerance assessment:</strong> Determining acceptable levels of stockout, obsolescence, and other risks</li>
+                                    <li><strong>Capability reality check:</strong> Evaluating systems, processes, and skills for implementation feasibility</li>
+                                    <li><strong>Technology context:</strong> Considering product complexity, lifecycles, and industry dynamics</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="text-sm font-medium text-primary mb-2">2. Strategic Design</h6>
+                                <p class="text-xs mb-2">Developing the core inventory management approach:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Inventory segmentation:</strong> Creating classification system for differentiated management</li>
+                                    <li><strong>Service level optimization:</strong> Setting appropriate targets by product/customer segment</li>
+                                    <li><strong>Network design:</strong> Determining optimal inventory locations and echelon structure</li>
+                                    <li><strong>Push-pull boundary:</strong> Defining where forecast-driven vs. demand-driven approaches apply</li>
+                                    <li><strong>Planning parameter framework:</strong> Establishing rules for safety stock, order quantities, and lead times</li>
+                                    <li><strong>Ownership and governance:</strong> Defining responsibility model for inventory decisions</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                                <h6 class="text-sm font-medium text-primary mb-2">3. Implementation &amp; Execution</h6>
+                                <p class="text-xs mb-2">Operationalizing the inventory strategy:</p>
+                                <ul class="pl-4 text-xs mb-0">
+                                    <li><strong>Technology enablement:</strong> Implementing necessary systems and tools</li>
+                                    <li><strong>Process development:</strong> Creating standardized inventory management processes</li>
+                                    <li><strong>Capability building:</strong> Training and developing necessary skills</li>
+                                    <li><strong>Metric definition:</strong> Establishing KPIs to monitor performance</li>
+                                    <li><strong>Change management:</strong> Managing organizational transition to new approaches</li>
+                                    <li><strong>Continuous improvement:</strong> Creating mechanisms for ongoing optimization</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="text-sm font-medium mb-2">Key Strategic Trade-offs</h6>
+                            <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
+                                <p class="text-xs mb-2">Critical decisions that shape inventory strategy:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-2">Service vs. Inventory Investment</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Decision framework:</strong> Analyzing the marginal cost of service improvement</li>
+                                            <li><strong>Analysis approach:</strong> Service-cost curve mapping showing diminishing returns</li>
+                                            <li><strong>Strategic questions:</strong>
+                                                <ul class="pl-4">
+                                                    <li>Where does service provide competitive advantage?</li>
+                                                    <li>What service levels will customers actually value and pay for?</li>
+                                                    <li>How does service sensitivity vary across product segments?</li>
+                                                    <li>What alternative investments could the capital support?</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Technology industry context:</strong> Service typically has higher value for new/strategic products and lower value for commoditized offerings</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                        <h6 class="text-xs font-medium mb-2">Flexibility vs. Efficiency</h6>
+                                        <ul class="pl-4 text-xs mb-0">
+                                            <li><strong>Decision framework:</strong> Balancing cost optimization against responsiveness</li>
+                                            <li><strong>Analysis approach:</strong> Scenario planning across different demand patterns</li>
+                                            <li><strong>Strategic questions:</strong>
+                                                <ul class="pl-4">
+                                                    <li>How volatile and unpredictable is demand?</li>
+                                                    <li>What is the cost of lost market opportunities?</li>
+                                                    <li>How important is rapid response to changing customer preferences?</li>
+                                                    <li>What supply chain vulnerabilities require buffering?</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Technology industry context:</strong> Short product lifecycles and rapid innovation often prioritize flexibility over pure efficiency</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
+                            <h6 class="text-xs font-medium mb-2">Strategic Performance Measurement</h6>
+                            <p class="text-xs mb-2">Comprehensive approach to measuring inventory management effectiveness:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-1">Service Effectiveness</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Fill rate:</strong> Percentage of demand fulfilled from stock</li>
+                                        <li><strong>On-time delivery:</strong> Orders delivered within promised timeframe</li>
+                                        <li><strong>Perfect order:</strong> Complete, accurate, undamaged, on-time orders</li>
+                                        <li><strong>Line item fill rate:</strong> Percentage of line items completely fulfilled</li>
+                                        <li><strong>Customer satisfaction:</strong> Experience-based metrics of inventory service</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-1">Financial Performance</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Inventory turns:</strong> COGS divided by average inventory value</li>
+                                        <li><strong>Days inventory outstanding (DIO):</strong> Inventory value in days of sales</li>
+                                        <li><strong>Working capital impact:</strong> Cash flow effect of inventory changes</li>
+                                        <li><strong>Write-off rate:</strong> Percentage of inventory lost to obsolescence</li>
+                                        <li><strong>Return on invested capital:</strong> Profit relative to invested inventory</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                    <h6 class="text-xs font-medium mb-1">Operational Excellence</h6>
+                                    <ul class="pl-4 text-xs mb-0">
+                                        <li><strong>Forecast accuracy:</strong> Precision of demand predictions</li>
+                                        <li><strong>Inventory accuracy:</strong> Correctness of inventory records</li>
+                                        <li><strong>Planning adherence:</strong> Execution of intended inventory strategy</li>
+                                        <li><strong>Excess and obsolete:</strong> Percentage of inventory at risk</li>
+                                        <li><strong>Inventory health index:</strong> Composite score of overall inventory status</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-3 bg-white dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="text-xs font-medium mb-1">Balanced Scorecard Approach</h6>
+                                <p class="text-xs mb-0">A comprehensive inventory management measurement system should balance multiple perspectives:</p>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs mt-2">
+                                        <thead>
+                                            <tr class="bg-gray-50 dark:bg-gray-900">
+                                                <th class="p-2 text-left">Perspective</th>
+                                                <th class="p-2 text-left">Key Metrics</th>
+                                                <th class="p-2 text-left">Strategic Questions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="p-2 font-medium">Financial</td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Inventory turns by category</li>
+                                                        <li>Working capital efficiency</li>
+                                                        <li>Obsolescence rate</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Are we maximizing return on inventory investment?</li>
+                                                        <li>Is capital allocation optimal across inventory categories?</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 font-medium">Customer</td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>On-time delivery performance</li>
+                                                        <li>Fill rate by customer segment</li>
+                                                        <li>Lead time consistency</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Is inventory enabling our customer value proposition?</li>
+                                                        <li>Are we differentiating service by strategic importance?</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 font-medium">Internal Process</td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Planning accuracy</li>
+                                                        <li>Inventory record accuracy</li>
+                                                        <li>Planning cycle time</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Are inventory processes efficient and effective?</li>
+                                                        <li>Are we executing our intended inventory strategy?</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2 font-medium">Learning &amp; Growth</td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Data quality improvement</li>
+                                                        <li>Process improvement initiatives</li>
+                                                        <li>Inventory management capability</li>
+                                                    </ul>
+                                                </td>
+                                                <td class="p-2">
+                                                    <ul class="pl-4 mb-0">
+                                                        <li>Are we building capabilities for future inventory excellence?</li>
+                                                        <li>Are we leveraging new technologies and methods?</li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        <a href="https://hbr.org/1984/05/excellent-companies-dont-believe-in-excellence-only-in-constant-improvement-and-constant-change" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Multi-Echelon Inventory Optimization</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Framework for coordinating inventory across complex supply chains</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mckinsey.com/capabilities/operations/our-insights/improving-service-and-reducing-inventories-through-parts-rationalization" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                    <i class="ri-file-list-3-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Strategic Service Parts Management</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey &amp; Company • Research on inventory strategies for aftermarket and service parts</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.supplychain247.com/article/inventory_optimization_in_the_digital_age" target="_blank" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 flex-shrink-0">
+                                    <i class="ri-book-open-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Digital Inventory Optimization</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Supply Chain Management Review • Guide on leveraging technology for advanced inventory management</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h4>Practice Exercise</h4>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-2">Strategic Inventory Analysis Exercise</h5>
+                        <p class="mb-3">In this exercise, you'll apply strategic inventory management concepts to develop an approach for a technology company facing inventory challenges.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Scenario: Technology Hardware Inventory Optimization</h6>
+                            <p class="text-xs mb-2">You're developing an inventory strategy for a technology hardware company with the following characteristics:</p>
+                            <ul class="pl-4 text-xs mb-3">
+                                <li>Product portfolio: Enterprise servers, storage systems, and networking equipment</li>
+                                <li>Current inventory value: $650 million (120 days of inventory)</li>
+                                <li>Service levels: 90% on-time delivery (target is 97%)</li>
+                                <li>Market context: Experiencing significant supply chain disruptions in semiconductor components</li>
+                                <li>Business strategy: Moving from traditional hardware to subscription-based "as-a-service" offerings</li>
+                                <li>Financial constraints: Need to reduce working capital by 15% within 12 months</li>
+                            </ul>
+                            
+                            <p class="text-xs font-medium mb-1">Your task:</p>
+                            <p class="text-xs mb-0">Develop a comprehensive inventory strategy that addresses the competing needs for better service levels, lower working capital, and supply chain resilience.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 gap-3 mb-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Inventory Segmentation Strategy</label>
+                                <p class="text-xs mb-1">How would you segment the product portfolio for differentiated inventory management?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Describe your recommended segmentation approach, including what dimensions to use (e.g., product value, lifecycle stage, demand predictability) and how they would apply to this technology portfolio. Explain how this segmentation would enable both improved service and reduced inventory."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Service Level Optimization</label>
+                                <p class="text-xs mb-1">How would you approach service level targets across different product segments?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline your approach for setting differentiated service level targets across product segments. Address how you would balance improved overall service levels with inventory reduction goals. Consider the business strategy shift to as-a-service offerings and what that implies for service priorities."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Supply Chain Resilience Strategy</label>
+                                <p class="text-xs mb-1">How would you address semiconductor supply disruptions?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Develop a strategy for critical component management that addresses supply chain disruptions while supporting inventory reduction goals. Include approaches for component buffering, supplier management, product design considerations, and risk mitigation. Consider how to balance short-term resilience needs with long-term efficiency goals."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Implementation Roadmap</label>
+                                <p class="text-xs mb-1">How would you sequence and prioritize inventory improvement initiatives?</p>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Outline a 12-month implementation roadmap for your inventory strategy. Include key initiatives, their timing, expected benefits, and critical success factors. Address how you would manage the transition while maintaining business operations and achieving both service level improvements and working capital reduction goals."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-1 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-pricing">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: Pricing</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-demand-shaping">
+                        <span>Next: Demand Shaping</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="flex items-center gap-3">
+                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                            <i class="ri-arrow-up-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Module dropdown
+            const moduleDropdown = document.getElementById('module-dropdown');
+            const moduleMenu = document.getElementById('module-menu');
+            
+            if (moduleDropdown && moduleMenu) {
+                moduleDropdown.addEventListener('click', function() {
+                    moduleMenu.classList.toggle('hidden');
+                });
+                
+                // Close the dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
+                        moduleMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Back to top functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Highlight current section based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            
+            function highlightCurrentSection() {
+                const scrollY = window.pageYOffset;
+                
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                    } else {
+                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+        });
+    </script>
+
+
+</body></html>
