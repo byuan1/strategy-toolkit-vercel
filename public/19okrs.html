@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dell Strategy Toolkit | Learning Portal</title>
@@ -120,7 +118,7 @@
                         <li>
                             <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
                                 <i class="ri-settings-line"></i>
-                                <span>Product & Ops Foundations</span>
+                                <span>Product &amp; Ops Foundations</span>
                             </a>
                         </li>
                         <li>
@@ -168,7 +166,7 @@
                         <li>
                             <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-bcg-matrix">
                                 <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
-                                <span>BCG & GE-McKinsey Matrices</span>
+                                <span>BCG &amp; GE-McKinsey Matrices</span>
                             </a>
                         </li>
                         <li>
@@ -1139,7 +1137,7 @@ Key Results:
                 <div class="flex justify-between mt-6">
                     <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-bcg-matrix">
                         <i class="ri-arrow-left-line"></i>
-                        <span>Previous: BCG & GE-McKinsey Matrices</span>
+                        <span>Previous: BCG &amp; GE-McKinsey Matrices</span>
                     </button>
                     <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-ansoff">
                         <span>Next: Ansoff Matrix</span>
@@ -1288,7 +1286,7 @@ Key Results:
                                 </ul>
                             </div>
                             <div>
-                                <h6 class="text-sm font-medium mb-2">Risk & Resource Profile</h6>
+                                <h6 class="text-sm font-medium mb-2">Risk &amp; Resource Profile</h6>
                                 <ul class="pl-4 text-sm mb-0">
                                     <li><strong>Risk level:</strong> Lowest among all strategies</li>
                                     <li><strong>Time horizon:</strong> Short to medium-term</li>
@@ -1326,11 +1324,11 @@ Key Results:
                                 </ul>
                             </div>
                             <div>
-                                <h6 class="text-sm font-medium mb-2">Risk & Resource Profile</h6>
+                                <h6 class="text-sm font-medium mb-2">Risk &amp; Resource Profile</h6>
                                 <ul class="pl-4 text-sm mb-0">
                                     <li><strong>Risk level:</strong> Moderate</li>
                                     <li><strong>Time horizon:</strong> Medium-term</li>
-                                    <li><strong>Core competencies:</strong> R&D, product management, engineering</li>
+                                    <li><strong>Core competencies:</strong> R&amp;D, product management, engineering</li>
                                     <li><strong>Investment focus:</strong> Product development, testing, launch</li>
                                 </ul>
                             </div>
@@ -1364,7 +1362,7 @@ Key Results:
                                 </ul>
                             </div>
                             <div>
-                                <h6 class="text-sm font-medium mb-2">Risk & Resource Profile</h6>
+                                <h6 class="text-sm font-medium mb-2">Risk &amp; Resource Profile</h6>
                                 <ul class="pl-4 text-sm mb-0">
                                     <li><strong>Risk level:</strong> Moderate</li>
                                     <li><strong>Time horizon:</strong> Medium to long-term</li>
@@ -1402,7 +1400,7 @@ Key Results:
                                 </ul>
                             </div>
                             <div>
-                                <h6 class="text-sm font-medium mb-2">Risk & Resource Profile</h6>
+                                <h6 class="text-sm font-medium mb-2">Risk &amp; Resource Profile</h6>
                                 <ul class="pl-4 text-sm mb-0">
                                     <li><strong>Risk level:</strong> Highest</li>
                                     <li><strong>Time horizon:</strong> Long-term</li>
@@ -1954,87 +1952,9 @@ Key Results:
         </main>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Theme toggle functionality
-            document.getElementById('theme-toggle')?.addEventListener('click', function() {
-                document.documentElement.classList.toggle('dark');
-            });
-            
-            // Mobile sidebar toggle
-            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
-                const sidebar = document.getElementById('sidebar');
-                if (sidebar) {
-                    sidebar.classList.toggle('hidden');
-                    sidebar.classList.toggle('fixed');
-                    sidebar.classList.toggle('inset-0');
-                    sidebar.classList.toggle('z-50');
-                    sidebar.classList.toggle('lg:block');
-                    sidebar.classList.toggle('lg:static');
-                    sidebar.classList.toggle('lg:inset-auto');
-                    sidebar.classList.toggle('lg:z-auto');
-                }
-            });
-            
-            // Show specific topic, hide others
-            function showTopic(topicId) {
-                // Hide all topic content
-                document.querySelectorAll('.topic-content').forEach(topic => {
-                    topic.classList.add('hidden');
-                });
-                
-                // Show selected topic
-                document.getElementById(topicId)?.classList.remove('hidden');
-                
-                // Update sidebar highlight
-                document.querySelectorAll('.topic-link').forEach(link => {
-                    const linkTopic = link.getAttribute('data-topic');
-                    if (linkTopic === topicId) {
-                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
-                    } else {
-                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
-                    }
-                });
-                
-                // Scroll to top
-                window.scrollTo(0, 0);
-            }
-            
-            // Topic links in sidebar
-            document.querySelectorAll('.topic-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const topicId = this.getAttribute('data-topic');
-                    showTopic(topicId);
-                });
-            });
-            
-            // Next topic buttons
-            document.querySelectorAll('.next-topic').forEach(button => {
-                button.addEventListener('click', function() {
-                    const nextTopicId = this.getAttribute('data-next');
-                    showTopic(nextTopicId);
-                });
-            });
-            
-            // Previous topic buttons
-            document.querySelectorAll('.prev-topic').forEach(button => {
-                button.addEventListener('click', function() {
-                    const prevTopicId = this.getAttribute('data-prev');
-                    showTopic(prevTopicId);
-                });
-            });
-            
-            // Back to modules button
-            document.getElementById('back-to-modules')?.addEventListener('click', function() {
-                // This would typically navigate to a modules dashboard page
-                // For this implementation, we'll just show the first topic as a placeholder
-                showTopic('topic-okrs');
-            });
-            
-            // Initialize with first topic visible
-            showTopic('topic-okrs');
-        });
-    </script>
-</body>
-</html>
+    
+
+
+
+    <script src="/topic-navigation.js"></script>
+</body></html>

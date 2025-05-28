@@ -10,133 +10,66 @@ if (!fs.existsSync(publicDir)) {
 
 // Map of topic IDs to their corresponding HTML files
 const topicMap = {
-  'raci': '31raci.html',
-  'rapids': '32rapids.html',
-  'process-maps': '33processmaps.html',
-  'process-reengineering': '34processengineering.html',
-  'kotters-8-step': '35kotter.html',
-  'workplan-development': '38workplan.html',
-  'stakeholder-engagement': '39stakeholder.html',
-  'project-management-tools': '40toolsganttsraci.html',
-  'hypothesis-driven': '20hypothesisdriven.html',
-  'story-lining': '56storylining.html',
-  'mece-framework': '21mece.html',
-  'issue-trees': '57issuetrees.html',
-  'decision-trees': '22decisiontrees.html',
-  'root-cause-analysis': '58rootcauseanalysis.html',
-  'scenario-analysis': '23scenarioanalysis.html',
-  'financial-statements': '11financialreports.html',
-  'common-size-analysis': '59commonsize.html',
-  'financial-modeling': '60sharegainpnlmodeling.html',
-  'applied-financial-statements': '61appliedfinancialstatements.html',
-  'financial-ratios': '12keyfinancialratios.html',
-  'cost-benefit-analysis': '13costbenefit.html',
-  'swot-analysis': '14swot.html',
-  'bcg-matrix': '17bcgmatrix.html',
-  '4ps-gtm': '184ps.html',
-  'okrs': '19okrs.html',
-  'supply-chain-management': '44fundamentalssupplychainmanag.html',
-  'forecasting-planning': '45forecastingplanning.html',
-  'lifecycle-management': '46lifecyclemanagement.html',
-  'transitions': '47transitions.html',
-  'marketing': '48marketing.html',
-  'pricing': '49pricing.html',
-  'inventory-management': '50inventorymanagement.html',
-  'demand-shaping': '51demandshaping.html',
-  'ethics': '52ethics.html',
-  'executive-summaries': '41buildingcompelling.html',
-  'business-storytelling': '42storytellingbusiness.html',
-  'delivering-feedback': '43deliveringfeedback.html'
+  'topic-hypothesis': '56storylining.html',
+  'topic-storylining': '57issuetrees.html',
+  'topic-mece': '58rootcauseanalysis.html',
+  'topic-issue-trees': '57issuetrees.html',
+  'topic-decision-trees': '29investment.html',
+  'topic-root-cause': '58rootcauseanalysis.html',
+  'topic-scenario-analysis': '24financialstatementanalysis.html',
+  'topic-porters-five': '62portersfive.html',
+  'topic-value-chain': '64valuechain.html',
+  'topic-ansoff': '88ansoff.html'
 };
 
-// Read the base template
-const baseTemplate = fs.readFileSync('base.html', 'utf8');
+// List of topic files to process
+const topicFiles = Object.values(topicMap);
 
-// First, create the homepage (index.html)
-const indexPage = cheerio.load(baseTemplate);
-
-// Fix links in the index page
-indexPage('a[href^="#"]').each((i, elem) => {
-  const href = indexPage(elem).attr('href');
-  const topicId = href.replace('#', '');
-  if (topicMap[topicId]) {
-    indexPage(elem).attr('href', topicMap[topicId]);
-  }
-});
-
-// Save the modified index page
-fs.writeFileSync(path.join(publicDir, 'index.html'), indexPage.html());
-console.log('Created public/index.html');
-
-// Process each topic file
-Object.values(topicMap).forEach(file => {
+// Copy each topic file to public directory
+topicFiles.forEach(file => {
   if (fs.existsSync(file)) {
-    const $ = cheerio.load(baseTemplate); // Start with fresh base template
-    const topicContent = fs.readFileSync(file, 'utf8');
-    const topic$ = cheerio.load(topicContent);
-    
-    // Extract the main content (everything inside <main>)
-    const mainContent = topic$('main').html();
-    
-    if (mainContent) {
-      // Replace the main content in the base template
-      $('main').html(mainContent);
-      
-      // Update the title
-      const topicTitle = topic$('title').text() || file.replace('.html', '');
-      $('title').text(topicTitle);
-
-      // Add a "Back to Home" button at the top of main content
-      $('main').prepend(`
-        <div class="mb-6">
-          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-            <i class="ri-arrow-left-line"></i>
-            <span>Back to Home</span>
-          </a>
-        </div>
-      `);
-
-      // Fix links in the topic page
-      $('a[href^="#"]').each((i, elem) => {
-        const href = $(elem).attr('href');
-        const topicId = href.replace('#', '');
-        if (topicMap[topicId]) {
-          $(elem).attr('href', topicMap[topicId]);
-        }
-      });
-
-      // Save the file
-      fs.writeFileSync(path.join(publicDir, file), $.html());
-      console.log(`Created public/${file}`);
-    }
+    // Copy the file directly
+    fs.copyFileSync(file, path.join(publicDir, file));
+    console.log(`Copied ${file} to public directory`);
   }
 });
 
-// Add CSS for transitions to all files
-const transitionCSS = `
-<style>
-  /* Smooth transitions */
-  .transition-colors {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Hover effects */
-  .hover\\:bg-gray-200:hover {
-    background-color: rgba(229, 231, 235, 1);
-  }
-  
-  .dark .dark\\:hover\\:bg-gray-700:hover {
-    background-color: rgba(55, 65, 81, 1);
-  }
-</style>
-`;
+// Copy topic-navigation.js to public directory
+if (fs.existsSync('topic-navigation.js')) {
+  fs.copyFileSync('topic-navigation.js', path.join(publicDir, 'topic-navigation.js'));
+  console.log('Copied topic-navigation.js to public directory');
+}
 
-// Add the CSS to all files in public directory
-fs.readdirSync(publicDir).forEach(file => {
-  if (file.endsWith('.html')) {
-    const filePath = path.join(publicDir, file);
-    let content = fs.readFileSync(filePath, 'utf8');
-    content = content.replace('</head>', `${transitionCSS}</head>`);
-    fs.writeFileSync(filePath, content);
+// Read and process base.html
+const baseContent = fs.readFileSync('base.html', 'utf8');
+const $ = cheerio.load(baseContent);
+
+// Update topic links to point to HTML files
+$('a[data-topic]').each((i, el) => {
+  const topicId = $(el).attr('data-topic');
+  const topicFile = topicMap[topicId];
+  if (topicFile) {
+    $(el).attr('href', '/' + topicFile);
   }
-}); 
+});
+
+// Update next/prev topic buttons
+$('.next-topic').each((i, el) => {
+  const nextTopicId = $(el).attr('data-next');
+  const nextTopicFile = topicMap[nextTopicId];
+  if (nextTopicFile) {
+    $(el).attr('href', '/' + nextTopicFile);
+  }
+});
+
+$('.prev-topic').each((i, el) => {
+  const prevTopicId = $(el).attr('data-prev');
+  const prevTopicFile = topicMap[prevTopicId];
+  if (prevTopicFile) {
+    $(el).attr('href', '/' + prevTopicFile);
+  }
+});
+
+// Save the modified base.html as index.html
+fs.writeFileSync(path.join(publicDir, 'index.html'), $.html());
+console.log('Created index.html with updated links'); 

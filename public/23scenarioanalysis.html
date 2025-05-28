@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dell Strategy Toolkit | Learning Portal</title>
@@ -120,7 +118,7 @@
                         <li>
                             <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
                                 <i class="ri-settings-line"></i>
-                                <span>Product & Ops Foundations</span>
+                                <span>Product &amp; Ops Foundations</span>
                             </a>
                         </li>
                         <li>
@@ -499,7 +497,7 @@
                             
                             <div class="mt-2 bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
                                 <h6 class="text-xs font-medium mb-1">Strategic Implications:</h6>
-                                <p class="text-xs mb-0">These scenarios would help Dell explore how to adapt its PC business strategy, including product development priorities, R&D investments, go-to-market strategies, and potential acquisition targets. Rather than betting on a single future, Dell can develop robust strategies that work across multiple scenarios or create contingency plans for different potential outcomes.</p>
+                                <p class="text-xs mb-0">These scenarios would help Dell explore how to adapt its PC business strategy, including product development priorities, R&amp;D investments, go-to-market strategies, and potential acquisition targets. Rather than betting on a single future, Dell can develop robust strategies that work across multiple scenarios or create contingency plans for different potential outcomes.</p>
                             </div>
                         </div>
                     </div>
@@ -892,7 +890,7 @@
                                             </td>
                                             <td class="border border-gray-200 dark:border-gray-600 px-3 py-2">
                                                 <p class="text-sm mb-1"><strong>Focus Question:</strong> "How might the edge computing market evolve over the next 5 years, and what role should Dell play in it?"</p>
-                                                <p class="text-sm mb-0"><strong>Participants:</strong> Product strategy, sales, R&D, industry analysts, key customers, partner representatives</p>
+                                                <p class="text-sm mb-0"><strong>Participants:</strong> Product strategy, sales, R&amp;D, industry analysts, key customers, partner representatives</p>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1076,7 +1074,7 @@
                                         </td>
                                         <td class="border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm">
                                             <ul class="pl-4 mb-0">
-                                                <li>Informs R&D investment priorities</li>
+                                                <li>Informs R&amp;D investment priorities</li>
                                                 <li>Guides product roadmap development</li>
                                                 <li>Shapes intellectual property strategy</li>
                                                 <li>Directs acquisition and partnership decisions</li>
@@ -1437,26 +1435,26 @@
                                             </td>
                                             <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-sm">
                                                 <ul class="pl-3 mb-0">
-                                                    <li>Traditional hardware revenue decline > 15%</li>
-                                                    <li>Services attach rates > 60%</li>
+                                                    <li>Traditional hardware revenue decline &gt; 15%</li>
+                                                    <li>Services attach rates &gt; 60%</li>
                                                 </ul>
                                             </td>
                                             <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-sm">
                                                 <ul class="pl-3 mb-0">
-                                                    <li>Hybrid deployments > 50% of enterprise workloads</li>
-                                                    <li>Flexible consumption models > 40% of deals</li>
+                                                    <li>Hybrid deployments &gt; 50% of enterprise workloads</li>
+                                                    <li>Flexible consumption models &gt; 40% of deals</li>
                                                 </ul>
                                             </td>
                                             <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-sm">
                                                 <ul class="pl-3 mb-0">
                                                     <li>3+ cloud environments per customer</li>
-                                                    <li>Integration capabilities prioritized in > 60% of RFPs</li>
+                                                    <li>Integration capabilities prioritized in &gt; 60% of RFPs</li>
                                                 </ul>
                                             </td>
                                             <td class="border border-gray-200 dark:border-gray-600 px-3 py-2 text-sm">
                                                 <ul class="pl-3 mb-0">
-                                                    <li>Traditional hardware growth > 5%</li>
-                                                    <li>Security/sovereignty cited in > 50% of decisions</li>
+                                                    <li>Traditional hardware growth &gt; 5%</li>
+                                                    <li>Security/sovereignty cited in &gt; 50% of decisions</li>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -1569,7 +1567,7 @@
                                 </div>
                                 <div>
                                     <h5 class="font-medium text-sm mb-1">Effective Scenario Planning</h5>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • Practical Guide</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey &amp; Company • Practical Guide</p>
                                 </div>
                             </div>
                         </a>
@@ -1667,87 +1665,9 @@
         </main>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Theme toggle functionality
-            document.getElementById('theme-toggle')?.addEventListener('click', function() {
-                document.documentElement.classList.toggle('dark');
-            });
-            
-            // Mobile sidebar toggle
-            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
-                const sidebar = document.getElementById('sidebar');
-                if (sidebar) {
-                    sidebar.classList.toggle('hidden');
-                    sidebar.classList.toggle('fixed');
-                    sidebar.classList.toggle('inset-0');
-                    sidebar.classList.toggle('z-50');
-                    sidebar.classList.toggle('lg:block');
-                    sidebar.classList.toggle('lg:static');
-                    sidebar.classList.toggle('lg:inset-auto');
-                    sidebar.classList.toggle('lg:z-auto');
-                }
-            });
-            
-            // Show specific topic, hide others
-            function showTopic(topicId) {
-                // Hide all topic content
-                document.querySelectorAll('.topic-content').forEach(topic => {
-                    topic.classList.add('hidden');
-                });
-                
-                // Show selected topic
-                document.getElementById(topicId)?.classList.remove('hidden');
-                
-                // Update sidebar highlight
-                document.querySelectorAll('.topic-link').forEach(link => {
-                    const linkTopic = link.getAttribute('data-topic');
-                    if (linkTopic === topicId) {
-                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
-                    } else {
-                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
-                    }
-                });
-                
-                // Scroll to top
-                window.scrollTo(0, 0);
-            }
-            
-            // Topic links in sidebar
-            document.querySelectorAll('.topic-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const topicId = this.getAttribute('data-topic');
-                    showTopic(topicId);
-                });
-            });
-            
-            // Next topic buttons
-            document.querySelectorAll('.next-topic').forEach(button => {
-                button.addEventListener('click', function() {
-                    const nextTopicId = this.getAttribute('data-next');
-                    showTopic(nextTopicId);
-                });
-            });
-            
-            // Previous topic buttons
-            document.querySelectorAll('.prev-topic').forEach(button => {
-                button.addEventListener('click', function() {
-                    const prevTopicId = this.getAttribute('data-prev');
-                    showTopic(prevTopicId);
-                });
-            });
-            
-            // Back to modules button
-            document.getElementById('back-to-modules')?.addEventListener('click', function() {
-                // This would typically navigate to a modules dashboard page
-                // For this implementation, we'll just show the first topic as a placeholder
-                showTopic('topic-scenario-analysis');
-            });
-            
-            // Initialize with first topic visible
-            showTopic('topic-scenario-analysis');
-        });
-    </script>
-</body>
-</html>
+    
+
+
+
+    <script src="/topic-navigation.js"></script>
+</body></html>
