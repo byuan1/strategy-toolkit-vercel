@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dell Strategy Toolkit | Learning Portal</title>
@@ -15,9 +17,6 @@
                         darkBg: '#181818',
                         lightText: '#333333',
                         darkText: '#E5E5E5',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     }
                 }
             },
@@ -37,132 +36,8 @@
         });
     </script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px; /* Adjust based on header height */
-        }
-        
-        /* Module color classes */
-        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
-        .module-financial { --module-color: 245, 158, 11; } /* Amber */
-        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
-        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
-        .module-product { --module-color: 59, 130, 246; } /* Blue */
-        .module-project { --module-color: 139, 92, 246; } /* Purple */
-        .module-communication { --module-color: 239, 68, 68; } /* Red */
-
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        /* Topic headings */
-        .topic-heading {
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .topic-heading::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.25rem;
-            bottom: 0.25rem;
-            width: 4px;
-            border-radius: 2px;
-            background-color: currentColor;
-        }
-
-        /* Module card hover effect */
-        .module-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-        
-        .module-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .dark .module-card:hover {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-
-<style>
-  /* Smooth transitions */
-  .transition-colors {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Hover effects */
-  .hover\:bg-gray-200:hover {
-    background-color: rgba(229, 231, 235, 1);
-  }
-  
-  .dark .dark\:hover\:bg-gray-700:hover {
-    background-color: rgba(55, 65, 81, 1);
-  }
-</style>
-
-<style>
-  /* Smooth transitions */
-  .transition-colors {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Hover effects */
-  .hover\:bg-gray-200:hover {
-    background-color: rgba(229, 231, 235, 1);
-  }
-  
-  .dark .dark\:hover\:bg-gray-700:hover {
-    background-color: rgba(55, 65, 81, 1);
-  }
-</style>
-
-<style>
-  /* Smooth transitions */
-  .transition-colors {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Hover effects */
-  .hover\:bg-gray-200:hover {
-    background-color: rgba(229, 231, 235, 1);
-  }
-  
-  .dark .dark\:hover\:bg-gray-700:hover {
-    background-color: rgba(55, 65, 81, 1);
-  }
-</style>
 </head>
-<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
     <!-- Header -->
     <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -170,27 +45,13 @@
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
                 <div>
                     <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <div class="relative">
-                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
-                        <span>Navigate to Module</span>
-                        <i class="ri-arrow-down-s-line"></i>
-                    </button>
-                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
-                        <div class="p-2 space-y-1">
-                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
-                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
-                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
-                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
-                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
-                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
-                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
-                        </div>
-                    </div>
-                </div>
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
                     <i class="ri-moon-line dark:hidden"></i>
                     <i class="ri-sun-line hidden dark:block"></i>
@@ -207,15 +68,125 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-      <div class="mb-6">
-        <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-          <i class="ri-arrow-left-line"></i>
-          <span>Back to Home</span>
-        </a>
-      </div>
-    
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 text-primary">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management Essentials</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Strategic Frameworks</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-porters-five-forces">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Porter's Five Forces</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-value-chain">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Value-Chain Analysis</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">36%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 36%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Structured Problem Solving</span>
+                                <span>3/3 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>3/3 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>1/2 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
             <!-- Value-Chain Analysis Topic -->
             <section id="topic-value-chain" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
                 <div class="flex justify-between items-center mb-4">
@@ -310,7 +281,7 @@
                                     
                                     <!-- Marketing & Sales -->
                                     <div class="absolute bottom-0 left-[384px] w-[120px] h-[120px] bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 flex flex-col items-center justify-center p-2">
-                                        <span class="font-medium text-green-700 dark:text-green-300 text-sm text-center">Marketing &amp; Sales</span>
+                                        <span class="font-medium text-green-700 dark:text-green-300 text-sm text-center">Marketing & Sales</span>
                                         <div class="mt-2 text-xs text-center text-gray-600 dark:text-gray-400">
                                             Advertising, promotion, pricing, channel management
                                         </div>
@@ -388,7 +359,7 @@
                                         </ul>
                                     </div>
                                     <div>
-                                        <h6 class="font-medium mb-1">4. Marketing &amp; Sales</h6>
+                                        <h6 class="font-medium mb-1">4. Marketing & Sales</h6>
                                         <p class="pl-4 text-xs">Activities that inform buyers about products/services and induce them to purchase.</p>
                                         <ul class="pl-8 text-xs mt-1">
                                             <li>Advertising and promotion</li>
@@ -438,7 +409,7 @@
                                         <h6 class="font-medium mb-1">3. Technology Development</h6>
                                         <p class="pl-4 text-xs">Activities related to managing and processing information, as well as protecting and enhancing a firm's technology assets.</p>
                                         <ul class="pl-8 text-xs mt-1">
-                                            <li>R&amp;D and product design</li>
+                                            <li>R&D and product design</li>
                                             <li>Process technology improvement</li>
                                             <li>IT systems and infrastructure</li>
                                             <li>Knowledge management</li>
@@ -719,7 +690,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Marketing &amp; Sales</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Marketing & Sales</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
                                                 <div>Product feature-focused</div>
                                                 <div class="mt-1 text-gray-500">Transaction-oriented</div>
@@ -758,7 +729,7 @@
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Technology Development</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
                                                 <div>Product engineering focus</div>
-                                                <div class="mt-1 text-gray-500">Internal R&amp;D driven</div>
+                                                <div class="mt-1 text-gray-500">Internal R&D driven</div>
                                             </td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">
                                                 <div>Platform and ecosystem focus</div>
@@ -977,7 +948,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Marketing &amp; Sales</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Marketing & Sales</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">
                                                 <ul class="pl-3 mb-0">
                                                     <li>Direct customer relationships</li>
@@ -1023,7 +994,7 @@
                                     <li class="mb-1"><strong>Inventory Advantage:</strong> Dell's inventory turnover of 30-50x per year compared to competitor averages of 10-12x significantly reduced working capital requirements and obsolescence risk</li>
                                     <li class="mb-1"><strong>Pricing Flexibility:</strong> Real-time component cost visibility combined with direct pricing allowed Dell to pass through cost reductions faster than channel-bound competitors, creating pricing pressure while maintaining margins</li>
                                     <li class="mb-1"><strong>Sales Efficiency:</strong> Direct customer acquisition costs were lower as a percentage of revenue compared to channel incentives and marketing programs required by traditional models</li>
-                                    <li><strong>Cost Structure:</strong> Dell consistently achieved SG&amp;A costs 5-7% lower than major competitors operating through traditional channels, enabling either higher margins or more aggressive pricing</li>
+                                    <li><strong>Cost Structure:</strong> Dell consistently achieved SG&A costs 5-7% lower than major competitors operating through traditional channels, enabling either higher margins or more aggressive pricing</li>
                                 </ul>
                             </div>
                         </div>
@@ -1250,7 +1221,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Marketing &amp; Sales</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 font-medium">Marketing & Sales</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">
                                                 <ul class="pl-3 mb-0">
                                                     <li>Product specification and pricing</li>
@@ -1303,7 +1274,7 @@
                                                 <ul class="pl-3 mb-0">
                                                     <li>Hardware product development</li>
                                                     <li>Discrete component innovation</li>
-                                                    <li>Feature-focused R&amp;D</li>
+                                                    <li>Feature-focused R&D</li>
                                                 </ul>
                                             </td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">
@@ -1350,7 +1321,7 @@
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">
                                                 <ul class="pl-3 mb-0">
                                                     <li>Transaction-based accounting</li>
-                                                    <li>Product P&amp;L structures</li>
+                                                    <li>Product P&L structures</li>
                                                     <li>Capital-intensive financial model</li>
                                                 </ul>
                                             </td>
@@ -1407,7 +1378,7 @@
                                     <li class="mb-1"><strong>Business Model Evolution:</strong> The APEX value chain represents Dell's most significant business model innovation since the direct model, fundamentally changing how value is created and captured</li>
                                     <li class="mb-1"><strong>Competitive Positioning:</strong> This transformation positions Dell as a hybrid cloud enabler rather than just a hardware provider, creating a more strategic role in customer IT environments</li>
                                     <li class="mb-1"><strong>Financial Profile Shift:</strong> The transition toward recurring revenue aligns with investor preferences for subscription businesses, potentially improving valuation multiples over time</li>
-                                    <li class="mb-1"><strong>Organizational Implications:</strong> Successfully executing this value chain transformation requires significant organizational change across R&amp;D, sales, service delivery, and finance functions</li>
+                                    <li class="mb-1"><strong>Organizational Implications:</strong> Successfully executing this value chain transformation requires significant organizational change across R&D, sales, service delivery, and finance functions</li>
                                     <li><strong>Strategic Differentiation:</strong> The APEX value chain leverages Dell's existing infrastructure expertise while addressing the cloud operating model preferences of modern customers, creating a potentially sustainable competitive advantage</li>
                                 </ul>
                             </div>
@@ -1436,7 +1407,7 @@
                                         </ul>
                                         <p class="font-medium mb-1">Implementation Actions:</p>
                                         <ul class="pl-3 mb-0">
-                                            <li class="mb-1">Increase R&amp;D investment in software-defined infrastructure by 25%</li>
+                                            <li class="mb-1">Increase R&D investment in software-defined infrastructure by 25%</li>
                                             <li class="mb-1">Develop API-first architecture across all infrastructure products</li>
                                             <li class="mb-1">Acquire capabilities in orchestration and automation software</li>
                                             <li>Create developer enablement programs for infrastructure platforms</li>
@@ -1493,7 +1464,7 @@
                                         <ul class="pl-3 mb-2">
                                             <li class="mb-1">Creates new high-margin product and service opportunities</li>
                                             <li class="mb-1">Differentiates Technology Development activities</li>
-                                            <li class="mb-1">Shifts Marketing &amp; Sales toward emerging high-growth segment</li>
+                                            <li class="mb-1">Shifts Marketing & Sales toward emerging high-growth segment</li>
                                             <li>Enhances value proposition vs. cloud-only competitors</li>
                                         </ul>
                                         <p class="font-medium mb-1">Implementation Actions:</p>
@@ -1515,7 +1486,7 @@
                                         <ul class="pl-3 mb-2">
                                             <li class="mb-1">Transforms Inbound Logistics for environmental efficiency</li>
                                             <li class="mb-1">Creates differentiation potential in Operations</li>
-                                            <li class="mb-1">Enhances Marketing &amp; Sales with sustainability messaging</li>
+                                            <li class="mb-1">Enhances Marketing & Sales with sustainability messaging</li>
                                             <li>Reduces long-term operational costs and risk exposure</li>
                                         </ul>
                                         <p class="font-medium mb-1">Implementation Actions:</p>
@@ -1534,7 +1505,7 @@
                                         <p class="font-medium mb-1">Value Chain Impact:</p>
                                         <ul class="pl-3 mb-2">
                                             <li class="mb-1">Transforms Outbound Logistics through partner enablement</li>
-                                            <li class="mb-1">Extends Marketing &amp; Sales reach through ecosystem</li>
+                                            <li class="mb-1">Extends Marketing & Sales reach through ecosystem</li>
                                             <li class="mb-1">Creates scale efficiency in Service delivery</li>
                                             <li>Enhances overall market coverage and solution delivery</li>
                                         </ul>
@@ -1581,7 +1552,7 @@
                                                 <td class="p-2 align-top">
                                                     <ul class="pl-3 mb-0">
                                                         <li>Service</li>
-                                                        <li>Marketing &amp; Sales</li>
+                                                        <li>Marketing & Sales</li>
                                                         <li>Operations</li>
                                                     </ul>
                                                 </td>
@@ -1681,7 +1652,7 @@
                                 <ul class="mb-2">
                                     <li>Dell's PowerEdge server business operates primarily on a capital expenditure model</li>
                                     <li>The APEX initiative aims to transform this to a consumption-based offering</li>
-                                    <li>The transition affects every aspect of the value chain from R&amp;D to Service</li>
+                                    <li>The transition affects every aspect of the value chain from R&D to Service</li>
                                     <li>Customers expect cloud-like flexibility with on-premises security and performance</li>
                                     <li>Dell must maintain revenue and margin during the multi-year transition</li>
                                 </ul>
@@ -1764,7 +1735,7 @@
                                 </div>
                                 <div>
                                     <h5 class="font-medium text-sm mb-1">How Information Gives You Competitive Advantage</h5>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Michael E. Porter &amp; Victor E. Millar</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Harvard Business Review • Michael E. Porter & Victor E. Millar</p>
                                 </div>
                             </div>
                         </a>
@@ -1800,34 +1771,14 @@
                         <i class="ri-arrow-left-line"></i>
                         <span>Previous: Porter's Five Forces</span>
                     </button>
-                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" disabled="">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" disabled>
                         <span>Next Module</span>
                         <i class="ri-arrow-right-line"></i>
                     </button>
                 </div>
             </section>
         </main>
-
-    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
-                </div>
-                <div class="text-center md:text-left">
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
-                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <div class="flex items-center gap-3">
-                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
-                            <i class="ri-arrow-up-line text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1836,55 +1787,73 @@
                 document.documentElement.classList.toggle('dark');
             });
             
-            // Module dropdown
-            const moduleDropdown = document.getElementById('module-dropdown');
-            const moduleMenu = document.getElementById('module-menu');
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
             
-            if (moduleDropdown && moduleMenu) {
-                moduleDropdown.addEventListener('click', function() {
-                    moduleMenu.classList.toggle('hidden');
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
                 });
                 
-                // Close the dropdown when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
-                        moduleMenu.classList.add('hidden');
-                    }
-                });
-            }
-            
-            // Back to top functionality
-            const backToTopButton = document.getElementById('back-to-top');
-            
-            if (backToTopButton) {
-                backToTopButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-            
-            // Highlight current section based on scroll position
-            const sections = document.querySelectorAll('section[id]');
-            
-            function highlightCurrentSection() {
-                const scrollY = window.pageYOffset;
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
                 
-                sections.forEach(current => {
-                    const sectionHeight = current.offsetHeight;
-                    const sectionTop = current.offsetTop - 100;
-                    const sectionId = current.getAttribute('id');
-                    
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
                     } else {
-                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
                     }
                 });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
             }
             
-            window.addEventListener('scroll', highlightCurrentSection);
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with value chain topic visible
+            showTopic('topic-value-chain');
         });
     </script>
-
-
-</body></html>
+</body>
+</html>

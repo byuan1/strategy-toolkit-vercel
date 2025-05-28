@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dell Strategy Toolkit | Learning Portal</title>
@@ -15,9 +17,6 @@
                         darkBg: '#181818',
                         lightText: '#333333',
                         darkText: '#E5E5E5',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     }
                 }
             },
@@ -37,132 +36,8 @@
         });
     </script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px; /* Adjust based on header height */
-        }
-        
-        /* Module color classes */
-        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
-        .module-financial { --module-color: 245, 158, 11; } /* Amber */
-        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
-        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
-        .module-product { --module-color: 59, 130, 246; } /* Blue */
-        .module-project { --module-color: 139, 92, 246; } /* Purple */
-        .module-communication { --module-color: 239, 68, 68; } /* Red */
-
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        /* Topic headings */
-        .topic-heading {
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .topic-heading::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.25rem;
-            bottom: 0.25rem;
-            width: 4px;
-            border-radius: 2px;
-            background-color: currentColor;
-        }
-
-        /* Module card hover effect */
-        .module-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-        
-        .module-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .dark .module-card:hover {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-
-<style>
-  /* Smooth transitions */
-  .transition-colors {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Hover effects */
-  .hover\:bg-gray-200:hover {
-    background-color: rgba(229, 231, 235, 1);
-  }
-  
-  .dark .dark\:hover\:bg-gray-700:hover {
-    background-color: rgba(55, 65, 81, 1);
-  }
-</style>
-
-<style>
-  /* Smooth transitions */
-  .transition-colors {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Hover effects */
-  .hover\:bg-gray-200:hover {
-    background-color: rgba(229, 231, 235, 1);
-  }
-  
-  .dark .dark\:hover\:bg-gray-700:hover {
-    background-color: rgba(55, 65, 81, 1);
-  }
-</style>
-
-<style>
-  /* Smooth transitions */
-  .transition-colors {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Hover effects */
-  .hover\:bg-gray-200:hover {
-    background-color: rgba(229, 231, 235, 1);
-  }
-  
-  .dark .dark\:hover\:bg-gray-700:hover {
-    background-color: rgba(55, 65, 81, 1);
-  }
-</style>
 </head>
-<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
     <!-- Header -->
     <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -170,27 +45,13 @@
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
                 <div>
                     <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <div class="relative">
-                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
-                        <span>Navigate to Module</span>
-                        <i class="ri-arrow-down-s-line"></i>
-                    </button>
-                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
-                        <div class="p-2 space-y-1">
-                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
-                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
-                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
-                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
-                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
-                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
-                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
-                        </div>
-                    </div>
-                </div>
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
                     <i class="ri-moon-line dark:hidden"></i>
                     <i class="ri-sun-line hidden dark:block"></i>
@@ -207,15 +68,149 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-      <div class="mb-6">
-        <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-          <i class="ri-arrow-left-line"></i>
-          <span>Back to Home</span>
-        </a>
-      </div>
-    
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Financial Acumen</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-financial-statements">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Financial Statement Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-kpi-metrics">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>KPI Analysis & Metrics</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-valuation">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Valuation Fundamentals</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-business-case">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Business Case Development</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-cost-analysis">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Cost Analysis & Optimization</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-investment">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Investment Prioritization</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">47%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 47%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>7/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Problem Solving</span>
+                                <span>7/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>1/6 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
             <!-- Financial Statement Analysis Topic -->
             <section id="topic-financial-statements" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
                 <div class="flex justify-between items-center mb-4">
@@ -359,7 +354,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h6 class="text-sm font-medium mb-2">Liabilities &amp; Equity</h6>
+                                        <h6 class="text-sm font-medium mb-2">Liabilities & Equity</h6>
                                         <div class="bg-white dark:bg-gray-800 rounded-lg p-3">
                                             <div class="mb-2">
                                                 <p class="text-sm font-medium mb-1">Current Liabilities</p>
@@ -435,7 +430,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Cash &amp; Investments</td>
+                                        <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium">Cash & Investments</td>
                                         <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$9.5</td>
                                         <td class="border border-gray-200 dark:border-gray-700 p-2 text-right">$8.3</td>
                                         <td class="border border-gray-200 dark:border-gray-700 p-2 text-right text-red-600 dark:text-red-400">-12.6%</td>
@@ -496,7 +491,7 @@
                     
                     <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-6">
                         <h5 class="text-green-700 dark:text-green-400 font-medium mb-2">Understanding the Income Statement Structure</h5>
-                        <p class="text-sm mb-3">The income statement (also called profit and loss statement or P&amp;L) shows a company's revenues, costs, and expenses over a specific period, revealing whether the company is operating at a profit or loss.</p>
+                        <p class="text-sm mb-3">The income statement (also called profit and loss statement or P&L) shows a company's revenues, costs, and expenses over a specific period, revealing whether the company is operating at a profit or loss.</p>
                         
                         <div class="overflow-x-auto mb-3">
                             <div class="min-w-[600px]">
@@ -520,15 +515,15 @@
                                                 <td class="p-2">Costs of running the business</td>
                                             </tr>
                                             <tr class="border-b border-gray-200 dark:border-gray-700 pl-10 text-gray-600 dark:text-gray-400">
-                                                <td class="p-2 pl-10">• Sales &amp; Marketing</td>
+                                                <td class="p-2 pl-10">• Sales & Marketing</td>
                                                 <td class="p-2">Expenses for promoting and selling products/services</td>
                                             </tr>
                                             <tr class="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 pl-10 text-gray-600 dark:text-gray-400">
-                                                <td class="p-2 pl-10">• Research &amp; Development</td>
+                                                <td class="p-2 pl-10">• Research & Development</td>
                                                 <td class="p-2">Costs for innovation and new product development</td>
                                             </tr>
                                             <tr class="border-b border-gray-200 dark:border-gray-700 pl-10 text-gray-600 dark:text-gray-400">
-                                                <td class="p-2 pl-10">• General &amp; Administrative</td>
+                                                <td class="p-2 pl-10">• General & Administrative</td>
                                                 <td class="p-2">Overhead costs for running the organization</td>
                                             </tr>
                                             <tr class="border-b border-gray-200 dark:border-gray-700 font-medium text-blue-700 dark:text-blue-400">
@@ -895,7 +890,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="p-1 font-medium">Cash Ratio</td>
-                                                <td class="p-1">Cash &amp; Equivalents ÷ Current Liabilities</td>
+                                                <td class="p-1">Cash & Equivalents ÷ Current Liabilities</td>
                                                 <td class="p-1 text-xs">Ability to cover short-term obligations with cash</td>
                                             </tr>
                                         </tbody>
@@ -1268,7 +1263,7 @@
                                             <ul class="pl-4 text-xs mb-0">
                                                 <li>Evaluate potential strategic acquisitions in high-growth adjacent areas</li>
                                                 <li>Consider initiating or increasing dividend to broaden investor appeal</li>
-                                                <li>Assess if R&amp;D investments are sufficient for long-term competitiveness</li>
+                                                <li>Assess if R&D investments are sufficient for long-term competitiveness</li>
                                             </ul>
                                         </td>
                                     </tr>
@@ -1362,7 +1357,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">KPI Analysis &amp; Metrics</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">KPI Analysis & Metrics</td>
                                     <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
                                         <ul class="pl-4 text-sm mb-0">
                                             <li>Connect financial results to operational and market metrics</li>
@@ -1395,7 +1390,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Cost Analysis &amp; Optimization</td>
+                                    <td class="border border-gray-300 dark:border-gray-700 px-3 py-2 font-medium">Cost Analysis & Optimization</td>
                                     <td class="border border-gray-300 dark:border-gray-700 px-3 py-2">
                                         <ul class="pl-4 text-sm mb-0">
                                             <li>Identify cost structure issues from financial statement trends</li>
@@ -1429,7 +1424,7 @@
                                     <i class="ri-article-line"></i>
                                 </div>
                                 <div>
-                                    <h5 class="font-medium text-sm mb-1">Financial Ratios &amp; Analysis</h5>
+                                    <h5 class="font-medium text-sm mb-1">Financial Ratios & Analysis</h5>
                                     <p class="text-xs text-gray-500 dark:text-gray-400">Corporate Finance Institute • Expert Guide</p>
                                 </div>
                             </div>
@@ -1497,7 +1492,7 @@
                                                 <td class="p-1 text-right">13.2</td>
                                             </tr>
                                             <tr>
-                                                <td class="p-1">R&amp;D Expense / Revenue</td>
+                                                <td class="p-1">R&D Expense / Revenue</td>
                                                 <td class="p-1 text-right">4.6%</td>
                                                 <td class="p-1 text-right">6.8%</td>
                                             </tr>
@@ -1546,33 +1541,13 @@
                         <span>Back to Modules</span>
                     </button>
                     <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-kpi-metrics">
-                        <span>Next: KPI Analysis &amp; Metrics</span>
+                        <span>Next: KPI Analysis & Metrics</span>
                         <i class="ri-arrow-right-line"></i>
                     </button>
                 </div>
             </section>
         </main>
-
-    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
-                </div>
-                <div class="text-center md:text-left">
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
-                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <div class="flex items-center gap-3">
-                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
-                            <i class="ri-arrow-up-line text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1581,55 +1556,80 @@
                 document.documentElement.classList.toggle('dark');
             });
             
-            // Module dropdown
-            const moduleDropdown = document.getElementById('module-dropdown');
-            const moduleMenu = document.getElementById('module-menu');
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
             
-            if (moduleDropdown && moduleMenu) {
-                moduleDropdown.addEventListener('click', function() {
-                    moduleMenu.classList.toggle('hidden');
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
                 });
                 
-                // Close the dropdown when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
-                        moduleMenu.classList.add('hidden');
-                    }
-                });
-            }
-            
-            // Back to top functionality
-            const backToTopButton = document.getElementById('back-to-top');
-            
-            if (backToTopButton) {
-                backToTopButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-            
-            // Highlight current section based on scroll position
-            const sections = document.querySelectorAll('section[id]');
-            
-            function highlightCurrentSection() {
-                const scrollY = window.pageYOffset;
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
                 
-                sections.forEach(current => {
-                    const sectionHeight = current.offsetHeight;
-                    const sectionTop = current.offsetTop - 100;
-                    const sectionId = current.getAttribute('id');
-                    
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
                     } else {
-                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
                     }
                 });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
             }
             
-            window.addEventListener('scroll', highlightCurrentSection);
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Back to modules button
+            document.getElementById('back-to-modules')?.addEventListener('click', function() {
+                // This would typically navigate to a modules dashboard page
+                // For this implementation, we'll just show the first topic as a placeholder
+                showTopic('topic-financial-statements');
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-financial-statements');
         });
     </script>
-
-
-</body></html>
+</body>
+</html>

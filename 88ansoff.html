@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dell Strategy Toolkit | Learning Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#0076CE', // Dell blue
+                        tertiary: '#34A853', // Success green
+                        lightBg: '#FFFFFF',
+                        darkBg: '#181818',
+                        lightText: '#333333',
+                        darkText: '#E5E5E5',
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
+                <div>
+                    <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-moon-line dark:hidden"></i>
+                    <i class="ri-sun-line hidden dark:block"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium">JY</span>
+                        </div>
+                        <span class="hidden md:block">June Y</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 text-primary">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management Essentials</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Strategic Frameworks</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-porter-five-forces">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Porter's Five Forces</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-swot-analysis">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">✓</span>
+                                <span>SWOT Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-ansoff-matrix">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Ansoff Matrix</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-bcg-matrix">
+                                <span class="w-5 h-5 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>BCG Matrix</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-pestel-analysis">
+                                <span class="w-5 h-5 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>PESTEL Analysis</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Module Completion</span>
+                            <span class="text-sm font-medium">40%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 40%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>2/5 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Structured Problem Solving</span>
+                                <span>3/3 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>1/3 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
+            <!-- Ansoff Matrix Topic -->
+            <section id="topic-ansoff-matrix" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <i class="ri-layout-grid-line text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Ansoff Matrix</h3>
+                            <div class="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <span>Strategic Frameworks</span>
+                                <span>•</span>
+                                <span>30 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs py-1 px-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div class="prose prose-sm max-w-none dark:prose-invert">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                        <h4 class="text-blue-700 dark:text-blue-300 font-medium m-0 mb-2">Learning Objectives</h4>
+                        <ul class="m-0 pl-5">
+                            <li>Understand the Ansoff Matrix framework and its historical development</li>
+                            <li>Apply the matrix to analyze and identify growth opportunities</li>
+                            <li>Evaluate risk-reward profiles of different growth strategies</li>
+                            <li>Analyze real-world examples of how Dell has applied the Ansoff Matrix</li>
+                            <li>Develop skills to recommend optimal growth strategies for different business scenarios</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Origins and Purpose of the Ansoff Matrix</h4>
+                    <p>The Ansoff Matrix, also known as the Product/Market Expansion Grid, is a strategic planning tool that provides a framework to help executives identify growth opportunities for their business. Developed by Igor Ansoff and published in the Harvard Business Review in 1957, the matrix outlines four strategic options for business growth based on whether a company targets new or existing products and markets.</p>
+                    
+                    <p>This framework is particularly valuable for strategic planning because it:</p>
+                    <ul>
+                        <li>Provides a structured approach to evaluating growth alternatives</li>
+                        <li>Helps organizations assess the risk associated with different growth options</li>
+                        <li>Enables more informed resource allocation decisions</li>
+                        <li>Supports portfolio planning across different business units</li>
+                    </ul>
+                    
+                    <h4>The Ansoff Matrix Framework</h4>
+                    
+                    <!-- Ansoff Matrix Visualization -->
+                    <div class="bg-gray-50 dark:bg-gray-800 p-5 rounded-lg mb-6">
+                        <h3 class="text-lg font-medium mb-4 text-center">The Ansoff Matrix</h3>
+                        
+                        <div class="relative overflow-hidden">
+                            <!-- Matrix container with axis labels -->
+                            <div class="relative mx-auto max-w-3xl">
+                                <!-- Products axis label -->
+                                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 text-center">
+                                    <div class="font-medium text-lg">Products</div>
+                                </div>
+                                
+                                <!-- Markets axis label -->
+                                <div class="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-14 -rotate-90 text-center">
+                                    <div class="font-medium text-lg">Markets</div>
+                                </div>
+                                
+                                <!-- Existing/New Products labels -->
+                                <div class="flex justify-between mb-2 mt-2 ml-16 mr-16">
+                                    <div class="text-center font-medium">Existing</div>
+                                    <div class="text-center font-medium">New</div>
+                                </div>
+                                
+                                <!-- Matrix Grid -->
+                                <div class="grid grid-cols-2 gap-6 ml-16">
+                                    <!-- Existing/New Markets labels (vertical) -->
+                                    <div class="absolute left-2 top-1/4 -translate-y-1/2">
+                                        <div class="font-medium">Existing</div>
+                                    </div>
+                                    <div class="absolute left-2 top-3/4 -translate-y-1/2">
+                                        <div class="font-medium">New</div>
+                                    </div>
+                                    
+                                    <!-- Market Penetration Quadrant -->
+                                    <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border-2 border-blue-300 dark:border-blue-700 shadow-md">
+                                        <div class="flex justify-between items-start mb-3">
+                                            <h4 class="font-bold text-blue-800 dark:text-blue-300">Market Penetration</h4>
+                                            <span class="bg-blue-100 dark:bg-blue-800/50 text-blue-800 dark:text-blue-300 text-xs py-1 px-2 rounded-full">Lowest Risk</span>
+                                        </div>
+                                        <p class="text-sm mb-3">Selling more existing products to existing markets.</p>
+                                        <ul class="text-sm space-y-1.5 ml-1">
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-blue-600 dark:text-blue-400 mt-0.5"></i>
+                                                <span>Increase market share with current offerings</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-blue-600 dark:text-blue-400 mt-0.5"></i>
+                                                <span>Enhance customer usage frequency</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-blue-600 dark:text-blue-400 mt-0.5"></i>
+                                                <span>Convert non-users within existing markets</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-blue-600 dark:text-blue-400 mt-0.5"></i>
+                                                <span>Attract competitors' customers</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Product Development Quadrant -->
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg border-2 border-purple-300 dark:border-purple-700 shadow-md">
+                                        <div class="flex justify-between items-start mb-3">
+                                            <h4 class="font-bold text-purple-800 dark:text-purple-300">Product Development</h4>
+                                            <span class="bg-purple-100 dark:bg-purple-800/50 text-purple-800 dark:text-purple-300 text-xs py-1 px-2 rounded-full">Moderate Risk</span>
+                                        </div>
+                                        <p class="text-sm mb-3">Selling new products to existing markets.</p>
+                                        <ul class="text-sm space-y-1.5 ml-1">
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-purple-600 dark:text-purple-400 mt-0.5"></i>
+                                                <span>Develop new product features or versions</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-purple-600 dark:text-purple-400 mt-0.5"></i>
+                                                <span>Create different quality levels</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-purple-600 dark:text-purple-400 mt-0.5"></i>
+                                                <span>Develop entirely new products</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-purple-600 dark:text-purple-400 mt-0.5"></i>
+                                                <span>R&D and innovation investment</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Market Development Quadrant -->
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg border-2 border-green-300 dark:border-green-700 shadow-md">
+                                        <div class="flex justify-between items-start mb-3">
+                                            <h4 class="font-bold text-green-800 dark:text-green-300">Market Development</h4>
+                                            <span class="bg-green-100 dark:bg-green-800/50 text-green-800 dark:text-green-300 text-xs py-1 px-2 rounded-full">Moderate Risk</span>
+                                        </div>
+                                        <p class="text-sm mb-3">Selling existing products to new markets.</p>
+                                        <ul class="text-sm space-y-1.5 ml-1">
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-green-600 dark:text-green-400 mt-0.5"></i>
+                                                <span>Enter new geographical markets</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-green-600 dark:text-green-400 mt-0.5"></i>
+                                                <span>Target new customer segments</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-green-600 dark:text-green-400 mt-0.5"></i>
+                                                <span>Develop new distribution channels</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-green-600 dark:text-green-400 mt-0.5"></i>
+                                                <span>Create different pricing policies</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Diversification Quadrant -->
+                                    <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg border-2 border-red-300 dark:border-red-700 shadow-md">
+                                        <div class="flex justify-between items-start mb-3">
+                                            <h4 class="font-bold text-red-800 dark:text-red-300">Diversification</h4>
+                                            <span class="bg-red-100 dark:bg-red-800/50 text-red-800 dark:text-red-300 text-xs py-1 px-2 rounded-full">Highest Risk</span>
+                                        </div>
+                                        <p class="text-sm mb-3">Selling new products to new markets.</p>
+                                        <ul class="text-sm space-y-1.5 ml-1">
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-red-600 dark:text-red-400 mt-0.5"></i>
+                                                <span>Horizontal diversification (related)</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-red-600 dark:text-red-400 mt-0.5"></i>
+                                                <span>Vertical integration (backward/forward)</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-red-600 dark:text-red-400 mt-0.5"></i>
+                                                <span>Conglomerate diversification (unrelated)</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <i class="ri-check-line text-red-600 dark:text-red-400 mt-0.5"></i>
+                                                <span>Acquisitions and strategic partnerships</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <!-- Risk-Return Arrow -->
+                                <div class="relative h-16 mx-12 mt-10">
+                                    <div class="absolute left-0 right-0 top-1/2 h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 rounded-full"></div>
+                                    <div class="absolute left-0 -top-2 text-sm text-center">
+                                        <i class="ri-arrow-left-line text-blue-600 dark:text-blue-400 text-xl"></i>
+                                        <p class="text-xs mt-1 font-medium">Lower Risk<br/>Lower Potential Return</p>
+                                    </div>
+                                    <div class="absolute right-0 -top-2 text-sm text-center">
+                                        <i class="ri-arrow-right-line text-red-600 dark:text-red-400 text-xl"></i>
+                                        <p class="text-xs mt-1 font-medium">Higher Risk<br/>Higher Potential Return</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Detailed Exploration of Ansoff Strategies</h4>
+                    
+                    <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 mb-6">
+                        <h5 class="font-medium mb-4 text-primary">1. Market Penetration Strategy</h5>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="font-medium text-sm mb-2">Key Characteristics</h6>
+                                <ul class="text-sm space-y-1 ml-4 list-disc">
+                                    <li>Lowest risk strategy</li>
+                                    <li>Focuses on existing capabilities</li>
+                                    <li>Shorter implementation timeframe</li>
+                                    <li>Limited growth ceiling in mature markets</li>
+                                    <li>May intensify competitive pressure</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="font-medium text-sm mb-2">Implementation Tactics</h6>
+                                <ul class="text-sm space-y-1 ml-4 list-disc">
+                                    <li>Increase advertising and promotion</li>
+                                    <li>Implement loyalty programs</li>
+                                    <li>Offer price incentives</li>
+                                    <li>Expand distribution reach</li>
+                                    <li>Improve customer experience</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="font-medium text-sm mb-2">When to Apply</h6>
+                                <ul class="text-sm space-y-1 ml-4 list-disc">
+                                    <li>Market is growing or underserved</li>
+                                    <li>Significant competitive advantage exists</li>
+                                    <li>Current market share is below potential</li>
+                                    <li>Core products have untapped user potential</li>
+                                    <li>Limited resources for development</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                            <h6 class="font-medium text-sm mb-2">Dell Example: Direct Model Optimization</h6>
+                            <p class="text-sm">In the 1990s and early 2000s, Dell focused heavily on market penetration by optimizing its direct-to-consumer sales model for its core PC products. By streamlining operations, reducing costs, and passing savings to customers, Dell grew from $2 billion in 1992 to $16 billion in 1998 primarily through this strategy. Dell also introduced premium service programs for enterprise customers and implemented aggressive pricing to take market share from competitors like Compaq and IBM.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 mb-6">
+                        <h5 class="font-medium mb-4 text-primary">2. Product Development Strategy</h5>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="font-medium text-sm mb-2">Key Characteristics</h6>
+                                <ul class="text-sm space-y-1 ml-4 list-disc">
+                                    <li>Moderate risk profile</li>
+                                    <li>Leverages existing market knowledge</li>
+                                    <li>Requires R&D and innovation investment</li>
+                                    <li>Often shorter market adoption cycle</li>
+                                    <li>Can strengthen brand position</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="font-medium text-sm mb-2">Implementation Tactics</h6>
+                                <ul class="text-sm space-y-1 ml-4 list-disc">
+                                    <li>Conduct customer needs analysis</li>
+                                    <li>Invest in targeted R&D</li>
+                                    <li>Develop complementary products/services</li>
+                                    <li>Form strategic partnerships for innovation</li>
+                                    <li>Acquire companies with innovative products</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="font-medium text-sm mb-2">When to Apply</h6>
+                                <ul class="text-sm space-y-1 ml-4 list-disc">
+                                    <li>Strong customer relationships exist</li>
+                                    <li>Market is evolving with new needs</li>
+                                    <li>Organization has innovation capabilities</li>
+                                    <li>Core products are reaching maturity</li>
+                                    <li>Competitive pressure requires differentiation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                            <h6 class="font-medium text-sm mb-2">Dell Example: Server and Enterprise Solutions</h6>
+                            <p class="text-sm">Dell developed its PowerEdge server line in the mid-1990s to expand its product portfolio to existing business customers. The company also developed PowerVault storage products, enabling it to offer more comprehensive IT solutions to its established customer base. In 2007-2008, Dell further expanded its product offerings by developing the EqualLogic and Compellent storage platforms to provide higher-margin solutions to existing enterprise clients, allowing Dell to transition from a pure hardware provider to a full-service IT solutions company for its customer base.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 mb-6">
+                        <h5 class="font-medium mb-4 text-primary">3. Market Development Strategy</h5>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="font-medium text-sm mb-2">Key Characteristics</h6>
+                                <ul class="text-sm space-y-1 ml-4 list-disc">
+                                    <li>Moderate risk profile</li>
+                                    <li>Leverages existing product expertise</li>
+                                    <li>Requires market intelligence investment</li>
+                                    <li>May need significant marketing resources</li>
+                                    <li>Cultural and regulatory considerations</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="font-medium text-sm mb-2">Implementation Tactics</h6>
+                                <ul class="text-sm space-y-1 ml-4 list-disc">
+                                    <li>Expand into new geographical regions</li>
+                                    <li>Develop new market segmentation approaches</li>
+                                    <li>Create new distribution channels</li>
+                                    <li>Adapt marketing for different demographics</li>
+                                    <li>Form strategic partnerships for market access</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="font-medium text-sm mb-2">When to Apply</h6>
+                                <ul class="text-sm space-y-1 ml-4 list-disc">
+                                    <li>Core products have strong differentiation</li>
+                                    <li>Current markets are saturated</li>
+                                    <li>Untapped markets with similar needs exist</li>
+                                    <li>Organization has scalable production</li>
+                                    <li>Global expansion aligns with strategic goals</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                            <h6 class="font-medium text-sm mb-2">Dell Example: Global Expansion and Channel Strategy</h6>
+                            <p class="text-sm">In the late 1990s and early 2000s, Dell aggressively expanded its geographical presence beyond the United States, establishing operations in Europe, Asia, and Latin America with its existing product lineup. Dell also implemented a significant market development strategy in 2007 when it began selling through retail channels like Best Buy and Walmart after decades of direct-only sales. This allowed Dell to reach new consumer segments that preferred in-store shopping experiences. Additionally, Dell developed specialized sales teams to target previously untapped segments like small businesses and government institutions with its existing product portfolio.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 mb-6">
+                        <h5 class="font-medium mb-4 text-primary">4. Diversification Strategy</h5>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="font-medium text-sm mb-2">Key Characteristics</h6>
+                                <ul class="text-sm space-y-1 ml-4 list-disc">
+                                    <li>Highest risk profile</li>
+                                    <li>Requires new capabilities and knowledge</li>
+                                    <li>Typically longer implementation timeline</li>
+                                    <li>Often requires significant capital</li>
+                                    <li>Potential for highest long-term returns</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="font-medium text-sm mb-2">Implementation Tactics</h6>
+                                <ul class="text-sm space-y-1 ml-4 list-disc">
+                                    <li>Conduct comprehensive market research</li>
+                                    <li>Acquire companies in target markets</li>
+                                    <li>Form joint ventures</li>
+                                    <li>Create internal innovation incubators</li>
+                                    <li>Implement staged investment approach</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                                <h6 class="font-medium text-sm mb-2">When to Apply</h6>
+                                <ul class="text-sm space-y-1 ml-4 list-disc">
+                                    <li>Current markets are saturated or declining</li>
+                                    <li>High synergy potential exists</li>
+                                    <li>Organization has strong financial position</li>
+                                    <li>Risk can be managed through staged approach</li>
+                                    <li>Opportunity cost of inaction is high</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                            <h6 class="font-medium text-sm mb-2">Dell Example: EMC Acquisition and Digital Transformation</h6>
+                            <p class="text-sm">Dell's most significant diversification move was the $67 billion acquisition of EMC Corporation in 2016, which was the largest technology acquisition in history at that time. This transformational deal brought Dell into entirely new product categories like enterprise storage, virtualization (through VMware), and security (through RSA), while also giving it access to new enterprise customer segments. The creation of Dell Technologies represented a bold diversification strategy to address the shift from traditional PC and server markets toward cloud computing, big data, and digital transformation. Dell has also diversified into cybersecurity solutions through SecureWorks and software-defined networking through its acquisition of Force10 Networks.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Strategic Implementation Considerations</h4>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h5 class="font-medium mb-3">Key Success Factors for Ansoff Matrix Implementation</h5>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                            <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                        <i class="ri-scales-3-line"></i>
+                                    </div>
+                                    <h5 class="font-medium">Balanced Portfolio Approach</h5>
+                                </div>
+                                <p class="text-sm mb-3">Most successful organizations implement a balanced portfolio of Ansoff strategies across different time horizons rather than relying exclusively on a single approach.</p>
+                                <ul class="text-sm space-y-1.5 ml-1">
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-check-line text-blue-600 dark:text-blue-400 mt-0.5"></i>
+                                        <span><strong>Short-term:</strong> Market penetration strategies that deliver immediate results</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-check-line text-blue-600 dark:text-blue-400 mt-0.5"></i>
+                                        <span><strong>Medium-term:</strong> Product and market development initiatives with moderate risk</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-check-line text-blue-600 dark:text-blue-400 mt-0.5"></i>
+                                        <span><strong>Long-term:</strong> Selective diversification moves for future growth engines</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0">
+                                        <i class="ri-funds-box-line"></i>
+                                    </div>
+                                    <h5 class="font-medium">Resource Allocation Framework</h5>
+                                </div>
+                                <p class="text-sm mb-3">Strategic implementation requires intentional resource allocation across different growth initiatives based on organizational priorities.</p>
+                                <div class="relative h-[140px] w-full mb-2">
+                                    <!-- Resource allocation chart -->
+                                    <div class="absolute inset-0 flex items-end">
+                                        <div class="h-[70%] w-1/4 bg-blue-400 dark:bg-blue-600 mx-1 rounded-t-md relative group">
+                                            <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">Market Penetration: 40-50%</div>
+                                            <div class="absolute inset-0 flex items-center justify-center text-white font-medium">MP</div>
+                                        </div>
+                                        <div class="h-[50%] w-1/4 bg-purple-400 dark:bg-purple-600 mx-1 rounded-t-md relative group">
+                                            <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">Product Development: 25-30%</div>
+                                            <div class="absolute inset-0 flex items-center justify-center text-white font-medium">PD</div>
+                                        </div>
+                                        <div class="h-[40%] w-1/4 bg-green-400 dark:bg-green-600 mx-1 rounded-t-md relative group">
+                                            <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">Market Development: 15-25%</div>
+                                            <div class="absolute inset-0 flex items-center justify-center text-white font-medium">MD</div>
+                                        </div>
+                                        <div class="h-[20%] w-1/4 bg-red-400 dark:bg-red-600 mx-1 rounded-t-md relative group">
+                                            <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">Diversification: 5-15%</div>
+                                            <div class="absolute inset-0 flex items-center justify-center text-white font-medium">D</div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 right-0 h-px bg-gray-300 dark:bg-gray-600"></div>
+                                    <div class="absolute -bottom-6 left-0 right-0 flex justify-around text-xs text-gray-500 dark:text-gray-400">
+                                        <span>Typical Resource Allocation Percentages</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+                                        <i class="ri-search-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium">Due Diligence</h6>
+                                </div>
+                                <ul class="text-sm space-y-1.5">
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-arrow-right-s-line text-primary mt-0.5"></i>
+                                        <span>Conduct thorough market research</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-arrow-right-s-line text-primary mt-0.5"></i>
+                                        <span>Validate assumptions with data</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-arrow-right-s-line text-primary mt-0.5"></i>
+                                        <span>Analyze competitive landscape</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-arrow-right-s-line text-primary mt-0.5"></i>
+                                        <span>Evaluate resource requirements</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+                                        <i class="ri-calendar-check-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium">Phased Implementation</h6>
+                                </div>
+                                <ul class="text-sm space-y-1.5">
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-arrow-right-s-line text-primary mt-0.5"></i>
+                                        <span>Develop staged rollout plans</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-arrow-right-s-line text-primary mt-0.5"></i>
+                                        <span>Define clear decision gates</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-arrow-right-s-line text-primary mt-0.5"></i>
+                                        <span>Establish pilot programs</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-arrow-right-s-line text-primary mt-0.5"></i>
+                                        <span>Create contingency plans</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+                                        <i class="ri-line-chart-line text-sm"></i>
+                                    </div>
+                                    <h6 class="font-medium">Performance Monitoring</h6>
+                                </div>
+                                <ul class="text-sm space-y-1.5">
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-arrow-right-s-line text-primary mt-0.5"></i>
+                                        <span>Define success metrics upfront</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-arrow-right-s-line text-primary mt-0.5"></i>
+                                        <span>Implement tracking dashboards</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-arrow-right-s-line text-primary mt-0.5"></i>
+                                        <span>Conduct regular strategy reviews</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="ri-arrow-right-s-line text-primary mt-0.5"></i>
+                                        <span>Adapt based on market feedback</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Dell Case Study: Strategic Evolution Through the Ansoff Lens</h4>
+                    
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 mb-6">
+                        <h5 class="font-medium mb-4">Dell's Strategic Transformation (1984-Present)</h5>
+                        <p class="text-sm mb-4">Dell's history provides an excellent case study of how a company can leverage different Ansoff Matrix strategies across its evolution to drive growth and respond to market changes.</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full text-sm">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-800">
+                                        <th class="py-3 px-4 text-left border-b border-gray-200 dark:border-gray-700 font-medium">Era</th>
+                                        <th class="py-3 px-4 text-left border-b border-gray-200 dark:border-gray-700 font-medium">Primary Ansoff Strategy</th>
+                                        <th class="py-3 px-4 text-left border-b border-gray-200 dark:border-gray-700 font-medium">Key Initiatives</th>
+                                        <th class="py-3 px-4 text-left border-b border-gray-200 dark:border-gray-700 font-medium">Results</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700"><span class="font-medium">1984-1995</span><br/>PC Direct Model</td>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                                            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs py-1 px-2 rounded-full">Market Penetration</span>
+                                        </td>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>Direct-to-customer PC sales model</li>
+                                                <li>Build-to-order manufacturing</li>
+                                                <li>Phone and catalog sales channel optimization</li>
+                                            </ul>
+                                        </td>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>Rapid growth to $3.5B in revenue by 1994</li>
+                                                <li>Established cost leadership position</li>
+                                                <li>Gained significant market share in PC segment</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700"><span class="font-medium">1996-2004</span><br/>Enterprise Expansion</td>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                                            <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-xs py-1 px-2 rounded-full">Product Development</span>
+                                            <span class="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-xs py-1 px-2 rounded-full mt-1 inline-block">Market Development</span>
+                                        </td>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>Server and storage product lines (PowerEdge)</li>
+                                                <li>Global expansion (EMEA, Asia-Pacific)</li>
+                                                <li>Online sales channel development (Dell.com)</li>
+                                                <li>Enterprise service offerings</li>
+                                            </ul>
+                                        </td>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>Achieved #1 global PC market share position</li>
+                                                <li>Grew to $41B in revenue by 2004</li>
+                                                <li>Established presence in server market</li>
+                                                <li>Expanded geographical footprint</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700"><span class="font-medium">2005-2012</span><br/>Diversification Period</td>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                                            <span class="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-xs py-1 px-2 rounded-full">Market Development</span>
+                                            <span class="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 text-xs py-1 px-2 rounded-full mt-1 inline-block">Diversification</span>
+                                        </td>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>Acquisition of Alienware (gaming PCs)</li>
+                                                <li>Entry into retail channels (2007)</li>
+                                                <li>Acquisitions: EqualLogic, Perot Systems</li>
+                                                <li>Services and solutions expansion</li>
+                                            </ul>
+                                        </td>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>Reached $61B in revenue by 2011</li>
+                                                <li>Increased services revenue contribution</li>
+                                                <li>Accessed new customer segments</li>
+                                                <li>Reduced dependence on PC market</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700"><span class="font-medium">2013-Present</span><br/>Digital Transformation</td>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                                            <span class="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 text-xs py-1 px-2 rounded-full">Diversification</span>
+                                            <span class="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-xs py-1 px-2 rounded-full mt-1 inline-block">Product Development</span>
+                                        </td>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>Privatization (2013)</li>
+                                                <li>EMC acquisition ($67B, 2016)</li>
+                                                <li>Formation of Dell Technologies</li>
+                                                <li>Multi-cloud/edge computing solutions</li>
+                                                <li>As-a-Service business model development</li>
+                                            </ul>
+                                        </td>
+                                        <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>Created $91B+ revenue technology powerhouse</li>
+                                                <li>Leadership in multiple IT infrastructure markets</li>
+                                                <li>Established end-to-end technology portfolio</li>
+                                                <li>Positioned for digital transformation era</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                            <h6 class="font-medium mb-2">Key Insights from Dell's Strategic Evolution</h6>
+                            <ul class="text-sm space-y-2 ml-4 list-disc">
+                                <li><strong>Sequential Progression:</strong> Dell typically mastered one quadrant before moving to more complex strategies, building on existing strengths.</li>
+                                <li><strong>Responsive Adaptation:</strong> The company shifted strategies in response to market changes, showing the dynamic application of the Ansoff Matrix.</li>
+                                <li><strong>Bold Transformation:</strong> When facing industry disruption, Dell made large-scale diversification moves (EMC acquisition) rather than incremental changes.</li>
+                                <li><strong>Balanced Portfolio:</strong> Even during major strategic shifts, Dell maintained focus on core business while exploring new opportunities.</li>
+                                <li><strong>Cyclical Application:</strong> After major diversification moves, Dell would refocus on market penetration and product development to optimize new acquisitions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Practical Application Exercise</h4>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mb-6">
+                        <h5 class="font-medium mb-4">Analyzing Growth Options: Edge Computing Strategy</h5>
+                        <p class="text-sm mb-4">Apply the Ansoff Matrix to evaluate potential growth strategies for Dell Technologies in the rapidly emerging edge computing market.</p>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-4 rounded-lg mb-6">
+                            <h6 class="font-medium text-primary mb-2">Scenario Background</h6>
+                            <p class="text-sm mb-3">Edge computing is transforming how organizations process data by moving computation closer to data sources, enabling real-time analytics and reduced latency for IoT applications. Dell Technologies is evaluating how to maximize its growth opportunities in this expanding market.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h6 class="text-sm font-medium mb-2">Dell's Current Position</h6>
+                                    <ul class="text-sm space-y-1 ml-4 list-disc">
+                                        <li>Strong server and storage hardware portfolio</li>
+                                        <li>Established enterprise customer relationships</li>
+                                        <li>Growing IoT and networking expertise</li>
+                                        <li>VMware virtualization technology (until spin-off)</li>
+                                        <li>Limited software-defined networking presence</li>
+                                        <li>Emerging edge-specific solutions</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="text-sm font-medium mb-2">Market Considerations</h6>
+                                    <ul class="text-sm space-y-1 ml-4 list-disc">
+                                        <li>Edge computing market growing at 19% CAGR</li>
+                                        <li>Traditional data center market maturing</li>
+                                        <li>New verticals emerging (autonomous vehicles, smart cities)</li>
+                                        <li>Competition from cloud providers entering edge space</li>
+                                        <li>Telecom companies seeking 5G edge partnerships</li>
+                                        <li>Specialized edge players gaining traction</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h6 class="font-medium mb-3">Your Task: Ansoff Matrix Analysis</h6>
+                        <p class="text-sm mb-4">For each quadrant of the Ansoff Matrix, identify potential growth strategies Dell could pursue in the edge computing market. Consider the risks, resources required, and potential returns for each approach.</p>
+                        
+                        <div class="grid grid-cols-1 gap-4 mb-6">
+                            <div class="bg-white dark:bg-gray-900 p-4 rounded-lg">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h6 class="font-medium text-blue-700 dark:text-blue-400">Market Penetration Strategies</h6>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">(Existing Products, Existing Markets)</span>
+                                </div>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="What market penetration strategies could Dell implement for edge computing with current products and customers?"></textarea>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-4 rounded-lg">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h6 class="font-medium text-purple-700 dark:text-purple-400">Product Development Strategies</h6>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">(New Products, Existing Markets)</span>
+                                </div>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="What new edge computing products could Dell develop for its existing customer base?"></textarea>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-4 rounded-lg">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h6 class="font-medium text-green-700 dark:text-green-400">Market Development Strategies</h6>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">(Existing Products, New Markets)</span>
+                                </div>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="What new markets or customer segments could Dell target with its current edge computing offerings?"></textarea>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-4 rounded-lg">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h6 class="font-medium text-red-700 dark:text-red-400">Diversification Strategies</h6>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">(New Products, New Markets)</span>
+                                </div>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="What diversification opportunities exist for Dell in edge computing beyond its current products and markets?"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-900 p-4 rounded-lg mb-4">
+                            <h6 class="font-medium mb-2">Strategic Recommendation</h6>
+                            <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="4" placeholder="Based on your analysis, which strategy or combination of strategies would you recommend Dell prioritize for edge computing, and why? Consider risk tolerance, resource availability, competitive positioning, and potential returns."></textarea>
+                        </div>
+                        
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium">Submit Analysis</button>
+                    </div>
+                    
+                    <h4>Curated Resources</h4>
+                    
+                    <!-- External Resource Link -->
+                    <div class="mb-6">
+                        <a href="https://corporatefinanceinstitute.com/resources/management/ansoff-matrix/" target="_blank" rel="noopener noreferrer" class="block bg-gray-50 dark:bg-gray-800 p-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                                    <i class="ri-article-line"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-sm mb-1">Ansoff Matrix - Overview, Strategies and Practical Examples</h5>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Corporate Finance Institute • Comprehensive guide with strategic frameworks and practical business applications</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6">
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 prev-topic" data-prev="topic-swot-analysis">
+                        <i class="ri-arrow-left-line"></i>
+                        <span>Previous: SWOT Analysis</span>
+                    </button>
+                    <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-bcg-matrix">
+                        <span>Next: BCG Matrix</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            document.getElementById('theme-toggle')?.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
+            
+            // Resource toggle functionality
+            document.querySelectorAll('.resource-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const targetContent = document.getElementById(targetId);
+                    const arrow = this.querySelector('.resource-arrow');
+                    
+                    if (targetContent.classList.contains('hidden')) {
+                        targetContent.classList.remove('hidden');
+                        arrow.classList.add('transform', 'rotate-180');
+                    } else {
+                        targetContent.classList.add('hidden');
+                        arrow.classList.remove('transform', 'rotate-180');
+                    }
+                });
+            });
+            
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
+                });
+                
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
+                
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
+                    } else {
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with topic visible
+            showTopic('topic-ansoff-matrix');
+        });
+    </script>
+</body>
+</html>

@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dell Strategy Toolkit | Learning Portal</title>
@@ -15,9 +17,6 @@
                         darkBg: '#181818',
                         lightText: '#333333',
                         darkText: '#E5E5E5',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     }
                 }
             },
@@ -37,100 +36,8 @@
         });
     </script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px; /* Adjust based on header height */
-        }
-        
-        /* Module color classes */
-        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
-        .module-financial { --module-color: 245, 158, 11; } /* Amber */
-        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
-        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
-        .module-product { --module-color: 59, 130, 246; } /* Blue */
-        .module-project { --module-color: 139, 92, 246; } /* Purple */
-        .module-communication { --module-color: 239, 68, 68; } /* Red */
-
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        /* Topic headings */
-        .topic-heading {
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .topic-heading::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.25rem;
-            bottom: 0.25rem;
-            width: 4px;
-            border-radius: 2px;
-            background-color: currentColor;
-        }
-
-        /* Module card hover effect */
-        .module-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-        
-        .module-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .dark .module-card:hover {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-
-<style>
-  /* Smooth transitions */
-  .transition-colors {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Hover effects */
-  .hover\:bg-gray-200:hover {
-    background-color: rgba(229, 231, 235, 1);
-  }
-  
-  .dark .dark\:hover\:bg-gray-700:hover {
-    background-color: rgba(55, 65, 81, 1);
-  }
-</style>
 </head>
-<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
     <!-- Header -->
     <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -138,27 +45,13 @@
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
                 <div>
                     <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <div class="relative">
-                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
-                        <span>Navigate to Module</span>
-                        <i class="ri-arrow-down-s-line"></i>
-                    </button>
-                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
-                        <div class="p-2 space-y-1">
-                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
-                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
-                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
-                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
-                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
-                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
-                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
-                        </div>
-                    </div>
-                </div>
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
                     <i class="ri-moon-line dark:hidden"></i>
                     <i class="ri-sun-line hidden dark:block"></i>
@@ -175,15 +68,131 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <div class="mb-6">
-          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-            <i class="ri-arrow-left-line"></i>
-            <span>Back to Home</span>
-          </a>
-        </div>
-      
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 text-primary">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management Essentials</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Financial Acumen</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-common-size-analysis">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Common-Size Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-modeling">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Share-Gain & P&L Modeling</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-financial-statements">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Applied Financial Statements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">27%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 27%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Structured Problem Solving</span>
+                                <span>3/3 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>2/3 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Product & Ops Foundations</span>
+                                <span>9/9 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
             <!-- Applied Financial Statements Topic -->
             <section id="topic-financial-statements" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
                 <div class="flex justify-between items-center mb-4">
@@ -252,11 +261,11 @@
                                     </li>
                                     <li class="mb-2"><strong>Part II:</strong> Financial data and analysis
                                         <ul class="pl-4 mt-1">
-                                            <li>Item 7: MD&amp;A (Management's Discussion and Analysis)</li>
+                                            <li>Item 7: MD&A (Management's Discussion and Analysis)</li>
                                             <li>Item 8: Financial Statements and Supplementary Data</li>
                                         </ul>
                                     </li>
-                                    <li><strong>Part III &amp; IV:</strong> Governance, exhibits, and other information
+                                    <li><strong>Part III & IV:</strong> Governance, exhibits, and other information
                                         <ul class="pl-4 mt-1">
                                             <li>Executive compensation, board structure</li>
                                             <li>Material contracts and agreements</li>
@@ -427,7 +436,7 @@
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">8.3%</td>
                                         </tr>
                                         <tr>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700 pl-6">Servers &amp; Networking</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700 pl-6">Servers & Networking</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">16,954</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">18.0%</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">17,943</td>
@@ -569,14 +578,14 @@
                                                     <td class="p-2 border border-gray-200 dark:border-gray-700 text-right text-green-600 dark:text-green-400">+1.0 pts</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="p-2 border border-gray-200 dark:border-gray-700">Research &amp; Development</td>
+                                                    <td class="p-2 border border-gray-200 dark:border-gray-700">Research & Development</td>
                                                     <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">4.6%</td>
                                                     <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">4.7%</td>
                                                     <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">5.2%</td>
                                                     <td class="p-2 border border-gray-200 dark:border-gray-700 text-right text-red-600 dark:text-red-400">+0.6 pts</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="p-2 border border-gray-200 dark:border-gray-700">Selling, General &amp; Admin</td>
+                                                    <td class="p-2 border border-gray-200 dark:border-gray-700">Selling, General & Admin</td>
                                                     <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">13.7%</td>
                                                     <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">12.7%</td>
                                                     <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">12.5%</td>
@@ -606,8 +615,8 @@
                                 <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-1">Key Profitability Insights:</h6>
                                 <ul class="pl-4 text-xs mb-0">
                                     <li class="mb-1"><strong>Segment Margin Divergence:</strong> ISG generates significantly higher operating margins (14.0%) compared to CSG (8.3%), highlighting the strategic importance of growing the infrastructure business</li>
-                                    <li class="mb-1"><strong>Operational Efficiency:</strong> SG&amp;A expenses have declined as a percentage of revenue, indicating improved operating leverage and operational discipline</li>
-                                    <li class="mb-1"><strong>Strategic R&amp;D Investment:</strong> Increased R&amp;D spending (up 0.6 percentage points) reflects Dell's focus on innovation, particularly in high-growth areas like AI infrastructure</li>
+                                    <li class="mb-1"><strong>Operational Efficiency:</strong> SG&A expenses have declined as a percentage of revenue, indicating improved operating leverage and operational discipline</li>
+                                    <li class="mb-1"><strong>Strategic R&D Investment:</strong> Increased R&D spending (up 0.6 percentage points) reflects Dell's focus on innovation, particularly in high-growth areas like AI infrastructure</li>
                                     <li class="mb-1"><strong>Margin Expansion:</strong> Net income margin shows the most substantial improvement, growing from 3.7% to 5.9% over three years, reflecting both operational improvements and reduced interest expenses</li>
                                     <li><strong>FY22 Anomaly:</strong> The exceptional performance in FY22 (10.8% operating margin) coincided with pandemic-driven demand and supply constraints that temporarily enhanced pricing power</li>
                                 </ul>
@@ -670,7 +679,7 @@
                                         <div class="absolute top-4 right-4 text-xs">
                                             <div class="flex items-center mb-1">
                                                 <div class="w-3 h-3 bg-blue-500 dark:bg-blue-600 opacity-70 mr-1"></div>
-                                                <span>Cash &amp; Investments</span>
+                                                <span>Cash & Investments</span>
                                             </div>
                                             <div class="flex items-center mb-1">
                                                 <div class="w-3 h-3 bg-green-500 dark:bg-green-600 opacity-70 mr-1"></div>
@@ -678,7 +687,7 @@
                                             </div>
                                             <div class="flex items-center mb-1">
                                                 <div class="w-3 h-3 bg-purple-500 dark:bg-purple-600 opacity-70 mr-1"></div>
-                                                <span>PP&amp;E</span>
+                                                <span>PP&E</span>
                                             </div>
                                             <div class="flex items-center">
                                                 <div class="w-3 h-3 bg-amber-500 dark:bg-amber-600 opacity-70 mr-1"></div>
@@ -694,33 +703,51 @@
                                         <!-- Line Chart -->
                                         <svg viewBox="0 0 300 200" class="h-full w-full">
                                             <!-- Grid Lines -->
-                                            <line x1="30" y1="20" x2="30" y2="170" stroke="#94A3B8" stroke-width="0.5"></line>
-                                            <line x1="30" y1="170" x2="280" y2="170" stroke="#94A3B8" stroke-width="0.5"></line>
-                                            <line x1="30" y1="120" x2="280" y2="120" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="2"></line>
-                                            <line x1="30" y1="70" x2="280" y2="70" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="2"></line>
-                                            <line x1="30" y1="20" x2="280" y2="20" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="2"></line>
+                                            <line x1="30" y1="20" x2="30" y2="170" stroke="#94A3B8" stroke-width="0.5" />
+                                            <line x1="30" y1="170" x2="280" y2="170" stroke="#94A3B8" stroke-width="0.5" />
+                                            <line x1="30" y1="120" x2="280" y2="120" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="2" />
+                                            <line x1="30" y1="70" x2="280" y2="70" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="2" />
+                                            <line x1="30" y1="20" x2="280" y2="20" stroke="#94A3B8" stroke-width="0.5" stroke-dasharray="2" />
                                             
                                             <!-- Long-term Debt Line -->
-                                            <polyline points="80,50 170,70 260,100" fill="none" stroke="#EF4444" stroke-width="2" class="dark:stroke-red-500"></polyline>
+                                            <polyline 
+                                                points="80,50 170,70 260,100" 
+                                                fill="none" 
+                                                stroke="#EF4444" 
+                                                stroke-width="2"
+                                                class="dark:stroke-red-500" 
+                                            />
                                             
                                             <!-- Short-term Debt Line -->
-                                            <polyline points="80,130 170,140 260,145" fill="none" stroke="#F97316" stroke-width="2" class="dark:stroke-orange-500"></polyline>
+                                            <polyline 
+                                                points="80,130 170,140 260,145" 
+                                                fill="none" 
+                                                stroke="#F97316" 
+                                                stroke-width="2"
+                                                class="dark:stroke-orange-500" 
+                                            />
                                             
                                             <!-- Equity Line -->
-                                            <polyline points="80,130 170,110 260,90" fill="none" stroke="#10B981" stroke-width="2" class="dark:stroke-green-500"></polyline>
+                                            <polyline 
+                                                points="80,130 170,110 260,90" 
+                                                fill="none" 
+                                                stroke="#10B981" 
+                                                stroke-width="2"
+                                                class="dark:stroke-green-500" 
+                                            />
                                             
                                             <!-- Data Points -->
-                                            <circle cx="80" cy="50" r="3" fill="#EF4444" class="dark:fill-red-500"></circle>
-                                            <circle cx="170" cy="70" r="3" fill="#EF4444" class="dark:fill-red-500"></circle>
-                                            <circle cx="260" cy="100" r="3" fill="#EF4444" class="dark:fill-red-500"></circle>
+                                            <circle cx="80" cy="50" r="3" fill="#EF4444" class="dark:fill-red-500" />
+                                            <circle cx="170" cy="70" r="3" fill="#EF4444" class="dark:fill-red-500" />
+                                            <circle cx="260" cy="100" r="3" fill="#EF4444" class="dark:fill-red-500" />
                                             
-                                            <circle cx="80" cy="130" r="3" fill="#F97316" class="dark:fill-orange-500"></circle>
-                                            <circle cx="170" cy="140" r="3" fill="#F97316" class="dark:fill-orange-500"></circle>
-                                            <circle cx="260" cy="145" r="3" fill="#F97316" class="dark:fill-orange-500"></circle>
+                                            <circle cx="80" cy="130" r="3" fill="#F97316" class="dark:fill-orange-500" />
+                                            <circle cx="170" cy="140" r="3" fill="#F97316" class="dark:fill-orange-500" />
+                                            <circle cx="260" cy="145" r="3" fill="#F97316" class="dark:fill-orange-500" />
                                             
-                                            <circle cx="80" cy="130" r="3" fill="#10B981" class="dark:fill-green-500"></circle>
-                                            <circle cx="170" cy="110" r="3" fill="#10B981" class="dark:fill-green-500"></circle>
-                                            <circle cx="260" cy="90" r="3" fill="#10B981" class="dark:fill-green-500"></circle>
+                                            <circle cx="80" cy="130" r="3" fill="#10B981" class="dark:fill-green-500" />
+                                            <circle cx="170" cy="110" r="3" fill="#10B981" class="dark:fill-green-500" />
+                                            <circle cx="260" cy="90" r="3" fill="#10B981" class="dark:fill-green-500" />
                                             
                                             <!-- X-axis Labels -->
                                             <text x="80" y="190" text-anchor="middle" font-size="10" fill="currentColor">FY21</text>
@@ -734,13 +761,13 @@
                                             <text x="25" y="20" text-anchor="end" font-size="10" fill="currentColor">$60B</text>
                                             
                                             <!-- Legend -->
-                                            <circle cx="240" cy="30" r="3" fill="#EF4444" class="dark:fill-red-500"></circle>
+                                            <circle cx="240" cy="30" r="3" fill="#EF4444" class="dark:fill-red-500" />
                                             <text x="245" y="33" font-size="8" fill="currentColor">Long-term Debt</text>
                                             
-                                            <circle cx="240" cy="40" r="3" fill="#F97316" class="dark:fill-orange-500"></circle>
+                                            <circle cx="240" cy="40" r="3" fill="#F97316" class="dark:fill-orange-500" />
                                             <text x="245" y="43" font-size="8" fill="currentColor">Short-term Debt</text>
                                             
-                                            <circle cx="240" cy="50" r="3" fill="#10B981" class="dark:fill-green-500"></circle>
+                                            <circle cx="240" cy="50" r="3" fill="#10B981" class="dark:fill-green-500" />
                                             <text x="245" y="53" font-size="8" fill="currentColor">Equity</text>
                                         </svg>
                                     </div>
@@ -760,7 +787,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Cash &amp; Investments ($B)</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Cash & Investments ($B)</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">15.8</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">17.2</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">12.6</td>
@@ -833,11 +860,11 @@
                     </div>
                     
                     <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg mb-6">
-                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-3">Cash Flow Dynamics &amp; Capital Allocation</h5>
+                        <h5 class="text-indigo-700 dark:text-indigo-400 font-medium mb-3">Cash Flow Dynamics & Capital Allocation</h5>
                         <p class="text-sm mb-4">Dell's cash flow statements provide critical insights into operational efficiency, investment priorities, and capital return policies that shape the company's strategic direction.</p>
                         
                         <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
-                            <h6 class="text-sm font-medium mb-3">Cash Flow Generation &amp; Allocation ($B)</h6>
+                            <h6 class="text-sm font-medium mb-3">Cash Flow Generation & Allocation ($B)</h6>
                             
                             <div class="overflow-x-auto mb-4">
                                 <table class="min-w-full text-xs">
@@ -873,7 +900,7 @@
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">32.1</td>
                                         </tr>
                                         <tr>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Acquisitions &amp; Investments</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Acquisitions & Investments</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">-0.4</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">-0.8</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">-1.2</td>
@@ -969,19 +996,19 @@
                                         <!-- Donut Chart -->
                                         <svg viewBox="0 0 100 100" class="absolute inset-0 h-full w-full">
                                             <!-- Debt Repayment -->
-                                            <path d="M 50 50 L 50 10 A 40 40 0 1 1 10 50 Z" fill="#3B82F6" class="dark:fill-blue-600"></path>
+                                            <path d="M 50 50 L 50 10 A 40 40 0 1 1 10 50 Z" fill="#3B82F6" class="dark:fill-blue-600" />
                                             
                                             <!-- Share Repurchases -->
-                                            <path d="M 50 50 L 10 50 A 40 40 0 0 1 35 15 Z" fill="#10B981" class="dark:fill-green-600"></path>
+                                            <path d="M 50 50 L 10 50 A 40 40 0 0 1 35 15 Z" fill="#10B981" class="dark:fill-green-600" />
                                             
                                             <!-- Capex -->
-                                            <path d="M 50 50 L 35 15 A 40 40 0 0 1 50 10 Z" fill="#F97316" class="dark:fill-orange-600"></path>
+                                            <path d="M 50 50 L 35 15 A 40 40 0 0 1 50 10 Z" fill="#F97316" class="dark:fill-orange-600" />
                                             
                                             <!-- Dividends -->
-                                            <path d="M 50 50 L 50 10 A 40 40 0 0 0 35 15 Z" fill="#8B5CF6" class="dark:fill-purple-600"></path>
+                                            <path d="M 50 50 L 50 10 A 40 40 0 0 0 35 15 Z" fill="#8B5CF6" class="dark:fill-purple-600" />
                                             
                                             <!-- Inner circle (hole) -->
-                                            <circle cx="50" cy="50" r="20" fill="#F9FAFB" class="dark:fill-gray-900"></circle>
+                                            <circle cx="50" cy="50" r="20" fill="#F9FAFB" class="dark:fill-gray-900" />
                                         </svg>
                                         
                                         <!-- Labels -->
@@ -1026,10 +1053,10 @@
                         </div>
                     </div>
                     
-                    <h4>Segment Reporting &amp; Business Unit Analysis</h4>
+                    <h4>Segment Reporting & Business Unit Analysis</h4>
                     
                     <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg mb-6">
-                        <h5 class="text-emerald-700 dark:text-emerald-400 font-medium mb-3">Dell's Segment Performance &amp; Strategic Focus</h5>
+                        <h5 class="text-emerald-700 dark:text-emerald-400 font-medium mb-3">Dell's Segment Performance & Strategic Focus</h5>
                         <p class="text-sm mb-4">Dell Technologies reports financial results in two primary business segments: Client Solutions Group (CSG) and Infrastructure Solutions Group (ISG). The segment reporting provides critical insights into performance, profitability, and strategic direction within these distinct business units.</p>
                         
                         <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
@@ -1037,7 +1064,7 @@
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                                 <div>
-                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">CSG Revenue &amp; Growth ($B)</h6>
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">CSG Revenue & Growth ($B)</h6>
                                     <div class="h-[220px] relative bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
                                         <!-- Bar Chart with Line Overlay -->
                                         <!-- Commercial Bars -->
@@ -1054,11 +1081,17 @@
                                         
                                         <!-- Growth Rate Line -->
                                         <svg viewBox="0 0 100 100" class="absolute inset-0 h-full w-full">
-                                            <polyline points="16.5,50 36.5,20 56.5,75 76.5,60" fill="none" stroke="#EF4444" stroke-width="1.5" class="dark:stroke-red-500"></polyline>
-                                            <circle cx="16.5" cy="50" r="2" fill="#EF4444" class="dark:fill-red-500"></circle>
-                                            <circle cx="36.5" cy="20" r="2" fill="#EF4444" class="dark:fill-red-500"></circle>
-                                            <circle cx="56.5" cy="75" r="2" fill="#EF4444" class="dark:fill-red-500"></circle>
-                                            <circle cx="76.5" cy="60" r="2" fill="#EF4444" class="dark:fill-red-500"></circle>
+                                            <polyline 
+                                                points="16.5,50 36.5,20 56.5,75 76.5,60" 
+                                                fill="none" 
+                                                stroke="#EF4444" 
+                                                stroke-width="1.5"
+                                                class="dark:stroke-red-500" 
+                                            />
+                                            <circle cx="16.5" cy="50" r="2" fill="#EF4444" class="dark:fill-red-500" />
+                                            <circle cx="36.5" cy="20" r="2" fill="#EF4444" class="dark:fill-red-500" />
+                                            <circle cx="56.5" cy="75" r="2" fill="#EF4444" class="dark:fill-red-500" />
+                                            <circle cx="76.5" cy="60" r="2" fill="#EF4444" class="dark:fill-red-500" />
                                         </svg>
                                         
                                         <!-- X-axis labels -->
@@ -1104,7 +1137,7 @@
                                 </div>
                                 
                                 <div>
-                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">CSG Operating Income &amp; Margin</h6>
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">CSG Operating Income & Margin</h6>
                                     <div class="h-[220px] relative bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
                                         <!-- Bar and Line Chart -->
                                         <!-- Operating Income Bars -->
@@ -1115,11 +1148,17 @@
                                         
                                         <!-- Operating Margin Line -->
                                         <svg viewBox="0 0 100 100" class="absolute inset-0 h-full w-full">
-                                            <polyline points="15,75 35,60 55,30 75,40" fill="none" stroke="#F97316" stroke-width="1.5" class="dark:stroke-orange-500"></polyline>
-                                            <circle cx="15" cy="75" r="2" fill="#F97316" class="dark:fill-orange-500"></circle>
-                                            <circle cx="35" cy="60" r="2" fill="#F97316" class="dark:fill-orange-500"></circle>
-                                            <circle cx="55" cy="30" r="2" fill="#F97316" class="dark:fill-orange-500"></circle>
-                                            <circle cx="75" cy="40" r="2" fill="#F97316" class="dark:fill-orange-500"></circle>
+                                            <polyline 
+                                                points="15,75 35,60 55,30 75,40" 
+                                                fill="none" 
+                                                stroke="#F97316" 
+                                                stroke-width="1.5"
+                                                class="dark:stroke-orange-500" 
+                                            />
+                                            <circle cx="15" cy="75" r="2" fill="#F97316" class="dark:fill-orange-500" />
+                                            <circle cx="35" cy="60" r="2" fill="#F97316" class="dark:fill-orange-500" />
+                                            <circle cx="55" cy="30" r="2" fill="#F97316" class="dark:fill-orange-500" />
+                                            <circle cx="75" cy="40" r="2" fill="#F97316" class="dark:fill-orange-500" />
                                         </svg>
                                         
                                         <!-- X-axis labels -->
@@ -1176,7 +1215,7 @@
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                                 <div>
-                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">ISG Revenue &amp; Growth ($B)</h6>
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">ISG Revenue & Growth ($B)</h6>
                                     <div class="h-[220px] relative bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
                                         <!-- Bar Chart with Line Overlay -->
                                         <!-- Servers Bars -->
@@ -1193,11 +1232,17 @@
                                         
                                         <!-- Growth Rate Line -->
                                         <svg viewBox="0 0 100 100" class="absolute inset-0 h-full w-full">
-                                            <polyline points="16.5,60 36.5,80 56.5,55 76.5,30" fill="none" stroke="#EF4444" stroke-width="1.5" class="dark:stroke-red-500"></polyline>
-                                            <circle cx="16.5" cy="60" r="2" fill="#EF4444" class="dark:fill-red-500"></circle>
-                                            <circle cx="36.5" cy="80" r="2" fill="#EF4444" class="dark:fill-red-500"></circle>
-                                            <circle cx="56.5" cy="55" r="2" fill="#EF4444" class="dark:fill-red-500"></circle>
-                                            <circle cx="76.5" cy="30" r="2" fill="#EF4444" class="dark:fill-red-500"></circle>
+                                            <polyline 
+                                                points="16.5,60 36.5,80 56.5,55 76.5,30" 
+                                                fill="none" 
+                                                stroke="#EF4444" 
+                                                stroke-width="1.5"
+                                                class="dark:stroke-red-500" 
+                                            />
+                                            <circle cx="16.5" cy="60" r="2" fill="#EF4444" class="dark:fill-red-500" />
+                                            <circle cx="36.5" cy="80" r="2" fill="#EF4444" class="dark:fill-red-500" />
+                                            <circle cx="56.5" cy="55" r="2" fill="#EF4444" class="dark:fill-red-500" />
+                                            <circle cx="76.5" cy="30" r="2" fill="#EF4444" class="dark:fill-red-500" />
                                         </svg>
                                         
                                         <!-- X-axis labels -->
@@ -1228,7 +1273,7 @@
                                         <div class="absolute top-4 right-20 text-xs">
                                             <div class="flex items-center mb-1">
                                                 <div class="w-3 h-3 bg-blue-500 dark:bg-blue-600 opacity-70 mr-1"></div>
-                                                <span>Servers &amp; Networking</span>
+                                                <span>Servers & Networking</span>
                                             </div>
                                             <div class="flex items-center mb-1">
                                                 <div class="w-3 h-3 bg-green-500 dark:bg-green-600 opacity-70 mr-1"></div>
@@ -1243,7 +1288,7 @@
                                 </div>
                                 
                                 <div>
-                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">ISG Operating Income &amp; Margin</h6>
+                                    <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2">ISG Operating Income & Margin</h6>
                                     <div class="h-[220px] relative bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
                                         <!-- Bar and Line Chart -->
                                         <!-- Operating Income Bars -->
@@ -1254,11 +1299,17 @@
                                         
                                         <!-- Operating Margin Line -->
                                         <svg viewBox="0 0 100 100" class="absolute inset-0 h-full w-full">
-                                            <polyline points="15,65 35,50 55,40 75,30" fill="none" stroke="#F97316" stroke-width="1.5" class="dark:stroke-orange-500"></polyline>
-                                            <circle cx="15" cy="65" r="2" fill="#F97316" class="dark:fill-orange-500"></circle>
-                                            <circle cx="35" cy="50" r="2" fill="#F97316" class="dark:fill-orange-500"></circle>
-                                            <circle cx="55" cy="40" r="2" fill="#F97316" class="dark:fill-orange-500"></circle>
-                                            <circle cx="75" cy="30" r="2" fill="#F97316" class="dark:fill-orange-500"></circle>
+                                            <polyline 
+                                                points="15,65 35,50 55,40 75,30" 
+                                                fill="none" 
+                                                stroke="#F97316" 
+                                                stroke-width="1.5"
+                                                class="dark:stroke-orange-500" 
+                                            />
+                                            <circle cx="15" cy="65" r="2" fill="#F97316" class="dark:fill-orange-500" />
+                                            <circle cx="35" cy="50" r="2" fill="#F97316" class="dark:fill-orange-500" />
+                                            <circle cx="55" cy="40" r="2" fill="#F97316" class="dark:fill-orange-500" />
+                                            <circle cx="75" cy="30" r="2" fill="#F97316" class="dark:fill-orange-500" />
                                         </svg>
                                         
                                         <!-- X-axis labels -->
@@ -1304,16 +1355,16 @@
                                 <h6 class="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">ISG Business Model Insights:</h6>
                                 <ul class="pl-4 text-xs mb-0">
                                     <li class="mb-1"><strong>Consistent Margin Expansion:</strong> Unlike CSG's cyclical margin pattern, ISG has demonstrated consistent operating margin improvement from 9.1% in FY20 to 14.0% in FY23, indicating structural business enhancement</li>
-                                    <li class="mb-1"><strong>Server Momentum:</strong> Server &amp; networking revenue has accelerated in FY23 (+12.1% YoY), likely driven by AI-related infrastructure investments and enterprise on-premises workload expansion</li>
+                                    <li class="mb-1"><strong>Server Momentum:</strong> Server & networking revenue has accelerated in FY23 (+12.1% YoY), likely driven by AI-related infrastructure investments and enterprise on-premises workload expansion</li>
                                     <li class="mb-1"><strong>Storage Stabilization:</strong> After years of relatively flat performance, storage revenue grew 9.8% in FY23, suggesting potential market share gains and successful product refreshes</li>
                                     <li class="mb-1"><strong>Higher-Value Segment:</strong> ISG's operating margin (14.0%) significantly exceeds CSG's margin (8.3%), highlighting its strategic importance despite lower absolute revenue</li>
-                                    <li><strong>Strategic Investment:</strong> The consistent margin improvement coincides with Dell's increased R&amp;D investment, suggesting successful innovation and value-added product development</li>
+                                    <li><strong>Strategic Investment:</strong> The consistent margin improvement coincides with Dell's increased R&D investment, suggesting successful innovation and value-added product development</li>
                                 </ul>
                             </div>
                         </div>
                         
                         <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
-                            <h6 class="text-sm font-medium mb-3">Business Mix Evolution &amp; Strategic Implications</h6>
+                            <h6 class="text-sm font-medium mb-3">Business Mix Evolution & Strategic Implications</h6>
                             
                             <div class="overflow-x-auto">
                                 <table class="min-w-full text-xs">
@@ -1496,7 +1547,7 @@
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">6.8%</td>
                                         </tr>
                                         <tr>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700">R&amp;D as % of Revenue</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">R&D as % of Revenue</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">7.2%</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">9.8%</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-right">12.6%</td>
@@ -1510,7 +1561,7 @@
                                 <ul class="pl-4 text-xs mb-0">
                                     <li class="mb-1"><strong>CSG Premium Position:</strong> Dell's PC business achieves significantly higher operating margins (8.3%) compared to HP (5.4%) and Lenovo (4.7%), supported by a stronger commercial focus and higher revenue per unit, despite lower unit market share</li>
                                     <li class="mb-1"><strong>ISG Market Leadership:</strong> Dell holds leading market positions in both servers (16.9%) and storage (26.8%), with strong growth momentum (11.0%) compared to competitors, indicating effective execution and market share gains</li>
-                                    <li class="mb-1"><strong>Efficiency Advantage:</strong> Dell ISG delivers superior operating margins (14.0%) compared to HPE (11.2%) while investing a lower percentage of revenue in R&amp;D (7.2% vs. 9.8%), suggesting more efficient innovation and development processes</li>
+                                    <li class="mb-1"><strong>Efficiency Advantage:</strong> Dell ISG delivers superior operating margins (14.0%) compared to HPE (11.2%) while investing a lower percentage of revenue in R&D (7.2% vs. 9.8%), suggesting more efficient innovation and development processes</li>
                                     <li class="mb-1"><strong>Premium Value Proposition:</strong> Dell's higher revenue per unit ($950 vs. HP's $735 and Lenovo's $685) reflects successful product positioning, brand value, and differentiated offerings that command price premiums</li>
                                     <li><strong>Services Integration:</strong> Dell's higher services attach rate (49.7%) compared to competitors contributes to its superior margin profile and creates stickier customer relationships with higher lifetime value</li>
                                 </ul>
@@ -1518,11 +1569,11 @@
                         </div>
                     </div>
                     
-                    <h4>Management Discussion &amp; Analysis (MD&amp;A) Strategic Insights</h4>
+                    <h4>Management Discussion & Analysis (MD&A) Strategic Insights</h4>
                     
                     <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-6">
-                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-3">Extracting Strategic Direction from Dell's MD&amp;A</h5>
-                        <p class="text-sm mb-4">Dell's Management Discussion &amp; Analysis section provides valuable qualitative context to the financial data, revealing management's strategic focus areas, risk assessments, and forward-looking priorities.</p>
+                        <h5 class="text-purple-700 dark:text-purple-400 font-medium mb-3">Extracting Strategic Direction from Dell's MD&A</h5>
+                        <p class="text-sm mb-4">Dell's Management Discussion & Analysis section provides valuable qualitative context to the financial data, revealing management's strategic focus areas, risk assessments, and forward-looking priorities.</p>
                         
                         <div class="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4">
                             <h6 class="text-sm font-medium mb-3">Strategic Priority Evolution</h6>
@@ -1535,7 +1586,7 @@
                                             <th class="text-center p-2 border border-gray-200 dark:border-gray-700">FY21 Emphasis</th>
                                             <th class="text-center p-2 border border-gray-200 dark:border-gray-700">FY22 Emphasis</th>
                                             <th class="text-center p-2 border border-gray-200 dark:border-gray-700">FY23 Emphasis</th>
-                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Key MD&amp;A Statements (FY23)</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Key MD&A Statements (FY23)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1613,7 +1664,7 @@
                                         <tr class="bg-gray-50 dark:bg-gray-900">
                                             <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Key Risk Category</th>
                                             <th class="text-center p-2 border border-gray-200 dark:border-gray-700">Risk Level</th>
-                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">MD&amp;A Risk Disclosure</th>
+                                            <th class="text-left p-2 border border-gray-200 dark:border-gray-700">MD&A Risk Disclosure</th>
                                             <th class="text-left p-2 border border-gray-200 dark:border-gray-700">Financial Statement Impact</th>
                                         </tr>
                                     </thead>
@@ -1622,13 +1673,13 @@
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">Competitive Intensity</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">High</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">"We face intense competition across all segments of our business... from established companies and new entrants with novel business models."</td>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Increased R&amp;D investment (+0.5 percentage points YoY) to maintain product differentiation</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Increased R&D investment (+0.5 percentage points YoY) to maintain product differentiation</td>
                                         </tr>
                                         <tr>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">Supply Chain Disruption</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">Medium</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">"We continue to monitor and address supply chain challenges... including component constraints, logistics disruptions, and inflationary pressures."</td>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Higher inventory levels (+18% YoY) and increased manufacturing &amp; logistics costs (+0.3 pts)</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Higher inventory levels (+18% YoY) and increased manufacturing & logistics costs (+0.3 pts)</td>
                                         </tr>
                                         <tr>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">Macroeconomic Uncertainty</td>
@@ -1640,22 +1691,22 @@
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">Cloud Transition</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">High</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">"The continued shift to cloud-delivered solutions and hybrid IT environments... presents both opportunities and challenges for our business."</td>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Strategic investments in multi-cloud portfolio; 42% of R&amp;D allocated to cloud-related solutions</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Strategic investments in multi-cloud portfolio; 42% of R&D allocated to cloud-related solutions</td>
                                         </tr>
                                         <tr>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Cybersecurity &amp; Data Privacy</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Cybersecurity & Data Privacy</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">Medium</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">"Threats to cybersecurity and data privacy continue to evolve... requiring ongoing investment to protect our systems and customer data."</td>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Increased security R&amp;D investment; $125M annual cybersecurity spending</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Increased security R&D investment; $125M annual cybersecurity spending</td>
                                         </tr>
                                         <tr>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">Regulatory Compliance</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">Medium</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">"We operate in a complex global regulatory environment... subject to evolving rules related to data privacy, sustainability, supply chain transparency, and trade compliance."</td>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Increased compliance costs included in G&amp;A expenses; $85M in sustainability initiatives</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Increased compliance costs included in G&A expenses; $85M in sustainability initiatives</td>
                                         </tr>
                                         <tr>
-                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Talent Acquisition &amp; Retention</td>
+                                            <td class="p-2 border border-gray-200 dark:border-gray-700">Talent Acquisition & Retention</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700 text-center">Medium</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">"Competition for technical talent remains intense... particularly in AI, cloud, and cybersecurity domains critical to our growth strategy."</td>
                                             <td class="p-2 border border-gray-200 dark:border-gray-700">8% YoY increase in average compensation; expanded equity-based compensation programs</td>
@@ -1667,11 +1718,11 @@
                             <div class="mt-4 bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
                                 <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-1">Risk Management Insights:</h6>
                                 <ul class="pl-4 text-xs mb-0">
-                                    <li class="mb-1"><strong>Competitive Response:</strong> Dell's increasing R&amp;D investment reflects its strategic response to intensifying competition, particularly in high-growth areas like AI infrastructure and multi-cloud solutions</li>
+                                    <li class="mb-1"><strong>Competitive Response:</strong> Dell's increasing R&D investment reflects its strategic response to intensifying competition, particularly in high-growth areas like AI infrastructure and multi-cloud solutions</li>
                                     <li class="mb-1"><strong>Business Model Adaptation:</strong> The expansion of APEX flexible consumption offerings directly addresses macroeconomic uncertainty by providing customers with alternatives to large capital expenditures during potentially challenging economic conditions</li>
                                     <li class="mb-1"><strong>Supply Chain Resilience:</strong> The increased inventory levels and logistics investments demonstrate Dell's approach to mitigating supply chain disruption risks, prioritizing product availability despite higher carrying costs</li>
                                     <li class="mb-1"><strong>Strategic Talent Investment:</strong> The significant increase in compensation and equity programs highlights the strategic importance Dell places on attracting and retaining key technical talent in competitive domains</li>
-                                    <li><strong>Cloud Strategy Evolution:</strong> Dell's substantial R&amp;D allocation to cloud-related solutions shows how the company is transforming a potential threat (cloud transition) into an opportunity through strategic repositioning as a multi-cloud infrastructure provider</li>
+                                    <li><strong>Cloud Strategy Evolution:</strong> Dell's substantial R&D allocation to cloud-related solutions shows how the company is transforming a potential threat (cloud transition) into an opportunity through strategic repositioning as a multi-cloud infrastructure provider</li>
                                 </ul>
                             </div>
                         </div>
@@ -1683,7 +1734,7 @@
                         <p class="mb-3">Practice extracting strategic insights from Dell's financial statements with these applied exercises:</p>
                         
                         <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
-                            <h6 class="font-medium mb-2">Exercise 1: Segment Analysis &amp; Strategic Recommendations</h6>
+                            <h6 class="font-medium mb-2">Exercise 1: Segment Analysis & Strategic Recommendations</h6>
                             <p class="text-xs mb-2">Review the segment data and develop strategic recommendations:</p>
                             <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
                                 <p class="mb-2"><strong>Dell Client Solutions Group (CSG) Three-Year Segment Data:</strong></p>
@@ -1739,13 +1790,13 @@
                             </div>
                             
                             <div class="mb-3">
-                                <label class="block text-sm font-medium mb-1">Your Segment Analysis &amp; Recommendations</label>
+                                <label class="block text-sm font-medium mb-1">Your Segment Analysis & Recommendations</label>
                                 <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="10" placeholder="Analyze Dell's Client Solutions Group performance based on the financial data and market context provided. Identify key trends, strengths, and challenges. Then develop 3-5 strategic recommendations for how Dell should position the CSG business over the next two years to optimize growth and profitability. Support your recommendations with specific insights from the financial data."></textarea>
                             </div>
                         </div>
                         
                         <div class="bg-white dark:bg-gray-900 p-3 rounded-lg mb-4">
-                            <h6 class="font-medium mb-2">Exercise 2: Cash Flow &amp; Capital Allocation Analysis</h6>
+                            <h6 class="font-medium mb-2">Exercise 2: Cash Flow & Capital Allocation Analysis</h6>
                             <p class="text-xs mb-2">Evaluate Dell's cash flow trends and capital allocation strategy:</p>
                             <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
                                 <p class="mb-2"><strong>Dell Cash Flow Data (Three-Year View, $B):</strong></p>
@@ -1803,7 +1854,7 @@
                                             <td class="p-1 text-right">-2.4</td>
                                         </tr>
                                         <tr class="border-b border-gray-300 dark:border-gray-700">
-                                            <td class="p-1">Acquisitions &amp; Investments</td>
+                                            <td class="p-1">Acquisitions & Investments</td>
                                             <td class="p-1 text-right">-0.4</td>
                                             <td class="p-1 text-right">-0.8</td>
                                             <td class="p-1 text-right">-1.2</td>
@@ -1822,7 +1873,7 @@
                             </div>
                             
                             <div class="mb-3">
-                                <label class="block text-sm font-medium mb-1">Your Cash Flow &amp; Capital Allocation Analysis</label>
+                                <label class="block text-sm font-medium mb-1">Your Cash Flow & Capital Allocation Analysis</label>
                                 <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="10" placeholder="Analyze Dell's cash flow and capital allocation strategy based on the data provided. Assess the company's priorities and how they've evolved over the three-year period. Then evaluate whether Dell's capital allocation approach is appropriate given its strategic objectives and industry position. Provide specific recommendations for how Dell should allocate capital over the next 2-3 years, including the optimal balance between debt reduction, share repurchases, dividends, internal investments, and acquisitions."></textarea>
                             </div>
                         </div>
@@ -1852,14 +1903,14 @@
                                                 <td class="p-1 text-right">33.7%</td>
                                             </tr>
                                             <tr class="border-b border-gray-300 dark:border-gray-700">
-                                                <td class="p-1">R&amp;D (% of Revenue)</td>
+                                                <td class="p-1">R&D (% of Revenue)</td>
                                                 <td class="p-1 text-right">5.2%</td>
                                                 <td class="p-1 text-right">3.0%</td>
                                                 <td class="p-1 text-right">2.4%</td>
                                                 <td class="p-1 text-right">9.8%</td>
                                             </tr>
                                             <tr class="border-b border-gray-300 dark:border-gray-700">
-                                                <td class="p-1">SG&amp;A (% of Revenue)</td>
+                                                <td class="p-1">SG&A (% of Revenue)</td>
                                                 <td class="p-1 text-right">12.5%</td>
                                                 <td class="p-1 text-right">11.8%</td>
                                                 <td class="p-1 text-right">10.7%</td>
@@ -1884,15 +1935,15 @@
                                 
                                 <div class="mb-3">
                                     <label class="block text-sm font-medium mb-1">Your Margin Structure Analysis</label>
-                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Analyze Dell's margin structure in comparison to its key competitors. Identify Dell's margin advantages and disadvantages, and explain what they reveal about Dell's competitive positioning and business model. What does Dell's investment in R&amp;D relative to peers indicate about its strategic priorities? What potential margin improvement opportunities could Dell pursue based on this competitive analysis?"></textarea>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Analyze Dell's margin structure in comparison to its key competitors. Identify Dell's margin advantages and disadvantages, and explain what they reveal about Dell's competitive positioning and business model. What does Dell's investment in R&D relative to peers indicate about its strategic priorities? What potential margin improvement opportunities could Dell pursue based on this competitive analysis?"></textarea>
                                 </div>
                             </div>
                             
                             <div class="bg-white dark:bg-gray-900 p-3 rounded-lg">
-                                <h6 class="font-medium mb-2">Exercise 4: Risk Assessment from MD&amp;A</h6>
-                                <p class="text-xs mb-2">Evaluate key risks from Dell's MD&amp;A disclosure:</p>
+                                <h6 class="font-medium mb-2">Exercise 4: Risk Assessment from MD&A</h6>
+                                <p class="text-xs mb-2">Evaluate key risks from Dell's MD&A disclosure:</p>
                                 <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg mb-3 text-xs">
-                                    <p class="mb-2"><strong>Key MD&amp;A Risk Statements (FY23 10-K):</strong></p>
+                                    <p class="mb-2"><strong>Key MD&A Risk Statements (FY23 10-K):</strong></p>
                                     <ol>
                                         <li class="mb-1"><strong>Competitive Pressures:</strong> "We operate in an industry that is subject to rapid and substantial technology changes, evolving industry standards, and frequent new product introductions. Our success depends on our ability to develop and introduce new products and services ahead of our competitors."</li>
                                         <li class="mb-1"><strong>Supply Chain Resilience:</strong> "We rely on component suppliers and manufacturing partners, many of which are single-source or limited-source suppliers. Disruptions to our supply chain or significant increases in component costs could impact our ability to meet customer demand or affect our gross margins."</li>
@@ -1904,7 +1955,7 @@
                                 
                                 <div class="mb-3">
                                     <label class="block text-sm font-medium mb-1">Your Risk Assessment</label>
-                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Based on Dell's MD&amp;A risk disclosures, identify which risks pose the greatest threats to Dell's future financial performance. Prioritize the top three risks and explain why they are particularly significant. For each of these key risks, provide specific recommendations for how Dell could mitigate the risk. Your analysis should connect each risk to potential financial statement impacts and explain how your mitigation strategies would help protect Dell's financial performance."></textarea>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="8" placeholder="Based on Dell's MD&A risk disclosures, identify which risks pose the greatest threats to Dell's future financial performance. Prioritize the top three risks and explain why they are particularly significant. For each of these key risks, provide specific recommendations for how Dell could mitigate the risk. Your analysis should connect each risk to potential financial statement impacts and explain how your mitigation strategies would help protect Dell's financial performance."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -1944,7 +1995,7 @@
                                     <i class="ri-book-open-line"></i>
                                 </div>
                                 <div>
-                                    <h5 class="font-medium text-sm mb-1">MD&amp;A Analysis Guide</h5>
+                                    <h5 class="font-medium text-sm mb-1">MD&A Analysis Guide</h5>
                                     <p class="text-xs text-gray-500 dark:text-gray-400">Corporate Finance Institute • Guide to analyzing management discussion</p>
                                 </div>
                             </div>
@@ -1955,36 +2006,16 @@
                 <div class="flex justify-between mt-6">
                     <button class="flex items-center gap-1 text-primary hover:text-primary/80 prev-topic" data-prev="topic-modeling">
                         <i class="ri-arrow-left-line"></i>
-                        <span>Previous: Share-Gain &amp; P&amp;L Modeling</span>
+                        <span>Previous: Share-Gain & P&L Modeling</span>
                     </button>
-                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" disabled="">
+                    <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" disabled>
                         <span>Next Module</span>
                         <i class="ri-arrow-right-line"></i>
                     </button>
                 </div>
             </section>
         </main>
-
-    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
-                </div>
-                <div class="text-center md:text-left">
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
-                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <div class="flex items-center gap-3">
-                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
-                            <i class="ri-arrow-up-line text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1993,55 +2024,73 @@
                 document.documentElement.classList.toggle('dark');
             });
             
-            // Module dropdown
-            const moduleDropdown = document.getElementById('module-dropdown');
-            const moduleMenu = document.getElementById('module-menu');
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
             
-            if (moduleDropdown && moduleMenu) {
-                moduleDropdown.addEventListener('click', function() {
-                    moduleMenu.classList.toggle('hidden');
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
                 });
                 
-                // Close the dropdown when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
-                        moduleMenu.classList.add('hidden');
-                    }
-                });
-            }
-            
-            // Back to top functionality
-            const backToTopButton = document.getElementById('back-to-top');
-            
-            if (backToTopButton) {
-                backToTopButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-            
-            // Highlight current section based on scroll position
-            const sections = document.querySelectorAll('section[id]');
-            
-            function highlightCurrentSection() {
-                const scrollY = window.pageYOffset;
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
                 
-                sections.forEach(current => {
-                    const sectionHeight = current.offsetHeight;
-                    const sectionTop = current.offsetTop - 100;
-                    const sectionId = current.getAttribute('id');
-                    
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
                     } else {
-                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
                     }
                 });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
             }
             
-            window.addEventListener('scroll', highlightCurrentSection);
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-financial-statements');
         });
     </script>
-
-
-</body></html>
+</body>
+</html>

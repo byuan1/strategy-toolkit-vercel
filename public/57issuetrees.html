@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dell Strategy Toolkit | Learning Portal</title>
@@ -15,9 +17,6 @@
                         darkBg: '#181818',
                         lightText: '#333333',
                         darkText: '#E5E5E5',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     }
                 }
             },
@@ -37,100 +36,8 @@
         });
     </script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px; /* Adjust based on header height */
-        }
-        
-        /* Module color classes */
-        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
-        .module-financial { --module-color: 245, 158, 11; } /* Amber */
-        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
-        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
-        .module-product { --module-color: 59, 130, 246; } /* Blue */
-        .module-project { --module-color: 139, 92, 246; } /* Purple */
-        .module-communication { --module-color: 239, 68, 68; } /* Red */
-
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        /* Topic headings */
-        .topic-heading {
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .topic-heading::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.25rem;
-            bottom: 0.25rem;
-            width: 4px;
-            border-radius: 2px;
-            background-color: currentColor;
-        }
-
-        /* Module card hover effect */
-        .module-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-        
-        .module-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .dark .module-card:hover {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-
-<style>
-  /* Smooth transitions */
-  .transition-colors {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Hover effects */
-  .hover\:bg-gray-200:hover {
-    background-color: rgba(229, 231, 235, 1);
-  }
-  
-  .dark .dark\:hover\:bg-gray-700:hover {
-    background-color: rgba(55, 65, 81, 1);
-  }
-</style>
 </head>
-<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
     <!-- Header -->
     <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -138,27 +45,13 @@
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
                 <div>
                     <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <div class="relative">
-                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
-                        <span>Navigate to Module</span>
-                        <i class="ri-arrow-down-s-line"></i>
-                    </button>
-                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
-                        <div class="p-2 space-y-1">
-                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
-                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
-                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
-                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
-                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
-                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
-                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
-                        </div>
-                    </div>
-                </div>
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
                     <i class="ri-moon-line dark:hidden"></i>
                     <i class="ri-sun-line hidden dark:block"></i>
@@ -175,15 +68,131 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <div class="mb-6">
-          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-            <i class="ri-arrow-left-line"></i>
-            <span>Back to Home</span>
-          </a>
-        </div>
-      
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 text-primary">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management Essentials</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Structured Problem Solving</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-storylining">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Story-lining</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-issue-trees">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Issue Trees</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-root-cause">
+                                <span class="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 flex-shrink-0 text-xs">○</span>
+                                <span>Root-Cause Analysis</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">10%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 10%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Structured Problem Solving</span>
+                                <span>1/3 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Product & Ops Foundations</span>
+                                <span>9/9 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>0/3 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
             <!-- Issue Trees Topic -->
             <section id="topic-issue-trees" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
                 <div class="flex justify-between items-center mb-4">
@@ -237,7 +246,7 @@
                             </div>
                             
                             <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
-                                <h6 class="font-medium mb-2 text-primary">Analysis &amp; Work Planning</h6>
+                                <h6 class="font-medium mb-2 text-primary">Analysis & Work Planning</h6>
                                 <ul class="pl-5 mb-0 text-sm">
                                     <li>Maps required analyses clearly</li>
                                     <li>Creates natural workstreams</li>
@@ -248,7 +257,7 @@
                             </div>
                             
                             <div class="bg-white dark:bg-gray-900 p-3 rounded-lg shadow-sm">
-                                <h6 class="font-medium mb-2 text-primary">Communication &amp; Alignment</h6>
+                                <h6 class="font-medium mb-2 text-primary">Communication & Alignment</h6>
                                 <ul class="pl-5 mb-0 text-sm">
                                     <li>Visualizes problem structure</li>
                                     <li>Creates shared mental models</li>
@@ -264,7 +273,7 @@
                             <div class="bg-white dark:bg-gray-900 p-4 rounded-lg">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
-                                        <h6 class="text-sm font-medium mb-2 text-primary">Structure &amp; Organization</h6>
+                                        <h6 class="text-sm font-medium mb-2 text-primary">Structure & Organization</h6>
                                         <ul class="pl-5 text-sm mb-0">
                                             <li class="mb-2"><strong>Key Question:</strong> The central problem or hypothesis that the tree addresses</li>
                                             <li class="mb-2"><strong>Branches:</strong> Major categories or drivers that could answer the key question</li>
@@ -301,7 +310,7 @@
                                 <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                         <div>
-                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Purpose &amp; Structure</h6>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Purpose & Structure</h6>
                                             <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
                                                 <ul class="pl-4 text-xs mb-0">
                                                     <li class="mb-2"><strong>Primary Goal:</strong> Identify root causes of a problem or performance issue</li>
@@ -348,7 +357,7 @@
                                 <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                         <div>
-                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Purpose &amp; Structure</h6>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Purpose & Structure</h6>
                                             <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
                                                 <ul class="pl-4 text-xs mb-0">
                                                     <li class="mb-2"><strong>Primary Goal:</strong> Identify and evaluate potential solutions to a problem</li>
@@ -395,7 +404,7 @@
                                 <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                         <div>
-                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Purpose &amp; Structure</h6>
+                                            <h6 class="text-xs font-medium text-indigo-700 dark:text-indigo-400 mb-2">Purpose & Structure</h6>
                                             <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
                                                 <ul class="pl-4 text-xs mb-0">
                                                     <li class="mb-2"><strong>Primary Goal:</strong> Evaluate alternatives against decision criteria</li>
@@ -426,7 +435,7 @@
                                                 <p class="text-xs mb-2"><strong>Key Question:</strong> Which of three potential locations should Dell select for its new manufacturing facility?</p>
                                                 <ul class="pl-4 text-xs mb-0">
                                                     <li class="mb-1"><strong>Branch 1:</strong> Cost considerations (labor, land, taxes, incentives)</li>
-                                                    <li class="mb-1"><strong>Branch 2:</strong> Logistics &amp; supply chain impact</li>
+                                                    <li class="mb-1"><strong>Branch 2:</strong> Logistics & supply chain impact</li>
                                                     <li class="mb-1"><strong>Branch 3:</strong> Labor market quality and availability</li>
                                                     <li class="mb-1"><strong>Branch 4:</strong> Operational risk factors</li>
                                                     <li class="mb-1"><strong>Branch 5:</strong> Strategic value and future flexibility</li>
@@ -546,7 +555,7 @@
                             <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
                                 <div class="flex items-center gap-2 mb-2">
                                     <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 font-medium">7</div>
-                                    <h6 class="text-emerald-700 dark:text-emerald-400 font-medium">Test &amp; Refine</h6>
+                                    <h6 class="text-emerald-700 dark:text-emerald-400 font-medium">Test & Refine</h6>
                                 </div>
                                 <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
                                     <ul class="pl-4 text-xs mb-0">
@@ -562,7 +571,7 @@
                             <div class="bg-white dark:bg-gray-800 p-3 rounded-lg">
                                 <div class="flex items-center gap-2 mb-2">
                                     <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 font-medium">8</div>
-                                    <h6 class="text-emerald-700 dark:text-emerald-400 font-medium">Document &amp; Communicate</h6>
+                                    <h6 class="text-emerald-700 dark:text-emerald-400 font-medium">Document & Communicate</h6>
                                 </div>
                                 <div class="bg-emerald-50 dark:bg-emerald-900/20 p-2 rounded">
                                     <ul class="pl-4 text-xs mb-0">
@@ -710,7 +719,7 @@
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <h6 class="text-xs font-medium mb-1">Context &amp; Constraints</h6>
+                                    <h6 class="text-xs font-medium mb-1">Context & Constraints</h6>
                                     <div class="bg-white dark:bg-gray-800 p-2 rounded">
                                         <ul class="pl-4 text-xs mb-0">
                                             <li class="mb-1">Market share pressure from premium competitors (Apple) and value players (Lenovo)</li>
@@ -781,7 +790,7 @@
                                                 <div class="flex flex-col items-center">
                                                     <div class="w-[2px] h-4 bg-gray-400"></div>
                                                     <div class="bg-green-50 dark:bg-green-900/20 p-2 w-[180px] rounded text-center text-xs">
-                                                        1.2 Feature &amp; innovation prioritization
+                                                        1.2 Feature & innovation prioritization
                                                     </div>
                                                 </div>
                                                 <div class="flex flex-col items-center">
@@ -835,7 +844,7 @@
                                                 <div class="flex flex-col items-center">
                                                     <div class="w-[2px] h-4 bg-gray-400"></div>
                                                     <div class="bg-orange-50 dark:bg-orange-900/20 p-2 w-[180px] rounded text-center text-xs">
-                                                        3.2 Software &amp; services integration
+                                                        3.2 Software & services integration
                                                     </div>
                                                 </div>
                                                 <div class="flex flex-col items-center">
@@ -854,7 +863,7 @@
                         </div>
                         
                         <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg mb-4">
-                            <h6 class="text-sm font-medium text-primary mb-2">Key Analyses &amp; Work Planning</h6>
+                            <h6 class="text-sm font-medium text-primary mb-2">Key Analyses & Work Planning</h6>
                             
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div>
@@ -864,18 +873,18 @@
                                             <li class="mb-1">Profitability analysis by product category and feature set</li>
                                             <li class="mb-1">Competitive feature benchmarking across segments</li>
                                             <li class="mb-1">Price elasticity modeling by customer segment</li>
-                                            <li class="mb-1">Customer preferences &amp; willingness-to-pay research</li>
+                                            <li class="mb-1">Customer preferences & willingness-to-pay research</li>
                                             <li class="mb-1">Product lifecycle analysis and development roadmap</li>
                                         </ul>
                                     </div>
                                 </div>
                                 
                                 <div>
-                                    <h6 class="text-xs font-medium mb-1">Positioning &amp; GTM Analyses</h6>
+                                    <h6 class="text-xs font-medium mb-1">Positioning & GTM Analyses</h6>
                                     <div class="bg-white dark:bg-gray-800 p-2 rounded">
                                         <ul class="pl-4 text-xs mb-0">
                                             <li class="mb-1">Brand perception research across segments</li>
-                                            <li class="mb-1">Channel performance &amp; cost-to-serve analysis</li>
+                                            <li class="mb-1">Channel performance & cost-to-serve analysis</li>
                                             <li class="mb-1">Market sizing and growth by segment</li>
                                             <li class="mb-1">Competitive positioning mapping</li>
                                             <li class="mb-1">Marketing ROI and media mix optimization</li>
@@ -902,7 +911,7 @@
                                 <div class="bg-white dark:bg-gray-800 p-2 rounded">
                                     <p class="text-xs mb-2">The issue tree directly informed the project workplan, with each main branch becoming a workstream with dedicated team members and stakeholders:</p>
                                     <ul class="pl-4 text-xs mb-2">
-                                        <li class="mb-1"><strong>Workstream 1:</strong> Portfolio Strategy (Product Management, R&amp;D, Pricing leads)</li>
+                                        <li class="mb-1"><strong>Workstream 1:</strong> Portfolio Strategy (Product Management, R&D, Pricing leads)</li>
                                         <li class="mb-1"><strong>Workstream 2:</strong> Market Positioning (Marketing, Sales, Customer Experience leads)</li>
                                         <li class="mb-1"><strong>Workstream 3:</strong> Business Model Innovation (Finance, IT, Digital leads)</li>
                                     </ul>
@@ -912,11 +921,11 @@
                         </div>
                         
                         <div class="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg">
-                            <h6 class="text-sm font-medium text-primary mb-2">Outcomes &amp; Strategic Impact</h6>
+                            <h6 class="text-sm font-medium text-primary mb-2">Outcomes & Strategic Impact</h6>
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <h6 class="text-xs font-medium mb-1">Key Findings &amp; Recommendations</h6>
+                                    <h6 class="text-xs font-medium mb-1">Key Findings & Recommendations</h6>
                                     <div class="bg-white dark:bg-gray-800 p-2 rounded">
                                         <p class="text-xs mb-2">The comprehensive issue tree approach led to several strategic insights:</p>
                                         <ol class="pl-4 text-xs">
@@ -1051,7 +1060,7 @@
                                 </div>
                                 <div>
                                     <h5 class="font-medium text-sm mb-1">Digital Transformation Decisions</h5>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey &amp; Company • Structured approach to transformation</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • Structured approach to transformation</p>
                                 </div>
                             </div>
                         </a>
@@ -1082,27 +1091,7 @@
                 </div>
             </section>
         </main>
-
-    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
-                </div>
-                <div class="text-center md:text-left">
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
-                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <div class="flex items-center gap-3">
-                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
-                            <i class="ri-arrow-up-line text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1111,55 +1100,73 @@
                 document.documentElement.classList.toggle('dark');
             });
             
-            // Module dropdown
-            const moduleDropdown = document.getElementById('module-dropdown');
-            const moduleMenu = document.getElementById('module-menu');
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
             
-            if (moduleDropdown && moduleMenu) {
-                moduleDropdown.addEventListener('click', function() {
-                    moduleMenu.classList.toggle('hidden');
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
                 });
                 
-                // Close the dropdown when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
-                        moduleMenu.classList.add('hidden');
-                    }
-                });
-            }
-            
-            // Back to top functionality
-            const backToTopButton = document.getElementById('back-to-top');
-            
-            if (backToTopButton) {
-                backToTopButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-            
-            // Highlight current section based on scroll position
-            const sections = document.querySelectorAll('section[id]');
-            
-            function highlightCurrentSection() {
-                const scrollY = window.pageYOffset;
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
                 
-                sections.forEach(current => {
-                    const sectionHeight = current.offsetHeight;
-                    const sectionTop = current.offsetTop - 100;
-                    const sectionId = current.getAttribute('id');
-                    
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
                     } else {
-                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
                     }
                 });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
             }
             
-            window.addEventListener('scroll', highlightCurrentSection);
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-issue-trees');
         });
     </script>
-
-
-</body></html>
+</body>
+</html>

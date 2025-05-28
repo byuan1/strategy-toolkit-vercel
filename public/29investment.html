@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dell Strategy Toolkit | Learning Portal</title>
@@ -15,9 +17,6 @@
                         darkBg: '#181818',
                         lightText: '#333333',
                         darkText: '#E5E5E5',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     }
                 }
             },
@@ -37,132 +36,8 @@
         });
     </script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px; /* Adjust based on header height */
-        }
-        
-        /* Module color classes */
-        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
-        .module-financial { --module-color: 245, 158, 11; } /* Amber */
-        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
-        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
-        .module-product { --module-color: 59, 130, 246; } /* Blue */
-        .module-project { --module-color: 139, 92, 246; } /* Purple */
-        .module-communication { --module-color: 239, 68, 68; } /* Red */
-
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        /* Topic headings */
-        .topic-heading {
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .topic-heading::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.25rem;
-            bottom: 0.25rem;
-            width: 4px;
-            border-radius: 2px;
-            background-color: currentColor;
-        }
-
-        /* Module card hover effect */
-        .module-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-        
-        .module-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .dark .module-card:hover {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-
-<style>
-  /* Smooth transitions */
-  .transition-colors {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Hover effects */
-  .hover\:bg-gray-200:hover {
-    background-color: rgba(229, 231, 235, 1);
-  }
-  
-  .dark .dark\:hover\:bg-gray-700:hover {
-    background-color: rgba(55, 65, 81, 1);
-  }
-</style>
-
-<style>
-  /* Smooth transitions */
-  .transition-colors {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Hover effects */
-  .hover\:bg-gray-200:hover {
-    background-color: rgba(229, 231, 235, 1);
-  }
-  
-  .dark .dark\:hover\:bg-gray-700:hover {
-    background-color: rgba(55, 65, 81, 1);
-  }
-</style>
-
-<style>
-  /* Smooth transitions */
-  .transition-colors {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Hover effects */
-  .hover\:bg-gray-200:hover {
-    background-color: rgba(229, 231, 235, 1);
-  }
-  
-  .dark .dark\:hover\:bg-gray-700:hover {
-    background-color: rgba(55, 65, 81, 1);
-  }
-</style>
 </head>
-<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
     <!-- Header -->
     <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -170,27 +45,13 @@
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
                 <div>
                     <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <div class="relative">
-                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
-                        <span>Navigate to Module</span>
-                        <i class="ri-arrow-down-s-line"></i>
-                    </button>
-                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
-                        <div class="p-2 space-y-1">
-                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
-                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
-                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
-                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
-                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
-                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
-                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
-                        </div>
-                    </div>
-                </div>
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
                     <i class="ri-moon-line dark:hidden"></i>
                     <i class="ri-sun-line hidden dark:block"></i>
@@ -207,15 +68,149 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-      <div class="mb-6">
-        <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-          <i class="ri-arrow-left-line"></i>
-          <span>Back to Home</span>
-        </a>
-      </div>
-    
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Financial Acumen</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-financial-statements">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Financial Statement Analysis</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-kpi-metrics">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>KPI Analysis & Metrics</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-valuation">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Valuation Fundamentals</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-business-case">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Business Case Development</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-cost-analysis">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Cost Analysis & Optimization</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-investment">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Investment Prioritization</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">56%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 56%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>7/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Problem Solving</span>
+                                <span>7/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>5/6 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
             <!-- Investment Prioritization Topic -->
             <section id="topic-investment" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
                 <div class="flex justify-between items-center mb-4">
@@ -277,7 +272,7 @@
                                         </div>
                                         <ul class="text-xs pl-3 space-y-1 mb-0">
                                             <li>Business unit funding allocation</li>
-                                            <li>M&amp;A and divestiture decisions</li>
+                                            <li>M&A and divestiture decisions</li>
                                             <li>Strategic transformation initiatives</li>
                                             <li>Major geography expansions</li>
                                             <li>Capital structure decisions</li>
@@ -309,7 +304,7 @@
                                         </div>
                                         <ul class="text-xs pl-3 space-y-1 mb-0">
                                             <li>IT project portfolio management</li>
-                                            <li>R&amp;D focus area selection</li>
+                                            <li>R&D focus area selection</li>
                                             <li>Manufacturing capacity projects</li>
                                             <li>Supply chain optimization initiatives</li>
                                             <li>Process improvement selection</li>
@@ -663,16 +658,16 @@
                                         <!-- Coordinate system -->
                                         <svg class="absolute inset-0 h-full w-full" viewBox="0 0 240 220">
                                             <!-- Axes -->
-                                            <line x1="20" y1="200" x2="220" y2="200" stroke="#6B7280" stroke-width="1"></line>
-                                            <line x1="20" y1="20" x2="20" y2="200" stroke="#6B7280" stroke-width="1"></line>
+                                            <line x1="20" y1="200" x2="220" y2="200" stroke="#6B7280" stroke-width="1"/>
+                                            <line x1="20" y1="20" x2="20" y2="200" stroke="#6B7280" stroke-width="1"/>
                                             
                                             <!-- Axis labels -->
                                             <text x="120" y="220" text-anchor="middle" fill="currentColor" font-size="10">Strategic Alignment</text>
                                             <text x="10" y="110" text-anchor="middle" fill="currentColor" font-size="10" transform="rotate(-90, 10, 110)">Financial Return</text>
                                             
                                             <!-- Quadrant lines -->
-                                            <line x1="20" y1="110" x2="220" y2="110" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,2"></line>
-                                            <line x1="120" y1="20" x2="120" y2="200" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,2"></line>
+                                            <line x1="20" y1="110" x2="220" y2="110" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,2"/>
+                                            <line x1="120" y1="20" x2="120" y2="200" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,2"/>
                                             
                                             <!-- Quadrant labels -->
                                             <text x="70" y="65" text-anchor="middle" fill="#EF4444" font-size="10" font-weight="bold">SELECTIVE</text>
@@ -692,16 +687,16 @@
                                             <text x="170" y="175" text-anchor="middle" fill="currentColor" font-size="8">High Alignment</text>
                                             
                                             <!-- Sample projects (circles) -->
-                                            <circle cx="190" cy="50" r="10" fill="#10B981" opacity="0.8"></circle>
+                                            <circle cx="190" cy="50" r="10" fill="#10B981" opacity="0.8"/>
                                             <text x="190" y="53" text-anchor="middle" fill="white" font-size="8">A</text>
                                             
-                                            <circle cx="60" cy="70" r="8" fill="#EF4444" opacity="0.8"></circle>
+                                            <circle cx="60" cy="70" r="8" fill="#EF4444" opacity="0.8"/>
                                             <text x="60" y="73" text-anchor="middle" fill="white" font-size="8">B</text>
                                             
-                                            <circle cx="150" cy="140" r="12" fill="#F59E0B" opacity="0.8"></circle>
+                                            <circle cx="150" cy="140" r="12" fill="#F59E0B" opacity="0.8"/>
                                             <text x="150" y="143" text-anchor="middle" fill="white" font-size="8">C</text>
                                             
-                                            <circle cx="80" cy="170" r="7" fill="#6B7280" opacity="0.8"></circle>
+                                            <circle cx="80" cy="170" r="7" fill="#6B7280" opacity="0.8"/>
                                             <text x="80" y="173" text-anchor="middle" fill="white" font-size="8">D</text>
                                         </svg>
                                     </div>
@@ -719,29 +714,29 @@
                                             <text x="50" y="20" text-anchor="middle" fill="currentColor" font-size="10" font-weight="bold">Resource Allocation by Strategic Objective</text>
                                             
                                             <!-- Bucket 1 -->
-                                            <rect x="20" y="40" width="40" height="130" fill="none" stroke="#3B82F6" stroke-width="1.5"></rect>
-                                            <rect x="20" y="110" width="40" height="60" fill="#3B82F6" fill-opacity="0.3"></rect>
+                                            <rect x="20" y="40" width="40" height="130" fill="none" stroke="#3B82F6" stroke-width="1.5"/>
+                                            <rect x="20" y="110" width="40" height="60" fill="#3B82F6" fill-opacity="0.3"/>
                                             <text x="40" y="180" text-anchor="middle" fill="currentColor" font-size="8">Core Growth</text>
                                             <text x="40" y="190" text-anchor="middle" fill="currentColor" font-size="8">25%</text>
                                             <text x="40" y="100" text-anchor="middle" fill="#3B82F6" font-size="8" font-weight="bold">$50M</text>
                                             
                                             <!-- Bucket 2 -->
-                                            <rect x="70" y="40" width="40" height="130" fill="none" stroke="#10B981" stroke-width="1.5"></rect>
-                                            <rect x="70" y="130" width="40" height="40" fill="#10B981" fill-opacity="0.3"></rect>
+                                            <rect x="70" y="40" width="40" height="130" fill="none" stroke="#10B981" stroke-width="1.5"/>
+                                            <rect x="70" y="130" width="40" height="40" fill="#10B981" fill-opacity="0.3"/>
                                             <text x="90" y="180" text-anchor="middle" fill="currentColor" font-size="8">Innovation</text>
                                             <text x="90" y="190" text-anchor="middle" fill="currentColor" font-size="8">20%</text>
                                             <text x="90" y="120" text-anchor="middle" fill="#10B981" font-size="8" font-weight="bold">$40M</text>
                                             
                                             <!-- Bucket 3 -->
-                                            <rect x="120" y="40" width="40" height="130" fill="none" stroke="#F59E0B" stroke-width="1.5"></rect>
-                                            <rect x="120" y="140" width="40" height="30" fill="#F59E0B" fill-opacity="0.3"></rect>
+                                            <rect x="120" y="40" width="40" height="130" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+                                            <rect x="120" y="140" width="40" height="30" fill="#F59E0B" fill-opacity="0.3"/>
                                             <text x="140" y="180" text-anchor="middle" fill="currentColor" font-size="8">Efficiency</text>
                                             <text x="140" y="190" text-anchor="middle" fill="currentColor" font-size="8">15%</text>
                                             <text x="140" y="130" text-anchor="middle" fill="#F59E0B" font-size="8" font-weight="bold">$30M</text>
                                             
                                             <!-- Bucket 4 -->
-                                            <rect x="170" y="40" width="40" height="130" fill="none" stroke="#8B5CF6" stroke-width="1.5"></rect>
-                                            <rect x="170" y="150" width="40" height="20" fill="#8B5CF6" fill-opacity="0.3"></rect>
+                                            <rect x="170" y="40" width="40" height="130" fill="none" stroke="#8B5CF6" stroke-width="1.5"/>
+                                            <rect x="170" y="150" width="40" height="20" fill="#8B5CF6" fill-opacity="0.3"/>
                                             <text x="190" y="180" text-anchor="middle" fill="currentColor" font-size="8">Digital</text>
                                             <text x="190" y="190" text-anchor="middle" fill="currentColor" font-size="8">10%</text>
                                             <text x="190" y="140" text-anchor="middle" fill="#8B5CF6" font-size="8" font-weight="bold">$20M</text>
@@ -851,7 +846,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr class="border-b border-gray-200 dark:border-gray-700">
-                                                    <td class="p-1.5 font-medium">Innovation &amp; Capabilities</td>
+                                                    <td class="p-1.5 font-medium">Innovation & Capabilities</td>
                                                     <td class="p-1.5 text-center">
                                                         <div class="flex justify-center">
                                                             <i class="ri-star-fill text-amber-500"></i>
@@ -968,14 +963,14 @@
                                             <div class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center text-red-600 dark:text-red-400 mr-2">
                                                 <i class="ri-shield-check-line"></i>
                                             </div>
-                                            <p class="text-xs font-medium mb-0 text-red-700 dark:text-red-400">Risk &amp; Execution (25% weight)</p>
+                                            <p class="text-xs font-medium mb-0 text-red-700 dark:text-red-400">Risk & Execution (25% weight)</p>
                                         </div>
                                         <ul class="pl-8 text-xs mb-0">
                                             <li>Technical Feasibility</li>
-                                            <li>Resource Requirements &amp; Availability</li>
+                                            <li>Resource Requirements & Availability</li>
                                             <li>Organizational Readiness</li>
-                                            <li>Dependencies &amp; Implementation Complexity</li>
-                                            <li>Market &amp; Competitive Uncertainties</li>
+                                            <li>Dependencies & Implementation Complexity</li>
+                                            <li>Market & Competitive Uncertainties</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1187,7 +1182,7 @@
                                         
                                         <!-- Risk & Execution -->
                                         <tr class="bg-red-50 dark:bg-red-900/20">
-                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium" colspan="8">Risk &amp; Execution (25%)</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2 font-medium" colspan="8">Risk & Execution (25%)</td>
                                         </tr>
                                         <tr>
                                             <td class="border border-gray-200 dark:border-gray-700 p-2">Technical Feasibility</td>
@@ -1240,7 +1235,7 @@
                                             <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">0.09</td>
                                         </tr>
                                         <tr class="bg-gray-50 dark:bg-gray-900 font-medium">
-                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Risk &amp; Execution Subtotal</td>
+                                            <td class="border border-gray-200 dark:border-gray-700 p-2">Risk & Execution Subtotal</td>
                                             <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">25%</td>
                                             <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">2.7</td>
                                             <td class="border border-gray-200 dark:border-gray-700 p-2 text-center">0.68</td>
@@ -1280,16 +1275,16 @@
                                     <!-- Radar Chart Visualization -->
                                     <svg class="absolute inset-0 h-full w-full" viewBox="0 0 240 180">
                                         <!-- Radar background -->
-                                        <path d="M120,90 L120,10 L197,47 L180,130 L60,130 L43,47 Z" fill="none" stroke="#6B7280" stroke-width="1" stroke-opacity="0.3"></path>
-                                        <path d="M120,90 L120,30 L173,58 L160,120 L80,120 L67,58 Z" fill="none" stroke="#6B7280" stroke-width="1" stroke-opacity="0.3"></path>
-                                        <path d="M120,90 L120,50 L150,70 L140,110 L100,110 L90,70 Z" fill="none" stroke="#6B7280" stroke-width="1" stroke-opacity="0.3"></path>
+                                        <path d="M120,90 L120,10 L197,47 L180,130 L60,130 L43,47 Z" fill="none" stroke="#6B7280" stroke-width="1" stroke-opacity="0.3"/>
+                                        <path d="M120,90 L120,30 L173,58 L160,120 L80,120 L67,58 Z" fill="none" stroke="#6B7280" stroke-width="1" stroke-opacity="0.3"/>
+                                        <path d="M120,90 L120,50 L150,70 L140,110 L100,110 L90,70 Z" fill="none" stroke="#6B7280" stroke-width="1" stroke-opacity="0.3"/>
                                         
                                         <!-- Axis lines -->
-                                        <line x1="120" y1="90" x2="120" y2="10" stroke="#6B7280" stroke-width="1" stroke-opacity="0.5"></line>
-                                        <line x1="120" y1="90" x2="197" y2="47" stroke="#6B7280" stroke-width="1" stroke-opacity="0.5"></line>
-                                        <line x1="120" y1="90" x2="180" y2="130" stroke="#6B7280" stroke-width="1" stroke-opacity="0.5"></line>
-                                        <line x1="120" y1="90" x2="60" y2="130" stroke="#6B7280" stroke-width="1" stroke-opacity="0.5"></line>
-                                        <line x1="120" y1="90" x2="43" y2="47" stroke="#6B7280" stroke-width="1" stroke-opacity="0.5"></line>
+                                        <line x1="120" y1="90" x2="120" y2="10" stroke="#6B7280" stroke-width="1" stroke-opacity="0.5"/>
+                                        <line x1="120" y1="90" x2="197" y2="47" stroke="#6B7280" stroke-width="1" stroke-opacity="0.5"/>
+                                        <line x1="120" y1="90" x2="180" y2="130" stroke="#6B7280" stroke-width="1" stroke-opacity="0.5"/>
+                                        <line x1="120" y1="90" x2="60" y2="130" stroke="#6B7280" stroke-width="1" stroke-opacity="0.5"/>
+                                        <line x1="120" y1="90" x2="43" y2="47" stroke="#6B7280" stroke-width="1" stroke-opacity="0.5"/>
                                         
                                         <!-- Axis labels -->
                                         <text x="120" y="5" text-anchor="middle" fill="currentColor" font-size="9">Strategic Alignment</text>
@@ -1299,22 +1294,22 @@
                                         <text x="35" y="45" text-anchor="end" fill="currentColor" font-size="9">Risk Profile</text>
                                         
                                         <!-- Project A -->
-                                        <path d="M120,90 L120,18 L180,55 L160,120 L85,120 L60,55 Z" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6" stroke-width="2"></path>
+                                        <path d="M120,90 L120,18 L180,55 L160,120 L85,120 L60,55 Z" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6" stroke-width="2"/>
                                         
                                         <!-- Project B -->
-                                        <path d="M120,90 L120,45 L180,50 L165,110 L90,110 L70,65 Z" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="2"></path>
+                                        <path d="M120,90 L120,45 L180,50 L165,110 L90,110 L70,65 Z" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="2"/>
                                         
                                         <!-- Project C -->
-                                        <path d="M120,90 L120,30 L170,65 L170,115 L75,115 L80,60 Z" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="2"></path>
+                                        <path d="M120,90 L120,30 L170,65 L170,115 L75,115 L80,60 Z" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="2"/>
                                         
                                         <!-- Legend -->
-                                        <rect x="20" y="155" width="8" height="8" fill="#3B82F6" fill-opacity="0.6"></rect>
+                                        <rect x="20" y="155" width="8" height="8" fill="#3B82F6" fill-opacity="0.6"/>
                                         <text x="33" y="162" font-size="8" fill="currentColor">Project A</text>
                                         
-                                        <rect x="95" y="155" width="8" height="8" fill="#10B981" fill-opacity="0.6"></rect>
+                                        <rect x="95" y="155" width="8" height="8" fill="#10B981" fill-opacity="0.6"/>
                                         <text x="108" y="162" font-size="8" fill="currentColor">Project B</text>
                                         
-                                        <rect x="170" y="155" width="8" height="8" fill="#F59E0B" fill-opacity="0.6"></rect>
+                                        <rect x="170" y="155" width="8" height="8" fill="#F59E0B" fill-opacity="0.6"/>
                                         <text x="183" y="162" font-size="8" fill="currentColor">Project C</text>
                                     </svg>
                                 </div>
@@ -1374,11 +1369,11 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <p class="text-xs mb-0">Decision thresholds: Score ≥3.75 (Approve), 3.25-3.75 (Phase), &lt;3.25 (Defer)</p>
+                                <p class="text-xs mb-0">Decision thresholds: Score ≥3.75 (Approve), 3.25-3.75 (Phase), <3.25 (Defer)</p>
                             </div>
                             
                             <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
-                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Key Findings &amp; Recommendations</h6>
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Key Findings & Recommendations</h6>
                                 <ul class="pl-4 text-xs mb-0">
                                     <li class="mb-1"><strong>Strong strategic performers:</strong> Project A scores exceptionally well on strategic alignment (4.9/5.0) despite moderate risk profile, making it the top priority</li>
                                     <li class="mb-1"><strong>Financial vs. strategic balance:</strong> Project B has the strongest financial case but weak strategic alignment, justifying a phased approach</li>
@@ -1433,7 +1428,7 @@
                                                 <div class="w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400 mr-2 flex-shrink-0">
                                                     <span class="text-xs font-medium">3</span>
                                                 </div>
-                                                <p class="text-xs font-medium text-amber-700 dark:text-amber-400">Evaluation &amp; Scoring</p>
+                                                <p class="text-xs font-medium text-amber-700 dark:text-amber-400">Evaluation & Scoring</p>
                                             </div>
                                             <ul class="pl-3 text-xs mb-0">
                                                 <li>Multi-functional review teams</li>
@@ -1465,7 +1460,7 @@
                                                 <div class="w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400 mr-2 flex-shrink-0">
                                                     <span class="text-xs font-medium">5</span>
                                                 </div>
-                                                <p class="text-xs font-medium text-amber-700 dark:text-amber-400">Decision &amp; Execution</p>
+                                                <p class="text-xs font-medium text-amber-700 dark:text-amber-400">Decision & Execution</p>
                                             </div>
                                             <ul class="pl-3 text-xs mb-0">
                                                 <li>Investment Review Board approval</li>
@@ -1538,40 +1533,40 @@
                                             <!-- Risk-Return Matrix -->
                                             <svg class="absolute inset-0 h-full w-full" viewBox="0 0 240 130">
                                                 <!-- Axes -->
-                                                <line x1="20" y1="110" x2="220" y2="110" stroke="#6B7280" stroke-width="1"></line>
-                                                <line x1="20" y1="10" x2="20" y2="110" stroke="#6B7280" stroke-width="1"></line>
+                                                <line x1="20" y1="110" x2="220" y2="110" stroke="#6B7280" stroke-width="1"/>
+                                                <line x1="20" y1="10" x2="20" y2="110" stroke="#6B7280" stroke-width="1"/>
                                                 
                                                 <!-- Axis labels -->
                                                 <text x="120" y="125" text-anchor="middle" fill="currentColor" font-size="8">Risk</text>
                                                 <text x="10" y="60" text-anchor="middle" fill="currentColor" font-size="8" transform="rotate(-90, 10, 60)">Return</text>
                                                 
                                                 <!-- Quadrant lines -->
-                                                <line x1="20" y1="60" x2="220" y2="60" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,2"></line>
-                                                <line x1="120" y1="10" x2="120" y2="110" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,2"></line>
+                                                <line x1="20" y1="60" x2="220" y2="60" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,2"/>
+                                                <line x1="120" y1="10" x2="120" y2="110" stroke="#6B7280" stroke-width="1" stroke-dasharray="4,2"/>
                                                 
                                                 <!-- Sample investments (circles) -->
-                                                <circle cx="50" cy="30" r="8" fill="#10B981" opacity="0.8"></circle>
+                                                <circle cx="50" cy="30" r="8" fill="#10B981" opacity="0.8"/>
                                                 <text x="50" y="33" text-anchor="middle" fill="white" font-size="7">A</text>
                                                 
-                                                <circle cx="80" cy="40" r="6" fill="#10B981" opacity="0.8"></circle>
+                                                <circle cx="80" cy="40" r="6" fill="#10B981" opacity="0.8"/>
                                                 <text x="80" y="43" text-anchor="middle" fill="white" font-size="7">B</text>
                                                 
-                                                <circle cx="40" cy="75" r="5" fill="#F59E0B" opacity="0.8"></circle>
+                                                <circle cx="40" cy="75" r="5" fill="#F59E0B" opacity="0.8"/>
                                                 <text x="40" y="78" text-anchor="middle" fill="white" font-size="7">C</text>
                                                 
-                                                <circle cx="140" cy="30" r="7" fill="#EF4444" opacity="0.8"></circle>
+                                                <circle cx="140" cy="30" r="7" fill="#EF4444" opacity="0.8"/>
                                                 <text x="140" y="33" text-anchor="middle" fill="white" font-size="7">D</text>
                                                 
-                                                <circle cx="180" cy="45" r="10" fill="#EF4444" opacity="0.8"></circle>
+                                                <circle cx="180" cy="45" r="10" fill="#EF4444" opacity="0.8"/>
                                                 <text x="180" y="48" text-anchor="middle" fill="white" font-size="7">E</text>
                                                 
-                                                <circle cx="150" cy="90" r="6" fill="#6B7280" opacity="0.8"></circle>
+                                                <circle cx="150" cy="90" r="6" fill="#6B7280" opacity="0.8"/>
                                                 <text x="150" y="93" text-anchor="middle" fill="white" font-size="7">F</text>
                                                 
-                                                <circle cx="200" cy="80" r="4" fill="#6B7280" opacity="0.8"></circle>
+                                                <circle cx="200" cy="80" r="4" fill="#6B7280" opacity="0.8"/>
                                                 <text x="200" y="83" text-anchor="middle" fill="white" font-size="7">G</text>
                                                 
-                                                <circle cx="70" cy="85" r="7" fill="#F59E0B" opacity="0.8"></circle>
+                                                <circle cx="70" cy="85" r="7" fill="#F59E0B" opacity="0.8"/>
                                                 <text x="70" y="88" text-anchor="middle" fill="white" font-size="7">H</text>
                                             </svg>
                                         </div>
@@ -1707,20 +1702,20 @@
                     </div>
                     
                     <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-100 dark:border-gray-800 mb-6">
-                        <h5 class="font-medium mb-3">Example: Dell's R&amp;D Portfolio Optimization</h5>
-                        <p class="text-sm mb-3">This example demonstrates how Dell Technologies optimized its R&amp;D investment portfolio to balance innovation priorities, risk levels, and resource constraints across its technology domains.</p>
+                        <h5 class="font-medium mb-3">Example: Dell's R&D Portfolio Optimization</h5>
+                        <p class="text-sm mb-3">This example demonstrates how Dell Technologies optimized its R&D investment portfolio to balance innovation priorities, risk levels, and resource constraints across its technology domains.</p>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
-                                <h6 class="text-sm font-medium mb-2">R&amp;D Investment Context</h6>
+                                <h6 class="text-sm font-medium mb-2">R&D Investment Context</h6>
                                 <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
-                                    <p class="text-xs mb-2">Dell's technology organization faced several challenges in R&amp;D allocation:</p>
+                                    <p class="text-xs mb-2">Dell's technology organization faced several challenges in R&D allocation:</p>
                                     <ul class="pl-4 text-xs mb-3">
-                                        <li>Growing R&amp;D budget ($4.5B annually) with increasing demand for funding across units</li>
+                                        <li>Growing R&D budget ($4.5B annually) with increasing demand for funding across units</li>
                                         <li>Transition from hardware-centric to software and solutions-oriented portfolio</li>
                                         <li>Need to balance core business enhancements with emerging technology exploration</li>
                                         <li>Scarce specialized engineering talent requiring careful allocation</li>
-                                        <li>Pressure to demonstrate measurable ROI from R&amp;D investments</li>
+                                        <li>Pressure to demonstrate measurable ROI from R&D investments</li>
                                     </ul>
                                     
                                     <p class="text-xs font-medium mb-1">Strategic Technology Priorities:</p>
@@ -1737,14 +1732,14 @@
                             <div>
                                 <h6 class="text-sm font-medium mb-2">Portfolio Categorization</h6>
                                 <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
-                                    <p class="text-xs mb-2">Dell classified R&amp;D investments into three strategic horizons:</p>
+                                    <p class="text-xs mb-2">Dell classified R&D investments into three strategic horizons:</p>
                                     
                                     <div class="mb-3">
                                         <div class="flex items-center">
                                             <div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 mr-2">
                                                 <span class="text-xs font-medium">H1</span>
                                             </div>
-                                            <p class="text-xs font-medium mb-0 text-green-700 dark:text-green-400">Core Innovation (60% of R&amp;D budget)</p>
+                                            <p class="text-xs font-medium mb-0 text-green-700 dark:text-green-400">Core Innovation (60% of R&D budget)</p>
                                         </div>
                                         <ul class="pl-8 text-xs mb-0">
                                             <li>Enhancements to existing products and technologies</li>
@@ -1759,7 +1754,7 @@
                                             <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mr-2">
                                                 <span class="text-xs font-medium">H2</span>
                                             </div>
-                                            <p class="text-xs font-medium mb-0 text-blue-700 dark:text-blue-400">Adjacent Innovation (30% of R&amp;D budget)</p>
+                                            <p class="text-xs font-medium mb-0 text-blue-700 dark:text-blue-400">Adjacent Innovation (30% of R&D budget)</p>
                                         </div>
                                         <ul class="pl-8 text-xs mb-0">
                                             <li>New capabilities that extend current offerings</li>
@@ -1774,7 +1769,7 @@
                                             <div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-600 dark:text-purple-400 mr-2">
                                                 <span class="text-xs font-medium">H3</span>
                                             </div>
-                                            <p class="text-xs font-medium mb-0 text-purple-700 dark:text-purple-400">Transformational Innovation (10% of R&amp;D budget)</p>
+                                            <p class="text-xs font-medium mb-0 text-purple-700 dark:text-purple-400">Transformational Innovation (10% of R&D budget)</p>
                                         </div>
                                         <ul class="pl-8 text-xs mb-0">
                                             <li>Breakthrough technologies and business models</li>
@@ -1826,7 +1821,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="text-xs text-center mt-2 mb-0 text-gray-500 dark:text-gray-400">R&amp;D budget allocation by technology domain ($4.5B total)</p>
+                                    <p class="text-xs text-center mt-2 mb-0 text-gray-500 dark:text-gray-400">R&D budget allocation by technology domain ($4.5B total)</p>
                                 </div>
                                 
                                 <div>
@@ -1837,10 +1832,10 @@
                                             <text x="120" y="20" text-anchor="middle" fill="currentColor" font-size="10" font-weight="bold">Horizon Allocation by Technology Domain</text>
                                             
                                             <!-- X axis -->
-                                            <line x1="40" y1="140" x2="220" y2="140" stroke="#6B7280" stroke-width="1"></line>
+                                            <line x1="40" y1="140" x2="220" y2="140" stroke="#6B7280" stroke-width="1"/>
                                             
                                             <!-- Y axis -->
-                                            <line x1="40" y1="40" x2="40" y2="140" stroke="#6B7280" stroke-width="1"></line>
+                                            <line x1="40" y1="40" x2="40" y2="140" stroke="#6B7280" stroke-width="1"/>
                                             
                                             <!-- Y axis labels -->
                                             <text x="35" y="140" text-anchor="end" fill="currentColor" font-size="7">0%</text>
@@ -1850,47 +1845,47 @@
                                             <text x="35" y="40" text-anchor="end" fill="currentColor" font-size="7">100%</text>
                                             
                                             <!-- Cloud -->
-                                            <rect x="50" y="65" width="20" height="75" fill="#10B981" stroke="#FFFFFF" stroke-width="0.5"></rect>
-                                            <rect x="50" y="40" width="20" height="25" fill="#3B82F6" stroke="#FFFFFF" stroke-width="0.5"></rect>
+                                            <rect x="50" y="65" width="20" height="75" fill="#10B981" stroke="#FFFFFF" stroke-width="0.5"/>
+                                            <rect x="50" y="40" width="20" height="25" fill="#3B82F6" stroke="#FFFFFF" stroke-width="0.5"/>
                                             <text x="60" y="155" text-anchor="middle" fill="currentColor" font-size="7">Cloud</text>
                                             
                                             <!-- Edge -->
-                                            <rect x="80" y="85" width="20" height="55" fill="#10B981" stroke="#FFFFFF" stroke-width="0.5"></rect>
-                                            <rect x="80" y="50" width="20" height="35" fill="#3B82F6" stroke="#FFFFFF" stroke-width="0.5"></rect>
-                                            <rect x="80" y="40" width="20" height="10" fill="#8B5CF6" stroke="#FFFFFF" stroke-width="0.5"></rect>
+                                            <rect x="80" y="85" width="20" height="55" fill="#10B981" stroke="#FFFFFF" stroke-width="0.5"/>
+                                            <rect x="80" y="50" width="20" height="35" fill="#3B82F6" stroke="#FFFFFF" stroke-width="0.5"/>
+                                            <rect x="80" y="40" width="20" height="10" fill="#8B5CF6" stroke="#FFFFFF" stroke-width="0.5"/>
                                             <text x="90" y="155" text-anchor="middle" fill="currentColor" font-size="7">Edge</text>
                                             
                                             <!-- AI/ML -->
-                                            <rect x="110" y="100" width="20" height="40" fill="#10B981" stroke="#FFFFFF" stroke-width="0.5"></rect>
-                                            <rect x="110" y="60" width="20" height="40" fill="#3B82F6" stroke="#FFFFFF" stroke-width="0.5"></rect>
-                                            <rect x="110" y="40" width="20" height="20" fill="#8B5CF6" stroke="#FFFFFF" stroke-width="0.5"></rect>
+                                            <rect x="110" y="100" width="20" height="40" fill="#10B981" stroke="#FFFFFF" stroke-width="0.5"/>
+                                            <rect x="110" y="60" width="20" height="40" fill="#3B82F6" stroke="#FFFFFF" stroke-width="0.5"/>
+                                            <rect x="110" y="40" width="20" height="20" fill="#8B5CF6" stroke="#FFFFFF" stroke-width="0.5"/>
                                             <text x="120" y="155" text-anchor="middle" fill="currentColor" font-size="7">AI/ML</text>
                                             
                                             <!-- Security -->
-                                            <rect x="140" y="70" width="20" height="70" fill="#10B981" stroke="#FFFFFF" stroke-width="0.5"></rect>
-                                            <rect x="140" y="50" width="20" height="20" fill="#3B82F6" stroke="#FFFFFF" stroke-width="0.5"></rect>
-                                            <rect x="140" y="40" width="20" height="10" fill="#8B5CF6" stroke="#FFFFFF" stroke-width="0.5"></rect>
+                                            <rect x="140" y="70" width="20" height="70" fill="#10B981" stroke="#FFFFFF" stroke-width="0.5"/>
+                                            <rect x="140" y="50" width="20" height="20" fill="#3B82F6" stroke="#FFFFFF" stroke-width="0.5"/>
+                                            <rect x="140" y="40" width="20" height="10" fill="#8B5CF6" stroke="#FFFFFF" stroke-width="0.5"/>
                                             <text x="150" y="155" text-anchor="middle" fill="currentColor" font-size="7">Security</text>
                                             
                                             <!-- Core HW -->
-                                            <rect x="170" y="50" width="20" height="90" fill="#10B981" stroke="#FFFFFF" stroke-width="0.5"></rect>
-                                            <rect x="170" y="40" width="20" height="10" fill="#3B82F6" stroke="#FFFFFF" stroke-width="0.5"></rect>
+                                            <rect x="170" y="50" width="20" height="90" fill="#10B981" stroke="#FFFFFF" stroke-width="0.5"/>
+                                            <rect x="170" y="40" width="20" height="10" fill="#3B82F6" stroke="#FFFFFF" stroke-width="0.5"/>
                                             <text x="180" y="155" text-anchor="middle" fill="currentColor" font-size="7">Core HW</text>
                                             
                                             <!-- Software -->
-                                            <rect x="200" y="85" width="20" height="55" fill="#10B981" stroke="#FFFFFF" stroke-width="0.5"></rect>
-                                            <rect x="200" y="55" width="20" height="30" fill="#3B82F6" stroke="#FFFFFF" stroke-width="0.5"></rect>
-                                            <rect x="200" y="40" width="20" height="15" fill="#8B5CF6" stroke="#FFFFFF" stroke-width="0.5"></rect>
+                                            <rect x="200" y="85" width="20" height="55" fill="#10B981" stroke="#FFFFFF" stroke-width="0.5"/>
+                                            <rect x="200" y="55" width="20" height="30" fill="#3B82F6" stroke="#FFFFFF" stroke-width="0.5"/>
+                                            <rect x="200" y="40" width="20" height="15" fill="#8B5CF6" stroke="#FFFFFF" stroke-width="0.5"/>
                                             <text x="210" y="155" text-anchor="middle" fill="currentColor" font-size="7">Soft. Def.</text>
                                             
                                             <!-- Legend -->
-                                            <rect x="50" y="165" width="8" height="8" fill="#10B981"></rect>
+                                            <rect x="50" y="165" width="8" height="8" fill="#10B981"/>
                                             <text x="62" y="172" font-size="7" fill="currentColor">H1 - Core (60%)</text>
                                             
-                                            <rect x="120" y="165" width="8" height="8" fill="#3B82F6"></rect>
+                                            <rect x="120" y="165" width="8" height="8" fill="#3B82F6"/>
                                             <text x="132" y="172" font-size="7" fill="currentColor">H2 - Adjacent (30%)</text>
                                             
-                                            <rect x="190" y="165" width="8" height="8" fill="#8B5CF6"></rect>
+                                            <rect x="190" y="165" width="8" height="8" fill="#8B5CF6"/>
                                             <text x="202" y="172" font-size="7" fill="currentColor">H3 - Transform (10%)</text>
                                         </svg>
                                     </div>
@@ -1906,20 +1901,20 @@
                                     <!-- Bubble Chart -->
                                     <svg class="absolute inset-0 h-full w-full" viewBox="0 0 800 300">
                                         <!-- Title -->
-                                        <text x="400" y="30" text-anchor="middle" fill="currentColor" font-size="14" font-weight="bold">R&amp;D Project Portfolio Analysis</text>
+                                        <text x="400" y="30" text-anchor="middle" fill="currentColor" font-size="14" font-weight="bold">R&D Project Portfolio Analysis</text>
                                         
                                         <!-- Axes -->
-                                        <line x1="100" y1="250" x2="700" y2="250" stroke="#6B7280" stroke-width="1"></line>
-                                        <line x1="100" y1="50" x2="100" y2="250" stroke="#6B7280" stroke-width="1"></line>
+                                        <line x1="100" y1="250" x2="700" y2="250" stroke="#6B7280" stroke-width="1"/>
+                                        <line x1="100" y1="50" x2="100" y2="250" stroke="#6B7280" stroke-width="1"/>
                                         
                                         <!-- Axis labels -->
                                         <text x="400" y="280" text-anchor="middle" fill="currentColor" font-size="12">Strategic Alignment</text>
                                         <text x="50" y="150" text-anchor="middle" fill="currentColor" font-size="12" transform="rotate(-90, 50, 150)">Expected Return</text>
                                         
                                         <!-- Grid lines -->
-                                        <line x1="100" y1="150" x2="700" y2="150" stroke="#6B7280" stroke-width="0.5" stroke-dasharray="4,2"></line>
-                                        <line x1="300" y1="50" x2="300" y2="250" stroke="#6B7280" stroke-width="0.5" stroke-dasharray="4,2"></line>
-                                        <line x1="500" y1="50" x2="500" y2="250" stroke="#6B7280" stroke-width="0.5" stroke-dasharray="4,2"></line>
+                                        <line x1="100" y1="150" x2="700" y2="150" stroke="#6B7280" stroke-width="0.5" stroke-dasharray="4,2"/>
+                                        <line x1="300" y1="50" x2="300" y2="250" stroke="#6B7280" stroke-width="0.5" stroke-dasharray="4,2"/>
+                                        <line x1="500" y1="50" x2="500" y2="250" stroke="#6B7280" stroke-width="0.5" stroke-dasharray="4,2"/>
                                         
                                         <!-- Axis values -->
                                         <text x="100" y="265" text-anchor="middle" fill="currentColor" font-size="10">Low</text>
@@ -1932,84 +1927,84 @@
                                         <text x="85" y="50" text-anchor="end" fill="currentColor" font-size="10">High</text>
                                         
                                         <!-- Bubbles - Cloud -->
-                                        <circle cx="580" cy="70" r="25" fill="#3B82F6" fill-opacity="0.7" stroke="#3B82F6" stroke-width="1"></circle>
+                                        <circle cx="580" cy="70" r="25" fill="#3B82F6" fill-opacity="0.7" stroke="#3B82F6" stroke-width="1"/>
                                         <text x="580" y="70" text-anchor="middle" fill="white" font-size="10" font-weight="bold">C1</text>
                                         <text x="580" y="82" text-anchor="middle" fill="white" font-size="8">$120M</text>
                                         
-                                        <circle cx="450" cy="100" r="20" fill="#3B82F6" fill-opacity="0.7" stroke="#3B82F6" stroke-width="1"></circle>
+                                        <circle cx="450" cy="100" r="20" fill="#3B82F6" fill-opacity="0.7" stroke="#3B82F6" stroke-width="1"/>
                                         <text x="450" y="100" text-anchor="middle" fill="white" font-size="10" font-weight="bold">C2</text>
                                         <text x="450" y="110" text-anchor="middle" fill="white" font-size="8">$85M</text>
                                         
-                                        <circle cx="650" cy="120" r="18" fill="#3B82F6" fill-opacity="0.7" stroke="#3B82F6" stroke-width="1"></circle>
+                                        <circle cx="650" cy="120" r="18" fill="#3B82F6" fill-opacity="0.7" stroke="#3B82F6" stroke-width="1"/>
                                         <text x="650" y="120" text-anchor="middle" fill="white" font-size="10" font-weight="bold">C3</text>
                                         <text x="650" y="130" text-anchor="middle" fill="white" font-size="8">$75M</text>
                                         
                                         <!-- Bubbles - Edge -->
-                                        <circle cx="520" cy="90" r="22" fill="#10B981" fill-opacity="0.7" stroke="#10B981" stroke-width="1"></circle>
+                                        <circle cx="520" cy="90" r="22" fill="#10B981" fill-opacity="0.7" stroke="#10B981" stroke-width="1"/>
                                         <text x="520" y="90" text-anchor="middle" fill="white" font-size="10" font-weight="bold">E1</text>
                                         <text x="520" y="100" text-anchor="middle" fill="white" font-size="8">$95M</text>
                                         
-                                        <circle cx="350" cy="170" r="15" fill="#10B981" fill-opacity="0.7" stroke="#10B981" stroke-width="1"></circle>
+                                        <circle cx="350" cy="170" r="15" fill="#10B981" fill-opacity="0.7" stroke="#10B981" stroke-width="1"/>
                                         <text x="350" y="170" text-anchor="middle" fill="white" font-size="10" font-weight="bold">E2</text>
                                         <text x="350" y="180" text-anchor="middle" fill="white" font-size="8">$60M</text>
                                         
                                         <!-- Bubbles - AI/ML -->
-                                        <circle cx="600" cy="80" r="23" fill="#8B5CF6" fill-opacity="0.7" stroke="#8B5CF6" stroke-width="1"></circle>
+                                        <circle cx="600" cy="80" r="23" fill="#8B5CF6" fill-opacity="0.7" stroke="#8B5CF6" stroke-width="1"/>
                                         <text x="600" y="80" text-anchor="middle" fill="white" font-size="10" font-weight="bold">A1</text>
                                         <text x="600" y="90" text-anchor="middle" fill="white" font-size="8">$100M</text>
                                         
-                                        <circle cx="480" cy="130" r="19" fill="#8B5CF6" fill-opacity="0.7" stroke="#8B5CF6" stroke-width="1"></circle>
+                                        <circle cx="480" cy="130" r="19" fill="#8B5CF6" fill-opacity="0.7" stroke="#8B5CF6" stroke-width="1"/>
                                         <text x="480" y="130" text-anchor="middle" fill="white" font-size="10" font-weight="bold">A2</text>
                                         <text x="480" y="140" text-anchor="middle" fill="white" font-size="8">$80M</text>
                                         
-                                        <circle cx="380" cy="200" r="12" fill="#8B5CF6" fill-opacity="0.7" stroke="#8B5CF6" stroke-width="1"></circle>
+                                        <circle cx="380" cy="200" r="12" fill="#8B5CF6" fill-opacity="0.7" stroke="#8B5CF6" stroke-width="1"/>
                                         <text x="380" y="200" text-anchor="middle" fill="white" font-size="10" font-weight="bold">A3</text>
                                         <text x="380" y="210" text-anchor="middle" fill="white" font-size="8">$45M</text>
                                         
                                         <!-- Bubbles - Security -->
-                                        <circle cx="540" cy="150" r="17" fill="#EF4444" fill-opacity="0.7" stroke="#EF4444" stroke-width="1"></circle>
+                                        <circle cx="540" cy="150" r="17" fill="#EF4444" fill-opacity="0.7" stroke="#EF4444" stroke-width="1"/>
                                         <text x="540" y="150" text-anchor="middle" fill="white" font-size="10" font-weight="bold">S1</text>
                                         <text x="540" y="160" text-anchor="middle" fill="white" font-size="8">$70M</text>
                                         
-                                        <circle cx="400" cy="100" r="15" fill="#EF4444" fill-opacity="0.7" stroke="#EF4444" stroke-width="1"></circle>
+                                        <circle cx="400" cy="100" r="15" fill="#EF4444" fill-opacity="0.7" stroke="#EF4444" stroke-width="1"/>
                                         <text x="400" y="100" text-anchor="middle" fill="white" font-size="10" font-weight="bold">S2</text>
                                         <text x="400" y="110" text-anchor="middle" fill="white" font-size="8">$60M</text>
                                         
                                         <!-- Bubbles - Core HW -->
-                                        <circle cx="250" cy="170" r="20" fill="#F59E0B" fill-opacity="0.7" stroke="#F59E0B" stroke-width="1"></circle>
+                                        <circle cx="250" cy="170" r="20" fill="#F59E0B" fill-opacity="0.7" stroke="#F59E0B" stroke-width="1"/>
                                         <text x="250" y="170" text-anchor="middle" fill="white" font-size="10" font-weight="bold">H1</text>
                                         <text x="250" y="180" text-anchor="middle" fill="white" font-size="8">$85M</text>
                                         
-                                        <circle cx="180" cy="130" r="16" fill="#F59E0B" fill-opacity="0.7" stroke="#F59E0B" stroke-width="1"></circle>
+                                        <circle cx="180" cy="130" r="16" fill="#F59E0B" fill-opacity="0.7" stroke="#F59E0B" stroke-width="1"/>
                                         <text x="180" y="130" text-anchor="middle" fill="white" font-size="10" font-weight="bold">H2</text>
                                         <text x="180" y="140" text-anchor="middle" fill="white" font-size="8">$65M</text>
                                         
                                         <!-- Bubbles - Software Defined -->
-                                        <circle cx="620" cy="180" r="18" fill="#6366F1" fill-opacity="0.7" stroke="#6366F1" stroke-width="1"></circle>
+                                        <circle cx="620" cy="180" r="18" fill="#6366F1" fill-opacity="0.7" stroke="#6366F1" stroke-width="1"/>
                                         <text x="620" y="180" text-anchor="middle" fill="white" font-size="10" font-weight="bold">S1</text>
                                         <text x="620" y="190" text-anchor="middle" fill="white" font-size="8">$75M</text>
                                         
-                                        <circle cx="500" cy="220" r="14" fill="#6366F1" fill-opacity="0.7" stroke="#6366F1" stroke-width="1"></circle>
+                                        <circle cx="500" cy="220" r="14" fill="#6366F1" fill-opacity="0.7" stroke="#6366F1" stroke-width="1"/>
                                         <text x="500" y="220" text-anchor="middle" fill="white" font-size="10" font-weight="bold">S2</text>
                                         <text x="500" y="230" text-anchor="middle" fill="white" font-size="8">$55M</text>
                                         
                                         <!-- Legend -->
-                                        <rect x="120" y="20" width="10" height="10" fill="#3B82F6" fill-opacity="0.7"></rect>
+                                        <rect x="120" y="20" width="10" height="10" fill="#3B82F6" fill-opacity="0.7"/>
                                         <text x="135" y="28" font-size="9" fill="currentColor">Cloud</text>
                                         
-                                        <rect x="180" y="20" width="10" height="10" fill="#10B981" fill-opacity="0.7"></rect>
+                                        <rect x="180" y="20" width="10" height="10" fill="#10B981" fill-opacity="0.7"/>
                                         <text x="195" y="28" font-size="9" fill="currentColor">Edge</text>
                                         
-                                        <rect x="240" y="20" width="10" height="10" fill="#8B5CF6" fill-opacity="0.7"></rect>
+                                        <rect x="240" y="20" width="10" height="10" fill="#8B5CF6" fill-opacity="0.7"/>
                                         <text x="255" y="28" font-size="9" fill="currentColor">AI/ML</text>
                                         
-                                        <rect x="300" y="20" width="10" height="10" fill="#EF4444" fill-opacity="0.7"></rect>
+                                        <rect x="300" y="20" width="10" height="10" fill="#EF4444" fill-opacity="0.7"/>
                                         <text x="315" y="28" font-size="9" fill="currentColor">Security</text>
                                         
-                                        <rect x="360" y="20" width="10" height="10" fill="#F59E0B" fill-opacity="0.7"></rect>
+                                        <rect x="360" y="20" width="10" height="10" fill="#F59E0B" fill-opacity="0.7"/>
                                         <text x="375" y="28" font-size="9" fill="currentColor">Core HW</text>
                                         
-                                        <rect x="420" y="20" width="10" height="10" fill="#6366F1" fill-opacity="0.7"></rect>
+                                        <rect x="420" y="20" width="10" height="10" fill="#6366F1" fill-opacity="0.7"/>
                                         <text x="435" y="28" font-size="9" fill="currentColor">Soft. Def.</text>
                                         
                                         <text x="650" y="28" font-size="9" fill="currentColor">Bubble size = investment amount</text>
@@ -2043,13 +2038,13 @@
                             </div>
                             
                             <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
-                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Results &amp; Benefits</h6>
+                                <h6 class="text-xs font-medium text-purple-700 dark:text-purple-400 mb-2">Results & Benefits</h6>
                                 <ul class="pl-4 text-xs mb-0">
                                     <li class="mb-1"><strong>Resource efficiency:</strong> Optimized portfolio delivered 15% greater expected value than previous allocation approach</li>
-                                    <li class="mb-1"><strong>Strategic alignment:</strong> 85% of R&amp;D investments directly supported top-5 strategic technology priorities</li>
+                                    <li class="mb-1"><strong>Strategic alignment:</strong> 85% of R&D investments directly supported top-5 strategic technology priorities</li>
                                     <li class="mb-1"><strong>Portfolio balance:</strong> Appropriate mix of near-term improvements and longer-term innovations</li>
                                     <li class="mb-1"><strong>Better outcomes:</strong> Project success rate increased from 62% to 78% through improved selection</li>
-                                    <li class="mb-0"><strong>Capital efficiency:</strong> 20% increase in revenue generated per R&amp;D dollar invested</li>
+                                    <li class="mb-0"><strong>Capital efficiency:</strong> 20% increase in revenue generated per R&D dollar invested</li>
                                 </ul>
                             </div>
                         </div>
@@ -2070,7 +2065,7 @@
                                 </div>
                                 
                                 <div>
-                                    <h6 class="text-xs font-medium mb-1">Challenges &amp; Adaptations</h6>
+                                    <h6 class="text-xs font-medium mb-1">Challenges & Adaptations</h6>
                                     <ul class="pl-4 text-xs mb-0">
                                         <li class="mb-1"><strong>Initial resistance:</strong> Business units initially resisted centralized portfolio approach; addressed through involvement in criteria development</li>
                                         <li class="mb-1"><strong>Data quality:</strong> Early benefit estimates often overly optimistic; implemented normalization process and tracking of estimation accuracy</li>
@@ -2134,7 +2129,7 @@
                                     </div>
                                     
                                     <div class="mb-3">
-                                        <h6 class="text-xs font-medium mb-1">Decision Trees &amp; Real Options</h6>
+                                        <h6 class="text-xs font-medium mb-1">Decision Trees & Real Options</h6>
                                         <p class="text-xs mb-0">Methods that incorporate flexibility and future decision points into investment analysis:</p>
                                         <ul class="pl-4 text-xs mt-1 mb-0">
                                             <li>Map out possible future scenarios and decision points</li>
@@ -2146,7 +2141,7 @@
                                     </div>
                                     
                                     <div>
-                                        <h6 class="text-xs font-medium mb-1">Minimum Threshold &amp; Balanced Scorecard</h6>
+                                        <h6 class="text-xs font-medium mb-1">Minimum Threshold & Balanced Scorecard</h6>
                                         <p class="text-xs mb-0">Approaches that ensure investments meet minimum requirements across multiple dimensions:</p>
                                         <ul class="pl-4 text-xs mt-1 mb-0">
                                             <li>Establish minimum thresholds for critical criteria (financial, strategic, risk)</li>
@@ -2233,7 +2228,7 @@
                                 </div>
                                 <div>
                                     <h5 class="font-medium text-sm mb-1">Strategic Capital Allocation: Four Imperatives</h5>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey &amp; Company • CFO Guide</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • CFO Guide</p>
                                 </div>
                             </div>
                         </a>
@@ -2328,7 +2323,7 @@
                 <div class="flex justify-between mt-6">
                     <button class="flex items-center gap-1 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 prev-topic" data-prev="topic-cost-analysis">
                         <i class="ri-arrow-left-line"></i>
-                        <span>Previous: Cost Analysis &amp; Optimization</span>
+                        <span>Previous: Cost Analysis & Optimization</span>
                     </button>
                     <button class="flex items-center gap-1 text-primary hover:text-primary/80 next-topic" data-next="topic-frameworks">
                         <span>Next: Strategic Frameworks</span>
@@ -2337,27 +2332,7 @@
                 </div>
             </section>
         </main>
-
-    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
-                </div>
-                <div class="text-center md:text-left">
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
-                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <div class="flex items-center gap-3">
-                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
-                            <i class="ri-arrow-up-line text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -2366,55 +2341,73 @@
                 document.documentElement.classList.toggle('dark');
             });
             
-            // Module dropdown
-            const moduleDropdown = document.getElementById('module-dropdown');
-            const moduleMenu = document.getElementById('module-menu');
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
             
-            if (moduleDropdown && moduleMenu) {
-                moduleDropdown.addEventListener('click', function() {
-                    moduleMenu.classList.toggle('hidden');
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
                 });
                 
-                // Close the dropdown when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
-                        moduleMenu.classList.add('hidden');
-                    }
-                });
-            }
-            
-            // Back to top functionality
-            const backToTopButton = document.getElementById('back-to-top');
-            
-            if (backToTopButton) {
-                backToTopButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-            
-            // Highlight current section based on scroll position
-            const sections = document.querySelectorAll('section[id]');
-            
-            function highlightCurrentSection() {
-                const scrollY = window.pageYOffset;
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
                 
-                sections.forEach(current => {
-                    const sectionHeight = current.offsetHeight;
-                    const sectionTop = current.offsetTop - 100;
-                    const sectionId = current.getAttribute('id');
-                    
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
                     } else {
-                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
                     }
                 });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
             }
             
-            window.addEventListener('scroll', highlightCurrentSection);
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-investment');
         });
     </script>
-
-
-</body></html>
+</body>
+</html>

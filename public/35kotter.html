@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dell Strategy Toolkit | Learning Portal</title>
@@ -15,9 +17,6 @@
                         darkBg: '#181818',
                         lightText: '#333333',
                         darkText: '#E5E5E5',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     }
                 }
             },
@@ -37,100 +36,8 @@
         });
     </script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px; /* Adjust based on header height */
-        }
-        
-        /* Module color classes */
-        .module-problem-solving { --module-color: 79, 70, 229; } /* Indigo */
-        .module-financial { --module-color: 245, 158, 11; } /* Amber */
-        .module-strategic { --module-color: 16, 185, 129; } /* Emerald */
-        .module-organizational { --module-color: 236, 72, 153; } /* Pink */
-        .module-product { --module-color: 59, 130, 246; } /* Blue */
-        .module-project { --module-color: 139, 92, 246; } /* Purple */
-        .module-communication { --module-color: 239, 68, 68; } /* Red */
-
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        /* Topic headings */
-        .topic-heading {
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .topic-heading::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.25rem;
-            bottom: 0.25rem;
-            width: 4px;
-            border-radius: 2px;
-            background-color: currentColor;
-        }
-
-        /* Module card hover effect */
-        .module-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-        
-        .module-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .dark .module-card:hover {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-
-<style>
-  /* Smooth transitions */
-  .transition-colors {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  /* Hover effects */
-  .hover\:bg-gray-200:hover {
-    background-color: rgba(229, 231, 235, 1);
-  }
-  
-  .dark .dark\:hover\:bg-gray-700:hover {
-    background-color: rgba(55, 65, 81, 1);
-  }
-</style>
 </head>
-<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200 font-sans">
+<body class="bg-gray-50 dark:bg-darkBg text-lightText dark:text-darkText transition-colors duration-200">
     <!-- Header -->
     <header class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -138,27 +45,13 @@
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='48' height='48'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mr-3">
                 <div>
                     <h1 class="text-xl font-bold text-secondary dark:text-white">Strategy Toolkit</h1>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Technologies</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell CSG Learning Hub</p>
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <div class="relative">
-                    <button id="module-dropdown" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
-                        <span>Navigate to Module</span>
-                        <i class="ri-arrow-down-s-line"></i>
-                    </button>
-                    <div id="module-menu" class="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 shadow-lg rounded-lg hidden">
-                        <div class="p-2 space-y-1">
-                            <a href="#structured-problem-solving" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Structured Problem-Solving</a>
-                            <a href="#financial-acumen" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Financial Acumen</a>
-                            <a href="#strategic-frameworks" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Strategic Frameworks</a>
-                            <a href="#organizational-behavior" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Organizational Behavior</a>
-                            <a href="#product-ops" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Product &amp; Ops Foundations</a>
-                            <a href="#project-management" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Project Management</a>
-                            <a href="#effective-communication" class="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-sm">Effective Communication</a>
-                        </div>
-                    </div>
-                </div>
+                <button id="mobile-sidebar-toggle" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
                     <i class="ri-moon-line dark:hidden"></i>
                     <i class="ri-sun-line hidden dark:block"></i>
@@ -175,15 +68,143 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <div class="mb-6">
-          <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-            <i class="ri-arrow-left-line"></i>
-            <span>Back to Home</span>
-          </a>
-        </div>
-      
+    <div class="flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 h-[calc(100vh-64px)] overflow-y-auto sticky top-16 hidden lg:block">
+            <nav class="p-4">
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Learning Paths</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#strategy-toolkit" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20">
+                                <i class="ri-dashboard-line"></i>
+                                <span>Strategy Toolkit</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#dell-101" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-building-line"></i>
+                                <span>Dell 101</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Modules</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#problem-solving" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-mind-map"></i>
+                                <span>Structured Problem Solving</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#financial-acumen" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-line-chart-line"></i>
+                                <span>Financial Acumen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#frameworks" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-layout-grid-line"></i>
+                                <span>Strategic Frameworks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#org-behavior" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-primary">
+                                <i class="ri-team-line"></i>
+                                <span>Organizational Behavior</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#product-ops" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-settings-line"></i>
+                                <span>Product & Ops Foundations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#project-management" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-task-line"></i>
+                                <span>Project Management</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#effective-communication" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <i class="ri-chat-4-line"></i>
+                                <span>Effective Communication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Organizational Behavior</h3>
+                    <ul class="space-y-1">
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-raci">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>RACI Framework</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-rapids">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>RAPIDs Framework</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-process-maps">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Process Maps</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 topic-link" data-topic="topic-process-reengineering">
+                                <span class="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 text-xs">✓</span>
+                                <span>Process Reengineering</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 bg-primary/10 dark:bg-primary/20 topic-link" data-topic="topic-change-management">
+                                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 text-xs">○</span>
+                                <span>Kotter's Change Management</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-6">
+                    <h3 class="text-xs uppercase font-semibold text-gray-500 dark:text-gray-400 mb-2">Progress</h3>
+                    <div class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm">Overall Completion</span>
+                            <span class="text-sm font-medium">64%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-tertiary h-full rounded-full" style="width: 64%"></div>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>Financial Acumen</span>
+                                <span>6/6 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Strategic Frameworks</span>
+                                <span>1/7 topics</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>Organizational Behavior</span>
+                                <span>4/5 topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6" id="main-content">
             <!-- Kotter's Change Management Topic -->
             <section id="topic-change-management" class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-800 mb-8 topic-content">
                 <div class="flex justify-between items-center mb-4">
@@ -341,78 +362,78 @@
                                                         <!-- Step Boxes -->
                                                         <svg class="absolute inset-0 h-full w-full" viewBox="0 0 700 220">
                                                             <!-- Phase One: Creating a Climate for Change -->
-                                                            <rect x="10" y="10" width="680" height="30" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"></rect>
+                                                            <rect x="10" y="10" width="680" height="30" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
                                                             <text x="350" y="30" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="bold">Phase 1: Creating a Climate for Change</text>
                                                             
-                                                            <rect x="20" y="50" width="200" height="70" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"></rect>
+                                                            <rect x="20" y="50" width="200" height="70" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
                                                             <text x="120" y="80" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="bold">Step 1:</text>
                                                             <text x="120" y="100" text-anchor="middle" font-size="12" fill="#1e40af">Create a Sense of Urgency</text>
                                                             
-                                                            <rect x="250" y="50" width="200" height="70" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"></rect>
+                                                            <rect x="250" y="50" width="200" height="70" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
                                                             <text x="350" y="80" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="bold">Step 2:</text>
                                                             <text x="350" y="100" text-anchor="middle" font-size="12" fill="#1e40af">Build a Guiding Coalition</text>
                                                             
-                                                            <rect x="480" y="50" width="200" height="70" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"></rect>
+                                                            <rect x="480" y="50" width="200" height="70" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
                                                             <text x="580" y="80" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="bold">Step 3:</text>
                                                             <text x="580" y="100" text-anchor="middle" font-size="12" fill="#1e40af">Form a Strategic Vision</text>
                                                             
                                                             <!-- Phase Two: Engaging & Enabling the Organization -->
-                                                            <rect x="10" y="130" width="680" height="30" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"></rect>
-                                                            <text x="350" y="150" text-anchor="middle" font-size="12" fill="#3730a3" font-weight="bold">Phase 2: Engaging &amp; Enabling the Organization</text>
+                                                            <rect x="10" y="130" width="680" height="30" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+                                                            <text x="350" y="150" text-anchor="middle" font-size="12" fill="#3730a3" font-weight="bold">Phase 2: Engaging & Enabling the Organization</text>
                                                             
-                                                            <rect x="20" y="170" width="150" height="70" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"></rect>
+                                                            <rect x="20" y="170" width="150" height="70" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
                                                             <text x="95" y="200" text-anchor="middle" font-size="12" fill="#3730a3" font-weight="bold">Step 4:</text>
                                                             <text x="95" y="220" text-anchor="middle" font-size="12" fill="#3730a3">Communicate the Vision</text>
                                                             
-                                                            <rect x="190" y="170" width="150" height="70" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"></rect>
+                                                            <rect x="190" y="170" width="150" height="70" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
                                                             <text x="265" y="200" text-anchor="middle" font-size="12" fill="#3730a3" font-weight="bold">Step 5:</text>
                                                             <text x="265" y="220" text-anchor="middle" font-size="12" fill="#3730a3">Enable Action</text>
                                                             
-                                                            <rect x="360" y="170" width="150" height="70" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"></rect>
+                                                            <rect x="360" y="170" width="150" height="70" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
                                                             <text x="435" y="200" text-anchor="middle" font-size="12" fill="#3730a3" font-weight="bold">Step 6:</text>
                                                             <text x="435" y="220" text-anchor="middle" font-size="12" fill="#3730a3">Generate Short-term Wins</text>
                                                             
                                                             <!-- Phase Three: Implementing & Sustaining Change -->
-                                                            <rect x="530" y="170" width="150" height="70" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"></rect>
+                                                            <rect x="530" y="170" width="150" height="70" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"/>
                                                             <text x="605" y="200" text-anchor="middle" font-size="12" fill="#86198f" font-weight="bold">Step 7:</text>
                                                             <text x="605" y="220" text-anchor="middle" font-size="12" fill="#86198f">Sustain Acceleration</text>
                                                             
                                                             <!-- Arrow connectors (simplified) -->
-                                                            <line x1="120" y1="125" x2="120" y2="130" stroke="#6b7280" stroke-width="1.5"></line>
-                                                            <line x1="350" y1="125" x2="350" y2="130" stroke="#6b7280" stroke-width="1.5"></line>
-                                                            <line x1="580" y1="125" x2="580" y2="130" stroke="#6b7280" stroke-width="1.5"></line>
+                                                            <line x1="120" y1="125" x2="120" y2="130" stroke="#6b7280" stroke-width="1.5"/>
+                                                            <line x1="350" y1="125" x2="350" y2="130" stroke="#6b7280" stroke-width="1.5"/>
+                                                            <line x1="580" y1="125" x2="580" y2="130" stroke="#6b7280" stroke-width="1.5"/>
                                                             
-                                                            <line x1="170" y1="85" x2="245" y2="85" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
-                                                            <line x1="400" y1="85" x2="475" y2="85" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                                            <line x1="170" y1="85" x2="245" y2="85" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                                            <line x1="400" y1="85" x2="475" y2="85" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"/>
                                                             
-                                                            <line x1="95" y1="165" x2="95" y2="170" stroke="#6b7280" stroke-width="1.5"></line>
-                                                            <line x1="265" y1="165" x2="265" y2="170" stroke="#6b7280" stroke-width="1.5"></line>
-                                                            <line x1="435" y1="165" x2="435" y2="170" stroke="#6b7280" stroke-width="1.5"></line>
-                                                            <line x1="605" y1="165" x2="605" y2="170" stroke="#6b7280" stroke-width="1.5"></line>
+                                                            <line x1="95" y1="165" x2="95" y2="170" stroke="#6b7280" stroke-width="1.5"/>
+                                                            <line x1="265" y1="165" x2="265" y2="170" stroke="#6b7280" stroke-width="1.5"/>
+                                                            <line x1="435" y1="165" x2="435" y2="170" stroke="#6b7280" stroke-width="1.5"/>
+                                                            <line x1="605" y1="165" x2="605" y2="170" stroke="#6b7280" stroke-width="1.5"/>
                                                             
-                                                            <line x1="145" y1="205" x2="185" y2="205" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
-                                                            <line x1="315" y1="205" x2="355" y2="205" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
-                                                            <line x1="485" y1="205" x2="525" y2="205" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"></line>
+                                                            <line x1="145" y1="205" x2="185" y2="205" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                                            <line x1="315" y1="205" x2="355" y2="205" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                                                            <line x1="485" y1="205" x2="525" y2="205" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrowhead)"/>
                                                             
                                                             <!-- Phase Three Label (position adjusted) -->
-                                                            <rect x="10" y="250" width="680" height="30" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"></rect>
-                                                            <text x="350" y="270" text-anchor="middle" font-size="12" fill="#86198f" font-weight="bold">Phase 3: Implementing &amp; Sustaining Change</text>
+                                                            <rect x="10" y="250" width="680" height="30" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"/>
+                                                            <text x="350" y="270" text-anchor="middle" font-size="12" fill="#86198f" font-weight="bold">Phase 3: Implementing & Sustaining Change</text>
                                                             
                                                             <!-- Step 8 (positioned below) -->
-                                                            <rect x="270" y="290" width="200" height="70" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"></rect>
+                                                            <rect x="270" y="290" width="200" height="70" rx="5" fill="#fae8ff" stroke="#d946ef" stroke-width="2"/>
                                                             <text x="370" y="320" text-anchor="middle" font-size="12" fill="#86198f" font-weight="bold">Step 8:</text>
                                                             <text x="370" y="340" text-anchor="middle" font-size="12" fill="#86198f">Institute Change</text>
                                                             
                                                             <!-- Connect Step 7 to Phase 3 -->
-                                                            <line x1="605" y1="240" x2="605" y2="250" stroke="#6b7280" stroke-width="1.5"></line>
+                                                            <line x1="605" y1="240" x2="605" y2="250" stroke="#6b7280" stroke-width="1.5"/>
                                                             
                                                             <!-- Connect Step 7 to Step 8 -->
-                                                            <path d="M 605,250 C 605,270 370,270 370,290" stroke="#6b7280" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"></path>
+                                                            <path d="M 605,250 C 605,270 370,270 370,290" stroke="#6b7280" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
                                                             
                                                             <!-- Arrowhead marker -->
                                                             <defs>
                                                                 <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"></polygon>
+                                                                    <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
                                                                 </marker>
                                                             </defs>
                                                         </svg>
@@ -552,7 +573,7 @@
                                     <li>Manager toolkits with talking points and FAQs</li>
                                     <li>Video testimonials from early adopters</li>
                                     <li>Regular email updates with progress metrics</li>
-                                    <li>Virtual Q&amp;A sessions with program leaders</li>
+                                    <li>Virtual Q&A sessions with program leaders</li>
                                 </ul>
                                 <p class="text-xs italic mb-0">Result: Consistent, multi-channel communication created broad understanding of the flexible work vision and addressed concerns proactively.</p>
                             </div>
@@ -650,7 +671,7 @@
                                 <h6 class="text-xs font-medium mb-1">Dell Example: Services Transformation</h6>
                                 <p class="text-xs mb-2">As Dell shifted toward services, acceleration was sustained through:</p>
                                 <ul class="pl-4 text-xs mb-2">
-                                    <li>Creating a dedicated services organization with P&amp;L responsibility</li>
+                                    <li>Creating a dedicated services organization with P&L responsibility</li>
                                     <li>Revising hiring profiles to emphasize consulting and solution skills</li>
                                     <li>Implementing service-focused KPIs across all business units</li>
                                     <li>Launching services-led go-to-market strategies for enterprise clients</li>
@@ -1088,7 +1109,7 @@
                                         <tr class="bg-gray-50 dark:bg-gray-900">
                                             <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Kotter Step</th>
                                             <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Implementation Actions</th>
-                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Results &amp; Outcomes</th>
+                                            <th class="border border-gray-200 dark:border-gray-700 p-2 text-left">Results & Outcomes</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1605,7 +1626,7 @@
                                     </div>
                                     
                                     <div>
-                                        <h6 class="text-xs font-medium mb-1">Enabling Action &amp; Sustaining Change</h6>
+                                        <h6 class="text-xs font-medium mb-1">Enabling Action & Sustaining Change</h6>
                                         <ul class="pl-4 text-xs mb-0">
                                             <li>Create detailed implementation roadmaps based on process changes</li>
                                             <li>Develop transition state maps to guide implementation</li>
@@ -1655,7 +1676,7 @@
                             
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
-                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Assessment &amp; Planning</h6>
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Assessment & Planning</h6>
                                     <ul class="pl-4 text-xs mb-0">
                                         <li>Kotter: Create urgency and build coalition</li>
                                         <li>Process Maps: Document current state</li>
@@ -1666,7 +1687,7 @@
                                 </div>
                                 
                                 <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
-                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Design &amp; Mobilization</h6>
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Design & Mobilization</h6>
                                     <ul class="pl-4 text-xs mb-0">
                                         <li>Kotter: Create vision and communicate</li>
                                         <li>Reengineering: Redesign processes</li>
@@ -1677,7 +1698,7 @@
                                 </div>
                                 
                                 <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
-                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Implementation &amp; Sustainability</h6>
+                                    <h6 class="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">Implementation & Sustainability</h6>
                                     <ul class="pl-4 text-xs mb-0">
                                         <li>Kotter: Enable action, generate wins, sustain, institute</li>
                                         <li>RACI: Clarify implementation responsibilities</li>
@@ -1736,7 +1757,7 @@
                                 </div>
                                 <div>
                                     <h5 class="font-medium text-sm mb-1">The Science of Organizational Transformations</h5>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey &amp; Company • Research on Change Success Factors</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">McKinsey & Company • Research on Change Success Factors</p>
                                 </div>
                             </div>
                         </a>
@@ -1778,11 +1799,11 @@
                                 <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Describe your approach for creating urgency, building a guiding coalition, and forming a strategic vision for this product launch."></textarea>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium mb-1">Engaging &amp; Enabling the Organization (Steps 4-6)</label>
+                                <label class="block text-sm font-medium mb-1">Engaging & Enabling the Organization (Steps 4-6)</label>
                                 <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Describe how you would communicate the vision, enable action by removing barriers, and generate short-term wins during the implementation."></textarea>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium mb-1">Implementing &amp; Sustaining Change (Steps 7-8)</label>
+                                <label class="block text-sm font-medium mb-1">Implementing & Sustaining Change (Steps 7-8)</label>
                                 <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 text-sm" rows="3" placeholder="Describe your approach for sustaining acceleration and institutionalizing the change in Dell's culture and operations."></textarea>
                             </div>
                         </div>
@@ -1803,27 +1824,7 @@
                 </div>
             </section>
         </main>
-
-    <footer class="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-6 border-t border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' width='40' height='40'%3E%3Crect width='150' height='150' fill='%230076CE' rx='15'/%3E%3Cpath d='M39 55 H111 V95 H39 Z' fill='white'/%3E%3Cpath d='M56 65 H94 V85 H56 Z' fill='%230076CE'/%3E%3C/svg%3E" alt="Dell Logo" class="w-10 h-10 mx-auto md:mx-0 mb-2 md:mb-0">
-                </div>
-                <div class="text-center md:text-left">
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Dell Strategy Toolkit | Learning Platform</p>
-                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">© 2025 Dell Technologies. All rights reserved.</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <div class="flex items-center gap-3">
-                        <a href="#" id="back-to-top" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
-                            <i class="ri-arrow-up-line text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1832,55 +1833,73 @@
                 document.documentElement.classList.toggle('dark');
             });
             
-            // Module dropdown
-            const moduleDropdown = document.getElementById('module-dropdown');
-            const moduleMenu = document.getElementById('module-menu');
+            // Mobile sidebar toggle
+            document.getElementById('mobile-sidebar-toggle')?.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('hidden');
+                    sidebar.classList.toggle('fixed');
+                    sidebar.classList.toggle('inset-0');
+                    sidebar.classList.toggle('z-50');
+                    sidebar.classList.toggle('lg:block');
+                    sidebar.classList.toggle('lg:static');
+                    sidebar.classList.toggle('lg:inset-auto');
+                    sidebar.classList.toggle('lg:z-auto');
+                }
+            });
             
-            if (moduleDropdown && moduleMenu) {
-                moduleDropdown.addEventListener('click', function() {
-                    moduleMenu.classList.toggle('hidden');
+            // Show specific topic, hide others
+            function showTopic(topicId) {
+                // Hide all topic content
+                document.querySelectorAll('.topic-content').forEach(topic => {
+                    topic.classList.add('hidden');
                 });
                 
-                // Close the dropdown when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!moduleDropdown.contains(event.target) && !moduleMenu.contains(event.target)) {
-                        moduleMenu.classList.add('hidden');
-                    }
-                });
-            }
-            
-            // Back to top functionality
-            const backToTopButton = document.getElementById('back-to-top');
-            
-            if (backToTopButton) {
-                backToTopButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-            
-            // Highlight current section based on scroll position
-            const sections = document.querySelectorAll('section[id]');
-            
-            function highlightCurrentSection() {
-                const scrollY = window.pageYOffset;
+                // Show selected topic
+                document.getElementById(topicId)?.classList.remove('hidden');
                 
-                sections.forEach(current => {
-                    const sectionHeight = current.offsetHeight;
-                    const sectionTop = current.offsetTop - 100;
-                    const sectionId = current.getAttribute('id');
-                    
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('text-primary');
+                // Update sidebar highlight
+                document.querySelectorAll('.topic-link').forEach(link => {
+                    const linkTopic = link.getAttribute('data-topic');
+                    if (linkTopic === topicId) {
+                        link.classList.add('bg-primary/10', 'dark:bg-primary/20');
                     } else {
-                        document.querySelector(`a[href="#${sectionId}"]`)?.classList.remove('text-primary');
+                        link.classList.remove('bg-primary/10', 'dark:bg-primary/20');
                     }
                 });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
             }
             
-            window.addEventListener('scroll', highlightCurrentSection);
+            // Topic links in sidebar
+            document.querySelectorAll('.topic-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.getAttribute('data-topic');
+                    showTopic(topicId);
+                });
+            });
+            
+            // Next topic buttons
+            document.querySelectorAll('.next-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextTopicId = this.getAttribute('data-next');
+                    showTopic(nextTopicId);
+                });
+            });
+            
+            // Previous topic buttons
+            document.querySelectorAll('.prev-topic').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevTopicId = this.getAttribute('data-prev');
+                    showTopic(prevTopicId);
+                });
+            });
+            
+            // Initialize with first topic visible
+            showTopic('topic-change-management');
         });
     </script>
-
-
-</body></html>
+</body>
+</html>
